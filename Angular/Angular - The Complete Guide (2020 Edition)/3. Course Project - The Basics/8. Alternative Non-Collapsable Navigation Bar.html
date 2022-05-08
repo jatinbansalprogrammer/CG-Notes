@@ -1,0 +1,10 @@
+<p>The way we added it, the Navbar will collapse on smaller screens. Since we didn't implement a Hamburger menu, that means that there's no way of accessing our links on smaller screens.</p><p>You can either add such a menu on your own (see below), or you replace <code>collapse navbar-collapse</code>  with just <code>navbar-default</code>.</p><p>Adding a Hamburger Menu:</p><p>Alternatively, if you want to make the navigation bar responsive, please replace these lines in <code>header.component.html</code>:</p><pre class="prettyprint linenums">&lt;div class="navbar-header"&gt;
+  &lt;a routerLink="/" class="navbar-brand"&gt;Recipe Book&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="collapse navbar-collapse"&gt;</pre><p>with these lines:</p><pre class="prettyprint linenums">&lt;div class="navbar-header"&gt;
+  &lt;button type="button" class="navbar-toggle" (click)="collapsed = !collapsed"&gt;
+	&lt;span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  &lt;a routerLink="/" class="navbar-brand"&gt;Recipe Book&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true"&gt;</pre><p>and add this line to<code> header.component.ts</code>:</p><pre class="prettyprint linenums">collapsed = true;</pre>
