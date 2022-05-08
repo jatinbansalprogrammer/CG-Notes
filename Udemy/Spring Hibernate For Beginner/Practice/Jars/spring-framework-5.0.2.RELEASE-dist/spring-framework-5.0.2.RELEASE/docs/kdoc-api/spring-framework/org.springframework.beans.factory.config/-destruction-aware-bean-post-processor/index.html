@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DestructionAwareBeanPostProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">DestructionAwareBeanPostProcessor</a><br/>
+<br/>
+<h1>DestructionAwareBeanPostProcessor</h1>
+<code><span class="keyword">interface </span><span class="identifier">DestructionAwareBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanPostProcessor</span></code>
+<p>Subinterface of BeanPostProcessor that adds a before-destruction callback. 
+<p>The typical usage will be to invoke custom destruction callbacks on specific bean types, matching corresponding initialization callbacks.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.0.1</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="post-process-before-destruction.html">postProcessBeforeDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Apply this BeanPostProcessor to the given bean instance before its destruction. Can invoke custom destruction callbacks. 
+<p>Like DisposableBean's <code>destroy</code> and a custom destroy method, this callback just applies to singleton beans in the factory (including inner beans).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="requires-destruction.html">requiresDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor$requiresDestruction(kotlin.Any)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given bean instance requires destruction by this post-processor. 
+<p><strong>NOTE:</strong> Even as a late addition, this method has been introduced on <code>DestructionAwareBeanPostProcessor</code> itself instead of on a SmartDABPP subinterface. This allows existing <code>DestructionAwareBeanPostProcessor</code> implementations to easily provide <code>requiresDestruction</code> logic while retaining compatibility with Spring &lt;4.3, and it is also an easier onramp to declaring <code>requiresDestruction</code> as a Java 8 default method in Spring 5. </p>
+<p>If an implementation of <code>DestructionAwareBeanPostProcessor</code> does not provide a concrete implementation of this method, Spring's invocation mechanism silently assumes a method returning <code>true</code> (the effective default before 4.3, and the to-be-default in the Java 8 method in Spring 5).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/index.html">InitDestroyAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InitDestroyAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DestructionAwareBeanPostProcessor</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that invokes annotated init and destroy methods. Allows for an annotation alternative to Spring's org.springframework.beans.factory.InitializingBean and org.springframework.beans.factory.DisposableBean callback interfaces. 
+<p>The actual annotation types that this post-processor checks for can be configured through the <code><a href="#">"initAnnotationType"</a></code> and <code><a href="#">"destroyAnnotationType"</a></code> properties. Any custom annotation can be used, since there are no required annotation attributes. </p>
+<p>Init and destroy annotations may be applied to methods of any visibility: public, package-protected, protected, or private. Multiple such methods may be annotated, but it is recommended to only annotate one single init method and destroy method, respectively. </p>
+<p>Spring's org.springframework.context.annotation.CommonAnnotationBeanPostProcessor supports the JSR-250 javax.annotation.PostConstruct and javax.annotation.PreDestroy annotations out of the box, as init annotation and destroy annotation, respectively. Furthermore, it also supports the javax.annotation.Resource annotation for annotation-driven injection of named beans.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.orm.jpa.support/-persistence-annotation-bean-post-processor/index.html">PersistenceAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PersistenceAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InstantiationAwareBeanPostProcessor</span><span class="symbol">, </span><span class="identifier">DestructionAwareBeanPostProcessor</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>BeanPostProcessor that processes javax.persistence.PersistenceUnit and javax.persistence.PersistenceContext annotations, for injection of the corresponding JPA resources javax.persistence.EntityManagerFactory and javax.persistence.EntityManager. Any such annotated fields or methods in any Spring-managed object will automatically be injected. 
+<p>This post-processor will inject sub-interfaces of <code>EntityManagerFactory</code> and <code>EntityManager</code> if the annotated fields or methods are declared as such. The actual type will be verified early, with the exception of a shared ("transactional") <code>EntityManager</code> reference, where type mismatches might be detected as late as on the first actual invocation. </p>
+<p>Note: In the present implementation, PersistenceAnnotationBeanPostProcessor only supports <code>@PersistenceUnit</code> and <code>@PersistenceContext</code> with the "unitName" attribute, or no attribute at all (for the default unit). If those annotations are present with the "name" attribute at the class level, they will simply be ignored, since those only serve as deployment hint (as per the Java EE specification). </p>
+<p>This post-processor can either obtain EntityManagerFactory beans defined in the Spring application context (the default), or obtain EntityManagerFactory references from JNDI ("persistence unit references"). In the bean case, the persistence unit name will be matched against the actual deployed unit, with the bean name used as fallback unit name if no deployed name found. Typically, Spring's org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean will be used for setting up such EntityManagerFactory beans. Alternatively, such beans may also be obtained from JNDI, e.g. using the <code>jee:jndi-lookup</code> XML configuration element (with the bean name matching the requested unit name). In both cases, the post-processor definition will look as simple as this: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/&gt;</code></pre> In the JNDI case, specify the corresponding JNDI names in this post-processor's <code><a href="#">"persistenceUnits" map</a></code>, typically with matching <code>persistence-unit-ref</code> entries in the Java EE deployment descriptor. By default, those names are considered as resource references (according to the Java EE resource-ref convention), located underneath the "java:comp/env/" namespace. For example: <pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceUnits"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/unit1"/&gt; &lt;entry key="unit2" value="persistence/unit2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> In this case, the specified persistence units will always be resolved in JNDI rather than as Spring-defined beans. The entire persistence unit deployment, including the weaving of persistent classes, is then up to the Java EE server. Persistence contexts (i.e. EntityManager references) will be built based on those server-provided EntityManagerFactory references, using Spring's own transaction synchronization facilities for transactional EntityManager handling (typically with Spring's <code>@Transactional</code> annotation for demarcation and org.springframework.transaction.jta.JtaTransactionManager as backend). 
+<p>If you prefer the Java EE server's own EntityManager handling, specify entries in this post-processor's <code><a href="#">"persistenceContexts" map</a></code> (or <code><a href="#">"extendedPersistenceContexts" map</a></code>, typically with matching <code>persistence-context-ref</code> entries in the Java EE deployment descriptor. For example: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceContexts"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/context1"/&gt; &lt;entry key="unit2" value="persistence/context2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> If the application only obtains EntityManager references in the first place, this is all you need to specify. If you need EntityManagerFactory references as well, specify entries for both "persistenceUnits" and "persistenceContexts", pointing to matching JNDI locations. 
+<p><strong>NOTE: In general, do not inject EXTENDED EntityManagers into STATELESS beans, i.e. do not use <code>@PersistenceContext</code> with type <code>EXTENDED</code> in Spring beans defined with scope 'singleton' (Spring's default scope).</strong> Extended EntityManagers are <em>not</em> thread-safe, hence they must not be used in concurrently accessed beans (which Spring-managed singletons usually are). </p>
+<p>Note: A default PersistenceAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom PersistenceAnnotationBeanPostProcessor bean definition.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.handler/-simple-servlet-post-processor/index.html">SimpleServletPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleServletPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DestructionAwareBeanPostProcessor</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><a href="../../org.springframework.web.context/-servlet-config-aware/index.html"><span class="identifier">ServletConfigAware</span></a></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor that applies initialization and destruction callbacks to beans that implement the javax.servlet.Servlet interface. 
+<p>After initialization of the bean instance, the Servlet <code>init</code> method will be called with a ServletConfig that contains the bean name of the Servlet and the ServletContext that it is running in. </p>
+<p>Before destruction of the bean instance, the Servlet <code>destroy</code> will be called. </p>
+<p><strong>Note that this post-processor does not support Servlet initialization parameters.</strong> Bean instances that implement the Servlet interface are supposed to be configured like any other Spring bean, that is, through constructor arguments or bean properties. </p>
+<p>For reuse of a Servlet implementation in a plain Servlet container and as a bean in a Spring context, consider deriving from Spring's org.springframework.web.servlet.HttpServletBean base class that applies Servlet initialization parameters as bean properties, supporting both the standard Servlet and the Spring bean initialization style. </p>
+<p><strong>Alternatively, consider wrapping a Servlet with Spring's org.springframework.web.servlet.mvc.ServletWrappingController.</strong> This is particularly appropriate for existing Servlet classes, allowing to specify Servlet initialization parameters etc.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

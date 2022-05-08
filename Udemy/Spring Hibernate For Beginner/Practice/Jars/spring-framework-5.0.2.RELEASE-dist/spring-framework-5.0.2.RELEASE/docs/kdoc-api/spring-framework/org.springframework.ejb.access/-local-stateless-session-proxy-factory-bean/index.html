@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalStatelessSessionProxyFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.ejb.access</a>&nbsp;/&nbsp;<a href=".">LocalStatelessSessionProxyFactoryBean</a><br/>
+<br/>
+<h1>LocalStatelessSessionProxyFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalStatelessSessionProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LocalSlsbInvokerInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>Convenient FactoryBean for local Stateless Session Bean (SLSB) proxies. Designed for EJB 2.x, but works for EJB 3 Session Beans as well. 
+<p>See org.springframework.jndi.JndiObjectLocator for info on how to specify the JNDI location of the target EJB. </p>
+<p>If you want control over interceptor chaining, use an AOP ProxyFactoryBean with LocalSlsbInvokerInterceptor rather than rely on this class. </p>
+<p>In a bean container, this class is normally best used as a singleton. However, if that bean container pre-instantiates singletons (as do the XML ApplicationContext variants) you may have a problem if the bean container is loaded before the EJB container loads the target EJB. That is because by default the JNDI lookup will be performed in the init method of this class and cached, but the EJB will not have been bound at the target location yet. The best solution is to set the "lookupHomeOnStartup" property to "false", in which case the home will be fetched on first access to the EJB. (This flag is only true by default for backwards compatibility reasons).</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Colin Sampaleanu</p>
+<p><strong>Since</strong><br/>
+09.05.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">AbstractSlsbInvokerInterceptor#setLookupHomeOnStartup</a><a href="#">AbstractSlsbInvokerInterceptor#setCacheHome</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LocalStatelessSessionProxyFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient FactoryBean for local Stateless Session Bean (SLSB) proxies. Designed for EJB 2.x, but works for EJB 3 Session Beans as well. 
+<p>See org.springframework.jndi.JndiObjectLocator for info on how to specify the JNDI location of the target EJB. </p>
+<p>If you want control over interceptor chaining, use an AOP ProxyFactoryBean with LocalSlsbInvokerInterceptor rather than rely on this class. </p>
+<p>In a bean container, this class is normally best used as a singleton. However, if that bean container pre-instantiates singletons (as do the XML ApplicationContext variants) you may have a problem if the bean container is loaded before the EJB container loads the target EJB. That is because by default the JNDI lookup will be performed in the init method of this class and cached, but the EJB will not have been bound at the target location yet. The best solution is to set the "lookupHomeOnStartup" property to "false", in which case the home will be fetched on first access to the EJB. (This flag is only true by default for backwards compatibility reasons).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-business-interface.html">getBusinessInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBusinessInterface</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the business interface of the EJB we're proxying.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-business-interface.html">setBusinessInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBusinessInterface</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean$setBusinessInterface(java.lang.Class((kotlin.Any)))/businessInterface">businessInterface</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the business interface of the EJB we're proxying. This will normally be a super-interface of the EJB local component interface. Using a business methods interface is a best practice when implementing EJBs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

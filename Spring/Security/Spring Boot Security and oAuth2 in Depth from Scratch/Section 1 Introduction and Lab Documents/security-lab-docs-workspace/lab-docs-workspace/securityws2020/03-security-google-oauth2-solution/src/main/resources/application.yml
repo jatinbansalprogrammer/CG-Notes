@@ -1,0 +1,56 @@
+logging:
+  level:
+    org.springframework.security: DEBUG
+    
+    
+server:
+  port: 8443  
+  servlet:
+    context-path: /myapp
+    session:
+      cookie:
+        path: /myapp
+  ssl:
+    key-store-password: tomcat
+    key-store: classpath:mykeystore.p12
+    key-store-type: PKCS12
+    key-alias: tomcat
+
+
+      
+      
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 694424912843-55b1bl200s1tl8tgr7k07rji2ptd1772.apps.googleusercontent.com
+            client-secret: g6yJEFdW8BPwTYKqivcLJ_QU
+            scope: openid,profile,email
+            client-name: SivaGoogle
+          way2learnclient:
+            client-id: way2learnappclientid
+            client-secret: secret
+            client-name: Way2learn
+            scope: user_info,read,write
+            redirect-uri: https://localhost:8443/myapp/login/oauth2/code/way2learnappclient
+            client-authentication-method: basic
+            authorization-grant-type: authorization_code
+            provider: way2learn-authserver-provider
+        provider:
+            way2learn-authserver-provider:
+              token-uri: http://localhost:8081/auth/oauth/token
+              authorization-uri: http://localhost:8081/auth/oauth/authorize
+              user-info-uri: http://localhost:8081/auth/userinfo
+              user-name-attribute: username
+      
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:    
+    hibernate:
+      ddl-auto: update
+
+    

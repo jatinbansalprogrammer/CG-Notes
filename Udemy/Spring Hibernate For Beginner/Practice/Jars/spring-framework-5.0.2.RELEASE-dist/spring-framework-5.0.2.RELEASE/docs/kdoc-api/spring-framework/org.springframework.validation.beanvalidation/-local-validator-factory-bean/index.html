@@ -1,0 +1,254 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalValidatorFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.validation.beanvalidation</a>&nbsp;/&nbsp;<a href=".">LocalValidatorFactoryBean</a><br/>
+<br/>
+<h1>LocalValidatorFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalValidatorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpringValidatorAdapter</span><span class="symbol">, </span><span class="identifier">ValidatorFactory</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>This is the central class for <code>javax.validation</code> (JSR-303) setup in a Spring application context: It bootstraps a <code>javax.validation.ValidationFactory</code> and exposes it through the Spring org.springframework.validation.Validator interface as well as through the JSR-303 javax.validation.Validator interface and the javax.validation.ValidatorFactory interface itself. 
+<p>When talking to an instance of this bean through the Spring or JSR-303 Validator interfaces, you'll be talking to the default Validator of the underlying ValidatorFactory. This is very convenient in that you don't have to perform yet another call on the factory, assuming that you will almost always use the default Validator anyway. This can also be injected directly into any target dependency of type org.springframework.validation.Validator! </p>
+<p><strong>As of Spring 5.0, this class requires Bean Validation 1.1+, with special support for Hibernate Validator 5.x</strong> (see <code><a href="set-validation-message-source.html">#setValidationMessageSource</a></code>). This class is also runtime-compatible with Bean Validation 2.0 and Hibernate Validator 6.0, with one special note: If you'd like to call BV 2.0's <code>getClockProvider()</code> method, obtain the native <code>ValidatorFactory</code> through <code>#unwrap(ValidatorFactory.class)</code> and call the <code>getClockProvider()</code> method on the returned native reference there. </p>
+<p>This class is also being used by Spring's MVC configuration namespace, in case of the <code>javax.validation</code> API being present but no explicit Validator having been configured.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+javax.validation.ValidatorFactoryjavax.validation.Validator<a href="#">javax.validation.Validation#buildDefaultValidatorFactory()</a><a href="#">javax.validation.ValidatorFactory#getValidator()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LocalValidatorFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>This is the central class for <code>javax.validation</code> (JSR-303) setup in a Spring application context: It bootstraps a <code>javax.validation.ValidationFactory</code> and exposes it through the Spring org.springframework.validation.Validator interface as well as through the JSR-303 javax.validation.Validator interface and the javax.validation.ValidatorFactory interface itself. 
+<p>When talking to an instance of this bean through the Spring or JSR-303 Validator interfaces, you'll be talking to the default Validator of the underlying ValidatorFactory. This is very convenient in that you don't have to perform yet another call on the factory, assuming that you will almost always use the default Validator anyway. This can also be injected directly into any target dependency of type org.springframework.validation.Validator! </p>
+<p><strong>As of Spring 5.0, this class requires Bean Validation 1.1+, with special support for Hibernate Validator 5.x</strong> (see <code><a href="set-validation-message-source.html">#setValidationMessageSource</a></code>). This class is also runtime-compatible with Bean Validation 2.0 and Hibernate Validator 6.0, with one special note: If you'd like to call BV 2.0's <code>getClockProvider()</code> method, obtain the native <code>ValidatorFactory</code> through <code>#unwrap(ValidatorFactory.class)</code> and call the <code>getClockProvider()</code> method on the returned native reference there. </p>
+<p>This class is also being used by Spring's MVC configuration namespace, in case of the <code>javax.validation</code> API being present but no explicit Validator having been configured.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-constraint-validator-factory.html">getConstraintValidatorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConstraintValidatorFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConstraintValidatorFactory</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-message-interpolator.html">getMessageInterpolator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMessageInterpolator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageInterpolator</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-parameter-name-provider.html">getParameterNameProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParameterNameProvider</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ParameterNameProvider</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-traversable-resolver.html">getTraversableResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTraversableResolver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TraversableResolver</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-validation-property-map.html">getValidationPropertyMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValidationPropertyMap</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Allow Map access to the bean validation properties to be passed to the validation provider, with the option to add or override specific entries. 
+<p>Useful for specifying entries directly, for example via "validationPropertyMap[myKey]".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-validator.html">getValidator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValidator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Validator</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-application-context.html">setApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setApplicationContext(org.springframework.context.ApplicationContext)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-constraint-validator-factory.html">setConstraintValidatorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConstraintValidatorFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setConstraintValidatorFactory(javax.validation.ConstraintValidatorFactory)/constraintValidatorFactory">constraintValidatorFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConstraintValidatorFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom ConstraintValidatorFactory to use for this ValidatorFactory. 
+<p>Default is a SpringConstraintValidatorFactory, delegating to the containing ApplicationContext for creating autowired ConstraintValidator instances.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapping-locations.html">setMappingLocations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappingLocations</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setMappingLocations(kotlin.Array((org.springframework.core.io.Resource)))/mappingLocations">mappingLocations</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify resource locations to load XML constraint mapping files from, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-interpolator.html">setMessageInterpolator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageInterpolator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setMessageInterpolator(javax.validation.MessageInterpolator)/messageInterpolator">messageInterpolator</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageInterpolator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom MessageInterpolator to use for this ValidatorFactory and its exposed default Validator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parameter-name-discoverer.html">setParameterNameDiscoverer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParameterNameDiscoverer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setParameterNameDiscoverer(org.springframework.core.ParameterNameDiscoverer)/parameterNameDiscoverer">parameterNameDiscoverer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterNameDiscoverer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ParameterNameDiscoverer to use for resolving method and constructor parameter names if needed for message interpolation. 
+<p>Default is a org.springframework.core.DefaultParameterNameDiscoverer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-provider-class.html">setProviderClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProviderClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setProviderClass(java.lang.Class((kotlin.Any)))/providerClass">providerClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the desired provider class, if any. 
+<p>If not specified, JSR-303's default search mechanism will be used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-traversable-resolver.html">setTraversableResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTraversableResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setTraversableResolver(javax.validation.TraversableResolver)/traversableResolver">traversableResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">TraversableResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom TraversableResolver to use for this ValidatorFactory and its exposed default Validator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-message-source.html">setValidationMessageSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationMessageSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setValidationMessageSource(org.springframework.context.MessageSource)/messageSource">messageSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom Spring MessageSource for resolving validation messages, instead of relying on JSR-303's default "ValidationMessages.properties" bundle in the classpath. This may refer to a Spring context's shared "messageSource" bean, or to some special MessageSource setup for validation purposes only. 
+<p><strong>NOTE:</strong> This feature requires Hibernate Validator 4.3 or higher on the classpath. You may nevertheless use a different validation provider but Hibernate Validator's ResourceBundleMessageInterpolator class must be accessible during configuration. </p>
+<p>Specify either this property or <code><a href="set-message-interpolator.html">"messageInterpolator"</a></code>, not both. If you would like to build a custom MessageInterpolator, consider deriving from Hibernate Validator's ResourceBundleMessageInterpolator and passing in a Spring-based <code>ResourceBundleLocator</code> when constructing your interpolator.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-properties.html">setValidationProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setValidationProperties(java.util.Properties)/jpaProperties">jpaProperties</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify bean validation properties to be passed to the validation provider. 
+<p>Can be populated with a String "value" (parsed via PropertiesEditor) or a "props" element in XML bean definitions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-property-map.html">setValidationPropertyMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationPropertyMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setValidationPropertyMap(kotlin.collections.MutableMap((kotlin.String, )))/validationProperties">validationProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify bean validation properties to be passed to the validation provider as a Map. 
+<p>Can be populated with a "map" or "props" element in XML bean definitions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-provider-resolver.html">setValidationProviderResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationProviderResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$setValidationProviderResolver(javax.validation.ValidationProviderResolver)/validationProviderResolver">validationProviderResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">ValidationProviderResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a JSR-303 ValidationProviderResolver for bootstrapping the provider of choice, as an alternative to <code>META-INF</code> driven resolution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unwrap.html">unwrap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">unwrap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$unwrap(java.lang.Class((org.springframework.validation.beanvalidation.LocalValidatorFactoryBean.unwrap.T)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="using-context.html">usingContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">usingContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ValidatorContext</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-optional-validator-factory-bean/index.html">OptionalValidatorFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OptionalValidatorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LocalValidatorFactoryBean</span></code>
+<p>LocalValidatorFactoryBean subclass that simply turns org.springframework.validation.Validator calls into no-ops in case of no Bean Validation provider being available. 
+<p>This is the actual class used by Spring's MVC configuration namespace, in case of the <code>javax.validation</code> API being present but no explicit Validator having been configured.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

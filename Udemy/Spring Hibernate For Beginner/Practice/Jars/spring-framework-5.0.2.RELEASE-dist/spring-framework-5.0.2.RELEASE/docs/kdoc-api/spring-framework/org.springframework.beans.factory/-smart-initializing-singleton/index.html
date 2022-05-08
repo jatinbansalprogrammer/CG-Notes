@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SmartInitializingSingleton - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory</a>&nbsp;/&nbsp;<a href=".">SmartInitializingSingleton</a><br/>
+<br/>
+<h1>SmartInitializingSingleton</h1>
+<code><span class="keyword">interface </span><span class="identifier">SmartInitializingSingleton</span></code>
+<p>Callback interface triggered at the end of the singleton pre-instantiation phase during BeanFactory bootstrap. This interface can be implemented by singleton beans in order to perform some initialization after the regular singleton instantiation algorithm, avoiding side effects with accidental early initialization (e.g. from <code><a href="#">ListableBeanFactory#getBeansOfType</a></code> calls). In that sense, it is an alternative to InitializingBean which gets triggered right at the end of a bean's local construction phase. 
+<p>This callback variant is somewhat similar to org.springframework.context.event.ContextRefreshedEvent but doesn't require an implementation of org.springframework.context.ApplicationListener, with no need to filter context references across a context hierarchy etc. It also implies a more minimal dependency on just the <code>beans</code> package and is being honored by standalone ListableBeanFactory implementations, not just in an org.springframework.context.ApplicationContext environment. </p>
+<p><strong>NOTE:</strong> If you intend to start/manage asynchronous tasks, preferably implement org.springframework.context.Lifecycle instead which offers a richer model for runtime management and allows for phased startup/shutdown.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.beans.factory.config.ConfigurableListableBeanFactory#preInstantiateSingletons()</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-singletons-instantiated.html">afterSingletonsInstantiated</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">afterSingletonsInstantiated</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoked right at the end of the singleton pre-instantiation phase, with a guarantee that all regular singleton beans have been created already. <code><a href="#">ListableBeanFactory#getBeansOfType</a></code> calls within this method won't trigger accidental side effects during bootstrap. 
+<p><strong>NOTE:</strong> This callback won't be triggered for singleton beans lazily initialized on demand after BeanFactory bootstrap, and not for any other bean scope either. Carefully use it for beans with the intended bootstrap semantics only.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.cache.interceptor/-cache-aspect-support/index.html">CacheAspectSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CacheAspectSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCacheInvoker</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">SmartInitializingSingleton</span></code>
+<p>Base class for caching aspects, such as the CacheInterceptor or an AspectJ aspect. 
+<p>This enables the underlying Spring caching infrastructure to be used easily to implement an aspect for any aspect system. </p>
+<p>Subclasses are responsible for calling methods in this class in the correct order. </p>
+<p>Uses the <strong>Strategy</strong> design pattern. A CacheResolver implementation will resolve the actual cache(s) to use, and a CacheOperationSource is used for determining caching operations. </p>
+<p>A cache aspect is serializable if its <code>CacheResolver</code> and <code>CacheOperationSource</code> are serializable.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.scheduling.config/-context-lifecycle-scheduled-task-registrar/index.html">ContextLifecycleScheduledTaskRegistrar</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextLifecycleScheduledTaskRegistrar</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ScheduledTaskRegistrar</span><span class="symbol">, </span><span class="identifier">SmartInitializingSingleton</span></code>
+<p>ScheduledTaskRegistrar subclass which redirects the actual scheduling of tasks to the <code><a href="../../org.springframework.scheduling.config/-context-lifecycle-scheduled-task-registrar/after-singletons-instantiated.html">#afterSingletonsInstantiated()</a></code> callback (as of 4.1.2).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.cache.jcache.interceptor/-default-j-cache-operation-source/index.html">DefaultJCacheOperationSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultJCacheOperationSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AnnotationJCacheOperationSource</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">SmartInitializingSingleton</span></code>
+<p>The default JCacheOperationSource implementation delegating default operations to configurable services with sensible defaults when not present.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.event/-event-listener-method-processor/index.html">EventListenerMethodProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EventListenerMethodProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SmartInitializingSingleton</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span></code>
+<p>Register EventListener annotated method as individual ApplicationListener instances.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.jms.annotation/-jms-listener-annotation-bean-post-processor/index.html">JmsListenerAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsListenerAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">SmartInitializingSingleton</span></code>
+<p>Bean post-processor that registers methods annotated with JmsListener to be invoked by a JMS message listener container created under the cover by a org.springframework.jms.config.JmsListenerContainerFactory according to the attributes of the annotation. 
+<p>Annotated methods can use flexible arguments as defined by JmsListener. </p>
+<p>This post-processor is automatically registered by Spring's <code>&lt;jms:annotation-driven&gt;</code> XML element, and also by the EnableJms annotation. </p>
+<p>Autodetects any JmsListenerConfigurer instances in the container, allowing for customization of the registry to be used, the default container factory or for fine-grained control over endpoints registration. See the EnableJms javadocs for complete usage details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.socket.server.standard/-server-endpoint-exporter/index.html">ServerEndpointExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServerEndpointExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationObjectSupport</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">SmartInitializingSingleton</span></code>
+<p>Detects beans of type javax.websocket.server.ServerEndpointConfig and registers with the standard Java WebSocket runtime. Also detects beans annotated with ServerEndpoint and registers them as well. Although not required, it is likely annotated endpoints should have their <code>configurator</code> property set to SpringConfigurator. 
+<p>When this class is used, by declaring it in Spring configuration, it should be possible to turn off a Servlet container's scan for WebSocket endpoints. This can be done with the help of the <code>&lt;absolute-ordering&gt;</code> element in <code>web.xml</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

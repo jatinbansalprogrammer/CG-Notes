@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Form</title>
+</head>
+<body>
+	<h1>Welcome To Form</h1>
+	
+	<form:form action="processStudentForm"  method="GET">
+		Name: <form:input path="name" /> <%-- value="${student.name}" --%>
+		<br><br>
+		Age:  <form:input path="age"/>
+		<br><br>
+		
+		<form:select path="country">
+			<form:option value="hello" items="${student.countryOptions}"></form:option>
+		</form:select>
+		
+		
+		<input type="submit" />
+	</form:form>
+</body>
+</html>

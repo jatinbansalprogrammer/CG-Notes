@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HandlerExceptionResolverComposite - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.handler</a>&nbsp;/&nbsp;<a href=".">HandlerExceptionResolverComposite</a><br/>
+<br/>
+<h1>HandlerExceptionResolverComposite</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HandlerExceptionResolverComposite</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerExceptionResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>A HandlerExceptionResolver that delegates to a list of other HandlerExceptionResolvers.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HandlerExceptionResolverComposite</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A HandlerExceptionResolver that delegates to a list of other HandlerExceptionResolvers.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-exception-resolvers.html">getExceptionResolvers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExceptionResolvers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HandlerExceptionResolver</span><span class="symbol">&gt;</span></code>
+<p>Return the list of exception resolvers to delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-exception.html">resolveException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite$resolveException(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite$resolveException(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite$resolveException(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite$resolveException(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ModelAndView</span></code>
+<p>Resolve the exception by iterating over the list of configured exception resolvers. The first one to return a ModelAndView instance wins. Otherwise <code>null</code> is returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-exception-resolvers.html">setExceptionResolvers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExceptionResolvers</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite$setExceptionResolvers(kotlin.collections.MutableList((org.springframework.web.servlet.HandlerExceptionResolver)))/exceptionResolvers">exceptionResolvers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HandlerExceptionResolver</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the list of exception resolvers to delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-order.html">setOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.HandlerExceptionResolverComposite$setOrder(kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

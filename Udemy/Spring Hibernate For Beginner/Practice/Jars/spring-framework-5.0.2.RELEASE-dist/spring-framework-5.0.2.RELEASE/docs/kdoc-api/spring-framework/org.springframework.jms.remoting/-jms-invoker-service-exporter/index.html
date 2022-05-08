@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JmsInvokerServiceExporter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.remoting</a>&nbsp;/&nbsp;<a href=".">JmsInvokerServiceExporter</a><br/>
+<br/>
+<h1>JmsInvokerServiceExporter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsInvokerServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RemoteInvocationBasedExporter</span><span class="symbol">, </span><span class="identifier">SessionAwareMessageListener</span><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>JMS message listener that exports the specified service bean as a JMS service endpoint, accessible via a JMS invoker proxy. 
+<p>Note that this class implements Spring's org.springframework.jms.listener.SessionAwareMessageListener interface, since it requires access to the active JMS Session. Hence, this class can only be used with message listener containers which support the SessionAwareMessageListener interface (e.g. Spring's org.springframework.jms.listener.DefaultMessageListenerContainer). </p>
+<p>Thanks to James Strachan for the original prototype that this JMS invoker mechanism was inspired by!</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+James Strachan</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+JmsInvokerClientInterceptorJmsInvokerProxyFactoryBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JmsInvokerServiceExporter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JMS message listener that exports the specified service bean as a JMS service endpoint, accessible via a JMS invoker proxy. 
+<p>Note that this class implements Spring's org.springframework.jms.listener.SessionAwareMessageListener interface, since it requires access to the active JMS Session. Hence, this class can only be used with message listener containers which support the SessionAwareMessageListener interface (e.g. Spring's org.springframework.jms.listener.DefaultMessageListenerContainer). </p>
+<p>Thanks to James Strachan for the original prototype that this JMS invoker mechanism was inspired by!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="on-message.html">onMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.remoting.JmsInvokerServiceExporter$onMessage(javax.jms.Message, javax.jms.Session)/requestMessage">requestMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.remoting.JmsInvokerServiceExporter$onMessage(javax.jms.Message, javax.jms.Session)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ignore-invalid-requests.html">setIgnoreInvalidRequests</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIgnoreInvalidRequests</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.remoting.JmsInvokerServiceExporter$setIgnoreInvalidRequests(kotlin.Boolean)/ignoreInvalidRequests">ignoreInvalidRequests</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether invalidly formatted messages should be discarded. Default is "true". 
+<p>Switch this flag to "false" to throw an exception back to the listener container. This will typically lead to redelivery of the message, which is usually undesirable - since the message content will be the same (that is, still invalid).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-converter.html">setMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageConverter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.remoting.JmsInvokerServiceExporter$setMessageConverter(org.springframework.jms.support.converter.MessageConverter)/messageConverter">messageConverter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageConverter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the MessageConverter to use for turning request messages into org.springframework.remoting.support.RemoteInvocation objects, as well as org.springframework.remoting.support.RemoteInvocationResult objects into response messages. 
+<p>Default is a org.springframework.jms.support.converter.SimpleMessageConverter, using a standard JMS javax.jms.ObjectMessage for each invocation / invocation result object. </p>
+<p>Custom implementations may generally adapt Serializables into special kinds of messages, or might be specifically tailored for translating RemoteInvocation(Result)s into specific kinds of messages.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

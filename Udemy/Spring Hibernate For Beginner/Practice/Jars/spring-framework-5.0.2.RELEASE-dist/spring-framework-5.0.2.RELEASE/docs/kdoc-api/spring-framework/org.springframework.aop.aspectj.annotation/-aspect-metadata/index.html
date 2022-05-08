@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AspectMetadata - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.aspectj.annotation</a>&nbsp;/&nbsp;<a href=".">AspectMetadata</a><br/>
+<br/>
+<h1>AspectMetadata</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectMetadata</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>Metadata for an AspectJ aspect class, with an additional Spring AOP pointcut for the per clause. 
+<p>Uses AspectJ 5 AJType reflection API, enabling us to work with different AspectJ instantiation models such as "singleton", "pertarget" and "perthis".</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.aop.aspectj.AspectJExpressionPointcut</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AspectMetadata</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.AspectMetadata$<init>(java.lang.Class((kotlin.Any)), kotlin.String)/aspectClass">aspectClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.AspectMetadata$<init>(java.lang.Class((kotlin.Any)), kotlin.String)/aspectName">aspectName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new AspectMetadata instance for the given aspect class.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-aj-type.html">getAjType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAjType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AjType</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return AspectJ reflection information.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-aspect-class.html">getAspectClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAspectClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the aspect class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-aspect-name.html">getAspectName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAspectName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the aspect class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-per-clause-pointcut.html">getPerClausePointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPerClausePointcut</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pointcut</span></code>
+<p>Return a Spring pointcut expression for a singleton aspect. (e.g. <code>Pointcut.TRUE</code> if it's a singleton).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-lazily-instantiated.html">isLazilyInstantiated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isLazilyInstantiated</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the aspect needs to be lazily instantiated.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-per-this-or-per-target.html">isPerThisOrPerTarget</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isPerThisOrPerTarget</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the aspect is defined as "perthis" or "pertarget".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-per-type-within.html">isPerTypeWithin</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isPerTypeWithin</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the aspect is defined as "pertypewithin".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

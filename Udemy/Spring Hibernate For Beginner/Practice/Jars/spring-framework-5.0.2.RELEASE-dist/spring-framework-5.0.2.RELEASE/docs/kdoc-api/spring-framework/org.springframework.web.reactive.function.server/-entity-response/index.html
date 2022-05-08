@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EntityResponse - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.function.server</a>&nbsp;/&nbsp;<a href=".">EntityResponse</a><br/>
+<br/>
+<h1>EntityResponse</h1>
+<code><span class="keyword">interface </span><span class="identifier">EntityResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServerResponse</span></code>
+<p>Entity-specific subtype of ServerResponse that exposes entity data.</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="entity.html">entity</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">entity</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Return the entity that makes up this response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-object.html">fromObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">fromObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.server.EntityResponse$fromObject(org.springframework.web.reactive.function.server.EntityResponse.fromObject.T)/t">t</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Builder</span></code>
+<p>Create a builder with the given object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-publisher.html">fromPublisher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">P</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span> <span class="identifier">fromPublisher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.server.EntityResponse$fromPublisher(org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.P, java.lang.Class((org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.T)))/publisher">publisher</span><span class="symbol">:</span>&nbsp;<span class="identifier">P</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.function.server.EntityResponse$fromPublisher(org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.P, java.lang.Class((org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.T)))/elementClass">elementClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Builder</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">P</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span> <span class="identifier">fromPublisher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.server.EntityResponse$fromPublisher(org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.P, org.springframework.core.ParameterizedTypeReference((org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.T)))/publisher">publisher</span><span class="symbol">:</span>&nbsp;<span class="identifier">P</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.function.server.EntityResponse$fromPublisher(org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.P, org.springframework.core.ParameterizedTypeReference((org.springframework.web.reactive.function.server.EntityResponse.fromPublisher.T)))/typeReference">typeReference</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterizedTypeReference</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Builder</span></code>
+<p>Create a builder with the given publisher.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="inserter.html">inserter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">inserter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BodyInserter</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="keyword">in</span>&nbsp;<span class="identifier">ServerHttpResponse</span><span class="symbol">&gt;</span></code>
+<p>Return the <code>BodyInserter</code> that writes the entity to the output stream.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

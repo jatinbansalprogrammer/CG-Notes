@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultManagedTaskScheduler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.concurrent</a>&nbsp;/&nbsp;<a href=".">DefaultManagedTaskScheduler</a><br/>
+<br/>
+<h1>DefaultManagedTaskScheduler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultManagedTaskScheduler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConcurrentTaskScheduler</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>JNDI-based variant of ConcurrentTaskScheduler, performing a default lookup for JSR-236's "java:comp/DefaultManagedScheduledExecutorService" in a Java EE 7 environment. 
+<p>Note: This class is not strictly JSR-236 based; it can work with any regular java.util.concurrent.ScheduledExecutorService that can be found in JNDI. The actual adapting to javax.enterprise.concurrent.ManagedScheduledExecutorService happens in the base class ConcurrentTaskScheduler itself.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultManagedTaskScheduler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JNDI-based variant of ConcurrentTaskScheduler, performing a default lookup for JSR-236's "java:comp/DefaultManagedScheduledExecutorService" in a Java EE 7 environment. 
+<p>Note: This class is not strictly JSR-236 based; it can work with any regular java.util.concurrent.ScheduledExecutorService that can be found in JNDI. The actual adapting to javax.enterprise.concurrent.ManagedScheduledExecutorService happens in the base class ConcurrentTaskScheduler itself.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-environment.html">setJndiEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskScheduler$setJndiEnvironment(java.util.Properties)/jndiEnvironment">jndiEnvironment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI environment to use for JNDI lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-name.html">setJndiName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskScheduler$setJndiName(kotlin.String)/jndiName">jndiName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a JNDI name of the java.util.concurrent.Executor to delegate to, replacing the default JNDI name "java:comp/DefaultManagedScheduledExecutorService". 
+<p>This can either be a fully qualified JNDI name, or the JNDI name relative to the current environment naming context if "resourceRef" is set to "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-template.html">setJndiTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiTemplate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskScheduler$setJndiTemplate(org.springframework.jndi.JndiTemplate)/jndiTemplate">jndiTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">JndiTemplate</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI template to use for JNDI lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-resource-ref.html">setResourceRef</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceRef</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskScheduler$setResourceRef(kotlin.Boolean)/resourceRef">resourceRef</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the lookup occurs in a Java EE container, i.e. if the prefix "java:comp/env/" needs to be added if the JNDI name doesn't already contain it. PersistenceAnnotationBeanPostProcessor's default is "true".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

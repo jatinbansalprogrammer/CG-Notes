@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FieldRetrievingFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">FieldRetrievingFactoryBean</a><br/>
+<br/>
+<h1>FieldRetrievingFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FieldRetrievingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>FactoryBean which retrieves a static or non-static field value. 
+<p>Typically used for retrieving public static final constants. Usage example: </p>
+<pre><code>// standard definition for exposing a static field, specifying the "staticField" property &lt;bean id="myField" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"&gt; &lt;property name="staticField" value="java.sql.Connection.TRANSACTION_SERIALIZABLE"/&gt; &lt;/bean&gt; // convenience version that specifies a static field pattern as bean name &lt;bean id="java.sql.Connection.TRANSACTION_SERIALIZABLE" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"/&gt;</code></pre>  
+<p>If you are using Spring 2.0, you can also use the following style of configuration for public static fields. </p>
+<pre><code>&lt;util:constant static-field="java.sql.Connection.TRANSACTION_SERIALIZABLE"/&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setStaticField</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FieldRetrievingFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>FactoryBean which retrieves a static or non-static field value. 
+<p>Typically used for retrieving public static final constants. Usage example: </p>
+<pre><code>// standard definition for exposing a static field, specifying the "staticField" property &lt;bean id="myField" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"&gt; &lt;property name="staticField" value="java.sql.Connection.TRANSACTION_SERIALIZABLE"/&gt; &lt;/bean&gt; // convenience version that specifies a static field pattern as bean name &lt;bean id="java.sql.Connection.TRANSACTION_SERIALIZABLE" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"/&gt;</code></pre>  
+<p>If you are using Spring 2.0, you can also use the following style of configuration for public static fields. </p>
+<pre><code>&lt;util:constant static-field="java.sql.Connection.TRANSACTION_SERIALIZABLE"/&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-class.html">getTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the target class on which the field is defined.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-field.html">getTargetField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetField</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the name of the field to be retrieved.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-object.html">getTargetObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the target object on which the field is defined.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.FieldRetrievingFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-name.html">setBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.FieldRetrievingFactoryBean$setBeanName(kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The bean name of this FieldRetrievingFactoryBean will be interpreted as "staticField" pattern, if neither "targetClass" nor "targetObject" nor "targetField" have been specified. This allows for concise bean definitions with just an id/name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-static-field.html">setStaticField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStaticField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.FieldRetrievingFactoryBean$setStaticField(kotlin.String)/staticField">staticField</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a fully qualified static field name to retrieve, e.g. "example.MyExampleClass.MY_EXAMPLE_FIELD". Convenient alternative to specifying targetClass and targetField.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-class.html">setTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.FieldRetrievingFactoryBean$setTargetClass(java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the target class on which the field is defined. Only necessary when the target field is static; else, a target object needs to be specified anyway.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-field.html">setTargetField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.FieldRetrievingFactoryBean$setTargetField(kotlin.String)/targetField">targetField</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the field to be retrieved. Refers to either a static field or a non-static field, depending on a target object being set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-object.html">setTargetObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.FieldRetrievingFactoryBean$setTargetObject(kotlin.Any)/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the target object on which the field is defined. Only necessary when the target field is not static; else, a target class is sufficient.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

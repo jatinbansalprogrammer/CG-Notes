@@ -1,0 +1,45 @@
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+server:
+  port: 8443  
+  servlet:
+    context-path: /myapp
+    session:
+      cookie:
+        path: /myapp
+  ssl:
+    key-store-password: tomcat
+    key-store: classpath:mykeystore.p12
+    key-store-type: PKCS12
+    key-alias: tomcat
+
+
+spring:
+  security:
+    user:
+      name: siva
+      password: secret
+      
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:    
+    hibernate:
+      ddl-auto: update
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sivaprasad.valluru@gmail.com
+    password: srholeahmzorxhoq
+    protocol: smtp
+    test-connection: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+    

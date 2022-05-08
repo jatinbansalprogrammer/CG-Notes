@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ModelAttributeMethodProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.method.annotation</a>&nbsp;/&nbsp;<a href=".">ModelAttributeMethodProcessor</a><br/>
+<br/>
+<h1>ModelAttributeMethodProcessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModelAttributeMethodProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.method.support/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a><span class="symbol">, </span><span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Resolve <code>@ModelAttribute</code> annotated method arguments and handle return values from <code>@ModelAttribute</code> annotated methods. 
+<p>Model attributes are obtained from the model or created with a default constructor (and then added to the model). Once created the attribute is populated via data binding to Servlet request parameters. Validation may be applied if the argument is annotated with <code>@javax.validation.Valid</code>. or Spring's own <code>@org.springframework.validation.annotation.Validated</code>. </p>
+<p>When this handler is created with <code>annotationNotRequired=true</code> any non-simple type argument and return value is regarded as a model attribute with or without the presence of an <code>@ModelAttribute</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ModelAttributeMethodProcessor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$<init>(kotlin.Boolean)/annotationNotRequired">annotationNotRequired</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Class constructor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="handle-return-value.html">handleReturnValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handleReturnValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$handleReturnValue(kotlin.Any, org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest)/returnValue">returnValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$handleReturnValue(kotlin.Any, org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest)/returnType">returnType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$handleReturnValue(kotlin.Any, org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest)/mavContainer">mavContainer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ModelAndViewContainer</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$handleReturnValue(kotlin.Any, org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest)/webRequest">webRequest</span><span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add non-null return values to the ModelAndViewContainer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-argument.html">resolveArgument</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">resolveArgument</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$resolveArgument(org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest, org.springframework.web.bind.support.WebDataBinderFactory)/parameter">parameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$resolveArgument(org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest, org.springframework.web.bind.support.WebDataBinderFactory)/mavContainer">mavContainer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ModelAndViewContainer</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$resolveArgument(org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest, org.springframework.web.bind.support.WebDataBinderFactory)/webRequest">webRequest</span><span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$resolveArgument(org.springframework.core.MethodParameter, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.context.request.NativeWebRequest, org.springframework.web.bind.support.WebDataBinderFactory)/binderFactory">binderFactory</span><span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.bind.support/-web-data-binder-factory/index.html"><span class="identifier">WebDataBinderFactory</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Resolve the argument from the model or if not found instantiate it with its default if it is available. The model attribute is then populated with request values via data binding and optionally validated if <code>@java.validation.Valid</code> is present on the argument.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-parameter.html">supportsParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supportsParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$supportsParameter(org.springframework.core.MethodParameter)/parameter">parameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns <code>true</code> if the parameter is annotated with ModelAttribute or, if in default resolution mode, for any method parameter that is not a simple type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-return-type.html">supportsReturnType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supportsReturnType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelAttributeMethodProcessor$supportsReturnType(org.springframework.core.MethodParameter)/returnType">returnType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return <code>true</code> if there is a method-level <code>@ModelAttribute</code> or, in default resolution mode, for any return value type that is not a simple type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.mvc.method.annotation/-servlet-model-attribute-method-processor/index.html">ServletModelAttributeMethodProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletModelAttributeMethodProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ModelAttributeMethodProcessor</span></code>
+<p>A Servlet-specific ModelAttributeMethodProcessor that applies data binding through a WebDataBinder of type ServletRequestDataBinder. 
+<p>Also adds a fall-back strategy to instantiate the model attribute from a URI template variable or from a request parameter if the name matches the model attribute name and there is an appropriate type conversion strategy.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

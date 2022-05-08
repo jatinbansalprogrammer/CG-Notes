@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jmx.access - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jmx.access</a><br/>
+<br/>
+<h2>Package org.springframework.jmx.access</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-m-bean-proxy-factory-bean/index.html">MBeanProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MBeanClientInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Creates a proxy to a managed resource running either locally or remotely. The "proxyInterface" property defines the interface that the generated proxy is supposed to implement. This interface should define methods and properties that correspond to operations and attributes in the management interface of the resource you wish to proxy. 
+<p>There is no need for the managed resource to implement the proxy interface, although you may find it convenient to do. It is not required that every operation and attribute in the management interface is matched by a corresponding property or method in the proxy interface. </p>
+<p>Attempting to invoke or access any method or property on the proxy interface that does not correspond to the management interface will lead to an <code>InvalidInvocationException</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-invalid-invocation-exception/index.html">InvalidInvocationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidInvocationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JMRuntimeException</span></code>
+<p>Thrown when trying to invoke an operation on a proxy that is not exposed by the proxied MBean resource's management interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-invocation-failure-exception/index.html">InvocationFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvocationFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmxException</span></code>
+<p>Thrown when an invocation on an MBean resource failed with an exception (either a reflection exception or an exception thrown by the target method itself).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-bean-connect-failure-exception/index.html">MBeanConnectFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanConnectFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmxException</span></code>
+<p>Thrown when an invocation failed because of an I/O problem on the MBeanServerConnection.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-bean-info-retrieval-exception/index.html">MBeanInfoRetrievalException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanInfoRetrievalException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmxException</span></code>
+<p>Thrown if an exception is encountered when trying to retrieve MBean metadata.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.scheduling.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.scheduling.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.scheduling.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-annotation-async-execution-interceptor/index.html">AnnotationAsyncExecutionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationAsyncExecutionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.aop.interceptor/-async-execution-interceptor/index.html"><span class="identifier">AsyncExecutionInterceptor</span></a></code>
+<p>Specialization of AsyncExecutionInterceptor that delegates method execution to an <code>Executor</code> based on the Async annotation. Specifically designed to support use of <code><a href="#">Async#value()</a></code> executor qualification mechanism introduced in Spring 3.1.2. Supports detecting qualifier metadata via <code>@Async</code> at the method or declaring class level. See <code><a href="#">#getExecutorQualifier(Method)</a></code> for details.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-async-annotation-advisor/index.html">AsyncAnnotationAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncAnnotationAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPointcutAdvisor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Advisor that activates asynchronous method execution through the Async annotation. This annotation can be used at the method and type level in implementation classes as well as in service interfaces. 
+<p>This advisor detects the EJB 3.1 <code>javax.ejb.Asynchronous</code> annotation as well, treating it exactly like Spring's own <code>Async</code>. Furthermore, a custom async annotation type may get specified through the <code><a href="#">"asyncAnnotationType"</a></code> property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-async-configurer-support/index.html">AsyncConfigurerSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncConfigurerSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncConfigurer</span></code>
+<p>A convenience AsyncConfigurer that implements all methods so that the defaults are used. Provides a backward compatible alternative of implementing AsyncConfigurer directly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-async-result/index.html">AsyncResult</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>A pass-through <code>Future</code> handle that can be used for method signatures which are declared with a <code>Future</code> return type for asynchronous execution. 
+<p>As of Spring 4.1, this class implements ListenableFuture, not just plain java.util.concurrent.Future, along with the corresponding support in <code>@Async</code> processing. </p>
+<p>As of Spring 4.2, this class also supports passing execution exceptions back to the caller.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-proxy-async-configuration/index.html">ProxyAsyncConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ProxyAsyncConfiguration</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAsyncConfiguration</span></code>
+<p><code>@Configuration</code> class that registers the Spring infrastructure beans necessary to enable proxy-based asynchronous method execution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scheduling-configuration/index.html">SchedulingConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SchedulingConfiguration</span></code>
+<p><code>@Configuration</code> class that registers a ScheduledAnnotationBeanPostProcessor bean capable of processing Spring's @Scheduled annotation. 
+<p>This configuration class is automatically imported when using the EnableScheduling annotation. See <code>@EnableScheduling</code>'s javadoc for complete usage details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scheduling-configurer/index.html">SchedulingConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SchedulingConfigurer</span></code>
+<p>Optional interface to be implemented by @ classes annotated with @EnableScheduling. Typically used for setting a specific org.springframework.scheduling.TaskScheduler bean to be used when executing scheduled tasks or for registering scheduled tasks in a <em>programmatic</em> fashion as opposed to the <em>declarative</em> approach of using the @Scheduled annotation. For example, this may be necessary when implementing -based tasks, which are not supported by the <code>@Scheduled</code> annotation. 
+<p>See @EnableScheduling for detailed usage examples.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-enable-async/index.html">EnableAsync</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableAsync</span></code>
+<p>Enables Spring's asynchronous method execution capability, similar to functionality found in Spring's <code>&lt;task:*&gt;</code> XML namespace. 
+<p>To be used together with @Configuration classes as follows, enabling annotation-driven async processing for an entire Spring application context: </p>
+<pre><code> @Configuration @EnableAsync public class AppConfig { }</code></pre> <code>MyAsyncBean</code> is a user-defined type with one or more methods annotated with either Spring's <code>@Async</code> annotation, the EJB 3.1 <code>@javax.ejb.Asynchronous</code> annotation, or any custom annotation specified via the <code><a href="#">#annotation</a></code> attribute. The aspect is added transparently for any registered bean, for instance via this configuration: <pre><code> @Configuration public class AnotherAppConfig { @Bean public MyAsyncBean asyncBean() { return new MyAsyncBean(); } }</code></pre> 
+<p>By default, Spring will be searching for an associated thread pool definition: either a unique org.springframework.core.task.TaskExecutor bean in the context, or an java.util.concurrent.Executor bean named "taskExecutor" otherwise. If neither of the two is resolvable, a org.springframework.core.task.SimpleAsyncTaskExecutor will be used to process async method invocations. Besides, annotated methods having a <code>void</code> return type cannot transmit any exception back to the caller. By default, such uncaught exceptions are only logged. </p>
+<p>To customize all this, implement AsyncConfigurer and provide: </p>
+<ul> <li>your own java.util.concurrent.Executor through the <code><a href="#">getAsyncExecutor()</a></code> method, and</li>
+ <li>your own org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler through the <code><a href="#"> getAsyncUncaughtExceptionHandler()</a></code> method.</li>
+ </ul>
+ <pre><code> @Configuration @EnableAsync public class AppConfig implements AsyncConfigurer { @Override public Executor getAsyncExecutor() { ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor(); executor.setCorePoolSize(7); executor.setMaxPoolSize(42); executor.setQueueCapacity(11); executor.setThreadNamePrefix("MyExecutor-"); executor.initialize(); return executor; } @Override public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() { return MyAsyncUncaughtExceptionHandler(); } }</code></pre> 
+<p>If only one item needs to be customized, <code>null</code> can be returned to keep the default settings. Consider also extending from AsyncConfigurerSupport when possible. </p>
+<p>Note: In the above example the <code>ThreadPoolTaskExecutor</code> is not a fully managed Spring bean. Add the <code>@Bean</code> annotation to the <code>getAsyncExecutor()</code> method if you want a fully managed bean. In such circumstances it is no longer necessary to manually call the <code>executor.initialize()</code> method as this will be invoked automatically when the bean is initialized. </p>
+<p>For reference, the example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;task:annotation-driven executor="myExecutor" exception-handler="exceptionHandler"/&gt; &lt;task:executor id="myExecutor" pool-size="7-42" queue-capacity="11"/&gt; &lt;bean id="asyncBean" class="com.foo.MyAsyncBean"/&gt; &lt;bean id="exceptionHandler" class="com.foo.MyAsyncUncaughtExceptionHandler"/&gt; &lt;/beans&gt; </code></code></pre> The above XML-based and JavaConfig-based examples are equivalent except for the setting of the <em>thread name prefix</em> of the <code>Executor</code>; this is because the <code>&lt;task:executor&gt;</code> element does not expose such an attribute. This demonstrates how the JavaConfig-based approach allows for maximum configurability through direct access to actual componentry. 
+<p>The <code><a href="#">#mode</a></code> attribute controls how advice is applied: If the mode is <code><a href="#">AdviceMode#PROXY</a></code> (the default), then the other attributes control the behavior of the proxying. Please note that proxy mode allows for interception of calls through the proxy only; local calls within the same class cannot get intercepted that way. </p>
+<p>Note that if the <a href="#">#mode</a> is set to <code><a href="#">AdviceMode#ASPECTJ</a></code>, then the value of the <code><a href="#">#proxyTargetClass</a></code> attribute will be ignored. Note also that in this case the <code>spring-aspects</code> module JAR must be present on the classpath, with compile-time weaving or load-time weaving applying the aspect to the affected classes. There is no proxy involved in such a scenario; local calls will be intercepted as well.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-enable-scheduling/index.html">EnableScheduling</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableScheduling</span></code>
+<p>Enables Spring's scheduled task execution capability, similar to functionality found in Spring's <code>&lt;task:*&gt;</code> XML namespace. To be used on @Configuration classes as follows: <pre><code> @Configuration @EnableScheduling public class AppConfig { // various @Bean definitions }</code></pre> This enables detection of @Scheduled annotations on any Spring-managed bean in the container. For example, given a class <code>MyTask</code> <pre><code> package com.myco.tasks; public class MyTask { @Scheduled(fixedRate=1000) public void work() { // task execution logic } }</code></pre> the following configuration would ensure that <code>MyTask.work()</code> is called once every 1000 ms: <pre><code> @Configuration @EnableScheduling public class AppConfig { @Bean public MyTask task() { return new MyTask(); } }</code></pre> Alternatively, if <code>MyTask</code> were annotated with <code>@Component</code>, the following configuration would ensure that its <code>@Scheduled</code> method is invoked at the desired interval: <pre><code> @Configuration @EnableScheduling @ComponentScan(basePackages="com.myco.tasks") public class AppConfig { }</code></pre> Methods annotated with <code>@Scheduled</code> may even be declared directly within <code>@Configuration</code> classes: <pre><code> @Configuration @EnableScheduling public class AppConfig { @Scheduled(fixedRate=1000) public void work() { // task execution logic } }</code></pre> 
+<p>By default, will be searching for an associated scheduler definition: either a unique org.springframework.scheduling.TaskScheduler bean in the context, or a <code>TaskScheduler</code> bean named "taskScheduler" otherwise; the same lookup will also be performed for a java.util.concurrent.ScheduledExecutorService bean. If neither of the two is resolvable, a local single-threaded default scheduler will be created and used within the registrar. </p>
+<p>When more control is desired, a <code>@Configuration</code> class may implement SchedulingConfigurer. This allows access to the underlying ScheduledTaskRegistrar instance. For example, the following example demonstrates how to customize the Executor used to execute scheduled tasks: </p>
+<pre><code> @Configuration @EnableScheduling public class AppConfig implements SchedulingConfigurer { @Override public void configureTasks(ScheduledTaskRegistrar taskRegistrar) { taskRegistrar.setScheduler(taskExecutor()); } @Bean(destroyMethod="shutdown") public Executor taskExecutor() { return Executors.newScheduledThreadPool(100); } }</code></pre> 
+<p>Note in the example above the use of <code>@Bean(destroyMethod="shutdown")</code>. This ensures that the task executor is properly shut down when the Spring application context itself is closed. </p>
+<p>Implementing <code>SchedulingConfigurer</code> also allows for fine-grained control over task registration via the <code>ScheduledTaskRegistrar</code>. For example, the following configures the execution of a particular bean method per a custom <code>Trigger</code> implementation: </p>
+<pre><code> @Configuration @EnableScheduling public class AppConfig implements SchedulingConfigurer { @Override public void configureTasks(ScheduledTaskRegistrar taskRegistrar) { taskRegistrar.setScheduler(taskScheduler()); taskRegistrar.addTriggerTask( new Runnable() { public void run() { myTask().work(); } }, new CustomTrigger() ); } @Bean(destroyMethod="shutdown") public Executor taskScheduler() { return Executors.newScheduledThreadPool(42); } @Bean public MyTask myTask() { return new MyTask(); } }</code></pre> 
+<p>For reference, the example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;task:annotation-driven scheduler="taskScheduler"/&gt; &lt;task:scheduler id="taskScheduler" pool-size="42"/&gt; &lt;task:scheduled-tasks scheduler="taskScheduler"&gt; &lt;task:scheduled ref="myTask" method="work" fixed-rate="1000"/&gt; &lt;/task:scheduled-tasks&gt; &lt;bean id="myTask" class="com.foo.MyTask"/&gt; &lt;/beans&gt; </code></code></pre> The examples are equivalent save that in XML a <em>fixed-rate</em> period is used instead of a custom <em><code>Trigger</code></em> implementation; this is because the <code>task:</code> namespace <code>scheduled</code> cannot easily expose such support. This is but one demonstration how the code-based approach allows for maximum configurability through direct access to actual componentry.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-schedules/index.html">Schedules</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Schedules</span></code>
+<p>Container annotation that aggregates several Scheduled annotations. 
+<p>Can be used natively, declaring several nested Scheduled annotations. Can also be used in conjunction with Java 8's support for repeatable annotations, where Scheduled can simply be declared several times on the same method, implicitly generating this container annotation. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

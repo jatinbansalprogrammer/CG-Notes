@@ -1,0 +1,429 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.mvc.method.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.mvc.method.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.mvc.method.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-jsonp-response-body-advice.html">AbstractJsonpResponseBodyAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractJsonpResponseBodyAdvice</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMappingJacksonResponseBodyAdvice</span></code>
+<p>A convenient base class for a <code>ResponseBodyAdvice</code> to instruct the org.springframework.http.converter.json.MappingJackson2HttpMessageConverter to serialize with JSONP formatting. 
+<p>Sub-classes must specify the query parameter name(s) to check for the name of the JSONP callback function. </p>
+<p>Sub-classes are likely to be annotated with the <code>@ControllerAdvice</code> annotation and auto-detected or otherwise must be registered directly with the <code>RequestMappingHandlerAdapter</code> and <code>ExceptionHandlerExceptionResolver</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-async-task-method-return-value-handler/index.html">AsyncTaskMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncTaskMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handles return values of type WebAsyncTask.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-callable-method-return-value-handler/index.html">CallableMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallableMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handles return values of type Callable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-deferred-result-method-return-value-handler/index.html">DeferredResultMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DeferredResultMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handler for return values of type DeferredResult, ListenableFuture, and CompletionStage.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-extended-servlet-request-data-binder/index.html">ExtendedServletRequestDataBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExtendedServletRequestDataBinder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.bind/-servlet-request-data-binder/index.html"><span class="identifier">ServletRequestDataBinder</span></a></code>
+<p>Subclass of ServletRequestDataBinder that adds URI template variables to the values used for data binding.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-entity-method-processor/index.html">HttpEntityMethodProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpEntityMethodProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageConverterMethodProcessor</span></code>
+<p>Resolves HttpEntity and RequestEntity method argument values and also handles HttpEntity and ResponseEntity return values. 
+<p>An HttpEntity return type has a specific purpose. Therefore this handler should be configured ahead of handlers that support any return value type annotated with <code>@ModelAttribute</code> or <code>@ResponseBody</code> to ensure they don't take over.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-headers-return-value-handler/index.html">HttpHeadersReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpHeadersReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handles HttpHeaders return values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-json-view-request-body-advice/index.html">JsonViewRequestBodyAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JsonViewRequestBodyAdvice</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestBodyAdviceAdapter</span></code>
+<p>A RequestBodyAdvice implementation that adds support for Jackson's <code>@JsonView</code> annotation declared on a Spring MVC <code>@HttpEntity</code> or <code>@RequestBody</code> method parameter. 
+<p>The deserialization view specified in the annotation will be passed in to the org.springframework.http.converter.json.MappingJackson2HttpMessageConverter which will then use it to deserialize the request body with. </p>
+<p>Note that despite <code>@JsonView</code> allowing for more than one class to be specified, the use for a request body advice is only supported with exactly one class argument. Consider the use of a composite interface.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-json-view-response-body-advice/index.html">JsonViewResponseBodyAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JsonViewResponseBodyAdvice</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMappingJacksonResponseBodyAdvice</span></code>
+<p>A ResponseBodyAdvice implementation that adds support for Jackson's <code>@JsonView</code> annotation declared on a Spring MVC <code>@RequestMapping</code> or <code>@ExceptionHandler</code> method. 
+<p>The serialization view specified in the annotation will be passed in to the org.springframework.http.converter.json.MappingJackson2HttpMessageConverter which will then use it to serialize the response body. </p>
+<p>Note that despite <code>@JsonView</code> allowing for more than one class to be specified, the use for a response body advice is only supported with exactly one class argument. Consider the use of a composite interface.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-matrix-variable-map-method-argument-resolver/index.html">MatrixVariableMapMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MatrixVariableMapMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.support/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Resolves arguments of type Map annotated with where</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-matrix-variable-method-argument-resolver/index.html">MatrixVariableMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MatrixVariableMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-abstract-named-value-method-argument-resolver/index.html"><span class="identifier">AbstractNamedValueMethodArgumentResolver</span></a></code>
+<p>Resolves arguments annotated with MatrixVariable. 
+<p>If the method parameter is of type Map it will by resolved by MatrixVariableMapMethodArgumentResolver instead unless the annotation specifies a name in which case it is considered to be a single attribute of type map (vs multiple attributes collected in a map).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-model-and-view-method-return-value-handler/index.html">ModelAndViewMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModelAndViewMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handles return values of type ModelAndView copying view and model information to the ModelAndViewContainer. 
+<p>If the return value is <code>null</code>, the <code><a href="#">ModelAndViewContainer#setRequestHandled(boolean)</a></code> flag is set to <code>true</code> to indicate the request was handled directly. </p>
+<p>A ModelAndView return type has a set purpose. Therefore this handler should be configured ahead of handlers that support any return value type annotated with <code>@ModelAttribute</code> or <code>@ResponseBody</code> to ensure they don't take over.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-model-and-view-resolver-method-return-value-handler/index.html">ModelAndViewResolverMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModelAndViewResolverMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>This return value handler is intended to be ordered after all others as it attempts to handle _any_ return value type (i.e. returns <code>true</code> for all return types). 
+<p>The return value is handled either with a ModelAndViewResolver or otherwise by regarding it as a model attribute if it is a non-simple type. If neither of these succeeds (essentially simple type other than String), UnsupportedOperationException is raised. </p>
+<p><strong>Note:</strong> This class is primarily needed to support ModelAndViewResolver, which unfortunately cannot be properly adapted to the HandlerMethodReturnValueHandler contract since the <code><a href="#">HandlerMethodReturnValueHandler#supportsReturnType</a></code> method cannot be implemented. Hence <code>ModelAndViewResolver</code>s are limited to always being invoked at the end after all other return value handlers have been given a chance. It is recommended to re-implement a <code>ModelAndViewResolver</code> as <code>HandlerMethodReturnValueHandler</code>, which also provides better access to the return type and method information.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-variable-map-method-argument-resolver/index.html">PathVariableMapMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathVariableMapMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.support/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Resolves Map method arguments annotated with an @PathVariable where the annotation does not specify a path variable name. The created Map contains all URI template name/value pairs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-variable-method-argument-resolver/index.html">PathVariableMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathVariableMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-abstract-named-value-method-argument-resolver/index.html"><span class="identifier">AbstractNamedValueMethodArgumentResolver</span></a><span class="symbol">, </span><span class="identifier">UriComponentsContributor</span></code>
+<p>Resolves method arguments annotated with an @PathVariable. 
+<p>An @PathVariable is a named value that gets resolved from a URI template variable. It is always required and does not have a default value to fall back on. See the base class org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver for more information on how named values are processed. </p>
+<p>If the method parameter type is Map, the name specified in the annotation is used to resolve the URI variable String value. The value is then converted to a Map via type conversion, assuming a suitable Converter or PropertyEditor has been registered. </p>
+<p>A WebDataBinder is invoked to apply type conversion to resolved path variable values that don't yet match the method parameter type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-redirect-attributes-method-argument-resolver/index.html">RedirectAttributesMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RedirectAttributesMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.support/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Resolves method arguments of type RedirectAttributes. 
+<p>This resolver must be listed ahead of org.springframework.web.method.annotation.ModelMethodProcessor and org.springframework.web.method.annotation.MapMethodProcessor, which support Map and Model arguments both of which are "super" types of <code>RedirectAttributes</code> and would also attempt to resolve a <code>RedirectAttributes</code> argument.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-attribute-method-argument-resolver/index.html">RequestAttributeMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestAttributeMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-abstract-named-value-method-argument-resolver/index.html"><span class="identifier">AbstractNamedValueMethodArgumentResolver</span></a></code>
+<p>Resolves method arguments annotated with an @RequestAttribute.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-body-advice/index.html">RequestBodyAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RequestBodyAdvice</span></code>
+<p>Allows customizing the request before its body is read and converted into an Object and also allows for processing of the resulting Object before it is passed into a controller method as an <code>@RequestBody</code> or an <code>HttpEntity</code> method argument. 
+<p>Implementations of this contract may be registered directly with the <code>RequestMappingHandlerAdapter</code> or more likely annotated with <code>@ControllerAdvice</code> in which case they are auto-detected.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-part-method-argument-resolver/index.html">RequestPartMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestPartMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageConverterMethodArgumentResolver</span></code>
+<p>Resolves the following method arguments: <ul> <li>Annotated with <code>@RequestPart</code> </li>
+<li>Of type MultipartFile in conjunction with Spring's MultipartResolver abstraction </li>
+<li>Of type <code>javax.servlet.http.Part</code> in conjunction with Servlet 3.0 multipart requests </li>
+</ul>
+ 
+<p>When a parameter is annotated with <code>@RequestPart</code>, the content of the part is passed through an HttpMessageConverter to resolve the method argument with the 'Content-Type' of the request part in mind. This is analogous to what @RequestBody does to resolve an argument based on the content of a regular request. </p>
+<p>When a parameter is not annotated or the name of the part is not specified, it is derived from the name of the method argument. </p>
+<p>Automatic validation may be applied if the argument is annotated with <code>@javax.validation.Valid</code>. In case of validation failure, a MethodArgumentNotValidException is raised and a 400 response status code returned if org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver is configured.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-response-body-method-processor/index.html">RequestResponseBodyMethodProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestResponseBodyMethodProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageConverterMethodProcessor</span></code>
+<p>Resolves method arguments annotated with <code>@RequestBody</code> and handles return values from methods annotated with <code>@ResponseBody</code> by reading and writing to the body of the request or response with an HttpMessageConverter. 
+<p>An <code>@RequestBody</code> method argument is also validated if it is annotated with <code>@javax.validation.Valid</code>. In case of validation failure, MethodArgumentNotValidException is raised and results in an HTTP 400 response status code if DefaultHandlerExceptionResolver is configured.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-body-emitter/index.html">ResponseBodyEmitter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResponseBodyEmitter</span></code>
+<p>A controller method return value type for asynchronous request processing where one or more objects are written to the response. 
+<p>While org.springframework.web.context.request.async.DeferredResult is used to produce a single result, a <code>ResponseBodyEmitter</code> can be used to send multiple objects where each object is written with a compatible org.springframework.http.converter.HttpMessageConverter. </p>
+<p>Supported as a return type on its own as well as within a org.springframework.http.ResponseEntity. </p>
+<pre><code> @RequestMapping(value="/stream", method=RequestMethod.GET) public ResponseBodyEmitter handle() { ResponseBodyEmitter emitter = new ResponseBodyEmitter(); // Pass the emitter to another component... return emitter; } // in another thread emitter.send(foo1); // and again emitter.send(foo2); // and done emitter.complete(); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-body-emitter-return-value-handler/index.html">ResponseBodyEmitterReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResponseBodyEmitterReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handler for return values of type ResponseBodyEmitter and sub-classes such as SseEmitter including the same types wrapped with ResponseEntity. 
+<p>As of 5.0 also supports reactive return value types for any reactive library with registered adapters in ReactiveAdapterRegistry.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-entity-exception-handler/index.html">ResponseEntityExceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ResponseEntityExceptionHandler</span></code>
+<p>A convenient base class for ControllerAdvice classes that wish to provide centralized exception handling across all <code>@RequestMapping</code> methods through <code>@ExceptionHandler</code> methods. 
+<p>This base class provides an <code>@ExceptionHandler</code> method for handling internal Spring MVC exceptions. This method returns a <code>ResponseEntity</code> for writing to the response with a HttpMessageConverter, in contrast to org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver which returns a org.springframework.web.servlet.ModelAndView. </p>
+<p>If there is no need to write error content to the response body, or when using view resolution (e.g., via <code>ContentNegotiatingViewResolver</code>), then <code>DefaultHandlerExceptionResolver</code> is good enough. </p>
+<p>Note that in order for an <code>@ControllerAdvice</code> sub-class to be detected, ExceptionHandlerExceptionResolver must be configured.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-cookie-value-method-argument-resolver/index.html">ServletCookieValueMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletCookieValueMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-abstract-cookie-value-method-argument-resolver/index.html"><span class="identifier">AbstractCookieValueMethodArgumentResolver</span></a></code>
+<p>An org.springframework.web.method.annotation.AbstractCookieValueMethodArgumentResolver that resolves cookie values from an HttpServletRequest.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-invocable-handler-method/index.html">ServletInvocableHandlerMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletInvocableHandlerMethod</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.support/-invocable-handler-method/index.html"><span class="identifier">InvocableHandlerMethod</span></a></code>
+<p>Extends InvocableHandlerMethod with the ability to handle return values through a registered HandlerMethodReturnValueHandler and also supports setting the response status based on a method-level <code>@ResponseStatus</code> annotation. 
+<p>A <code>null</code> return value (including void) may be interpreted as the end of request processing in combination with a <code>@ResponseStatus</code> annotation, a not-modified check condition (see <code><a href="#">ServletWebRequest#checkNotModified(long)</a></code>), or a method argument that provides access to the response stream.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-model-attribute-method-processor/index.html">ServletModelAttributeMethodProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletModelAttributeMethodProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-model-attribute-method-processor/index.html"><span class="identifier">ModelAttributeMethodProcessor</span></a></code>
+<p>A Servlet-specific ModelAttributeMethodProcessor that applies data binding through a WebDataBinder of type ServletRequestDataBinder. 
+<p>Also adds a fall-back strategy to instantiate the model attribute from a URI template variable or from a request parameter if the name matches the model attribute name and there is an appropriate type conversion strategy.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-request-data-binder-factory/index.html">ServletRequestDataBinderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletRequestDataBinderFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-init-binder-data-binder-factory/index.html"><span class="identifier">InitBinderDataBinderFactory</span></a></code>
+<p>Creates a <code>ServletRequestDataBinder</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-request-method-argument-resolver/index.html">ServletRequestMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletRequestMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.support/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Resolves request-related method argument values of the following types: <ul> <li>WebRequest </li>
+<li>ServletRequest </li>
+<li>MultipartRequest </li>
+<li>HttpSession </li>
+<li>PushBuilder (as of Spring 5.0 on Servlet 4.0) </li>
+<li>Principal </li>
+<li>InputStream </li>
+<li>Reader </li>
+<li>HttpMethod (as of Spring 4.0) </li>
+<li>Locale </li>
+<li>TimeZone (as of Spring 4.0) </li>
+<li>java.time.ZoneId (as of Spring 4.0 and Java 8) </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-response-method-argument-resolver/index.html">ServletResponseMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletResponseMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.support/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Resolves response-related method argument values of types: <ul> <li>ServletResponse </li>
+<li>OutputStream </li>
+<li>Writer </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-web-argument-resolver-adapter/index.html">ServletWebArgumentResolverAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletWebArgumentResolverAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-abstract-web-argument-resolver-adapter/index.html"><span class="identifier">AbstractWebArgumentResolverAdapter</span></a></code>
+<p>A Servlet-specific org.springframework.web.method.annotation.AbstractWebArgumentResolverAdapter that creates a NativeWebRequest from ServletRequestAttributes. 
+<p><strong>Note:</strong> This class is provided for backwards compatibility. However it is recommended to re-write a <code>WebArgumentResolver</code> as <code>HandlerMethodArgumentResolver</code>. For more details see javadoc of org.springframework.web.method.annotation.AbstractWebArgumentResolverAdapter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-attribute-method-argument-resolver/index.html">SessionAttributeMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionAttributeMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.annotation/-abstract-named-value-method-argument-resolver/index.html"><span class="identifier">AbstractNamedValueMethodArgumentResolver</span></a></code>
+<p>Resolves method arguments annotated with an @SessionAttribute.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sse-emitter/index.html">SseEmitter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SseEmitter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-response-body-emitter/index.html"><span class="identifier">ResponseBodyEmitter</span></a></code>
+<p>A specialization of ResponseBodyEmitter for sending <a href="#">Server-Sent Events</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-streaming-response-body/index.html">StreamingResponseBody</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">StreamingResponseBody</span></code>
+<p>A controller method return value type for asynchronous request processing where the application can write directly to the response <code>OutputStream</code> without holding up the Servlet container thread. 
+<p><strong>Note:</strong> when using this option it is highly recommended to configure explicitly the TaskExecutor used in Spring MVC for executing asynchronous requests. Both the MVC Java config and the MVC namespaces provide options to configure asynchronous handling. If not using those, an application can set the <code>taskExecutor</code> property of org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-streaming-response-body-return-value-handler/index.html">StreamingResponseBodyReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StreamingResponseBodyReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Supports return values of type org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody and also <code>ResponseEntity&lt;StreamingResponseBody&gt;</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-uri-components-builder-method-argument-resolver/index.html">UriComponentsBuilderMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UriComponentsBuilderMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.method.support/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Resolvers argument values of type UriComponentsBuilder. 
+<p>The returned instance is initialized via <code><a href="../org.springframework.web.servlet.support/-servlet-uri-components-builder/from-servlet-mapping.html">ServletUriComponentsBuilder#fromServletMapping(HttpServletRequest)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-view-method-return-value-handler/index.html">ViewMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ViewMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handles return values that are of type View. 
+<p>A <code>null</code> return value is left as-is leaving it to the configured RequestToViewNameTranslator to select a view name by convention. </p>
+<p>A View return type has a set purpose. Therefore this handler should be configured ahead of handlers that support any return value type annotated with <code>@ModelAttribute</code> or <code>@ResponseBody</code> to ensure they don't take over.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-view-name-method-return-value-handler/index.html">ViewNameMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ViewNameMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handles return values of types <code>void</code> and <code>String</code> interpreting them as view name reference. As of 4.2, it also handles general <code>CharSequence</code> types, e.g. <code>StringBuilder</code> or Groovy's <code>GString</code>, as view names. 
+<p>A <code>null</code> return value, either due to a <code>void</code> return type or as the actual return value is left as-is allowing the configured RequestToViewNameTranslator to select a view name by convention. </p>
+<p>A String return value can be interpreted in more than one ways depending on the presence of annotations like <code>@ModelAttribute</code> or <code>@ResponseBody</code>. Therefore this handler should be configured after the handlers that support these annotations.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

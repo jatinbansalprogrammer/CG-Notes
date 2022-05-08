@@ -1,0 +1,312 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.context.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.context.support</a><br/>
+<br/>
+<h2>Package org.springframework.context.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-xml-application-context/index.html">AbstractXmlApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRefreshableConfigApplicationContext</span></code>
+<p>Convenient base class for org.springframework.context.ApplicationContext implementations, drawing configuration from XML documents containing bean definitions understood by an org.springframework.beans.factory.xml.XmlBeanDefinitionReader. 
+<p>Subclasses just have to implement the <code><a href="#">#getConfigResources</a></code> and/or the <code><a href="#">#getConfigLocations</a></code> method. Furthermore, they might override the <code><a href="#">#getResourceByPath</a></code> hook to interpret relative paths in an environment-specific fashion, and/or <code><a href="#">#getResourcePatternResolver</a></code> for extended pattern resolution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-application-object-support/index.html">ApplicationObjectSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ApplicationObjectSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextAware</span></code>
+<p>Convenient superclass for application objects that want to be aware of the application context, e.g. for custom lookup of collaborating beans or for context-specific resource access. It saves the application context reference and provides an initialization callback method. Furthermore, it offers numerous convenience methods for message lookup. 
+<p>There is no requirement to subclass this class: It just makes things a little easier if you need access to the context, e.g. for access to file resources or to the message source. Note that many application objects do not need to be aware of the application context at all, as they can receive collaborating beans via bean references. </p>
+<p>Many framework classes are derived from this class, particularly within the web support.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-definition-dsl/index.html">BeanDefinitionDsl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanDefinitionDsl</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextInitializer</span><span class="symbol">&lt;</span><span class="identifier">GenericApplicationContext</span><span class="symbol">&gt;</span></code>
+<p>Class implementing functional bean definition Kotlin DSL.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-class-path-xml-application-context/index.html">ClassPathXmlApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ClassPathXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-xml-application-context/index.html"><span class="identifier">AbstractXmlApplicationContext</span></a></code>
+<p>Standalone XML application context, taking the context definition files from the class path, interpreting plain paths as class path resource names that include the package path (e.g. "mypackage/myresource.txt"). Useful for test harnesses as well as for application contexts embedded within JARs. 
+<p>The config location defaults can be overridden via <code><a href="#">#getConfigLocations</a></code>, Config locations can either denote concrete files like "/myfiles/context.xml" or Ant-style patterns like "/myfiles/*-context.xml" (see the org.springframework.util.AntPathMatcher javadoc for pattern details). </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra XML file. </p>
+<p><strong>This is a simple, one-stop shop convenience ApplicationContext. Consider using the GenericApplicationContext class in combination with an org.springframework.beans.factory.xml.XmlBeanDefinitionReader for more flexible context setup.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-conversion-service-factory-bean/index.html">ConversionServiceFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConversionServiceFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ConversionService</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A factory providing convenient access to a ConversionService configured with converters appropriate for most environments. Set the <code><a href="#">"converters"</a></code> property to supplement the default converters. 
+<p>This implementation creates a DefaultConversionService. Subclasses may override <code><a href="#">#createConversionService()</a></code> in order to return a GenericConversionService instance of their choosing. </p>
+<p>Like all <code>FactoryBean</code> implementations, this class is suitable for use when configuring a Spring application context using Spring <code>&lt;beans&gt;</code> XML. When configuring the container with org.springframework.context.annotation.Configuration classes, simply instantiate, configure and return the appropriate <code>ConversionService</code> object from a method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-lifecycle-processor/index.html">DefaultLifecycleProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultLifecycleProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LifecycleProcessor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Default implementation of the LifecycleProcessor strategy.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-message-source-resolvable/index.html">DefaultMessageSourceResolvable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultMessageSourceResolvable</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageSourceResolvable</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the MessageSourceResolvable interface. Offers an easy way to store all the necessary values needed to resolve a message via a org.springframework.context.MessageSource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-message-source/index.html">DelegatingMessageSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingMessageSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-message-source-support/index.html"><span class="identifier">MessageSourceSupport</span></a><span class="symbol">, </span><span class="identifier">HierarchicalMessageSource</span></code>
+<p>Empty MessageSource that delegates all calls to the parent MessageSource. If no parent is available, it simply won't resolve any message. 
+<p>Used as placeholder by AbstractApplicationContext, if the context doesn't define its own MessageSource. Not intended for direct use in applications.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-embedded-value-resolution-support/index.html">EmbeddedValueResolutionSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedValueResolutionSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.context/-embedded-value-resolver-aware/index.html"><span class="identifier">EmbeddedValueResolverAware</span></a></code>
+<p>Convenient base class for components with a need for embedded value resolution (i.e. org.springframework.context.EmbeddedValueResolverAware consumers).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-file-system-xml-application-context/index.html">FileSystemXmlApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileSystemXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-xml-application-context/index.html"><span class="identifier">AbstractXmlApplicationContext</span></a></code>
+<p>Standalone XML application context, taking the context definition files from the file system or from URLs, interpreting plain paths as relative file system locations (e.g. "mydir/myfile.txt"). Useful for test harnesses as well as for standalone environments. 
+<p><strong>NOTE:</strong> Plain paths will always be interpreted as relative to the current VM working directory, even if they start with a slash. (This is consistent with the semantics in a Servlet container.) <strong>Use an explicit "file:" prefix to enforce an absolute file path.</strong> </p>
+<p>The config location defaults can be overridden via <code><a href="#">#getConfigLocations</a></code>, Config locations can either denote concrete files like "/myfiles/context.xml" or Ant-style patterns like "/myfiles/*-context.xml" (see the org.springframework.util.AntPathMatcher javadoc for pattern details). </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra XML file. </p>
+<p><strong>This is a simple, one-stop shop convenience ApplicationContext. Consider using the GenericApplicationContext class in combination with an org.springframework.beans.factory.xml.XmlBeanDefinitionReader for more flexible context setup.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-groovy-application-context/index.html">GenericGroovyApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericGroovyApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationContext</span><span class="symbol">, </span><span class="identifier">GroovyObject</span></code>
+<p>An org.springframework.context.ApplicationContext implementation that extends GenericApplicationContext and implements GroovyObject such that beans can be retrieved with the dot de-reference syntax instead of using <code><a href="#">#getBean</a></code>. 
+<p>Consider this as the equivalent of GenericXmlApplicationContext for Groovy bean definitions, or even an upgrade thereof since it seamlessly understands XML bean definition files as well. The main difference is that, within a Groovy script, the context can be used with an inline bean definition closure as follows: </p>
+<pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource def context = new GenericGroovyApplicationContext() context.reader.beans { dataSource(BasicDataSource) { // &lt;--- invokeMethod driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" // &lt;-- setProperty password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource // &lt;-- getProperty for retrieving references } myService(MyService) { nestedBean = { AnotherBean bean -&gt; // &lt;-- setProperty with closure for nested bean dataSource = dataSource } } } context.refresh() </code></pre> 
+<p>Alternatively, load a Groovy bean definition script like the following from an external resource (e.g. an "applicationContext.groovy" file): </p>
+<pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource beans { dataSource(BasicDataSource) { driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource } myService(MyService) { nestedBean = { AnotherBean bean -&gt; dataSource = dataSource } } } </code></pre> 
+<p>With the following Java code creating the <code>GenericGroovyApplicationContext</code> (potentially using Ant-style '*'/'**' location patterns): </p>
+<pre><code> GenericGroovyApplicationContext context = new GenericGroovyApplicationContext(); context.load("org/myapp/applicationContext.groovy"); context.refresh(); </code></pre> 
+<p>Or even more concise, provided that no extra configuration is needed: </p>
+<pre><code> ApplicationContext context = new GenericGroovyApplicationContext("org/myapp/applicationContext.groovy"); </code></pre> 
+<p><strong>This application context also understands XML bean definition files, allowing for seamless mixing and matching with Groovy bean definition files.</strong> ".xml" files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-xml-application-context/index.html">GenericXmlApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationContext</span></code>
+<p>Convenient application context with built-in XML support. This is a flexible alternative to ClassPathXmlApplicationContext and FileSystemXmlApplicationContext, to be configured via setters, with an eventual <code><a href="#">#refresh()</a></code> call activating the context. 
+<p>In case of multiple configuration files, bean definitions in later files will override those defined in earlier files. This can be leveraged to intentionally override certain bean definitions via an extra configuration file appended to the list.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-live-beans-view/index.html">LiveBeansView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LiveBeansView</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-live-beans-view-m-bean/index.html"><span class="identifier">LiveBeansViewMBean</span></a><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span></code>
+<p>Adapter for live beans view exposure, building a snapshot of current beans and their dependencies from either a local <code>ApplicationContext</code> (with a local <code>LiveBeansView</code> bean definition) or all registered ApplicationContexts (driven by the {@value #MBEAN_DOMAIN_PROPERTY_NAME} environment property). 
+<p>Note: This feature is still in beta and primarily designed for use with Spring Tool Suite 3.1 and higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-live-beans-view-m-bean/index.html">LiveBeansViewMBean</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">LiveBeansViewMBean</span></code>
+<p>MBean operation interface for the LiveBeansView feature.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-source-resource-bundle/index.html">MessageSourceResourceBundle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageSourceResourceBundle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceBundle</span></code>
+<p>Helper class that allows for accessing a Spring org.springframework.context.MessageSource as a java.util.ResourceBundle. Used for example to expose a Spring MessageSource to JSTL web views.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-source-support/index.html">MessageSourceSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">MessageSourceSupport</span></code>
+<p>Base class for message source implementations, providing support infrastructure such as java.text.MessageFormat handling but not implementing concrete methods defined in the org.springframework.context.MessageSource. 
+<p>AbstractMessageSource derives from this class, providing concrete <code>getMessage</code> implementations that delegate to a central template method for message code resolution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-sources-placeholder-configurer/index.html">PropertySourcesPlaceholderConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertySourcesPlaceholderConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PlaceholderConfigurerSupport</span><span class="symbol">, </span><span class="identifier">EnvironmentAware</span></code>
+<p>Specialization of PlaceholderConfigurerSupport that resolves ${...} placeholders within bean definition property values and <code>@Value</code> annotations against the current Spring Environment and its set of PropertySources. 
+<p>This class is designed as a general replacement for <code>PropertyPlaceholderConfigurer</code> in Spring 3.1 applications. It is used by default to support the <code>property-placeholder</code> element in working against the spring-context-3.1 XSD, whereas spring-context versions &lt;= 3.0 default to <code>PropertyPlaceholderConfigurer</code> to ensure backward compatibility. See the spring-context XSD documentation for complete details. </p>
+<p>Any local properties (e.g. those added via <code><a href="#">#setProperties</a></code>, <code><a href="#">#setLocations</a></code> et al.) are added as a <code>PropertySource</code>. Search precedence of local properties is based on the value of the <code><a href="#">localOverride</a></code> property, which is by default <code>false</code> meaning that local properties are to be searched last, after all environment property sources. </p>
+<p>See org.springframework.core.env.ConfigurableEnvironment and related javadocs for details on manipulating environment property sources.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reloadable-resource-bundle-message-source/index.html">ReloadableResourceBundleMessageSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReloadableResourceBundleMessageSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceBasedMessageSource</span><span class="symbol">, </span><span class="identifier">ResourceLoaderAware</span></code>
+<p>Spring-specific org.springframework.context.MessageSource implementation that accesses resource bundles using specified basenames, participating in the Spring org.springframework.context.ApplicationContext's resource loading. 
+<p>In contrast to the JDK-based ResourceBundleMessageSource, this class uses java.util.Properties instances as its custom data structure for messages, loading them via a org.springframework.util.PropertiesPersister strategy from Spring Resource handles. This strategy is not only capable of reloading files based on timestamp changes, but also of loading properties files with a specific character encoding. It will detect XML property files as well. </p>
+<p>Note that the basenames set as <code><a href="#">"basenames"</a></code> property are treated in a slightly different fashion than the "basenames" property of ResourceBundleMessageSource. It follows the basic ResourceBundle rule of not specifying file extension or language codes, but can refer to any Spring resource location (instead of being restricted to classpath resources). With a "classpath:" prefix, resources can still be loaded from the classpath, but "cacheSeconds" values other than "-1" (caching forever) might not work reliably in this case. </p>
+<p>For a typical web application, message files could be placed in <code>WEB-INF</code>: e.g. a "WEB-INF/messages" basename would find a "WEB-INF/messages.properties", "WEB-INF/messages_en.properties" etc arrangement as well as "WEB-INF/messages.xml", "WEB-INF/messages_en.xml" etc. Note that message definitions in a <em>previous</em> resource bundle will override ones in a later bundle, due to sequential lookup. </p>
+<p>This MessageSource can easily be used outside of an org.springframework.context.ApplicationContext: it will use a org.springframework.core.io.DefaultResourceLoader as default, simply getting overridden with the ApplicationContext's resource loader if running in a context. It does not have any other specific dependencies. </p>
+<p>Thanks to Thomas Achleitner for providing the initial implementation of this message source!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-bundle-message-source/index.html">ResourceBundleMessageSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceBundleMessageSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceBasedMessageSource</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>org.springframework.context.MessageSource implementation that accesses resource bundles using specified basenames. This class relies on the underlying JDK's java.util.ResourceBundle implementation, in combination with the JDK's standard message parsing provided by java.text.MessageFormat. 
+<p>This MessageSource caches both the accessed ResourceBundle instances and the generated MessageFormats for each message. It also implements rendering of no-arg messages without MessageFormat, as supported by the AbstractMessageSource base class. The caching provided by this MessageSource is significantly faster than the built-in caching of the <code>java.util.ResourceBundle</code> class. </p>
+<p>The basenames follow java.util.ResourceBundle conventions: essentially, a fully-qualified classpath location. If it doesn't contain a package qualifier (such as <code>org.mypackage</code>), it will be resolved from the classpath root. Note that the JDK's standard ResourceBundle treats dots as package separators: This means that "test.theme" is effectively equivalent to "test/theme".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-thread-scope/index.html">SimpleThreadScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleThreadScope</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Scope</span></code>
+<p>A simple thread-backed Scope implementation. 
+<p><strong>NOTE:</strong> This thread scope is not registered by default in common contexts. Instead, you need to explicitly assign it to a scope key in your setup, either through <code><a href="#">org.springframework.beans.factory.config.ConfigurableBeanFactory#registerScope</a></code> or through a org.springframework.beans.factory.config.CustomScopeConfigurer bean. </p>
+<p><code>SimpleThreadScope</code> <em>does not clean up any objects</em> associated with it. As such, it is typically preferable to use org.springframework.web.context.request.RequestScope in web environments. </p>
+<p>For an implementation of a thread-based <code>Scope</code> with support for destruction callbacks, refer to the <a href="#"> Spring by Example Custom Thread Scope Module</a>. </p>
+<p>Thanks to Eugene Kuleshov for submitting the original prototype for a thread scope!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-static-application-context/index.html">StaticApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StaticApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationContext</span></code>
+<p>org.springframework.context.ApplicationContext implementation which supports programmatic registration of beans and messages, rather than reading bean definitions from external configuration sources. Mainly useful for testing.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-static-message-source/index.html">StaticMessageSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StaticMessageSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageSource</span></code>
+<p>Simple implementation of org.springframework.context.MessageSource which allows messages to be registered programmatically. This MessageSource supports basic internationalization. 
+<p>Intended for testing rather than for use in production systems.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-generic-application-context.html">GenericApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">GenericApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support$GenericApplicationContext(kotlin.Function1((org.springframework.context.support.GenericApplicationContext, kotlin.Unit)))/configure">configure</span><span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationContext</span><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GenericApplicationContext</span></code>
+<p>Extension for <a href="-generic-application-context.html">GenericApplicationContext</a> allowing <code>GenericApplicationContext { ... }</code>
+style initialization.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="beans.html">beans</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">beans</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support$beans(kotlin.Function1((org.springframework.context.support.BeanDefinitionDsl, kotlin.Unit)))/init">init</span><span class="symbol">:</span>&nbsp;<a href="-bean-definition-dsl/index.html"><span class="identifier">BeanDefinitionDsl</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="-bean-definition-dsl/index.html"><span class="identifier">BeanDefinitionDsl</span></a></code>
+<p>Functional bean definition Kotlin DSL.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-bean.html">registerBean</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">GenericApplicationContext</span><span class="symbol">.</span><span class="identifier">registerBean</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)))/customizers">customizers</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionCustomizer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Extension for <a href="#">GenericApplicationContext.registerBean</a> providing a
+<code>registerBean&lt;Foo&gt;()</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">GenericApplicationContext</span><span class="symbol">.</span><span class="identifier">registerBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.String, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)))/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.String, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)))/customizers">customizers</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionCustomizer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Extension for <a href="#">GenericApplicationContext.registerBean</a> providing a
+<code>registerBean&lt;Foo&gt;("foo")</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">GenericApplicationContext</span><span class="symbol">.</span><span class="identifier">registerBean</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)), kotlin.Function1((org.springframework.context.ApplicationContext, org.springframework.context.support.registerBean.T)))/customizers">customizers</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionCustomizer</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)), kotlin.Function1((org.springframework.context.ApplicationContext, org.springframework.context.support.registerBean.T)))/function">function</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ApplicationContext</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Extension for <a href="#">GenericApplicationContext.registerBean</a> providing a <code>registerBean { Foo() }</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">GenericApplicationContext</span><span class="symbol">.</span><span class="identifier">registerBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.String, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)), kotlin.Function1((org.springframework.context.ApplicationContext, org.springframework.context.support.registerBean.T)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.String, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)), kotlin.Function1((org.springframework.context.ApplicationContext, org.springframework.context.support.registerBean.T)))/customizers">customizers</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionCustomizer</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support$registerBean(org.springframework.context.support.GenericApplicationContext, kotlin.String, kotlin.Array((org.springframework.beans.factory.config.BeanDefinitionCustomizer)), kotlin.Function1((org.springframework.context.ApplicationContext, org.springframework.context.support.registerBean.T)))/function">function</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ApplicationContext</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Extension for <a href="#">GenericApplicationContext.registerBean</a> providing a
+<code>registerBean("foo") { Foo() }</code> variant.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

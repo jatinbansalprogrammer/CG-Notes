@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UndertowXhrTransport - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.sockjs.client</a>&nbsp;/&nbsp;<a href=".">UndertowXhrTransport</a><br/>
+<br/>
+<h1>UndertowXhrTransport</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UndertowXhrTransport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractXhrTransport</span></code>
+<p>An XHR transport based on Undertow's io.undertow.client.UndertowClient. Requires Undertow 1.3 or 1.4, including XNIO, as of Spring Framework 5.0. 
+<p>When used for testing purposes (e.g. load testing) or for specific use cases (like HTTPS configuration), a custom OptionMap should be provided: </p>
+<pre><code> OptionMap optionMap = OptionMap.builder() .set(Options.WORKER_IO_THREADS, 8) .set(Options.TCP_NODELAY, true) .set(Options.KEEP_ALIVE, true) .set(Options.WORKER_NAME, "SockJSClient") .getMap(); UndertowXhrTransport transport = new UndertowXhrTransport(optionMap); </code></pre></p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.1.2</p>
+<p><strong>See Also</strong><br/>
+org.xnio.Options</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UndertowXhrTransport</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">UndertowXhrTransport</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.UndertowXhrTransport$<init>(org.xnio.OptionMap)/optionMap">optionMap</span><span class="symbol">:</span>&nbsp;<span class="identifier">OptionMap</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-http-client.html">getHttpClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHttpClient</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">UndertowClient</span></code>
+<p>Return Undertow's native HTTP client</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-worker.html">getWorker</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWorker</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XnioWorker</span></code>
+<p>Return the org.xnio.XnioWorker backing the I/O operations for Undertow's HTTP client.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

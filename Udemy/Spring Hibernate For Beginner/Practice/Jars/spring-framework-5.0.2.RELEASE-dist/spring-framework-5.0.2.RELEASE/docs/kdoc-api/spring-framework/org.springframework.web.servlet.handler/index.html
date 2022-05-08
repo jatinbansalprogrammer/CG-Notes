@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.handler - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.handler</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.handler</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-detecting-url-handler-mapping/index.html">AbstractDetectingUrlHandlerMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractDetectingUrlHandlerMapping</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlHandlerMapping</span></code>
+<p>Abstract implementation of the org.springframework.web.servlet.HandlerMapping interface, detecting URL mappings for handler beans through introspection of all defined beans in the application context.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-handler-method-exception-resolver/index.html">AbstractHandlerMethodExceptionResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractHandlerMethodExceptionResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHandlerExceptionResolver</span></code>
+<p>Abstract base class for org.springframework.web.servlet.HandlerExceptionResolver implementations that support handling exceptions from handlers of type HandlerMethod.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-conversion-service-exposing-interceptor/index.html">ConversionServiceExposingInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConversionServiceExposingInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerInterceptorAdapter</span></code>
+<p>Interceptor that places the configured ConversionService in request scope so it's available during request processing. The request attribute name is "org.springframework.core.convert.ConversionService", the value of <code>ConversionService.class.getName()</code>. 
+<p>Mainly for use within JSP tags such as the spring:eval tag.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-dispatcher-servlet-web-request/index.html">DispatcherServletWebRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DispatcherServletWebRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletWebRequest</span></code>
+<p>ServletWebRequest subclass that is aware of org.springframework.web.servlet.DispatcherServlet's request context, such as the Locale determined by the configured org.springframework.web.servlet.LocaleResolver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-handler-exception-resolver-composite/index.html">HandlerExceptionResolverComposite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HandlerExceptionResolverComposite</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerExceptionResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>A HandlerExceptionResolver that delegates to a list of other HandlerExceptionResolvers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-mapping-exception-resolver/index.html">SimpleMappingExceptionResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleMappingExceptionResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHandlerExceptionResolver</span></code>
+<p>org.springframework.web.servlet.HandlerExceptionResolver implementation that allows for mapping exception class names to view names, either for a set of given handlers or for all handlers in the DispatcherServlet. 
+<p>Error views are analogous to error page JSPs, but can be used with any kind of exception including any checked one, with fine-granular mappings for specific handlers.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-servlet-handler-adapter/index.html">SimpleServletHandlerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleServletHandlerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerAdapter</span></code>
+<p>Adapter to use the Servlet interface with the generic DispatcherServlet. Calls the Servlet's <code>service</code> method to handle a request. 
+<p>Last-modified checking is not explicitly supported: This is typically handled by the Servlet implementation itself (usually deriving from the HttpServlet base class). </p>
+<p>This adapter is not activated by default; it needs to be defined as a bean in the DispatcherServlet context. It will automatically apply to mapped handler beans that implement the Servlet interface then. </p>
+<p>Note that Servlet instances defined as bean will not receive initialization and destruction callbacks, unless a special post-processor such as SimpleServletPostProcessor is defined in the DispatcherServlet context. </p>
+<p><strong>Alternatively, consider wrapping a Servlet with Spring's ServletWrappingController.</strong> This is particularly appropriate for existing Servlet classes, allowing to specify Servlet initialization parameters etc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-servlet-post-processor/index.html">SimpleServletPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleServletPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.config/-destruction-aware-bean-post-processor/index.html"><span class="identifier">DestructionAwareBeanPostProcessor</span></a><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><a href="../org.springframework.web.context/-servlet-config-aware/index.html"><span class="identifier">ServletConfigAware</span></a></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor that applies initialization and destruction callbacks to beans that implement the javax.servlet.Servlet interface. 
+<p>After initialization of the bean instance, the Servlet <code>init</code> method will be called with a ServletConfig that contains the bean name of the Servlet and the ServletContext that it is running in. </p>
+<p>Before destruction of the bean instance, the Servlet <code>destroy</code> will be called. </p>
+<p><strong>Note that this post-processor does not support Servlet initialization parameters.</strong> Bean instances that implement the Servlet interface are supposed to be configured like any other Spring bean, that is, through constructor arguments or bean properties. </p>
+<p>For reuse of a Servlet implementation in a plain Servlet container and as a bean in a Spring context, consider deriving from Spring's org.springframework.web.servlet.HttpServletBean base class that applies Servlet initialization parameters as bean properties, supporting both the standard Servlet and the Spring bean initialization style. </p>
+<p><strong>Alternatively, consider wrapping a Servlet with Spring's org.springframework.web.servlet.mvc.ServletWrappingController.</strong> This is particularly appropriate for existing Servlet classes, allowing to specify Servlet initialization parameters etc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-url-handler-mapping/index.html">SimpleUrlHandlerMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleUrlHandlerMapping</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlHandlerMapping</span></code>
+<p>Implementation of the org.springframework.web.servlet.HandlerMapping interface to map from URLs to request handler beans. Supports both mapping to bean instances and mapping to bean names; the latter is required for non-singleton handlers. 
+<p>The "urlMap" property is suitable for populating the handler map with bean references, e.g. via the map element in XML bean definitions. </p>
+<p>Mappings to bean names can be set via the "mappings" property, in a form accepted by the <code>java.util.Properties</code> class, like as follows: <code>/welcome.html=ticketController /show.html=ticketController </code> The syntax is <code>PATH=HANDLER_BEAN_NAME</code>. If the path doesn't begin with a slash, one is prepended. </p>
+<p>Supports direct matches (given "/test" -&gt; registered "/test") and "*" pattern matches (given "/test" -&gt; registered "/t*"). Note that the default is to map within the current servlet mapping if applicable; see the <code><a href="#">"alwaysUseFullPath"</a></code> property. For details on the pattern options, see the org.springframework.util.AntPathMatcher javadoc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-user-role-authorization-interceptor/index.html">UserRoleAuthorizationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UserRoleAuthorizationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerInterceptorAdapter</span></code>
+<p>Interceptor that checks the authorization of the current user via the user's roles, as evaluated by HttpServletRequest's isUserInRole method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-request-handler-interceptor-adapter/index.html">WebRequestHandlerInterceptorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebRequestHandlerInterceptorAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.servlet/-async-handler-interceptor/index.html"><span class="identifier">AsyncHandlerInterceptor</span></a></code>
+<p>Adapter that implements the Servlet HandlerInterceptor interface and wraps an underlying WebRequestInterceptor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

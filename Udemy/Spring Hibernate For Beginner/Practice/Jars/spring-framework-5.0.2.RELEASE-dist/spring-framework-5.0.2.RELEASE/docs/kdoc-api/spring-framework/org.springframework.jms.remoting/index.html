@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jms.remoting - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jms.remoting</a><br/>
+<br/>
+<h2>Package org.springframework.jms.remoting</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jms-invoker-client-interceptor/index.html">JmsInvokerClientInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsInvokerClientInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.aopalliance.intercept.MethodInterceptor for accessing a JMS-based remote service. 
+<p>Serializes remote invocation objects and deserializes remote invocation result objects. Uses Java serialization just like RMI, but with the JMS provider as communication infrastructure. </p>
+<p>To be configured with a javax.jms.QueueConnectionFactory and a target queue (either as javax.jms.Queue reference or as queue name). </p>
+<p>Thanks to James Strachan for the original prototype that this JMS invoker mechanism was inspired by!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jms-invoker-proxy-factory-bean/index.html">JmsInvokerProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsInvokerProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-jms-invoker-client-interceptor/index.html"><span class="identifier">JmsInvokerClientInterceptor</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>FactoryBean for JMS invoker proxies. Exposes the proxied service for use as a bean reference, using the specified service interface. 
+<p>Serializes remote invocation objects and deserializes remote invocation result objects. Uses Java serialization just like RMI, but with the JMS provider as communication infrastructure. </p>
+<p>To be configured with a javax.jms.QueueConnectionFactory and a target queue (either as javax.jms.Queue reference or as queue name).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jms-invoker-service-exporter/index.html">JmsInvokerServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsInvokerServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RemoteInvocationBasedExporter</span><span class="symbol">, </span><span class="identifier">SessionAwareMessageListener</span><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>JMS message listener that exports the specified service bean as a JMS service endpoint, accessible via a JMS invoker proxy. 
+<p>Note that this class implements Spring's org.springframework.jms.listener.SessionAwareMessageListener interface, since it requires access to the active JMS Session. Hence, this class can only be used with message listener containers which support the SessionAwareMessageListener interface (e.g. Spring's org.springframework.jms.listener.DefaultMessageListenerContainer). </p>
+<p>Thanks to James Strachan for the original prototype that this JMS invoker mechanism was inspired by!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

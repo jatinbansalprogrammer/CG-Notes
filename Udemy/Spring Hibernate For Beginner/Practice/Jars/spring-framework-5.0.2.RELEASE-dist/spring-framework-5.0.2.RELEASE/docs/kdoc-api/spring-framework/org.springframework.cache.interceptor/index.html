@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.cache.interceptor - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.cache.interceptor</a><br/>
+<br/>
+<h2>Package org.springframework.cache.interceptor</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-basic-operation/index.html">BasicOperation</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">BasicOperation</span></code>
+<p>The base interface that all cache operations must implement.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cache-aspect-support/index.html">CacheAspectSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CacheAspectSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCacheInvoker</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><a href="../org.springframework.beans.factory/-smart-initializing-singleton/index.html"><span class="identifier">SmartInitializingSingleton</span></a></code>
+<p>Base class for caching aspects, such as the CacheInterceptor or an AspectJ aspect. 
+<p>This enables the underlying Spring caching infrastructure to be used easily to implement an aspect for any aspect system. </p>
+<p>Subclasses are responsible for calling methods in this class in the correct order. </p>
+<p>Uses the <strong>Strategy</strong> design pattern. A CacheResolver implementation will resolve the actual cache(s) to use, and a CacheOperationSource is used for determining caching operations. </p>
+<p>A cache aspect is serializable if its <code>CacheResolver</code> and <code>CacheOperationSource</code> are serializable.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cache-proxy-factory-bean/index.html">CacheProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CacheProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.aop.framework/-abstract-singleton-proxy-factory-bean/index.html"><span class="identifier">AbstractSingletonProxyFactoryBean</span></a></code>
+<p>Proxy factory bean for simplified declarative caching handling. This is a convenient alternative to a standard AOP org.springframework.aop.framework.ProxyFactoryBean with a separate CacheInterceptor definition. 
+<p>This class is designed to facilitate declarative cache demarcation: namely, wrapping a singleton target object with a caching proxy, proxying all the interfaces that the target implements. Exists primarily for third-party framework integration. <strong>Users should favor the <code>cache:</code> XML namespace org.springframework.cache.annotation.Cacheable annotation.</strong> See the <a href="#">declarative annotation-based caching</a> section of the Spring reference documentation for more information.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cache-put-operation/index.html">CachePutOperation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachePutOperation</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheOperation</span></code>
+<p>Class describing a cache 'put' operation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-cache-operation-source/index.html">CompositeCacheOperationSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeCacheOperationSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheOperationSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Composite CacheOperationSource implementation that iterates over a given array of <code>CacheOperationSource</code> instances.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-name-match-cache-operation-source/index.html">NameMatchCacheOperationSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NameMatchCacheOperationSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheOperationSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Simple CacheOperationSource implementation that allows attributes to be matched by registered name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-named-cache-resolver/index.html">NamedCacheResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NamedCacheResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCacheResolver</span></code>
+<p>A CacheResolver that forces the resolution to a configurable collection of name(s) against a given CacheManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-cache-error-handler/index.html">SimpleCacheErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleCacheErrorHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheErrorHandler</span></code>
+<p>A simple CacheErrorHandler that does not handle the exception at all, simply throwing it back at the client.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-cache-resolver/index.html">SimpleCacheResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleCacheResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCacheResolver</span></code>
+<p>A simple CacheResolver that resolves the Cache instance(s) based on a configurable CacheManager and the name of the cache(s) as provided by <code><a href="-basic-operation/get-cache-names.html">getCacheNames()</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-key/index.html">SimpleKey</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleKey</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>A simple key as returned from the SimpleKeyGenerator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-key-generator/index.html">SimpleKeyGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleKeyGenerator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">KeyGenerator</span></code>
+<p>Simple key generator. Returns the parameter itself if a single non-null value is given, otherwise returns a SimpleKey of the parameters. 
+<p>No collisions will occur with the keys generated by this class. The returned SimpleKey object can be safely used with a org.springframework.cache.concurrent.ConcurrentMapCache, however, might not be suitable for all org.springframework.cache.Cache implementations.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

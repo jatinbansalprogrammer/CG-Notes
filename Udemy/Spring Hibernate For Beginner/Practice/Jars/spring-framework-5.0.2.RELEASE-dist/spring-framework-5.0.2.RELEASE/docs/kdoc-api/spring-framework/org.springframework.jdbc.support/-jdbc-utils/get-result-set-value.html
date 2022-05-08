@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JdbcUtils.getResultSetValue - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support</a>&nbsp;/&nbsp;<a href="index.html">JdbcUtils</a>&nbsp;/&nbsp;<a href=".">getResultSetValue</a><br/>
+<br/>
+<h1>getResultSetValue</h1>
+<a name="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int, java.lang.Class((kotlin.Any)))"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getResultSetValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int, java.lang.Class((kotlin.Any)))/rs">rs</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int, java.lang.Class((kotlin.Any)))/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int, java.lang.Class((kotlin.Any)))/requiredType">requiredType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Retrieve a JDBC column value from a ResultSet, using the specified value type. 
+<p>Uses the specifically typed ResultSet accessor methods, falling back to <code><a href="#">#getResultSetValue(java.sql.ResultSet, int)</a></code> for unknown types. </p>
+<p>Note that the returned value may not be assignable to the specified required type, in case of an unknown type. Calling code needs to deal with this case appropriately, e.g. throwing a corresponding exception.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="rs"></a>
+<code>rs</code> - is the ResultSet holding the data</p>
+<p><a name="index"></a>
+<code>index</code> - is the column index</p>
+<p><a name="requiredType"></a>
+<code>requiredType</code> - the required value type (may be <code>null</code>)</p>
+<h3>Exceptions</h3>
+<p><a name="SQLException"></a>
+<code>SQLException</code> - if thrown by the JDBC API</p>
+<p><strong>Return</strong><br/>
+the value object (possibly not of the specified required type, with further conversion steps necessary)</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getResultSetValue(ResultSet, int)</a></p>
+<a name="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getResultSetValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int)/rs">rs</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Retrieve a JDBC column value from a ResultSet, using the most appropriate value type. The returned value should be a detached value object, not having any ties to the active ResultSet: in particular, it should not be a Blob or Clob object but rather a byte array or String representation, respectively. 
+<p>Uses the <code>getObject(index)</code> method, but includes additional "hacks" to get around Oracle 10g returning a non-standard object for its TIMESTAMP datatype and a <code>java.sql.Date</code> for DATE columns leaving out the time portion: These columns will explicitly be extracted as standard <code>java.sql.Timestamp</code> object.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="rs"></a>
+<code>rs</code> - is the ResultSet holding the data</p>
+<p><a name="index"></a>
+<code>index</code> - is the column index</p>
+<h3>Exceptions</h3>
+<p><a name="SQLException"></a>
+<code>SQLException</code> - if thrown by the JDBC API</p>
+<p><strong>Return</strong><br/>
+the value object</p>
+<p><strong>See Also</strong><br/>
+java.sql.Blobjava.sql.Clobjava.sql.Timestamp</p>
+</BODY>
+</HTML>

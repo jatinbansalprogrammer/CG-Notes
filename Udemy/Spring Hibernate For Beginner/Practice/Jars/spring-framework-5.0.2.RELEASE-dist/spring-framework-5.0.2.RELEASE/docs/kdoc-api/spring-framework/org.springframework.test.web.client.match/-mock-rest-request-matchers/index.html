@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MockRestRequestMatchers - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.client.match</a>&nbsp;/&nbsp;<a href=".">MockRestRequestMatchers</a><br/>
+<br/>
+<h1>MockRestRequestMatchers</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">MockRestRequestMatchers</span></code>
+<p>Static factory methods for RequestMatcher classes. Typically used to provide input for <code><a href="../../org.springframework.test.web.client/-mock-rest-service-server/expect.html">MockRestServiceServer#expect(RequestMatcher)</a></code>. Eclipse Users 
+<p>Consider adding this class as a Java editor favorite. To navigate to this setting, open the Preferences and type "favorites".</p>
+</p>
+<p><strong>Author</strong><br/>
+Craig Walls</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MockRestRequestMatchers</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Static factory methods for RequestMatcher classes. Typically used to provide input for <code><a href="../../org.springframework.test.web.client/-mock-rest-service-server/expect.html">MockRestServiceServer#expect(RequestMatcher)</a></code>. Eclipse Users 
+<p>Consider adding this class as a Java editor favorite. To navigate to this setting, open the Preferences and type "favorites".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="anything.html">anything</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">anything</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Match to any request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="content.html">content</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">content</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ContentRequestMatchers</span></code>
+<p>Access to request body matchers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="header.html">header</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">header</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$header(kotlin.String, kotlin.Array((org.hamcrest.Matcher((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$header(kotlin.String, kotlin.Array((org.hamcrest.Matcher((kotlin.String)))))/matchers">matchers</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Assert request header values with the given Hamcrest matcher.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">header</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$header(kotlin.String, kotlin.Array((kotlin.String)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$header(kotlin.String, kotlin.Array((kotlin.String)))/expectedValues">expectedValues</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Assert request header values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="json-path.html">jsonPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">jsonPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$jsonPath(kotlin.String, kotlin.Array((kotlin.Any)))/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$jsonPath(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonPathRequestMatchers</span></code>
+<p>Access to request body matchers using a <a href="#">JsonPath</a> expression to inspect a specific subset of the body. The JSON path expression can be a parameterized string using formatting specifiers as defined in <code><a href="#">String#format(String, Object...)</a></code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">jsonPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$jsonPath(kotlin.String, org.hamcrest.Matcher((org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath.T)))/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$jsonPath(kotlin.String, org.hamcrest.Matcher((org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath.T)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Access to request body matchers using a <a href="#">JsonPath</a> expression to inspect a specific subset of the body and a Hamcrest match for asserting the value found at the JSON path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="method.html">method</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">method</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$method(org.springframework.http.HttpMethod)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Assert the HttpMethod of the request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-param.html">queryParam</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">queryParam</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$queryParam(kotlin.String, kotlin.Array((org.hamcrest.Matcher((kotlin.String)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$queryParam(kotlin.String, kotlin.Array((org.hamcrest.Matcher((kotlin.String)))))/matchers">matchers</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Assert request query parameter values with the given Hamcrest matcher.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">queryParam</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$queryParam(kotlin.String, kotlin.Array((kotlin.String)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$queryParam(kotlin.String, kotlin.Array((kotlin.String)))/expectedValues">expectedValues</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Assert request query parameter values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="request-to.html">requestTo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">requestTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$requestTo(org.hamcrest.Matcher((kotlin.String)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Assert the request URI string with the given matcher.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">requestTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$requestTo(kotlin.String)/expectedUri">expectedUri</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Assert the request URI matches the given string.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">requestTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$requestTo(java.net.URI)/uri">uri</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Expect a request to the given URI.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="request-to-uri-template.html">requestToUriTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">requestToUriTemplate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$requestToUriTemplate(kotlin.String, kotlin.Array((kotlin.Any)))/expectedUri">expectedUri</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$requestToUriTemplate(kotlin.String, kotlin.Array((kotlin.Any)))/uriVars">uriVars</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestMatcher</span></code>
+<p>Variant of <code><a href="request-to.html">#requestTo(URI)</a></code> that prepares the URI from a URI template plus optional variables via UriComponentsBuilder including encoding.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="xpath.html">xpath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">xpath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$xpath(kotlin.String, kotlin.Array((kotlin.Any)))/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$xpath(kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XpathRequestMatchers</span></code>
+<p>Access to request body matchers using an XPath to inspect a specific subset of the body. The XPath expression can be a parameterized string using formatting specifiers as defined in <code><a href="#">String#format(String, Object...)</a></code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">xpath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$xpath(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), kotlin.Array((kotlin.Any)))/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$xpath(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), kotlin.Array((kotlin.Any)))/namespaces">namespaces</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.client.match.MockRestRequestMatchers$xpath(kotlin.String, kotlin.collections.MutableMap((kotlin.String, )), kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XpathRequestMatchers</span></code>
+<p>Access to response body matchers using an XPath to inspect a specific subset of the body. The XPath expression can be a parameterized string using formatting specifiers as defined in <code><a href="#">String#format(String, Object...)</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractRegexpMethodPointcut - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.support</a>&nbsp;/&nbsp;<a href=".">AbstractRegexpMethodPointcut</a><br/>
+<br/>
+<h1>AbstractRegexpMethodPointcut</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractRegexpMethodPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StaticMethodMatcherPointcut</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Abstract base regular expression pointcut bean. JavaBean properties are: <ul> <li>pattern: regular expression for the fully-qualified method names to match. The exact regexp syntax will depend on the subclass (e.g. Perl5 regular expressions) </li>
+<li>patterns: alternative property taking a String array of patterns. The result will be the union of these patterns. </li>
+</ul>
+ 
+<p>Note: the regular expressions must be a match. For example, <code>.*get.*</code> will match com.mycom.Foo.getBar(). <code>get.*</code> will not. </p>
+<p>This base class is serializable. Subclasses should declare all fields transient; the <code><a href="#">#initPatternRepresentation</a></code> method will be invoked again on deserialization.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+JdkRegexpMethodPointcut</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractRegexpMethodPointcut</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Abstract base regular expression pointcut bean. JavaBean properties are: <ul> <li>pattern: regular expression for the fully-qualified method names to match. The exact regexp syntax will depend on the subclass (e.g. Perl5 regular expressions) </li>
+<li>patterns: alternative property taking a String array of patterns. The result will be the union of these patterns. </li>
+</ul>
+ 
+<p>Note: the regular expressions must be a match. For example, <code>.*get.*</code> will match com.mycom.Foo.getBar(). <code>get.*</code> will not. </p>
+<p>This base class is serializable. Subclasses should declare all fields transient; the <code><a href="#">#initPatternRepresentation</a></code> method will be invoked again on deserialization.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.AbstractRegexpMethodPointcut$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-excluded-patterns.html">getExcludedPatterns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExcludedPatterns</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Returns the regular expressions for exclusion matching.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-patterns.html">getPatterns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPatterns</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the regular expressions for method matching.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="matches.html">matches</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.AbstractRegexpMethodPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.support.AbstractRegexpMethodPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Try to match the regular expression against the fully qualified name of the target class as well as against the method's declaring class, plus the name of the method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-excluded-pattern.html">setExcludedPattern</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExcludedPattern</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.AbstractRegexpMethodPointcut$setExcludedPattern(kotlin.String)/excludedPattern">excludedPattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Convenience method when we have only a single exclusion pattern. Use either this method or <code><a href="#">#setExcludedPatterns</a></code>, not both.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-excluded-patterns.html">setExcludedPatterns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExcludedPatterns</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.support.AbstractRegexpMethodPointcut$setExcludedPatterns(kotlin.Array((kotlin.String)))/excludedPatterns">excludedPatterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the regular expressions defining methods to match for exclusion. Matching will be the union of all these; if any match, the pointcut matches.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-pattern.html">setPattern</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPattern</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.AbstractRegexpMethodPointcut$setPattern(kotlin.String)/pattern">pattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Convenience method when we have only a single pattern. Use either this method or <code><a href="#">#setPatterns</a></code>, not both.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-patterns.html">setPatterns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPatterns</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.support.AbstractRegexpMethodPointcut$setPatterns(kotlin.Array((kotlin.String)))/patterns">patterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the regular expressions defining methods to match. Matching will be the union of all these; if any match, the pointcut matches.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-jdk-regexp-method-pointcut/index.html">JdkRegexpMethodPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JdkRegexpMethodPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRegexpMethodPointcut</span></code>
+<p>Regular expression pointcut based on the <code>java.util.regex</code> package. Supports the following JavaBean properties: <ul> <li>pattern: regular expression for the fully-qualified method names to match </li>
+<li>patterns: alternative property taking a String array of patterns. The result will be the union of these patterns. </li>
+</ul>
+ 
+<p>Note: the regular expressions must be a match. For example, <code>.*get.*</code> will match com.mycom.Foo.getBar(). <code>get.*</code> will not.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

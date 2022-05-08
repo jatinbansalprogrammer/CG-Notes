@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.http.client - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.http.client</a><br/>
+<br/>
+<h2>Package org.springframework.http.client</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-client-http-request/index.html">AbstractClientHttpRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractClientHttpRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequest</span></code>
+<p>Abstract base for ClientHttpRequest that makes sure that headers and body are not written multiple times.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-client-http-response/index.html">AbstractClientHttpResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractClientHttpResponse</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpResponse</span></code>
+<p>Abstract base for ClientHttpResponse.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-async-client-http-request-execution/index.html">AsyncClientHttpRequestExecution</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">AsyncClientHttpRequestExecution</span></code>
+<p>Represents the context of a client-side HTTP request execution. 
+<p>Used to invoke the next interceptor in the interceptor chain, or - if the calling interceptor is last - execute the request itself.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-buffering-client-http-request-factory/index.html">BufferingClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BufferingClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractClientHttpRequestFactoryWrapper</span></code>
+<p>Wrapper for a ClientHttpRequestFactory that buffers all outgoing and incoming streams in memory. 
+<p>Using this wrapper allows for multiple reads of the</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-client-http-request-interceptor/index.html">ClientHttpRequestInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ClientHttpRequestInterceptor</span></code>
+<p>Intercepts client-side HTTP requests. Implementations of this interface can be <a href="#"> registered</a> with the org.springframework.web.client.RestTemplate, as to modify the outgoing ClientHttpRequest and/or the incoming ClientHttpResponse. 
+<p>The main entry point for interceptors is <code><a href="#">#intercept(HttpRequest, byte[], ClientHttpRequestExecution)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-components-async-client-http-request-factory/index.html">HttpComponentsAsyncClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpComponentsAsyncClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpComponentsClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">AsyncClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Asynchronous extension of the HttpComponentsClientHttpRequestFactory. Uses <a href="#">Apache HttpComponents HttpAsyncClient 4.0</a> to create requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-intercepting-async-client-http-request-factory/index.html">InterceptingAsyncClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InterceptingAsyncClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncClientHttpRequestFactory</span></code>
+<p>Wrapper for a AsyncClientHttpRequestFactory that has support for AsyncClientHttpRequestInterceptors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-intercepting-client-http-request-factory/index.html">InterceptingClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InterceptingClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractClientHttpRequestFactoryWrapper</span></code>
+<p>ClientHttpRequestFactory wrapper with support for ClientHttpRequestInterceptors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-multipart-body-builder/index.html">MultipartBodyBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MultipartBodyBuilder</span></code>
+<p>A mutable builder for multipart form bodies. For example: <pre><code> MultipartBodyBuilder builder = new MultipartBodyBuilder(); builder.part("form field", "form value"); Resource image = new ClassPathResource("image.jpg"); builder.part("image", image).header("Baz", "Qux"); MultiValueMap&gt; multipartBody = builder.build(); // use multipartBody with RestTemplate or WebClient </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-netty4-client-http-request-factory/index.html">Netty4ClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Netty4ClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">AsyncClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>org.springframework.http.client.ClientHttpRequestFactory implementation that uses <a href="#">Netty 4</a> to create requests. 
+<p>Allows to use a pre-configured EventLoopGroup instance: useful for sharing across multiple clients. </p>
+<p>Note that this implementation consistently closes the HTTP connection on each request.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-ok-http3-client-http-request-factory/index.html">OkHttp3ClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OkHttp3ClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">AsyncClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>ClientHttpRequestFactory implementation that uses <a href="#">OkHttp</a> 3.x to create requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-client-http-request-factory/index.html">SimpleClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">AsyncClientHttpRequestFactory</span></code>
+<p>ClientHttpRequestFactory implementation that uses standard JDK facilities.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

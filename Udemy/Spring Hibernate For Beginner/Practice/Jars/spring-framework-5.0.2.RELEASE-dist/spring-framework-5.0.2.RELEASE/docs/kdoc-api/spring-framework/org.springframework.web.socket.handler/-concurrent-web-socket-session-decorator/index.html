@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConcurrentWebSocketSessionDecorator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.handler</a>&nbsp;/&nbsp;<a href=".">ConcurrentWebSocketSessionDecorator</a><br/>
+<br/>
+<h1>ConcurrentWebSocketSessionDecorator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConcurrentWebSocketSessionDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketSessionDecorator</span></code>
+<p>Wrap a org.springframework.web.socket.WebSocketSession to guarantee only one thread can send messages at a time. 
+<p>If a send is slow, subsequent attempts to send more messages from other threads will not be able to acquire the flush lock and messages will be buffered instead. At that time, the specified buffer-size limit and send-time limit will be checked and the session will be closed if the limits are exceeded.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0.3</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConcurrentWebSocketSessionDecorator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator$<init>(org.springframework.web.socket.WebSocketSession, kotlin.Int, kotlin.Int)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketSession</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator$<init>(org.springframework.web.socket.WebSocketSession, kotlin.Int, kotlin.Int)/sendTimeLimit">sendTimeLimit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator$<init>(org.springframework.web.socket.WebSocketSession, kotlin.Int, kotlin.Int)/bufferSizeLimit">bufferSizeLimit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>ConcurrentWebSocketSessionDecorator</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator$close(org.springframework.web.socket.CloseStatus)/status">status</span><span class="symbol">:</span>&nbsp;<span class="identifier">CloseStatus</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-buffer-size.html">getBufferSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBufferSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the current buffer size (number of bytes).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-buffer-size-limit.html">getBufferSizeLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBufferSizeLimit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the configured buffer-size limit (number of bytes).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-send-time-limit.html">getSendTimeLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSendTimeLimit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the configured send-time limit (milliseconds).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-time-since-send-started.html">getTimeSinceSendStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimeSinceSendStarted</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the time (milliseconds) since the current send started, or 0 if no send is currently in progress.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="send-message.html">sendMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sendMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.handler.ConcurrentWebSocketSessionDecorator$sendMessage(org.springframework.web.socket.WebSocketMessage((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketMessage</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

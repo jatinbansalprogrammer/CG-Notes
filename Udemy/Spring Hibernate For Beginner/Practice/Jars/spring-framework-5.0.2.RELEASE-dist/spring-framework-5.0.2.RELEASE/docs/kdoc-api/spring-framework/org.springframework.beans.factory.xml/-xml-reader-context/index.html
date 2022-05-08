@@ -1,0 +1,227 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>XmlReaderContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.xml</a>&nbsp;/&nbsp;<a href=".">XmlReaderContext</a><br/>
+<br/>
+<h1>XmlReaderContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XmlReaderContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.parsing/-reader-context/index.html"><span class="identifier">ReaderContext</span></a></code>
+<p>Extension of org.springframework.beans.factory.parsing.ReaderContext, specific to use with an XmlBeanDefinitionReader. Provides access to the NamespaceHandlerResolver configured in the XmlBeanDefinitionReader.</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">XmlReaderContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$<init>(org.springframework.core.io.Resource, org.springframework.beans.factory.parsing.ProblemReporter, org.springframework.beans.factory.parsing.ReaderEventListener, org.springframework.beans.factory.parsing.SourceExtractor, org.springframework.beans.factory.xml.XmlBeanDefinitionReader, org.springframework.beans.factory.xml.NamespaceHandlerResolver)/resource">resource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$<init>(org.springframework.core.io.Resource, org.springframework.beans.factory.parsing.ProblemReporter, org.springframework.beans.factory.parsing.ReaderEventListener, org.springframework.beans.factory.parsing.SourceExtractor, org.springframework.beans.factory.xml.XmlBeanDefinitionReader, org.springframework.beans.factory.xml.NamespaceHandlerResolver)/problemReporter">problemReporter</span><span class="symbol">:</span>&nbsp;<span class="identifier">ProblemReporter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$<init>(org.springframework.core.io.Resource, org.springframework.beans.factory.parsing.ProblemReporter, org.springframework.beans.factory.parsing.ReaderEventListener, org.springframework.beans.factory.parsing.SourceExtractor, org.springframework.beans.factory.xml.XmlBeanDefinitionReader, org.springframework.beans.factory.xml.NamespaceHandlerResolver)/eventListener">eventListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReaderEventListener</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$<init>(org.springframework.core.io.Resource, org.springframework.beans.factory.parsing.ProblemReporter, org.springframework.beans.factory.parsing.ReaderEventListener, org.springframework.beans.factory.parsing.SourceExtractor, org.springframework.beans.factory.xml.XmlBeanDefinitionReader, org.springframework.beans.factory.xml.NamespaceHandlerResolver)/sourceExtractor">sourceExtractor</span><span class="symbol">:</span>&nbsp;<span class="identifier">SourceExtractor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$<init>(org.springframework.core.io.Resource, org.springframework.beans.factory.parsing.ProblemReporter, org.springframework.beans.factory.parsing.ReaderEventListener, org.springframework.beans.factory.parsing.SourceExtractor, org.springframework.beans.factory.xml.XmlBeanDefinitionReader, org.springframework.beans.factory.xml.NamespaceHandlerResolver)/reader">reader</span><span class="symbol">:</span>&nbsp;<span class="identifier">XmlBeanDefinitionReader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$<init>(org.springframework.core.io.Resource, org.springframework.beans.factory.parsing.ProblemReporter, org.springframework.beans.factory.parsing.ReaderEventListener, org.springframework.beans.factory.parsing.SourceExtractor, org.springframework.beans.factory.xml.XmlBeanDefinitionReader, org.springframework.beans.factory.xml.NamespaceHandlerResolver)/namespaceHandlerResolver">namespaceHandlerResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandlerResolver</span><span class="symbol">)</span></code>
+<p>Construct a new <code>XmlReaderContext</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="generate-bean-name.html">generateBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">generateBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$generateBeanName(org.springframework.beans.factory.config.BeanDefinition)/beanDefinition">beanDefinition</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Call the bean name generator for the given bean definition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-bean-class-loader.html">getBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getBeanClassLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClassLoader</span></code>
+<p>Return the bean class loader to use, if any. 
+<p>Note that this will be null in regular scenarios, as an indication to lazily resolve bean classes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-environment.html">getEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getEnvironment</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Environment</span></code>
+<p>Return the environment to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-namespace-handler-resolver.html">getNamespaceHandlerResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getNamespaceHandlerResolver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NamespaceHandlerResolver</span></code>
+<p>Return the namespace resolver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-reader.html">getReader</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getReader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XmlBeanDefinitionReader</span></code>
+<p>Return the XML bean definition reader in use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-registry.html">getRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getRegistry</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinitionRegistry</span></code>
+<p>Return the bean definition registry to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-loader.html">getResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getResourceLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResourceLoader</span></code>
+<p>Return the resource loader to use, if any. 
+<p>This will be non-null in regular scenarios, also allowing access to the resource class loader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read-document-from-string.html">readDocumentFromString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readDocumentFromString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$readDocumentFromString(kotlin.String)/documentContent">documentContent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-document/index.html"><span class="identifier">Document</span></a></code>
+<p>Read an XML document from the given String.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-with-generated-name.html">registerWithGeneratedName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerWithGeneratedName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.XmlReaderContext$registerWithGeneratedName(org.springframework.beans.factory.config.BeanDefinition)/beanDefinition">beanDefinition</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Call the bean name generator for the given bean definition and register the bean definition under the generated name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/error.html">error</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, kotlin.Throwable)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, kotlin.Throwable)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/parseState">parseState</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParseState</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">error</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/parseState">parseState</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParseState</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$error(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Raise a regular error.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/extract-source.html">extractSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">extractSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$extractSource(kotlin.Any)/sourceCandidate">sourceCandidate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Call the source extractor for the given source object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/fatal.html">fatal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fatal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fatal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, kotlin.Throwable)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, kotlin.Throwable)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fatal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/parseState">parseState</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParseState</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fatal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/parseState">parseState</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParseState</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fatal(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Raise a fatal error.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/fire-alias-registered.html">fireAliasRegistered</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fireAliasRegistered</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireAliasRegistered(kotlin.String, kotlin.String, kotlin.Any)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireAliasRegistered(kotlin.String, kotlin.String, kotlin.Any)/alias">alias</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireAliasRegistered(kotlin.String, kotlin.String, kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Fire an alias-registered event.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/fire-component-registered.html">fireComponentRegistered</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fireComponentRegistered</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireComponentRegistered(org.springframework.beans.factory.parsing.ComponentDefinition)/componentDefinition">componentDefinition</span><span class="symbol">:</span>&nbsp;<span class="identifier">ComponentDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Fire an component-registered event.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/fire-defaults-registered.html">fireDefaultsRegistered</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fireDefaultsRegistered</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireDefaultsRegistered(org.springframework.beans.factory.parsing.DefaultsDefinition)/defaultsDefinition">defaultsDefinition</span><span class="symbol">:</span>&nbsp;<span class="identifier">DefaultsDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Fire an defaults-registered event.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/fire-import-processed.html">fireImportProcessed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fireImportProcessed</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireImportProcessed(kotlin.String, kotlin.Any)/importedResource">importedResource</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireImportProcessed(kotlin.String, kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fireImportProcessed</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireImportProcessed(kotlin.String, kotlin.Array((org.springframework.core.io.Resource)), kotlin.Any)/importedResource">importedResource</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireImportProcessed(kotlin.String, kotlin.Array((org.springframework.core.io.Resource)), kotlin.Any)/actualResources">actualResources</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Resource</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$fireImportProcessed(kotlin.String, kotlin.Array((org.springframework.core.io.Resource)), kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Fire an import-processed event.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/get-resource.html">getResource</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getResource</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Resource</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/get-source-extractor.html">getSourceExtractor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSourceExtractor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SourceExtractor</span></code>
+<p>Return the source extractor in use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.parsing/-reader-context/warning.html">warning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">warning</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">warning</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, kotlin.Throwable)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, kotlin.Throwable)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">warning</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState)/parseState">parseState</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParseState</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">warning</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/parseState">parseState</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParseState</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.parsing.ReaderContext$warning(kotlin.String, kotlin.Any, org.springframework.beans.factory.parsing.ParseState, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Raise a non-critical warning.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringFactoriesLoader - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core.io.support</a>&nbsp;/&nbsp;<a href=".">SpringFactoriesLoader</a><br/>
+<br/>
+<h1>SpringFactoriesLoader</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">SpringFactoriesLoader</span></code>
+<p>General purpose factory loading mechanism for internal use within the framework. 
+<p><code>SpringFactoriesLoader</code> <a href="#">loads</a> and instantiates factories of a given type from {@value #FACTORIES_RESOURCE_LOCATION} files which may be present in multiple JAR files in the classpath. The <code>spring.factories</code> file must be in Properties format, where the key is the fully qualified name of the interface or abstract class, and the value is a comma-separated list of implementation class names. For example: </p>
+<pre><code>example.MyService=example.MyServiceImpl1,example.MyServiceImpl2</code></pre> where <code>example.MyService</code> is the name of the interface, and <code>MyServiceImpl1</code> and <code>MyServiceImpl2</code> are two implementations.</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringFactoriesLoader</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>General purpose factory loading mechanism for internal use within the framework. 
+<p><code>SpringFactoriesLoader</code> <a href="#">loads</a> and instantiates factories of a given type from {@value #FACTORIES_RESOURCE_LOCATION} files which may be present in multiple JAR files in the classpath. The <code>spring.factories</code> file must be in Properties format, where the key is the fully qualified name of the interface or abstract class, and the value is a comma-separated list of implementation class names. For example: </p>
+<pre><code>example.MyService=example.MyServiceImpl1,example.MyServiceImpl2</code></pre> where <code>example.MyService</code> is the name of the interface, and <code>MyServiceImpl1</code> and <code>MyServiceImpl2</code> are two implementations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-f-a-c-t-o-r-i-e-s_-r-e-s-o-u-r-c-e_-l-o-c-a-t-i-o-n.html">FACTORIES_RESOURCE_LOCATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">FACTORIES_RESOURCE_LOCATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The location to look for factories. 
+<p>Can be present in multiple JAR files.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="load-factories.html">loadFactories</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">loadFactories</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.support.SpringFactoriesLoader$loadFactories(java.lang.Class((org.springframework.core.io.support.SpringFactoriesLoader.loadFactories.T)), java.lang.ClassLoader)/factoryClass">factoryClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.io.support.SpringFactoriesLoader$loadFactories(java.lang.Class((org.springframework.core.io.support.SpringFactoriesLoader.loadFactories.T)), java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Load and instantiate the factory implementations of the given type from {@value #FACTORIES_RESOURCE_LOCATION}, using the given class loader. 
+<p>The returned factories are sorted through AnnotationAwareOrderComparator. </p>
+<p>If a custom instantiation strategy is required, use <code><a href="#">#loadFactoryNames</a></code> to obtain all registered factory names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="load-factory-names.html">loadFactoryNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">loadFactoryNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.support.SpringFactoriesLoader$loadFactoryNames(java.lang.Class((kotlin.Any)), java.lang.ClassLoader)/factoryClass">factoryClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.io.support.SpringFactoriesLoader$loadFactoryNames(java.lang.Class((kotlin.Any)), java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Load the fully qualified class names of factory implementations of the given type from {@value #FACTORIES_RESOURCE_LOCATION}, using the given class loader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

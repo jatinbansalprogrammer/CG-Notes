@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JettyWebSocketClient - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.socket.client</a>&nbsp;/&nbsp;<a href=".">JettyWebSocketClient</a><br/>
+<br/>
+<h1>JettyWebSocketClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JettyWebSocketClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketClientSupport</span><span class="symbol">, </span><span class="identifier">WebSocketClient</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A WebSocketClient implementation for use with Jetty org.eclipse.jetty.websocket.client.WebSocketClient. 
+<p><strong>Note: </strong> the Jetty <code>WebSocketClient</code> requires lifecycle management and must be started and stopped. This is automatically managed when this class is declared as a Spring bean and created with the default constructor. See constructor notes for more details.</p>
+</p>
+<p><strong>Author</strong><br/>
+Violeta Georgieva</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JettyWebSocketClient</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor that creates and manages an instance of a Jetty org.eclipse.jetty.websocket.client.WebSocketClient. The instance can be obtained with <code><a href="get-jetty-client.html">#getJettyClient()</a></code> for further configuration. 
+<p><strong>Note: </strong> When this constructor is used Lifecycle methods of this class are delegated to the Jetty <code>WebSocketClient</code>.</p>
+</p>
+<code><span class="identifier">JettyWebSocketClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.JettyWebSocketClient$<init>(org.eclipse.jetty.websocket.client.WebSocketClient)/jettyClient">jettyClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketClient</span><span class="symbol">)</span></code>
+<p>Constructor that accepts an existing instance of a Jetty org.eclipse.jetty.websocket.client.WebSocketClient. 
+<p><strong>Note: </strong> Use of this constructor implies the Jetty <code>WebSocketClient</code> is externally managed and hence Lifecycle methods of this class are not delegated to it.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.JettyWebSocketClient$execute(java.net.URI, org.springframework.web.reactive.socket.WebSocketHandler)/url">url</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.socket.client.JettyWebSocketClient$execute(java.net.URI, org.springframework.web.reactive.socket.WebSocketHandler)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.JettyWebSocketClient$execute(java.net.URI, org.springframework.http.HttpHeaders, org.springframework.web.reactive.socket.WebSocketHandler)/url">url</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.socket.client.JettyWebSocketClient$execute(java.net.URI, org.springframework.http.HttpHeaders, org.springframework.web.reactive.socket.WebSocketHandler)/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.socket.client.JettyWebSocketClient$execute(java.net.URI, org.springframework.http.HttpHeaders, org.springframework.web.reactive.socket.WebSocketHandler)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-jetty-client.html">getJettyClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJettyClient</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketClient</span></code>
+<p>Return the underlying Jetty <code>WebSocketClient</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

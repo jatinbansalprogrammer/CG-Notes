@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ModelFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.method.annotation</a>&nbsp;/&nbsp;<a href=".">ModelFactory</a><br/>
+<br/>
+<h1>ModelFactory</h1>
+<code><span class="keyword">class </span><span class="identifier">ModelFactory</span></code>
+<p>Assist with initialization of the Model before controller method invocation and with updates to it after the invocation. 
+<p>On initialization the model is populated with attributes temporarily stored in the session and through the invocation of <code>@ModelAttribute</code> methods. </p>
+<p>On update model attributes are synchronized with the session and also BindingResult attributes are added if missing.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ModelFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$<init>(kotlin.collections.MutableList((org.springframework.web.method.support.InvocableHandlerMethod)), org.springframework.web.bind.support.WebDataBinderFactory, org.springframework.web.method.annotation.SessionAttributesHandler)/handlerMethods">handlerMethods</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../../org.springframework.web.method.support/-invocable-handler-method/index.html"><span class="identifier">InvocableHandlerMethod</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$<init>(kotlin.collections.MutableList((org.springframework.web.method.support.InvocableHandlerMethod)), org.springframework.web.bind.support.WebDataBinderFactory, org.springframework.web.method.annotation.SessionAttributesHandler)/binderFactory">binderFactory</span><span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.bind.support/-web-data-binder-factory/index.html"><span class="identifier">WebDataBinderFactory</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$<init>(kotlin.collections.MutableList((org.springframework.web.method.support.InvocableHandlerMethod)), org.springframework.web.bind.support.WebDataBinderFactory, org.springframework.web.method.annotation.SessionAttributesHandler)/attributeHandler">attributeHandler</span><span class="symbol">:</span>&nbsp;<a href="../-session-attributes-handler/index.html"><span class="identifier">SessionAttributesHandler</span></a><span class="symbol">)</span></code>
+<p>Create a new instance with the given <code>@ModelAttribute</code> methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-name-for-parameter.html">getNameForParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getNameForParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$getNameForParameter(org.springframework.core.MethodParameter)/parameter">parameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Derive the model attribute name for the given method parameter based on a <code>@ModelAttribute</code> parameter annotation (if present) or falling back on parameter type based conventions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-name-for-return-value.html">getNameForReturnValue</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getNameForReturnValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$getNameForReturnValue(kotlin.Any, org.springframework.core.MethodParameter)/returnValue">returnValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$getNameForReturnValue(kotlin.Any, org.springframework.core.MethodParameter)/returnType">returnType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Derive the model attribute name for the given return value based on: <ol> <li>the method <code>ModelAttribute</code> annotation value </li>
+<li>the declared return type if it is more specific than <code>Object</code> </li>
+<li>the actual return value type </li>
+</ol>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="init-model.html">initModel</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">initModel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$initModel(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.method.HandlerMethod)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$initModel(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.method.HandlerMethod)/container">container</span><span class="symbol">:</span>&nbsp;<span class="identifier">ModelAndViewContainer</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$initModel(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer, org.springframework.web.method.HandlerMethod)/handlerMethod">handlerMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethod</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Populate the model in the following order: <ol> <li>Retrieve "known" session attributes listed as <code>@SessionAttributes</code>. </li>
+<li>Invoke <code>@ModelAttribute</code> methods </li>
+<li>Find <code>@ModelAttribute</code> method arguments also listed as <code>@SessionAttributes</code> and ensure they're present in the model raising an exception if necessary. </li>
+</ol>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-model.html">updateModel</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">updateModel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$updateModel(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.ModelFactory$updateModel(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer)/container">container</span><span class="symbol">:</span>&nbsp;<span class="identifier">ModelAndViewContainer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Promote model attributes listed as <code>@SessionAttributes</code> to the session. Add BindingResult attributes where necessary.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

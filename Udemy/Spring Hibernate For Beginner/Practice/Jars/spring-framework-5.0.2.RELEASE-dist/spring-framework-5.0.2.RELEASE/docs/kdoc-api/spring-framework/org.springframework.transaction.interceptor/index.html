@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.transaction.interceptor - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.transaction.interceptor</a><br/>
+<br/>
+<h2>Package org.springframework.transaction.interceptor</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-composite-transaction-attribute-source/index.html">CompositeTransactionAttributeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeTransactionAttributeSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionAttributeSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Composite TransactionAttributeSource implementation that iterates over a given array of TransactionAttributeSource instances.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-match-always-transaction-attribute-source/index.html">MatchAlwaysTransactionAttributeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MatchAlwaysTransactionAttributeSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionAttributeSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Very simple implementation of TransactionAttributeSource which will always return the same TransactionAttribute for all methods fed to it. The TransactionAttribute may be specified, but will otherwise default to PROPAGATION_REQUIRED. This may be used in the cases where you want to use the same transaction attribute with all methods being handled by a transaction interceptor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-map-transaction-attribute-source/index.html">MethodMapTransactionAttributeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodMapTransactionAttributeSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionAttributeSource</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Simple TransactionAttributeSource implementation that allows attributes to be stored per method in a Map.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-name-match-transaction-attribute-source/index.html">NameMatchTransactionAttributeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NameMatchTransactionAttributeSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionAttributeSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Simple TransactionAttributeSource implementation that allows attributes to be matched by registered name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-no-rollback-rule-attribute/index.html">NoRollbackRuleAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NoRollbackRuleAttribute</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RollbackRuleAttribute</span></code>
+<p>Tag subclass of RollbackRuleAttribute that has the opposite behavior to the <code>RollbackRuleAttribute</code> superclass.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-attribute-editor/index.html">TransactionAttributeEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAttributeEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>PropertyEditor for TransactionAttribute objects. Accepts a String of form 
+<p><code>PROPAGATION_NAME, ISOLATION_NAME, readOnly, timeout_NNNN,+Exception1,-Exception2</code> </p>
+<p>where only propagation code is required. For example: </p>
+<p><code>PROPAGATION_MANDATORY, ISOLATION_DEFAULT</code> </p>
+<p>The tokens can be in <strong>any</strong> order. Propagation and isolation codes must use the names of the constants in the TransactionDefinition class. Timeout values are in seconds. If no timeout is specified, the transaction manager will apply a default timeout specific to the particular transaction manager. </p>
+<p>A "+" before an exception name substring indicates that transactions should commit even if this exception is thrown; a "-" that they should roll back.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-attribute-source-advisor/index.html">TransactionAttributeSourceAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAttributeSourceAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPointcutAdvisor</span></code>
+<p>Advisor driven by a TransactionAttributeSource, used to include a TransactionInterceptor only for methods that are transactional. 
+<p>Because the AOP framework caches advice calculations, this is normally faster than just letting the TransactionInterceptor run and find out itself that it has no work to do.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-attribute-source-editor/index.html">TransactionAttributeSourceEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAttributeSourceEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor that converts a String into a TransactionAttributeSource. The transaction attribute string must be parseable by the TransactionAttributeEditor in this package. 
+<p>Strings are in property syntax, with the form: <code>FQCN.methodName=&amp;lt;transaction attribute string&amp;gt;</code> </p>
+<p>For example: <code>com.mycompany.mycode.MyClass.myMethod=PROPAGATION_MANDATORY,ISOLATION_DEFAULT</code> </p>
+<p><strong>NOTE:</strong> The specified class must be the one where the methods are defined; in case of implementing an interface, the interface class name. </p>
+<p>Note: Will register all overloaded methods for a given name. Does not support explicit registration of certain overloaded methods. Supports "xxx*" mappings, e.g. "notify*" for "notify" and "notifyAll".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transactional-proxy.html">TransactionalProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TransactionalProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpringProxy</span></code>
+<p>A marker interface for manually created transactional proxies. 
+<p>TransactionAttributeSourcePointcut will ignore such existing transactional proxies during AOP auto-proxying and therefore avoid re-processing transaction metadata on them.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

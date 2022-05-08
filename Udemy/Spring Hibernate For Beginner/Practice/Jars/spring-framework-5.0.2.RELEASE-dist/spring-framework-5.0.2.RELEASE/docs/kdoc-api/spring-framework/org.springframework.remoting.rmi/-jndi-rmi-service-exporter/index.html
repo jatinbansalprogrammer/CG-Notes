@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JndiRmiServiceExporter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.rmi</a>&nbsp;/&nbsp;<a href=".">JndiRmiServiceExporter</a><br/>
+<br/>
+<h1>JndiRmiServiceExporter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiRmiServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RmiBasedExporter</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Service exporter which binds RMI services to JNDI. Typically used for RMI-IIOP (CORBA). 
+<p>Exports services via the javax.rmi.PortableRemoteObject class. You need to run "rmic" with the "-iiop" option to generate corresponding stubs and skeletons for each exported service. </p>
+<p>Also supports exposing any non-RMI service via RMI invokers, to be accessed via JndiRmiClientInterceptor / JndiRmiProxyFactoryBean's automatic detection of such invokers. </p>
+<p>With an RMI invoker, RMI communication works on the RmiInvocationHandler level, needing only one stub for any service. Service interfaces do not have to extend <code>java.rmi.Remote</code> or throw <code>java.rmi.RemoteException</code> on all methods, but in and out parameters have to be serializable. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" bean property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setService</a><a href="set-jndi-template.html">#setJndiTemplate</a><a href="set-jndi-environment.html">#setJndiEnvironment</a><a href="#">#setJndiName</a>JndiRmiClientInterceptorJndiRmiProxyFactoryBean<a href="#">javax.rmi.PortableRemoteObject#exportObject</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JndiRmiServiceExporter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Service exporter which binds RMI services to JNDI. Typically used for RMI-IIOP (CORBA). 
+<p>Exports services via the javax.rmi.PortableRemoteObject class. You need to run "rmic" with the "-iiop" option to generate corresponding stubs and skeletons for each exported service. </p>
+<p>Also supports exposing any non-RMI service via RMI invokers, to be accessed via JndiRmiClientInterceptor / JndiRmiProxyFactoryBean's automatic detection of such invokers. </p>
+<p>With an RMI invoker, RMI communication works on the RmiInvocationHandler level, needing only one stub for any service. Service interfaces do not have to extend <code>java.rmi.Remote</code> or throw <code>java.rmi.RemoteException</code> on all methods, but in and out parameters have to be serializable. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" bean property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Unbind the RMI service from JNDI on bean factory shutdown.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="prepare.html">prepare</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prepare</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize this service exporter, binding the specified service to JNDI.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rebind.html">rebind</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rebind</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Rebind the specified service to JNDI, for recovering in case of the target registry having been restarted.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-environment.html">setJndiEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiServiceExporter$setJndiEnvironment(java.util.Properties)/jndiEnvironment">jndiEnvironment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI environment to use for JNDI lookups. Creates a JndiTemplate with the given environment settings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-name.html">setJndiName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiServiceExporter$setJndiName(kotlin.String)/jndiName">jndiName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI name of the exported RMI service.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-template.html">setJndiTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiTemplate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiServiceExporter$setJndiTemplate(org.springframework.jndi.JndiTemplate)/jndiTemplate">jndiTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">JndiTemplate</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI template to use for JNDI lookups. You can also specify JNDI environment settings via "jndiEnvironment".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

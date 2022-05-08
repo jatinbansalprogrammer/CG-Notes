@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JdbcTestUtils.deleteFromTableWhere - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.jdbc</a>&nbsp;/&nbsp;<a href="index.html">JdbcTestUtils</a>&nbsp;/&nbsp;<a href=".">deleteFromTableWhere</a><br/>
+<br/>
+<h1>deleteFromTableWhere</h1>
+<a name="org.springframework.test.jdbc.JdbcTestUtils$deleteFromTableWhere(org.springframework.jdbc.core.JdbcTemplate, kotlin.String, kotlin.String, kotlin.Array((kotlin.Any)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">deleteFromTableWhere</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.jdbc.JdbcTestUtils$deleteFromTableWhere(org.springframework.jdbc.core.JdbcTemplate, kotlin.String, kotlin.String, kotlin.Array((kotlin.Any)))/jdbcTemplate">jdbcTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">JdbcTemplate</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.jdbc.JdbcTestUtils$deleteFromTableWhere(org.springframework.jdbc.core.JdbcTemplate, kotlin.String, kotlin.String, kotlin.Array((kotlin.Any)))/tableName">tableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.jdbc.JdbcTestUtils$deleteFromTableWhere(org.springframework.jdbc.core.JdbcTemplate, kotlin.String, kotlin.String, kotlin.Array((kotlin.Any)))/whereClause">whereClause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.jdbc.JdbcTestUtils$deleteFromTableWhere(org.springframework.jdbc.core.JdbcTemplate, kotlin.String, kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Delete rows from the given table, using the provided <code>WHERE</code> clause. 
+<p>If the provided <code>WHERE</code> clause contains text, it will be prefixed with <code>" WHERE "</code> and then appended to the generated <code>DELETE</code> statement. For example, if the provided table name is <code>"person"</code> and the provided where clause is <code>"name = 'Bob' and age &gt; 25"</code>, the resulting SQL statement to execute will be <code>"DELETE FROM person WHERE name = 'Bob' and age &gt; 25"</code>. </p>
+<p>As an alternative to hard-coded values, the <code>"?"</code> placeholder can be used within the <code>WHERE</code> clause, binding to the given arguments.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="jdbcTemplate"></a>
+<code>jdbcTemplate</code> - the JdbcTemplate with which to perform JDBC operations</p>
+<p><a name="tableName"></a>
+<code>tableName</code> - the name of the table to delete rows from</p>
+<p><a name="whereClause"></a>
+<code>whereClause</code> - the <code>WHERE</code> clause to append to the query</p>
+<p><a name="args"></a>
+<code>args</code> - arguments to bind to the query (leaving it to the PreparedStatement to guess the corresponding SQL type); may also contain SqlParameterValue objects which indicate not only the argument value but also the SQL type and optionally the scale.</p>
+<p><strong>Return</strong><br/>
+the number of rows deleted from the table</p>
+</BODY>
+</HTML>

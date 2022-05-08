@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FastByteArrayOutputStream - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.util</a>&nbsp;/&nbsp;<a href=".">FastByteArrayOutputStream</a><br/>
+<br/>
+<h1>FastByteArrayOutputStream</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FastByteArrayOutputStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OutputStream</span></code>
+<p>A speedy alternative to java.io.ByteArrayOutputStream. Note that this variant does <em>not</em> extend <code>ByteArrayOutputStream</code>, unlike its sibling ResizableByteArrayOutputStream. 
+<p>Unlike java.io.ByteArrayOutputStream, this implementation is backed by a java.util.LinkedList of <code>byte[]</code> instead of 1 constantly resizing <code>byte[]</code>. It does not copy buffers when it gets expanded. </p>
+<p>The initial buffer is only created when the stream is first written. There is also no copying of the internal buffer if its contents is extracted with the <code><a href="write-to.html">#writeTo(OutputStream)</a></code> method.</p>
+</p>
+<p><strong>Author</strong><br/>
+Craig Andrews</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="resize.html">#resize</a>ResizableByteArrayOutputStream</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FastByteArrayOutputStream</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>FastByteArrayOutputStream</code> with the default initial capacity of 256 bytes.</p>
+<code><span class="identifier">FastByteArrayOutputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.FastByteArrayOutputStream$<init>(kotlin.Int)/initialBlockSize">initialBlockSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>FastByteArrayOutputStream</code> with the specified initial capacity.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-input-stream.html">getInputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInputStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InputStream</span></code>
+<p>Get an InputStream to retrieve the data in this OutputStream. 
+<p>Note that if any methods are called on the OutputStream (including, but not limited to, any of the write methods, <code><a href="reset.html">#reset()</a></code>, <code><a href="to-byte-array.html">#toByteArray()</a></code>, and <code><a href="to-byte-array-unsafe.html">#toByteArrayUnsafe()</a></code>) then the java.io.InputStream's behavior is undefined.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset the contents of this <code>FastByteArrayOutputStream</code>. 
+<p>All currently accumulated output in the output stream is discarded. The output stream can be used again.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resize.html">resize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.FastByteArrayOutputStream$resize(kotlin.Int)/targetCapacity">targetCapacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Resize the internal buffer size to a specified capacity.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="size.html">size</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">size</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the number of bytes stored in this <code>FastByteArrayOutputStream</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-byte-array.html">toByteArray</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toByteArray</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a></code>
+<p>Creates a newly allocated byte array. 
+<p>Its size is the current size of this output stream and the valid contents of the buffer have been copied into it.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-byte-array-unsafe.html">toByteArrayUnsafe</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toByteArrayUnsafe</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a></code>
+<p>Convert the stream's data to a byte array and return the byte array. 
+<p>Also replaces the internal structures with the byte array to conserve memory: if the byte array is being made anyways, mind as well as use it. This approach also means that if this method is called twice without any writes in between, the second call is a no-op. </p>
+<p>This method is "unsafe" as it returns the internal buffer. Callers should not modify the returned buffer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Convert the buffer's contents into a string decoding bytes using the platform's default character set. The length of the new String is a function of the character set, and hence may not be equal to the size of the buffer. 
+<p>This method always replaces malformed-input and unmappable-character sequences with the default replacement string for the platform's default character set. The java.nio.charset.CharsetDecoder class should be used when more control over the decoding process is required.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.FastByteArrayOutputStream$write(kotlin.Int)/datum">datum</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.FastByteArrayOutputStream$write(kotlin.ByteArray, kotlin.Int, kotlin.Int)/data">data</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.FastByteArrayOutputStream$write(kotlin.ByteArray, kotlin.Int, kotlin.Int)/offset">offset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.FastByteArrayOutputStream$write(kotlin.ByteArray, kotlin.Int, kotlin.Int)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write-to.html">writeTo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writeTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.FastByteArrayOutputStream$writeTo(java.io.OutputStream)/out">out</span><span class="symbol">:</span>&nbsp;<span class="identifier">OutputStream</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Write the buffers content to the given OutputStream.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

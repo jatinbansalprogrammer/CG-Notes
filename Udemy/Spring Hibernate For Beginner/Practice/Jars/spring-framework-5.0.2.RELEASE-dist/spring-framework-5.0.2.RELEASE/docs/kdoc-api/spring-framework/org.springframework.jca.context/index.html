@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jca.context - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jca.context</a><br/>
+<br/>
+<h2>Package org.springframework.jca.context</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bootstrap-context-aware/index.html">BootstrapContextAware</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">BootstrapContextAware</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Aware</span></code>
+<p>Interface to be implemented by any object that wishes to be notified of the BootstrapContext (typically determined by the ResourceAdapterApplicationContext) that it runs in.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-adapter-application-context/index.html">ResourceAdapterApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceAdapterApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationContext</span></code>
+<p>org.springframework.context.ApplicationContext implementation for a JCA ResourceAdapter. Needs to be initialized with the JCA javax.resource.spi.BootstrapContext, passing it on to Spring-managed beans that implement BootstrapContextAware.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-context-resource-adapter/index.html">SpringContextResourceAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringContextResourceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceAdapter</span></code>
+<p>JCA 1.7 javax.resource.spi.ResourceAdapter implementation that loads a Spring org.springframework.context.ApplicationContext, starting and stopping Spring-managed beans as part of the ResourceAdapter's lifecycle. 
+<p>Ideal for application contexts that do not need any HTTP entry points but rather just consist of message endpoints and scheduled jobs etc. Beans in such a context may use application server resources such as the JTA transaction manager and JNDI-bound JDBC DataSources and JMS ConnectionFactory instances, and may also register with the platform's JMX server - all through Spring's standard transaction management and JNDI and JMX support facilities. </p>
+<p>If the need for scheduling asynchronous work arises, consider using Spring's org.springframework.jca.work.WorkManagerTaskExecutor as a standard bean definition, to be injected into application beans through dependency injection. This WorkManagerTaskExecutor will automatically use the JCA WorkManager from the BootstrapContext that has been provided to this ResourceAdapter. </p>
+<p>The JCA javax.resource.spi.BootstrapContext may also be accessed directly, through application components that implement the BootstrapContextAware interface. When deployed using this ResourceAdapter, the BootstrapContext is guaranteed to be passed on to such components. </p>
+<p>This ResourceAdapter is to be defined in a "META-INF/ra.xml" file within a Java EE ".rar" deployment unit like as follows: </p>
+<pre><code> &lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;connector xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd" version="1.5"&gt; &lt;vendor-name&gt;Spring Framework&lt;/vendor-name&gt; &lt;eis-type&gt;Spring Connector&lt;/eis-type&gt; &lt;resourceadapter-version&gt;1.0&lt;/resourceadapter-version&gt; &lt;resourceadapter&gt; &lt;resourceadapter-class&gt;org.springframework.jca.context.SpringContextResourceAdapter&lt;/resourceadapter-class&gt; &lt;config-property&gt; &lt;config-property-name&gt;ContextConfigLocation&lt;/config-property-name&gt; &lt;config-property-type&gt;java.lang.String&lt;/config-property-type&gt; &lt;config-property-value&gt;META-INF/applicationContext.xml&lt;/config-property-value&gt; &lt;/config-property&gt; &lt;/resourceadapter&gt; &lt;/connector&gt;</code></pre> Note that "META-INF/applicationContext.xml" is the default context config location, so it doesn't have to specified unless you intend to specify different/additional config files. So in the default case, you may remove the entire <code>config-property</code> section above. 
+<p><strong>For simple deployment needs, all you need to do is the following:</strong> Package all application classes into a RAR file (which is just a standard JAR file with a different file extension), add all required library jars into the root of the RAR archive, add a "META-INF/ra.xml" deployment descriptor as shown above as well as the corresponding Spring XML bean definition file(s) (typically "META-INF/applicationContext.xml"), and drop the resulting RAR file into your application server's deployment directory!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

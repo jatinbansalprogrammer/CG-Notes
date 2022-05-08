@@ -1,0 +1,180 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleNamingContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.mock.jndi</a>&nbsp;/&nbsp;<a href=".">SimpleNamingContext</a><br/>
+<br/>
+<h1>SimpleNamingContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleNamingContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Context</span></code>
+<p>Simple implementation of a JNDI naming context. Only supports binding plain Objects to String names. Mainly for test environments, but also usable for standalone applications. 
+<p>This class is not intended for direct usage by applications, although it can be used for example to override JndiTemplate's <code>createInitialContext</code> method in unit tests. Typically, SimpleNamingContextBuilder will be used to set up a JVM-level JNDI environment.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+SimpleNamingContextBuilder<a href="#">org.springframework.jndi.JndiTemplate#createInitialContext</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleNamingContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new naming context.</p>
+<code><span class="identifier">SimpleNamingContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$<init>(kotlin.String)/root">root</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new naming context with the given naming root.</p>
+<code><span class="identifier">SimpleNamingContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$<init>(kotlin.String, java.util.Hashtable((kotlin.String, kotlin.Any)), java.util.Hashtable((kotlin.String, kotlin.Any)))/root">root</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$<init>(kotlin.String, java.util.Hashtable((kotlin.String, kotlin.Any)), java.util.Hashtable((kotlin.String, kotlin.Any)))/boundObjects">boundObjects</span><span class="symbol">:</span>&nbsp;<span class="identifier">Hashtable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$<init>(kotlin.String, java.util.Hashtable((kotlin.String, kotlin.Any)), java.util.Hashtable((kotlin.String, kotlin.Any)))/env">env</span><span class="symbol">:</span>&nbsp;<span class="identifier">Hashtable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new naming context with the given naming root, the given name/object map, and the JNDI environment entries.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-to-environment.html">addToEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addToEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$addToEnvironment(kotlin.String, kotlin.Any)/propName">propName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$addToEnvironment(kotlin.String, kotlin.Any)/propVal">propVal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="bind.html">bind</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bind</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$bind(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$bind(kotlin.String, kotlin.Any)/obj">obj</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Bind the given object to the given name. Note: Not intended for direct use by applications if setting up a JVM-level JNDI environment. Use SimpleNamingContextBuilder to set up JNDI bindings then.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bind</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$bind(javax.naming.Name, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$bind(javax.naming.Name, kotlin.Any)/obj">obj</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="compose-name.html">composeName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">composeName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$composeName(kotlin.String, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$composeName(kotlin.String, kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">composeName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$composeName(javax.naming.Name, javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$composeName(javax.naming.Name, javax.naming.Name)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Name</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-subcontext.html">createSubcontext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSubcontext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$createSubcontext(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Context</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSubcontext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$createSubcontext(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Context</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy-subcontext.html">destroySubcontext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroySubcontext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$destroySubcontext(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroySubcontext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$destroySubcontext(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-environment.html">getEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEnvironment</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Hashtable</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-name-in-namespace.html">getNameInNamespace</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNameInNamespace</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-name-parser.html">getNameParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNameParser</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$getNameParser(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NameParser</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNameParser</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$getNameParser(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NameParser</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="list.html">list</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">list</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$list(kotlin.String)/root">root</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NamingEnumeration</span><span class="symbol">&lt;</span><span class="identifier">NameClassPair</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">list</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$list(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NamingEnumeration</span><span class="symbol">&lt;</span><span class="identifier">NameClassPair</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="list-bindings.html">listBindings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listBindings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$listBindings(kotlin.String)/root">root</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NamingEnumeration</span><span class="symbol">&lt;</span><span class="identifier">Binding</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">listBindings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$listBindings(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">NamingEnumeration</span><span class="symbol">&lt;</span><span class="identifier">Binding</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="lookup.html">lookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$lookup(kotlin.String)/lookupName">lookupName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Look up the object with the given name. 
+<p>Note: Not intended for direct use by applications. Will be used by any standard InitialContext JNDI lookups.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$lookup(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="lookup-link.html">lookupLink</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookupLink</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$lookupLink(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">lookupLink</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$lookupLink(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rebind.html">rebind</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rebind</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rebind(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rebind(kotlin.String, kotlin.Any)/obj">obj</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rebind</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rebind(javax.naming.Name, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rebind(javax.naming.Name, kotlin.Any)/obj">obj</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-from-environment.html">removeFromEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeFromEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$removeFromEnvironment(kotlin.String)/propName">propName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="rename.html">rename</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rename</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rename(kotlin.String, kotlin.String)/oldName">oldName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rename(kotlin.String, kotlin.String)/newName">newName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rename</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rename(javax.naming.Name, javax.naming.Name)/oldName">oldName</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$rename(javax.naming.Name, javax.naming.Name)/newName">newName</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unbind.html">unbind</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unbind</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$unbind(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unbind</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.jndi.SimpleNamingContext$unbind(javax.naming.Name)/name">name</span><span class="symbol">:</span>&nbsp;<span class="identifier">Name</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

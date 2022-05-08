@@ -1,0 +1,267 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.core - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.core</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.core</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-argument-prepared-statement-setter/index.html">ArgumentPreparedStatementSetter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ArgumentPreparedStatementSetter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PreparedStatementSetter</span><span class="symbol">, </span><span class="identifier">ParameterDisposer</span></code>
+<p>Simple adapter for PreparedStatementSetter that applies a given array of arguments.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-argument-type-prepared-statement-setter/index.html">ArgumentTypePreparedStatementSetter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ArgumentTypePreparedStatementSetter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PreparedStatementSetter</span><span class="symbol">, </span><span class="identifier">ParameterDisposer</span></code>
+<p>Simple adapter for PreparedStatementSetter that applies given arrays of arguments and JDBC argument types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-batch-update-utils/index.html">BatchUpdateUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BatchUpdateUtils</span></code>
+<p>Generic utility methods for working with JDBC batch statements. Mainly for internal use within the framework.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-property-row-mapper/index.html">BeanPropertyRowMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanPropertyRowMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RowMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>RowMapper implementation that converts a row into a new instance of the specified mapped target class. The mapped target class must be a top-level class and it must have a default or no-arg constructor. 
+<p>Column values are mapped based on matching the column name as obtained from result set metadata to public setters for the corresponding properties. The names are matched either directly or by transforming a name separating the parts with underscores to the same name using "camel" case. </p>
+<p>Mapping is provided for fields in the target class for many common types, e.g.: String, boolean, Boolean, byte, Byte, short, Short, int, Integer, long, Long, float, Float, double, Double, BigDecimal, <code>java.util.Date</code>, etc. </p>
+<p>To facilitate mapping between columns and fields that don't have matching names, try using column aliases in the SQL statement like "select fname as first_name from customer". </p>
+<p>For 'null' values read from the database, we will attempt to call the setter, but in the case of Java primitives, this causes a TypeMismatchException. This class can be configured (using the primitivesDefaultedForNullValue property) to trap this exception and use the primitives default value. Be aware that if you use the values from the generated bean to update the database the primitive value will have been set to the primitive's default value instead of null. </p>
+<p>Please note that this class is designed to provide convenience rather than high performance. For best performance, consider using a custom RowMapper implementation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-callable-statement-creator-factory/index.html">CallableStatementCreatorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallableStatementCreatorFactory</span></code>
+<p>Helper class that efficiently creates multiple CallableStatementCreator objects with different parameters based on a SQL statement and a single set of parameter declarations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-column-map-row-mapper/index.html">ColumnMapRowMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ColumnMapRowMapper</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RowMapper</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>RowMapper implementation that creates a <code>java.util.Map</code> for each row, representing all columns as key-value pairs: one entry for each column, with the column name as key. 
+<p>The Map implementation to use and the key to use for each column in the column Map can be customized through overriding <code><a href="#">#createColumnMap</a></code> and <code><a href="#">#getColumnKey</a></code>, respectively. </p>
+<p><strong>Note:</strong> By default, ColumnMapRowMapper will try to build a linked Map with case-insensitive keys, to preserve column order as well as allow any casing to be used for column names. This requires Commons Collections on the classpath (which will be autodetected). Else, the fallback is a standard linked HashMap, which will still preserve column order but requires the application to specify the column names in the same casing as exposed by the driver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-prepared-statement-creator-factory/index.html">PreparedStatementCreatorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PreparedStatementCreatorFactory</span></code>
+<p>Helper class that efficiently creates multiple PreparedStatementCreator objects with different parameters based on a SQL statement and a single set of parameter declarations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-result-set-supporting-sql-parameter/index.html">ResultSetSupportingSqlParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResultSetSupportingSqlParameter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameter</span></code>
+<p>Common base class for ResultSet-supporting SqlParameters like SqlOutParameter and SqlReturnResultSet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-row-count-callback-handler/index.html">RowCountCallbackHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RowCountCallbackHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RowCallbackHandler</span></code>
+<p>Implementation of RowCallbackHandler. Convenient superclass for callback handlers. An instance can only be used once. 
+<p>We can either use this on its own (for example, in a test case, to ensure that our result sets have valid dimensions), or use it as a superclass for callback handlers that actually do something, and will benefit from the dimension information it provides. </p>
+<p>A usage example with JdbcTemplate: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object RowCountCallbackHandler countCallback = new RowCountCallbackHandler(); // not reusable jdbcTemplate.query("select * from user", countCallback); int rowCount = countCallback.getRowCount();</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-row-mapper-result-set-extractor/index.html">RowMapperResultSetExtractor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RowMapperResultSetExtractor</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResultSetExtractor</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Adapter implementation of the ResultSetExtractor interface that delegates to a RowMapper which is supposed to create an object for each row. Each object is added to the results List of this ResultSetExtractor. 
+<p>Useful for the typical case of one object per row in the database table. The number of entries in the results list will match the number of rows. </p>
+<p>Note that a RowMapper object is typically stateless and thus reusable; just the RowMapperResultSetExtractor adapter is stateful. </p>
+<p>A usage example with JdbcTemplate: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object RowMapper rowMapper = new UserRowMapper(); // reusable object List allUsers = (List) jdbcTemplate.query( "select * from user", new RowMapperResultSetExtractor(rowMapper, 10)); User user = (User) jdbcTemplate.queryForObject( "select * from user where id=?", new Object[] {id}, new RowMapperResultSetExtractor(rowMapper, 1));</code></pre> 
+<p>Alternatively, consider subclassing MappingSqlQuery from the <code>jdbc.object</code> package: Instead of working with separate JdbcTemplate and RowMapper objects, you can have executable query objects (containing row-mapping logic) there.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-single-column-row-mapper/index.html">SingleColumnRowMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingleColumnRowMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RowMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>RowMapper implementation that converts a single column into a single result value per row. Expects to operate on a <code>java.sql.ResultSet</code> that just contains a single column. 
+<p>The type of the result value for each row can be specified. The value for the single column will be extracted from the <code>ResultSet</code> and converted into the specified target type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-in-out-parameter/index.html">SqlInOutParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlInOutParameter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-sql-out-parameter/index.html"><span class="identifier">SqlOutParameter</span></a></code>
+<p>Subclass of SqlOutParameter to represent an INOUT parameter. Will return <code>true</code> for SqlParameter's <code><a href="-sql-in-out-parameter/is-input-value-provided.html">#isInputValueProvided</a></code> test, in contrast to a standard SqlOutParameter. 
+<p>Output parameters - like all stored procedure parameters - must have names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-out-parameter/index.html">SqlOutParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlOutParameter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-result-set-supporting-sql-parameter/index.html"><span class="identifier">ResultSetSupportingSqlParameter</span></a></code>
+<p>Subclass of SqlParameter to represent an output parameter. No additional properties: instanceof will be used to check for such types. 
+<p>Output parameters - like all stored procedure parameters - must have names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-parameter-value/index.html">SqlParameterValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlParameterValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameter</span></code>
+<p>Object to represent a SQL parameter value, including parameter metadata such as the SQL type and the scale for numeric values. 
+<p>Designed for use with JdbcTemplate's operations that take an array of argument values: Each such argument value may be a <code>SqlParameterValue</code>, indicating the SQL type (and optionally the scale) instead of letting the template guess a default type. Note that this only applies to the operations with a 'plain' argument array, not to the overloaded variants with an explicit type array.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-provider/index.html">SqlProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SqlProvider</span></code>
+<p>Interface to be implemented by objects that can provide SQL strings. 
+<p>Typically implemented by PreparedStatementCreators, CallableStatementCreators and StatementCallbacks that want to expose the SQL they use to create their statements, to allow for better contextual information in case of exceptions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-return-update-count/index.html">SqlReturnUpdateCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlReturnUpdateCount</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameter</span></code>
+<p>Represents a returned update count from a stored procedure call. 
+<p>Returned update counts - like all stored procedure parameters - <strong>must</strong> have names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-row-set-result-set-extractor/index.html">SqlRowSetResultSetExtractor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlRowSetResultSetExtractor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResultSetExtractor</span><span class="symbol">&lt;</span><span class="identifier">SqlRowSet</span><span class="symbol">&gt;</span></code>
+<p>ResultSetExtractor implementation that returns a Spring SqlRowSet representation for each given ResultSet. 
+<p>The default implementation uses a standard JDBC CachedRowSet underneath.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-statement-creator-utils/index.html">StatementCreatorUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">StatementCreatorUtils</span></code>
+<p>Utility methods for PreparedStatementSetter/Creator and CallableStatementCreator implementations, providing sophisticated parameter management (including support for LOB values). 
+<p>Used by PreparedStatementCreatorFactory and CallableStatementCreatorFactory, but also available for direct use in custom setter/creator implementations.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="query.html">query</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">query</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((java.sql.ResultSet, org.springframework.jdbc.core.query.T)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((java.sql.ResultSet, org.springframework.jdbc.core.query.T)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((java.sql.ResultSet, org.springframework.jdbc.core.query.T)))/function">function</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ResultSet</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span><span class="symbol">?</span></code>
+<p>Extension for <a href="#">JdbcOperations.query</a> providing a ResultSetExtractor-like function
+variant: <code>query&lt;Foo&gt;("...", arg1, argN){ rs -&gt; }</code>.</p>
+<code><span class="keyword">fun </span><span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">query</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((java.sql.ResultSet, kotlin.Unit)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((java.sql.ResultSet, kotlin.Unit)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function1((java.sql.ResultSet, kotlin.Unit)))/function">function</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ResultSet</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Extension for <a href="#">JdbcOperations.query</a> providing a RowCallbackHandler-like function
+variant: <code>query("...", arg1, argN){ rs -&gt; }</code>.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">query</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function2((java.sql.ResultSet, kotlin.Int, org.springframework.jdbc.core.query.T)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function2((java.sql.ResultSet, kotlin.Int, org.springframework.jdbc.core.query.T)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$query(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function2((java.sql.ResultSet, kotlin.Int, org.springframework.jdbc.core.query.T)))/function">function</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ResultSet</span><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extensions for <a href="#">JdbcOperations.query</a> providing a RowMapper-like function variant:
+<code>query("...", arg1, argN){ rs, i -&gt; }</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-for-list.html">queryForList</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">queryForList</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$queryForList(org.springframework.jdbc.core.JdbcOperations, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">JdbcOperations.queryForList</a> providing a <code>queryForList&lt;Foo&gt;("...")</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">queryForList</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$queryForList(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.IntArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$queryForList(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.IntArray)/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$queryForList(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.IntArray)/argTypes">argTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">JdbcOperations.queryForList</a> providing a
+<code>queryForList&lt;Foo&gt;("...", arrayOf(arg1, argN), intArray(type1, typeN))</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">queryForList</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$queryForList(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$queryForList(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">JdbcOperations.queryForList</a> providing a
+<code>queryForList&lt;Foo&gt;("...", arrayOf(arg1, argN))</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="query-for-object.html">queryForObject</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">queryForObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span><span class="symbol">?</span></code>
+<p>Extension for <a href="#">JdbcOperations.queryForObject</a> providing a <code>queryForObject&lt;Foo&gt;("...")</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">queryForObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function2((java.sql.ResultSet, kotlin.Int, org.springframework.jdbc.core.queryForObject.T)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function2((java.sql.ResultSet, kotlin.Int, org.springframework.jdbc.core.queryForObject.T)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.Function2((java.sql.ResultSet, kotlin.Int, org.springframework.jdbc.core.queryForObject.T)))/function">function</span><span class="symbol">:</span>&nbsp;<span class="symbol">(</span><span class="identifier">ResultSet</span><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span><span class="symbol">?</span></code>
+<p>Extensions for <a href="#">JdbcOperations.queryForObject</a> providing a RowMapper-like function
+variant: <code>queryForObject("...", arg1, argN){ rs, i -&gt; }</code>.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">queryForObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.IntArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.IntArray)/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)), kotlin.IntArray)/argTypes">argTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span><span class="symbol">?</span></code>
+<p>Extension for <a href="#">JdbcOperations.queryForObject</a> providing a
+<code>queryForObject&lt;Foo&gt;("...", arrayOf(arg1, argN), intArray(type1, typeN))</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">JdbcOperations</span><span class="symbol">.</span><span class="identifier">queryForObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core$queryForObject(org.springframework.jdbc.core.JdbcOperations, kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span><span class="symbol">?</span></code>
+<p>Extension for <a href="#">JdbcOperations.queryForObject</a> providing a
+<code>queryForObject&lt;Foo&gt;("...", arrayOf(arg1, argN))</code> variant.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

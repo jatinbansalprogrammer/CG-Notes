@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>YamlMapFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">YamlMapFactoryBean</a><br/>
+<br/>
+<h1>YamlMapFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">YamlMapFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">YamlProcessor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Factory for a <code>Map</code> that reads from a YAML source, preserving the YAML-declared value types and their structure. 
+<p>YAML is a nice human-readable format for configuration, and it has some useful hierarchical properties. It's more or less a superset of JSON, so it has a lot of similar features. </p>
+<p>If multiple resources are provided the later ones will override entries in the earlier ones hierarchically; that is, all entries with the same nested key of type <code>Map</code> at any depth are merged. For example: </p>
+<pre><code> foo: bar: one: two three: four </code></pre> plus (later in the list) <pre><code> foo: bar: one: 2 five: six </code></pre> results in an effective input of <pre><code> foo: bar: one: 2 three: four five: six </code></pre> Note that the value of "foo" in the first document is not simply replaced with the value in the second, but its nested values are merged.</p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">YamlMapFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Factory for a <code>Map</code> that reads from a YAML source, preserving the YAML-declared value types and their structure. 
+<p>YAML is a nice human-readable format for configuration, and it has some useful hierarchical properties. It's more or less a superset of JSON, so it has a lot of similar features. </p>
+<p>If multiple resources are provided the later ones will override entries in the earlier ones hierarchically; that is, all entries with the same nested key of type <code>Map</code> at any depth are merged. For example: </p>
+<pre><code> foo: bar: one: two three: four </code></pre> plus (later in the list) <pre><code> foo: bar: one: 2 five: six </code></pre> results in an effective input of <pre><code> foo: bar: one: 2 three: four five: six </code></pre> Note that the value of "foo" in the first document is not simply replaced with the value in the second, but its nested values are merged.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-singleton.html">setSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSingleton</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.YamlMapFactoryBean$setSingleton(kotlin.Boolean)/singleton">singleton</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set if a singleton should be created, or a new object on each request otherwise. Default is <code>true</code> (a singleton).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

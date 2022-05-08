@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.reactive.function.client - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.reactive.function.client</a><br/>
+<br/>
+<h2>Package org.springframework.web.reactive.function.client</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-client-request/index.html">ClientRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ClientRequest</span></code>
+<p>Represents a typed, immutable, client-side HTTP request, as executed by the ExchangeFunction. Instances of this interface can be created via static builder methods. 
+<p>Note that applications are more likely to perform requests through WebClient rather than using this directly.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-exchange-filter-functions/index.html">ExchangeFilterFunctions</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExchangeFilterFunctions</span></code>
+<p>Implementations of ExchangeFilterFunction that provide various useful request filter operations, such as basic authentication, error handling, etc.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-exchange-functions/index.html">ExchangeFunctions</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExchangeFunctions</span></code>
+<p>Exposes request-response exchange functionality, such as to <a href="-exchange-functions/create.html">create</a> an <code>ExchangeFunction</code> given a <code>ClientHttpConnector</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-web-client-response-exception/index.html">WebClientResponseException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebClientResponseException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebClientException</span></code>
+<p>Exceptions that contain actual HTTP response data.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="body.html">body</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span> <span class="identifier">RequestBodySpec</span><span class="symbol">.</span><span class="identifier">body</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.client$body(org.springframework.web.reactive.function.client.WebClient.RequestBodySpec, org.springframework.web.reactive.function.client.body.S)/publisher">publisher</span><span class="symbol">:</span>&nbsp;<span class="identifier">S</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestHeadersSpec</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">WebClient.RequestBodySpec.body</a> providing a <code>body&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="body-to-flux.html">bodyToFlux</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ClientResponse</span><span class="symbol">.</span><span class="identifier">bodyToFlux</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html"><span class="identifier">Flux</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ClientResponse.bodyToFlux</a> providing a <code>bodyToFlux&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ResponseSpec</span><span class="symbol">.</span><span class="identifier">bodyToFlux</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html"><span class="identifier">Flux</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">WebClient.ResponseSpec.bodyToFlux</a> providing a <code>bodyToFlux&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="body-to-mono.html">bodyToMono</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ClientResponse</span><span class="symbol">.</span><span class="identifier">bodyToMono</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ClientResponse.bodyToMono</a> providing a <code>bodyToMono&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ResponseSpec</span><span class="symbol">.</span><span class="identifier">bodyToMono</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">WebClient.ResponseSpec.bodyToMono</a> providing a <code>bodyToMono&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-entity.html">toEntity</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ClientResponse</span><span class="symbol">.</span><span class="identifier">toEntity</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">ResponseEntity</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ClientResponse.toEntity</a> providing a <code>toEntity&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-entity-list.html">toEntityList</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ClientResponse</span><span class="symbol">.</span><span class="identifier">toEntityList</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">ResponseEntity</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-list/index.html"><span class="identifier">List</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ClientResponse.toEntityList</a> providing a <code>bodyToEntityList&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

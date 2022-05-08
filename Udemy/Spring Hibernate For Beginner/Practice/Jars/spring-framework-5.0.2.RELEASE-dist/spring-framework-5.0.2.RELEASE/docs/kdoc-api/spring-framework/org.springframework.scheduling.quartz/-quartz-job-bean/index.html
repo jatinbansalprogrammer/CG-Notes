@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>QuartzJobBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href=".">QuartzJobBean</a><br/>
+<br/>
+<h1>QuartzJobBean</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">QuartzJobBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Job</span></code>
+<p>Simple implementation of the Quartz Job interface, applying the passed-in JobDataMap and also the SchedulerContext as bean property values. This is appropriate because a new Job instance will be created for each execution. JobDataMap entries will override SchedulerContext entries with the same keys. 
+<p>For example, let's assume that the JobDataMap contains a key "myParam" with value "5": The Job implementation can then expose a bean property "myParam" of type int to receive such a value, i.e. a method "setMyParam(int)". This will also work for complex types like business objects etc. </p>
+<p><strong>Note that the preferred way to apply dependency injection to Job instances is via a JobFactory:</strong> that is, to specify SpringBeanJobFactory as Quartz JobFactory (typically via <code><a href="#">SchedulerFactoryBean#setJobFactory</a></code> SchedulerFactoryBean's "jobFactory" property}). This allows to implement dependency-injected Quartz Jobs without a dependency on Spring base classes.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+18.02.2004</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.quartz.JobExecutionContext#getMergedJobDataMap()</a><a href="#">org.quartz.Scheduler#getContext()</a><a href="#">SchedulerFactoryBean#setSchedulerContextAsMap</a>SpringBeanJobFactory<a href="#">SchedulerFactoryBean#setJobFactory</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">QuartzJobBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple implementation of the Quartz Job interface, applying the passed-in JobDataMap and also the SchedulerContext as bean property values. This is appropriate because a new Job instance will be created for each execution. JobDataMap entries will override SchedulerContext entries with the same keys. 
+<p>For example, let's assume that the JobDataMap contains a key "myParam" with value "5": The Job implementation can then expose a bean property "myParam" of type int to receive such a value, i.e. a method "setMyParam(int)". This will also work for complex types like business objects etc. </p>
+<p><strong>Note that the preferred way to apply dependency injection to Job instances is via a JobFactory:</strong> that is, to specify SpringBeanJobFactory as Quartz JobFactory (typically via <code><a href="#">SchedulerFactoryBean#setJobFactory</a></code> SchedulerFactoryBean's "jobFactory" property}). This allows to implement dependency-injected Quartz Jobs without a dependency on Spring base classes.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.QuartzJobBean$execute(org.quartz.JobExecutionContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">JobExecutionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation applies the passed-in job data map as bean property values, and delegates to <code>executeInternal</code> afterwards.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

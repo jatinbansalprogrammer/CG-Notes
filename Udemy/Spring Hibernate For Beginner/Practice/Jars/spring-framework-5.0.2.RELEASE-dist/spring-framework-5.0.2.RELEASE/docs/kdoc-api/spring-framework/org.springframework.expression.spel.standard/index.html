@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.expression.spel.standard - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.expression.spel.standard</a><br/>
+<br/>
+<h2>Package org.springframework.expression.spel.standard</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-spel-compiler/index.html">SpelCompiler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpelCompiler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Opcodes</span></code>
+<p>A SpelCompiler will take a regular parsed expression and create (and load) a class containing byte code that does the same thing as that expression. The compiled form of an expression will evaluate far faster than the interpreted form. 
+<p>The SpelCompiler is not currently handling all expression types but covers many of the common cases. The framework is extensible to cover more cases in the future. For absolute maximum speed there is *no checking* in the compiled code. The compiled version of the expression uses information learned during interpreted runs of the expression when it generates the byte code. For example if it knows that a particular property dereference always seems to return a Map then it will generate byte code that expects the result of the property dereference to be a Map. This ensures maximal performance but should the dereference result in something other than a map, the compiled expression will fail - like a ClassCastException would occur if passing data of an unexpected type in a regular Java program. </p>
+<p>Due to the lack of checking there are likely some expressions that should never be compiled, for example if an expression is continuously dealing with different types of data. Due to these cases the compiler is something that must be selectively turned on for an associated SpelExpressionParser (through the SpelParserConfiguration object), it is not on by default. </p>
+<p>Individual expressions can be compiled by calling <code>SpelCompiler.compile(expression)</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spel-expression/index.html">SpelExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpelExpression</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Expression</span></code>
+<p>A <code>SpelExpression</code> represents a parsed (valid) expression that is ready to be evaluated in a specified context. An expression can be evaluated standalone or in a specified context. During expression evaluation the context may be asked to resolve references to types, beans, properties, and methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

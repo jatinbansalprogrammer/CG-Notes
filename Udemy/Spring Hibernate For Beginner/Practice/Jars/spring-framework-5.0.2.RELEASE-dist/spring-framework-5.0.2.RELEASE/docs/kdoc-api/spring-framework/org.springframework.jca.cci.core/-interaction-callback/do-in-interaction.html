@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>InteractionCallback.doInInteraction - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.cci.core</a>&nbsp;/&nbsp;<a href="index.html">InteractionCallback</a>&nbsp;/&nbsp;<a href=".">doInInteraction</a><br/>
+<br/>
+<h1>doInInteraction</h1>
+<a name="org.springframework.jca.cci.core.InteractionCallback$doInInteraction(javax.resource.cci.Interaction, javax.resource.cci.ConnectionFactory)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">doInInteraction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.cci.core.InteractionCallback$doInInteraction(javax.resource.cci.Interaction, javax.resource.cci.ConnectionFactory)/interaction">interaction</span><span class="symbol">:</span>&nbsp;<span class="identifier">Interaction</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.cci.core.InteractionCallback$doInInteraction(javax.resource.cci.Interaction, javax.resource.cci.ConnectionFactory)/connectionFactory">connectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Gets called by <code>CciTemplate.execute</code> with an active CCI Interaction. Does not need to care about activating or closing the Interaction, or handling transactions. 
+<p>If called without a thread-bound CCI transaction (initiated by CciLocalTransactionManager), the code will simply get executed on the CCI Interaction with its transactional semantics. If CciTemplate is configured to use a JTA-aware ConnectionFactory, the CCI Interaction and thus the callback code will be transactional if a JTA transaction is active. </p>
+<p>Allows for returning a result object created within the callback, i.e. a domain object or a collection of domain objects. Note that there's special support for single step actions: see the <code>CciTemplate.execute</code> variants. A thrown RuntimeException is treated as application exception: it gets propagated to the caller of the template.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="interaction"></a>
+<code>interaction</code> - active CCI Interaction</p>
+<p><a name="connectionFactory"></a>
+<code>connectionFactory</code> - the CCI ConnectionFactory that the Connection was created with (gives access to RecordFactory and ResourceAdapterMetaData)</p>
+<h3>Exceptions</h3>
+<p><a name="ResourceException"></a>
+<code>ResourceException</code> - if thrown by a CCI method, to be auto-converted to a DataAccessException</p>
+<p><a name="SQLException"></a>
+<code>SQLException</code> - if thrown by a ResultSet method, to be auto-converted to a DataAccessException</p>
+<p><a name="DataAccessException"></a>
+<code>DataAccessException</code> - in case of custom exceptions</p>
+<p><strong>Return</strong><br/>
+a result object, or <code>null</code> if none</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.resource.cci.ConnectionFactory#getRecordFactory()</a><a href="#">javax.resource.cci.ConnectionFactory#getMetaData()</a><a href="#">CciTemplate#execute(javax.resource.cci.InteractionSpec, RecordCreator, RecordExtractor)</a></p>
+</BODY>
+</HTML>

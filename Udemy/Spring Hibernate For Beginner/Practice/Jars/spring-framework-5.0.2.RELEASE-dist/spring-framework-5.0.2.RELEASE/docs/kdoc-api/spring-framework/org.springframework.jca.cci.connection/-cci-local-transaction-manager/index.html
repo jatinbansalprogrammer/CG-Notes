@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CciLocalTransactionManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.cci.connection</a>&nbsp;/&nbsp;<a href=".">CciLocalTransactionManager</a><br/>
+<br/>
+<h1>CciLocalTransactionManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CciLocalTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPlatformTransactionManager</span><span class="symbol">, </span><span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.transaction.PlatformTransactionManager implementation that manages local transactions for a single CCI ConnectionFactory. Binds a CCI Connection from the specified ConnectionFactory to the thread, potentially allowing for one thread-bound Connection per ConnectionFactory. 
+<p>Application code is required to retrieve the CCI Connection via <code><a href="#">ConnectionFactoryUtils#getConnection(ConnectionFactory)</a></code> instead of a standard Java EE-style <code><a href="#">ConnectionFactory#getConnection()</a></code> call. Spring classes such as org.springframework.jca.cci.core.CciTemplate use this strategy implicitly. If not used in combination with this transaction manager, the ConnectionFactoryUtils lookup strategy behaves exactly like the native DataSource lookup; it can thus be used in a portable fashion. </p>
+<p>Alternatively, you can allow application code to work with the standard Java EE lookup pattern <code><a href="#">ConnectionFactory#getConnection()</a></code>, for example for legacy code that is not aware of Spring at all. In that case, define a TransactionAwareConnectionFactoryProxy for your target ConnectionFactory, which will automatically participate in Spring-managed transactions.</p>
+</p>
+<p><strong>Author</strong><br/>
+Thierry Templier</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">ConnectionFactoryUtils#getConnection(javax.resource.cci.ConnectionFactory)</a><a href="#">ConnectionFactoryUtils#releaseConnection</a>TransactionAwareConnectionFactoryProxyorg.springframework.jca.cci.core.CciTemplate</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CciLocalTransactionManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new CciLocalTransactionManager instance. A ConnectionFactory has to be set to be able to use it.</p>
+<code><span class="identifier">CciLocalTransactionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.cci.connection.CciLocalTransactionManager$<init>(javax.resource.cci.ConnectionFactory)/connectionFactory">connectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span></code>
+<p>Create a new CciLocalTransactionManager instance.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection-factory.html">getConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnectionFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConnectionFactory</span></code>
+<p>Return the CCI ConnectionFactory that this instance manages local transactions for.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-factory.html">getResourceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourceFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-connection-factory.html">setConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.cci.connection.CciLocalTransactionManager$setConnectionFactory(javax.resource.cci.ConnectionFactory)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the CCI ConnectionFactory that this instance should manage local transactions for.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

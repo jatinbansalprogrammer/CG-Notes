@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jms.support.destination - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jms.support.destination</a><br/>
+<br/>
+<h2>Package org.springframework.jms.support.destination</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-factory-destination-resolver/index.html">BeanFactoryDestinationResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanFactoryDestinationResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DestinationResolver</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>DestinationResolver implementation based on a Spring BeanFactory. 
+<p>Will lookup Spring managed beans identified by bean name, expecting them to be of type <code>javax.jms.Destination</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-caching-destination-resolver/index.html">CachingDestinationResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CachingDestinationResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DestinationResolver</span></code>
+<p>Extension of the DestinationResolver interface, exposing methods for clearing the cache.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-destination-resolver/index.html">JndiDestinationResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiDestinationResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorSupport</span><span class="symbol">, </span><a href="-caching-destination-resolver/index.html"><span class="identifier">CachingDestinationResolver</span></a></code>
+<p>DestinationResolver implementation which interprets destination names as JNDI locations (with a configurable fallback strategy). 
+<p>Allows for customizing the JNDI environment if necessary, for example specifying appropriate JNDI environment properties. </p>
+<p>Dynamic queues and topics get cached by destination name. As a consequence, you need to use unique destination names across both queues and topics. Caching can be turned off through the <code><a href="-jndi-destination-resolver/set-cache.html">"cache"</a></code> flag. </p>
+<p>Note that the fallback to resolution of dynamic destinations is turned <em>off</em> by default. Switch the <code><a href="-jndi-destination-resolver/set-fallback-to-dynamic-destination.html">"fallbackToDynamicDestination"</a></code> flag on to enable this functionality.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-destination-resolution-exception/index.html">DestinationResolutionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DestinationResolutionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmsException</span></code>
+<p>Thrown by a DestinationResolver when it cannot resolve a destination name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

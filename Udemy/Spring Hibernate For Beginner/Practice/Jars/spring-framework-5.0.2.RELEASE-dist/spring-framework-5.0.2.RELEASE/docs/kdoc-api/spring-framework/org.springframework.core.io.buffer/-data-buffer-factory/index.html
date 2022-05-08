@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DataBufferFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core.io.buffer</a>&nbsp;/&nbsp;<a href=".">DataBufferFactory</a><br/>
+<br/>
+<h1>DataBufferFactory</h1>
+<code><span class="keyword">interface </span><span class="identifier">DataBufferFactory</span></code>
+<p>A factory for DataBuffers, allowing for allocation and wrapping of data buffers.</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+DataBuffer</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="allocate-buffer.html">allocateBuffer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">allocateBuffer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataBuffer</span></code>
+<p>Allocate a data buffer of a default initial capacity. Depending on the underlying implementation and its configuration, this will be heap-based or direct buffer.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">allocateBuffer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.buffer.DataBufferFactory$allocateBuffer(kotlin.Int)/initialCapacity">initialCapacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataBuffer</span></code>
+<p>Allocate a data buffer of the given initial capacity. Depending on the underlying implementation and its configuration, this will be heap-based or direct buffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="wrap.html">wrap</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">wrap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.buffer.DataBufferFactory$wrap(java.nio.ByteBuffer)/byteBuffer">byteBuffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ByteBuffer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataBuffer</span></code>
+<p>Wrap the given ByteBuffer in a <code>DataBuffer</code>. Unlike <a href="allocate-buffer.html">allocating</a>, wrapping does not use new memory.</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">wrap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.buffer.DataBufferFactory$wrap(kotlin.ByteArray)/bytes">bytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataBuffer</span></code>
+<p>Wrap the given <code>byte</code> array in a <code>DataBuffer</code>. Unlike <a href="allocate-buffer.html">allocating</a>, wrapping does not use new memory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-default-data-buffer-factory/index.html">DefaultDataBufferFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultDataBufferFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataBufferFactory</span></code>
+<p>Default implementation of the <code>DataBufferFactory</code> interface. Allows for specification of the default initial capacity at construction time, as well as whether heap-based or direct buffers are to be preferred.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-netty-data-buffer-factory/index.html">NettyDataBufferFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NettyDataBufferFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataBufferFactory</span></code>
+<p>Implementation of the <code>DataBufferFactory</code> interface based on a Netty ByteBufAllocator.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

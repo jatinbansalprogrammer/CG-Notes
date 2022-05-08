@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MappingJackson2JsonView - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.json</a>&nbsp;/&nbsp;<a href=".">MappingJackson2JsonView</a><br/>
+<br/>
+<h1>MappingJackson2JsonView</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MappingJackson2JsonView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractJackson2View</span></code>
+<p>Spring MVC View that renders JSON content by serializing the model for the current request using <a href="#">Jackson 2's</a> ObjectMapper. 
+<p>By default, the entire contents of the model map (with the exception of framework-specific classes) will be encoded as JSON. If the model contains only one key, you can have it extracted encoded as JSON alone via <code><a href="set-extract-value-from-single-key-model.html">#setExtractValueFromSingleKeyModel</a></code>. </p>
+<p>The default constructor uses the default configuration provided by Jackson2ObjectMapperBuilder. </p>
+<p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.</p>
+</p>
+<p><strong>Author</strong><br/>
+Jeremy Grelle</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+3.1.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MappingJackson2JsonView</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Construct a new <code>MappingJackson2JsonView</code> using default configuration provided by Jackson2ObjectMapperBuilder and setting the content type to <code>application/json</code>.</p>
+<code><span class="identifier">MappingJackson2JsonView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.json.MappingJackson2JsonView$<init>(com.fasterxml.jackson.databind.ObjectMapper)/objectMapper">objectMapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">ObjectMapper</span><span class="symbol">)</span></code>
+<p>Construct a new <code>MappingJackson2JsonView</code> using the provided ObjectMapper and setting the content type to <code>application/json</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-n-t-e-n-t_-t-y-p-e.html">DEFAULT_CONTENT_TYPE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CONTENT_TYPE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default content type: "application/json". Overridable through <code><a href="#">#setContentType</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-j-s-o-n-p_-c-o-n-t-e-n-t_-t-y-p-e.html">DEFAULT_JSONP_CONTENT_TYPE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_JSONP_CONTENT_TYPE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default content type for JSONP: "application/javascript".</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-model-keys.html">getModelKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getModelKeys</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the attributes in the model that should be rendered by this view.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-extract-value-from-single-key-model.html">setExtractValueFromSingleKeyModel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExtractValueFromSingleKeyModel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.json.MappingJackson2JsonView$setExtractValueFromSingleKeyModel(kotlin.Boolean)/extractValueFromSingleKeyModel">extractValueFromSingleKeyModel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to serialize models containing a single attribute as a map or whether to extract the single value from the model and serialize it directly. 
+<p>The effect of setting this flag is similar to using <code>MappingJackson2HttpMessageConverter</code> with an <code>@ResponseBody</code> request-handling method. </p>
+<p>Default is <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-json-prefix.html">setJsonPrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJsonPrefix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.json.MappingJackson2JsonView$setJsonPrefix(kotlin.String)/jsonPrefix">jsonPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom prefix to use for this view's JSON output. Default is none.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jsonp-parameter-names.html">setJsonpParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJsonpParameterNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.json.MappingJackson2JsonView$setJsonpParameterNames(kotlin.collections.MutableSet((kotlin.String)))/jsonpParameterNames">jsonpParameterNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set JSONP request parameter names. Each time a request has one of those parameters, the resulting JSON will be wrapped into a function named as specified by the JSONP request parameter value. 
+<p>The parameter names configured by default are "jsonp" and "callback".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-model-key.html">setModelKey</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setModelKey</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.json.MappingJackson2JsonView$setModelKey(kotlin.String)/modelKey">modelKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-model-keys.html">setModelKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setModelKeys</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.json.MappingJackson2JsonView$setModelKeys(kotlin.collections.MutableSet((kotlin.String)))/modelKeys">modelKeys</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the attributes in the model that should be rendered by this view. When set, all other model attributes will be ignored.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-prefix-json.html">setPrefixJson</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPrefixJson</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.json.MappingJackson2JsonView$setPrefixJson(kotlin.Boolean)/prefixJson">prefixJson</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether the JSON output by this view should be prefixed with ")]}', ". Default is <code>false</code>. 
+<p>Prefixing the JSON string in this manner is used to help prevent JSON Hijacking. The prefix renders the string syntactically invalid as a script so that it cannot be hijacked. This prefix should be stripped before parsing the string as JSON.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

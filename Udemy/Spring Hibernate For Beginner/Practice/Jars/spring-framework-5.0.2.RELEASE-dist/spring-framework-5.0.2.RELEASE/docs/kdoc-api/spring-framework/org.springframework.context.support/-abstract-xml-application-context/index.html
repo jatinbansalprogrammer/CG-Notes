@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractXmlApplicationContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">AbstractXmlApplicationContext</a><br/>
+<br/>
+<h1>AbstractXmlApplicationContext</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRefreshableConfigApplicationContext</span></code>
+<p>Convenient base class for org.springframework.context.ApplicationContext implementations, drawing configuration from XML documents containing bean definitions understood by an org.springframework.beans.factory.xml.XmlBeanDefinitionReader. 
+<p>Subclasses just have to implement the <code><a href="#">#getConfigResources</a></code> and/or the <code><a href="#">#getConfigLocations</a></code> method. Furthermore, they might override the <code><a href="#">#getResourceByPath</a></code> hook to interpret relative paths in an environment-specific fashion, and/or <code><a href="#">#getResourcePatternResolver</a></code> for extended pattern resolution.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getConfigResources</a><a href="#">#getConfigLocations</a>org.springframework.beans.factory.xml.XmlBeanDefinitionReader</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractXmlApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new AbstractXmlApplicationContext with no parent.</p>
+<code><span class="identifier">AbstractXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.AbstractXmlApplicationContext$<init>(org.springframework.context.ApplicationContext)/parent">parent</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span></code>
+<p>Create a new AbstractXmlApplicationContext with the given parent context.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-validating.html">setValidating</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidating</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.AbstractXmlApplicationContext$setValidating(kotlin.Boolean)/validating">validating</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use XML validation. Default is <code>true</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-class-path-xml-application-context/index.html">ClassPathXmlApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ClassPathXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractXmlApplicationContext</span></code>
+<p>Standalone XML application context, taking the context definition files from the class path, interpreting plain paths as class path resource names that include the package path (e.g. "mypackage/myresource.txt"). Useful for test harnesses as well as for application contexts embedded within JARs. 
+<p>The config location defaults can be overridden via <code><a href="#">#getConfigLocations</a></code>, Config locations can either denote concrete files like "/myfiles/context.xml" or Ant-style patterns like "/myfiles/*-context.xml" (see the org.springframework.util.AntPathMatcher javadoc for pattern details). </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra XML file. </p>
+<p><strong>This is a simple, one-stop shop convenience ApplicationContext. Consider using the GenericApplicationContext class in combination with an org.springframework.beans.factory.xml.XmlBeanDefinitionReader for more flexible context setup.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-file-system-xml-application-context/index.html">FileSystemXmlApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileSystemXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractXmlApplicationContext</span></code>
+<p>Standalone XML application context, taking the context definition files from the file system or from URLs, interpreting plain paths as relative file system locations (e.g. "mydir/myfile.txt"). Useful for test harnesses as well as for standalone environments. 
+<p><strong>NOTE:</strong> Plain paths will always be interpreted as relative to the current VM working directory, even if they start with a slash. (This is consistent with the semantics in a Servlet container.) <strong>Use an explicit "file:" prefix to enforce an absolute file path.</strong> </p>
+<p>The config location defaults can be overridden via <code><a href="#">#getConfigLocations</a></code>, Config locations can either denote concrete files like "/myfiles/context.xml" or Ant-style patterns like "/myfiles/*-context.xml" (see the org.springframework.util.AntPathMatcher javadoc for pattern details). </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra XML file. </p>
+<p><strong>This is a simple, one-stop shop convenience ApplicationContext. Consider using the GenericApplicationContext class in combination with an org.springframework.beans.factory.xml.XmlBeanDefinitionReader for more flexible context setup.</strong></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

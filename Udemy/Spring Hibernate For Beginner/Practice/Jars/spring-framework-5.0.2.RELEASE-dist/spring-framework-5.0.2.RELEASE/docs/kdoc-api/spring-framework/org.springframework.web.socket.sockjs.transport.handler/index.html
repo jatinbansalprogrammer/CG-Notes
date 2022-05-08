@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.socket.sockjs.transport.handler - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.socket.sockjs.transport.handler</a><br/>
+<br/>
+<h2>Package org.springframework.web.socket.sockjs.transport.handler</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-http-receiving-transport-handler/index.html">AbstractHttpReceivingTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractHttpReceivingTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTransportHandler</span></code>
+<p>Base class for HTTP transport handlers that receive messages via HTTP POST.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-event-source-transport-handler/index.html">EventSourceTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EventSourceTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpSendingTransportHandler</span></code>
+<p>A TransportHandler for sending messages via Server-Sent events: <a href="#">http://dev.w3.org/html5/eventsource/</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-html-file-transport-handler/index.html">HtmlFileTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HtmlFileTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpSendingTransportHandler</span></code>
+<p>An HTTP TransportHandler that uses a famous browser document.domain technique: <a href="#"> http://stackoverflow.com/questions/1481251/what-does-document-domain-document-domain-do</a></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jsonp-polling-transport-handler/index.html">JsonpPollingTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JsonpPollingTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpSendingTransportHandler</span></code>
+<p>A TransportHandler that sends messages via JSONP polling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jsonp-receiving-transport-handler/index.html">JsonpReceivingTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JsonpReceivingTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-http-receiving-transport-handler/index.html"><span class="identifier">AbstractHttpReceivingTransportHandler</span></a></code>
+<p>A TransportHandler that receives messages over HTTP.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sock-js-web-socket-handler/index.html">SockJsWebSocketHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SockJsWebSocketHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.socket.handler/-text-web-socket-handler/index.html"><span class="identifier">TextWebSocketHandler</span></a><span class="symbol">, </span><span class="identifier">SubProtocolCapable</span></code>
+<p>An implementation of WebSocketHandler that adds SockJS messages frames, sends SockJS heartbeat messages, and delegates lifecycle events and messages to a target WebSocketHandler. 
+<p>Methods in this class allow exceptions from the wrapped WebSocketHandler to propagate. However, any exceptions resulting from SockJS message handling (e.g. while sending SockJS frames or heartbeat messages) are caught and treated as transport errors, i.e. routed to the <code><a href="#"> handleTransportError</a></code> method of the wrapped handler and the session closed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-transport-handler/index.html">WebSocketTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTransportHandler</span><span class="symbol">, </span><span class="identifier">SockJsSessionFactory</span><span class="symbol">, </span><span class="identifier">HandshakeHandler</span><span class="symbol">, </span><span class="identifier">Lifecycle</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>WebSocket-based TransportHandler. Uses SockJsWebSocketHandler and WebSocketServerSockJsSession to add SockJS processing. 
+<p>Also implements HandshakeHandler to support raw WebSocket communication at SockJS URL "/websocket".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xhr-polling-transport-handler/index.html">XhrPollingTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XhrPollingTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpSendingTransportHandler</span></code>
+<p>A TransportHandler based on XHR (long) polling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xhr-receiving-transport-handler/index.html">XhrReceivingTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XhrReceivingTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-http-receiving-transport-handler/index.html"><span class="identifier">AbstractHttpReceivingTransportHandler</span></a></code>
+<p>A TransportHandler that receives messages over HTTP.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xhr-streaming-transport-handler/index.html">XhrStreamingTransportHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XhrStreamingTransportHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpSendingTransportHandler</span></code>
+<p>A TransportHandler that sends messages over an HTTP streaming request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

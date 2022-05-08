@@ -1,0 +1,215 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MethodInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.aopalliance.intercept</a>&nbsp;/&nbsp;<a href=".">MethodInterceptor</a><br/>
+<br/>
+<h1>MethodInterceptor</h1>
+<code><span class="identifier">@FunctionalInterface</span> <span class="keyword">interface </span><span class="identifier">MethodInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Interceptor</span></code>
+<p>Intercepts calls on an interface on its way to the target. These are nested "on top" of the target. 
+<p>The user should implement the <code><a href="invoke.html">#invoke(MethodInvocation)</a></code> method to modify the original behavior. E.g. the following class implements a tracing interceptor (traces all the calls on the intercepted method(s)): </p>
+<pre><code> class TracingInterceptor implements MethodInterceptor { Object invoke(MethodInvocation i) throws Throwable { System.out.println("method "+i.getMethod()+" is called on "+ i.getThis()+" with args "+i.getArguments()); Object ret=i.proceed(); System.out.println("method "+i.getMethod()+" returns "+ret); return ret; } } </code></pre></p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="invoke.html">invoke</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="org.aopalliance.intercept.MethodInterceptor$invoke(org.aopalliance.intercept.MethodInvocation)/invocation">invocation</span><span class="symbol">:</span>&nbsp;<a href="../-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Implement this method to perform extra treatments before and after the invocation. Polite implementations would certainly like to invoke <code><a href="#">Joinpoint#proceed()</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.interceptor/-abstract-trace-interceptor/index.html">AbstractTraceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractTraceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Base <code>MethodInterceptor</code> implementation for tracing. 
+<p>By default, log messages are written to the log for the interceptor class, not the class which is being intercepted. Setting the <code>useDynamicLogger</code> bean property to <code>true</code> causes all log messages to be written to the <code>Log</code> for the target class being intercepted. </p>
+<p>Subclasses must implement the <code>invokeUnderTrace</code> method, which is invoked by this class ONLY when a particular invocation SHOULD be traced. Subclasses should write to the <code>Log</code> instance provided.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.framework.adapter/-after-returning-advice-interceptor/index.html">AfterReturningAdviceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AfterReturningAdviceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">AfterAdvice</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor to wrap an org.springframework.aop.AfterReturningAdvice. Used internally by the AOP framework; application developers should not need to use this class directly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.interceptor/-async-execution-interceptor/index.html">AsyncExecutionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncExecutionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.aop.interceptor/-async-execution-aspect-support/index.html"><span class="identifier">AsyncExecutionAspectSupport</span></a><span class="symbol">, </span><span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>AOP Alliance <code>MethodInterceptor</code> that processes method invocations asynchronously, using a given org.springframework.core.task.AsyncTaskExecutor. Typically used with the org.springframework.scheduling.annotation.Async annotation. 
+<p>In terms of target method signatures, any parameter types are supported. However, the return type is constrained to either <code>void</code> or <code>java.util.concurrent.Future</code>. In the latter case, the Future handle returned from the proxy will be an actual asynchronous Future that can be used to track the result of the asynchronous method execution. However, since the target method needs to implement the same signature, it will have to return a temporary Future handle that just passes the return value through (like Spring's org.springframework.scheduling.annotation.AsyncResult or EJB 3.1's <code>javax.ejb.AsyncResult</code>). </p>
+<p>When the return type is <code>java.util.concurrent.Future</code>, any exception thrown during the execution can be accessed and managed by the caller. With <code>void</code> return type however, such exceptions cannot be transmitted back. In that case an AsyncUncaughtExceptionHandler can be registered to process such exceptions. </p>
+<p>As of Spring 3.1.2 the <code>AnnotationAsyncExecutionInterceptor</code> subclass is preferred for use due to its support for executor qualification in conjunction with Spring's <code>@Async</code> annotation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.interceptor/-concurrency-throttle-interceptor/index.html">ConcurrencyThrottleInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConcurrencyThrottleInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConcurrencyThrottleSupport</span><span class="symbol">, </span><span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor that throttles concurrent access, blocking invocations if a specified concurrency limit is reached. 
+<p>Can be applied to methods of local services that involve heavy use of system resources, in a scenario where it is more efficient to throttle concurrency for a specific service rather than restricting the entire thread pool (e.g. the web container's thread pool). </p>
+<p>The default concurrency limit of this interceptor is 1. Specify the "concurrencyLimit" bean property to change this value.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.event/-event-publication-interceptor/index.html">EventPublicationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EventPublicationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">ApplicationEventPublisherAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>MethodInterceptor that publishes an <code>ApplicationEvent</code> to all <code>ApplicationListeners</code> registered with an <code>ApplicationEventPublisher</code> after each <em>successful</em> method invocation. 
+<p>Note that this interceptor is only capable of publishing <em>stateless</em> events configured via the <code><a href="#">"applicationEventClass"</a></code> property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.interceptor/-expose-invocation-interceptor/index.html">ExposeInvocationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExposeInvocationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor that exposes the current org.aopalliance.intercept.MethodInvocation as a thread-local object. We occasionally need to do this; for example, when a pointcut (e.g. an AspectJ expression pointcut) needs to know the full invocation context. 
+<p>Don't use this interceptor unless this is really necessary. Target objects should not normally know about Spring AOP, as this creates a dependency on Spring API. Target objects should be plain POJOs as far as possible. </p>
+<p>If used, this interceptor will normally be the first in the interceptor chain.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.remoting.caucho/-hessian-client-interceptor/index.html">HessianClientInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HessianClientInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlBasedRemoteAccessor</span><span class="symbol">, </span><span class="identifier">MethodInterceptor</span></code>
+<p>org.aopalliance.intercept.MethodInterceptor for accessing a Hessian service. Supports authentication via username and password. The service URL must be an HTTP URL exposing a Hessian service. 
+<p>Hessian is a slim, binary RPC protocol. For information on Hessian, see the <a href="#">Hessian website</a> <strong>Note: As of Spring 4.0, this client requires Hessian 4.0 or above.</strong> </p>
+<p>Note: There is no requirement for services accessed with this proxy factory to have been exported using Spring's HessianServiceExporter, as there is no special handling involved. As a consequence, you can also access services that have been exported using Caucho's com.caucho.hessian.server.HessianServlet.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.jms.remoting/-jms-invoker-client-interceptor/index.html">JmsInvokerClientInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsInvokerClientInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.aopalliance.intercept.MethodInterceptor for accessing a JMS-based remote service. 
+<p>Serializes remote invocation objects and deserializes remote invocation result objects. Uses Java serialization just like RMI, but with the JMS provider as communication infrastructure. </p>
+<p>To be configured with a javax.jms.QueueConnectionFactory and a target queue (either as javax.jms.Queue reference or as queue name). </p>
+<p>Thanks to James Strachan for the original prototype that this JMS invoker mechanism was inspired by!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.remoting.rmi/-jndi-rmi-client-interceptor/index.html">JndiRmiClientInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiRmiClientInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiObjectLocator</span><span class="symbol">, </span><span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.aopalliance.intercept.MethodInterceptor for accessing RMI services from JNDI. Typically used for RMI-IIOP but can also be used for EJB home objects (for example, a Stateful Session Bean home). In contrast to a plain JNDI lookup, this accessor also performs narrowing through PortableRemoteObject. 
+<p>With conventional RMI services, this invoker is typically used with the RMI service interface. Alternatively, this invoker can also proxy a remote RMI service with a matching non-RMI business interface, i.e. an interface that mirrors the RMI service methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the RMI stub will automatically get converted to Spring's unchecked RemoteAccessException. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.framework.adapter/-method-before-advice-interceptor/index.html">MethodBeforeAdviceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodBeforeAdviceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor to wrap am org.springframework.aop.MethodBeforeAdvice. Used internally by the AOP framework; application developers should not need to use this class directly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.validation.beanvalidation/-method-validation-interceptor/index.html">MethodValidationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodValidationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span></code>
+<p>An AOP Alliance MethodInterceptor implementation that delegates to a JSR-303 provider for performing method-level validation on annotated methods. 
+<p>Applicable methods have JSR-303 constraint annotations on their parameters and/or on their return value (in the latter case specified at the method level, typically as inline annotation). </p>
+<p>E.g.: <code>public @NotNull Object myValidMethod(@NotNull String arg1, @Max(10) int arg2)</code> </p>
+<p>Validation groups can be specified through Spring's Validated annotation at the type level of the containing target class, applying to all public service methods of that class. By default, JSR-303 will validate against its default group only. </p>
+<p>As of Spring 5.0, this functionality requires a Bean Validation 1.1 provider.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.orm.hibernate5.support/-open-session-interceptor/index.html">OpenSessionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenSessionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Simple AOP Alliance MethodInterceptor implementation that binds a new Hibernate Session for each method invocation, if none bound before. 
+<p>This is a simple Hibernate Session scoping interceptor along the lines of OpenSessionInViewInterceptor, just for use with AOP setup instead of MVC setup. It opens a new Session with flush mode "MANUAL" since the Session is only meant for reading, except when participating in a transaction.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.dao.support/-persistence-exception-translation-interceptor/index.html">PersistenceExceptionTranslationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PersistenceExceptionTranslationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>AOP Alliance MethodInterceptor that provides persistence exception translation based on a given PersistenceExceptionTranslator. 
+<p>Delegates to the given PersistenceExceptionTranslator to translate a RuntimeException thrown into Spring's DataAccessException hierarchy (if appropriate). If the RuntimeException in question is declared on the target method, it is always propagated as-is (with no translation applied).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.remoting.support/-remote-invocation-trace-interceptor/index.html">RemoteInvocationTraceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RemoteInvocationTraceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span></code>
+<p>AOP Alliance MethodInterceptor for tracing remote invocations. Automatically applied by RemoteExporter and its subclasses. 
+<p>Logs an incoming remote call as well as the finished processing of a remote call at DEBUG level. If the processing of a remote call results in a checked exception, the exception will get logged at INFO level; if it results in an unchecked exception (or error), the exception will get logged at WARN level. </p>
+<p>The logging of exceptions is particularly useful to save the stacktrace information on the server-side rather than just propagating the exception to the client (who might or might not log it properly).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.framework.adapter/-throws-advice-interceptor/index.html">ThrowsAdviceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThrowsAdviceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInterceptor</span><span class="symbol">, </span><span class="identifier">AfterAdvice</span></code>
+<p>Interceptor to wrap an after-throwing advice. 
+<p>The signatures on handler methods on the <code>ThrowsAdvice</code> implementation method argument must be of the form: <code>void afterThrowing([Method, args, target], ThrowableSubclass);</code> </p>
+<p>Only the last argument is required. </p>
+<p>Some examples of valid methods would be: </p>
+<pre><code>public void afterThrowing(Exception ex)</code></pre> <pre><code>public void afterThrowing(RemoteException)</code></pre> <pre><code>public void afterThrowing(Method method, Object[] args, Object target, Exception ex)</code></pre> <pre><code>public void afterThrowing(Method method, Object[] args, Object target, ServletException ex)</code></pre> 
+<p>This is a framework class that need not be used directly by Spring users.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringHandlerInstantiator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.converter.json</a>&nbsp;/&nbsp;<a href=".">SpringHandlerInstantiator</a><br/>
+<br/>
+<h1>SpringHandlerInstantiator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringHandlerInstantiator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerInstantiator</span></code>
+<p>Allows for creating Jackson (JsonSerializer, JsonDeserializer, KeyDeserializer, TypeResolverBuilder, TypeIdResolver) beans with autowiring against a Spring ApplicationContext. 
+<p>As of Spring 4.3, this overrides all factory methods in HandlerInstantiator, including non-abstract ones and recently introduced ones from Jackson 2.4 and 2.5: for ValueInstantiator, ObjectIdGenerator, ObjectIdResolver, PropertyNamingStrategy, Converter, VirtualBeanPropertyWriter.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1.3</p>
+<p><strong>See Also</strong><br/>
+<a href="#">Jackson2ObjectMapperBuilder#handlerInstantiator(HandlerInstantiator)</a><a href="#">ApplicationContext#getAutowireCapableBeanFactory()</a>HandlerInstantiator</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringHandlerInstantiator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$<init>(org.springframework.beans.factory.config.AutowireCapableBeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">AutowireCapableBeanFactory</span><span class="symbol">)</span></code>
+<p>Create a new SpringHandlerInstantiator for the given BeanFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="converter-instance.html">converterInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">converterInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$converterInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$converterInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$converterInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Converter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="deserializer-instance.html">deserializerInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">deserializerInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$deserializerInstance(com.fasterxml.jackson.databind.DeserializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeserializationConfig</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$deserializerInstance(com.fasterxml.jackson.databind.DeserializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$deserializerInstance(com.fasterxml.jackson.databind.DeserializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonDeserializer</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="key-deserializer-instance.html">keyDeserializerInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">keyDeserializerInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$keyDeserializerInstance(com.fasterxml.jackson.databind.DeserializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">DeserializationConfig</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$keyDeserializerInstance(com.fasterxml.jackson.databind.DeserializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$keyDeserializerInstance(com.fasterxml.jackson.databind.DeserializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">KeyDeserializer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="naming-strategy-instance.html">namingStrategyInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">namingStrategyInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$namingStrategyInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$namingStrategyInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$namingStrategyInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyNamingStrategy</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="object-id-generator-instance.html">objectIdGeneratorInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">objectIdGeneratorInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$objectIdGeneratorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$objectIdGeneratorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$objectIdGeneratorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObjectIdGenerator</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolver-id-generator-instance.html">resolverIdGeneratorInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolverIdGeneratorInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$resolverIdGeneratorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$resolverIdGeneratorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$resolverIdGeneratorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObjectIdResolver</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="serializer-instance.html">serializerInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">serializerInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$serializerInstance(com.fasterxml.jackson.databind.SerializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">SerializationConfig</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$serializerInstance(com.fasterxml.jackson.databind.SerializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$serializerInstance(com.fasterxml.jackson.databind.SerializationConfig, com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JsonSerializer</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="type-id-resolver-instance.html">typeIdResolverInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">typeIdResolverInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$typeIdResolverInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$typeIdResolverInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$typeIdResolverInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeIdResolver</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="type-resolver-builder-instance.html">typeResolverBuilderInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">typeResolverBuilderInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$typeResolverBuilderInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$typeResolverBuilderInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$typeResolverBuilderInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeResolverBuilder</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="value-instantiator-instance.html">valueInstantiatorInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">valueInstantiatorInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$valueInstantiatorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$valueInstantiatorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/annotated">annotated</span><span class="symbol">:</span>&nbsp;<span class="identifier">Annotated</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$valueInstantiatorInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), com.fasterxml.jackson.databind.introspect.Annotated, java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ValueInstantiator</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="virtual-property-writer-instance.html">virtualPropertyWriterInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">virtualPropertyWriterInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$virtualPropertyWriterInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), java.lang.Class((kotlin.Any)))/config">config</span><span class="symbol">:</span>&nbsp;<span class="identifier">MapperConfig</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.json.SpringHandlerInstantiator$virtualPropertyWriterInstance(com.fasterxml.jackson.databind.cfg.MapperConfig(()), java.lang.Class((kotlin.Any)))/implClass">implClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">VirtualBeanPropertyWriter</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

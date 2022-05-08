@@ -1,0 +1,189 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BindStatus - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.result.view</a>&nbsp;/&nbsp;<a href=".">BindStatus</a><br/>
+<br/>
+<h1>BindStatus</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BindStatus</span></code>
+<p>Simple adapter to expose the bind status of a field or object. Set as a variable by FreeMarker macros and other tag libraries. 
+<p>Obviously, object status representations (i.e. errors at the object level rather than the field level) do not have an expression and a value but only error codes and messages. For simplicity's sake and to be able to use the same tags and macros, the same status class is used for both scenarios.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">RequestContext#getBindStatus</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BindStatus</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.BindStatus$<init>(org.springframework.web.reactive.result.view.RequestContext, kotlin.String, kotlin.Boolean)/requestContext">requestContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">RequestContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.result.view.BindStatus$<init>(org.springframework.web.reactive.result.view.RequestContext, kotlin.String, kotlin.Boolean)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.result.view.BindStatus$<init>(org.springframework.web.reactive.result.view.RequestContext, kotlin.String, kotlin.Boolean)/htmlEscape">htmlEscape</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new BindStatus instance, representing a field or object status.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="find-editor.html">findEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">findEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.BindStatus$findEditor(java.lang.Class((kotlin.Any)))/valueClass">valueClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyEditor</span></code>
+<p>Find a PropertyEditor for the given value class, associated with the property that this bound status is currently bound to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-actual-value.html">getActualValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getActualValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the actual value of the field, i.e. the raw property value, or <code>null</code> if not available.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-display-value.html">getDisplayValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDisplayValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return a suitable display value for the field, i.e. the stringified value if not null, and an empty string in case of a null value. 
+<p>This value will be an HTML-escaped String if the original value was non-null: the <code>toString</code> result of the original value will get HTML-escaped.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-editor.html">getEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEditor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyEditor</span></code>
+<p>Return the PropertyEditor for the property that this bind status is currently bound to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-error-code.html">getErrorCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrorCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the first error codes for the field or object, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-error-codes.html">getErrorCodes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrorCodes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the error codes for the field or object, if any. Returns an empty array instead of null if none.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-error-message.html">getErrorMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrorMessage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the first error message for the field or object, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-error-messages.html">getErrorMessages</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrorMessages</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the resolved error messages for the field or object, if any. Returns an empty array instead of null if none.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-error-messages-as-string.html">getErrorMessagesAsString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrorMessagesAsString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.BindStatus$getErrorMessagesAsString(kotlin.String)/delimiter">delimiter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return an error message string, concatenating all messages separated by the given delimiter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-errors.html">getErrors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getErrors</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Errors</span></code>
+<p>Return the Errors instance (typically a BindingResult) that this bind status is currently associated with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-expression.html">getExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExpression</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return a bind expression that can be used in HTML forms as input name for the respective field, or <code>null</code> if not field-specific. 
+<p>Returns a bind path appropriate for resubmission, e.g. "address.street". Note that the complete bind path as required by the bind tag is "customer.address.street", if bound to a "customer" bean.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-path.html">getPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the bean and property path for which values and errors will be resolved (e.g. "customer.address.street").</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value.html">getValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the current value of the field, i.e. either the property value or a rejected update, or <code>null</code> if not field-specific. 
+<p>This value will be an HTML-escaped String if the original value already was a String.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value-type.html">getValueType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValueType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Get the '<code>Class</code>' type of the field. Favor this instead of '<code>getValue().getClass()</code>' since '<code>getValue()</code>' may return '<code>null</code>'.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-error.html">isError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isError</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return if this status represents a field or object error.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

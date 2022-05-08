@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleTaskWorkManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.work</a>&nbsp;/&nbsp;<a href=".">SimpleTaskWorkManager</a><br/>
+<br/>
+<h1>SimpleTaskWorkManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleTaskWorkManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WorkManager</span></code>
+<p>Simple JCA 1.7 javax.resource.spi.work.WorkManager implementation that delegates to a Spring org.springframework.core.task.TaskExecutor. Provides simple task execution including start timeouts, but without support for a JCA ExecutionContext (i.e. without support for imported transactions). 
+<p>Uses a org.springframework.core.task.SyncTaskExecutor for <code><a href="do-work.html">#doWork</a></code> calls and a org.springframework.core.task.SimpleAsyncTaskExecutor for <code><a href="start-work.html">#startWork</a></code> and <code><a href="schedule-work.html">#scheduleWork</a></code> calls, by default. These default task executors can be overridden through configuration. </p>
+<p><strong>NOTE: This WorkManager does not provide thread pooling by default!</strong> Specify a org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor (or any other thread-pooling TaskExecutor) as "asyncTaskExecutor" in order to achieve actual thread pooling. </p>
+<p>This WorkManager automatically detects a specified org.springframework.core.task.AsyncTaskExecutor implementation and uses its extended timeout functionality where appropriate. JCA WorkListeners are fully supported in any case.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+<a href="set-sync-task-executor.html">#setSyncTaskExecutor</a><a href="set-async-task-executor.html">#setAsyncTaskExecutor</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleTaskWorkManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple JCA 1.7 javax.resource.spi.work.WorkManager implementation that delegates to a Spring org.springframework.core.task.TaskExecutor. Provides simple task execution including start timeouts, but without support for a JCA ExecutionContext (i.e. without support for imported transactions). 
+<p>Uses a org.springframework.core.task.SyncTaskExecutor for <code><a href="do-work.html">#doWork</a></code> calls and a org.springframework.core.task.SimpleAsyncTaskExecutor for <code><a href="start-work.html">#startWork</a></code> and <code><a href="schedule-work.html">#scheduleWork</a></code> calls, by default. These default task executors can be overridden through configuration. </p>
+<p><strong>NOTE: This WorkManager does not provide thread pooling by default!</strong> Specify a org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor (or any other thread-pooling TaskExecutor) as "asyncTaskExecutor" in order to achieve actual thread pooling. </p>
+<p>This WorkManager automatically detects a specified org.springframework.core.task.AsyncTaskExecutor implementation and uses its extended timeout functionality where appropriate. JCA WorkListeners are fully supported in any case.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-work.html">doWork</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$doWork(javax.resource.spi.work.Work)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/startTimeout">startTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/executionContext">executionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExecutionContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule-work.html">scheduleWork</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$scheduleWork(javax.resource.spi.work.Work)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/startTimeout">startTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/executionContext">executionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExecutionContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-async-task-executor.html">setAsyncTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAsyncTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$setAsyncTaskExecutor(org.springframework.core.task.AsyncTaskExecutor)/asyncTaskExecutor">asyncTaskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncTaskExecutor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the TaskExecutor to use for <em>asynchronous</em> work execution (i.e. <code><a href="start-work.html">#startWork</a></code> and <code><a href="schedule-work.html">#scheduleWork</a></code> calls). 
+<p>This will typically (but not necessarily) be an org.springframework.core.task.AsyncTaskExecutor implementation. Default is a org.springframework.core.task.SimpleAsyncTaskExecutor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-sync-task-executor.html">setSyncTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSyncTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$setSyncTaskExecutor(org.springframework.core.task.TaskExecutor)/syncTaskExecutor">syncTaskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskExecutor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the TaskExecutor to use for <em>synchronous</em> work execution (i.e. <code><a href="do-work.html">#doWork</a></code> calls). 
+<p>Default is a org.springframework.core.task.SyncTaskExecutor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start-work.html">startWork</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">startWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$startWork(javax.resource.spi.work.Work)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">startWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/startTimeout">startTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/executionContext">executionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExecutionContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.SimpleTaskWorkManager$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleServletPostProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.handler</a>&nbsp;/&nbsp;<a href=".">SimpleServletPostProcessor</a><br/>
+<br/>
+<h1>SimpleServletPostProcessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleServletPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.config/-destruction-aware-bean-post-processor/index.html"><span class="identifier">DestructionAwareBeanPostProcessor</span></a><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><a href="../../org.springframework.web.context/-servlet-config-aware/index.html"><span class="identifier">ServletConfigAware</span></a></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor that applies initialization and destruction callbacks to beans that implement the javax.servlet.Servlet interface. 
+<p>After initialization of the bean instance, the Servlet <code>init</code> method will be called with a ServletConfig that contains the bean name of the Servlet and the ServletContext that it is running in. </p>
+<p>Before destruction of the bean instance, the Servlet <code>destroy</code> will be called. </p>
+<p><strong>Note that this post-processor does not support Servlet initialization parameters.</strong> Bean instances that implement the Servlet interface are supposed to be configured like any other Spring bean, that is, through constructor arguments or bean properties. </p>
+<p>For reuse of a Servlet implementation in a plain Servlet container and as a bean in a Spring context, consider deriving from Spring's org.springframework.web.servlet.HttpServletBean base class that applies Servlet initialization parameters as bean properties, supporting both the standard Servlet and the Spring bean initialization style. </p>
+<p><strong>Alternatively, consider wrapping a Servlet with Spring's org.springframework.web.servlet.mvc.ServletWrappingController.</strong> This is particularly appropriate for existing Servlet classes, allowing to specify Servlet initialization parameters etc.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1.5</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.servlet.Servlet#init(javax.servlet.ServletConfig)</a><a href="#">javax.servlet.Servlet#destroy()</a>SimpleServletHandlerAdapter</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleServletPostProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor that applies initialization and destruction callbacks to beans that implement the javax.servlet.Servlet interface. 
+<p>After initialization of the bean instance, the Servlet <code>init</code> method will be called with a ServletConfig that contains the bean name of the Servlet and the ServletContext that it is running in. </p>
+<p>Before destruction of the bean instance, the Servlet <code>destroy</code> will be called. </p>
+<p><strong>Note that this post-processor does not support Servlet initialization parameters.</strong> Bean instances that implement the Servlet interface are supposed to be configured like any other Spring bean, that is, through constructor arguments or bean properties. </p>
+<p>For reuse of a Servlet implementation in a plain Servlet container and as a bean in a Spring context, consider deriving from Spring's org.springframework.web.servlet.HttpServletBean base class that applies Servlet initialization parameters as bean properties, supporting both the standard Servlet and the Spring bean initialization style. </p>
+<p><strong>Alternatively, consider wrapping a Servlet with Spring's org.springframework.web.servlet.mvc.ServletWrappingController.</strong> This is particularly appropriate for existing Servlet classes, allowing to specify Servlet initialization parameters etc.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="post-process-after-initialization.html">postProcessAfterInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-destruction.html">postProcessBeforeDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-initialization.html">postProcessBeforeInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="requires-destruction.html">requiresDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$requiresDestruction(kotlin.Any)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-config.html">setServletConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletConfig</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$setServletConfig(javax.servlet.ServletConfig)/servletConfig">servletConfig</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletConfig</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-shared-servlet-config.html">setUseSharedServletConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseSharedServletConfig</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleServletPostProcessor$setUseSharedServletConfig(kotlin.Boolean)/useSharedServletConfig">useSharedServletConfig</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use the shared ServletConfig object passed in through <code>setServletConfig</code>, if available. 
+<p>Default is "true". Turn this setting to "false" to pass in a mock ServletConfig object with the bean name as servlet name, holding the current ServletContext.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

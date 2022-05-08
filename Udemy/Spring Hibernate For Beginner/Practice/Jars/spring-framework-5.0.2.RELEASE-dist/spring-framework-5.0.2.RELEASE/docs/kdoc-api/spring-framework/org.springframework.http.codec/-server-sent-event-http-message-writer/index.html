@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServerSentEventHttpMessageWriter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.codec</a>&nbsp;/&nbsp;<a href=".">ServerSentEventHttpMessageWriter</a><br/>
+<br/>
+<h1>ServerSentEventHttpMessageWriter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServerSentEventHttpMessageWriter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p><code>HttpMessageWriter</code> for <code>"text/event-stream"</code> responses.</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServerSentEventHttpMessageWriter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor without an <code>Encoder</code>. In this mode only <code>String</code> is supported for event data to be encoded.</p>
+<code><span class="identifier">ServerSentEventHttpMessageWriter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$<init>(org.springframework.core.codec.Encoder((kotlin.Any)))/encoder">encoder</span><span class="symbol">:</span>&nbsp;<span class="identifier">Encoder</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Constructor with JSON <code>Encoder</code> for encoding objects. Support for <code>String</code> event data is built-in.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="can-write.html">canWrite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canWrite</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$canWrite(org.springframework.core.ResolvableType, org.springframework.http.MediaType)/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$canWrite(org.springframework.core.ResolvableType, org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-encoder.html">getEncoder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEncoder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Encoder</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the configured <code>Encoder</code>, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-writable-media-types.html">getWritableMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWritableMediaTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MediaType</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/input">input</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReactiveHttpOutputMessage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/hints">hints</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/input">input</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/actualType">actualType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageWriter$write(org.reactivestreams.Publisher((kotlin.Any)), org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/hints">hints</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

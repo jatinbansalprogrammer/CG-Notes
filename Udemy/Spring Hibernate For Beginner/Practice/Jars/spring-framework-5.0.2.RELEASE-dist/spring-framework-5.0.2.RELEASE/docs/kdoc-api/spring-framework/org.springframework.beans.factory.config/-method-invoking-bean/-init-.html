@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MethodInvokingBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">MethodInvokingBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.config.MethodInvokingBean$&lt;init&gt;()"></a>
+<code><span class="identifier">MethodInvokingBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple method invoker bean: just invoking a target method, not expecting a result to expose to the container (in contrast to MethodInvokingFactoryBean). 
+<p>This invoker supports any kind of target method. A static method may be specified by setting the <code><a href="#">targetMethod</a></code> property to a String representing the static method name, with <code><a href="#">targetClass</a></code> specifying the Class that the static method is defined on. Alternatively, a target instance method may be specified, by setting the <code><a href="#">targetObject</a></code> property as the target object, and the <code><a href="#">targetMethod</a></code> property as the name of the method to call on that target object. Arguments for the method invocation may be specified by setting the <code><a href="#">arguments</a></code> property. </p>
+<p>This class depends on <code><a href="after-properties-set.html">#afterPropertiesSet()</a></code> being called once all properties have been set, as per the InitializingBean contract. </p>
+<p>An example (in an XML based bean factory definition) of a bean definition which uses this class to call a static initialization method: </p>
+<pre><code> &lt;bean id="myObject" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="staticMethod" value="com.whatever.MyClass.init"/&gt; &lt;/bean&gt;</code></pre> 
+<p>An example of calling an instance method to start some server bean: </p>
+<pre><code> &lt;bean id="myStarter" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="targetObject" ref="myServer"/&gt; &lt;property name="targetMethod" value="start"/&gt; &lt;/bean&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0.3</p>
+<p><strong>See Also</strong><br/>
+MethodInvokingFactoryBeanorg.springframework.util.MethodInvoker</p>
+</BODY>
+</HTML>

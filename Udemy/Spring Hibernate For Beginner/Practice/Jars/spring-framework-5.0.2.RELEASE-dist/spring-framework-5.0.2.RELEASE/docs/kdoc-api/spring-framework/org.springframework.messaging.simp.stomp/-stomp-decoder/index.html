@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StompDecoder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.simp.stomp</a>&nbsp;/&nbsp;<a href=".">StompDecoder</a><br/>
+<br/>
+<h1>StompDecoder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StompDecoder</span></code>
+<p>Decodes one or more STOMP frames contained in a ByteBuffer. 
+<p>An attempt is made to read all complete STOMP frames from the buffer, which could be zero, one, or more. If there is any left-over content, i.e. an incomplete STOMP frame, at the end the buffer is reset to point to the beginning of the partial content. The caller is then responsible for dealing with that incomplete content by buffering until there is more input available.</p>
+</p>
+<p><strong>Author</strong><br/>
+Andy Wilkinson</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">StompDecoder</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Decodes one or more STOMP frames contained in a ByteBuffer. 
+<p>An attempt is made to read all complete STOMP frames from the buffer, which could be zero, one, or more. If there is any left-over content, i.e. an incomplete STOMP frame, at the end the buffer is reset to point to the beginning of the partial content. The caller is then responsible for dealing with that incomplete content by buffering until there is more input available.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="decode.html">decode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">decode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.StompDecoder$decode(java.nio.ByteBuffer)/byteBuffer">byteBuffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ByteBuffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Decodes one or more STOMP frames from the given <code>ByteBuffer</code> into a list of Messages. If the input buffer contains partial STOMP frame content, or additional content with a partial STOMP frame, the buffer is reset and <code>null</code> is returned.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">decode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.StompDecoder$decode(java.nio.ByteBuffer, org.springframework.util.MultiValueMap((kotlin.String, )))/byteBuffer">byteBuffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ByteBuffer</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.simp.stomp.StompDecoder$decode(java.nio.ByteBuffer, org.springframework.util.MultiValueMap((kotlin.String, )))/partialMessageHeaders">partialMessageHeaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Decodes one or more STOMP frames from the given <code>buffer</code> and returns a list of Messages. 
+<p>If the given ByteBuffer contains only partial STOMP frame content and no complete STOMP frames, an empty list is returned, and the buffer is reset to to where it was. </p>
+<p>If the buffer contains one ore more STOMP frames, those are returned and the buffer reset to point to the beginning of the unused partial content. </p>
+<p>The output partialMessageHeaders map is used to store successfully parsed headers in case of partial content. The caller can then check if a "content-length" header was read, which helps to determine how much more content is needed before the next attempt to decode.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-header-initializer.html">getHeaderInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHeaderInitializer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageHeaderInitializer</span></code>
+<p>Return the configured <code>MessageHeaderInitializer</code>, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-header-initializer.html">setHeaderInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHeaderInitializer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.StompDecoder$setHeaderInitializer(org.springframework.messaging.support.MessageHeaderInitializer)/headerInitializer">headerInitializer</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaderInitializer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure a MessageHeaderInitializer to apply to the headers of Messages from decoded STOMP frames.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

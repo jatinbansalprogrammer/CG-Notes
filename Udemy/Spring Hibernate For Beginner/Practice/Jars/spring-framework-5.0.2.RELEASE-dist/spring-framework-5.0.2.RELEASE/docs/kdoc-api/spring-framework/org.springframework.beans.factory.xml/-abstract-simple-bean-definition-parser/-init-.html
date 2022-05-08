@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractSimpleBeanDefinitionParser.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.xml</a>&nbsp;/&nbsp;<a href="index.html">AbstractSimpleBeanDefinitionParser</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.xml.AbstractSimpleBeanDefinitionParser$&lt;init&gt;()"></a>
+<code><span class="identifier">AbstractSimpleBeanDefinitionParser</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient base class for when there exists a one-to-one mapping between attribute names on the element that is to be parsed and the property names on the Class being configured. 
+<p>Extend this parser class when you want to create a single bean definition from a relatively simple custom XML element. The resulting <code>BeanDefinition</code> will be automatically registered with the relevant org.springframework.beans.factory.support.BeanDefinitionRegistry. </p>
+<p>An example will hopefully make the use of this particular parser class immediately clear. Consider the following class definition: </p>
+<pre><code>public class SimpleCache implements Cache { public void setName(String name) {...} public void setTimeout(int timeout) {...} public void setEvictionPolicy(EvictionPolicy policy) {...} // remaining class definition elided for clarity... }</code></pre> 
+<p>Then let us assume the following XML tag has been defined to permit the easy configuration of instances of the above class; </p>
+<pre><code>&lt;caching:cache name="..." timeout="..." eviction-policy="..."/&gt;</code></pre> 
+<p>All that is required of the Java developer tasked with writing the parser to parse the above XML tag into an actual <code>SimpleCache</code> bean definition is the following: </p>
+<pre><code>public class SimpleCacheBeanDefinitionParser extends AbstractSimpleBeanDefinitionParser { protected Class getBeanClass(Element element) { return SimpleCache.class; } }</code></pre> 
+<p>Please note that the <code>AbstractSimpleBeanDefinitionParser</code> is limited to populating the created bean definition with property values. if you want to parse constructor arguments and nested elements from the supplied XML element, then you will have to implement the <code><a href="#">#postProcess(org.springframework.beans.factory.support.BeanDefinitionBuilder, org.w3c.dom.Element)</a></code> method and do such parsing yourself, or (more likely) subclass the AbstractSingleBeanDefinitionParser or AbstractBeanDefinitionParser classes directly. </p>
+<p>The process of actually registering the <code>SimpleCacheBeanDefinitionParser</code> with the Spring XML parsing infrastructure is described in the Spring Framework reference documentation (in one of the appendices). </p>
+<p>For an example of this parser in action (so to speak), do look at the source code for the org.springframework.beans.factory.xml.UtilNamespaceHandler.PropertiesBeanDefinitionParser; the observant (and even not so observant) reader will immediately notice that there is next to no code in the implementation. The <code>PropertiesBeanDefinitionParser</code> populates a org.springframework.beans.factory.config.PropertiesFactoryBean from an XML element that looks like this: </p>
+<pre><code>&lt;util:properties location="jdbc.properties"/&gt;</code></pre> 
+<p>The observant reader will notice that the sole attribute on the <code>&lt;util:properties/&gt;</code> element matches the <code><a href="#">org.springframework.beans.factory.config.PropertiesFactoryBean#setLocation(org.springframework.core.io.Resource)</a></code> method name on the <code>PropertiesFactoryBean</code> (the general usage thus illustrated holds true for any number of attributes). All that the <code>PropertiesBeanDefinitionParser</code> needs actually do is supply an implementation of the <code><a href="#">#getBeanClass(org.w3c.dom.Element)</a></code> method to return the <code>PropertiesFactoryBean</code> type.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Rick Evans</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">Conventions#attributeNameToPropertyName(String)</a></p>
+</BODY>
+</HTML>

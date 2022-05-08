@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AppCacheManifestTransformer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.resource</a>&nbsp;/&nbsp;<a href=".">AppCacheManifestTransformer</a><br/>
+<br/>
+<h1>AppCacheManifestTransformer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AppCacheManifestTransformer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceTransformerSupport</span></code>
+<p>A ResourceTransformer implementation that helps handling resources within HTML5 AppCache manifests for HTML5 offline applications. 
+<p>This transformer: </p>
+<ul> <li>modifies links to match the public URL paths that should be exposed to clients, using configured <code>ResourceResolver</code> strategies </li>
+<li>appends a comment in the manifest, containing a Hash (e.g. "# Hash: 9de0f09ed7caf84e885f1f0f11c7e326"), thus changing the content of the manifest in order to trigger an appcache reload in the browser. </li>
+</ul>
+ 
+<p>All files that have the ".appcache" file extension, or the extension given in the constructor, will be transformed by this class. This hash is computed using the content of the appcache manifest and the content of the linked resources; so changing a resource linked in the manifest or the manifest itself should invalidate the browser cache. </p>
+<p>In order to serve manifest files with the proper <code>"text/manifest"</code> content type, it is required to configure it with <code>contentNegotiationConfigurer.mediaType("appcache", MediaType.valueOf("text/manifest")</code> in a <code>WebMvcConfigurer</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+&lt;a href="https://html.spec.whatwg.org/multipage/browsers.html#offline"&gt;HTML5 offline applications spec&lt;/a&gt;</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AppCacheManifestTransformer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create an AppCacheResourceTransformer that transforms files with extension ".appcache".</p>
+<code><span class="identifier">AppCacheManifestTransformer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.resource.AppCacheManifestTransformer$<init>(kotlin.String)/fileExtension">fileExtension</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create an AppCacheResourceTransformer that transforms files with the extension given as a parameter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="transform.html">transform</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">transform</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.resource.AppCacheManifestTransformer$transform(javax.servlet.http.HttpServletRequest, org.springframework.core.io.Resource, org.springframework.web.servlet.resource.ResourceTransformerChain)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.resource.AppCacheManifestTransformer$transform(javax.servlet.http.HttpServletRequest, org.springframework.core.io.Resource, org.springframework.web.servlet.resource.ResourceTransformerChain)/resource">resource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.resource.AppCacheManifestTransformer$transform(javax.servlet.http.HttpServletRequest, org.springframework.core.io.Resource, org.springframework.web.servlet.resource.ResourceTransformerChain)/chain">chain</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceTransformerChain</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Resource</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

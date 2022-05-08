@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessageBrokerRegistry.setPathMatcher - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.simp.config</a>&nbsp;/&nbsp;<a href="index.html">MessageBrokerRegistry</a>&nbsp;/&nbsp;<a href=".">setPathMatcher</a><br/>
+<br/>
+<h1>setPathMatcher</h1>
+<a name="org.springframework.messaging.simp.config.MessageBrokerRegistry$setPathMatcher(org.springframework.util.PathMatcher)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPathMatcher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.config.MessageBrokerRegistry$setPathMatcher(org.springframework.util.PathMatcher)/pathMatcher">pathMatcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">PathMatcher</span><span class="symbol">)</span><span class="symbol">: </span><a href="index.html"><span class="identifier">MessageBrokerRegistry</span></a></code>
+<p>Configure the PathMatcher to use to match the destinations of incoming messages to <code>@MessageMapping</code> and <code>@SubscribeMapping</code> methods. 
+<p>By default org.springframework.util.AntPathMatcher is configured. However applications may provide an <code>AntPathMatcher</code> instance customized to use "." (commonly used in messaging) instead of "/" as path separator or provide a completely different PathMatcher implementation. </p>
+<p>Note that the configured PathMatcher is only used for matching the portion of the destination after the configured prefix. For example given application destination prefix "/app" and destination "/app/price.stock.**", the message might be mapped to a controller with "price" and "stock.**" as its type and method-level mappings respectively. </p>
+<p>When the simple broker is enabled, the PathMatcher configured here is also used to match message destinations when brokering messages.</p>
+</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry#setPathMatcher</a></p>
+</BODY>
+</HTML>

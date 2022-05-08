@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AdviceModeImportSelector - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">AdviceModeImportSelector</a><br/>
+<br/>
+<h1>AdviceModeImportSelector</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AdviceModeImportSelector</span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ImportSelector</span></code>
+<p>Convenient base class for ImportSelector implementations that select imports based on an AdviceMode value from an annotation (such as the <code>@Enable*</code> annotations).</p>
+<h3>Parameters</h3>
+<p><a name="&lt;A&gt;"></a>
+<code><A></code> - annotation containing <a href="#">AdviceMode attribute</a></p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AdviceModeImportSelector</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient base class for ImportSelector implementations that select imports based on an AdviceMode value from an annotation (such as the <code>@Enable*</code> annotations).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-a-d-v-i-c-e_-m-o-d-e_-a-t-t-r-i-b-u-t-e_-n-a-m-e.html">DEFAULT_ADVICE_MODE_ATTRIBUTE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ADVICE_MODE_ATTRIBUTE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="select-imports.html">selectImports</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">selectImports</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.AdviceModeImportSelector$selectImports(org.springframework.core.type.AnnotationMetadata)/importingClassMetadata">importingClassMetadata</span><span class="symbol">:</span>&nbsp;<span class="identifier">AnnotationMetadata</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>This implementation resolves the type of annotation from generic metadata and validates that (a) the annotation is in fact present on the importing <code>@Configuration</code> class and (b) that the given annotation has an <a href="#">advice mode attribute</a> of type AdviceMode. 
+<p>The <code><a href="#">#selectImports(AdviceMode)</a></code> method is then invoked, allowing the concrete implementation to choose imports in a safe and convenient fashion.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.cache.annotation/-caching-configuration-selector/index.html">CachingConfigurationSelector</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingConfigurationSelector</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AdviceModeImportSelector</span><span class="symbol">&lt;</span><span class="identifier">EnableCaching</span><span class="symbol">&gt;</span></code>
+<p>Selects which implementation of AbstractCachingConfiguration should be used based on the value of <code><a href="#">EnableCaching#mode</a></code> on the importing <code>@Configuration</code> class. 
+<p>Detects the presence of JSR-107 and enables JCache support accordingly.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Sql.scripts - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.jdbc</a>&nbsp;/&nbsp;<a href="index.html">Sql</a>&nbsp;/&nbsp;<a href=".">scripts</a><br/>
+<br/>
+<h1>scripts</h1>
+<a name="org.springframework.test.context.jdbc.Sql$scripts"></a>
+<code><span class="identifier">@AliasFor</span><span class="symbol">(</span>"value"<span class="symbol">)</span> <span class="keyword">val </span><span class="identifier">scripts</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>The paths to the SQL scripts to execute. 
+<p>This attribute may <strong>not</strong> be used in conjunction with <code><a href="#">#value</a></code>, but it may be used instead of <code><a href="#">#value</a></code>. Similarly, this attribute may be used in conjunction with or instead of <code><a href="#">#statements</a></code>. </p>
+Path Resource Semantics 
+<p>Each path will be interpreted as a Spring org.springframework.core.io.Resource. A plain path — for example, <code>"schema.sql"</code> — will be treated as a classpath resource that is <em>relative</em> to the package in which the test class is defined. A path starting with a slash will be treated as an <em>absolute</em> classpath resource, for example: <code>"/org/example/schema.sql"</code>. A path which references a URL (e.g., a path prefixed with <code><a href="#">classpath:</a></code>, <code><a href="#">file:</a></code>, <code>http:</code>, etc.) will be loaded using the specified resource protocol. </p>
+Default Script Detection 
+<p>If no SQL scripts or <code><a href="#">#statements</a></code> are specified, an attempt will be made to detect a <em>default</em> script depending on where this annotation is declared. If a default cannot be detected, an IllegalStateException will be thrown. </p>
+<ul> <li><strong>class-level declaration</strong>: if the annotated test class is <code>com.example.MyTest</code>, the corresponding default script is <code>"classpath:com/example/MyTest.sql"</code>.</li>
+ <li><strong>method-level declaration</strong>: if the annotated test method is named <code>testMethod()</code> and is defined in the class <code>com.example.MyTest</code>, the corresponding default script is <code>"classpath:com/example/MyTest.testMethod.sql"</code>.</li>
+ </ul>
+</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#value</a><a href="#">#statements</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HostRequestMatcher - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet.htmlunit</a>&nbsp;/&nbsp;<a href=".">HostRequestMatcher</a><br/>
+<br/>
+<h1>HostRequestMatcher</h1>
+<code><span class="keyword">class </span><span class="identifier">HostRequestMatcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebRequestMatcher</span></code>
+<p>A WebRequestMatcher that allows matching on the host and optionally the port of <code>WebRequest#getUrl()</code>. 
+<p>For example, the following would match any request to the host <code>"code.jquery.com"</code> without regard for the port. </p>
+<pre><code>WebRequestMatcher cdnMatcher = new HostMatcher("code.jquery.com");</code></pre> 
+<p>Multiple hosts can also be passed in. For example, the following would match any request to the host <code>"code.jquery.com"</code> or the host <code>"cdn.com"</code> without regard for the port. </p>
+<pre><code>WebRequestMatcher cdnMatcher = new HostMatcher("code.jquery.com", "cdn.com");</code></pre> 
+<p>Alternatively, one can also specify the port. For example, the following would match any request to the host <code>"code.jquery.com"</code> with the port of <code>80</code>. </p>
+<pre><code>WebRequestMatcher cdnMatcher = new HostMatcher("code.jquery.com:80");</code></pre> 
+<p>The above <code>cdnMatcher</code> would match <code>"http://code.jquery.com/jquery.js"</code> which has a default port of <code>80</code> and <code>"http://code.jquery.com:80/jquery.js"</code>. However, it would not match <code>"https://code.jquery.com/jquery.js"</code> which has a default port of <code>443</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+UrlRegexRequestMatcherorg.springframework.test.web.servlet.htmlunit.DelegatingWebConnection</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HostRequestMatcher</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.servlet.htmlunit.HostRequestMatcher$<init>(kotlin.Array((kotlin.String)))/hosts">hosts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>HostRequestMatcher</code> for the given hosts — for example: <code>"localhost"</code>, <code>"example.com:443"</code>, etc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="matches.html">matches</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.HostRequestMatcher$matches(com.gargoylesoftware.htmlunit.WebRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

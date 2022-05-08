@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BatchSqlUpdate - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.object</a>&nbsp;/&nbsp;<a href=".">BatchSqlUpdate</a><br/>
+<br/>
+<h1>BatchSqlUpdate</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BatchSqlUpdate</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlUpdate</span></code>
+<p>SqlUpdate subclass that performs batch update operations. Encapsulates queuing up records to be updated, and adds them as a single batch once <code>flush</code> is called or the given batch size has been met. 
+<p>Note that this class is a <strong>non-thread-safe object</strong>, in contrast to all other JDBC operations objects in this package. You need to create a new instance of it for each use, or call <code>reset</code> before reuse within the same thread.</p>
+</p>
+<p><strong>Author</strong><br/>
+Keith Donald</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="flush.html">#flush</a><a href="reset.html">#reset</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BatchSqlUpdate</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor to allow use as a JavaBean. DataSource and SQL must be supplied before compilation and use.</p>
+<code><span class="identifier">BatchSqlUpdate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String)/ds">ds</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Construct an update object with a given DataSource and SQL.</p>
+<code><span class="identifier">BatchSqlUpdate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray)/ds">ds</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray)/types">types</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a><span class="symbol">)</span></code>
+<p>Construct an update object with a given DataSource, SQL and anonymous parameters.</p>
+<code><span class="identifier">BatchSqlUpdate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, kotlin.Int)/ds">ds</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, kotlin.Int)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, kotlin.Int)/types">types</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, kotlin.Int)/batchSize">batchSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Construct an update object with a given DataSource, SQL, anonymous parameters and specifying the maximum number of rows that may be affected.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-b-a-t-c-h_-s-i-z-e.html">DEFAULT_BATCH_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">var </span><span class="identifier">DEFAULT_BATCH_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Default number of inserts to accumulate before commiting a batch (5000).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="flush.html">flush</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">flush</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code>
+<p>Trigger any queued update operations to be added as a final batch.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-execution-count.html">getExecutionCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExecutionCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the number of already executed statements.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-queue-count.html">getQueueCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getQueueCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the current number of statements or statement parameters in the queue.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-rows-affected.html">getRowsAffected</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRowsAffected</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code>
+<p>Return the number of affected rows for all already executed statements. Accumulates all of <code>flush</code>'s return values until <code>reset</code> is invoked.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset the statement parameter queue, the rows affected cache, and the execution count.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-batch-size.html">setBatchSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBatchSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$setBatchSize(kotlin.Int)/batchSize">batchSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the number of statements that will trigger an automatic intermediate flush. <code>update</code> calls or the given statement parameters will be queued until the batch size is met, at which point it will empty the queue and execute the batch. 
+<p>You can also flush already queued statements with an explicit <code>flush</code> call. Note that you need to this after queueing all parameters to guarantee that all statements have been flushed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-track-rows-affected.html">setTrackRowsAffected</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTrackRowsAffected</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$setTrackRowsAffected(kotlin.Boolean)/trackRowsAffected">trackRowsAffected</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to track the rows affected by batch updates performed by this operation object. 
+<p>Default is "true". Turn this off to save the memory needed for the list of row counts.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update.html">update</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">update</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.object.BatchSqlUpdate$update(kotlin.Array((kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Overridden version of <code>update</code> that adds the given statement parameters to the queue rather than executing them immediately. All other <code>update</code> methods of the SqlUpdate base class go through this method and will thus behave similarly. 
+<p>You need to call <code>flush</code> to actually execute the batch. If the specified batch size is reached, an implicit flush will happen; you still need to finally call <code>flush</code> to flush all statements.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

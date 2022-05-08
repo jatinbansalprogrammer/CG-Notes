@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReflectionTestUtils.getField - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.util</a>&nbsp;/&nbsp;<a href="index.html">ReflectionTestUtils</a>&nbsp;/&nbsp;<a href=".">getField</a><br/>
+<br/>
+<h1>getField</h1>
+<a name="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, kotlin.String)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, kotlin.String)/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the value of the Field with the given <code>name</code> from the provided <code>targetObject</code>. 
+<p>This method delegates to <code><a href="#">#getField(Object, Class, String)</a></code>, supplying <code>null</code> for the <code>targetClass</code> argument.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="targetObject"></a>
+<code>targetObject</code> - the target object from which to get the field; never <code>null</code></p>
+<p><a name="name"></a>
+<code>name</code> - the name of the field to get; never <code>null</code></p>
+<p><strong>Return</strong><br/>
+the field's current value</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getField(Class, String)</a></p>
+<a name="org.springframework.test.util.ReflectionTestUtils$getField(java.lang.Class((kotlin.Any)), kotlin.String)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(java.lang.Class((kotlin.Any)), kotlin.String)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(java.lang.Class((kotlin.Any)), kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the value of the static Field with the given <code>name</code> from the provided <code>targetClass</code>. 
+<p>This method delegates to <code><a href="#">#getField(Object, Class, String)</a></code>, supplying <code>null</code> for the <code>targetObject</code> argument.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="targetClass"></a>
+<code>targetClass</code> - the target class from which to get the static field; never <code>null</code></p>
+<p><a name="name"></a>
+<code>name</code> - the name of the field to get; never <code>null</code></p>
+<p><strong>Return</strong><br/>
+the field's current value</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getField(Object, String)</a></p>
+<a name="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getField</span><span class="symbol">(</span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String)/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the value of the Field with the given <code>name</code> from the provided <code>targetObject</code>/<code>targetClass</code>. 
+<p>If the supplied <code>targetObject</code> is a <em>proxy</em>, it will be <a href="#">unwrapped</a> allowing the field to be retrieved from the ultimate target of the proxy. </p>
+<p>This method traverses the class hierarchy in search of the desired field. In addition, an attempt will be made to make non-<code>public</code> fields <em>accessible</em>, thus allowing one to get <code>protected</code>, <code>private</code>, and <em>package-private</em> fields.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="targetObject"></a>
+<code>targetObject</code> - the target object from which to get the field; may be <code>null</code> if the field is static</p>
+<p><a name="targetClass"></a>
+<code>targetClass</code> - the target class from which to get the field; may be <code>null</code> if the field is an instance field</p>
+<p><a name="name"></a>
+<code>name</code> - the name of the field to get; never <code>null</code></p>
+<p><strong>Return</strong><br/>
+the field's current value</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getField(Object, String)</a><a href="#">#getField(Class, String)</a><a href="#">ReflectionUtils#findField(Class, String, Class)</a><a href="../../org.springframework.util/-reflection-utils/make-accessible.html">ReflectionUtils#makeAccessible(Field)</a><a href="#">ReflectionUtils#getField(Field, Object)</a><a href="#">AopTestUtils#getUltimateTargetObject(Object)</a></p>
+</BODY>
+</HTML>

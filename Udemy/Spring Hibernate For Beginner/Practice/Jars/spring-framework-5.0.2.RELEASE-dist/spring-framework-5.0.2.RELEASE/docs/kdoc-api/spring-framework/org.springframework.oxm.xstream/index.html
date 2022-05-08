@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.oxm.xstream - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.oxm.xstream</a><br/>
+<br/>
+<h2>Package org.springframework.oxm.xstream</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-catch-all-converter/index.html">CatchAllConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CatchAllConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Converter</span></code>
+<p>XStream Converter that supports all classes, but throws exceptions for (un)marshalling. 
+<p>The main purpose of this class is to <a href="#">register</a> this converter as a catch-all last converter with a <a href="#">normal</a> or higher priority, in addition to converters that explicitly handle the domain classes that should be supported. As a result, default XStream converters with lower priorities and possible security vulnerabilities do not get invoked. </p>
+<p>For instance: </p>
+<pre><code> XStreamMarshaller unmarshaller = new XStreamMarshaller(); unmarshaller.getXStream().registerConverter(new MyDomainClassConverter(), XStream.PRIORITY_VERY_HIGH); unmarshaller.getXStream().registerConverter(new CatchAllConverter(), XStream.PRIORITY_NORMAL); MyDomainClass myObject = unmarshaller.unmarshal(source); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-x-stream-marshaller/index.html">XStreamMarshaller</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XStreamMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.oxm.support/-abstract-marshaller/index.html"><span class="identifier">AbstractMarshaller</span></a><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of the <code>Marshaller</code> interface for XStream. 
+<p>By default, XStream does not require any further configuration and can (un)marshal any class on the classpath. As such, it is <strong>not recommended to use the <code>XStreamMarshaller</code> to unmarshal XML from external sources</strong> (i.e. the Web), as this can result in <strong>security vulnerabilities</strong>. If you do use the <code>XStreamMarshaller</code> to unmarshal external XML, set the <code><a href="#">supportedClasses</a></code> and <code><a href="#">converters</a></code> properties (possibly using a CatchAllConverter) or override the <code><a href="#">#customizeXStream(XStream)</a></code> method to make sure it only accepts the classes you want it to support. </p>
+<p>Due to XStream's API, it is required to set the encoding used for writing to OutputStreams. It defaults to <code>UTF-8</code>. </p>
+<p><strong>NOTE:</strong> XStream is an XML serialization library, not a data binding library. Therefore, it has limited namespace support. As such, it is rather unsuitable for usage within Web Services. </p>
+<p>This marshaller requires XStream 1.4.5 or higher, as of Spring 4.3. Note that XStream construction has been reworked in 4.0, with the stream driver and the class loader getting passed into XStream itself now.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestResultMatchers - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet.result</a>&nbsp;/&nbsp;<a href=".">RequestResultMatchers</a><br/>
+<br/>
+<h1>RequestResultMatchers</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestResultMatchers</span></code>
+<p>Factory for assertions on the request. 
+<p>An instance of this class is typically accessed via <code><a href="#">MockMvcResultMatchers#request</a></code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="async-not-started.html">asyncNotStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">asyncNotStarted</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert that asynchronous processing was not started.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="async-result.html">asyncResult</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncResult</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$asyncResult(org.hamcrest.Matcher((org.springframework.test.web.servlet.result.RequestResultMatchers.asyncResult.T)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the result from asynchronous processing with the given matcher. 
+<p>This method can be used when a controller method returns Callable or WebAsyncTask.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">asyncResult</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$asyncResult(kotlin.Any)/expectedResult">expectedResult</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the result from asynchronous processing. 
+<p>This method can be used when a controller method returns Callable or WebAsyncTask. The value matched is the value returned from the <code>Callable</code> or the exception raised.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="async-started.html">asyncStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">asyncStarted</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert whether asynchronous processing started, usually as a result of a controller method returning Callable or DeferredResult. 
+<p>The test will await the completion of a <code>Callable</code> so that <code><a href="#">#asyncResult(Matcher)</a></code> can be used to assert the resulting value. Neither a <code>Callable</code> nor a <code>DeferredResult</code> will complete processing all the way since a MockHttpServletRequest does not perform asynchronous dispatches.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="attribute.html">attribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">attribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$attribute(kotlin.String, org.hamcrest.Matcher((org.springframework.test.web.servlet.result.RequestResultMatchers.attribute.T)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$attribute(kotlin.String, org.hamcrest.Matcher((org.springframework.test.web.servlet.result.RequestResultMatchers.attribute.T)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert a request attribute value with the given Hamcrest Matcher.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">attribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$attribute(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$attribute(kotlin.String, kotlin.Any)/expectedValue">expectedValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert a request attribute value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="session-attribute.html">sessionAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">sessionAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$sessionAttribute(kotlin.String, org.hamcrest.Matcher((org.springframework.test.web.servlet.result.RequestResultMatchers.sessionAttribute.T)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$sessionAttribute(kotlin.String, org.hamcrest.Matcher((org.springframework.test.web.servlet.result.RequestResultMatchers.sessionAttribute.T)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert a session attribute value with the given Hamcrest Matcher.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">sessionAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$sessionAttribute(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.result.RequestResultMatchers$sessionAttribute(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert a session attribute value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

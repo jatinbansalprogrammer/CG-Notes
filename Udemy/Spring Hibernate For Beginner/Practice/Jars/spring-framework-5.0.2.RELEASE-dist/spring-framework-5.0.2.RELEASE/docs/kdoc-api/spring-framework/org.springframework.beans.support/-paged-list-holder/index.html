@@ -1,0 +1,277 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PagedListHolder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.support</a>&nbsp;/&nbsp;<a href=".">PagedListHolder</a><br/>
+<br/>
+<h1>PagedListHolder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PagedListHolder</span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>PagedListHolder is a simple state holder for handling lists of objects, separating them into pages. Page numbering starts with 0. 
+<p>This is mainly targetted at usage in web UIs. Typically, an instance will be instantiated with a list of beans, put into the session, and exported as model. The properties can all be set/get programmatically, but the most common way will be data binding, i.e. populating the bean from request parameters. The getters will mainly be used by the view. </p>
+<p>Supports sorting the underlying list via a SortDefinition implementation, available as property "sort". By default, a MutableSortDefinition instance will be used, toggling the ascending value on setting the same property again. </p>
+<p>The data binding names have to be called "pageSize" and "sort.ascending", as expected by BeanWrapper. Note that the names and the nesting syntax match the respective JSTL EL expressions, like "myModelAttr.pageSize" and "myModelAttr.sort.ascending".</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+19.05.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="get-page-list.html">#getPageList()</a>org.springframework.beans.support.MutableSortDefinition</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PagedListHolder</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new holder instance. You'll need to set a source list to be able to use the holder.</p>
+<code><span class="identifier">PagedListHolder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$<init>(kotlin.collections.MutableList((org.springframework.beans.support.PagedListHolder.E)))/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new holder instance with the given source list, starting with a default sort definition (with "toggleAscendingOnProperty" activated).</p>
+<code><span class="identifier">PagedListHolder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$<init>(kotlin.collections.MutableList((org.springframework.beans.support.PagedListHolder.E)), org.springframework.beans.support.SortDefinition)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$<init>(kotlin.collections.MutableList((org.springframework.beans.support.PagedListHolder.E)), org.springframework.beans.support.SortDefinition)/sort">sort</span><span class="symbol">:</span>&nbsp;<span class="identifier">SortDefinition</span><span class="symbol">)</span></code>
+<p>Create a new holder instance with the given source list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-l-i-n-k-e-d_-p-a-g-e-s.html">DEFAULT_MAX_LINKED_PAGES</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_LINKED_PAGES</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-p-a-g-e_-s-i-z-e.html">DEFAULT_PAGE_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_PAGE_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-first-element-on-page.html">getFirstElementOnPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFirstElementOnPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the element index of the first element on the current page. Element numbering starts with 0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-first-linked-page.html">getFirstLinkedPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFirstLinkedPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the first page to which create a link around the current page.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-last-element-on-page.html">getLastElementOnPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLastElementOnPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the element index of the last element on the current page. Element numbering starts with 0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-last-linked-page.html">getLastLinkedPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLastLinkedPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the last page to which create a link around the current page.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-max-linked-pages.html">getMaxLinkedPages</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMaxLinkedPages</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the maximum number of page links to a few pages around the current one.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-nr-of-elements.html">getNrOfElements</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNrOfElements</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the total number of elements in the source list.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-page.html">getPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the current page number. Page numbering starts with 0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-page-count.html">getPageCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPageCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the number of pages for the current source list.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-page-list.html">getPageList</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPageList</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Return a sub-list representing the current page.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-page-size.html">getPageSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPageSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the current page size.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-refresh-date.html">getRefreshDate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRefreshDate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Date</span></code>
+<p>Return the last time the list has been fetched from the source provider.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-sort.html">getSort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SortDefinition</span></code>
+<p>Return the sort definition for this holder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-source.html">getSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSource</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Return the source list for this holder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-first-page.html">isFirstPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFirstPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return if the current page is the first one.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-last-page.html">isLastPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isLastPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return if the current page is the last one.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="next-page.html">nextPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">nextPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Switch to next page. Will stay on last page if already on last page.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="previous-page.html">previousPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">previousPage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Switch to previous page. Will stay on first page if already on first page.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resort.html">resort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Resort the list if necessary, i.e. if the current <code>sort</code> instance isn't equal to the backed-up <code>sortUsed</code> instance. 
+<p>Calls <code>doSort</code> to trigger actual sorting.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-linked-pages.html">setMaxLinkedPages</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMaxLinkedPages</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$setMaxLinkedPages(kotlin.Int)/maxLinkedPages">maxLinkedPages</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the maximum number of page links to a few pages around the current one.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-page.html">setPage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$setPage(kotlin.Int)/page">page</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the current page number. Page numbering starts with 0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-page-size.html">setPageSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPageSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$setPageSize(kotlin.Int)/pageSize">pageSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the current page size. Resets the current page number if changed. 
+<p>Default value is 10.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-sort.html">setSort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$setSort(org.springframework.beans.support.SortDefinition)/sort">sort</span><span class="symbol">:</span>&nbsp;<span class="identifier">SortDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the sort definition for this holder. Typically an instance of MutableSortDefinition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-source.html">setSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.PagedListHolder$setSource(kotlin.collections.MutableList((org.springframework.beans.support.PagedListHolder.E)))/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the source list for this holder.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

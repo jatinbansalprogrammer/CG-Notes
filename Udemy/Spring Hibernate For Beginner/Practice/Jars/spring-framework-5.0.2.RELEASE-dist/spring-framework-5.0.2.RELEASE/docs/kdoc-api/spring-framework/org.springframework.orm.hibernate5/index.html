@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.orm.hibernate5 - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.orm.hibernate5</a><br/>
+<br/>
+<h2>Package org.springframework.orm.hibernate5</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-hibernate-callback/index.html">HibernateCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HibernateCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Callback interface for Hibernate code. To be used with HibernateTemplate's execution methods, often as anonymous classes within a method implementation. A typical implementation will call <code>Session.load/find/update</code> to perform some operations on persistent objects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hibernate-transaction-manager/index.html">HibernateTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPlatformTransactionManager</span><span class="symbol">, </span><span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.transaction.PlatformTransactionManager implementation for a single Hibernate SessionFactory. Binds a Hibernate Session from the specified factory to the thread, potentially allowing for one thread-bound Session per factory. <code>SessionFactory.getCurrentSession()</code> is required for Hibernate access code that needs to support this transaction handling mechanism, with the SessionFactory being configured with SpringSessionContext. 
+<p>Supports custom isolation levels, and timeouts that get applied as Hibernate transaction timeouts. </p>
+<p>This transaction manager is appropriate for applications that use a single Hibernate SessionFactory for transactional data access, but it also supports direct DataSource access within a transaction (i.e. plain JDBC code working with the same DataSource). This allows for mixing services which access Hibernate and services which use plain JDBC (without being aware of Hibernate)! Application code needs to stick to the same simple Connection lookup pattern as with org.springframework.jdbc.datasource.DataSourceTransactionManager (i.e. <code><a href="#">org.springframework.jdbc.datasource.DataSourceUtils#getConnection</a></code> or going through a org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy). </p>
+<p>Note: To be able to register a DataSource's Connection for plain JDBC code, this instance needs to be aware of the DataSource (<code><a href="-hibernate-transaction-manager/set-data-source.html">#setDataSource</a></code>). The given DataSource should obviously match the one used by the given SessionFactory. </p>
+<p>JTA (usually through org.springframework.transaction.jta.JtaTransactionManager) is necessary for accessing multiple transactional resources within the same transaction. The DataSource that Hibernate uses needs to be JTA-enabled in such a scenario (see container setup). </p>
+<p>This transaction manager supports nested transactions via JDBC 3.0 Savepoints. The <code><a href="#">#setNestedTransactionAllowed</a></code> "nestedTransactionAllowed"} flag defaults to "false", though, as nested transactions will just apply to the JDBC Connection, not to the Hibernate Session and its cached entity objects and related context. You can manually set the flag to "true" if you want to use nested transactions for JDBC access code which participates in Hibernate transactions (provided that your JDBC driver supports Savepoints). <em>Note that Hibernate itself does not support nested transactions! Hence, do not expect Hibernate access code to semantically participate in a nested transaction.</em></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-session-factory-builder/index.html">LocalSessionFactoryBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalSessionFactoryBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Configuration</span></code>
+<p>A Spring-provided extension of the standard Hibernate Configuration class, adding SpringSessionContext as a default and providing convenient ways to specify a DataSource and an application class loader. 
+<p>This is designed for programmatic use, e.g. in <code>@Bean</code> factory methods. Consider using LocalSessionFactoryBean for XML bean definition files. </p>
+<p>Compatible with Hibernate 5.0/5.1 as well as 5.2, as of Spring 4.3.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-holder/index.html">SessionHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionHolder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceHolderSupport</span></code>
+<p>Session holder, wrapping a Hibernate Session and a Hibernate Transaction. HibernateTransactionManager binds instances of this class to the thread, for a given SessionFactory. 
+<p>Note: This is an SPI class, not intended to be used by applications.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-flush-synchronization/index.html">SpringFlushSynchronization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringFlushSynchronization</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronizationAdapter</span></code>
+<p>Simple synchronization adapter that propagates a <code>flush()</code> call to the underlying Hibernate Session. Used in combination with JTA.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-jta-session-context/index.html">SpringJtaSessionContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringJtaSessionContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JTASessionContext</span></code>
+<p>Spring-specific subclass of Hibernate's JTASessionContext, setting <code>FlushMode.MANUAL</code> for read-only transactions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-session-context/index.html">SpringSessionContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringSessionContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CurrentSessionContext</span></code>
+<p>Implementation of Hibernate 3.1's CurrentSessionContext interface that delegates to Spring's SessionFactoryUtils for providing a Spring-managed current Session. 
+<p>This CurrentSessionContext implementation can also be specified in custom SessionFactory setup through the "hibernate.current_session_context_class" property, with the fully qualified name of this class as value.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-session-synchronization/index.html">SpringSessionSynchronization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringSessionSynchronization</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronization</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Callback for resource cleanup at the end of a Spring-managed transaction for a pre-bound Hibernate Session.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-hibernate-jdbc-exception/index.html">HibernateJdbcException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateJdbcException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UncategorizedDataAccessException</span></code>
+<p>Hibernate-specific subclass of UncategorizedDataAccessException, for JDBC exceptions that Hibernate wrapped.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hibernate-object-retrieval-failure-exception/index.html">HibernateObjectRetrievalFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateObjectRetrievalFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectRetrievalFailureException</span></code>
+<p>Hibernate-specific subclass of ObjectRetrievalFailureException. Converts Hibernate's UnresolvableObjectException and WrongClassException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hibernate-optimistic-locking-failure-exception/index.html">HibernateOptimisticLockingFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateOptimisticLockingFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectOptimisticLockingFailureException</span></code>
+<p>Hibernate-specific subclass of ObjectOptimisticLockingFailureException. Converts Hibernate's StaleObjectStateException, StaleStateException and OptimisticEntityLockException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hibernate-query-exception/index.html">HibernateQueryException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateQueryException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvalidDataAccessResourceUsageException</span></code>
+<p>Hibernate-specific subclass of InvalidDataAccessResourceUsageException, thrown on invalid HQL query syntax.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hibernate-system-exception/index.html">HibernateSystemException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateSystemException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UncategorizedDataAccessException</span></code>
+<p>Hibernate-specific subclass of UncategorizedDataAccessException, for Hibernate system errors that do not match any concrete <code>org.springframework.dao</code> exceptions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

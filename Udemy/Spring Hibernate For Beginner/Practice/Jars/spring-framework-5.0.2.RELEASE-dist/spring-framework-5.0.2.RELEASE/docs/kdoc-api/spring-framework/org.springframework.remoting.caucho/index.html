@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.remoting.caucho - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.remoting.caucho</a><br/>
+<br/>
+<h2>Package org.springframework.remoting.caucho</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-hessian-client-interceptor/index.html">HessianClientInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HessianClientInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlBasedRemoteAccessor</span><span class="symbol">, </span><a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a></code>
+<p>org.aopalliance.intercept.MethodInterceptor for accessing a Hessian service. Supports authentication via username and password. The service URL must be an HTTP URL exposing a Hessian service. 
+<p>Hessian is a slim, binary RPC protocol. For information on Hessian, see the <a href="#">Hessian website</a> <strong>Note: As of Spring 4.0, this client requires Hessian 4.0 or above.</strong> </p>
+<p>Note: There is no requirement for services accessed with this proxy factory to have been exported using Spring's HessianServiceExporter, as there is no special handling involved. As a consequence, you can also access services that have been exported using Caucho's com.caucho.hessian.server.HessianServlet.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hessian-exporter/index.html">HessianExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HessianExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RemoteExporter</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>General stream-based protocol exporter for a Hessian endpoint. 
+<p>Hessian is a slim, binary RPC protocol. For information on Hessian, see the <a href="#">Hessian website</a>. <strong>Note: As of Spring 4.0, this exporter requires Hessian 4.0 or above.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hessian-proxy-factory-bean/index.html">HessianProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HessianProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-hessian-client-interceptor/index.html"><span class="identifier">HessianClientInterceptor</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>FactoryBean for Hessian proxies. Exposes the proxied service for use as a bean reference, using the specified service interface. 
+<p>Hessian is a slim, binary RPC protocol. For information on Hessian, see the <a href="#">Hessian website</a> <strong>Note: As of Spring 4.0, this proxy factory requires Hessian 4.0 or above.</strong> </p>
+<p>The service URL must be an HTTP URL exposing a Hessian service. For details, see the HessianClientInterceptor javadoc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hessian-service-exporter/index.html">HessianServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HessianServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-hessian-exporter/index.html"><span class="identifier">HessianExporter</span></a><span class="symbol">, </span><span class="identifier">HttpRequestHandler</span></code>
+<p>Servlet-API-based HTTP request handler that exports the specified service bean as Hessian service endpoint, accessible via a Hessian proxy. 
+<p><strong>Note:</strong> Spring also provides an alternative version of this exporter, for Sun's JRE 1.6 HTTP server: SimpleHessianServiceExporter. </p>
+<p>Hessian is a slim, binary RPC protocol. For information on Hessian, see the <a href="#">Hessian website</a>. <strong>Note: As of Spring 4.0, this exporter requires Hessian 4.0 or above.</strong> </p>
+<p>Hessian services exported with this class can be accessed by any Hessian client, as there isn't any special handling involved.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-hessian-service-exporter/index.html">SimpleHessianServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHessianServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-hessian-exporter/index.html"><span class="identifier">HessianExporter</span></a><span class="symbol">, </span><span class="identifier">HttpHandler</span></code>
+<p>HTTP request handler that exports the specified service bean as Hessian service endpoint, accessible via a Hessian proxy. Designed for Sun's JRE 1.6 HTTP server, implementing the com.sun.net.httpserver.HttpHandler interface. 
+<p>Hessian is a slim, binary RPC protocol. For information on Hessian, see the <a href="#">Hessian website</a>. <strong>Note: As of Spring 4.0, this exporter requires Hessian 4.0 or above.</strong> </p>
+<p>Hessian services exported with this class can be accessed by any Hessian client, as there isn't any special handling involved.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

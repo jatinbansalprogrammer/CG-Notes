@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OpenEntityManagerInViewFilter.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa.support</a>&nbsp;/&nbsp;<a href="index.html">OpenEntityManagerInViewFilter</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter$&lt;init&gt;()"></a>
+<code><span class="identifier">OpenEntityManagerInViewFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Servlet Filter that binds a JPA EntityManager to the thread for the entire processing of the request. Intended for the "Open EntityManager in View" pattern, i.e. to allow for lazy loading in web views despite the original transactions already being completed. 
+<p>This filter makes JPA EntityManagers available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.jpa.JpaTransactionManager or org.springframework.transaction.jta.JtaTransactionManager as well as for non-transactional read-only execution. </p>
+<p>Looks up the EntityManagerFactory in Spring's root web application context. Supports an "entityManagerFactoryBeanName" filter init-param in <code>web.xml</code>; the default bean name is "entityManagerFactory". As an alternative, the "persistenceUnitName" init-param allows for retrieval by logical unit name (as specified in <code>persistence.xml</code>).</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+OpenEntityManagerInViewInterceptororg.springframework.orm.jpa.JpaTransactionManagerorg.springframework.orm.jpa.SharedEntityManagerCreatororg.springframework.transaction.support.TransactionSynchronizationManager</p>
+</BODY>
+</HTML>

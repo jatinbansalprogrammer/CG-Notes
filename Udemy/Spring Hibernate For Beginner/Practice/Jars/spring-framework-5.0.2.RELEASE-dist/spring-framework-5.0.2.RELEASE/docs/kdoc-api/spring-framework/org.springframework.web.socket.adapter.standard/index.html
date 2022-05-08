@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.socket.adapter.standard - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.socket.adapter.standard</a><br/>
+<br/>
+<h2>Package org.springframework.web.socket.adapter.standard</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-converting-encoder-decoder-support/index.html">ConvertingEncoderDecoderSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ConvertingEncoderDecoderSupport</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">M</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Base class that can be used to implement a standard javax.websocket.Encoder and/or javax.websocket.Decoder. It provides encode and decode method implementations that delegate to a Spring ConversionService. 
+<p>By default, this class looks up a ConversionService registered in the <code><a href="#">active ApplicationContext</a></code> under the name <code>'webSocketConversionService'</code>. This works fine for both client and server endpoints, in a Servlet container environment. If not running in a Servlet container, subclasses will need to override the <code><a href="#">#getConversionService()</a></code> method to provide an alternative lookup strategy. </p>
+<p>Subclasses can extend this class and should also implement one or both of javax.websocket.Encoder and javax.websocket.Decoder. For convenience ConvertingEncoderDecoderSupport.BinaryEncoder, ConvertingEncoderDecoderSupport.BinaryDecoder, ConvertingEncoderDecoderSupport.TextEncoder and ConvertingEncoderDecoderSupport.TextDecoder subclasses are provided. </p>
+<p>Since JSR-356 only allows Encoder/Decoder to be registered by type, instances of this class are therefore managed by the WebSocket runtime, and do not need to be registered as Spring Beans. They can, however, by injected with Spring-managed dependencies via Autowired. </p>
+<p>Converters to convert between the <code><a href="#">type</a></code> and <code>String</code> or <code>ByteBuffer</code> should be registered.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-standard-to-web-socket-extension-adapter/index.html">StandardToWebSocketExtensionAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardToWebSocketExtensionAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.socket/-web-socket-extension/index.html"><span class="identifier">WebSocketExtension</span></a></code>
+<p>A sub-class of org.springframework.web.socket.WebSocketExtension that can be constructed from an javax.websocket.Extension.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-standard-web-socket-handler-adapter/index.html">StandardWebSocketHandlerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardWebSocketHandlerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Endpoint</span></code>
+<p>Adapts a WebSocketHandler to the standard WebSocket for Java API.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-to-standard-extension-adapter/index.html">WebSocketToStandardExtensionAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketToStandardExtensionAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Extension</span></code>
+<p>Adapt an instance of org.springframework.web.socket.WebSocketExtension to the javax.websocket.Extension interface.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

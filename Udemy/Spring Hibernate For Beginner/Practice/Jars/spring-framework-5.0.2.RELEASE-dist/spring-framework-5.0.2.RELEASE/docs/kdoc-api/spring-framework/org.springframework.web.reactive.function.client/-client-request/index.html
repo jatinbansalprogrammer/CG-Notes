@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ClientRequest - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.function.client</a>&nbsp;/&nbsp;<a href=".">ClientRequest</a><br/>
+<br/>
+<h1>ClientRequest</h1>
+<code><span class="keyword">interface </span><span class="identifier">ClientRequest</span></code>
+<p>Represents a typed, immutable, client-side HTTP request, as executed by the ExchangeFunction. Instances of this interface can be created via static builder methods. 
+<p>Note that applications are more likely to perform requests through WebClient rather than using this directly.</p>
+</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="attribute.html">attribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">attribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.client.ClientRequest$attribute(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Optional</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Return the request attribute value if present.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="attributes.html">attributes</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">attributes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Return the attributes of this request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="body.html">body</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">body</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BodyInserter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="keyword">in</span>&nbsp;<span class="identifier">ClientHttpRequest</span><span class="symbol">&gt;</span></code>
+<p>Return the body inserter of this request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="cookies.html">cookies</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">cookies</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the cookies of this request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from.html">from</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">from</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.client.ClientRequest$from(org.springframework.web.reactive.function.client.ClientRequest)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClientRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Builder</span></code>
+<p>Create a builder with the method, URI, headers, and cookies of the given request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="headers.html">headers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">headers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpHeaders</span></code>
+<p>Return the headers of this request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="method.html">method</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">method</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpMethod</span></code>
+<p>Return the HTTP method.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">method</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.client.ClientRequest$method(org.springframework.http.HttpMethod, java.net.URI)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.function.client.ClientRequest$method(org.springframework.http.HttpMethod, java.net.URI)/url">url</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Builder</span></code>
+<p>Create a builder with the given method and url.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="url.html">url</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">url</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URI</span></code>
+<p>Return the request URI.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write-to.html">writeTo</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">writeTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.client.ClientRequest$writeTo(org.springframework.http.client.reactive.ClientHttpRequest, org.springframework.web.reactive.function.client.ExchangeStrategies)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.function.client.ClientRequest$writeTo(org.springframework.http.client.reactive.ClientHttpRequest, org.springframework.web.reactive.function.client.ExchangeStrategies)/strategies">strategies</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExchangeStrategies</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Writes this request to the given ClientHttpRequest.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

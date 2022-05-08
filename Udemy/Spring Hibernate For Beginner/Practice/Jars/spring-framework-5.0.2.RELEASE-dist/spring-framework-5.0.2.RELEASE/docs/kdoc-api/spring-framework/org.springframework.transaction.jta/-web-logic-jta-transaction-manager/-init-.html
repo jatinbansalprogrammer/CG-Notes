@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebLogicJtaTransactionManager.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.jta</a>&nbsp;/&nbsp;<a href="index.html">WebLogicJtaTransactionManager</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.transaction.jta.WebLogicJtaTransactionManager$&lt;init&gt;()"></a>
+<code><span class="identifier">WebLogicJtaTransactionManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Special JtaTransactionManager variant for BEA WebLogic (9.0 and higher). Supports the full power of Spring's transaction definitions on WebLogic's transaction coordinator, <em>beyond standard JTA</em>: transaction names, per-transaction isolation levels, and proper resuming of transactions in all cases. 
+<p>Uses WebLogic's special <code>begin(name)</code> method to start a JTA transaction, in order to make <strong>Spring-driven transactions visible in WebLogic's transaction monitor</strong>. In case of Spring's declarative transactions, the exposed name will (by default) be the fully-qualified class name + "." + method name. </p>
+<p>Supports a <strong>per-transaction isolation level</strong> through WebLogic's corresponding JTA transaction property "ISOLATION LEVEL". This will apply the specified isolation level (e.g. ISOLATION_SERIALIZABLE) to all JDBC Connections that participate in the given transaction. </p>
+<p>Invokes WebLogic's special <code>forceResume</code> method if standard JTA resume failed, to <strong>also resume if the target transaction was marked rollback-only</strong>. If you're not relying on this feature of transaction suspension in the first place, Spring's standard JtaTransactionManager will behave properly too. </p>
+<p>By default, the JTA UserTransaction and TransactionManager handles are fetched directly from WebLogic's <code>TransactionHelper</code>. This can be overridden by specifying "userTransaction"/"userTransactionName" and "transactionManager"/"transactionManagerName", passing in existing handles or specifying corresponding JNDI locations to look up. </p>
+<p><strong>NOTE: This JtaTransactionManager is intended to refine specific transaction demarcation behavior on Spring's side. It will happily co-exist with independently configured WebLogic transaction strategies in your persistence provider, with no need to specifically connect those setups in any way.</strong></p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.transaction.TransactionDefinition#getName</a><a href="#">org.springframework.transaction.TransactionDefinition#getIsolationLevel</a>weblogic.transaction.UserTransaction#begin(String)weblogic.transaction.Transaction#setPropertyweblogic.transaction.TransactionManager#forceResumeweblogic.transaction.TransactionHelper</p>
+</BODY>
+</HTML>

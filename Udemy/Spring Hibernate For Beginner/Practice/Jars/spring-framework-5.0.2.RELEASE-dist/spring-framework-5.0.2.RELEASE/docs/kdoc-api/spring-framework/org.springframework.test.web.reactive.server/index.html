@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.web.reactive.server - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.web.reactive.server</a><br/>
+<br/>
+<h2>Package org.springframework.test.web.reactive.server</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-exchange-result/index.html">ExchangeResult</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExchangeResult</span></code>
+<p>Container for request and response details for exchanges performed through WebTestClient. 
+<p>Note that a decoded response body is not exposed at this level since the body may not have been decoded and consumed yet. Sub-types EntityExchangeResult and FluxExchangeResult provide access to a decoded response entity and a decoded (but not consumed) response body respectively.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-handler-connector/index.html">HttpHandlerConnector</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpHandlerConnector</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpConnector</span></code>
+<p>Connector that handles requests by invoking an HttpHandler rather than making actual requests to a network socket. 
+<p>Internally the connector uses and adapts MockClientHttpRequest and MockClientHttpResponse to MockServerHttpRequest and MockServerHttpResponse.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-json-path-assertions/index.html">JsonPathAssertions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JsonPathAssertions</span></code>
+<p><a href="#">JsonPath</a> assertions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-server-configurer/index.html">MockServerConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MockServerConfigurer</span></code>
+<p>Contract that frameworks or applications can use to pre-package a set of customizations to a WebTestClient.MockServerSpec and expose that as a shortcut. 
+<p>An implementation of this interface can be plugged in via <code><a href="#">WebTestClient.MockServerSpec#apply</a></code> where instances are likely obtained via static methods, e.g.: </p>
+<pre><code> import static org.example.ExampleSetup.securitySetup; // ... WebTestClient.bindToController(new TestController()) .apply(securitySetup("foo","bar")) .build(); </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="body.html">body</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span> <span class="identifier">RequestBodySpec</span><span class="symbol">.</span><span class="identifier">body</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.reactive.server$body(org.springframework.test.web.reactive.server.WebTestClient.RequestBodySpec, org.springframework.test.web.reactive.server.body.S)/publisher">publisher</span><span class="symbol">:</span>&nbsp;<span class="identifier">S</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestHeadersSpec</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">RequestBodySpec.body</a> providing a variant without explicit class
+parameter thanks to Kotlin reified type parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="expect-body.html">expectBody</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">B</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ResponseSpec</span><span class="symbol">.</span><span class="identifier">expectBody</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BodySpec</span><span class="symbol">&lt;</span><span class="identifier">B</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ResponseSpec.expectBody</a> providing a <code>expectBody&lt;Foo&gt;()</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="expect-body-list.html">expectBodyList</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ResponseSpec</span><span class="symbol">.</span><span class="identifier">expectBodyList</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListBodySpec</span><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ResponseSpec.expectBodyList</a> providing a <code>expectBodyList&lt;Foo&gt;()</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="return-result.html">returnResult</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ResponseSpec</span><span class="symbol">.</span><span class="identifier">returnResult</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FluxExchangeResult</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ResponseSpec.returnResult</a> providing a <code>returnResult&lt;Foo&gt;()</code> variant.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

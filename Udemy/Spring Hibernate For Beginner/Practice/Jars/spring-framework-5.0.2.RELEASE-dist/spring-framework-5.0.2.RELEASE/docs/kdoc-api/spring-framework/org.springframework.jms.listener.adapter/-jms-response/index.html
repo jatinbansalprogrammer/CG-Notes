@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JmsResponse - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.listener.adapter</a>&nbsp;/&nbsp;<a href=".">JmsResponse</a><br/>
+<br/>
+<h1>JmsResponse</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Return type of any JMS listener method used to indicate the actual response destination alongside the response itself. Typically used when said destination needs to be computed at runtime. 
+<p>The example below sends a response with the content of the <code>result</code> argument to the <code>queueOut Queue</code>: </p>
+<pre><code> package com.acme.foo; public class MyService { @JmsListener public JmsResponse process(String msg) { // process incoming message return JmsResponse.forQueue(result, "queueOut"); } }</code></pre> If the destination does not need to be computed at runtime, org.springframework.messaging.handler.annotation.SendTo is the recommended declarative approach.</p>
+<h3>Parameters</h3>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the type of the response</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+org.springframework.jms.annotation.JmsListenerorg.springframework.messaging.handler.annotation.SendTo</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="for-destination.html">forDestination</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">forDestination</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$forDestination(org.springframework.jms.listener.adapter.JmsResponse.forDestination.T, javax.jms.Destination)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$forDestination(org.springframework.jms.listener.adapter.JmsResponse.forDestination.T, javax.jms.Destination)/destination">destination</span><span class="symbol">:</span>&nbsp;<span class="identifier">Destination</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JmsResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a JmsResponse targeting the specified Destination.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="for-queue.html">forQueue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">forQueue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$forQueue(org.springframework.jms.listener.adapter.JmsResponse.forQueue.T, kotlin.String)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$forQueue(org.springframework.jms.listener.adapter.JmsResponse.forQueue.T, kotlin.String)/queueName">queueName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JmsResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a JmsResponse targeting the queue with the specified name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="for-topic.html">forTopic</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">forTopic</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$forTopic(org.springframework.jms.listener.adapter.JmsResponse.forTopic.T, kotlin.String)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$forTopic(org.springframework.jms.listener.adapter.JmsResponse.forTopic.T, kotlin.String)/topicName">topicName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JmsResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a JmsResponse targeting the topic with the specified name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-response.html">getResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResponse</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Return the content of the response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-destination.html">resolveDestination</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveDestination</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$resolveDestination(org.springframework.jms.support.destination.DestinationResolver, javax.jms.Session)/destinationResolver">destinationResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">DestinationResolver</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.listener.adapter.JmsResponse$resolveDestination(org.springframework.jms.support.destination.DestinationResolver, javax.jms.Session)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code>
+<p>Resolve the Destination to use for this instance. The DestinationResolver and Session can be used to resolve a destination at runtime.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

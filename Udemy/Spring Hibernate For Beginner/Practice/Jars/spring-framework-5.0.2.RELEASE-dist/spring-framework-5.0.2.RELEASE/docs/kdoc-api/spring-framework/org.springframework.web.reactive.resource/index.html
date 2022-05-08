@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.reactive.resource - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.reactive.resource</a><br/>
+<br/>
+<h2>Package org.springframework.web.reactive.resource</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-file-name-version-strategy/index.html">AbstractFileNameVersionStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractFileNameVersionStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-version-strategy/index.html"><span class="identifier">VersionStrategy</span></a></code>
+<p>Abstract base class for filename suffix based VersionStrategy implementations, e.g. "static/myresource-version.js"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-app-cache-manifest-transformer/index.html">AppCacheManifestTransformer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AppCacheManifestTransformer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceTransformerSupport</span></code>
+<p>A ResourceTransformer HTML5 AppCache manifests. 
+<p>This transformer: </p>
+<ul> <li>modifies links to match the public URL paths that should be exposed to clients, using configured <code>ResourceResolver</code> strategies </li>
+<li>appends a comment in the manifest, containing a Hash (e.g. "# Hash: 9de0f09ed7caf84e885f1f0f11c7e326"), thus changing the content of the manifest in order to trigger an appcache reload in the browser. </li>
+</ul>
+ 
+<p>All files with an ".appcache" file extension (or the extension given to the constructor) will be transformed by this class. The hash is computed using the content of the appcache manifest so that changes in the manifest should invalidate the browser cache. This should also work with changes in referenced resources whose links are also versioned.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-caching-resource-resolver/index.html">CachingResourceResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingResourceResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceResolver</span></code>
+<p>A ResourceResolver that resolves resources from a Cache or otherwise delegates to the resolver chain and caches the result.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-caching-resource-transformer/index.html">CachingResourceTransformer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingResourceTransformer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-resource-transformer/index.html"><span class="identifier">ResourceTransformer</span></a></code>
+<p>A ResourceTransformer that checks a Cache to see if a previously transformed resource exists in the cache and returns it if found, or otherwise delegates to the resolver chain and caches the result.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-content-version-strategy/index.html">ContentVersionStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentVersionStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-file-name-version-strategy/index.html"><span class="identifier">AbstractFileNameVersionStrategy</span></a></code>
+<p>A <code>VersionStrategy</code> that calculates an Hex MD5 hashes from the content of the resource and appends it to the file name, e.g. <code>"styles/main-e36d2e05253c6c7085a91522ce43a0b4.css"</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-css-link-resource-transformer/index.html">CssLinkResourceTransformer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CssLinkResourceTransformer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceTransformerSupport</span></code>
+<p>A ResourceTransformer implementation that modifies links in a CSS file to match the public URL paths that should be exposed to clients (e.g. with an MD5 content-based hash inserted in the URL). 
+<p>The implementation looks for links in CSS <code>@import</code> statements and also inside CSS <code>url()</code> functions. All links are then passed through the ResourceResolverChain and resolved relative to the location of the containing CSS file. If successfully resolved, the link is modified, otherwise the original link is preserved.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-fixed-version-strategy/index.html">FixedVersionStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FixedVersionStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPrefixVersionStrategy</span></code>
+<p>A <code>VersionStrategy</code> that relies on a fixed version applied as a request path prefix, e.g. reduced SHA, version name, release date, etc. 
+<p>This is useful for example when ContentVersionStrategy cannot be used such as when using JavaScript module loaders which are in charge of loading the JavaScript resources and need to know their relative paths.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-gzip-resource-resolver/index.html">GzipResourceResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GzipResourceResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceResolver</span></code>
+<p>A <code>ResourceResolver</code> that delegates to the chain to locate a resource and then attempts to find a variation with the ".gz" extension. 
+<p>The resolver gets involved only if the "Accept-Encoding" request header contains the value "gzip" indicating the client accepts gzipped responses.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-resource/index.html">HttpResource</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HttpResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span></code>
+<p>Extended interface for a Resource to be written to an HTTP response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-resource-resolver/index.html">PathResourceResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathResourceResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceResolver</span></code>
+<p>A simple <code>ResourceResolver</code> that tries to find a resource under the given locations matching to the request path. 
+<p>This resolver does not delegate to the <code>ResourceResolverChain</code> and is expected to be configured at the end in a chain of resolvers.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-resolver-chain/index.html">ResourceResolverChain</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ResourceResolverChain</span></code>
+<p>A contract for invoking a chain of ResourceResolvers where each resolver is given a reference to the chain allowing it to delegate when necessary.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-transformer/index.html">ResourceTransformer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ResourceTransformer</span></code>
+<p>An abstraction for transforming the content of a resource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transformed-resource/index.html">TransformedResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransformedResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.core.io/-byte-array-resource/index.html"><span class="identifier">ByteArrayResource</span></a></code>
+<p>An extension of ByteArrayResource that a ResourceTransformer can use to represent an original resource preserving all other information except the content.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-version-resource-resolver/index.html">VersionResourceResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VersionResourceResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceResolver</span></code>
+<p>Resolves request paths containing a version string that can be used as part of an HTTP caching strategy in which a resource is cached with a date in the distant future (e.g. 1 year) and cached until the version, and therefore the URL, is changed. 
+<p>Different versioning strategies exist, and this resolver must be configured with one or more such strategies along with path mappings to indicate which strategy applies to which resources. </p>
+<p><code>ContentVersionStrategy</code> is a good default choice except in cases where it cannot be used. Most notably the <code>ContentVersionStrategy</code> cannot be combined with JavaScript module loaders. For such cases the <code>FixedVersionStrategy</code> is a better choice. </p>
+<p>Note that using this resolver to serve CSS files means that the CssLinkResourceTransformer should also be used in order to modify links within CSS files to also contain the appropriate versions generated by this resolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-version-strategy/index.html">VersionStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">VersionStrategy</span></code>
+<p>A strategy to determine the version of a static resource and to apply and/or extract it from the URL path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-jars-resource-resolver/index.html">WebJarsResourceResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebJarsResourceResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceResolver</span></code>
+<p>A <code>ResourceResolver</code> that delegates to the chain to locate a resource and then attempts to find a matching versioned resource contained in a WebJar JAR file. 
+<p>This allows WebJars.org users to write version agnostic paths in their templates, like <code>&lt;script src="/jquery/jquery.min.js"/&gt;</code>. This path will be resolved to the unique version <code>&lt;script src="/jquery/1.2.0/jquery.min.js"/&gt;</code>, which is a better fit for HTTP caching and version management in applications. </p>
+<p>This also resolves resources for version agnostic HTTP requests <code>"GET /jquery/jquery.min.js"</code>. </p>
+<p>This resolver requires the "org.webjars:webjars-locator" library on classpath, and is automatically registered if that library is present.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

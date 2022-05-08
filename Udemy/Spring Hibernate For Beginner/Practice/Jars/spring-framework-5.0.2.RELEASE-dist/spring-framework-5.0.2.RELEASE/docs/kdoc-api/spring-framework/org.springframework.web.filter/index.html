@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.filter - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.filter</a><br/>
+<br/>
+<h2>Package org.springframework.web.filter</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-character-encoding-filter/index.html">CharacterEncodingFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CharacterEncodingFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Servlet Filter that allows one to specify a character encoding for requests. This is useful because current browsers typically do not set a character encoding even if specified in the HTML page or form. 
+<p>This filter can either apply its encoding if the request does not already specify an encoding, or enforce this filter's encoding in any case ("forceEncoding"="true"). In the latter case, the encoding will also be applied as default response encoding (although this will usually be overridden by a full content type set in the view).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-commons-request-logging-filter/index.html">CommonsRequestLoggingFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CommonsRequestLoggingFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRequestLoggingFilter</span></code>
+<p>Simple request logging filter that writes the request URI (and optionally the query string) to the Commons Log.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-filter/index.html">CompositeFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Filter</span></code>
+<p>A generic composite servlet Filter that just delegates its behavior to a chain (list) of user-supplied filters, achieving the functionality of a FilterChain, but conveniently using only Filter instances. 
+<p>This is useful for filters that require dependency injection, and can therefore be set up in a Spring application context. Typically, this composite would be used in conjunction with DelegatingFilterProxy, so that it can be declared in Spring but applied to a servlet context.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cors-filter/index.html">CorsFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CorsFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that handles CORS preflight requests and intercepts CORS simple and actual requests thanks to a CorsProcessor implementation (DefaultCorsProcessor by default) in order to add the relevant CORS response headers (like <code>Access-Control-Allow-Origin</code>) using the provided CorsConfigurationSource (for example an UrlBasedCorsConfigurationSource instance. 
+<p>This is an alternative to Spring MVC Java config and XML namespace CORS configuration, useful for applications depending only on spring-web (not on spring-webmvc) or for security constraints requiring CORS checks to be performed at javax.servlet.Filter level. </p>
+<p>This filter could be used in conjunction with DelegatingFilterProxy in order to help with its initialization.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-filter-proxy/index.html">DelegatingFilterProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingFilterProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericFilterBean</span></code>
+<p>Proxy for a standard Servlet Filter, delegating to a Spring-managed bean that implements the Filter interface. Supports a "targetBeanName" filter init-param in <code>web.xml</code>, specifying the name of the target bean in the Spring application context. 
+<p><code>web.xml</code> will usually contain a <code>DelegatingFilterProxy</code> definition, with the specified <code>filter-name</code> corresponding to a bean name in Spring's root application context. All calls to the filter proxy will then be delegated to that bean in the Spring context, which is required to implement the standard Servlet Filter interface. </p>
+<p>This approach is particularly useful for Filter implementation with complex setup needs, allowing to apply the full Spring bean definition machinery to Filter instances. Alternatively, consider standard Filter setup in combination with looking up service beans from the Spring root application context. </p>
+<p><strong>NOTE:</strong> The lifecycle methods defined by the Servlet Filter interface will by default <em>not</em> be delegated to the target bean, relying on the Spring application context to manage the lifecycle of that bean. Specifying the "targetFilterLifecycle" filter init-param as "true" will enforce invocation of the <code>Filter.init</code> and <code>Filter.destroy</code> lifecycle methods on the target bean, letting the servlet container manage the filter lifecycle. </p>
+<p>As of Spring 3.1, <code>DelegatingFilterProxy</code> has been updated to optionally accept constructor parameters when using Servlet 3.0's instance-based filter registration methods, usually in conjunction with Spring 3.1's org.springframework.web.WebApplicationInitializer SPI. These constructors allow for providing the delegate Filter bean directly, or providing the application context and bean name to fetch, avoiding the need to look up the application context from the ServletContext. </p>
+<p>This class was originally inspired by Spring Security's <code>FilterToBeanProxy</code> class, written by Ben Alex.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-forwarded-header-filter/index.html">ForwardedHeaderFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ForwardedHeaderFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Extract values from "Forwarded" and "X-Forwarded-*" headers in order to wrap and override the following from the request and response: <code><a href="#">getServerName()</a></code>, <code><a href="#">getServerPort()</a></code>, <code><a href="#">getScheme()</a></code>, <code><a href="#">isSecure()</a></code>, and <code><a href="#">sendRedirect(String)</a></code>. In effect the wrapped request and response reflect the client-originated protocol and address. 
+<p><strong>Note:</strong> This filter can also be used in a <code><a href="-forwarded-header-filter/set-remove-only.html">removeOnly</a></code> mode where "Forwarded" and "X-Forwarded-*" headers are only eliminated without being used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hidden-http-method-filter/index.html">HiddenHttpMethodFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HiddenHttpMethodFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that converts posted method parameters into HTTP methods, retrievable via <code><a href="#">HttpServletRequest#getMethod()</a></code>. Since browsers currently only support GET and POST, a common technique - used by the Prototype library, for instance - is to use a normal POST with an additional hidden form field (<code>_method</code>) to pass the "real" HTTP method along. This filter reads that parameter and changes the <code><a href="#">HttpServletRequestWrapper#getMethod()</a></code> return value accordingly. 
+<p>The name of the request parameter defaults to <code>_method</code>, but can be adapted via the <code><a href="#">methodParam</a></code> property. </p>
+<p><strong>NOTE: This filter needs to run after multipart processing in case of a multipart POST request, due to its inherent need for checking a POST body parameter.</strong> So typically, put a Spring org.springframework.web.multipart.support.MultipartFilter <em>before</em> this HiddenHttpMethodFilter in your <code>web.xml</code> filter chain.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-put-form-content-filter/index.html">HttpPutFormContentFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpPutFormContentFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that makes form encoded data available through the <code>ServletRequest.getParameter*()</code> family of methods during HTTP PUT or PATCH requests. 
+<p>The Servlet spec requires form data to be available for HTTP POST but not for HTTP PUT or PATCH requests. This filter intercepts HTTP PUT and PATCH requests where content type is <code>'application/x-www-form-urlencoded'</code>, reads form encoded content from the body of the request, and wraps the ServletRequest in order to make the form data available as request parameters just like it is for HTTP POST requests.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-relative-redirect-filter/index.html">RelativeRedirectFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RelativeRedirectFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Overrides <code><a href="#">HttpServletResponse#sendRedirect(String)</a></code> and handles it by setting the HTTP status and "Location" headers. This keeps the Servlet container from re-writing relative redirect URLs and instead follows the recommendation in <a href="#"> RFC 7231 Section 7.1.2</a>. 
+<p><strong>Note:</strong> While relative redirects are more efficient they may not work with reverse proxies under some configurations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-context-filter/index.html">RequestContextFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestContextFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Servlet Filter that exposes the request to the current thread, through both org.springframework.context.i18n.LocaleContextHolder and RequestContextHolder. To be registered as filter in <code>web.xml</code>. 
+<p>Alternatively, Spring's org.springframework.web.context.request.RequestContextListener and Spring's org.springframework.web.servlet.DispatcherServlet also expose the same request context to the current thread. </p>
+<p>This filter is mainly for use with third-party servlets, e.g. the JSF FacesServlet. Within Spring's own web support, DispatcherServlet's processing is perfectly sufficient.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-request-logging-filter/index.html">ServletContextRequestLoggingFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextRequestLoggingFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRequestLoggingFilter</span></code>
+<p>Simple request logging filter that writes the request URI (and optionally the query string) to the ServletContext log.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shallow-etag-header-filter/index.html">ShallowEtagHeaderFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ShallowEtagHeaderFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that generates an <code>ETag</code> value based on the content on the response. This ETag is compared to the <code>If-None-Match</code> header of the request. If these headers are equal, the response content is not sent, but rather a <code>304 "Not Modified"</code> status instead. 
+<p>Since the ETag is based on the response content, the response (e.g. a org.springframework.web.servlet.View) is still rendered. As such, this filter only saves bandwidth, not server performance. </p>
+<p><strong>NOTE:</strong> As of Spring Framework 5.0, this filter uses request/response decorators built on the Servlet 3.1 API.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

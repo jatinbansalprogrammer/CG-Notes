@@ -1,0 +1,171 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.mock.web - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.mock.web</a><br/>
+<br/>
+<h2>Package org.springframework.mock.web</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-delegating-servlet-input-stream/index.html">DelegatingServletInputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingServletInputStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletInputStream</span></code>
+<p>Delegating implementation of javax.servlet.ServletInputStream. 
+<p>Used by MockHttpServletRequest; typically not directly used for testing application controllers.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-servlet-output-stream/index.html">DelegatingServletOutputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingServletOutputStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletOutputStream</span></code>
+<p>Delegating implementation of javax.servlet.ServletOutputStream. 
+<p>Used by MockHttpServletResponse; typically not directly used for testing application controllers.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-async-context/index.html">MockAsyncContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockAsyncContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncContext</span></code>
+<p>Mock implementation of the AsyncContext interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-body-content/index.html">MockBodyContent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockBodyContent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BodyContent</span></code>
+<p>Mock implementation of the javax.servlet.jsp.tagext.BodyContent class. Only necessary for testing applications when testing custom JSP tags.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-expression-evaluator/index.html">MockExpressionEvaluator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockExpressionEvaluator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExpressionEvaluator</span></code>
+<p>Mock implementation of the JSP 2.0 javax.servlet.jsp.el.ExpressionEvaluator interface, delegating to the Apache JSTL ExpressionEvaluatorManager. Only necessary for testing applications when testing custom JSP tags. 
+<p>Note that the Apache JSTL implementation (jstl.jar, standard.jar) has to be available on the class path to use this expression evaluator.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-filter-chain/index.html">MockFilterChain</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockFilterChain</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FilterChain</span></code>
+<p>Mock implementation of the javax.servlet.FilterChain interface. 
+<p>A MockFilterChain can be configured with one or more filters and a Servlet to invoke. The first time the chain is called, it invokes all filters and the Servlet, and saves the request and response. Subsequent invocations raise an IllegalStateException unless <code><a href="-mock-filter-chain/reset.html">#reset()</a></code> is called.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-filter-config/index.html">MockFilterConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockFilterConfig</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FilterConfig</span></code>
+<p>Mock implementation of the javax.servlet.FilterConfig interface. 
+<p>Used for testing the web framework; also useful for testing custom javax.servlet.Filter implementations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-jsp-writer/index.html">MockJspWriter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockJspWriter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JspWriter</span></code>
+<p>Mock implementation of the javax.servlet.jsp.JspWriter class. Only necessary for testing applications when testing custom JSP tags.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-multipart-http-servlet-request/index.html">MockMultipartHttpServletRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockMultipartHttpServletRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MockHttpServletRequest</span><span class="symbol">, </span><span class="identifier">MultipartHttpServletRequest</span></code>
+<p>Mock implementation of the org.springframework.web.multipart.MultipartHttpServletRequest interface. 
+<p>As of Spring 5.0, this set of mocks is designed on a Servlet 4.0 baseline. </p>
+<p>Useful for testing application controllers that access multipart uploads. MockMultipartFile can be used to populate these mock requests with files.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-page-context/index.html">MockPageContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockPageContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PageContext</span></code>
+<p>Mock implementation of the javax.servlet.jsp.PageContext interface. Only necessary for testing applications when testing custom JSP tags. 
+<p>Note: Expects initialization via the constructor rather than via the <code>PageContext.initialize</code> method. Does not support writing to a JspWriter, request dispatching, or <code>handlePageException</code> calls.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-part/index.html">MockPart</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockPart</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Part</span></code>
+<p>Mock implementation of <code>javax.servlet.http.Part</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-request-dispatcher/index.html">MockRequestDispatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockRequestDispatcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestDispatcher</span></code>
+<p>Mock implementation of the javax.servlet.RequestDispatcher interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-servlet-context/index.html">MockServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockServletContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span></code>
+<p>Mock implementation of the javax.servlet.ServletContext interface. 
+<p>As of Spring 5.0, this set of mocks is designed on a Servlet 4.0 baseline. </p>
+<p>Compatible with Servlet 3.1 but can be configured to expose a specific version through <code><a href="-mock-servlet-context/set-major-version.html">#setMajorVersion</a></code>/<code><a href="-mock-servlet-context/set-minor-version.html">#setMinorVersion</a></code>; default is 3.1. Note that Servlet 3.1 support is limited: servlet, filter and listener registration methods are not supported; neither is JSP configuration. We generally do not recommend to unit test your ServletContainerInitializers and WebApplicationInitializers which is where those registration methods would be used. </p>
+<p>For setting up a full <code>WebApplicationContext</code> in a test environment, you can use <code>AnnotationConfigWebApplicationContext</code>, <code>XmlWebApplicationContext</code>, or <code>GenericWebApplicationContext</code>, passing in a corresponding <code>MockServletContext</code> instance. Consider configuring your <code>MockServletContext</code> with a <code>FileSystemResourceLoader</code> in order to interpret resource paths as relative filesystem locations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-session-cookie-config/index.html">MockSessionCookieConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockSessionCookieConfig</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SessionCookieConfig</span></code>
+<p>Mock implementation of the javax.servlet.SessionCookieConfig interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pass-through-filter-chain/index.html">PassThroughFilterChain</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PassThroughFilterChain</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FilterChain</span></code>
+<p>Implementation of the javax.servlet.FilterConfig interface which simply passes the call through to a given Filter/FilterChain combination (indicating the next Filter in the chain along with the FilterChain that it is supposed to work on) or to a given Servlet (indicating the end of the chain).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

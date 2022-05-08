@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractWebSocketSession - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.socket.adapter</a>&nbsp;/&nbsp;<a href=".">AbstractWebSocketSession</a><br/>
+<br/>
+<h1>AbstractWebSocketSession</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractWebSocketSession</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketSession</span></code>
+<p>Convenient base class for WebSocketSession implementations that holds common fields and exposes accessors. Also implements the <code>WebSocketMessage</code> factory methods.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="binary-message.html">binaryMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">binaryMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.adapter.AbstractWebSocketSession$binaryMessage(java.util.function.Function((org.springframework.core.io.buffer.DataBufferFactory, org.springframework.core.io.buffer.DataBuffer)))/payloadFactory">payloadFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="../../org.springframework.core.io.buffer/-data-buffer-factory/index.html"><span class="identifier">DataBufferFactory</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">DataBuffer</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketMessage</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="buffer-factory.html">bufferFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bufferFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.springframework.core.io.buffer/-data-buffer-factory/index.html"><span class="identifier">DataBufferFactory</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-handshake-info.html">getHandshakeInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHandshakeInfo</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HandshakeInfo</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-id.html">getId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="ping-message.html">pingMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pingMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.adapter.AbstractWebSocketSession$pingMessage(java.util.function.Function((org.springframework.core.io.buffer.DataBufferFactory, org.springframework.core.io.buffer.DataBuffer)))/payloadFactory">payloadFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="../../org.springframework.core.io.buffer/-data-buffer-factory/index.html"><span class="identifier">DataBufferFactory</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">DataBuffer</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketMessage</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pong-message.html">pongMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">pongMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.adapter.AbstractWebSocketSession$pongMessage(java.util.function.Function((org.springframework.core.io.buffer.DataBufferFactory, org.springframework.core.io.buffer.DataBuffer)))/payloadFactory">payloadFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="../../org.springframework.core.io.buffer/-data-buffer-factory/index.html"><span class="identifier">DataBufferFactory</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">DataBuffer</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketMessage</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="receive.html">receive</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">receive</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html"><span class="identifier">Flux</span></a><span class="symbol">&lt;</span><span class="identifier">WebSocketMessage</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="send.html">send</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.adapter.AbstractWebSocketSession$send(org.reactivestreams.Publisher((org.springframework.web.reactive.socket.WebSocketMessage)))/messages">messages</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">WebSocketMessage</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="text-message.html">textMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">textMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.adapter.AbstractWebSocketSession$textMessage(kotlin.String)/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketMessage</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-netty-web-socket-session-support/index.html">NettyWebSocketSessionSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">NettyWebSocketSessionSupport</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractWebSocketSession</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Base class for Netty-based WebSocketSession adapters that provides convenience methods to convert Netty WebSocketFrames to and from WebSocketMessages.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

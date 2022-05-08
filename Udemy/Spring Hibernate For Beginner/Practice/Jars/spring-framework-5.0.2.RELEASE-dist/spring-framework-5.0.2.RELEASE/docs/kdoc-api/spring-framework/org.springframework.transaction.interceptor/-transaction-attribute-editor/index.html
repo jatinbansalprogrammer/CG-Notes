@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionAttributeEditor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.interceptor</a>&nbsp;/&nbsp;<a href=".">TransactionAttributeEditor</a><br/>
+<br/>
+<h1>TransactionAttributeEditor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAttributeEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>PropertyEditor for TransactionAttribute objects. Accepts a String of form 
+<p><code>PROPAGATION_NAME, ISOLATION_NAME, readOnly, timeout_NNNN,+Exception1,-Exception2</code> </p>
+<p>where only propagation code is required. For example: </p>
+<p><code>PROPAGATION_MANDATORY, ISOLATION_DEFAULT</code> </p>
+<p>The tokens can be in <strong>any</strong> order. Propagation and isolation codes must use the names of the constants in the TransactionDefinition class. Timeout values are in seconds. If no timeout is specified, the transaction manager will apply a default timeout specific to the particular transaction manager. </p>
+<p>A "+" before an exception name substring indicates that transactions should commit even if this exception is thrown; a "-" that they should roll back.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+24.04.2003</p>
+<p><strong>See Also</strong><br/>
+org.springframework.transaction.TransactionDefinitionorg.springframework.core.Constants</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TransactionAttributeEditor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>PropertyEditor for TransactionAttribute objects. Accepts a String of form 
+<p><code>PROPAGATION_NAME, ISOLATION_NAME, readOnly, timeout_NNNN,+Exception1,-Exception2</code> </p>
+<p>where only propagation code is required. For example: </p>
+<p><code>PROPAGATION_MANDATORY, ISOLATION_DEFAULT</code> </p>
+<p>The tokens can be in <strong>any</strong> order. Propagation and isolation codes must use the names of the constants in the TransactionDefinition class. Timeout values are in seconds. If no timeout is specified, the transaction manager will apply a default timeout specific to the particular transaction manager. </p>
+<p>A "+" before an exception name substring indicates that transactions should commit even if this exception is thrown; a "-" that they should roll back.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-as-text.html">setAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAsText</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.interceptor.TransactionAttributeEditor$setAsText(kotlin.String)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Format is PROPAGATION_NAME,ISOLATION_NAME,readOnly,timeout_NNNN,+Exception1,-Exception2. Null or the empty string means that the method is non transactional.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

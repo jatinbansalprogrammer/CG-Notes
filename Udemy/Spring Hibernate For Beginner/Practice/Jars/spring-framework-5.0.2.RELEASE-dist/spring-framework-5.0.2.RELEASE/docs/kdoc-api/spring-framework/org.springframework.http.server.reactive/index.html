@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.http.server.reactive - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.http.server.reactive</a><br/>
+<br/>
+<h2>Package org.springframework.http.server.reactive</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-listener-read-publisher/index.html">AbstractListenerReadPublisher</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractListenerReadPublisher</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Abstract base class for <code>Publisher</code> implementations that bridge between event-listener read APIs and Reactive Streams. 
+<p>Specifically a base class for reading from the HTTP request body with Servlet 3.1 non-blocking I/O and Undertow XNIO as well as handling incoming WebSocket messages with standard Java WebSocket (JSR-356), Jetty, and Undertow.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-listener-server-http-response/index.html">AbstractListenerServerHttpResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractListenerServerHttpResponse</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractServerHttpResponse</span></code>
+<p>Abstract base class for listener-based server responses, e.g. Servlet 3.1 and Undertow.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-listener-write-flush-processor/index.html">AbstractListenerWriteFlushProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractListenerWriteFlushProcessor</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Processor.html"><span class="identifier">Processor</span></a><span class="symbol">&lt;</span><a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>An alternative to AbstractListenerWriteProcessor but instead writing a <code>Publisher&lt;Publisher&lt;T&gt;&gt;</code> with flush boundaries enforces after the completion of each nested Publisher.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-listener-write-processor/index.html">AbstractListenerWriteProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractListenerWriteProcessor</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Processor.html"><span class="identifier">Processor</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Abstract base class for <code>Processor</code> implementations that bridge between event-listener write APIs and Reactive Streams. 
+<p>Specifically a base class for writing to the HTTP response body with Servlet 3.1 non-blocking I/O and Undertow XNIO as well for writing WebSocket messages through the Java WebSocket API (JSR-356), Jetty, and Undertow.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-channel-send-operator/index.html">ChannelSendOperator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ChannelSendOperator</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">, </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/Scannable.html"><span class="identifier">Scannable</span></a></code>
+<p>Given a write function that accepts a source <code>Publisher&lt;T&gt;</code> to write with and returns <code>Publisher&lt;Void&gt;</code> for the result, this operator helps to defer the invocation of the write function, until we know if the source publisher will begin publishing without an error. If the first emission is an error, the write function is bypassed, and the error is sent directly through the result publisher. Otherwise the write function is invoked.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-path-composite-handler/index.html">ContextPathCompositeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextPathCompositeHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpHandler</span></code>
+<p><code>HttpHandler</code> delegating requests to one of several <code>HttpHandler</code>'s based on simple, prefix-based mappings. 
+<p>This is intended as a coarse-grained mechanism for delegating requests to one of several applications -- each represented by an <code>HttpHandler</code>, with the application "context path" (the prefix-based mapping) exposed via <code><a href="#">ServerHttpRequest#getPath()</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-head-response-decorator/index.html">HttpHeadResponseDecorator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpHeadResponseDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpResponseDecorator</span></code>
+<p>ServerHttpResponse decorator for HTTP HEAD requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jetty-http-handler-adapter/index.html">JettyHttpHandlerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JettyHttpHandlerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletHttpHandlerAdapter</span></code>
+<p>ServletHttpHandlerAdapter extension that uses Jetty APIs for writing to the response with ByteBuffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reactor-http-handler-adapter/index.html">ReactorHttpHandlerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReactorHttpHandlerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BiFunction</span><span class="symbol">&lt;</span><span class="identifier">HttpServerRequest</span><span class="symbol">,</span>&nbsp;<span class="identifier">HttpServerResponse</span><span class="symbol">,</span>&nbsp;<a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Adapt HttpHandler to the Reactor Netty channel handling function.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-server-http-request-decorator/index.html">ServerHttpRequestDecorator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServerHttpRequestDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span></code>
+<p>Wraps another ServerHttpRequest and delegates all methods to it. Sub-classes can override specific methods selectively.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-tomcat-http-handler-adapter/index.html">TomcatHttpHandlerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TomcatHttpHandlerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletHttpHandlerAdapter</span></code>
+<p>ServletHttpHandlerAdapter extension that uses Tomcat APIs for reading from the request and writing to the response with ByteBuffer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-undertow-http-handler-adapter/index.html">UndertowHttpHandlerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UndertowHttpHandlerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpHandler</span></code>
+<p>Adapt HttpHandler to the Undertow io.undertow.server.HttpHandler.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

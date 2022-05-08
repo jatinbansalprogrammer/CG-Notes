@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpWebHandlerAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.server.adapter</a>&nbsp;/&nbsp;<a href=".">HttpWebHandlerAdapter</a><br/>
+<br/>
+<h1>HttpWebHandlerAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpWebHandlerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebHandlerDecorator</span><span class="symbol">, </span><span class="identifier">HttpHandler</span></code>
+<p>Default adapter of WebHandler to the HttpHandler contract. 
+<p>By default creates and configures a DefaultServerWebExchange and then invokes the target <code>WebHandler</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpWebHandlerAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.adapter.HttpWebHandlerAdapter$<init>(org.springframework.web.server.WebHandler)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebHandler</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-codec-configurer.html">getCodecConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCodecConfigurer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServerCodecConfigurer</span></code>
+<p>Return the configured ServerCodecConfigurer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-locale-context-resolver.html">getLocaleContextResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLocaleContextResolver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocaleContextResolver</span></code>
+<p>Return the configured LocaleContextResolver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-session-manager.html">getSessionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSessionManager</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSessionManager</span></code>
+<p>Return the configured WebSessionManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.adapter.HttpWebHandlerAdapter$handle(org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.server.adapter.HttpWebHandlerAdapter$handle(org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpResponse</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-codec-configurer.html">setCodecConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCodecConfigurer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.adapter.HttpWebHandlerAdapter$setCodecConfigurer(org.springframework.http.codec.ServerCodecConfigurer)/codecConfigurer">codecConfigurer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerCodecConfigurer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure a custom ServerCodecConfigurer. The provided instance is set on each created DefaultServerWebExchange. 
+<p>By default this is set to <code><a href="#">ServerCodecConfigurer#create()</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale-context-resolver.html">setLocaleContextResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocaleContextResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.adapter.HttpWebHandlerAdapter$setLocaleContextResolver(org.springframework.web.server.i18n.LocaleContextResolver)/localeContextResolver">localeContextResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">LocaleContextResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure a custom LocaleContextResolver. The provided instance is set on each created DefaultServerWebExchange. 
+<p>By default this is set to org.springframework.web.server.i18n.AcceptHeaderLocaleContextResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-manager.html">setSessionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.adapter.HttpWebHandlerAdapter$setSessionManager(org.springframework.web.server.session.WebSessionManager)/sessionManager">sessionManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSessionManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure a custom WebSessionManager to use for managing web sessions. The provided instance is set on each created DefaultServerWebExchange. 
+<p>By default this is set to DefaultWebSessionManager.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

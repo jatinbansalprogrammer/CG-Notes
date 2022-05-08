@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SchedulerAccessorBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href=".">SchedulerAccessorBean</a><br/>
+<br/>
+<h1>SchedulerAccessorBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SchedulerAccessorBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SchedulerAccessor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Spring bean-style class for accessing a Quartz Scheduler, i.e. for registering jobs, triggers and listeners on a given org.quartz.Scheduler instance. 
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5.6</p>
+<p><strong>See Also</strong><br/>
+<a href="set-scheduler.html">#setScheduler</a><a href="#">#setSchedulerName</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SchedulerAccessorBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Spring bean-style class for accessing a Quartz Scheduler, i.e. for registering jobs, triggers and listeners on a given org.quartz.Scheduler instance. 
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scheduler.html">getScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScheduler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Scheduler</span></code>
+<p>Return the Quartz Scheduler instance that this accessor operates on.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.SchedulerAccessorBean$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scheduler.html">setScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setScheduler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.SchedulerAccessorBean$setScheduler(org.quartz.Scheduler)/scheduler">scheduler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Scheduler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the Quartz Scheduler instance to operate on. 
+<p>If not specified, this accessor will try to retrieve a default Scheduler bean from the containing application context.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scheduler-name.html">setSchedulerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchedulerName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.SchedulerAccessorBean$setSchedulerName(kotlin.String)/schedulerName">schedulerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the Quartz Scheduler to operate on via its scheduler name in the Spring application context or also in the Quartz org.quartz.impl.SchedulerRepository. 
+<p>Schedulers can be registered in the repository through custom bootstrapping, e.g. via the org.quartz.impl.StdSchedulerFactory or org.quartz.impl.DirectSchedulerFactory factory classes. However, in general, it's preferable to use Spring's SchedulerFactoryBean which includes the job/trigger/listener capabilities of this accessor as well. </p>
+<p>If not specified, this accessor will try to retrieve a default Scheduler bean from the containing application context.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,208 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CommonAnnotationBeanPostProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">CommonAnnotationBeanPostProcessor</a><br/>
+<br/>
+<h1>CommonAnnotationBeanPostProcessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CommonAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/index.html"><span class="identifier">InitDestroyAnnotationBeanPostProcessor</span></a><span class="symbol">, </span><span class="identifier">InstantiationAwareBeanPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that supports common Java annotations out of the box, in particular the JSR-250 annotations in the <code>javax.annotation</code> package. These common Java annotations are supported in many Java EE 5 technologies (e.g. JSF 1.2), as well as in Java 6's JAX-WS. 
+<p>This post-processor includes support for the javax.annotation.PostConstruct and javax.annotation.PreDestroy annotations - as init annotation and destroy annotation, respectively - through inheriting from InitDestroyAnnotationBeanPostProcessor with pre-configured annotation types. </p>
+<p>The central element is the javax.annotation.Resource annotation for annotation-driven injection of named beans, by default from the containing Spring BeanFactory, with only <code>mappedName</code> references resolved in JNDI. The <code><a href="set-always-use-jndi-lookup.html">"alwaysUseJndiLookup" flag</a></code> enforces JNDI lookups equivalent to standard Java EE 5 resource injection for <code>name</code> references and default names as well. The target beans can be simple POJOs, with no special requirements other than the type having to match. </p>
+<p>The JAX-WS javax.xml.ws.WebServiceRef annotation is supported too, analogous to javax.annotation.Resource but with the capability of creating specific JAX-WS service endpoints. This may either point to an explicitly defined resource by name or operate on a locally specified JAX-WS service class. Finally, this post-processor also supports the EJB 3 javax.ejb.EJB annotation, analogous to javax.annotation.Resource as well, with the capability to specify both a local bean name and a global JNDI name for fallback retrieval. The target beans can be plain POJOs as well as EJB 3 Session Beans in this case. </p>
+<p>The common annotations supported by this post-processor are available in Java 6 (JDK 1.6) as well as in Java EE 5/6 (which provides a standalone jar for its common annotations as well, allowing for use in any Java 5 based application). </p>
+<p>For default usage, resolving resource names as Spring bean names, simply define the following in your application context: </p>
+<pre><code> &lt;bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/&gt;</code></pre> For direct JNDI access, resolving resource names as JNDI resource references within the Java EE application's "java:comp/env/" namespace, use the following: <pre><code> &lt;bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"&gt; &lt;property name="alwaysUseJndiLookup" value="true"/&gt; &lt;/bean&gt;</code></pre> <code>mappedName</code> references will always be resolved in JNDI, allowing for global JNDI names (including "java:" prefix) as well. The "alwaysUseJndiLookup" flag just affects <code>name</code> references and default names (inferred from the field name / property name). 
+<p><strong>NOTE:</strong> A default CommonAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom CommonAnnotationBeanPostProcessor bean definition! </p>
+<p><strong>NOTE:</strong> Annotation injection will be performed <em>before</em> XML injection; thus the latter configuration will override the former for properties wired through both approaches.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="set-always-use-jndi-lookup.html">#setAlwaysUseJndiLookup</a><a href="set-resource-factory.html">#setResourceFactory</a>org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessororg.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CommonAnnotationBeanPostProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new CommonAnnotationBeanPostProcessor, with the init and destroy annotation types set to javax.annotation.PostConstruct and javax.annotation.PreDestroy, respectively.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="ignore-resource-type.html">ignoreResourceType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">ignoreResourceType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ignoreResourceType(kotlin.String)/resourceType">resourceType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Ignore the given resource type when resolving <code>@Resource</code> annotations. 
+<p>By default, the <code>javax.xml.ws.WebServiceContext</code> interface will be ignored, since it will be resolved by the JAX-WS runtime.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-after-instantiation.html">postProcessAfterInstantiation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInstantiation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessAfterInstantiation(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessAfterInstantiation(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-instantiation.html">postProcessBeforeInstantiation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInstantiation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessBeforeInstantiation(java.lang.Class((kotlin.Any)), kotlin.String)/beanClass">beanClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessBeforeInstantiation(java.lang.Class((kotlin.Any)), kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-merged-bean-definition.html">postProcessMergedBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessMergedBeanDefinition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanDefinition">beanDefinition</span><span class="symbol">:</span>&nbsp;<span class="identifier">RootBeanDefinition</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanType">beanType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-property-values.html">postProcessPropertyValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/pds">pds</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">PropertyDescriptor</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyValues</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-always-use-jndi-lookup.html">setAlwaysUseJndiLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAlwaysUseJndiLookup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$setAlwaysUseJndiLookup(kotlin.Boolean)/alwaysUseJndiLookup">alwaysUseJndiLookup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to always use JNDI lookups equivalent to standard Java EE 5 resource injection, <strong>even for <code>name</code> attributes and default names</strong>. 
+<p>Default is "false": Resource names are used for Spring bean lookups in the containing BeanFactory; only <code>mappedName</code> attributes point directly into JNDI. Switch this flag to "true" for enforcing Java EE style JNDI lookups in any case, even for <code>name</code> attributes and default names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fallback-to-default-type-match.html">setFallbackToDefaultTypeMatch</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFallbackToDefaultTypeMatch</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$setFallbackToDefaultTypeMatch(kotlin.Boolean)/fallbackToDefaultTypeMatch">fallbackToDefaultTypeMatch</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to allow a fallback to a type match if no explicit name has been specified. The default name (i.e. the field name or bean property name) will still be checked first; if a bean of that name exists, it will be taken. However, if no bean of that name exists, a by-type resolution of the dependency will be attempted if this flag is "true". 
+<p>Default is "true". Switch this flag to "false" in order to enforce a by-name lookup in all cases, throwing an exception in case of no name match.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-factory.html">setJndiFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$setJndiFactory(org.springframework.beans.factory.BeanFactory)/jndiFactory">jndiFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the factory for objects to be injected into <code>@Resource</code> / <code>@WebServiceRef</code> / <code>@EJB</code> annotated fields and setter methods, <strong>for <code>mappedName</code> attributes that point directly into JNDI</strong>. This factory will also be used if "alwaysUseJndiLookup" is set to "true" in order to enforce JNDI lookups even for <code>name</code> attributes and default names. 
+<p>The default is a org.springframework.jndi.support.SimpleJndiBeanFactory for JNDI lookup behavior equivalent to standard Java EE 5 resource injection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-resource-factory.html">setResourceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$setResourceFactory(org.springframework.beans.factory.BeanFactory)/resourceFactory">resourceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the factory for objects to be injected into <code>@Resource</code> / <code>@WebServiceRef</code> / <code>@EJB</code> annotated fields and setter methods, <strong>for <code>name</code> attributes and default names</strong>. 
+<p>The default is the BeanFactory that this post-processor is defined in, if any, looking up resource names as Spring bean names. Specify the resource factory explicitly for programmatic usage of this post-processor. </p>
+<p>Specifying Spring's org.springframework.jndi.support.SimpleJndiBeanFactory leads to JNDI lookup behavior equivalent to standard Java EE 5 resource injection, even for <code>name</code> attributes and default names. This is the same behavior that the "alwaysUseJndiLookup" flag enables.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/post-process-after-initialization.html">postProcessAfterInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/post-process-before-destruction.html">postProcessBeforeDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/post-process-before-initialization.html">postProcessBeforeInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/requires-destruction.html">requiresDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$requiresDestruction(kotlin.Any)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/set-destroy-annotation-type.html">setDestroyAnnotationType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDestroyAnnotationType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$setDestroyAnnotationType(java.lang.Class((kotlin.Annotation)))/destroyAnnotationType">destroyAnnotationType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the destroy annotation to check for, indicating destruction methods to call when the context is shutting down. 
+<p>Any custom annotation can be used, since there are no required annotation attributes. There is no default, although a typical choice is the JSR-250 javax.annotation.PreDestroy annotation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/set-init-annotation-type.html">setInitAnnotationType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInitAnnotationType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$setInitAnnotationType(java.lang.Class((kotlin.Annotation)))/initAnnotationType">initAnnotationType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the init annotation to check for, indicating initialization methods to call after configuration of a bean. 
+<p>Any custom annotation can be used, since there are no required annotation attributes. There is no default, although a typical choice is the JSR-250 javax.annotation.PostConstruct annotation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/set-order.html">setOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$setOrder(kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

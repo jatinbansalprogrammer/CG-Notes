@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResourceResolverChain - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.resource</a>&nbsp;/&nbsp;<a href=".">ResourceResolverChain</a><br/>
+<br/>
+<h1>ResourceResolverChain</h1>
+<code><span class="keyword">interface </span><span class="identifier">ResourceResolverChain</span></code>
+<p>A contract for invoking a chain of ResourceResolvers where each resolver is given a reference to the chain allowing it to delegate when necessary.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="resolve-resource.html">resolveResource</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveResource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.resource.ResourceResolverChain$resolveResource(org.springframework.web.server.ServerWebExchange, kotlin.String, kotlin.collections.MutableList((org.springframework.core.io.Resource)))/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.resource.ResourceResolverChain$resolveResource(org.springframework.web.server.ServerWebExchange, kotlin.String, kotlin.collections.MutableList((org.springframework.core.io.Resource)))/requestPath">requestPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.resource.ResourceResolverChain$resolveResource(org.springframework.web.server.ServerWebExchange, kotlin.String, kotlin.collections.MutableList((org.springframework.core.io.Resource)))/locations">locations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Resource</span><span class="symbol">&gt;</span></code>
+<p>Resolve the supplied request and request path to a Resource that exists under one of the given resource locations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-url-path.html">resolveUrlPath</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveUrlPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.resource.ResourceResolverChain$resolveUrlPath(kotlin.String, kotlin.collections.MutableList((org.springframework.core.io.Resource)))/resourcePath">resourcePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.resource.ResourceResolverChain$resolveUrlPath(kotlin.String, kotlin.collections.MutableList((org.springframework.core.io.Resource)))/locations">locations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Resolve the externally facing <em>public</em> URL path for clients to use to access the resource that is located at the given <em>internal</em> resource path. 
+<p>This is useful when rendering URL links to clients.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

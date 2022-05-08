@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractTraceInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.interceptor</a>&nbsp;/&nbsp;<a href=".">AbstractTraceInterceptor</a><br/>
+<br/>
+<h1>AbstractTraceInterceptor</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractTraceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Base <code>MethodInterceptor</code> implementation for tracing. 
+<p>By default, log messages are written to the log for the interceptor class, not the class which is being intercepted. Setting the <code>useDynamicLogger</code> bean property to <code>true</code> causes all log messages to be written to the <code>Log</code> for the target class being intercepted. </p>
+<p>Subclasses must implement the <code>invokeUnderTrace</code> method, which is invoked by this class ONLY when a particular invocation SHOULD be traced. Subclasses should write to the <code>Log</code> instance provided.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="set-use-dynamic-logger.html">#setUseDynamicLogger</a><a href="#">#invokeUnderTrace(org.aopalliance.intercept.MethodInvocation, org.apache.commons.logging.Log)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractTraceInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Base <code>MethodInterceptor</code> implementation for tracing. 
+<p>By default, log messages are written to the log for the interceptor class, not the class which is being intercepted. Setting the <code>useDynamicLogger</code> bean property to <code>true</code> causes all log messages to be written to the <code>Log</code> for the target class being intercepted. </p>
+<p>Subclasses must implement the <code>invokeUnderTrace</code> method, which is invoked by this class ONLY when a particular invocation SHOULD be traced. Subclasses should write to the <code>Log</code> instance provided.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="invoke.html">invoke</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AbstractTraceInterceptor$invoke(org.aopalliance.intercept.MethodInvocation)/invocation">invocation</span><span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Determines whether or not logging is enabled for the particular <code>MethodInvocation</code>. If not, the method invocation proceeds as normal, otherwise the method invocation is passed to the <code>invokeUnderTrace</code> method for handling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-hide-proxy-class-names.html">setHideProxyClassNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHideProxyClassNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AbstractTraceInterceptor$setHideProxyClassNames(kotlin.Boolean)/hideProxyClassNames">hideProxyClassNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set to "true" to have <code><a href="set-use-dynamic-logger.html">dynamic loggers</a></code> hide proxy class names wherever possible. Default is "false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-log-exception-stack-trace.html">setLogExceptionStackTrace</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLogExceptionStackTrace</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AbstractTraceInterceptor$setLogExceptionStackTrace(kotlin.Boolean)/logExceptionStackTrace">logExceptionStackTrace</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to pass an exception to the logger, suggesting inclusion of its stack trace into the log. Default is "true"; set this to "false" in order to reduce the log output to just the trace message (which may include the exception class name and exception message, if applicable).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-logger-name.html">setLoggerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLoggerName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AbstractTraceInterceptor$setLoggerName(kotlin.String)/loggerName">loggerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the logger to use. The name will be passed to the underlying logger implementation through Commons Logging, getting interpreted as log category according to the logger's configuration. 
+<p>This can be specified to not log into the category of a class (whether this interceptor's class or the class getting called) but rather into a specific named category. </p>
+<p><strong>NOTE:</strong> Specify either this property or "useDynamicLogger", not both.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-dynamic-logger.html">setUseDynamicLogger</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseDynamicLogger</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AbstractTraceInterceptor$setUseDynamicLogger(kotlin.Boolean)/useDynamicLogger">useDynamicLogger</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use a dynamic logger or a static logger. Default is a static logger for this trace interceptor. 
+<p>Used to determine which <code>Log</code> instance should be used to write log messages for a particular method invocation: a dynamic one for the <code>Class</code> getting called, or a static one for the <code>Class</code> of the trace interceptor. </p>
+<p><strong>NOTE:</strong> Specify either this property or "loggerName", not both.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-customizable-trace-interceptor/index.html">CustomizableTraceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomizableTraceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTraceInterceptor</span></code>
+<p><code>MethodInterceptor</code> implementation that allows for highly customizable method-level tracing, using placeholders. 
+<p>Trace messages are written on method entry, and if the method invocation succeeds on method exit. If an invocation results in an exception, then an exception message is written. The contents of these trace messages is fully customizable and special placeholders are available to allow you to include runtime information in your log messages. The placeholders available are: </p>
+<ul> <li><code>$[methodName]</code> - replaced with the name of the method being invoked</li>
+ <li><code>$[targetClassName]</code> - replaced with the name of the class that is the target of the invocation</li>
+ <li><code>$[targetClassShortName]</code> - replaced with the short name of the class that is the target of the invocation</li>
+ <li><code>$[returnValue]</code> - replaced with the value returned by the invocation</li>
+ <li><code>$[argumentTypes]</code> - replaced with a comma-separated list of the short class names of the method arguments</li>
+ <li><code>$[arguments]</code> - replaced with a comma-separated list of the <code>String</code> representation of the method arguments</li>
+ <li><code>$[exception]</code> - replaced with the <code>String</code> representation of any <code>Throwable</code> raised during the invocation</li>
+ <li><code>$[invocationTime]</code> - replaced with the time, in milliseconds, taken by the method invocation</li>
+ </ul>
+ 
+<p>There are restrictions on which placeholders can be used in which messages: see the individual message properties for details on the valid placeholders.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

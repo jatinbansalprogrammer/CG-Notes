@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringServletContainerInitializer.onStartup - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web</a>&nbsp;/&nbsp;<a href="index.html">SpringServletContainerInitializer</a>&nbsp;/&nbsp;<a href=".">onStartup</a><br/>
+<br/>
+<h1>onStartup</h1>
+<a name="org.springframework.web.SpringServletContainerInitializer$onStartup(kotlin.collections.MutableSet((java.lang.Class((kotlin.Any)))), javax.servlet.ServletContext)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onStartup</span><span class="symbol">(</span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.web.SpringServletContainerInitializer$onStartup(kotlin.collections.MutableSet((java.lang.Class((kotlin.Any)))), javax.servlet.ServletContext)/webAppInitializerClasses">webAppInitializerClasses</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.SpringServletContainerInitializer$onStartup(kotlin.collections.MutableSet((java.lang.Class((kotlin.Any)))), javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delegate the <code>ServletContext</code> to any WebApplicationInitializer implementations present on the application classpath. 
+<p>Because this class declares @<code>HandlesTypes(WebApplicationInitializer.class)</code>, Servlet 3.0+ containers will automatically scan the classpath for implementations of Spring's <code>WebApplicationInitializer</code> interface and provide the set of all such types to the <code>webAppInitializerClasses</code> parameter of this method. </p>
+<p>If no <code>WebApplicationInitializer</code> implementations are found on the classpath, this method is effectively a no-op. An INFO-level log message will be issued notifying the user that the <code>ServletContainerInitializer</code> has indeed been invoked but that no <code>WebApplicationInitializer</code> implementations were found. </p>
+<p>Assuming that one or more <code>WebApplicationInitializer</code> types are detected, they will be instantiated (and <em>sorted</em> if the @ annotation is present or the org.springframework.core.Ordered interface has been implemented). Then the <code><a href="../-web-application-initializer/on-startup.html">WebApplicationInitializer#onStartup(ServletContext)</a></code> method will be invoked on each instance, delegating the <code>ServletContext</code> such that each instance may register and configure servlets such as Spring's <code>DispatcherServlet</code>, listeners such as Spring's <code>ContextLoaderListener</code>, or any other Servlet API componentry such as filters.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="webAppInitializerClasses"></a>
+<code>webAppInitializerClasses</code> - all implementations of WebApplicationInitializer found on the application classpath</p>
+<p><a name="servletContext"></a>
+<code>servletContext</code> - the servlet context to be initialized</p>
+<p><strong>See Also</strong><br/>
+<a href="../-web-application-initializer/on-startup.html">WebApplicationInitializer#onStartup(ServletContext)</a>AnnotationAwareOrderComparator</p>
+</BODY>
+</HTML>

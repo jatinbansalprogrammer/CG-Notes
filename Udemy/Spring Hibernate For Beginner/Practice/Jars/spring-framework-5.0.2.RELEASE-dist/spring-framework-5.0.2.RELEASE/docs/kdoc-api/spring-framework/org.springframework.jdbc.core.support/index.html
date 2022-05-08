@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.core.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.core.support</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.core.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-interruptible-batch-prepared-statement-setter/index.html">AbstractInterruptibleBatchPreparedStatementSetter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractInterruptibleBatchPreparedStatementSetter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InterruptibleBatchPreparedStatementSetter</span></code>
+<p>Abstract implementation of the InterruptibleBatchPreparedStatementSetter interface, combining the check for available values and setting of those into a single callback method <code><a href="#">#setValuesIfAvailable</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-lob-creating-prepared-statement-callback/index.html">AbstractLobCreatingPreparedStatementCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractLobCreatingPreparedStatementCallback</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PreparedStatementCallback</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Abstract PreparedStatementCallback implementation that manages a LobCreator. Typically used as inner class, with access to surrounding method arguments. 
+<p>Delegates to the <code>setValues</code> template method for setting values on the PreparedStatement, using a given LobCreator for BLOB/CLOB arguments. </p>
+<p>A usage example with org.springframework.jdbc.core.JdbcTemplate: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object LobHandler lobHandler = new DefaultLobHandler(); // reusable object jdbcTemplate.execute( "INSERT INTO imagedb (image_name, content, description) VALUES (?, ?, ?)", new AbstractLobCreatingPreparedStatementCallback(lobHandler) { protected void setValues(PreparedStatement ps, LobCreator lobCreator) throws SQLException { ps.setString(1, name); lobCreator.setBlobAsBinaryStream(ps, 2, contentStream, contentLength); lobCreator.setClobAsString(ps, 3, description); } } );</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-lob-streaming-result-set-extractor/index.html">AbstractLobStreamingResultSetExtractor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractLobStreamingResultSetExtractor</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResultSetExtractor</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Abstract ResultSetExtractor implementation that assumes streaming of LOB data. Typically used as inner class, with access to surrounding method arguments. 
+<p>Delegates to the <code>streamData</code> template method for streaming LOB content to some OutputStream, typically using a LobHandler. Converts an IOException thrown during streaming to a LobRetrievalFailureException. </p>
+<p>A usage example with JdbcTemplate: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object final LobHandler lobHandler = new DefaultLobHandler(); // reusable object jdbcTemplate.query( "SELECT content FROM imagedb WHERE image_name=?", new Object[] {name}, new AbstractLobStreamingResultSetExtractor() { public void streamData(ResultSet rs) throws SQLException, IOException { FileCopyUtils.copy(lobHandler.getBlobAsBinaryStream(rs, 1), contentStream); } } );</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-sql-type-value/index.html">AbstractSqlTypeValue</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSqlTypeValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlTypeValue</span></code>
+<p>Abstract implementation of the SqlTypeValue interface, for convenient creation of type values that are supposed to be passed into the <code>PreparedStatement.setObject</code> method. The <code>createTypeValue</code> callback method has access to the underlying Connection, if that should be needed to create any database-specific objects. 
+<p>A usage example from a StoredProcedure (compare this to the plain SqlTypeValue version in the superclass javadoc): </p>
+<pre><code>proc.declareParameter(new SqlParameter("myarray", Types.ARRAY, "NUMBERS")); ... Map&lt;String, Object&gt; in = new HashMap&lt;String, Object&gt;(); in.put("myarray", new AbstractSqlTypeValue() { public Object createTypeValue(Connection con, int sqlType, String typeName) throws SQLException { oracle.sql.ArrayDescriptor desc = new oracle.sql.ArrayDescriptor(typeName, con); return new oracle.sql.ARRAY(desc, con, seats); } }); Map out = execute(in); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdbc-bean-definition-reader/index.html">JdbcBeanDefinitionReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JdbcBeanDefinitionReader</span></code>
+<p>Bean definition reader that reads values from a database table, based on a given SQL statement. 
+<p>Expects columns for bean name, property name and value as String. Formats for each are identical to the properties format recognized by PropertiesBeanDefinitionReader. </p>
+<p><strong>NOTE:</strong> This is mainly intended as an example for a custom JDBC-based bean definition reader. It does not aim to offer comprehensive functionality.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdbc-dao-support/index.html">JdbcDaoSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JdbcDaoSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DaoSupport</span></code>
+<p>Convenient super class for JDBC-based data access objects. 
+<p>Requires a javax.sql.DataSource to be set, providing a org.springframework.jdbc.core.JdbcTemplate based on it to subclasses through the <code><a href="-jdbc-dao-support/get-jdbc-template.html">#getJdbcTemplate()</a></code> method. </p>
+<p>This base class is mainly intended for JdbcTemplate usage but can also be used when working with a Connection directly or when using <code>org.springframework.jdbc.object</code> operation objects.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-lob-value/index.html">SqlLobValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlLobValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DisposableSqlTypeValue</span></code>
+<p>Object to represent an SQL BLOB/CLOB value parameter. BLOBs can either be an InputStream or a byte array. CLOBs can be in the form of a Reader, InputStream or String. Each CLOB/BLOB value will be stored together with its length. The type is based on which constructor is used. Objects of this class are immutable except for the LobCreator reference. Use them and discard them. 
+<p>This class holds a reference to a LocCreator that must be closed after the update has completed. This is done via a call to the closeLobCreator method. All handling of the LobCreator is done by the framework classes that use it - no need to set or close the LobCreator for end users of this class. </p>
+<p>A usage example: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object LobHandler lobHandler = new DefaultLobHandler(); // reusable object jdbcTemplate.update( "INSERT INTO imagedb (image_name, content, description) VALUES (?, ?, ?)", new Object[] { name, new SqlLobValue(contentStream, contentLength, lobHandler), new SqlLobValue(description, lobHandler) }, new int[] {Types.VARCHAR, Types.BLOB, Types.CLOB}); </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

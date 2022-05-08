@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ImportResource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">ImportResource</a><br/>
+<br/>
+<h1>ImportResource</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">ImportResource</span></code>
+<p>Indicates one or more resources containing bean definitions to import. 
+<p>Like Import, this annotation provides functionality similar to the <code>&lt;import/&gt;</code> element in Spring XML. It is typically used when designing Configuration classes to be bootstrapped by an AnnotationConfigApplicationContext, but where some XML functionality such as namespaces is still necessary. </p>
+<p>By default, arguments to the <code><a href="#">#value</a></code> attribute will be processed using a org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader if ending in <code>".groovy"</code>; otherwise, an org.springframework.beans.factory.xml.XmlBeanDefinitionReader will be used to parse Spring <code>&lt;beans/&gt;</code> XML files. Optionally, the <code><a href="#">#reader</a></code> attribute may be declared, allowing the user to choose a custom BeanDefinitionReader implementation.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+ConfigurationImport</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ImportResource</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.annotation.ImportResource$<init>(kotlin.Array((kotlin.String)), kotlin.Array((kotlin.String)), kotlin.reflect.KClass((org.springframework.beans.factory.support.BeanDefinitionReader)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.ImportResource$<init>(kotlin.Array((kotlin.String)), kotlin.Array((kotlin.String)), kotlin.reflect.KClass((org.springframework.beans.factory.support.BeanDefinitionReader)))/locations">locations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.ImportResource$<init>(kotlin.Array((kotlin.String)), kotlin.Array((kotlin.String)), kotlin.reflect.KClass((org.springframework.beans.factory.support.BeanDefinitionReader)))/reader">reader</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">BeanDefinitionReader</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Indicates one or more resources containing bean definitions to import. 
+<p>Like Import, this annotation provides functionality similar to the <code>&lt;import/&gt;</code> element in Spring XML. It is typically used when designing Configuration classes to be bootstrapped by an AnnotationConfigApplicationContext, but where some XML functionality such as namespaces is still necessary. </p>
+<p>By default, arguments to the <code><a href="#">#value</a></code> attribute will be processed using a org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader if ending in <code>".groovy"</code>; otherwise, an org.springframework.beans.factory.xml.XmlBeanDefinitionReader will be used to parse Spring <code>&lt;beans/&gt;</code> XML files. Optionally, the <code><a href="#">#reader</a></code> attribute may be declared, allowing the user to choose a custom BeanDefinitionReader implementation.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="locations.html">locations</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">locations</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Resource locations from which to import. 
+<p>Supports resource-loading prefixes such as <code>classpath:</code>, <code>file:</code>, etc. </p>
+<p>Consult the Javadoc for <code><a href="#">#reader</a></code> for details on how resources will be processed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reader.html">reader</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">reader</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">BeanDefinitionReader</span><span class="symbol">&gt;</span></code>
+<p>BeanDefinitionReader implementation to use when processing resources specified via the <code><a href="#">#value</a></code> attribute. 
+<p>By default, the reader will be adapted to the resource path specified: <code>".groovy"</code> files will be processed with a org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader; whereas, all other resources will be processed with an org.springframework.beans.factory.xml.XmlBeanDefinitionReader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Alias for <code><a href="#">#locations</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GenericTypeResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core</a>&nbsp;/&nbsp;<a href=".">GenericTypeResolver</a><br/>
+<br/>
+<h1>GenericTypeResolver</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">GenericTypeResolver</span></code>
+<p>Helper class for resolving generic types against type variables. 
+<p>Mainly intended for usage within the framework, resolving method parameter types even when they are declared generically.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Since</strong><br/>
+2.5.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GenericTypeResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Helper class for resolving generic types against type variables. 
+<p>Mainly intended for usage within the framework, resolving method parameter types even when they are declared generically.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-type-variable-map.html">getTypeVariableMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTypeVariableMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$getTypeVariableMap(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">TypeVariable</span><span class="symbol">&lt;</span><span class="identifier">GenericDeclaration</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">Type</span><span class="symbol">&gt;</span></code>
+<p>Build a mapping of <code><a href="#">TypeVariable names</a></code> to Class for the specified Class. Searches all super types, enclosing types and interfaces.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-parameter-type.html">resolveParameterType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveParameterType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveParameterType(org.springframework.core.MethodParameter, java.lang.Class((kotlin.Any)))/methodParameter">methodParameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveParameterType(org.springframework.core.MethodParameter, java.lang.Class((kotlin.Any)))/implementationClass">implementationClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Determine the target type for the given generic parameter type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-return-type.html">resolveReturnType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveReturnType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveReturnType(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveReturnType(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Determine the target type for the generic return type of the given method, where formal type variables are declared on the given class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-return-type-argument.html">resolveReturnTypeArgument</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveReturnTypeArgument</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveReturnTypeArgument(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveReturnTypeArgument(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/genericIfc">genericIfc</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Resolve the single type argument of the given generic interface against the given target method which is assumed to return the given interface or an implementation of it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-type.html">resolveType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveType(java.lang.reflect.Type, java.lang.Class((kotlin.Any)))/genericType">genericType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveType(java.lang.reflect.Type, java.lang.Class((kotlin.Any)))/contextClass">contextClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Type</span></code>
+<p>Resolve the given generic type against the given context class, substituting type variables as far as possible.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveType(java.lang.reflect.Type, kotlin.collections.MutableMap((java.lang.reflect.TypeVariable((java.lang.reflect.GenericDeclaration)), java.lang.reflect.Type)))/genericType">genericType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveType(java.lang.reflect.Type, kotlin.collections.MutableMap((java.lang.reflect.TypeVariable((java.lang.reflect.GenericDeclaration)), java.lang.reflect.Type)))/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">TypeVariable</span><span class="symbol">&lt;</span><span class="identifier">GenericDeclaration</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">Type</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Resolve the specified generic type against the given TypeVariable map. 
+<p>Used by Spring Data.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-type-argument.html">resolveTypeArgument</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveTypeArgument</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveTypeArgument(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveTypeArgument(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)))/genericIfc">genericIfc</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Resolve the single type argument of the given generic interface against the given target class which is assumed to implement the generic interface and possibly declare a concrete type for its type variable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-type-arguments.html">resolveTypeArguments</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveTypeArguments</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveTypeArguments(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.GenericTypeResolver$resolveTypeArguments(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)))/genericIfc">genericIfc</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Resolve the type arguments of the given generic interface against the given target class which is assumed to implement the generic interface and possibly declare concrete types for its type variables.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

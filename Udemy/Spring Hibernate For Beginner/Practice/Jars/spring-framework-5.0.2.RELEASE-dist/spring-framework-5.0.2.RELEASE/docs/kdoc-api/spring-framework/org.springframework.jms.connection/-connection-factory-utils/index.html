@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConnectionFactoryUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href=".">ConnectionFactoryUtils</a><br/>
+<br/>
+<h1>ConnectionFactoryUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ConnectionFactoryUtils</span></code>
+<p>Helper class for managing a JMS javax.jms.ConnectionFactory, in particular for obtaining transactional JMS resources for a given ConnectionFactory. 
+<p>Mainly for internal use within the framework. Used by org.springframework.jms.core.JmsTemplate as well as org.springframework.jms.listener.DefaultMessageListenerContainer.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+SmartConnectionFactory</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConnectionFactoryUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Helper class for managing a JMS javax.jms.ConnectionFactory, in particular for obtaining transactional JMS resources for a given ConnectionFactory. 
+<p>Mainly for internal use within the framework. Used by org.springframework.jms.core.JmsTemplate as well as org.springframework.jms.listener.DefaultMessageListenerContainer.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-get-transactional-session.html">doGetTransactionalSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doGetTransactionalSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory)/connectionFactory">connectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory)/resourceFactory">resourceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceFactory</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code>
+<p>Obtain a JMS Session that is synchronized with the current transaction, if any. 
+<p>This <code>doGetTransactionalSession</code> variant always starts the underlying JMS Connection, assuming that the Session will be used for receiving messages.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doGetTransactionalSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory, kotlin.Boolean)/connectionFactory">connectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory, kotlin.Boolean)/resourceFactory">resourceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory, kotlin.Boolean)/startConnection">startConnection</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code>
+<p>Obtain a JMS Session that is synchronized with the current transaction, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-session.html">getTargetSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTargetSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTargetSession(javax.jms.Session)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code>
+<p>Return the innermost target Session of the given Session. If the given Session is a proxy, it will be unwrapped until a non-proxy Session is found. Otherwise, the passed-in Session will be returned as-is.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-transactional-queue-session.html">getTransactionalQueueSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTransactionalQueueSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalQueueSession(javax.jms.QueueConnectionFactory, javax.jms.QueueConnection, kotlin.Boolean)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalQueueSession(javax.jms.QueueConnectionFactory, javax.jms.QueueConnection, kotlin.Boolean)/existingCon">existingCon</span><span class="symbol">:</span>&nbsp;<span class="identifier">QueueConnection</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalQueueSession(javax.jms.QueueConnectionFactory, javax.jms.QueueConnection, kotlin.Boolean)/synchedLocalTransactionAllowed">synchedLocalTransactionAllowed</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">QueueSession</span></code>
+<p>Obtain a JMS QueueSession that is synchronized with the current transaction, if any. 
+<p>Mainly intended for use with the JMS 1.0.2 API.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-transactional-session.html">getTransactionalSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTransactionalSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalSession(javax.jms.ConnectionFactory, javax.jms.Connection, kotlin.Boolean)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalSession(javax.jms.ConnectionFactory, javax.jms.Connection, kotlin.Boolean)/existingCon">existingCon</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalSession(javax.jms.ConnectionFactory, javax.jms.Connection, kotlin.Boolean)/synchedLocalTransactionAllowed">synchedLocalTransactionAllowed</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code>
+<p>Obtain a JMS Session that is synchronized with the current transaction, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-transactional-topic-session.html">getTransactionalTopicSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTransactionalTopicSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalTopicSession(javax.jms.TopicConnectionFactory, javax.jms.TopicConnection, kotlin.Boolean)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">TopicConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalTopicSession(javax.jms.TopicConnectionFactory, javax.jms.TopicConnection, kotlin.Boolean)/existingCon">existingCon</span><span class="symbol">:</span>&nbsp;<span class="identifier">TopicConnection</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$getTransactionalTopicSession(javax.jms.TopicConnectionFactory, javax.jms.TopicConnection, kotlin.Boolean)/synchedLocalTransactionAllowed">synchedLocalTransactionAllowed</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TopicSession</span></code>
+<p>Obtain a JMS TopicSession that is synchronized with the current transaction, if any. 
+<p>Mainly intended for use with the JMS 1.0.2 API.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-session-transactional.html">isSessionTransactional</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isSessionTransactional</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$isSessionTransactional(javax.jms.Session, javax.jms.ConnectionFactory)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$isSessionTransactional(javax.jms.Session, javax.jms.ConnectionFactory)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given JMS Session is transactional, that is, bound to the current thread by Spring's transaction facilities.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="release-connection.html">releaseConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">releaseConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$releaseConnection(javax.jms.Connection, javax.jms.ConnectionFactory, kotlin.Boolean)/con">con</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$releaseConnection(javax.jms.Connection, javax.jms.ConnectionFactory, kotlin.Boolean)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$releaseConnection(javax.jms.Connection, javax.jms.ConnectionFactory, kotlin.Boolean)/started">started</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Release the given Connection, stopping it (if necessary) and eventually closing it. 
+<p>Checks <code><a href="../-smart-connection-factory/should-stop.html">SmartConnectionFactory#shouldStop</a></code>, if available. This is essentially a more sophisticated version of <code><a href="../../org.springframework.jms.support/-jms-utils/close-connection.html">org.springframework.jms.support.JmsUtils#closeConnection</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

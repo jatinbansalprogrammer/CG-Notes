@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StaticWebApplicationContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.support</a>&nbsp;/&nbsp;<a href=".">StaticWebApplicationContext</a><br/>
+<br/>
+<h1>StaticWebApplicationContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StaticWebApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.context.support/-static-application-context/index.html"><span class="identifier">StaticApplicationContext</span></a><span class="symbol">, </span><span class="identifier">ConfigurableWebApplicationContext</span><span class="symbol">, </span><a href="../../org.springframework.ui.context/-theme-source/index.html"><span class="identifier">ThemeSource</span></a></code>
+<p>Static org.springframework.web.context.WebApplicationContext implementation for testing. Not intended for use in production applications. 
+<p>Implements the org.springframework.web.context.ConfigurableWebApplicationContext interface to allow for direct replacement of an XmlWebApplicationContext, despite not actually supporting external configuration files. </p>
+<p>Interprets resource paths as servlet context resources, i.e. as paths beneath the web application root. Absolute paths, e.g. for files outside the web app root, can be accessed via "file:" URLs, as implemented by org.springframework.core.io.DefaultResourceLoader. </p>
+<p>In addition to the special beans detected by org.springframework.context.support.AbstractApplicationContext, this class detects a bean of type org.springframework.ui.context.ThemeSource in the context, under the special bean name "themeSource".</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+org.springframework.ui.context.ThemeSource</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">StaticWebApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-config-locations.html">getConfigLocations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConfigLocations</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-namespace.html">getNamespace</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNamespace</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet-config.html">getServletConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getServletConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletConfig</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet-context.html">getServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getServletContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletContext</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-theme.html">getTheme</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTheme</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.StaticWebApplicationContext$getTheme(kotlin.String)/themeName">themeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Theme</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-config-location.html">setConfigLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConfigLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.StaticWebApplicationContext$setConfigLocation(kotlin.String)/configLocation">configLocation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The StaticWebApplicationContext class does not support this method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-config-locations.html">setConfigLocations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConfigLocations</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.context.support.StaticWebApplicationContext$setConfigLocations(kotlin.Array((kotlin.String)))/configLocations">configLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The StaticWebApplicationContext class does not support this method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-namespace.html">setNamespace</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNamespace</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.StaticWebApplicationContext$setNamespace(kotlin.String)/namespace">namespace</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-config.html">setServletConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletConfig</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.StaticWebApplicationContext$setServletConfig(javax.servlet.ServletConfig)/servletConfig">servletConfig</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletConfig</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.StaticWebApplicationContext$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ServletContext that this WebApplicationContext runs in.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.support/-static-application-context/add-message.html">addMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$addMessage(kotlin.String, java.util.Locale, kotlin.String)/code">code</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$addMessage(kotlin.String, java.util.Locale, kotlin.String)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$addMessage(kotlin.String, java.util.Locale, kotlin.String)/defaultMessage">defaultMessage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Associate the given message with the given code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.support/-static-application-context/get-static-message-source.html">getStaticMessageSource</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getStaticMessageSource</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.springframework.context.support/-static-message-source/index.html"><span class="identifier">StaticMessageSource</span></a></code>
+<p>Return the internal StaticMessageSource used by this context. Can be used to register messages on it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.support/-static-application-context/register-prototype.html">registerPrototype</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerPrototype</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerPrototype(kotlin.String, java.lang.Class((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerPrototype(kotlin.String, java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerPrototype</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerPrototype(kotlin.String, java.lang.Class((kotlin.Any)), org.springframework.beans.MutablePropertyValues)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerPrototype(kotlin.String, java.lang.Class((kotlin.Any)), org.springframework.beans.MutablePropertyValues)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerPrototype(kotlin.String, java.lang.Class((kotlin.Any)), org.springframework.beans.MutablePropertyValues)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">MutablePropertyValues</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a prototype bean with the underlying bean factory. 
+<p>For more advanced needs, register with the underlying BeanFactory directly.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.support/-static-application-context/register-singleton.html">registerSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerSingleton</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerSingleton(kotlin.String, java.lang.Class((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerSingleton(kotlin.String, java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerSingleton</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerSingleton(kotlin.String, java.lang.Class((kotlin.Any)), org.springframework.beans.MutablePropertyValues)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerSingleton(kotlin.String, java.lang.Class((kotlin.Any)), org.springframework.beans.MutablePropertyValues)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.StaticApplicationContext$registerSingleton(kotlin.String, java.lang.Class((kotlin.Any)), org.springframework.beans.MutablePropertyValues)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">MutablePropertyValues</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a singleton bean with the underlying bean factory. 
+<p>For more advanced needs, register with the underlying BeanFactory directly.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

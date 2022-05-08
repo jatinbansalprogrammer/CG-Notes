@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.support.incrementer - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.support.incrementer</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.support.incrementer</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-identity-column-max-value-incrementer/index.html">AbstractIdentityColumnMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractIdentityColumnMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractColumnMaxValueIncrementer</span></code>
+<p>Abstract base class for DataFieldMaxValueIncrementer implementations which are based on identity columns in a sequence-like table.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-b2-mainframe-sequence-max-value-incrementer/index.html">DB2MainframeSequenceMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DB2MainframeSequenceMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSequenceMaxValueIncrementer</span></code>
+<p>DataFieldMaxValueIncrementer that retrieves the next value of a given sequence on DB2/390 or DB2/400. Thanks to Jens Eickmeyer for the suggestion!</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-b2-sequence-max-value-incrementer/index.html">DB2SequenceMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DB2SequenceMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSequenceMaxValueIncrementer</span></code>
+<p>DataFieldMaxValueIncrementer that retrieves the next value of a given sequence on DB2 UDB (for Unix and Windows). Thanks to Mark MacMahon for the suggestion!</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-derby-max-value-incrementer/index.html">DerbyMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DerbyMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-identity-column-max-value-incrementer/index.html"><span class="identifier">AbstractIdentityColumnMaxValueIncrementer</span></a></code>
+<p>DataFieldMaxValueIncrementer that increments the maximum value of a given Derby table with the equivalent of an auto-increment column. Note: If you use this class, your Derby key column should <em>NOT</em> be defined as an IDENTITY column, as the sequence table does the job. 
+<p>The sequence is kept in a table. There should be one sequence table per table that needs an auto-generated key. </p>
+<p>Derby requires an additional column to be used for the insert since it is impossible to insert a null into the identity column and have the value generated. This is solved by providing the name of a dummy column that also must be created in the sequence table. </p>
+<p>Example: </p>
+<pre><code>create table tab (id int not null primary key, text varchar(100)); create table tab_sequence (value int generated always as identity, dummy char(1)); insert into tab_sequence (dummy) values(null);</code></pre> If "cacheSize" is set, the intermediate values are served without querying the database. If the server or your application is stopped or crashes or a transaction is rolled back, the unused values will never be served. The maximum hole size in numbering is consequently the value of cacheSize. <strong>HINT:</strong> Since Derby supports the JDBC 3.0 <code>getGeneratedKeys</code> method, it is recommended to use IDENTITY columns directly in the tables and then utilizing a org.springframework.jdbc.support.KeyHolder when calling the with the <code>update(PreparedStatementCreator psc, KeyHolder generatedKeyHolder)</code> method of the org.springframework.jdbc.core.JdbcTemplate. 
+<p>Thanks to Endre Stolsvik for the suggestion!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-h2-sequence-max-value-incrementer/index.html">H2SequenceMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">H2SequenceMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSequenceMaxValueIncrementer</span></code>
+<p>DataFieldMaxValueIncrementer that retrieves the next value of a given H2 Database sequence.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hsql-max-value-incrementer/index.html">HsqlMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HsqlMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-identity-column-max-value-incrementer/index.html"><span class="identifier">AbstractIdentityColumnMaxValueIncrementer</span></a></code>
+<p>DataFieldMaxValueIncrementer that increments the maximum value of a given HSQL table with the equivalent of an auto-increment column. Note: If you use this class, your HSQL key column should <em>NOT</em> be auto-increment, as the sequence table does the job. 
+<p>The sequence is kept in a table. There should be one sequence table per table that needs an auto-generated key. </p>
+<p>Example: </p>
+<pre><code>create table tab (id int not null primary key, text varchar(100)); create table tab_sequence (value identity); insert into tab_sequence values(0);</code></pre> If "cacheSize" is set, the intermediate values are served without querying the database. If the server or your application is stopped or crashes or a transaction is rolled back, the unused values will never be served. The maximum hole size in numbering is consequently the value of cacheSize. 
+<p><strong>NOTE:</strong> HSQL now supports sequences and you should consider using them instead: HsqlSequenceMaxValueIncrementer</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hsql-sequence-max-value-incrementer/index.html">HsqlSequenceMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HsqlSequenceMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSequenceMaxValueIncrementer</span></code>
+<p>DataFieldMaxValueIncrementer that retrieves the next value of a given HSQL sequence. Thanks to Guillaume Bilodeau for the suggestion! 
+<p><strong>NOTE:</strong> This is an alternative to using a regular table to support generating unique keys that was necessary in previous versions of HSQL.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-my-s-q-l-max-value-incrementer/index.html">MySQLMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MySQLMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractColumnMaxValueIncrementer</span></code>
+<p>DataFieldMaxValueIncrementer that increments the maximum value of a given MySQL table with the equivalent of an auto-increment column. Note: If you use this class, your MySQL key column should <em>NOT</em> be auto-increment, as the sequence table does the job. 
+<p>The sequence is kept in a table; there should be one sequence table per table that needs an auto-generated key. The storage engine used by the sequence table can be MYISAM or INNODB since the sequences are allocated using a separate connection without being affected by any other transactions that might be in progress. </p>
+<p>Example: </p>
+<pre><code>create table tab (id int unsigned not null primary key, text varchar(100)); create table tab_sequence (value int not null); insert into tab_sequence values(0);</code></pre> If "cacheSize" is set, the intermediate values are served without querying the database. If the server or your application is stopped or crashes or a transaction is rolled back, the unused values will never be served. The maximum hole size in numbering is consequently the value of cacheSize. 
+<p>It is possible to avoid acquiring a new connection for the incrementer by setting the "useNewConnection" property to false. In this case you <em>MUST</em> use a non-transactional storage engine like MYISAM when defining the incrementer table.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-oracle-sequence-max-value-incrementer/index.html">OracleSequenceMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OracleSequenceMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSequenceMaxValueIncrementer</span></code>
+<p>DataFieldMaxValueIncrementer that retrieves the next value of a given Oracle sequence.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-postgre-s-q-l-sequence-max-value-incrementer/index.html">PostgreSQLSequenceMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PostgreSQLSequenceMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSequenceMaxValueIncrementer</span></code>
+<p>DataFieldMaxValueIncrementer that retrieves the next value of a given PostgreSQL sequence. Thanks to Tomislav Urban for the suggestion!</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-server-max-value-incrementer/index.html">SqlServerMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlServerMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-identity-column-max-value-incrementer/index.html"><span class="identifier">AbstractIdentityColumnMaxValueIncrementer</span></a></code>
+<p>DataFieldMaxValueIncrementer that increments the maximum value of a given SQL Server table with the equivalent of an auto-increment column. Note: If you use this class, your table key column should <em>NOT</em> be defined as an IDENTITY column, as the sequence table does the job. 
+<p>This class is intended to be used with Microsoft SQL Server. </p>
+<p>The sequence is kept in a table. There should be one sequence table per table that needs an auto-generated key. </p>
+<p>Example: </p>
+<pre><code>create table tab (id int not null primary key, text varchar(100)) create table tab_sequence (id bigint identity) insert into tab_sequence default values</code></pre> If "cacheSize" is set, the intermediate values are served without querying the database. If the server or your application is stopped or crashes or a transaction is rolled back, the unused values will never be served. The maximum hole size in numbering is consequently the value of cacheSize. <strong>HINT:</strong> Since Microsoft SQL Server supports the JDBC 3.0 <code>getGeneratedKeys</code> method, it is recommended to use IDENTITY columns directly in the tables and then using a org.springframework.jdbc.core.simple.SimpleJdbcInsert or utilizing a org.springframework.jdbc.support.KeyHolder when calling the with the <code>update(PreparedStatementCreator psc, KeyHolder generatedKeyHolder)</code> method of the org.springframework.jdbc.core.JdbcTemplate. 
+<p>Thanks to Preben Nilsson for the suggestion!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sybase-anywhere-max-value-incrementer/index.html">SybaseAnywhereMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SybaseAnywhereMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-sybase-max-value-incrementer/index.html"><span class="identifier">SybaseMaxValueIncrementer</span></a></code>
+<p>DataFieldMaxValueIncrementer that increments the maximum value of a given Sybase SQL Anywhere table with the equivalent of an auto-increment column. Note: If you use this class, your table key column should <em>NOT</em> be defined as an IDENTITY column, as the sequence table does the job. 
+<p>This class is intended to be used with Sybase Anywhere. </p>
+<p>The sequence is kept in a table. There should be one sequence table per table that needs an auto-generated key. </p>
+<p>Example: </p>
+<pre><code>create table tab (id int not null primary key, text varchar(100)) create table tab_sequence (id bigint identity) insert into tab_sequence values(DEFAULT)</code></pre> If "cacheSize" is set, the intermediate values are served without querying the database. If the server or your application is stopped or crashes or a transaction is rolled back, the unused values will never be served. The maximum hole size in numbering is consequently the value of cacheSize. <strong>HINT:</strong> Since Sybase Anywhere supports the JDBC 3.0 <code>getGeneratedKeys</code> method, it is recommended to use IDENTITY columns directly in the tables and then using a org.springframework.jdbc.core.simple.SimpleJdbcInsert or utilizing a org.springframework.jdbc.support.KeyHolder when calling the with the <code>update(PreparedStatementCreator psc, KeyHolder generatedKeyHolder)</code> method of the org.springframework.jdbc.core.JdbcTemplate. 
+<p>Thanks to Tarald Saxi Stormark for the suggestion!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sybase-max-value-incrementer/index.html">SybaseMaxValueIncrementer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SybaseMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-identity-column-max-value-incrementer/index.html"><span class="identifier">AbstractIdentityColumnMaxValueIncrementer</span></a></code>
+<p>DataFieldMaxValueIncrementer that increments the maximum value of a given Sybase table with the equivalent of an auto-increment column. Note: If you use this class, your table key column should <em>NOT</em> be defined as an IDENTITY column, as the sequence table does the job. 
+<p>This class is intended to be used with Sybase Adaptive Server. </p>
+<p>The sequence is kept in a table. There should be one sequence table per table that needs an auto-generated key. </p>
+<p>Example: </p>
+<pre><code>create table tab (id int not null primary key, text varchar(100)) create table tab_sequence (id bigint identity) insert into tab_sequence values()</code></pre> If "cacheSize" is set, the intermediate values are served without querying the database. If the server or your application is stopped or crashes or a transaction is rolled back, the unused values will never be served. The maximum hole size in numbering is consequently the value of cacheSize. <strong>HINT:</strong> Since Sybase supports the JDBC 3.0 <code>getGeneratedKeys</code> method, it is recommended to use IDENTITY columns directly in the tables and then using a org.springframework.jdbc.core.simple.SimpleJdbcInsert or utilizing a org.springframework.jdbc.support.KeyHolder when calling the with the <code>update(PreparedStatementCreator psc, KeyHolder generatedKeyHolder)</code> method of the org.springframework.jdbc.core.JdbcTemplate. 
+<p>Thanks to Yinwei Liu for the suggestion!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

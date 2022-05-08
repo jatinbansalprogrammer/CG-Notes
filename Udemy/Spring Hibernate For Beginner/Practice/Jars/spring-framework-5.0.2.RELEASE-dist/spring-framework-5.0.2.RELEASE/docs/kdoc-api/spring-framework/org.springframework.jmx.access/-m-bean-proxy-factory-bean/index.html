@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MBeanProxyFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jmx.access</a>&nbsp;/&nbsp;<a href=".">MBeanProxyFactoryBean</a><br/>
+<br/>
+<h1>MBeanProxyFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MBeanClientInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Creates a proxy to a managed resource running either locally or remotely. The "proxyInterface" property defines the interface that the generated proxy is supposed to implement. This interface should define methods and properties that correspond to operations and attributes in the management interface of the resource you wish to proxy. 
+<p>There is no need for the managed resource to implement the proxy interface, although you may find it convenient to do. It is not required that every operation and attribute in the management interface is matched by a corresponding property or method in the proxy interface. </p>
+<p>Attempting to invoke or access any method or property on the proxy interface that does not correspond to the management interface will lead to an <code>InvalidInvocationException</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+MBeanClientInterceptorInvalidInvocationException</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MBeanProxyFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Creates a proxy to a managed resource running either locally or remotely. The "proxyInterface" property defines the interface that the generated proxy is supposed to implement. This interface should define methods and properties that correspond to operations and attributes in the management interface of the resource you wish to proxy. 
+<p>There is no need for the managed resource to implement the proxy interface, although you may find it convenient to do. It is not required that every operation and attribute in the management interface is matched by a corresponding property or method in the proxy interface. </p>
+<p>Attempting to invoke or access any method or property on the proxy interface that does not correspond to the management interface will lead to an <code>InvalidInvocationException</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Checks that the <code>proxyInterface</code> has been specified and then generates the proxy for the target MBean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.access.MBeanProxyFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-proxy-interface.html">setProxyInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProxyInterface</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.access.MBeanProxyFactoryBean$setProxyInterface(java.lang.Class((kotlin.Any)))/proxyInterface">proxyInterface</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the interface that the generated proxy will implement. 
+<p>This will usually be a management interface that matches the target MBean, exposing bean property setters and getters for MBean attributes and conventional Java methods for MBean operations.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

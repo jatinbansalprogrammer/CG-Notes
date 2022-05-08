@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.transaction - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.transaction</a><br/>
+<br/>
+<h2>Package org.springframework.transaction</h2>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cannot-create-transaction-exception/index.html">CannotCreateTransactionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CannotCreateTransactionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionException</span></code>
+<p>Exception thrown when a transaction can't be created using an underlying transaction API such as JTA.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-heuristic-completion-exception/index.html">HeuristicCompletionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HeuristicCompletionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionException</span></code>
+<p>Exception that represents a transaction failure caused by a heuristic decision on the side of the transaction coordinator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-illegal-transaction-state-exception/index.html">IllegalTransactionStateException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IllegalTransactionStateException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionUsageException</span></code>
+<p>Exception thrown when the existence or non-existence of a transaction amounts to an illegal state according to the transaction propagation behavior that applies.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-invalid-isolation-level-exception/index.html">InvalidIsolationLevelException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidIsolationLevelException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionUsageException</span></code>
+<p>Exception that gets thrown when an invalid isolation level is specified, i.e. an isolation level that the transaction manager implementation doesn't support.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-invalid-timeout-exception/index.html">InvalidTimeoutException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidTimeoutException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionUsageException</span></code>
+<p>Exception that gets thrown when an invalid timeout is specified, that is, the specified timeout valid is out of range or the transaction manager implementation doesn't support timeouts.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-nested-transaction-not-supported-exception/index.html">NestedTransactionNotSupportedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NestedTransactionNotSupportedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-cannot-create-transaction-exception/index.html"><span class="identifier">CannotCreateTransactionException</span></a></code>
+<p>Exception thrown when attempting to work with a nested transaction but nested transactions are not supported by the underlying backend.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-no-transaction-exception/index.html">NoTransactionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NoTransactionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionUsageException</span></code>
+<p>Exception thrown when an operation is attempted that relies on an existing transaction (such as setting rollback status) and there is no existing transaction. This represents an illegal usage of the transaction API.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-suspension-not-supported-exception/index.html">TransactionSuspensionNotSupportedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionSuspensionNotSupportedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-cannot-create-transaction-exception/index.html"><span class="identifier">CannotCreateTransactionException</span></a></code>
+<p>Exception thrown when attempting to suspend an existing transaction but transaction suspension is not supported by the underlying backend.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-system-exception/index.html">TransactionSystemException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionSystemException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionException</span></code>
+<p>Exception thrown when a general transaction system error is encountered, like on commit or rollback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-timed-out-exception/index.html">TransactionTimedOutException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionTimedOutException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionException</span></code>
+<p>Exception to be thrown when a transaction has timed out. 
+<p>Thrown by Spring's local transaction strategies if the deadline for a transaction has been reached when an operation is attempted, according to the timeout specified for the given transaction. </p>
+<p>Beyond such checks before each transactional operation, Spring's local transaction strategies will also pass appropriate timeout values to resource operations (for example to JDBC Statements, letting the JDBC driver respect the timeout). Such operations will usually throw native resource exceptions (for example, JDBC SQLExceptions) if their operation timeout has been exceeded, to be converted to Spring's DataAccessException in the respective DAO (which might use Spring's JdbcTemplate, for example). </p>
+<p>In a JTA environment, it is up to the JTA transaction coordinator to apply transaction timeouts. Usually, the corresponding JTA-aware connection pool will perform timeout checks and throw corresponding native resource exceptions (for example, JDBC SQLExceptions).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-unexpected-rollback-exception/index.html">UnexpectedRollbackException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnexpectedRollbackException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionException</span></code>
+<p>Thrown when an attempt to commit a transaction resulted in an unexpected rollback.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

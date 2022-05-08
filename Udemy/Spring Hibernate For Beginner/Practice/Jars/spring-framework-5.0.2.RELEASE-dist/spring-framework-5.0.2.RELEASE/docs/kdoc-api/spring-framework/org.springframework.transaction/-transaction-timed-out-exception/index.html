@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionTimedOutException - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction</a>&nbsp;/&nbsp;<a href=".">TransactionTimedOutException</a><br/>
+<br/>
+<h1>TransactionTimedOutException</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionTimedOutException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionException</span></code>
+<p>Exception to be thrown when a transaction has timed out. 
+<p>Thrown by Spring's local transaction strategies if the deadline for a transaction has been reached when an operation is attempted, according to the timeout specified for the given transaction. </p>
+<p>Beyond such checks before each transactional operation, Spring's local transaction strategies will also pass appropriate timeout values to resource operations (for example to JDBC Statements, letting the JDBC driver respect the timeout). Such operations will usually throw native resource exceptions (for example, JDBC SQLExceptions) if their operation timeout has been exceeded, to be converted to Spring's DataAccessException in the respective DAO (which might use Spring's JdbcTemplate, for example). </p>
+<p>In a JTA environment, it is up to the JTA transaction coordinator to apply transaction timeouts. Usually, the corresponding JTA-aware connection pool will perform timeout checks and throw corresponding native resource exceptions (for example, JDBC SQLExceptions).</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1.5</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.transaction.support.ResourceHolderSupport#getTimeToLiveInMillis</a><a href="#">java.sql.Statement#setQueryTimeout</a>java.sql.SQLException</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TransactionTimedOutException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.TransactionTimedOutException$<init>(kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">TransactionTimedOutException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.TransactionTimedOutException$<init>(kotlin.String, kotlin.Throwable)/msg">msg</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.TransactionTimedOutException$<init>(kotlin.String, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span></code>
+<p>Constructor for TransactionTimedOutException.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

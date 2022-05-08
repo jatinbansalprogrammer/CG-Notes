@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.aopalliance.intercept - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.aopalliance.intercept</a><br/>
+<br/>
+<h2>Package org.aopalliance.intercept</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-constructor-interceptor/index.html">ConstructorInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ConstructorInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Interceptor</span></code>
+<p>Intercepts the construction of a new object. 
+<p>The user should implement the <code><a href="-constructor-interceptor/construct.html"> </a></code> method to modify the original behavior. E.g. the following class implements a singleton interceptor (allows only one unique instance for the intercepted class): </p>
+<pre><code> class DebuggingInterceptor implements ConstructorInterceptor { Object instance=null; Object construct(ConstructorInvocation i) throws Throwable { if(instance==null) { return instance=i.proceed(); } else { throw new Exception("singleton does not allow multiple instance"); } } } </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-invocation/index.html">Invocation</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Invocation</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Joinpoint</span></code>
+<p>This interface represents an invocation in the program. 
+<p>An invocation is a joinpoint and can be intercepted by an interceptor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-interceptor/index.html">MethodInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MethodInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Interceptor</span></code>
+<p>Intercepts calls on an interface on its way to the target. These are nested "on top" of the target. 
+<p>The user should implement the <code><a href="-method-interceptor/invoke.html">#invoke(MethodInvocation)</a></code> method to modify the original behavior. E.g. the following class implements a tracing interceptor (traces all the calls on the intercepted method(s)): </p>
+<pre><code> class TracingInterceptor implements MethodInterceptor { Object invoke(MethodInvocation i) throws Throwable { System.out.println("method "+i.getMethod()+" is called on "+ i.getThis()+" with args "+i.getArguments()); Object ret=i.proceed(); System.out.println("method "+i.getMethod()+" returns "+ret); return ret; } } </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-invocation/index.html">MethodInvocation</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MethodInvocation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-invocation/index.html"><span class="identifier">Invocation</span></a></code>
+<p>Description of an invocation to a method, given to an interceptor upon method-call. 
+<p>A method invocation is a joinpoint and can be intercepted by a method interceptor.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

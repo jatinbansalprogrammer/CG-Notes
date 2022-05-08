@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.remoting.rmi - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.remoting.rmi</a><br/>
+<br/>
+<h2>Package org.springframework.remoting.rmi</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-codebase-aware-object-input-stream/index.html">CodebaseAwareObjectInputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CodebaseAwareObjectInputStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableObjectInputStream</span></code>
+<p>Special ObjectInputStream subclass that falls back to a specified codebase to load classes from if not found locally. In contrast to standard RMI conventions for dynamic class download, it is the client that determines the codebase URL here, rather than the "java.rmi.server.codebase" system property on the server. 
+<p>Uses the JDK's RMIClassLoader to load classes from the specified codebase. The codebase can consist of multiple URLs, separated by spaces. Note that RMIClassLoader requires a SecurityManager to be set, like when using dynamic class download with standard RMI! (See the RMI documentation for details.) </p>
+<p>Despite residing in the RMI package, this class is <em>not</em> used for RmiClientInterceptor, which uses the standard RMI infrastructure instead and thus is only able to rely on RMI's standard dynamic class download via "java.rmi.server.codebase". CodebaseAwareObjectInputStream is used by HttpInvokerClientInterceptor (see the "codebaseUrl" property there). </p>
+<p>Thanks to Lionel Mestre for suggesting the option and providing a prototype!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-rmi-client-interceptor/index.html">JndiRmiClientInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiRmiClientInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiObjectLocator</span><span class="symbol">, </span><a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.aopalliance.intercept.MethodInterceptor for accessing RMI services from JNDI. Typically used for RMI-IIOP but can also be used for EJB home objects (for example, a Stateful Session Bean home). In contrast to a plain JNDI lookup, this accessor also performs narrowing through PortableRemoteObject. 
+<p>With conventional RMI services, this invoker is typically used with the RMI service interface. Alternatively, this invoker can also proxy a remote RMI service with a matching non-RMI business interface, i.e. an interface that mirrors the RMI service methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the RMI stub will automatically get converted to Spring's unchecked RemoteAccessException. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-rmi-proxy-factory-bean/index.html">JndiRmiProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiRmiProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-jndi-rmi-client-interceptor/index.html"><span class="identifier">JndiRmiClientInterceptor</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>FactoryBean for RMI proxies from JNDI. 
+<p>Typically used for RMI-IIOP (CORBA), but can also be used for EJB home objects (for example, a Stateful Session Bean home). In contrast to a plain JNDI lookup, this accessor also performs narrowing through javax.rmi.PortableRemoteObject. </p>
+<p>With conventional RMI services, this invoker is typically used with the RMI service interface. Alternatively, this invoker can also proxy a remote RMI service with a matching non-RMI business interface, i.e. an interface that mirrors the RMI service methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the RMI stub will automatically get converted to Spring's unchecked RemoteAccessException. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-rmi-service-exporter/index.html">JndiRmiServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiRmiServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RmiBasedExporter</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Service exporter which binds RMI services to JNDI. Typically used for RMI-IIOP (CORBA). 
+<p>Exports services via the javax.rmi.PortableRemoteObject class. You need to run "rmic" with the "-iiop" option to generate corresponding stubs and skeletons for each exported service. </p>
+<p>Also supports exposing any non-RMI service via RMI invokers, to be accessed via JndiRmiClientInterceptor / JndiRmiProxyFactoryBean's automatic detection of such invokers. </p>
+<p>With an RMI invoker, RMI communication works on the RmiInvocationHandler level, needing only one stub for any service. Service interfaces do not have to extend <code>java.rmi.Remote</code> or throw <code>java.rmi.RemoteException</code> on all methods, but in and out parameters have to be serializable. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" bean property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rmi-client-interceptor-utils/index.html">RmiClientInterceptorUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">RmiClientInterceptorUtils</span></code>
+<p>Factored-out methods for performing invocations within an RMI client. Can handle both RMI and non-RMI service interfaces working on an RMI stub. 
+<p>Note: This is an SPI class, not intended to be used by applications.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rmi-proxy-factory-bean/index.html">RmiProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RmiProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RmiClientInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>FactoryBean for RMI proxies, supporting both conventional RMI services and RMI invokers. Exposes the proxied service for use as a bean reference, using the specified service interface. Proxies will throw Spring's unchecked RemoteAccessException on remote invocation failure instead of RMI's RemoteException. 
+<p>The service URL must be a valid RMI URL like "rmi://localhost:1099/myservice". RMI invokers work at the RmiInvocationHandler level, using the same invoker stub for any service. Service interfaces do not have to extend <code>java.rmi.Remote</code> or throw <code>java.rmi.RemoteException</code>. Of course, in and out parameters have to be serializable. </p>
+<p>With conventional RMI services, this proxy factory is typically used with the RMI service interface. Alternatively, this factory can also proxy a remote RMI service with a matching non-RMI business interface, i.e. an interface that mirrors the RMI service methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the RMI stub will automatically get converted to Spring's unchecked RemoteAccessException. </p>
+<p>The major advantage of RMI, compared to Hessian, is serialization. Effectively, any serializable Java object can be transported without hassle. Hessian has its own (de-)serialization mechanisms, but is HTTP-based and thus much easier to setup than RMI. Alternatively, consider Spring's HTTP invoker to combine Java serialization with HTTP-based transport.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rmi-registry-factory-bean/index.html">RmiRegistryFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RmiRegistryFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Registry</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that locates a java.rmi.registry.Registry and exposes it for bean references. Can also create a local RMI registry on the fly if none exists already. 
+<p>Can be used to set up and pass around the actual Registry object to applications objects that need to work with RMI. One example for such an object that needs to work with RMI is Spring's RmiServiceExporter, which either works with a passed-in Registry reference or falls back to the registry as specified by its local properties and defaults. </p>
+<p>Also useful to enforce creation of a local RMI registry at a given port, for example for a JMX connector. If used in conjunction with org.springframework.jmx.support.ConnectorServerFactoryBean, it is recommended to mark the connector definition (ConnectorServerFactoryBean) as "depends-on" the registry definition (RmiRegistryFactoryBean), to guarantee starting up the registry first. </p>
+<p>Note: The implementation of this class mirrors the corresponding logic in RmiServiceExporter, and also offers the same customization hooks. RmiServiceExporter implements its own registry lookup as a convenience: It is very common to simply rely on the registry defaults.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

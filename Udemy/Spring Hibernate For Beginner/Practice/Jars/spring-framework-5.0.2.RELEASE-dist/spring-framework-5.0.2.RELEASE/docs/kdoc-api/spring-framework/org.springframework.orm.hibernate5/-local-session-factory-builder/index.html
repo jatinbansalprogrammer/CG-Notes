@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalSessionFactoryBuilder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5</a>&nbsp;/&nbsp;<a href=".">LocalSessionFactoryBuilder</a><br/>
+<br/>
+<h1>LocalSessionFactoryBuilder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalSessionFactoryBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Configuration</span></code>
+<p>A Spring-provided extension of the standard Hibernate Configuration class, adding SpringSessionContext as a default and providing convenient ways to specify a DataSource and an application class loader. 
+<p>This is designed for programmatic use, e.g. in <code>@Bean</code> factory methods. Consider using LocalSessionFactoryBean for XML bean definition files. </p>
+<p>Compatible with Hibernate 5.0/5.1 as well as 5.2, as of Spring 4.3.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+LocalSessionFactoryBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LocalSessionFactoryBuilder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">LocalSessionFactoryBuilder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource, java.lang.ClassLoader)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource, java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">LocalSessionFactoryBuilder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource, org.springframework.core.io.ResourceLoader)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource, org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">LocalSessionFactoryBuilder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource, org.springframework.core.io.ResourceLoader, org.hibernate.boot.MetadataSources)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource, org.springframework.core.io.ResourceLoader, org.hibernate.boot.MetadataSources)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$<init>(javax.sql.DataSource, org.springframework.core.io.ResourceLoader, org.hibernate.boot.MetadataSources)/metadataSources">metadataSources</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetadataSources</span><span class="symbol">)</span></code>
+<p>Create a new LocalSessionFactoryBuilder for the given DataSource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-annotated-classes.html">addAnnotatedClasses</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addAnnotatedClasses</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$addAnnotatedClasses(kotlin.Array((java.lang.Class((kotlin.Any)))))/annotatedClasses">annotatedClasses</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocalSessionFactoryBuilder</span></code>
+<p>Add the given annotated classes in a batch.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-packages.html">addPackages</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addPackages</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$addPackages(kotlin.Array((kotlin.String)))/annotatedPackages">annotatedPackages</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocalSessionFactoryBuilder</span></code>
+<p>Add the given annotated packages in a batch.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="build-session-factory.html">buildSessionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">buildSessionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$buildSessionFactory(org.springframework.core.task.AsyncTaskExecutor)/bootstrapExecutor">bootstrapExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncTaskExecutor</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SessionFactory</span></code>
+<p>Build the Hibernate <code>SessionFactory</code> through background bootstrapping, using the given executor for a parallel initialization phase (e.g. a org.springframework.core.task.SimpleAsyncTaskExecutor). 
+<p><code>SessionFactory</code> initialization will then switch into background bootstrap mode, with a <code>SessionFactory</code> proxy immediately returned for injection purposes instead of waiting for Hibernate's bootstrapping to complete. However, note that the first actual call to a <code>SessionFactory</code> method will then block until Hibernate's bootstrapping completed, if not ready by then. For maximum benefit, make sure to avoid early <code>SessionFactory</code> calls in init methods of related beans, even for metadata introspection purposes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="scan-packages.html">scanPackages</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scanPackages</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$scanPackages(kotlin.Array((kotlin.String)))/packagesToScan">packagesToScan</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocalSessionFactoryBuilder</span></code>
+<p>Perform Spring-based scanning for entity classes, registering them as annotated classes with this <code>Configuration</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-current-tenant-identifier-resolver.html">setCurrentTenantIdentifierResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCurrentTenantIdentifierResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$setCurrentTenantIdentifierResolver(org.hibernate.context.spi.CurrentTenantIdentifierResolver)/currentTenantIdentifierResolver">currentTenantIdentifierResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">CurrentTenantIdentifierResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Overridden to reliably pass a CurrentTenantIdentifierResolver to the SessionFactory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-entity-type-filters.html">setEntityTypeFilters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEntityTypeFilters</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$setEntityTypeFilters(kotlin.Array((org.springframework.core.type.filter.TypeFilter)))/entityTypeFilters">entityTypeFilters</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeFilter</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocalSessionFactoryBuilder</span></code>
+<p>Specify custom type filters for Spring-based scanning for entity classes. 
+<p>Default is to search all specified packages for classes annotated with <code>@javax.persistence.Entity</code>, <code>@javax.persistence.Embeddable</code> or <code>@javax.persistence.MappedSuperclass</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jta-transaction-manager.html">setJtaTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJtaTransactionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$setJtaTransactionManager(kotlin.Any)/jtaTransactionManager">jtaTransactionManager</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocalSessionFactoryBuilder</span></code>
+<p>Set the Spring JtaTransactionManager or the JTA TransactionManager to be used with Hibernate, if any. Allows for using a Spring-managed transaction manager for Hibernate 5's session and cache synchronization, with the "hibernate.transaction.jta.platform" automatically set to it. 
+<p>A passed-in Spring JtaTransactionManager needs to contain a JTA TransactionManager reference to be usable here, except for the WebSphere case where we'll automatically set <code>WebSphereExtendedJtaPlatform</code> accordingly. </p>
+<p>Note: If this is set, the Hibernate settings should not contain a JTA platform setting to avoid meaningless double configuration.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-multi-tenant-connection-provider.html">setMultiTenantConnectionProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMultiTenantConnectionProvider</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$setMultiTenantConnectionProvider(org.hibernate.engine.jdbc.connections.spi.MultiTenantConnectionProvider)/multiTenantConnectionProvider">multiTenantConnectionProvider</span><span class="symbol">:</span>&nbsp;<span class="identifier">MultiTenantConnectionProvider</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocalSessionFactoryBuilder</span></code>
+<p>Set a MultiTenantConnectionProvider to be passed on to the SessionFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

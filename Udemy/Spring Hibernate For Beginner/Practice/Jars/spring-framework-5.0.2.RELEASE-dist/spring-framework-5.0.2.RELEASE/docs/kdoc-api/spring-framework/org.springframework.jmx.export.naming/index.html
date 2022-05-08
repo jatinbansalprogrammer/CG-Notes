@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jmx.export.naming - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jmx.export.naming</a><br/>
+<br/>
+<h2>Package org.springframework.jmx.export.naming</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-identity-naming-strategy/index.html">IdentityNamingStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IdentityNamingStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectNamingStrategy</span></code>
+<p>An implementation of the <code>ObjectNamingStrategy</code> interface that creates a name based on the identity of a given instance. 
+<p>The resulting <code>ObjectName</code> will be in the form <em>package</em>:class=<em>class name</em>,hashCode=<em>identity hash (in hex)</em></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-key-naming-strategy/index.html">KeyNamingStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">KeyNamingStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectNamingStrategy</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p><code>ObjectNamingStrategy</code> implementation that builds <code>ObjectName</code> instances from the key used in the "beans" map passed to <code>MBeanExporter</code>. 
+<p>Can also check object name mappings, given as <code>Properties</code> or as <code>mappingLocations</code> of properties files. The key used to look up is the key used in <code>MBeanExporter</code>'s "beans" map. If no mapping is found for a given key, the key itself is used to build an <code>ObjectName</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-metadata-naming-strategy/index.html">MetadataNamingStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MetadataNamingStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectNamingStrategy</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>An implementation of the ObjectNamingStrategy interface that reads the <code>ObjectName</code> from the source-level metadata. Falls back to the bean key (bean name) if no <code>ObjectName</code> can be found in source-level metadata. 
+<p>Uses the JmxAttributeSource strategy interface, so that metadata can be read using any supported implementation. Out of the box, org.springframework.jmx.export.annotation.AnnotationJmxAttributeSource introspects a well-defined set of Java 5 annotations that come with Spring.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-self-naming/index.html">SelfNaming</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SelfNaming</span></code>
+<p>Interface that allows infrastructure components to provide their own <code>ObjectName</code>s to the <code>MBeanExporter</code>. 
+<p><strong>Note:</strong> This interface is mainly intended for internal usage.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

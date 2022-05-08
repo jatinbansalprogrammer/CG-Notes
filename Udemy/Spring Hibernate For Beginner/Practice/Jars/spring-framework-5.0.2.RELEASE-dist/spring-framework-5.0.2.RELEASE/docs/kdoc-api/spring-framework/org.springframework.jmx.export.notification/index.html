@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jmx.export.notification - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jmx.export.notification</a><br/>
+<br/>
+<h2>Package org.springframework.jmx.export.notification</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-model-m-bean-notification-publisher/index.html">ModelMBeanNotificationPublisher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModelMBeanNotificationPublisher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NotificationPublisher</span></code>
+<p>NotificationPublisher implementation that uses the infrastructure provided by the ModelMBean interface to track javax.management.NotificationListener and send Notification to those listeners.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-notification-publisher-aware/index.html">NotificationPublisherAware</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">NotificationPublisherAware</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Aware</span></code>
+<p>Interface to be implemented by any Spring-managed resource that is to be registered with an javax.management.MBeanServer and wishes to send JMX javax.management.Notification. 
+<p>Provides Spring-created managed resources with a NotificationPublisher as soon as they are registered with the javax.management.MBeanServer. </p>
+<p><strong>NOTE:</strong> This interface only applies to simple Spring-managed beans which happen to get exported through Spring's org.springframework.jmx.export.MBeanExporter. It does not apply to any non-exported beans; neither does it apply to standard MBeans exported by Spring. For standard JMX MBeans, consider implementing the javax.management.modelmbean.ModelMBeanNotificationBroadcaster interface (or implementing a full javax.management.modelmbean.ModelMBean).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-unable-to-send-notification-exception/index.html">UnableToSendNotificationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnableToSendNotificationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmxException</span></code>
+<p>Thrown when a JMX javax.management.Notification is unable to be sent. 
+<p>The root cause of just why a particular notification could not be sent will <em>typically</em> be available via the <code><a href="#">#getCause()</a></code> property.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractHandshakeHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.server.support</a>&nbsp;/&nbsp;<a href=".">AbstractHandshakeHandler</a><br/>
+<br/>
+<h1>AbstractHandshakeHandler</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractHandshakeHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandshakeHandler</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A base class for HandshakeHandler implementations, independent from the Servlet API. 
+<p>Performs initial validation of the WebSocket handshake request - possibly rejecting it through the appropriate HTTP status code - while also allowing its subclasses to override various parts of the negotiation process (e.g. origin validation, sub-protocol negotiation, extensions negotiation, etc). </p>
+<p>If the negotiation succeeds, the actual upgrade is delegated to a server-specific org.springframework.web.socket.server.RequestUpgradeStrategy, which will update the response as necessary and initialize the WebSocket. Currently supported servers are Jetty 9.0-9.3, Tomcat 7.0.47+ and 8.x, Undertow 1.0-1.3, GlassFish 4.1+, WebLogic 12.1.3+.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategyorg.springframework.web.socket.server.standard.TomcatRequestUpgradeStrategyorg.springframework.web.socket.server.standard.UndertowRequestUpgradeStrategyorg.springframework.web.socket.server.standard.GlassFishRequestUpgradeStrategyorg.springframework.web.socket.server.standard.WebLogicRequestUpgradeStrategy</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-handshake.html">doHandshake</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">doHandshake</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.support.AbstractHandshakeHandler$doHandshake(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.support.AbstractHandshakeHandler$doHandshake(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.support.AbstractHandshakeHandler$doHandshake(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/wsHandler">wsHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.support.AbstractHandshakeHandler$doHandshake(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/attributes">attributes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-request-upgrade-strategy.html">getRequestUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRequestUpgradeStrategy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestUpgradeStrategy</span></code>
+<p>Return the RequestUpgradeStrategy for WebSocket requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-supported-protocols.html">getSupportedProtocols</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSupportedProtocols</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the list of supported sub-protocols.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-supported-protocols.html">setSupportedProtocols</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportedProtocols</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.server.support.AbstractHandshakeHandler$setSupportedProtocols(kotlin.Array((kotlin.String)))/protocols">protocols</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Use this property to configure the list of supported sub-protocols. The first configured sub-protocol that matches a client-requested sub-protocol is accepted. If there are no matches the response will not contain a Sec-WebSocket-Protocol header. 
+<p>Note that if the WebSocketHandler passed in at runtime is an instance of SubProtocolCapable then there is not need to explicitly configure this property. That is certainly the case with the built-in STOMP over WebSocket support. Therefore this property should be configured explicitly only if the WebSocketHandler does not implement <code>SubProtocolCapable</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

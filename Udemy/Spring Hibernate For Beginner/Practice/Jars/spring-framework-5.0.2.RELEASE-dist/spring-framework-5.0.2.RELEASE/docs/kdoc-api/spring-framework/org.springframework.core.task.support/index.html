@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.core.task.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.core.task.support</a><br/>
+<br/>
+<h2>Package org.springframework.core.task.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-concurrent-executor-adapter/index.html">ConcurrentExecutorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConcurrentExecutorAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span></code>
+<p>Adapter that exposes the java.util.concurrent.Executor interface for any Spring org.springframework.core.task.TaskExecutor. 
+<p>This is less useful as of Spring 3.0, since TaskExecutor itself extends the Executor interface. The adapter is only relevant for <em>hiding</em> the TaskExecutor nature of a given object now, solely exposing the standard Executor interface to a client.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-executor-service-adapter/index.html">ExecutorServiceAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExecutorServiceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractExecutorService</span></code>
+<p>Adapter that takes a Spring org.springframework.core.task.TaskExecutor) and exposes a full <code>java.util.concurrent.ExecutorService</code> for it. 
+<p>This is primarily for adapting to client components that communicate via the <code>java.util.concurrent.ExecutorService</code> API. It can also be used as common ground between a local Spring <code>TaskExecutor</code> backend and a JNDI-located <code>ManagedExecutorService</code> in a Java EE 6 environment. </p>
+<p><strong>NOTE:</strong> This ExecutorService adapter does <em>not</em> support the lifecycle methods in the <code>java.util.concurrent.ExecutorService</code> API ("shutdown()" etc), similar to a server-wide <code>ManagedExecutorService</code> in a Java EE 6 environment. The lifecycle is always up to the backend pool, with this adapter acting as an access-only proxy for that target pool.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

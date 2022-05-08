@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.context.junit.jupiter - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.context.junit.jupiter</a><br/>
+<br/>
+<h2>Package org.springframework.test.context.junit.jupiter</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-spring-extension/index.html">SpringExtension</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringExtension</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeforeAllCallback</span><span class="symbol">, </span><span class="identifier">AfterAllCallback</span><span class="symbol">, </span><span class="identifier">TestInstancePostProcessor</span><span class="symbol">, </span><span class="identifier">BeforeEachCallback</span><span class="symbol">, </span><span class="identifier">AfterEachCallback</span><span class="symbol">, </span><span class="identifier">BeforeTestExecutionCallback</span><span class="symbol">, </span><span class="identifier">AfterTestExecutionCallback</span><span class="symbol">, </span><span class="identifier">ParameterResolver</span></code>
+<p><code>SpringExtension</code> integrates the <em>Spring TestContext Framework</em> into JUnit 5's <em>Jupiter</em> programming model. 
+<p>To use this extension, simply annotate a JUnit Jupiter based test class with <code>@ExtendWith(SpringExtension.class)</code>, <code>@SpringJUnitConfig</code>, or <code>@SpringJUnitWebConfig</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-disabled-if/index.html">DisabledIf</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">DisabledIf</span></code>
+<p><code>@DisabledIf</code> is used to signal that the annotated test class or test method is <em>disabled</em> and should not be executed if the supplied <code><a href="#">#expression</a></code> evaluates to <code>true</code>. 
+<p>When applied at the class level, all test methods within that class are automatically disabled as well. </p>
+<p>For basic examples, see the Javadoc for <code><a href="#">#expression</a></code>. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. For example, a custom <code>@DisabledOnMac</code> annotation can be created as follows. </p>
+<pre><code> @Target({ ElementType.TYPE, ElementType.METHOD }) @Retention(RetentionPolicy.RUNTIME) @DisabledIf( expression = "#{systemProperties['os.name'].toLowerCase().contains('mac')}", reason = "Disabled on Mac OS" ) public @interface DisabledOnMac {} </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-enabled-if/index.html">EnabledIf</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnabledIf</span></code>
+<p><code>@EnabledIf</code> is used to signal that the annotated test class or test method is <em>enabled</em> and should be executed if the supplied <code><a href="#">#expression</a></code> evaluates to <code>true</code>. 
+<p>When applied at the class level, all test methods within that class are automatically enabled by default as well. </p>
+<p>For basic examples, see the Javadoc for <code><a href="#">#expression</a></code>. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. For example, a custom <code>@EnabledOnMac</code> annotation can be created as follows. </p>
+<pre><code> @Target({ ElementType.TYPE, ElementType.METHOD }) @Retention(RetentionPolicy.RUNTIME) @EnabledIf( expression = "#{systemProperties['os.name'].toLowerCase().contains('mac')}", reason = "Enabled on Mac OS" ) public @interface EnabledOnMac {} </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-j-unit-config/index.html">SpringJUnitConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SpringJUnitConfig</span></code>
+<p><code>@SpringJUnitConfig</code> is a <em>composed annotation</em> that combines ExtendWith from JUnit Jupiter with ContextConfiguration from the <em>Spring TestContext Framework</em>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

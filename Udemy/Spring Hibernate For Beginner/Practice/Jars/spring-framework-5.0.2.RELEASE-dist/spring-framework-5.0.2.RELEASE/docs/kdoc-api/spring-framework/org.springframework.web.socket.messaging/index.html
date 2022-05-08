@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.socket.messaging - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.socket.messaging</a><br/>
+<br/>
+<h2>Package org.springframework.web.socket.messaging</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-session-connect-event/index.html">SessionConnectEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionConnectEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSubProtocolEvent</span></code>
+<p>Event raised when a new WebSocket client using a Simple Messaging Protocol (e.g. STOMP) as the WebSocket sub-protocol issues a connect request. 
+<p>Note that this is not the same as the WebSocket session getting established but rather the client's first attempt to connect within the sub-protocol, for example sending the STOMP CONNECT frame.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-connected-event/index.html">SessionConnectedEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionConnectedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSubProtocolEvent</span></code>
+<p>A connected event represents the server response to a client's connect request. See org.springframework.web.socket.messaging.SessionConnectEvent.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-disconnect-event/index.html">SessionDisconnectEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionDisconnectEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSubProtocolEvent</span></code>
+<p>Event raised when the session of a WebSocket client using a Simple Messaging Protocol (e.g. STOMP) as the WebSocket sub-protocol is closed. 
+<p>Note that this event may be raised more than once for a single session and therefore event consumers should be idempotent and ignore a duplicate event.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-subscribe-event/index.html">SessionSubscribeEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionSubscribeEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSubProtocolEvent</span></code>
+<p>Event raised when a new WebSocket client using a Simple Messaging Protocol (e.g. STOMP) sends a subscription request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-unsubscribe-event/index.html">SessionUnsubscribeEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionUnsubscribeEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSubProtocolEvent</span></code>
+<p>Event raised when a new WebSocket client using a Simple Messaging Protocol (e.g. STOMP) sends a request to remove a subscription.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sub-protocol-error-handler/index.html">SubProtocolErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SubProtocolErrorHandler</span><span class="symbol">&lt;</span><span class="identifier">P</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>A contract for handling sub-protocol errors sent to clients.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sub-protocol-handler/index.html">SubProtocolHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SubProtocolHandler</span></code>
+<p>A contract for handling WebSocket messages as part of a higher level protocol, referred to as "sub-protocol" in the WebSocket RFC specification. Handles both WebSocketMessages from a client as well as Messages to a client. 
+<p>Implementations of this interface can be configured on a SubProtocolWebSocketHandler which selects a sub-protocol handler to delegate messages to based on the sub-protocol requested by the client through the <code>Sec-WebSocket-Protocol</code> request header.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-annotation-method-message-handler/index.html">WebSocketAnnotationMethodMessageHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketAnnotationMethodMessageHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpAnnotationMethodMessageHandler</span></code>
+<p>A sub-class of SimpAnnotationMethodMessageHandler to provide support for org.springframework.web.bind.annotation.ControllerAdvice with global <code>@MessageExceptionHandler</code> methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-stomp-client/index.html">WebSocketStompClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketStompClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.simp.stomp/-stomp-client-support/index.html"><span class="identifier">StompClientSupport</span></a><span class="symbol">, </span><span class="identifier">SmartLifecycle</span></code>
+<p>A STOMP over WebSocket client that connects using an implementation of org.springframework.web.socket.client.WebSocketClient including org.springframework.web.socket.sockjs.client.SockJsClient.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

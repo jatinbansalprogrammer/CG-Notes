@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JmsListenerAnnotationBeanPostProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.annotation</a>&nbsp;/&nbsp;<a href=".">JmsListenerAnnotationBeanPostProcessor</a><br/>
+<br/>
+<h1>JmsListenerAnnotationBeanPostProcessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsListenerAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory/-smart-initializing-singleton/index.html"><span class="identifier">SmartInitializingSingleton</span></a></code>
+<p>Bean post-processor that registers methods annotated with JmsListener to be invoked by a JMS message listener container created under the cover by a org.springframework.jms.config.JmsListenerContainerFactory according to the attributes of the annotation. 
+<p>Annotated methods can use flexible arguments as defined by JmsListener. </p>
+<p>This post-processor is automatically registered by Spring's <code>&lt;jms:annotation-driven&gt;</code> XML element, and also by the EnableJms annotation. </p>
+<p>Autodetects any JmsListenerConfigurer instances in the container, allowing for customization of the registry to be used, the default container factory or for fine-grained control over endpoints registration. See the EnableJms javadocs for complete usage details.</p>
+</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+JmsListenerEnableJmsJmsListenerConfigurerJmsListenerEndpointRegistrarJmsListenerEndpointRegistryorg.springframework.jms.config.JmsListenerEndpointMethodJmsListenerEndpoint</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JmsListenerAnnotationBeanPostProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Bean post-processor that registers methods annotated with JmsListener to be invoked by a JMS message listener container created under the cover by a org.springframework.jms.config.JmsListenerContainerFactory according to the attributes of the annotation. 
+<p>Annotated methods can use flexible arguments as defined by JmsListener. </p>
+<p>This post-processor is automatically registered by Spring's <code>&lt;jms:annotation-driven&gt;</code> XML element, and also by the EnableJms annotation. </p>
+<p>Autodetects any JmsListenerConfigurer instances in the container, allowing for customization of the registry to be used, the default container factory or for fine-grained control over endpoints registration. See the EnableJms javadocs for complete usage details.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-singletons-instantiated.html">afterSingletonsInstantiated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterSingletonsInstantiated</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-after-initialization.html">postProcessAfterInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-initialization.html">postProcessBeforeInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-merged-bean-definition.html">postProcessMergedBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessMergedBeanDefinition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanDefinition">beanDefinition</span><span class="symbol">:</span>&nbsp;<span class="identifier">RootBeanDefinition</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanType">beanType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Making a BeanFactory available is optional; if not set, JmsListenerConfigurer beans won't get autodetected and an <code><a href="set-endpoint-registry.html">endpoint registry</a></code> has to be explicitly configured.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-container-factory-bean-name.html">setContainerFactoryBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContainerFactoryBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$setContainerFactoryBeanName(kotlin.String)/containerFactoryBeanName">containerFactoryBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the JmsListenerContainerFactory to use by default. 
+<p>If none is specified, "jmsListenerContainerFactory" is assumed to be defined.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-endpoint-registry.html">setEndpointRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEndpointRegistry</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$setEndpointRegistry(org.springframework.jms.config.JmsListenerEndpointRegistry)/endpointRegistry">endpointRegistry</span><span class="symbol">:</span>&nbsp;<span class="identifier">JmsListenerEndpointRegistry</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JmsListenerEndpointRegistry that will hold the created endpoint and manage the lifecycle of the related listener container.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-handler-method-factory.html">setMessageHandlerMethodFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageHandlerMethodFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor$setMessageHandlerMethodFactory(org.springframework.messaging.handler.annotation.support.MessageHandlerMethodFactory)/messageHandlerMethodFactory">messageHandlerMethodFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHandlerMethodFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the MessageHandlerMethodFactory to use to configure the message listener responsible to serve an endpoint detected by this processor. 
+<p>By default, DefaultMessageHandlerMethodFactory is used and it can be configured further to support additional method arguments or to customize conversion and validation support. See DefaultMessageHandlerMethodFactory Javadoc for more details.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PeriodicTrigger - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.support</a>&nbsp;/&nbsp;<a href=".">PeriodicTrigger</a><br/>
+<br/>
+<h1>PeriodicTrigger</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PeriodicTrigger</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Trigger</span></code>
+<p>A trigger for periodic task execution. The period may be applied as either fixed-rate or fixed-delay, and an initial delay value may also be configured. The default initial delay is 0, and the default behavior is fixed-delay (i.e. the interval between successive executions is measured from each completion time). To measure the interval between the scheduled start time of each execution instead, set the 'fixedRate' property to <code>true</code>. 
+<p>Note that the TaskScheduler interface already defines methods for scheduling tasks at fixed-rate or with fixed-delay. Both also support an optional value for the initial delay. Those methods should be used directly whenever possible. The value of this Trigger implementation is that it can be used within components that rely on the Trigger abstraction. For example, it may be convenient to allow periodic triggers, cron-based triggers, and even custom Trigger implementations to be used interchangeably.</p>
+</p>
+<p><strong>Author</strong><br/>
+Mark Fisher</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PeriodicTrigger</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.PeriodicTrigger$<init>(kotlin.Long)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span></code>
+<p>Create a trigger with the given period in milliseconds.</p>
+<code><span class="identifier">PeriodicTrigger</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.PeriodicTrigger$<init>(kotlin.Long, java.util.concurrent.TimeUnit)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.support.PeriodicTrigger$<init>(kotlin.Long, java.util.concurrent.TimeUnit)/timeUnit">timeUnit</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeUnit</span><span class="symbol">)</span></code>
+<p>Create a trigger with the given period and time unit. The time unit will apply not only to the period but also to any 'initialDelay' value, if configured on this Trigger later via <code><a href="set-initial-delay.html">#setInitialDelay(long)</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.PeriodicTrigger$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-initial-delay.html">getInitialDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInitialDelay</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the initial delay, or 0 if none.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-period.html">getPeriod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPeriod</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return this trigger's period.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-time-unit.html">getTimeUnit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimeUnit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TimeUnit</span></code>
+<p>Return this trigger's time unit (milliseconds by default).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-fixed-rate.html">isFixedRate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFixedRate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether this trigger uses fixed rate (<code>true</code>) or fixed delay (<code>false</code>) behavior.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="next-execution-time.html">nextExecutionTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">nextExecutionTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.PeriodicTrigger$nextExecutionTime(org.springframework.scheduling.TriggerContext)/triggerContext">triggerContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TriggerContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Date</span></code>
+<p>Returns the time after which a task should run again.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fixed-rate.html">setFixedRate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFixedRate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.PeriodicTrigger$setFixedRate(kotlin.Boolean)/fixedRate">fixedRate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether the periodic interval should be measured between the scheduled start times rather than between actual completion times. The latter, "fixed delay" behavior, is the default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-initial-delay.html">setInitialDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInitialDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.PeriodicTrigger$setInitialDelay(kotlin.Long)/initialDelay">initialDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the delay for the initial execution. It will be evaluated in terms of this trigger's TimeUnit. If no time unit was explicitly provided upon instantiation, the default is milliseconds.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

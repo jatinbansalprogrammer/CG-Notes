@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingWebConnection - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet.htmlunit</a>&nbsp;/&nbsp;<a href=".">DelegatingWebConnection</a><br/>
+<br/>
+<h1>DelegatingWebConnection</h1>
+<code><span class="keyword">class </span><span class="identifier">DelegatingWebConnection</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebConnection</span></code>
+<p>Implementation of WebConnection that allows delegating to various <code>WebConnection</code> implementations. 
+<p>For example, if you host your JavaScript on the domain <code>code.jquery.com</code>, you might want to use the following. </p>
+<pre><code> WebClient webClient = new WebClient(); MockMvc mockMvc = ... MockMvcWebConnection mockConnection = new MockMvcWebConnection(mockMvc, webClient); WebRequestMatcher cdnMatcher = new UrlRegexRequestMatcher(".*?//code.jquery.com/.*"); WebConnection httpConnection = new HttpWebConnection(webClient); WebConnection webConnection = new DelegatingWebConnection(mockConnection, new DelegateWebConnection(cdnMatcher, httpConnection)); webClient.setWebConnection(webConnection); WebClient webClient = new WebClient(); webClient.setWebConnection(webConnection); </code></pre></p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DelegatingWebConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection$<init>(com.gargoylesoftware.htmlunit.WebConnection, kotlin.collections.MutableList((org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection.DelegateWebConnection)))/defaultConnection">defaultConnection</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebConnection</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection$<init>(com.gargoylesoftware.htmlunit.WebConnection, kotlin.collections.MutableList((org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection.DelegateWebConnection)))/connections">connections</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">DelegateWebConnection</span><span class="symbol">&gt;</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">DelegatingWebConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection$<init>(com.gargoylesoftware.htmlunit.WebConnection, kotlin.Array((org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection.DelegateWebConnection)))/defaultConnection">defaultConnection</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebConnection</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection$<init>(com.gargoylesoftware.htmlunit.WebConnection, kotlin.Array((org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection.DelegateWebConnection)))/connections">connections</span><span class="symbol">:</span>&nbsp;<span class="identifier">DelegateWebConnection</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-response.html">getResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getResponse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.DelegatingWebConnection$getResponse(com.gargoylesoftware.htmlunit.WebRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebResponse</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

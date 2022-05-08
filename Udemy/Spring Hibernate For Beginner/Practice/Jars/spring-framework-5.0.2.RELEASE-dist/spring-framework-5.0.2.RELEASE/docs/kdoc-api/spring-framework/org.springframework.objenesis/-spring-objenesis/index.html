@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringObjenesis - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.objenesis</a>&nbsp;/&nbsp;<a href=".">SpringObjenesis</a><br/>
+<br/>
+<h1>SpringObjenesis</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringObjenesis</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Objenesis</span></code>
+<p>Spring-specific variant of ObjenesisStd / ObjenesisBase, providing a cache based on <code>Class</code> keys instead of class names, and allowing for selective use of the cache.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="is-worth-trying.html">#isWorthTrying()</a><a href="#">#newInstance(Class, boolean)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringObjenesis</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>SpringObjenesis</code> instance with the standard instantiator strategy.</p>
+<code><span class="identifier">SpringObjenesis</span><span class="symbol">(</span><span class="identifier" id="org.springframework.objenesis.SpringObjenesis$<init>(org.springframework.objenesis.strategy.InstantiatorStrategy)/strategy">strategy</span><span class="symbol">:</span>&nbsp;<span class="identifier">InstantiatorStrategy</span><span class="symbol">)</span></code>
+<p>Create a new <code>SpringObjenesis</code> instance with the given standard instantiator strategy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-i-g-n-o-r-e_-o-b-j-e-n-e-s-i-s_-p-r-o-p-e-r-t-y_-n-a-m-e.html">IGNORE_OBJENESIS_PROPERTY_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IGNORE_OBJENESIS_PROPERTY_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>System property that instructs Spring to ignore Objenesis, not even attempting to use it. Setting this flag to "true" is equivalent to letting Spring find out that Objenesis isn't working at runtime, triggering the fallback code path immediately: Most importantly, this means that all CGLIB AOP proxies will be created through regular instantiation via a default constructor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-instantiator-of.html">getInstantiatorOf</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getInstantiatorOf</span><span class="symbol">(</span><span class="identifier" id="org.springframework.objenesis.SpringObjenesis$getInstantiatorOf(java.lang.Class((org.springframework.objenesis.SpringObjenesis.getInstantiatorOf.T)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObjectInstantiator</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-worth-trying.html">isWorthTrying</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isWorthTrying</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether this Objenesis instance is worth trying for instance creation, i.e. whether it hasn't been used yet or is known to work. 
+<p>If the configured Objenesis instantiator strategy has been identified to not work on the current JVM at all or if the "spring.objenesis.ignore" property has been set to "true", this method returns <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.objenesis.SpringObjenesis$newInstance(java.lang.Class((org.springframework.objenesis.SpringObjenesis.newInstance.T)), kotlin.Boolean)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.objenesis.SpringObjenesis$newInstance(java.lang.Class((org.springframework.objenesis.SpringObjenesis.newInstance.T)), kotlin.Boolean)/useCache">useCache</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Create a new instance of the given class via Objenesis.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.objenesis.SpringObjenesis$newInstance(java.lang.Class((org.springframework.objenesis.SpringObjenesis.newInstance.T)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

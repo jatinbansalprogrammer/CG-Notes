@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.context.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.context.support</a><br/>
+<br/>
+<h2>Package org.springframework.test.context.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-dirties-context-test-execution-listener/index.html">AbstractDirtiesContextTestExecutionListener</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractDirtiesContextTestExecutionListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTestExecutionListener</span></code>
+<p>Abstract base class for <code>TestExecutionListener</code> implementations that provide support for marking the <code>ApplicationContext</code> associated with a test as <em>dirty</em> for both test classes and test methods annotated with the DirtiesContext annotation. 
+<p>The core functionality for this class was extracted from DirtiesContextTestExecutionListener in Spring Framework 4.2.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-config-context-loader/index.html">AnnotationConfigContextLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationConfigContextLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericContextLoader</span></code>
+<p>Concrete implementation of AbstractGenericContextLoader that loads bean definitions from annotated classes. 
+<p>See the Javadoc for org.springframework.test.context.ContextConfiguration for a definition of <em>annotated class</em>. </p>
+<p>Note: <code>AnnotationConfigContextLoader</code> supports <em>annotated classes</em> rather than the String-based resource locations defined by the legacy org.springframework.test.context.ContextLoader API. Thus, although <code>AnnotationConfigContextLoader</code> extends <code>AbstractGenericContextLoader</code>, <code>AnnotationConfigContextLoader</code> does <em>not</em> support any String-based methods defined by <code>AbstractContextLoader</code> or <code>AbstractGenericContextLoader</code>. Consequently, <code>AnnotationConfigContextLoader</code> should chiefly be considered a org.springframework.test.context.SmartContextLoader rather than a org.springframework.test.context.ContextLoader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-config-context-loader-utils/index.html">AnnotationConfigContextLoaderUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AnnotationConfigContextLoaderUtils</span></code>
+<p>Utility methods for SmartContextLoader that deal with annotated classes (e.g., Configuration classes).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-active-profiles-resolver/index.html">DefaultActiveProfilesResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultActiveProfilesResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ActiveProfilesResolver</span></code>
+<p>Default implementation of the ActiveProfilesResolver strategy that resolves <em>active bean definition profiles</em> based solely on profiles configured declaratively via <code><a href="#">ActiveProfiles#profiles</a></code> or <code><a href="#">ActiveProfiles#value</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-bootstrap-context/index.html">DefaultBootstrapContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultBootstrapContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BootstrapContext</span></code>
+<p>Default implementation of the BootstrapContext interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-test-context/index.html">DefaultTestContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultTestContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span></code>
+<p>Default implementation of the TestContext interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-test-context-bootstrapper/index.html">DefaultTestContextBootstrapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultTestContextBootstrapper</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTestContextBootstrapper</span></code>
+<p>Default implementation of the TestContextBootstrapper SPI. 
+<p>Uses DelegatingSmartContextLoader as the default ContextLoader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-smart-context-loader/index.html">DelegatingSmartContextLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingSmartContextLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractDelegatingSmartContextLoader</span></code>
+<p><code>DelegatingSmartContextLoader</code> is a concrete implementation of AbstractDelegatingSmartContextLoader that delegates to a GenericXmlContextLoader (or a GenericGroovyXmlContextLoader if Groovy is present in the classpath) and an AnnotationConfigContextLoader.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-groovy-xml-context-loader/index.html">GenericGroovyXmlContextLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericGroovyXmlContextLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericXmlContextLoader</span></code>
+<p>Concrete implementation of AbstractGenericContextLoader that reads bean definitions from Groovy scripts <em>and</em> XML configuration files. 
+<p>Default resource locations are detected using the suffixes <code>"-context.xml"</code> and <code>"Context.groovy"</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-properties-context-loader/index.html">GenericPropertiesContextLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericPropertiesContextLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericContextLoader</span></code>
+<p>Concrete implementation of AbstractGenericContextLoader that reads bean definitions from Java Properties resources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-test-property-source-utils/index.html">TestPropertySourceUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TestPropertySourceUtils</span></code>
+<p>Utility methods for working with TestPropertySource and adding test PropertySource to the <code>Environment</code>. 
+<p>Primarily intended for use within the framework.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

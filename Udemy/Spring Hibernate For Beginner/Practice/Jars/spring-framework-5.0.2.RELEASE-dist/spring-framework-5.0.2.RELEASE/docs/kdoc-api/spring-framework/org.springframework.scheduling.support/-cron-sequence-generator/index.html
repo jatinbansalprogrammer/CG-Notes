@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CronSequenceGenerator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.support</a>&nbsp;/&nbsp;<a href=".">CronSequenceGenerator</a><br/>
+<br/>
+<h1>CronSequenceGenerator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CronSequenceGenerator</span></code>
+<p>Date sequence generator for a <a href="#">Crontab pattern</a>, allowing clients to specify a pattern that the sequence matches. 
+<p>The pattern is a list of six single space-separated fields: representing second, minute, hour, day, month, weekday. Month and weekday names can be given as the first three letters of the English names. </p>
+<p>Example patterns: </p>
+<ul> <li>"0 0 * * * *" = the top of every hour of every day.</li>
+ <li>"*/10 * * * * *" = every ten seconds.</li>
+ <li>"0 0 8-10 * * *" = 8, 9 and 10 o'clock of every day.</li>
+ <li>"0 0 6,19 * * *" = 6:00 AM and 7:00 PM every day.</li>
+ <li>"0 0/30 8-10 * * *" = 8:00, 8:30, 9:00, 9:30, 10:00 and 10:30 every day.</li>
+ <li>"0 0 9-17 * * MON-FRI" = on the hour nine-to-five weekdays</li>
+ <li>"0 0 0 25 12 ?" = every Christmas Day at midnight</li>
+ </ul>
+</p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Ruslan Sibgatullin</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+CronTrigger</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CronSequenceGenerator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.CronSequenceGenerator$<init>(kotlin.String)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Construct a CronSequenceGenerator from the pattern provided, using the default TimeZone.</p>
+<code><span class="identifier">CronSequenceGenerator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.CronSequenceGenerator$<init>(kotlin.String, java.util.TimeZone)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.support.CronSequenceGenerator$<init>(kotlin.String, java.util.TimeZone)/timeZone">timeZone</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeZone</span><span class="symbol">)</span></code>
+<p>Construct a CronSequenceGenerator from the pattern provided, using the specified TimeZone.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.CronSequenceGenerator$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-valid-expression.html">isValidExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isValidExpression</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.CronSequenceGenerator$isValidExpression(kotlin.String)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the specified expression represents a valid cron pattern.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="next.html">next</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">next</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.CronSequenceGenerator$next(java.util.Date)/date">date</span><span class="symbol">:</span>&nbsp;<span class="identifier">Date</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Date</span></code>
+<p>Get the next Date in the sequence matching the Cron pattern and after the value provided. The return value will have a whole number of seconds, and will be after the input value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

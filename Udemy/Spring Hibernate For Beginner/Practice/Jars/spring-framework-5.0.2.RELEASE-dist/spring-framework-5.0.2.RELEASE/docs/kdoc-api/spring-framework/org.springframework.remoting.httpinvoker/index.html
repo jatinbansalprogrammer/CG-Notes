@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.remoting.httpinvoker - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.remoting.httpinvoker</a><br/>
+<br/>
+<h2>Package org.springframework.remoting.httpinvoker</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-http-components-http-invoker-request-executor/index.html">HttpComponentsHttpInvokerRequestExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpComponentsHttpInvokerRequestExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpInvokerRequestExecutor</span></code>
+<p>org.springframework.remoting.httpinvoker.HttpInvokerRequestExecutor implementation that uses <a href="#">Apache HttpComponents HttpClient</a> to execute POST requests. 
+<p>Allows to use a pre-configured org.apache.http.client.HttpClient instance, potentially with authentication, HTTP connection pooling, etc. Also designed for easy subclassing, providing specific template methods. </p>
+<p>As of Spring 4.1, this request executor requires Apache HttpComponents 4.3 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-invoker-proxy-factory-bean/index.html">HttpInvokerProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpInvokerProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpInvokerClientInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>FactoryBean for HTTP invoker proxies. Exposes the proxied service for use as a bean reference, using the specified service interface. 
+<p>The service URL must be an HTTP URL exposing an HTTP invoker service. Optionally, a codebase URL can be specified for on-demand dynamic code download from a remote location. For details, see HttpInvokerClientInterceptor docs. </p>
+<p>Serializes remote invocation objects and deserializes remote invocation result objects. Uses Java serialization just like RMI, but provides the same ease of setup as Caucho's HTTP-based Hessian protocol. </p>
+<p><strong>HTTP invoker is the recommended protocol for Java-to-Java remoting.</strong> It is more powerful and more extensible than Hessian, at the expense of being tied to Java. Nevertheless, it is as easy to set up as Hessian, which is its main advantage compared to RMI. </p>
+<p><strong>WARNING: Be aware of vulnerabilities due to unsafe Java deserialization: Manipulated input streams could lead to unwanted code execution on the server during the deserialization step. As a consequence, do not expose HTTP invoker endpoints to untrusted clients but rather just between your own services.</strong> In general, we strongly recommend any other message format (e.g. JSON) instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-invoker-request-executor/index.html">HttpInvokerRequestExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HttpInvokerRequestExecutor</span></code>
+<p>Strategy interface for actual execution of an HTTP invoker request. Used by HttpInvokerClientInterceptor and its subclass HttpInvokerProxyFactoryBean. 
+<p>Two implementations are provided out of the box: </p>
+<ul> <li><strong><code>SimpleHttpInvokerRequestExecutor</code>:</strong> Uses JDK facilities to execute POST requests, without support for HTTP authentication or advanced configuration options. </li>
+<li><strong><code>HttpComponentsHttpInvokerRequestExecutor</code>:</strong> Uses Apache's Commons HttpClient to execute POST requests, allowing to use a preconfigured HttpClient instance (potentially with authentication, HTTP connection pooling, etc). </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-http-invoker-request-executor/index.html">SimpleHttpInvokerRequestExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHttpInvokerRequestExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpInvokerRequestExecutor</span></code>
+<p>HttpInvokerRequestExecutor implementation that uses standard J2SE facilities to execute POST requests, without support for HTTP authentication or advanced configuration options. 
+<p>Designed for easy subclassing, customizing specific template methods. However, consider <code>HttpComponentsHttpInvokerRequestExecutor</code> for more sophisticated needs: The J2SE HttpURLConnection is rather limited in its capabilities.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-http-invoker-service-exporter/index.html">SimpleHttpInvokerServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHttpInvokerServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RemoteInvocationSerializingExporter</span><span class="symbol">, </span><span class="identifier">HttpHandler</span></code>
+<p>HTTP request handler that exports the specified service bean as HTTP invoker service endpoint, accessible via an HTTP invoker proxy. Designed for Sun's JRE 1.6 HTTP server, implementing the com.sun.net.httpserver.HttpHandler interface. 
+<p>Deserializes remote invocation objects and serializes remote invocation result objects. Uses Java serialization just like RMI, but provides the same ease of setup as Caucho's HTTP-based Hessian protocol. </p>
+<p><strong>HTTP invoker is the recommended protocol for Java-to-Java remoting.</strong> It is more powerful and more extensible than Hessian, at the expense of being tied to Java. Nevertheless, it is as easy to set up as Hessian, which is its main advantage compared to RMI. </p>
+<p><strong>WARNING: Be aware of vulnerabilities due to unsafe Java deserialization: Manipulated input streams could lead to unwanted code execution on the server during the deserialization step. As a consequence, do not expose HTTP invoker endpoints to untrusted clients but rather just between your own services.</strong> In general, we strongly recommend any other message format (e.g. JSON) instead.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ThreadPoolTaskScheduler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.concurrent</a>&nbsp;/&nbsp;<a href=".">ThreadPoolTaskScheduler</a><br/>
+<br/>
+<h1>ThreadPoolTaskScheduler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThreadPoolTaskScheduler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExecutorConfigurationSupport</span><span class="symbol">, </span><span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">, </span><span class="identifier">SchedulingTaskExecutor</span><span class="symbol">, </span><span class="identifier">TaskScheduler</span></code>
+<p>Implementation of Spring's TaskScheduler interface, wrapping a native java.util.concurrent.ScheduledThreadPoolExecutor.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Mark Fisher</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+<a href="set-pool-size.html">#setPoolSize</a><a href="set-remove-on-cancel-policy.html">#setRemoveOnCancelPolicy</a><a href="#">#setThreadFactory</a><a href="set-error-handler.html">#setErrorHandler</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ThreadPoolTaskScheduler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of Spring's TaskScheduler interface, wrapping a native java.util.concurrent.ScheduledThreadPoolExecutor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$execute(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$execute(java.lang.Runnable, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$execute(java.lang.Runnable, kotlin.Long)/startTimeout">startTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-active-count.html">getActiveCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getActiveCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the number of currently active threads. 
+<p>Requires an underlying ScheduledThreadPoolExecutor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-pool-size.html">getPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPoolSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the current pool size. 
+<p>Requires an underlying ScheduledThreadPoolExecutor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scheduled-executor.html">getScheduledExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScheduledExecutor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledExecutorService</span></code>
+<p>Return the underlying ScheduledExecutorService for native access.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scheduled-thread-pool-executor.html">getScheduledThreadPoolExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScheduledThreadPoolExecutor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledThreadPoolExecutor</span></code>
+<p>Return the underlying ScheduledThreadPoolExecutor, if available.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-remove-on-cancel-policy.html">isRemoveOnCancelPolicy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRemoveOnCancelPolicy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return the current setting for the remove-on-cancel mode. 
+<p>Requires an underlying ScheduledThreadPoolExecutor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="prefers-short-lived-tasks.html">prefersShortLivedTasks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prefersShortLivedTasks</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule.html">schedule</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$schedule(java.lang.Runnable, org.springframework.scheduling.Trigger)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$schedule(java.lang.Runnable, org.springframework.scheduling.Trigger)/trigger">trigger</span><span class="symbol">:</span>&nbsp;<span class="identifier">Trigger</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$schedule(java.lang.Runnable, java.util.Date)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$schedule(java.lang.Runnable, java.util.Date)/startTime">startTime</span><span class="symbol">:</span>&nbsp;<span class="identifier">Date</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule-at-fixed-rate.html">scheduleAtFixedRate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleAtFixedRate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleAtFixedRate(java.lang.Runnable, java.util.Date, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleAtFixedRate(java.lang.Runnable, java.util.Date, kotlin.Long)/startTime">startTime</span><span class="symbol">:</span>&nbsp;<span class="identifier">Date</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleAtFixedRate(java.lang.Runnable, java.util.Date, kotlin.Long)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleAtFixedRate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleAtFixedRate(java.lang.Runnable, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleAtFixedRate(java.lang.Runnable, kotlin.Long)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule-with-fixed-delay.html">scheduleWithFixedDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleWithFixedDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleWithFixedDelay(java.lang.Runnable, java.util.Date, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleWithFixedDelay(java.lang.Runnable, java.util.Date, kotlin.Long)/startTime">startTime</span><span class="symbol">:</span>&nbsp;<span class="identifier">Date</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleWithFixedDelay(java.lang.Runnable, java.util.Date, kotlin.Long)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleWithFixedDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleWithFixedDelay(java.lang.Runnable, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$scheduleWithFixedDelay(java.lang.Runnable, kotlin.Long)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-error-handler.html">setErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setErrorHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$setErrorHandler(org.springframework.util.ErrorHandler)/errorHandler">errorHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">ErrorHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom ErrorHandler strategy.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-pool-size.html">setPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPoolSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$setPoolSize(kotlin.Int)/poolSize">poolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ScheduledExecutorService's pool size. Default is 1. 
+<p><strong>This setting can be modified at runtime, for example through JMX.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-remove-on-cancel-policy.html">setRemoveOnCancelPolicy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRemoveOnCancelPolicy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$setRemoveOnCancelPolicy(kotlin.Boolean)/removeOnCancelPolicy">removeOnCancelPolicy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the remove-on-cancel mode on ScheduledThreadPoolExecutor (JDK 7+). 
+<p>Default is <code>false</code>. If set to <code>true</code>, the target executor will be switched into remove-on-cancel mode (if possible, with a soft fallback otherwise). </p>
+<p><strong>This setting can be modified at runtime, for example through JMX.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="submit.html">submit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$submit(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$submit(java.util.concurrent.Callable((org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler.submit.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="submit-listenable.html">submitListenable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$submitListenable(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler$submitListenable(java.util.concurrent.Callable((org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler.submitListenable.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

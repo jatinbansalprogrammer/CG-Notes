@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ErrorMessage - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.support</a>&nbsp;/&nbsp;<a href=".">ErrorMessage</a><br/>
+<br/>
+<h1>ErrorMessage</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ErrorMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericMessage</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span></code>
+<p>A GenericMessage with a Throwable payload. 
+<p>The payload is typically a org.springframework.messaging.MessagingException with the message at the point of failure in its <code>failedMessage</code> property. An optional <code>originalMessage</code> may be provided, which represents the message that existed at the point in the stack where the error message is created. </p>
+<p>Consider some code that starts with a message, invokes some process that performs transformation on that message and then fails for some reason, throwing the exception. The exception is caught and an error message produced that contains both the original message, and the transformed message that failed.</p>
+</p>
+<p><strong>Author</strong><br/>
+Mark Fisher</p>
+<p><strong>Author</strong><br/>
+Oleg Zhurakousky</p>
+<p><strong>Author</strong><br/>
+Gary Russell</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<p><strong>See Also</strong><br/>
+MessageBuilder</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ErrorMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable)/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span></code>
+<p>Create a new message with the given payload.</p>
+<code><span class="identifier">ErrorMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/headers">headers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new message with the given payload and headers. The content of the given header map is copied.</p>
+<code><span class="identifier">ErrorMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, org.springframework.messaging.MessageHeaders)/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, org.springframework.messaging.MessageHeaders)/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaders</span><span class="symbol">)</span></code>
+<p>A constructor with the MessageHeaders instance to use. 
+<p><strong>Note:</strong> the given <code>MessageHeaders</code> instance is used directly in the new message, i.e. it is not copied.</p>
+</p>
+<code><span class="identifier">ErrorMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, org.springframework.messaging.Message((kotlin.Any)))/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, org.springframework.messaging.Message((kotlin.Any)))/originalMessage">originalMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new message with the given payload and original message.</p>
+<code><span class="identifier">ErrorMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)), org.springframework.messaging.Message((kotlin.Any)))/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)), org.springframework.messaging.Message((kotlin.Any)))/headers">headers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)), org.springframework.messaging.Message((kotlin.Any)))/originalMessage">originalMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new message with the given payload, headers and original message. The content of the given header map is copied.</p>
+<code><span class="identifier">ErrorMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, org.springframework.messaging.MessageHeaders, org.springframework.messaging.Message((kotlin.Any)))/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, org.springframework.messaging.MessageHeaders, org.springframework.messaging.Message((kotlin.Any)))/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ErrorMessage$<init>(kotlin.Throwable, org.springframework.messaging.MessageHeaders, org.springframework.messaging.Message((kotlin.Any)))/originalMessage">originalMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new message with the payload, MessageHeaders and original message. 
+<p><strong>Note:</strong> the given <code>MessageHeaders</code> instance is used directly in the new message, i.e. it is not copied.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-original-message.html">getOriginalMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOriginalMessage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the original message (if available) at the point in the stack where the ErrorMessage was created.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SocketUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.util</a>&nbsp;/&nbsp;<a href=".">SocketUtils</a><br/>
+<br/>
+<h1>SocketUtils</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SocketUtils</span></code>
+<p>Simple utility methods for working with network sockets — for example, for finding available ports on <code>localhost</code>. 
+<p>Within this class, a TCP port refers to a port for a ServerSocket; whereas, a UDP port refers to a port for a DatagramSocket.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Ben Hale</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Gunnar Hillert</p>
+<p><strong>Author</strong><br/>
+Gary Russell</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SocketUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Although <code>SocketUtils</code> consists solely of static utility methods, this constructor is intentionally <code>public</code>. Rationale 
+<p>Static methods from this class may be invoked from within XML configuration files using the Spring Expression Language (SpEL) and the following syntax. </p>
+<pre><code><code>&lt;bean id="bean1" ... p:port="#{T(org.springframework.util.SocketUtils).findAvailableTcpPort(12000)}" /&gt;</code></code></pre> If this constructor were <code>private</code>, you would be required to supply the fully qualified class name to SpEL's <code>T()</code> function for each usage. Thus, the fact that this constructor is <code>public</code> allows you to reduce boilerplate configuration with SpEL as can be seen in the following example. <pre><code><code>&lt;bean id="socketUtils" class="org.springframework.util.SocketUtils" /&gt; &lt;bean id="bean1" ... p:port="#{socketUtils.findAvailableTcpPort(12000)}" /&gt; &lt;bean id="bean2" ... p:port="#{socketUtils.findAvailableTcpPort(30000)}" /&gt;</code></code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-p-o-r-t_-r-a-n-g-e_-m-a-x.html">PORT_RANGE_MAX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PORT_RANGE_MAX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default maximum value for port ranges used when finding an available socket port.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-o-r-t_-r-a-n-g-e_-m-i-n.html">PORT_RANGE_MIN</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PORT_RANGE_MIN</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default minimum value for port ranges used when finding an available socket port.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="find-available-tcp-port.html">findAvailableTcpPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableTcpPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Find an available TCP port randomly selected from the range [{@value #PORT_RANGE_MIN}, {@value #PORT_RANGE_MAX}].</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableTcpPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableTcpPort(kotlin.Int)/minPort">minPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Find an available TCP port randomly selected from the range [<code>minPort</code>, {@value #PORT_RANGE_MAX}].</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableTcpPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableTcpPort(kotlin.Int, kotlin.Int)/minPort">minPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableTcpPort(kotlin.Int, kotlin.Int)/maxPort">maxPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Find an available TCP port randomly selected from the range [<code>minPort</code>, <code>maxPort</code>].</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-available-tcp-ports.html">findAvailableTcpPorts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableTcpPorts</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableTcpPorts(kotlin.Int)/numRequested">numRequested</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SortedSet</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Find the requested number of available TCP ports, each randomly selected from the range [{@value #PORT_RANGE_MIN}, {@value #PORT_RANGE_MAX}].</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableTcpPorts</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableTcpPorts(kotlin.Int, kotlin.Int, kotlin.Int)/numRequested">numRequested</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableTcpPorts(kotlin.Int, kotlin.Int, kotlin.Int)/minPort">minPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableTcpPorts(kotlin.Int, kotlin.Int, kotlin.Int)/maxPort">maxPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SortedSet</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Find the requested number of available TCP ports, each randomly selected from the range [<code>minPort</code>, <code>maxPort</code>].</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-available-udp-port.html">findAvailableUdpPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableUdpPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Find an available UDP port randomly selected from the range [{@value #PORT_RANGE_MIN}, {@value #PORT_RANGE_MAX}].</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableUdpPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableUdpPort(kotlin.Int)/minPort">minPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Find an available UDP port randomly selected from the range [<code>minPort</code>, {@value #PORT_RANGE_MAX}].</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableUdpPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableUdpPort(kotlin.Int, kotlin.Int)/minPort">minPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableUdpPort(kotlin.Int, kotlin.Int)/maxPort">maxPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Find an available UDP port randomly selected from the range [<code>minPort</code>, <code>maxPort</code>].</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-available-udp-ports.html">findAvailableUdpPorts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableUdpPorts</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableUdpPorts(kotlin.Int)/numRequested">numRequested</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SortedSet</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Find the requested number of available UDP ports, each randomly selected from the range [{@value #PORT_RANGE_MIN}, {@value #PORT_RANGE_MAX}].</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findAvailableUdpPorts</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableUdpPorts(kotlin.Int, kotlin.Int, kotlin.Int)/numRequested">numRequested</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableUdpPorts(kotlin.Int, kotlin.Int, kotlin.Int)/minPort">minPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.SocketUtils$findAvailableUdpPorts(kotlin.Int, kotlin.Int, kotlin.Int)/maxPort">maxPort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SortedSet</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">&gt;</span></code>
+<p>Find the requested number of available UDP ports, each randomly selected from the range [<code>minPort</code>, <code>maxPort</code>].</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

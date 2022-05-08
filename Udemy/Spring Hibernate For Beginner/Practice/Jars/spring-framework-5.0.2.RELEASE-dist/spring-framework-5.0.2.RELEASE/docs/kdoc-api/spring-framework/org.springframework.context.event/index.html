@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.context.event - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.context.event</a><br/>
+<br/>
+<h2>Package org.springframework.context.event</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-application-listener-method-adapter/index.html">ApplicationListenerMethodAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ApplicationListenerMethodAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationListener</span></code>
+<p>GenericApplicationListener adapter that delegates the processing of an event to an EventListener annotated method. 
+<p>Delegates to <code><a href="-application-listener-method-adapter/process-event.html">#processEvent(ApplicationEvent)</a></code> to give sub-classes a chance to deviate from the default. Unwraps the content of a PayloadApplicationEvent if necessary to allow method declaration to define any arbitrary event type. If a condition is defined, it is evaluated prior to invoking the underlying method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-closed-event/index.html">ContextClosedEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextClosedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextEvent</span></code>
+<p>Event raised when an <code>ApplicationContext</code> gets closed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-refreshed-event/index.html">ContextRefreshedEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextRefreshedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextEvent</span></code>
+<p>Event raised when an <code>ApplicationContext</code> gets initialized or refreshed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-started-event/index.html">ContextStartedEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextStartedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextEvent</span></code>
+<p>Event raised when an <code>ApplicationContext</code> gets started.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-stopped-event/index.html">ContextStoppedEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextStoppedEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextEvent</span></code>
+<p>Event raised when an <code>ApplicationContext</code> gets stopped.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-event-listener-factory/index.html">DefaultEventListenerFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultEventListenerFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EventListenerFactory</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Default EventListenerFactory implementation that supports the regular EventListener annotation. 
+<p>Used as "catch-all" implementation by default.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-event-listener-method-processor/index.html">EventListenerMethodProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EventListenerMethodProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory/-smart-initializing-singleton/index.html"><span class="identifier">SmartInitializingSingleton</span></a><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span></code>
+<p>Register EventListener annotated method as individual ApplicationListener instances.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-event-publication-interceptor/index.html">EventPublicationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EventPublicationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">ApplicationEventPublisherAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>MethodInterceptor that publishes an <code>ApplicationEvent</code> to all <code>ApplicationListeners</code> registered with an <code>ApplicationEventPublisher</code> after each <em>successful</em> method invocation. 
+<p>Note that this interceptor is only capable of publishing <em>stateless</em> events configured via the <code><a href="#">"applicationEventClass"</a></code> property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-application-listener-adapter/index.html">GenericApplicationListenerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericApplicationListenerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationListener</span><span class="symbol">, </span><a href="-smart-application-listener/index.html"><span class="identifier">SmartApplicationListener</span></a></code>
+<p>GenericApplicationListener adapter that determines supported event types through introspecting the generically declared type of the target listener.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-application-event-multicaster/index.html">SimpleApplicationEventMulticaster</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleApplicationEventMulticaster</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractApplicationEventMulticaster</span></code>
+<p>Simple implementation of the ApplicationEventMulticaster interface. 
+<p>Multicasts all events to all registered listeners, leaving it up to the listeners to ignore events that they are not interested in. Listeners will usually perform corresponding <code>instanceof</code> checks on the passed-in event object. </p>
+<p>By default, all listeners are invoked in the calling thread. This allows the danger of a rogue listener blocking the entire application, but adds minimal overhead. Specify an alternative task executor to have listeners executed in different threads, for example from a thread pool.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-smart-application-listener/index.html">SmartApplicationListener</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SmartApplicationListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationListener</span><span class="symbol">&lt;</span><span class="identifier">ApplicationEvent</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Extended variant of the standard ApplicationListener interface, exposing further metadata such as the supported event type. 
+<p>Users are strongly advised to use the GenericApplicationListener interface instead as it provides an improved detection of generics-based event types.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-source-filtering-listener/index.html">SourceFilteringListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SourceFilteringListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationListener</span><span class="symbol">, </span><a href="-smart-application-listener/index.html"><span class="identifier">SmartApplicationListener</span></a></code>
+<p>org.springframework.context.ApplicationListener decorator that filters events from a specified event source, invoking its delegate listener for matching org.springframework.context.ApplicationEvent objects only. 
+<p>Can also be used as base class, overriding the <code><a href="#">#onApplicationEventInternal</a></code> method instead of specifying a delegate listener.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-event-listener/index.html">EventListener</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EventListener</span></code>
+<p>Annotation that marks a method as a listener for application events. 
+<p>If an annotated method supports a single event type, the method may declare a single parameter that reflects the event type to listen to. If an annotated method supports multiple event types, this annotation may refer to one or more supported event types using the <code>classes</code> attribute. See the <code><a href="#">#classes</a></code> javadoc for further details. </p>
+<p>Events can be ApplicationEvent instances as well as arbitrary objects. </p>
+<p>Processing of <code>@EventListener</code> annotations is performed via the internal EventListenerMethodProcessor bean which gets registered automatically when using Java config or manually via the <code>&lt;context:annotation-config/&gt;</code> or <code>&lt;context:component-scan/&gt;</code> element when using XML config. </p>
+<p>Annotated methods may have a non-<code>void</code> return type. When they do, the result of the method invocation is sent as a new event. If the return type is either an array or a collection, each element is sent as a new individual event. </p>
+<p>It is also possible to define the order in which listeners for a certain event are to be invoked. To do so, add Spring's common org.springframework.core.annotation.Order annotation alongside this event listener annotation. </p>
+<p>While it is possible for an event listener to declare that it throws arbitrary exception types, any checked exceptions thrown from an event listener will be wrapped in an java.lang.reflect.UndeclaredThrowableException since the event publisher can only handle runtime exceptions.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

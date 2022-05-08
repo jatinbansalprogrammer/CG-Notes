@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyAccessor.setPropertyValues - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href="index.html">PropertyAccessor</a>&nbsp;/&nbsp;<a href=".">setPropertyValues</a><br/>
+<br/>
+<h1>setPropertyValues</h1>
+<a name="org.springframework.beans.PropertyAccessor$setPropertyValues(kotlin.collections.MutableMap((kotlin.Any, )))"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(kotlin.collections.MutableMap((kotlin.Any, )))/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform a batch update from a Map. 
+<p>Bulk updates from PropertyValues are more powerful: This method is provided for convenience. Behavior will be identical to that of the <code>#setPropertyValues(PropertyValues)</code> method.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="map"></a>
+<code>map</code> - Map to take properties from. Contains property value objects, keyed by property name</p>
+<h3>Exceptions</h3>
+<p><a name="InvalidPropertyException"></a>
+<code>InvalidPropertyException</code> - if there is no such property or if the property isn't writable</p>
+<p><a name="PropertyBatchUpdateException"></a>
+<code>PropertyBatchUpdateException</code> - if one or more PropertyAccessExceptions occurred for specific properties during the batch update. This exception bundles all individual PropertyAccessExceptions. All other properties will have been successfully updated.</p>
+<a name="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The preferred way to perform a batch update. 
+<p>Note that performing a batch update differs from performing a single update, in that an implementation of this class will continue to update properties if a <strong>recoverable</strong> error (such as a type mismatch, but <strong>not</strong> an invalid field name or the like) is encountered, throwing a PropertyBatchUpdateException containing all the individual errors. This exception can be examined later to see all binding errors. Properties that were successfully updated remain changed. </p>
+<p>Does not allow unknown fields or invalid fields.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="pvs"></a>
+<code>pvs</code> - PropertyValues to set on the target object</p>
+<h3>Exceptions</h3>
+<p><a name="InvalidPropertyException"></a>
+<code>InvalidPropertyException</code> - if there is no such property or if the property isn't writable</p>
+<p><a name="PropertyBatchUpdateException"></a>
+<code>PropertyBatchUpdateException</code> - if one or more PropertyAccessExceptions occurred for specific properties during the batch update. This exception bundles all individual PropertyAccessExceptions. All other properties will have been successfully updated.</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setPropertyValues(PropertyValues, boolean, boolean)</a></p>
+<a name="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean)/ignoreUnknown">ignoreUnknown</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform a batch update with more control over behavior. 
+<p>Note that performing a batch update differs from performing a single update, in that an implementation of this class will continue to update properties if a <strong>recoverable</strong> error (such as a type mismatch, but <strong>not</strong> an invalid field name or the like) is encountered, throwing a PropertyBatchUpdateException containing all the individual errors. This exception can be examined later to see all binding errors. Properties that were successfully updated remain changed.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="pvs"></a>
+<code>pvs</code> - PropertyValues to set on the target object</p>
+<p><a name="ignoreUnknown"></a>
+<code>ignoreUnknown</code> - should we ignore unknown properties (not found in the bean)</p>
+<h3>Exceptions</h3>
+<p><a name="InvalidPropertyException"></a>
+<code>InvalidPropertyException</code> - if there is no such property or if the property isn't writable</p>
+<p><a name="PropertyBatchUpdateException"></a>
+<code>PropertyBatchUpdateException</code> - if one or more PropertyAccessExceptions occurred for specific properties during the batch update. This exception bundles all individual PropertyAccessExceptions. All other properties will have been successfully updated.</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setPropertyValues(PropertyValues, boolean, boolean)</a></p>
+<a name="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean, kotlin.Boolean)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean, kotlin.Boolean)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean, kotlin.Boolean)/ignoreUnknown">ignoreUnknown</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean, kotlin.Boolean)/ignoreInvalid">ignoreInvalid</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform a batch update with full control over behavior. 
+<p>Note that performing a batch update differs from performing a single update, in that an implementation of this class will continue to update properties if a <strong>recoverable</strong> error (such as a type mismatch, but <strong>not</strong> an invalid field name or the like) is encountered, throwing a PropertyBatchUpdateException containing all the individual errors. This exception can be examined later to see all binding errors. Properties that were successfully updated remain changed.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="pvs"></a>
+<code>pvs</code> - PropertyValues to set on the target object</p>
+<p><a name="ignoreUnknown"></a>
+<code>ignoreUnknown</code> - should we ignore unknown properties (not found in the bean)</p>
+<p><a name="ignoreInvalid"></a>
+<code>ignoreInvalid</code> - should we ignore invalid properties (found but not accessible)</p>
+<h3>Exceptions</h3>
+<p><a name="InvalidPropertyException"></a>
+<code>InvalidPropertyException</code> - if there is no such property or if the property isn't writable</p>
+<p><a name="PropertyBatchUpdateException"></a>
+<code>PropertyBatchUpdateException</code> - if one or more PropertyAccessExceptions occurred for specific properties during the batch update. This exception bundles all individual PropertyAccessExceptions. All other properties will have been successfully updated.</p>
+</BODY>
+</HTML>

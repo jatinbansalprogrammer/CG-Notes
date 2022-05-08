@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AsyncAnnotationAdvisor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.annotation</a>&nbsp;/&nbsp;<a href=".">AsyncAnnotationAdvisor</a><br/>
+<br/>
+<h1>AsyncAnnotationAdvisor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncAnnotationAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPointcutAdvisor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Advisor that activates asynchronous method execution through the Async annotation. This annotation can be used at the method and type level in implementation classes as well as in service interfaces. 
+<p>This advisor detects the EJB 3.1 <code>javax.ejb.Asynchronous</code> annotation as well, treating it exactly like Spring's own <code>Async</code>. Furthermore, a custom async annotation type may get specified through the <code><a href="#">"asyncAnnotationType"</a></code> property.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+AsyncAnnotationAsyncExecutionInterceptor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AsyncAnnotationAdvisor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>AsyncAnnotationAdvisor</code> for bean-style configuration.</p>
+<code><span class="identifier">AsyncAnnotationAdvisor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncAnnotationAdvisor$<init>(java.util.concurrent.Executor, org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler)/executor">executor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncAnnotationAdvisor$<init>(java.util.concurrent.Executor, org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler)/exceptionHandler">exceptionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncUncaughtExceptionHandler</span><span class="symbol">)</span></code>
+<p>Create a new <code>AsyncAnnotationAdvisor</code> for the given task executor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-advice.html">getAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAdvice</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Advice</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-pointcut.html">getPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPointcut</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pointcut</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-async-annotation-type.html">setAsyncAnnotationType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAsyncAnnotationType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncAnnotationAdvisor$setAsyncAnnotationType(java.lang.Class((kotlin.Annotation)))/asyncAnnotationType">asyncAnnotationType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the 'async' annotation type. 
+<p>The default async annotation type is the Async annotation, as well as the EJB 3.1 <code>javax.ejb.Asynchronous</code> annotation (if present). </p>
+<p>This setter property exists so that developers can provide their own (non-Spring-specific) annotation type to indicate that a method is to be executed asynchronously.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncAnnotationAdvisor$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the <code>BeanFactory</code> to be used when looking up executors by qualifier.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-executor.html">setTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncAnnotationAdvisor$setTaskExecutor(java.util.concurrent.Executor)/executor">executor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the default task executor to use for asynchronous methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

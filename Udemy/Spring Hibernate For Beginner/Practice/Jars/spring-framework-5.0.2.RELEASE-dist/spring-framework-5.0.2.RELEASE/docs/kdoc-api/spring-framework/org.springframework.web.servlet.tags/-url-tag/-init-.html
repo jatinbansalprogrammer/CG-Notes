@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UrlTag.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.tags</a>&nbsp;/&nbsp;<a href="index.html">UrlTag</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.servlet.tags.UrlTag$&lt;init&gt;()"></a>
+<code><span class="identifier">UrlTag</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>The <code>&lt;url&gt;</code> tag creates URLs. Modeled after the JSTL c:url tag with backwards compatibility in mind. 
+<p>Enhancements to the JSTL functionality include: </p>
+<ul> <li>URL encoded template URI variables</li>
+ <li>HTML/XML escaping of URLs</li>
+ <li>JavaScript escaping of URLs</li>
+ </ul>
+ 
+<p>Template URI variables are indicated in the <code><a href="#">'value'</a></code> attribute and marked by braces '{variableName}'. The braces and attribute name are replaced by the URL encoded value of a parameter defined with the spring:param tag in the body of the url tag. If no parameter is available the literal value is passed through. Params matched to template variables will not be added to the query string. </p>
+<p>Use of the spring:param tag for URI template variables is strongly recommended over direct EL substitution as the values are URL encoded. Failure to properly encode URL can leave an application vulnerable to XSS and other injection attacks. </p>
+<p>URLs can be HTML/XML escaped by setting the <code><a href="#"> 'htmlEscape'</a></code> attribute to 'true'. Detects an HTML escaping setting, either on this tag instance, the page level, or the <code>web.xml</code> level. The default is 'false'. When setting the URL value into a variable, escaping is not recommended. </p>
+<p>Example usage: </p>
+<pre><code>&lt;spring:url value="/url/path/{variableName}"&gt; &lt;spring:param name="variableName" value="more than JSTL c:url" /&gt; &lt;/spring:url&gt;</code></pre> 
+<p>The above results in: <code>/currentApplicationContext/url/path/more%20than%20JSTL%20c%3Aurl</code> </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     value true true The URL to build. This value can include template {placeholders} that are replaced with the URL encoded value of the named parameter. Parameters must be defined using the param tag inside the body of this tag.   context false true Specifies a remote application context path. The default is the current application context path.   var false true The name of the variable to export the URL value to. If not specified the URL is written as output.   scope false true The scope for the var. 'application', 'session', 'request' and 'page' scopes are supported. Defaults to page scope. This attribute has no effect unless the var attribute is also defined.   htmlEscape false true Set HTML escaping for this tag, as a boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as a boolean value. Default is false.   </p>
+<p><strong>Author</strong><br/>
+Scott Andrews</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+ParamTag</p>
+</BODY>
+</HTML>

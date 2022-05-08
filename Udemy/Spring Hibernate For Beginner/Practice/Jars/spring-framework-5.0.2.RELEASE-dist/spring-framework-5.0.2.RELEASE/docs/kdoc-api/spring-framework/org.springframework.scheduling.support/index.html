@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.scheduling.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.scheduling.support</a><br/>
+<br/>
+<h2>Package org.springframework.scheduling.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cron-sequence-generator/index.html">CronSequenceGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CronSequenceGenerator</span></code>
+<p>Date sequence generator for a <a href="#">Crontab pattern</a>, allowing clients to specify a pattern that the sequence matches. 
+<p>The pattern is a list of six single space-separated fields: representing second, minute, hour, day, month, weekday. Month and weekday names can be given as the first three letters of the English names. </p>
+<p>Example patterns: </p>
+<ul> <li>"0 0 * * * *" = the top of every hour of every day.</li>
+ <li>"*/10 * * * * *" = every ten seconds.</li>
+ <li>"0 0 8-10 * * *" = 8, 9 and 10 o'clock of every day.</li>
+ <li>"0 0 6,19 * * *" = 6:00 AM and 7:00 PM every day.</li>
+ <li>"0 0/30 8-10 * * *" = 8:00, 8:30, 9:00, 9:30, 10:00 and 10:30 every day.</li>
+ <li>"0 0 9-17 * * MON-FRI" = on the hour nine-to-five weekdays</li>
+ <li>"0 0 0 25 12 ?" = every Christmas Day at midnight</li>
+ </ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-invoking-runnable/index.html">MethodInvokingRunnable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvokingRunnable</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.support/-argument-converting-method-invoker/index.html"><span class="identifier">ArgumentConvertingMethodInvoker</span></a><span class="symbol">, </span><span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Adapter that implements the Runnable interface as a configurable method invocation based on Spring's MethodInvoker. 
+<p>Inherits common configuration properties from org.springframework.util.MethodInvoker.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-periodic-trigger/index.html">PeriodicTrigger</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PeriodicTrigger</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Trigger</span></code>
+<p>A trigger for periodic task execution. The period may be applied as either fixed-rate or fixed-delay, and an initial delay value may also be configured. The default initial delay is 0, and the default behavior is fixed-delay (i.e. the interval between successive executions is measured from each completion time). To measure the interval between the scheduled start time of each execution instead, set the 'fixedRate' property to <code>true</code>. 
+<p>Note that the TaskScheduler interface already defines methods for scheduling tasks at fixed-rate or with fixed-delay. Both also support an optional value for the initial delay. Those methods should be used directly whenever possible. The value of this Trigger implementation is that it can be used within components that rely on the Trigger abstraction. For example, it may be convenient to allow periodic triggers, cron-based triggers, and even custom Trigger implementations to be used interchangeably.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scheduled-method-runnable/index.html">ScheduledMethodRunnable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledMethodRunnable</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span></code>
+<p>Variant of MethodInvokingRunnable meant to be used for processing of no-arg scheduled methods. Propagates user exceptions to the caller, assuming that an error strategy for Runnables is in place.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-trigger-context/index.html">SimpleTriggerContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleTriggerContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TriggerContext</span></code>
+<p>Simple data holder implementation of the TriggerContext interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-task-utils/index.html">TaskUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TaskUtils</span></code>
+<p>Utility methods for decorating tasks with error handling. 
+<p><strong>NOTE:</strong> This class is intended for internal use by Spring's scheduler implementations. It is only public so that it may be accessed from impl classes within other packages. It is <em>not</em> intended for general use.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

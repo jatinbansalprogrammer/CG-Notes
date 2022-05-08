@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CustomEditorConfigurer.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">CustomEditorConfigurer</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.config.CustomEditorConfigurer$&lt;init&gt;()"></a>
+<code><span class="identifier">CustomEditorConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>BeanFactoryPostProcessor implementation that allows for convenient registration of custom PropertyEditor. 
+<p>In case you want to register PropertyEditor instances, the recommended usage as of Spring 2.0 is to use custom PropertyEditorRegistrar implementations that in turn register any desired editor instances on a given org.springframework.beans.PropertyEditorRegistry. Each PropertyEditorRegistrar can register any number of custom editors. </p>
+<pre><code> &lt;bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="propertyEditorRegistrars"&gt; &lt;list&gt; &lt;bean class="mypackage.MyCustomDateEditorRegistrar"/&gt; &lt;bean class="mypackage.MyObjectEditorRegistrar"/&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p> It's perfectly fine to register PropertyEditor <em>classes</em> via the <code>customEditors</code> property. Spring will create fresh instances of them for each editing attempt then: </p>
+<pre><code> &lt;bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="customEditors"&gt; &lt;map&gt; &lt;entry key="java.util.Date" value="mypackage.MyCustomDateEditor"/&gt; &lt;entry key="mypackage.MyObject" value="mypackage.MyObjectEditor"/&gt; &lt;/map&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p> Note, that you shouldn't register PropertyEditor bean instances via the <code>customEditors</code> property as PropertyEditors are stateful and the instances will then have to be synchronized for every editing attempt. In case you need control over the instantiation process of PropertyEditors, use a PropertyEditorRegistrar to register them. </p>
+<p> Also supports "java.lang.String[]"-style array class names and primitive class names (e.g. "boolean"). Delegates to ClassUtils for actual class name resolution. </p>
+<p><strong>NOTE:</strong> Custom property editors registered with this configurer do <em>not</em> apply to data binding. Custom editors for data binding need to be registered on the org.springframework.validation.DataBinder: Use a common base class or delegate to common PropertyEditorRegistrar implementations to reuse editor registration there.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+27.02.2004</p>
+<p><strong>See Also</strong><br/>
+java.beans.PropertyEditororg.springframework.beans.PropertyEditorRegistrar<a href="#">ConfigurableBeanFactory#addPropertyEditorRegistrar</a><a href="#">ConfigurableBeanFactory#registerCustomEditor</a><a href="#">org.springframework.validation.DataBinder#registerCustomEditor</a></p>
+</BODY>
+</HTML>

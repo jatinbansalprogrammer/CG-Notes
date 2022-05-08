@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HibernateTransactionManager.setHibernateManagedSession - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5</a>&nbsp;/&nbsp;<a href="index.html">HibernateTransactionManager</a>&nbsp;/&nbsp;<a href=".">setHibernateManagedSession</a><br/>
+<br/>
+<h1>setHibernateManagedSession</h1>
+<a name="org.springframework.orm.hibernate5.HibernateTransactionManager$setHibernateManagedSession(kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHibernateManagedSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setHibernateManagedSession(kotlin.Boolean)/hibernateManagedSession">hibernateManagedSession</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to operate on a Hibernate-managed Session instead of a Spring-managed Session, that is, whether to obtain the Session through Hibernate's <code><a href="#">SessionFactory#getCurrentSession()</a></code> instead of <code><a href="#">SessionFactory#openSession()</a></code> (with a Spring TransactionSynchronizationManager check preceding it). 
+<p>Default is "false", i.e. using a Spring-managed Session: taking the current thread-bound Session if available (e.g. in an Open-Session-in-View scenario), creating a new Session for the current transaction otherwise. </p>
+<p>Switch this flag to "true" in order to enforce use of a Hibernate-managed Session. Note that this requires <code><a href="#">SessionFactory#getCurrentSession()</a></code> to always return a proper Session when called for a Spring-managed transaction; transaction begin will fail if the <code>getCurrentSession()</code> call fails. </p>
+<p>This mode will typically be used in combination with a custom Hibernate org.hibernate.context.spi.CurrentSessionContext implementation that stores Sessions in a place other than Spring's TransactionSynchronizationManager. It may also be used in combination with Spring's Open-Session-in-View support (using Spring's default SpringSessionContext), in which case it subtly differs from the Spring-managed Session mode: The pre-bound Session will <em>not</em> receive a <code>clear()</code> call (on rollback) or a <code>disconnect()</code> call (on transaction completion) in such a scenario; this is rather left up to a custom CurrentSessionContext implementation (if desired).</p>
+</p>
+</BODY>
+</HTML>

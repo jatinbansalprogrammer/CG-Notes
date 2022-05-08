@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MethodInvocationProceedingJoinPoint - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.aspectj</a>&nbsp;/&nbsp;<a href=".">MethodInvocationProceedingJoinPoint</a><br/>
+<br/>
+<h1>MethodInvocationProceedingJoinPoint</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvocationProceedingJoinPoint</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProceedingJoinPoint</span><span class="symbol">, </span><span class="identifier">StaticPart</span></code>
+<p>Implementation of AspectJ ProceedingJoinPoint interface wrapping an AOP Alliance MethodInvocation. 
+<p><strong>Note</strong>: the <code>getThis()</code> method returns the current Spring AOP proxy. The <code>getTarget()</code> method returns the current Spring AOP target (which may be <code>null</code> if there is no target), and is a plain POJO without any advice. <strong>If you want to call the object and have the advice take effect, use <code>getThis()</code>.</strong> A common example is casting the object to an introduced interface in the implementation of an introduction. </p>
+<p>Of course there is no such distinction between target and proxy in AspectJ.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Author</strong><br/>
+Ramnivas Laddad</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MethodInvocationProceedingJoinPoint</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$<init>(org.springframework.aop.ProxyMethodInvocation)/methodInvocation">methodInvocation</span><span class="symbol">:</span>&nbsp;<span class="identifier">ProxyMethodInvocation</span><span class="symbol">)</span></code>
+<p>Create a new MethodInvocationProceedingJoinPoint, wrapping the given Spring ProxyMethodInvocation object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-args.html">getArgs</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getArgs</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-id.html">getId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-kind.html">getKind</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getKind</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-signature.html">getSignature</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSignature</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Signature</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-source-location.html">getSourceLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSourceLocation</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SourceLocation</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-static-part.html">getStaticPart</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getStaticPart</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">StaticPart</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target.html">getTarget</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTarget</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Returns the Spring AOP target. May be <code>null</code> if there is no target.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-this.html">getThis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getThis</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Returns the Spring AOP proxy. Cannot be <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="proceed.html">proceed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">proceed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">proceed</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$proceed(kotlin.Array((kotlin.Any)))/arguments">arguments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set$-around-closure.html">set$AroundClosure</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">set$AroundClosure</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint$set$AroundClosure(org.aspectj.runtime.internal.AroundClosure)/aroundClosure">aroundClosure</span><span class="symbol">:</span>&nbsp;<span class="identifier">AroundClosure</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-long-string.html">toLongString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toLongString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-short-string.html">toShortString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toShortString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

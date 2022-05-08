@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultJmsActivationSpecFactory.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.listener.endpoint</a>&nbsp;/&nbsp;<a href="index.html">DefaultJmsActivationSpecFactory</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jms.listener.endpoint.DefaultJmsActivationSpecFactory$&lt;init&gt;()"></a>
+<code><span class="identifier">DefaultJmsActivationSpecFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default implementation of the JmsActivationSpecFactory interface. Supports the standard JMS properties as defined by the JCA 1.5 specification, as well as Spring's extended "maxConcurrency" and "prefetchSize" settings through autodetection of well-known vendor-specific provider properties. 
+<p>An ActivationSpec factory is effectively dependent on the concrete JMS provider, e.g. on ActiveMQ. This default implementation simply guesses the ActivationSpec class name from the provider's class name ("ActiveMQResourceAdapter" -&gt; "ActiveMQActivationSpec" in the same package, or "ActivationSpecImpl" in the same package as the ResourceAdapter class), and populates the ActivationSpec properties as suggested by the JCA 1.5 specification (Appendix B). Specify the 'activationSpecClass' property explicitly if these default naming rules do not apply. </p>
+<p>Note: ActiveMQ, JORAM and WebSphere are supported in terms of extended settings (through the detection of their bean property naming conventions). The default ActivationSpec class detection rules may apply to other JMS providers as well. </p>
+<p>Thanks to Agim Emruli and Laurie Chan for pointing out WebSphere MQ settings and contributing corresponding tests!</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setActivationSpecClass</a></p>
+</BODY>
+</HTML>

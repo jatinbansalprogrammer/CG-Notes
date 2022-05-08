@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Scope - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">Scope</a><br/>
+<br/>
+<h1>Scope</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">Scope</span></code>
+<p>When used as a type-level annotation in conjunction with org.springframework.stereotype.Component, <code>@Scope</code> indicates the name of a scope to use for instances of the annotated type. 
+<p>When used as a method-level annotation in conjunction with Bean, <code>@Scope</code> indicates the name of a scope to use for the instance returned from the method. </p>
+<p>In this context, <em>scope</em> means the lifecycle of an instance, such as <code>singleton</code>, <code>prototype</code>, and so forth. Scopes provided out of the box in Spring may be referred to using the <code>SCOPE_*</code> constants available in the ConfigurableBeanFactory and <code>WebApplicationContext</code> interfaces. </p>
+<p>To register additional custom scopes, see org.springframework.beans.factory.config.CustomScopeConfigurer.</p>
+</p>
+<p><strong>Author</strong><br/>
+Mark Fisher</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+org.springframework.stereotype.Componentorg.springframework.context.annotation.Bean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Scope</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.Scope$<init>(kotlin.String, kotlin.String, org.springframework.context.annotation.ScopedProxyMode)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.Scope$<init>(kotlin.String, kotlin.String, org.springframework.context.annotation.ScopedProxyMode)/scopeName">scopeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.Scope$<init>(kotlin.String, kotlin.String, org.springframework.context.annotation.ScopedProxyMode)/proxyMode">proxyMode</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScopedProxyMode</span><span class="symbol">)</span></code>
+<p>When used as a type-level annotation in conjunction with org.springframework.stereotype.Component, <code>@Scope</code> indicates the name of a scope to use for instances of the annotated type. 
+<p>When used as a method-level annotation in conjunction with Bean, <code>@Scope</code> indicates the name of a scope to use for the instance returned from the method. </p>
+<p>In this context, <em>scope</em> means the lifecycle of an instance, such as <code>singleton</code>, <code>prototype</code>, and so forth. Scopes provided out of the box in Spring may be referred to using the <code>SCOPE_*</code> constants available in the ConfigurableBeanFactory and <code>WebApplicationContext</code> interfaces. </p>
+<p>To register additional custom scopes, see org.springframework.beans.factory.config.CustomScopeConfigurer.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="proxy-mode.html">proxyMode</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">proxyMode</span><span class="symbol">: </span><span class="identifier">ScopedProxyMode</span></code>
+<p>Specifies whether a component should be configured as a scoped proxy and if so, whether the proxy should be interface-based or subclass-based. 
+<p>Defaults to <code><a href="#">ScopedProxyMode#DEFAULT</a></code>, which typically indicates that no scoped proxy should be created unless a different default has been configured at the component-scan instruction level. </p>
+<p>Analogous to <code>&lt;aop:scoped-proxy/&gt;</code> support in Spring XML.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="scope-name.html">scopeName</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">scopeName</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Specifies the name of the scope to use for the annotated component/bean. 
+<p>Defaults to an empty string (<code>""</code>) which implies <code><a href="#">SCOPE_SINGLETON</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Alias for <code><a href="#">#scopeName</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

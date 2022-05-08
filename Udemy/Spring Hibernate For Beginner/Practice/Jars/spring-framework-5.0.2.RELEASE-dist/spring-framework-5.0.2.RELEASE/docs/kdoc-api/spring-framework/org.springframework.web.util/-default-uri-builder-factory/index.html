@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultUriBuilderFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.util</a>&nbsp;/&nbsp;<a href=".">DefaultUriBuilderFactory</a><br/>
+<br/>
+<h1>DefaultUriBuilderFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultUriBuilderFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UriBuilderFactory</span></code>
+<p>Default implementation of UriBuilderFactory providing options to pre-configure all UriBuilder instances with common properties such as a base URI, encoding mode, and default URI variables. 
+<p>Uses UriComponentsBuilder for URI building.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+UriComponentsBuilder</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultUriBuilderFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor without a base URI. 
+<p>The target address must be specified on each UriBuilder.</p>
+</p>
+<code><span class="identifier">DefaultUriBuilderFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$<init>(kotlin.String)/baseUriTemplate">baseUriTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Constructor with a base URI. 
+<p>The given URI template is parsed via <code><a href="#">UriComponentsBuilder#fromUriString</a></code> and then applied as a base URI to every UriBuilder via <code><a href="#">UriComponentsBuilder#uriComponents</a></code> unless the UriBuilder itself was created with a URI template that already has a target address.</p>
+</p>
+<code><span class="identifier">DefaultUriBuilderFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$<init>(org.springframework.web.util.UriComponentsBuilder)/baseUri">baseUri</span><span class="symbol">:</span>&nbsp;<span class="identifier">UriComponentsBuilder</span><span class="symbol">)</span></code>
+<p>Variant of <code><a href="#">#DefaultUriBuilderFactory(String)</a></code> with a <code>UriComponentsBuilder</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="builder.html">builder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">builder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">UriBuilder</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="expand.html">expand</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expand</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$expand(kotlin.String, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/uriTemplate">uriTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$expand(kotlin.String, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/uriVars">uriVars</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URI</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expand</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$expand(kotlin.String, kotlin.Array((kotlin.Any)))/uriTemplate">uriTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$expand(kotlin.String, kotlin.Array((kotlin.Any)))/uriVars">uriVars</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URI</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-uri-variables.html">getDefaultUriVariables</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultUriVariables</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the configured default URI variable values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-encoding-mode.html">getEncodingMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEncodingMode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EncodingMode</span></code>
+<p>Return the configured encoding mode.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-uri-variables.html">setDefaultUriVariables</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultUriVariables</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$setDefaultUriVariables(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/defaultUriVariables">defaultUriVariables</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Provide default URI variable values to use when expanding URI templates with a Map of variables.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding-mode.html">setEncodingMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncodingMode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$setEncodingMode(org.springframework.web.util.DefaultUriBuilderFactory.EncodingMode)/encodingMode">encodingMode</span><span class="symbol">:</span>&nbsp;<span class="identifier">EncodingMode</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the encoding mode to use when building URIs: <ul> <li>URI_COMPONENT -- expand the URI variables first and then encode all URI component (e.g. host, path, query, etc) according to the encoding rules for each individual component. </li>
+<li>VALUES_ONLY -- encode URI variable values only, prior to expanding them, using a "strict" encoding mode, i.e. encoding all characters outside the unreserved set as defined in <a href="#">RFC 3986 Section 2</a>. This ensures a URI variable value will not contain any characters with a reserved purpose. </li>
+<li>NONE -- in this mode no encoding is performed. </li>
+</ul>
+ 
+<p>By default this is set to <code>"URI_COMPONENT"</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parse-path.html">setParsePath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParsePath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$setParsePath(kotlin.Boolean)/parsePath">parsePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether to parse the path into path segments for the URI string passed into <code><a href="#">#uriString(String)</a></code> or one of the expand methods. 
+<p>Setting this property to <code>true</code> ensures that URI variables expanded into the path are subject to path segment encoding rules and "/" characters are percent-encoded. If set to <code>false</code> the path is kept as a full path and expanded URI variables will have "/" characters preserved. </p>
+<p>By default this is set to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="should-parse-path.html">shouldParsePath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shouldParsePath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the handler is configured to parse the path into path segments.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="uri-string.html">uriString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">uriString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriBuilderFactory$uriString(kotlin.String)/uriTemplate">uriTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">UriBuilder</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

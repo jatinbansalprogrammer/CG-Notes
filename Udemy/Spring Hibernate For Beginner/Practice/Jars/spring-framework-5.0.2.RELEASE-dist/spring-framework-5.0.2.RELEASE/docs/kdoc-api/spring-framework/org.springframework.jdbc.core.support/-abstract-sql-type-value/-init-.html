@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractSqlTypeValue.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core.support</a>&nbsp;/&nbsp;<a href="index.html">AbstractSqlTypeValue</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jdbc.core.support.AbstractSqlTypeValue$&lt;init&gt;()"></a>
+<code><span class="identifier">AbstractSqlTypeValue</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Abstract implementation of the SqlTypeValue interface, for convenient creation of type values that are supposed to be passed into the <code>PreparedStatement.setObject</code> method. The <code>createTypeValue</code> callback method has access to the underlying Connection, if that should be needed to create any database-specific objects. 
+<p>A usage example from a StoredProcedure (compare this to the plain SqlTypeValue version in the superclass javadoc): </p>
+<pre><code>proc.declareParameter(new SqlParameter("myarray", Types.ARRAY, "NUMBERS")); ... Map&lt;String, Object&gt; in = new HashMap&lt;String, Object&gt;(); in.put("myarray", new AbstractSqlTypeValue() { public Object createTypeValue(Connection con, int sqlType, String typeName) throws SQLException { oracle.sql.ArrayDescriptor desc = new oracle.sql.ArrayDescriptor(typeName, con); return new oracle.sql.ARRAY(desc, con, seats); } }); Map out = execute(in); </code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">java.sql.PreparedStatement#setObject(int, Object, int)</a>org.springframework.jdbc.object.StoredProcedure</p>
+</BODY>
+</HTML>

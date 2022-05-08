@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Payload - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.handler.annotation</a>&nbsp;/&nbsp;<a href=".">Payload</a><br/>
+<br/>
+<h1>Payload</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">Payload</span></code>
+<p>Annotation that binds a method parameter to the payload of a message. Can also be used to associate a payload to a method invocation. The payload may be passed through a MessageConverter to convert it from serialized form with a specific MIME type to an Object matching the target method parameter.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Payload</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.annotation.Payload$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.handler.annotation.Payload$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.handler.annotation.Payload$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/required">required</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Annotation that binds a method parameter to the payload of a message. Can also be used to associate a payload to a method invocation. The payload may be passed through a MessageConverter to convert it from serialized form with a specific MIME type to an Object matching the target method parameter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="expression.html">expression</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">expression</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>A SpEL expression to be evaluated against the payload object as the root context. 
+<p>This attribute may or may not be supported depending on whether the message being handled contains a non-primitive Object as its payload or is in serialized form and requires message conversion. </p>
+<p>When processing STOMP over WebSocket messages this attribute is not supported.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="required.html">required</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">required</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether payload content is required. 
+<p>Default is <code>true</code>, leading to an exception if there is no payload. Switch to <code>false</code> to have <code>null</code> passed when there is no payload.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Alias for <code><a href="#">#expression</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

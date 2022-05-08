@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MappingJackson2MessageConverter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.support.converter</a>&nbsp;/&nbsp;<a href=".">MappingJackson2MessageConverter</a><br/>
+<br/>
+<h1>MappingJackson2MessageConverter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MappingJackson2MessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SmartMessageConverter</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>Message converter that uses Jackson 2.x to convert messages to and from JSON. Maps an object to a BytesMessage, or to a TextMessage if the <code><a href="set-target-type.html">targetType</a></code> is set to <code><a href="#">MessageType#TEXT</a></code>. Converts from a TextMessage or BytesMessage to an object. 
+<p>It customizes Jackson's default properties with the following ones: </p>
+<ul> <li><code><a href="#">MapperFeature#DEFAULT_VIEW_INCLUSION</a></code> is disabled</li>
+ <li><code><a href="#">DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES</a></code> is disabled</li>
+ </ul>
+ 
+<p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.</p>
+</p>
+<p><strong>Author</strong><br/>
+Mark Pollack</p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+3.1.4</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MappingJackson2MessageConverter</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-n-c-o-d-i-n-g.html">DEFAULT_ENCODING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ENCODING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default encoding used for writing to text messages: UTF-8.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="from-message.html">fromMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">fromMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$fromMessage(javax.jms.Message)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding.html">setEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$setEncoding(kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the encoding to use when converting to and from text-based message body content. The default encoding will be "UTF-8". 
+<p>When reading from a a text-based message, an encoding may have been suggested through a special JMS property which will then be preferred over the encoding set on this MessageConverter instance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding-property-name.html">setEncodingPropertyName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncodingPropertyName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$setEncodingPropertyName(kotlin.String)/encodingPropertyName">encodingPropertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name of the JMS message property that carries the encoding from bytes to String and back is BytesMessage is used during the conversion process. 
+<p>Default is none. Setting this property is optional; if not set, UTF-8 will be used for decoding any incoming bytes message.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-object-mapper.html">setObjectMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setObjectMapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$setObjectMapper(com.fasterxml.jackson.databind.ObjectMapper)/objectMapper">objectMapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">ObjectMapper</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the ObjectMapper to use instead of using the default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-type.html">setTargetType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$setTargetType(org.springframework.jms.support.converter.MessageType)/targetType">targetType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether <code><a href="#">#toMessage(Object, Session)</a></code> should marshal to a BytesMessage or a TextMessage. 
+<p>The default is <code><a href="#">MessageType#BYTES</a></code>, i.e. this converter marshals to a BytesMessage. Note that the default version of this converter supports <code><a href="#">MessageType#BYTES</a></code> and <code><a href="#">MessageType#TEXT</a></code> only.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-type-id-mappings.html">setTypeIdMappings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTypeIdMappings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$setTypeIdMappings(kotlin.collections.MutableMap((kotlin.String, java.lang.Class((kotlin.Any)))))/typeIdMappings">typeIdMappings</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify mappings from type ids to Java classes, if desired. This allows for synthetic ids in the type id message property, instead of transferring Java class names. 
+<p>Default is no custom mappings, i.e. transferring raw Java class names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-type-id-property-name.html">setTypeIdPropertyName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTypeIdPropertyName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$setTypeIdPropertyName(kotlin.String)/typeIdPropertyName">typeIdPropertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name of the JMS message property that carries the type id for the contained object: either a mapped id value or a raw Java class name. 
+<p>Default is none. <strong>NOTE: This property needs to be set in order to allow for converting from an incoming message to a Java object.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-message.html">toMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session)/object">object</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session, kotlin.Any)/object">object</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session, kotlin.Any)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session, kotlin.Any)/conversionHint">conversionHint</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span></code><code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session, java.lang.Class((kotlin.Any)))/object">object</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session, java.lang.Class((kotlin.Any)))/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.support.converter.MappingJackson2MessageConverter$toMessage(kotlin.Any, javax.jms.Session, java.lang.Class((kotlin.Any)))/jsonView">jsonView</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span></code>
+<p>Convert a Java object to a JMS Message using the specified json view and the supplied session to create the message object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CachingConnectionFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href=".">CachingConnectionFactory</a><br/>
+<br/>
+<h1>CachingConnectionFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SingleConnectionFactory</span></code>
+<p>SingleConnectionFactory subclass that adds javax.jms.Session caching as well javax.jms.MessageProducer caching. This ConnectionFactory also switches the <code><a href="#">"reconnectOnException" property</a></code> to "true" by default, allowing for automatic recovery of the underlying Connection. 
+<p>By default, only one single Session will be cached, with further requested Sessions being created and disposed on demand. Consider raising the <code><a href="set-session-cache-size.html">"sessionCacheSize" value</a></code> in case of a high-concurrency environment. </p>
+<p>When using the JMS 1.0.2 API, this ConnectionFactory will switch into queue/topic mode according to the JMS API methods used at runtime: <code>createQueueConnection</code> and <code>createTopicConnection</code> will lead to queue/topic mode, respectively; generic <code>createConnection</code> calls will lead to a JMS 1.1 connection which is able to serve both modes. </p>
+<p><strong>NOTE: This ConnectionFactory requires explicit closing of all Sessions obtained from its shared Connection.</strong> This is the usual recommendation for native JMS access code anyway. However, with this ConnectionFactory, its use is mandatory in order to actually allow for Session reuse. </p>
+<p>Note also that MessageConsumers obtained from a cached Session won't get closed until the Session will eventually be removed from the pool. This may lead to semantic side effects in some cases. For a durable subscriber, the logical <code>Session.close()</code> call will also close the subscription. Re-registering a durable consumer for the same subscription on the same Session handle is not supported; close and reobtain a cached Session first.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5.3</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CachingConnectionFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new CachingConnectionFactory for bean-style usage.</p>
+<code><span class="identifier">CachingConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.CachingConnectionFactory$<init>(javax.jms.ConnectionFactory)/targetConnectionFactory">targetConnectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span></code>
+<p>Create a new CachingConnectionFactory for the given target ConnectionFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-session-cache-size.html">getSessionCacheSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSessionCacheSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the desired size for the JMS Session cache (per JMS Session type).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-cache-consumers.html">isCacheConsumers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCacheConsumers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to cache JMS MessageConsumers per JMS Session instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-cache-producers.html">isCacheProducers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCacheProducers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to cache JMS MessageProducers per JMS Session instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset-connection.html">resetConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resetConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Resets the Session cache as well.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-consumers.html">setCacheConsumers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheConsumers</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.CachingConnectionFactory$setCacheConsumers(kotlin.Boolean)/cacheConsumers">cacheConsumers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to cache JMS MessageConsumers per JMS Session instance (more specifically: one MessageConsumer per Destination, selector String and Session). Note that durable subscribers will only be cached until logical closing of the Session handle. 
+<p>Default is "true". Switch this to "false" in order to always recreate MessageConsumers on demand.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-producers.html">setCacheProducers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheProducers</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.CachingConnectionFactory$setCacheProducers(kotlin.Boolean)/cacheProducers">cacheProducers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to cache JMS MessageProducers per JMS Session instance (more specifically: one MessageProducer per Destination and Session). 
+<p>Default is "true". Switch this to "false" in order to always recreate MessageProducers on demand.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-cache-size.html">setSessionCacheSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionCacheSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.CachingConnectionFactory$setSessionCacheSize(kotlin.Int)/sessionCacheSize">sessionCacheSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the desired size for the JMS Session cache (per JMS Session type). 
+<p>This cache size is the maximum limit for the number of cached Sessions per session acknowledgement type (auto, client, dups_ok, transacted). As a consequence, the actual number of cached Sessions may be up to four times as high as the specified value - in the unlikely case of mixing and matching different acknowledgement types. </p>
+<p>Default is 1: caching a single Session, (re-)creating further ones on demand. Specify a number like 10 if you'd like to raise the number of cached Sessions; that said, 1 may be sufficient for low-concurrency scenarios.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

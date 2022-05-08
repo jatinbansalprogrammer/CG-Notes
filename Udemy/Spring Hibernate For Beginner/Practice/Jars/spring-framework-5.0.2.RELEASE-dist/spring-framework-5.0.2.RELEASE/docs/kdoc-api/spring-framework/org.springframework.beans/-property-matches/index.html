@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyMatches - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href=".">PropertyMatches</a><br/>
+<br/>
+<h1>PropertyMatches</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">PropertyMatches</span></code>
+<p>Helper class for calculating property matches, according to a configurable distance. Provide the list of potential matches and an easy way to generate an error message. Works for both java bean properties and fields. 
+<p>Mainly for use within the framework and in particular the binding facility.</p>
+</p>
+<p><strong>Author</strong><br/>
+Alef Arendsen</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#forProperty(String, Class)</a><a href="#">#forField(String, Class)</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-d-i-s-t-a-n-c-e.html">DEFAULT_MAX_DISTANCE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_DISTANCE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Default maximum property distance: 2</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="build-error-message.html">buildErrorMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">buildErrorMessage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Build an error message for the given invalid property name, indicating the possible property matches.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="for-field.html">forField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">forField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyMatches$forField(kotlin.String, java.lang.Class((kotlin.Any)))/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyMatches$forField(kotlin.String, java.lang.Class((kotlin.Any)))/beanClass">beanClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyMatches</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">forField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyMatches$forField(kotlin.String, java.lang.Class((kotlin.Any)), kotlin.Int)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyMatches$forField(kotlin.String, java.lang.Class((kotlin.Any)), kotlin.Int)/beanClass">beanClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyMatches$forField(kotlin.String, java.lang.Class((kotlin.Any)), kotlin.Int)/maxDistance">maxDistance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyMatches</span></code>
+<p>Create PropertyMatches for the given field property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="for-property.html">forProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">forProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyMatches$forProperty(kotlin.String, java.lang.Class((kotlin.Any)))/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyMatches$forProperty(kotlin.String, java.lang.Class((kotlin.Any)))/beanClass">beanClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyMatches</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">forProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyMatches$forProperty(kotlin.String, java.lang.Class((kotlin.Any)), kotlin.Int)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyMatches$forProperty(kotlin.String, java.lang.Class((kotlin.Any)), kotlin.Int)/beanClass">beanClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyMatches$forProperty(kotlin.String, java.lang.Class((kotlin.Any)), kotlin.Int)/maxDistance">maxDistance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyMatches</span></code>
+<p>Create PropertyMatches for the given bean property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-possible-matches.html">getPossibleMatches</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPossibleMatches</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the calculated possible matches.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-name.html">getPropertyName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPropertyName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the name of the requested property.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

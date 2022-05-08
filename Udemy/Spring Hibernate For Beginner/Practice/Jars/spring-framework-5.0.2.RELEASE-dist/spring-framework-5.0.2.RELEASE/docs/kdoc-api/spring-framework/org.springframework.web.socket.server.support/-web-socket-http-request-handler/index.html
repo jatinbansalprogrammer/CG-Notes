@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSocketHttpRequestHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.server.support</a>&nbsp;/&nbsp;<a href=".">WebSocketHttpRequestHandler</a><br/>
+<br/>
+<h1>WebSocketHttpRequestHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketHttpRequestHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpRequestHandler</span><span class="symbol">, </span><span class="identifier">Lifecycle</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>A HttpRequestHandler for processing WebSocket handshake requests. 
+<p>This is the main class to use when configuring a server WebSocket at a specific URL. It is a very thin wrapper around a WebSocketHandler and a HandshakeHandler, also adapting the HttpServletRequest and HttpServletResponse to ServerHttpRequest and ServerHttpResponse, respectively.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebSocketHttpRequestHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler$<init>(org.springframework.web.socket.WebSocketHandler)/wsHandler">wsHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">WebSocketHttpRequestHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler$<init>(org.springframework.web.socket.WebSocketHandler, org.springframework.web.socket.server.HandshakeHandler)/wsHandler">wsHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler$<init>(org.springframework.web.socket.WebSocketHandler, org.springframework.web.socket.server.HandshakeHandler)/handshakeHandler">handshakeHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">HandshakeHandler</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-handshake-handler.html">getHandshakeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHandshakeHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HandshakeHandler</span></code>
+<p>Return the HandshakeHandler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-handshake-interceptors.html">getHandshakeInterceptors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHandshakeInterceptors</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HandshakeInterceptor</span><span class="symbol">&gt;</span></code>
+<p>Return the configured WebSocket handshake request interceptors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-web-socket-handler.html">getWebSocketHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWebSocketHandler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketHandler</span></code>
+<p>Return the WebSocketHandler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-request.html">handleRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handleRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler$handleRequest(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)/servletRequest">servletRequest</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler$handleRequest(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)/servletResponse">servletResponse</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-handshake-interceptors.html">setHandshakeInterceptors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHandshakeInterceptors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler$setHandshakeInterceptors(kotlin.collections.MutableList((org.springframework.web.socket.server.HandshakeInterceptor)))/interceptors">interceptors</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HandshakeInterceptor</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure one or more WebSocket handshake request interceptors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.support.WebSocketHttpRequestHandler$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

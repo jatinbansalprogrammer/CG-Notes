@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>InputStreamResource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core.io</a>&nbsp;/&nbsp;<a href=".">InputStreamResource</a><br/>
+<br/>
+<h1>InputStreamResource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InputStreamResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResource</span></code>
+<p>Resource implementation for a given InputStream. 
+<p>Should only be used if no other specific <code>Resource</code> implementation is applicable. In particular, prefer ByteArrayResource or any of the file-based <code>Resource</code> implementations where possible. </p>
+<p>In contrast to other <code>Resource</code> implementations, this is a descriptor for an <em>already opened</em> resource - therefore returning <code>true</code> from <code><a href="is-open.html">#isOpen()</a></code>. Do not use an <code>InputStreamResource</code> if you need to keep the resource descriptor somewhere, or if you need to read from a stream multiple times.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+28.12.2003</p>
+<p><strong>See Also</strong><br/>
+ByteArrayResourceClassPathResourceFileSystemResourceUrlResource</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">InputStreamResource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.InputStreamResource$<init>(java.io.InputStream)/inputStream">inputStream</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">InputStreamResource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.InputStreamResource$<init>(java.io.InputStream, kotlin.String)/inputStream">inputStream</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.io.InputStreamResource$<init>(java.io.InputStream, kotlin.String)/description">description</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new InputStreamResource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.io.InputStreamResource$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation compares the underlying InputStream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="exists.html">exists</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exists</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation always returns <code>true</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-description.html">getDescription</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDescription</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>This implementation returns a description that includes the passed-in description, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-input-stream.html">getInputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInputStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InputStream</span></code>
+<p>This implementation throws IllegalStateException if attempting to read the underlying stream multiple times.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>This implementation returns the hash code of the underlying InputStream.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-open.html">isOpen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isOpen</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation always returns <code>true</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

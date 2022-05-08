@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DisabledIf.expression - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.junit.jupiter</a>&nbsp;/&nbsp;<a href="index.html">DisabledIf</a>&nbsp;/&nbsp;<a href=".">expression</a><br/>
+<br/>
+<h1>expression</h1>
+<a name="org.springframework.test.context.junit.jupiter.DisabledIf$expression"></a>
+<code><span class="identifier">@AliasFor</span><span class="symbol">(</span>"value"<span class="symbol">)</span> <span class="keyword">val </span><span class="identifier">expression</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The expression that will be evaluated to determine if the annotated test class or test method is <em>disabled</em>. 
+<p>If the expression evaluates to <code><a href="#">Boolean#TRUE</a></code> or a String equal to <code>"true"</code> (ignoring case), the test will be disabled. </p>
+<p>Expressions can be any of the following. </p>
+<ul> <li>Spring Expression Language (SpEL) expression — for example: <pre><code>@DisabledIf("#{systemProperties['os.name'].toLowerCase().contains('mac')}")</code></pre> </li>
+<li>Placeholder for a property available in the Spring org.springframework.core.env.Environment — for example: <pre><code>@DisabledIf("${smoke.tests.disabled}")</code></pre> </li>
+<li>Text literal — for example: <pre><code>@DisabledIf("true")</code></pre> </li>
+</ul>
+ 
+<p>Note, however, that a <em>text literal</em> which is not the result of dynamic resolution of a property placeholder is of zero practical value since <code>@DisabledIf("true")</code> is equivalent to <code>@Disabled</code> and <code>@DisabledIf("false")</code> is logically meaningless.</p>
+</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#reason</a><a href="#">#loadContext</a><a href="#">#value</a></p>
+</BODY>
+</HTML>

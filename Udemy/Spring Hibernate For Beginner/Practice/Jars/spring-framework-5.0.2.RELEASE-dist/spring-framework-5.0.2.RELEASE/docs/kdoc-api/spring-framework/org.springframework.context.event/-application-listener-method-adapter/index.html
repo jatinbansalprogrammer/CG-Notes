@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ApplicationListenerMethodAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.event</a>&nbsp;/&nbsp;<a href=".">ApplicationListenerMethodAdapter</a><br/>
+<br/>
+<h1>ApplicationListenerMethodAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ApplicationListenerMethodAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationListener</span></code>
+<p>GenericApplicationListener adapter that delegates the processing of an event to an EventListener annotated method. 
+<p>Delegates to <code><a href="process-event.html">#processEvent(ApplicationEvent)</a></code> to give sub-classes a chance to deviate from the default. Unwraps the content of a PayloadApplicationEvent if necessary to allow method declaration to define any arbitrary event type. If a condition is defined, it is evaluated prior to invoking the underlying method.</p>
+</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ApplicationListenerMethodAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.ApplicationListenerMethodAdapter$<init>(kotlin.String, java.lang.Class((kotlin.Any)), java.lang.reflect.Method)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.event.ApplicationListenerMethodAdapter$<init>(kotlin.String, java.lang.Class((kotlin.Any)), java.lang.reflect.Method)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.event.ApplicationListenerMethodAdapter$<init>(kotlin.String, java.lang.Class((kotlin.Any)), java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="on-application-event.html">onApplicationEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onApplicationEvent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.ApplicationListenerMethodAdapter$onApplicationEvent(org.springframework.context.ApplicationEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="process-event.html">processEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">processEvent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.ApplicationListenerMethodAdapter$processEvent(org.springframework.context.ApplicationEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Process the specified ApplicationEvent, checking if the condition match and handling non-null result, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-event-type.html">supportsEventType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supportsEventType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.ApplicationListenerMethodAdapter$supportsEventType(org.springframework.core.ResolvableType)/eventType">eventType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-source-type.html">supportsSourceType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supportsSourceType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.ApplicationListenerMethodAdapter$supportsSourceType(java.lang.Class((kotlin.Any)))/sourceType">sourceType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

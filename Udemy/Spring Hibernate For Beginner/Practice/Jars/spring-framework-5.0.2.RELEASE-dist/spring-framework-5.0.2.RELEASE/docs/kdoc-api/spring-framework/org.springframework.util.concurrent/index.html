@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.util.concurrent - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.util.concurrent</a><br/>
+<br/>
+<h2>Package org.springframework.util.concurrent</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-completable-to-listenable-future-adapter/index.html">CompletableToListenableFutureAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompletableToListenableFutureAdapter</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Adapts a CompletableFuture or CompletionStage into a Spring ListenableFuture.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-future-adapter/index.html">FutureAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">FutureAdapter</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Abstract class that adapts a Future parameterized over S into a <code>Future</code> parameterized over T. All methods are delegated to the adaptee, where <code><a href="-future-adapter/get.html">#get()</a></code> and <code><a href="#">#get(long, TimeUnit)</a></code> call <code><a href="#">#adapt(Object)</a></code> on the adaptee's result.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-listenable-future-adapter/index.html">ListenableFutureAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ListenableFutureAdapter</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-future-adapter/index.html"><span class="identifier">FutureAdapter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Abstract class that adapts a ListenableFuture parameterized over S into a <code>ListenableFuture</code> parameterized over T. All methods are delegated to the adaptee, where <code><a href="-future-adapter/get.html">#get()</a></code>, <code><a href="#">#get(long, java.util.concurrent.TimeUnit)</a></code>, and <code><a href="#">ListenableFutureCallback#onSuccess(Object)</a></code> call <code><a href="#">#adapt(Object)</a></code> on the adaptee's result.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-listenable-future-task/index.html">ListenableFutureTask</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ListenableFutureTask</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FutureTask</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension of FutureTask that implements ListenableFuture.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-settable-listenable-future/index.html">SettableListenableFuture</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SettableListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>A ListenableFuture whose value can be set via <code><a href="#">#set(Object)</a></code> or <code><a href="#">#setException(Throwable)</a></code>. It may also get cancelled. 
+<p>Inspired by <code>com.google.common.util.concurrent.SettableFuture</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ObjectFactoryCreatingFactoryBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">ObjectFactoryCreatingFactoryBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean$&lt;init&gt;()"></a>
+<code><span class="identifier">ObjectFactoryCreatingFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A org.springframework.beans.factory.FactoryBean implementation that returns a value which is an org.springframework.beans.factory.ObjectFactory that in turn returns a bean sourced from a org.springframework.beans.factory.BeanFactory. 
+<p>As such, this may be used to avoid having a client object directly calling <code><a href="#">org.springframework.beans.factory.BeanFactory#getBean(String)</a></code> to get a (typically prototype) bean from a org.springframework.beans.factory.BeanFactory, which would be a violation of the inversion of control principle. Instead, with the use of this class, the client object can be fed an org.springframework.beans.factory.ObjectFactory instance as a property which directly returns only the one target bean (again, which is typically a prototype bean). </p>
+<p>A sample config in an XML-based org.springframework.beans.factory.BeanFactory might look as follows: </p>
+<pre><code>&lt;beans&gt; &lt;!-- Prototype bean since we have state --&gt; &lt;bean id="myService" class="a.b.c.MyService" scope="prototype"/&gt; &lt;bean id="myServiceFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean"&gt; &lt;property name="targetBeanName"&gt;&lt;idref local="myService"/&gt;&lt;/property&gt; &lt;/bean&gt; &lt;bean id="clientBean" class="a.b.c.MyClientBean"&gt; &lt;property name="myServiceFactory" ref="myServiceFactory"/&gt; &lt;/bean&gt; &lt;/beans&gt;</code></pre> 
+<p>The attendant <code>MyClientBean</code> class implementation might look something like this: </p>
+<pre><code>package a.b.c; import org.springframework.beans.factory.ObjectFactory; public class MyClientBean { private ObjectFactory&lt;MyService&gt; myServiceFactory; public void setMyServiceFactory(ObjectFactory&lt;MyService&gt; myServiceFactory) { this.myServiceFactory = myServiceFactory; } public void someBusinessMethod() { // get a 'fresh', brand new MyService instance MyService service = this.myServiceFactory.getObject(); // use the service object to effect the business logic... } }</code></pre> 
+<p>An alternate approach to this application of an object creational pattern would be to use the ServiceLocatorFactoryBean to source (prototype) beans. The ServiceLocatorFactoryBean approach has the advantage of the fact that one doesn't have to depend on any Spring-specific interface such as org.springframework.beans.factory.ObjectFactory, but has the disadvantage of requiring runtime class generation. Please do consult the ServiceLocatorFactoryBean for a fuller discussion of this issue.</p>
+</p>
+<p><strong>Author</strong><br/>
+Colin Sampaleanu</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.0.2</p>
+<p><strong>See Also</strong><br/>
+org.springframework.beans.factory.ObjectFactoryServiceLocatorFactoryBean</p>
+</BODY>
+</HTML>

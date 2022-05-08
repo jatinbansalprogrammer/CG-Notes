@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BodyExtractors.toMono - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.function</a>&nbsp;/&nbsp;<a href="index.html">BodyExtractors</a>&nbsp;/&nbsp;<a href=".">toMono</a><br/>
+<br/>
+<h1>toMono</h1>
+<a name="org.springframework.web.reactive.function.BodyExtractors$toMono(java.lang.Class((org.springframework.web.reactive.function.BodyExtractors.toMono.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toMono</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.BodyExtractors$toMono(java.lang.Class((org.springframework.web.reactive.function.BodyExtractors.toMono.T)))/elementClass">elementClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BodyExtractor</span><span class="symbol">&lt;</span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">ReactiveHttpInputMessage</span><span class="symbol">&gt;</span></code>
+<p>Return a <code>BodyExtractor</code> that reads into a Reactor Mono.</p>
+<h3>Parameters</h3>
+<p><a name="elementClass"></a>
+<code>elementClass</code> - the class of element in the <code>Mono</code></p>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the element type</p>
+<p><strong>Return</strong><br/>
+a <code>BodyExtractor</code> that reads a mono</p>
+<a name="org.springframework.web.reactive.function.BodyExtractors$toMono(org.springframework.core.ParameterizedTypeReference((org.springframework.web.reactive.function.BodyExtractors.toMono.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toMono</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.BodyExtractors$toMono(org.springframework.core.ParameterizedTypeReference((org.springframework.web.reactive.function.BodyExtractors.toMono.T)))/typeReference">typeReference</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterizedTypeReference</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BodyExtractor</span><span class="symbol">&lt;</span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">ReactiveHttpInputMessage</span><span class="symbol">&gt;</span></code>
+<p>Return a <code>BodyExtractor</code> that reads into a Reactor Mono. The given ParameterizedTypeReference is used to pass generic type information, for instance when using the org.springframework.web.reactive.function.client.WebClient <pre><code> Mono&lt;Map&lt;String, String&gt;&gt; body = this.webClient .get() .uri("http://example.com") .exchange() .flatMap(r -&gt; r.body(toMono(new ParameterizedTypeReference&lt;Map&lt;String,String&gt;&gt;() {}))); </code></pre></p>
+<h3>Parameters</h3>
+<p><a name="typeReference"></a>
+<code>typeReference</code> - a reference to the type of element in the <code>Mono</code></p>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the element type</p>
+<p><strong>Return</strong><br/>
+a <code>BodyExtractor</code> that reads a mono</p>
+</BODY>
+</HTML>

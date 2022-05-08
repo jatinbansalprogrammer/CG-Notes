@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleHttpServerFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.support</a>&nbsp;/&nbsp;<a href=".">SimpleHttpServerFactoryBean</a><br/>
+<br/>
+<h1>SimpleHttpServerFactoryBean</h1>
+<code><span class="identifier">@UsesSunHttpServer</span> <span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHttpServerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>org.springframework.beans.factory.FactoryBean that creates a simple HTTP server, based on the HTTP server that is included in Sun's JRE 1.6. Starts the HTTP server on initialization and stops it on destruction. Exposes the resulting com.sun.net.httpserver.HttpServer object. 
+<p>Allows for registering com.sun.net.httpserver.HttpHandler for specific <code><a href="#">context paths</a></code>. Alternatively, register such context-specific handlers programmatically on the com.sun.net.httpserver.HttpServer itself.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+2.5.1</p>
+<p><strong>See Also</strong><br/>
+<a href="set-port.html">#setPort</a><a href="#">#setContexts</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleHttpServerFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean that creates a simple HTTP server, based on the HTTP server that is included in Sun's JRE 1.6. Starts the HTTP server on initialization and stops it on destruction. Exposes the resulting com.sun.net.httpserver.HttpServer object. 
+<p>Allows for registering com.sun.net.httpserver.HttpHandler for specific <code><a href="#">context paths</a></code>. Alternatively, register such context-specific handlers programmatically on the com.sun.net.httpserver.HttpServer itself.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpServer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">HttpServer</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-authenticator.html">setAuthenticator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAuthenticator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setAuthenticator(com.sun.net.httpserver.Authenticator)/authenticator">authenticator</span><span class="symbol">:</span>&nbsp;<span class="identifier">Authenticator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a common com.sun.net.httpserver.Authenticator to be applied to all locally registered <code><a href="#">contexts</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-backlog.html">setBacklog</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBacklog</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setBacklog(kotlin.Int)/backlog">backlog</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the HTTP server's TCP backlog. Default is -1, indicating the system's default value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-contexts.html">setContexts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContexts</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setContexts(kotlin.collections.MutableMap((kotlin.String, com.sun.net.httpserver.HttpHandler)))/contexts">contexts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">HttpHandler</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register com.sun.net.httpserver.HttpHandler for specific context paths.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-executor.html">setExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setExecutor(java.util.concurrent.Executor)/executor">executor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDK concurrent executor to use for dispatching incoming requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-filters.html">setFilters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFilters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setFilters(kotlin.collections.MutableList((com.sun.net.httpserver.Filter)))/filters">filters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Filter</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register common com.sun.net.httpserver.Filter to be applied to all locally registered <code><a href="#">contexts</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-hostname.html">setHostname</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHostname</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setHostname(kotlin.String)/hostname">hostname</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the HTTP server's hostname to bind to. Default is localhost; can be overridden with a specific network address to bind to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-port.html">setPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setPort(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the HTTP server's port. Default is 8080.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-shutdown-delay.html">setShutdownDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setShutdownDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.support.SimpleHttpServerFactoryBean$setShutdownDelay(kotlin.Int)/shutdownDelay">shutdownDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the number of seconds to wait until HTTP exchanges have completed when shutting down the HTTP server. Default is 0.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>NumberFormat - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.format.annotation</a>&nbsp;/&nbsp;<a href=".">NumberFormat</a><br/>
+<br/>
+<h1>NumberFormat</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER, AnnotationTarget.FIELD, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.ANNOTATION_CLASS]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">NumberFormat</span></code>
+<p>Declares that a field or method parameter should be formatted as a number. 
+<p>Supports formatting by style or custom pattern string. Can be applied to any JDK <code>java.lang.Number</code> type. </p>
+<p>For style-based formatting, set the <code><a href="#">#style</a></code> attribute to be the desired Style. For custom formatting, set the <code><a href="#">#pattern</a></code> attribute to be the number pattern, such as <code>#, ###.##</code>. </p>
+<p>Each attribute is mutually exclusive, so only set one attribute per annotation instance (the one most convenient one for your formatting needs). When the <code><a href="#">#pattern</a></code> attribute is specified, it takes precedence over the <code><a href="#">#style</a></code> attribute. When no annotation attributes are specified, the default format applied is style-based for either number of currency, depending on the annotated field or method parameter type.</p>
+</p>
+<p><strong>Author</strong><br/>
+Keith Donald</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+java.text.NumberFormat</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">NumberFormat</span><span class="symbol">(</span><span class="identifier" id="org.springframework.format.annotation.NumberFormat$<init>(org.springframework.format.annotation.NumberFormat.Style, kotlin.String)/style">style</span><span class="symbol">:</span>&nbsp;<span class="identifier">Style</span><span class="symbol">, </span><span class="identifier" id="org.springframework.format.annotation.NumberFormat$<init>(org.springframework.format.annotation.NumberFormat.Style, kotlin.String)/pattern">pattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Declares that a field or method parameter should be formatted as a number. 
+<p>Supports formatting by style or custom pattern string. Can be applied to any JDK <code>java.lang.Number</code> type. </p>
+<p>For style-based formatting, set the <code><a href="#">#style</a></code> attribute to be the desired Style. For custom formatting, set the <code><a href="#">#pattern</a></code> attribute to be the number pattern, such as <code>#, ###.##</code>. </p>
+<p>Each attribute is mutually exclusive, so only set one attribute per annotation instance (the one most convenient one for your formatting needs). When the <code><a href="#">#pattern</a></code> attribute is specified, it takes precedence over the <code><a href="#">#style</a></code> attribute. When no annotation attributes are specified, the default format applied is style-based for either number of currency, depending on the annotated field or method parameter type.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="pattern.html">pattern</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">pattern</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The custom pattern to use to format the field. 
+<p>Defaults to empty String, indicating no custom pattern String has been specified. Set this attribute when you wish to format your field in accordance with a custom number pattern not represented by a style.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="style.html">style</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">style</span><span class="symbol">: </span><span class="identifier">Style</span></code>
+<p>The style pattern to use to format the field. 
+<p>Defaults to <code><a href="#">Style#DEFAULT</a></code> for general-purpose number formatting for most annotated types, except for money types which default to currency formatting. Set this attribute when you wish to format your field in accordance with a common style other than the default style.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

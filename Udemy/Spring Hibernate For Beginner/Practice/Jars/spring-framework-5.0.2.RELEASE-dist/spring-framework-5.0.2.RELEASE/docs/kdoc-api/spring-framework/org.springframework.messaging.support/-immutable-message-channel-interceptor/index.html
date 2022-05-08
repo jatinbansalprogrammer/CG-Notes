@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ImmutableMessageChannelInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.support</a>&nbsp;/&nbsp;<a href=".">ImmutableMessageChannelInterceptor</a><br/>
+<br/>
+<h1>ImmutableMessageChannelInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ImmutableMessageChannelInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-channel-interceptor-adapter/index.html"><span class="identifier">ChannelInterceptorAdapter</span></a></code>
+<p>A simpler interceptor that calls <code><a href="#">MessageHeaderAccessor#setImmutable()</a></code> on the headers of messages passed through the preSend method. 
+<p>When configured as the last interceptor in a chain, it allows the component sending the message to leave headers mutable for interceptors to modify prior to the message actually being sent and exposed to concurrent access.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.1.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ImmutableMessageChannelInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A simpler interceptor that calls <code><a href="#">MessageHeaderAccessor#setImmutable()</a></code> on the headers of messages passed through the preSend method. 
+<p>When configured as the last interceptor in a chain, it allows the component sending the message to leave headers mutable for interceptors to modify prior to the message actually being sent and exposed to concurrent access.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="pre-send.html">preSend</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">preSend</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ImmutableMessageChannelInterceptor$preSend(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ImmutableMessageChannelInterceptor$preSend(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel)/channel">channel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-channel-interceptor-adapter/after-receive-completion.html">afterReceiveCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterReceiveCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$afterReceiveCompletion(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, java.lang.Exception)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$afterReceiveCompletion(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, java.lang.Exception)/channel">channel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$afterReceiveCompletion(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, java.lang.Exception)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-channel-interceptor-adapter/after-send-completion.html">afterSendCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterSendCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$afterSendCompletion(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, kotlin.Boolean, java.lang.Exception)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$afterSendCompletion(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, kotlin.Boolean, java.lang.Exception)/channel">channel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$afterSendCompletion(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, kotlin.Boolean, java.lang.Exception)/sent">sent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$afterSendCompletion(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, kotlin.Boolean, java.lang.Exception)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-channel-interceptor-adapter/post-receive.html">postReceive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postReceive</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$postReceive(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$postReceive(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel)/channel">channel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-channel-interceptor-adapter/post-send.html">postSend</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postSend</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$postSend(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, kotlin.Boolean)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$postSend(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, kotlin.Boolean)/channel">channel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$postSend(org.springframework.messaging.Message((kotlin.Any)), org.springframework.messaging.MessageChannel, kotlin.Boolean)/sent">sent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-channel-interceptor-adapter/pre-receive.html">preReceive</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">preReceive</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.ChannelInterceptorAdapter$preReceive(org.springframework.messaging.MessageChannel)/channel">channel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

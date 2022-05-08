@@ -1,0 +1,189 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JndiRmiProxyFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.rmi</a>&nbsp;/&nbsp;<a href=".">JndiRmiProxyFactoryBean</a><br/>
+<br/>
+<h1>JndiRmiProxyFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiRmiProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-jndi-rmi-client-interceptor/index.html"><span class="identifier">JndiRmiClientInterceptor</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>FactoryBean for RMI proxies from JNDI. 
+<p>Typically used for RMI-IIOP (CORBA), but can also be used for EJB home objects (for example, a Stateful Session Bean home). In contrast to a plain JNDI lookup, this accessor also performs narrowing through javax.rmi.PortableRemoteObject. </p>
+<p>With conventional RMI services, this invoker is typically used with the RMI service interface. Alternatively, this invoker can also proxy a remote RMI service with a matching non-RMI business interface, i.e. an interface that mirrors the RMI service methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the RMI stub will automatically get converted to Spring's unchecked RemoteAccessException. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setServiceInterface</a><a href="#">#setJndiName</a><a href="#">#setJndiTemplate</a><a href="#">#setJndiEnvironment</a><a href="#">#setJndiName</a>JndiRmiServiceExporterorg.springframework.remoting.RemoteAccessExceptionjava.rmi.RemoteExceptionjava.rmi.Remote<a href="#">javax.rmi.PortableRemoteObject#narrow</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JndiRmiProxyFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>FactoryBean for RMI proxies from JNDI. 
+<p>Typically used for RMI-IIOP (CORBA), but can also be used for EJB home objects (for example, a Stateful Session Bean home). In contrast to a plain JNDI lookup, this accessor also performs narrowing through javax.rmi.PortableRemoteObject. </p>
+<p>With conventional RMI services, this invoker is typically used with the RMI service interface. Alternatively, this invoker can also proxy a remote RMI service with a matching non-RMI business interface, i.e. an interface that mirrors the RMI service methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the RMI stub will automatically get converted to Spring's unchecked RemoteAccessException. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiProxyFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/get-remote-invocation-factory.html">getRemoteInvocationFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRemoteInvocationFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RemoteInvocationFactory</span></code>
+<p>Return the RemoteInvocationFactory used by this accessor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/get-service-interface.html">getServiceInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getServiceInterface</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the interface of the service to access.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/invoke.html">invoke</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiClientInterceptor$invoke(org.aopalliance.intercept.MethodInvocation)/invocation">invocation</span><span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Fetches an RMI stub and delegates to <code><a href="#">#doInvoke</a></code>. If configured to refresh on connect failure, it will call <code><a href="#">#refreshAndRetry</a></code> on corresponding RMI exceptions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/prepare.html">prepare</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prepare</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Fetches the RMI stub on startup, if necessary.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/set-cache-stub.html">setCacheStub</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheStub</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiClientInterceptor$setCacheStub(kotlin.Boolean)/cacheStub">cacheStub</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to cache the RMI stub once it has been located. Default is "true". 
+<p>Can be turned off to allow for hot restart of the RMI server. In this case, the RMI stub will be fetched for each invocation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/set-expose-access-context.html">setExposeAccessContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExposeAccessContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiClientInterceptor$setExposeAccessContext(kotlin.Boolean)/exposeAccessContext">exposeAccessContext</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to expose the JNDI environment context for all access to the target RMI stub, i.e. for all method invocations on the exposed object reference. 
+<p>Default is "false", i.e. to only expose the JNDI context for object lookup. Switch this flag to "true" in order to expose the JNDI environment (including the authorization context) for each RMI invocation, as needed by WebLogic for RMI stubs with authorization requirements.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/set-lookup-stub-on-startup.html">setLookupStubOnStartup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLookupStubOnStartup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiClientInterceptor$setLookupStubOnStartup(kotlin.Boolean)/lookupStubOnStartup">lookupStubOnStartup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to look up the RMI stub on startup. Default is "true". 
+<p>Can be turned off to allow for late start of the RMI server. In this case, the RMI stub will be fetched on first access.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/set-refresh-stub-on-connect-failure.html">setRefreshStubOnConnectFailure</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRefreshStubOnConnectFailure</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiClientInterceptor$setRefreshStubOnConnectFailure(kotlin.Boolean)/refreshStubOnConnectFailure">refreshStubOnConnectFailure</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to refresh the RMI stub on connect failure. Default is "false". 
+<p>Can be turned on to allow for hot restart of the RMI server. If a cached RMI stub throws an RMI exception that indicates a remote connect failure, a fresh proxy will be fetched and the invocation will be retried.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/set-remote-invocation-factory.html">setRemoteInvocationFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRemoteInvocationFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiClientInterceptor$setRemoteInvocationFactory(org.springframework.remoting.support.RemoteInvocationFactory)/remoteInvocationFactory">remoteInvocationFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">RemoteInvocationFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the RemoteInvocationFactory to use for this accessor. Default is a DefaultRemoteInvocationFactory. 
+<p>A custom invocation factory can add further context information to the invocation, for example user credentials.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-jndi-rmi-client-interceptor/set-service-interface.html">setServiceInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServiceInterface</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.JndiRmiClientInterceptor$setServiceInterface(java.lang.Class((kotlin.Any)))/serviceInterface">serviceInterface</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the interface of the service to access. The interface must be suitable for the particular service and remoting tool. 
+<p>Typically required to be able to create a suitable service proxy, but can also be optional if the lookup returns a typed stub.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

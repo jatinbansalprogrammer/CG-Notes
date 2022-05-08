@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.support</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-header-mapper/index.html">AbstractHeaderMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractHeaderMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HeaderMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>A base HeaderMapper implementation</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-channel-interceptor-adapter/index.html">ChannelInterceptorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ChannelInterceptorAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ChannelInterceptor</span></code>
+<p>A ChannelInterceptor base class with empty method implementations as a convenience.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-error-message/index.html">ErrorMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ErrorMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericMessage</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span></code>
+<p>A GenericMessage with a Throwable payload. 
+<p>The payload is typically a org.springframework.messaging.MessagingException with the message at the point of failure in its <code>failedMessage</code> property. An optional <code>originalMessage</code> may be provided, which represents the message that existed at the point in the stack where the error message is created. </p>
+<p>Consider some code that starts with a message, invokes some process that performs transformation on that message and then fails for some reason, throwing the exception. The exception is caught and an error message produced that contains both the original message, and the transformed message that failed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-executor-channel-interceptor/index.html">ExecutorChannelInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ExecutorChannelInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ChannelInterceptor</span></code>
+<p>An extension of ChannelInterceptor with callbacks to intercept the asynchronous sending of a org.springframework.messaging.Message to a specific subscriber through an java.util.concurrent.Executor. Supported on org.springframework.messaging.MessageChannel implementations that can be configured with an Executor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-executor-subscribable-channel/index.html">ExecutorSubscribableChannel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExecutorSubscribableChannel</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSubscribableChannel</span></code>
+<p>A SubscribableChannel that sends messages to each of its subscribers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-id-timestamp-message-header-initializer/index.html">IdTimestampMessageHeaderInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IdTimestampMessageHeaderInitializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaderInitializer</span></code>
+<p>A org.springframework.messaging.support.MessageHeaderInitializer to customize the strategy for ID and TIMESTAMP message header generation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-immutable-message-channel-interceptor/index.html">ImmutableMessageChannelInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ImmutableMessageChannelInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-channel-interceptor-adapter/index.html"><span class="identifier">ChannelInterceptorAdapter</span></a></code>
+<p>A simpler interceptor that calls <code><a href="#">MessageHeaderAccessor#setImmutable()</a></code> on the headers of messages passed through the preSend method. 
+<p>When configured as the last interceptor in a chain, it allows the component sending the message to leave headers mutable for interceptors to modify prior to the message actually being sent and exposed to concurrent access.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-builder/index.html">MessageBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>A builder for creating a GenericMessage (or ErrorMessage if the payload is of type Throwable).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-handling-runnable/index.html">MessageHandlingRunnable</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MessageHandlingRunnable</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span></code>
+<p>Extension of the Runnable interface with methods to obtain the MessageHandler and Message to be handled.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

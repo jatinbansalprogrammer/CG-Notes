@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringBeanAutowiringSupport - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.support</a>&nbsp;/&nbsp;<a href=".">SpringBeanAutowiringSupport</a><br/>
+<br/>
+<h1>SpringBeanAutowiringSupport</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">SpringBeanAutowiringSupport</span></code>
+<p>Convenient base class for self-autowiring classes that gets constructed within a Spring-based web application. Resolves <code>@Autowired</code> annotations in the endpoint class against beans in the current Spring root web application context (as determined by the current thread's context ClassLoader, which needs to be the web application's ClassLoader). Can alternatively be used as a delegate instead of as a base class. 
+<p>A typical usage of this base class is a JAX-WS endpoint class: Such a Spring-based JAX-WS endpoint implementation will follow the standard JAX-WS contract for endpoint classes but will be 'thin' in that it delegates the actual work to one or more Spring-managed service beans - typically obtained using <code>@Autowired</code>. The lifecycle of such an endpoint instance will be managed by the JAX-WS runtime, hence the need for this base class to provide <code>@Autowired</code> processing based on the current Spring context. </p>
+<p><strong>NOTE:</strong> If there is an explicit way to access the ServletContext, prefer such a way over using this class. The WebApplicationContextUtils class allows for easy access to the Spring root web application context based on the ServletContext.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5.1</p>
+<p><strong>See Also</strong><br/>
+WebApplicationObjectSupport</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringBeanAutowiringSupport</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>This constructor performs injection on this instance, based on the current web application context. 
+<p>Intended for use as a base class.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="process-injection-based-on-current-context.html">processInjectionBasedOnCurrentContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">processInjectionBasedOnCurrentContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.SpringBeanAutowiringSupport$processInjectionBasedOnCurrentContext(kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Process <code>@Autowired</code> injection for the given target object, based on the current web application context. 
+<p>Intended for use as a delegate.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="process-injection-based-on-servlet-context.html">processInjectionBasedOnServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">processInjectionBasedOnServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.SpringBeanAutowiringSupport$processInjectionBasedOnServletContext(kotlin.Any, javax.servlet.ServletContext)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.SpringBeanAutowiringSupport$processInjectionBasedOnServletContext(kotlin.Any, javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Process <code>@Autowired</code> injection for the given target object, based on the current root web application context as stored in the ServletContext. 
+<p>Intended for use as a delegate.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

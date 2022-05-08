@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.config - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.config</a><br/>
+<br/>
+<h2>Package org.springframework.aop.config</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-interceptor-driven-bean-definition-decorator/index.html">AbstractInterceptorDrivenBeanDefinitionDecorator</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractInterceptorDrivenBeanDefinitionDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionDecorator</span></code>
+<p>Base implementation for org.springframework.beans.factory.xml.BeanDefinitionDecorator wishing to add an org.aopalliance.intercept.MethodInterceptor to the resulting bean. 
+<p>This base class controls the creation of the ProxyFactoryBean bean definition and wraps the original as an inner-bean definition for the <code>target</code> property of ProxyFactoryBean. </p>
+<p>Chaining is correctly handled, ensuring that only one ProxyFactoryBean definition is created. If a previous org.springframework.beans.factory.xml.BeanDefinitionDecorator already created the org.springframework.aop.framework.ProxyFactoryBean then the interceptor is simply added to the existing definition. </p>
+<p>Subclasses have only to create the <code>BeanDefinition</code> to the interceptor that they wish to add.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-advice-entry/index.html">AdviceEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AdviceEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing an advice element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-advisor-component-definition/index.html">AdvisorComponentDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AdvisorComponentDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractComponentDefinition</span></code>
+<p>org.springframework.beans.factory.parsing.ComponentDefinition that bridges the gap between the advisor bean definition configured by the <code>&lt;aop:advisor&gt;</code> tag and the component definition infrastructure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-advisor-entry/index.html">AdvisorEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AdvisorEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing an advisor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aop-config-utils/index.html">AopConfigUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AopConfigUtils</span></code>
+<p>Utility class for handling registration of AOP auto-proxy creators. 
+<p>Only a single auto-proxy creator can be registered yet multiple concrete implementations are available. Therefore this class wraps a simple escalation protocol, allowing classes to request a particular auto-proxy creator and know that class, <code>or a subclass thereof</code>, will eventually be resident in the application context.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aop-namespace-handler/index.html">AopNamespaceHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AopNamespaceHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandlerSupport</span></code>
+<p><code>NamespaceHandler</code> for the <code>aop</code> namespace. 
+<p>Provides a org.springframework.beans.factory.xml.BeanDefinitionParser for the <code>&lt;aop:config&gt;</code> tag. A <code>config</code> tag can include nested <code>pointcut</code>, <code>advisor</code> and <code>aspect</code> tags. </p>
+<p>The <code>pointcut</code> tag allows for creation of named AspectJExpressionPointcut beans using a simple syntax: </p>
+<pre><code> &lt;aop:pointcut id="getNameCalls" expression="execution(* *..ITestBean.getName(..))"/&gt; </code></pre> 
+<p>Using the <code>advisor</code> tag you can configure an org.springframework.aop.Advisor and have it applied to all relevant beans in you org.springframework.beans.factory.BeanFactory automatically. The <code>advisor</code> tag supports both in-line and referenced org.springframework.aop.Pointcut: </p>
+<pre><code> &lt;aop:advisor id="getAgeAdvisor" pointcut="execution(* *..ITestBean.getAge(..))" advice-ref="getAgeCounter"/&gt; &lt;aop:advisor id="getNameAdvisor" pointcut-ref="getNameCalls" advice-ref="getNameCounter"/&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aop-namespace-utils/index.html">AopNamespaceUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AopNamespaceUtils</span></code>
+<p>Utility class for handling registration of auto-proxy creators used internally by the '<code>aop</code>' namespace tags. 
+<p>Only a single auto-proxy creator can be registered and multiple tags may wish to register different concrete implementations. As such this class delegates to AopConfigUtils which wraps a simple escalation protocol. Therefore classes may request a particular auto-proxy creator and know that class, <em>or a subclass thereof</em>, will eventually be resident in the application context.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aspect-component-definition/index.html">AspectComponentDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectComponentDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CompositeComponentDefinition</span></code>
+<p>org.springframework.beans.factory.parsing.ComponentDefinition that holds an aspect definition, including its nested pointcuts.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aspect-entry/index.html">AspectEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing an aspect.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-locating-factory-bean/index.html">MethodLocatingFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodLocatingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Method</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>FactoryBean implementation that locates a Method on a specified bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pointcut-component-definition/index.html">PointcutComponentDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PointcutComponentDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractComponentDefinition</span></code>
+<p>org.springframework.beans.factory.parsing.ComponentDefinition implementation that holds a pointcut definition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pointcut-entry/index.html">PointcutEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PointcutEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing a pointcut.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-bean-factory-aware-aspect-instance-factory/index.html">SimpleBeanFactoryAwareAspectInstanceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleBeanFactoryAwareAspectInstanceFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AspectInstanceFactory</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Implementation of AspectInstanceFactory that locates the aspect from the org.springframework.beans.factory.BeanFactory using a configured bean name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

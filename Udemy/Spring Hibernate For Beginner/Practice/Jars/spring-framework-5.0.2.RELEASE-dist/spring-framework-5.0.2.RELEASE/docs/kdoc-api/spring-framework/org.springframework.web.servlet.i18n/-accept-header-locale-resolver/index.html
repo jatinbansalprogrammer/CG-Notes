@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AcceptHeaderLocaleResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.i18n</a>&nbsp;/&nbsp;<a href=".">AcceptHeaderLocaleResolver</a><br/>
+<br/>
+<h1>AcceptHeaderLocaleResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AcceptHeaderLocaleResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LocaleResolver</span></code>
+<p>LocaleResolver implementation that simply uses the primary locale specified in the "accept-language" header of the HTTP request (that is, the locale sent by the client browser, normally that of the client's OS). 
+<p>Note: Does not support <code>setLocale</code>, since the accept header can only be changed through changing the client's locale settings.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+27.02.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.servlet.http.HttpServletRequest#getLocale()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AcceptHeaderLocaleResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>LocaleResolver implementation that simply uses the primary locale specified in the "accept-language" header of the HTTP request (that is, the locale sent by the client browser, normally that of the client's OS). 
+<p>Note: Does not support <code>setLocale</code>, since the accept header can only be changed through changing the client's locale settings.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-default-locale.html">getDefaultLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultLocale</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Locale</span></code>
+<p>The configured default locale, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-supported-locales.html">getSupportedLocales</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSupportedLocales</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Locale</span><span class="symbol">&gt;</span></code>
+<p>Return the configured list of supported locales.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-locale.html">resolveLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver$resolveLocale(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Locale</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-locale.html">setDefaultLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver$setDefaultLocale(java.util.Locale)/defaultLocale">defaultLocale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure a fixed default locale to fall back on if the request does not have an "Accept-Language" header. 
+<p>By default this is not set in which case when there is "Accept-Language" header, the default locale for the server is used as defined in <code><a href="#">HttpServletRequest#getLocale()</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale.html">setLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-supported-locales.html">setSupportedLocales</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportedLocales</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver$setSupportedLocales(kotlin.collections.MutableList((java.util.Locale)))/locales">locales</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Locale</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure supported locales to check against the requested locales determined via <code><a href="#">HttpServletRequest#getLocales()</a></code>. If this is not configured then <code><a href="#">HttpServletRequest#getLocale()</a></code> is used instead.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

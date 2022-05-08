@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.support</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-annotation-config-dispatcher-servlet-initializer/index.html">AbstractAnnotationConfigDispatcherServletInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractAnnotationConfigDispatcherServletInitializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-dispatcher-servlet-initializer/index.html"><span class="identifier">AbstractDispatcherServletInitializer</span></a></code>
+<p>org.springframework.web.WebApplicationInitializer to register a <code>DispatcherServlet</code> and use Java-based Spring configuration. 
+<p>Implementations are required to implement: </p>
+<ul> <li><code><a href="#">#getRootConfigClasses()</a></code> -- for "root" application context (non-web infrastructure) configuration. </li>
+<li><code><a href="#">#getServletConfigClasses()</a></code> -- for <code>DispatcherServlet</code> application context (Spring MVC infrastructure) configuration. </li>
+</ul>
+ 
+<p>If an application context hierarchy is not required, applications may return all configuration via <code><a href="#">#getRootConfigClasses()</a></code> and return <code>null</code> from <code><a href="#">#getServletConfigClasses()</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-dispatcher-servlet-initializer/index.html">AbstractDispatcherServletInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractDispatcherServletInitializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.context/-abstract-context-loader-initializer/index.html"><span class="identifier">AbstractContextLoaderInitializer</span></a></code>
+<p>Base class for org.springframework.web.WebApplicationInitializer implementations that register a DispatcherServlet in the servlet context. 
+<p>Most applications should consider extending the Spring Java config, sub-class AbstractAnnotationConfigDispatcherServletInitializer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jsp-aware-request-context/index.html">JspAwareRequestContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JspAwareRequestContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestContext</span></code>
+<p>JSP-aware (and JSTL-aware) subclass of RequestContext, allowing for population of the context from a <code>javax.servlet.jsp.PageContext</code>. 
+<p>This context will detect a JSTL locale attribute in page/request/session/application scope, in addition to the fallback locale strategy provided by the base class.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-context-utils/index.html">RequestContextUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">RequestContextUtils</span></code>
+<p>Utility class for easy access to request-specific state which has been set by the org.springframework.web.servlet.DispatcherServlet. 
+<p>Supports lookup of current WebApplicationContext, LocaleResolver, Locale, ThemeResolver, Theme, and MultipartResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-uri-components-builder/index.html">ServletUriComponentsBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletUriComponentsBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UriComponentsBuilder</span></code>
+<p>UriComponentsBuilder with additional static factory methods to create links based on the current HttpServletRequest. 
+<p><strong>Note:</strong> This class extracts and uses values from the headers "Forwarded" (<a href="#">RFC 7239</a>), or "X-Forwarded-Host", "X-Forwarded-Port", and "X-Forwarded-Proto" if "Forwarded" is not found, in order to reflect the client-originated protocol and address. As an alternative consider using the org.springframework.web.filter.ForwardedHeaderFilter to have such headers extracted once and removed, or removed only (without being used). See the reference for further information including security considerations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-flash-map-manager/index.html">SessionFlashMapManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionFlashMapManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFlashMapManager</span></code>
+<p>Store and retrieve FlashMap instances to and from the HTTP session.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

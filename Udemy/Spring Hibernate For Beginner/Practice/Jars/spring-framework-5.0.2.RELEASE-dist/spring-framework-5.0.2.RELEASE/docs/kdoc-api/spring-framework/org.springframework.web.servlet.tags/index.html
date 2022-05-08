@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.tags - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.tags</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.tags</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-argument-tag/index.html">ArgumentTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ArgumentTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BodyTagSupport</span></code>
+<p>The <code>&lt;argument&gt;</code> tag is based on the JSTL <code>fmt:param</code> tag. The purpose is to support arguments inside the message and theme tags. 
+<p>This tag must be nested under an argument aware tag. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     value false true The value of the argument.   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bind-errors-tag/index.html">BindErrorsTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BindErrorsTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span></code>
+<p>This <code>&lt;hasBindErrors&gt;</code> tag provides an Errors instance in case of bind errors. The HTML escaping flag participates in a page-wide or application-wide setting (i.e. by HtmlEscapeTag or a "defaultHtmlEscape" context-param in web.xml).  Attribute Summary   Attribute Required? Runtime Expression? Description     htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   name true true The name of the bean in the request that needs to be inspected for errors. If errors are available for this bean, they will be bound under the 'errors' key.   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-escape-body-tag/index.html">EscapeBodyTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EscapeBodyTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span><span class="symbol">, </span><span class="identifier">BodyTag</span></code>
+<p>The <code>&lt;escapeBody&gt;</code> tag is used to escape its enclosed body content, applying HTML escaping and/or JavaScript escaping. 
+<p>Provides a "htmlEscape" property for explicitly specifying whether to apply HTML escaping. If not set, a page-level default (e.g. from the HtmlEscapeTag) or an application-wide default (the "defaultHtmlEscape" context-param in web.xml) is used. </p>
+<p>Provides a "javaScriptEscape" property for specifying whether to apply JavaScript escaping. Can be combined with HTML escaping or used standalone. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description    htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as boolean value. Default is false.   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-eval-tag/index.html">EvalTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EvalTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span></code>
+<p>The <code>&lt;eval&gt;</code> tag evaluates a Spring expression (SpEL) and either prints the result or assigns it to a variable. Supports the standard JSP evaluation context consisting of implicit variables and scoped attributes.  Attribute Summary   Attribute Required? Runtime Expression? Description    expression true true The expression to evaluate.   htmlEscape false true Set HTML escaping for this tag, as a boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as a boolean value. Default is false.   scope false true The scope for the var. 'application', 'session', 'request' and 'page' scopes are supported. Defaults to page scope. This attribute has no effect unless the var attribute is also defined.   var false true The name of the variable to export the evaluation result to. If not specified the evaluation result is converted to a String and written as output.   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-html-escape-tag/index.html">HtmlEscapeTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HtmlEscapeTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestContextAwareTag</span></code>
+<p>The <code>&lt;htmlEscape&gt;</code> tag sets default HTML escape value for the current page. The actual value can be overridden by escaping-aware tags. The default is "false". 
+<p>Note: You can also set a "defaultHtmlEscape" web.xml context-param. A page-level setting overrides a context-param. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     defaultHtmlEscape true true Set the default value for HTML escaping, to be put into the current PageContext.   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-tag/index.html">MessageTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span><span class="symbol">, </span><span class="identifier">ArgumentAware</span></code>
+<p>The <code>&lt;message&gt;</code> tag looks up a message in the scope of this page. Messages are resolved using the ApplicationContext and thus support internationalization. 
+<p>Detects an HTML escaping setting, either on this tag instance, the page level, or the <code>web.xml</code> level. Can also apply JavaScript escaping. </p>
+<p>If "code" isn't set or cannot be resolved, "text" will be used as default message. Thus, this tag can also be used for HTML escaping of any texts. </p>
+<p>Message arguments can be specified via the <code><a href="#">arguments</a></code> attribute or by using nested <code>&lt;spring:argument&gt;</code> tags. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     arguments false true Set optional message arguments for this tag, as a (comma-)delimited String (each String argument can contain JSP EL), an Object array (used as argument array), or a single Object (used as single argument).   argumentSeparator false true The separator character to be used for splitting the arguments string value; defaults to a 'comma' (',').   code false true The code (key) to use when looking up the message. If code is not provided, the text attribute will be used.   htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as boolean value. Default is false.   message false true A MessageSourceResolvable argument (direct or through JSP EL). Fits nicely when used in conjunction with Spring’s own validation error classes which all implement the MessageSourceResolvable interface. For example, this allows you to iterate over all of the errors in a form, passing each error (using a runtime expression) as the value of this 'message' attribute, thus effecting the easy display of such error messages.   scope false true The scope to use when exporting the result to a variable. This attribute is only used when var is also set. Possible values are page, request, session and application.   text false true Default text to output when a message for the given code could not be found. If both text and code are not set, the tag will output null.   var false true The string to use when binding the result to the page, request, session or application scope. If not specified, the result gets outputted to the writer (i.e. typically directly to the JSP).   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-nested-path-tag/index.html">NestedPathTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NestedPathTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TagSupport</span><span class="symbol">, </span><span class="identifier">TryCatchFinally</span></code>
+<p>
+<p>The <code>&lt;nestedPath&gt;</code> tag supports and assists with nested beans or bean properties in the model. Exports a "nestedPath" variable of type String in request scope, visible to the current page and also included pages, if any. </p>
+<p>The BindTag will auto-detect the current nested path and automatically prepend it to its own path to form a complete path to the bean or bean property. </p>
+<p>This tag will also prepend any existing nested path that is currently set. Thus, you can nest multiple nested-path tags. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     path true true Set the path that this tag should apply. E.g. 'customer' to allow bind paths like 'address.street' rather than 'customer.address.street'.   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-param-tag/index.html">ParamTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ParamTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BodyTagSupport</span></code>
+<p>The <code>&lt;param&gt;</code> tag collects name-value parameters and passes them to a ParamAware ancestor in the tag hierarchy. 
+<p>This tag must be nested under a param aware tag. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     name true true The name of the parameter.   value false true The value of the parameter.   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-theme-tag/index.html">ThemeTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThemeTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-message-tag/index.html"><span class="identifier">MessageTag</span></a></code>
+<p>The <code>&lt;theme&gt;</code> tag looks up a theme message in the scope of this page. Messages are looked up using the ApplicationContext's ThemeSource, and thus should support internationalization. 
+<p>Regards a HTML escaping setting, either on this tag instance, the page level, or the web.xml level. </p>
+<p>If "code" isn't set or cannot be resolved, "text" will be used as default message. </p>
+<p>Message arguments can be specified via the <code><a href="#"> arguments</a></code> attribute or by using nested <code>&lt;spring:argument&gt;</code> tags. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     arguments false true Set optional message arguments for this tag, as a (comma-)delimited String (each String argument can contain JSP EL), an Object array (used as argument array), or a single Object (used as single argument).   argumentSeparator false true The separator character to be used for splitting the arguments string value; defaults to a 'comma' (',').   code false true The code (key) to use when looking up the message. If code is not provided, the text attribute will be used.   htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as boolean value. Default is false.   message false true A MessageSourceResolvable argument (direct or through JSP EL).   scope false true The scope to use when exporting the result to a variable. This attribute is only used when var is also set. Possible values are page, request, session and application.   text false true Default text to output when a message for the given code could not be found. If both text and code are not set, the tag will output null.   var false true The string to use when binding the result to the page, request, session or application scope. If not specified, the result gets outputted to the writer (i.e. typically directly to the JSP).   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transform-tag/index.html">TransformTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransformTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span></code>
+<p>The <code>&lt;transform&gt;</code> tag provides transformation for reference data values from controllers and other objects inside a <code>spring:bind</code> tag (or a data-bound form element tag from Spring's form tag library). 
+<p>The BindTag has a PropertyEditor that it uses to transform properties of a bean to a String, usable in HTML forms. This tag uses that PropertyEditor to transform objects passed into this tag. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   scope false true The scope to use when exported the result to a variable. This attribute is only used when var is also set. Possible values are page, request, session and application.   value true true The value to transform. This is the actual object you want to have transformed (for instance a Date). Using the PropertyEditor that is currently in use by the 'spring:bind' tag.   var false true The string to use when binding the result to the page, request, session or application scope. If not specified, the result gets outputted to the writer (i.e. typically directly to the JSP).   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-url-tag/index.html">UrlTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UrlTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span><span class="symbol">, </span><span class="identifier">ParamAware</span></code>
+<p>The <code>&lt;url&gt;</code> tag creates URLs. Modeled after the JSTL c:url tag with backwards compatibility in mind. 
+<p>Enhancements to the JSTL functionality include: </p>
+<ul> <li>URL encoded template URI variables</li>
+ <li>HTML/XML escaping of URLs</li>
+ <li>JavaScript escaping of URLs</li>
+ </ul>
+ 
+<p>Template URI variables are indicated in the <code><a href="#">'value'</a></code> attribute and marked by braces '{variableName}'. The braces and attribute name are replaced by the URL encoded value of a parameter defined with the spring:param tag in the body of the url tag. If no parameter is available the literal value is passed through. Params matched to template variables will not be added to the query string. </p>
+<p>Use of the spring:param tag for URI template variables is strongly recommended over direct EL substitution as the values are URL encoded. Failure to properly encode URL can leave an application vulnerable to XSS and other injection attacks. </p>
+<p>URLs can be HTML/XML escaped by setting the <code><a href="#"> 'htmlEscape'</a></code> attribute to 'true'. Detects an HTML escaping setting, either on this tag instance, the page level, or the <code>web.xml</code> level. The default is 'false'. When setting the URL value into a variable, escaping is not recommended. </p>
+<p>Example usage: </p>
+<pre><code>&lt;spring:url value="/url/path/{variableName}"&gt; &lt;spring:param name="variableName" value="more than JSTL c:url" /&gt; &lt;/spring:url&gt;</code></pre> 
+<p>The above results in: <code>/currentApplicationContext/url/path/more%20than%20JSTL%20c%3Aurl</code> </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     value true true The URL to build. This value can include template {placeholders} that are replaced with the URL encoded value of the named parameter. Parameters must be defined using the param tag inside the body of this tag.   context false true Specifies a remote application context path. The default is the current application context path.   var false true The name of the variable to export the URL value to. If not specified the URL is written as output.   scope false true The scope for the var. 'application', 'session', 'request' and 'page' scopes are supported. Defaults to page scope. This attribute has no effect unless the var attribute is also defined.   htmlEscape false true Set HTML escaping for this tag, as a boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as a boolean value. Default is false.   </p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

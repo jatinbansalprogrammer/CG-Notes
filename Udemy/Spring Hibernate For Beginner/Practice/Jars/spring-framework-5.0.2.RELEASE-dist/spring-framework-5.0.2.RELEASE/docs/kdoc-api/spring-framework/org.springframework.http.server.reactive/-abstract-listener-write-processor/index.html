@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractListenerWriteProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.server.reactive</a>&nbsp;/&nbsp;<a href=".">AbstractListenerWriteProcessor</a><br/>
+<br/>
+<h1>AbstractListenerWriteProcessor</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractListenerWriteProcessor</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Processor.html"><span class="identifier">Processor</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Abstract base class for <code>Processor</code> implementations that bridge between event-listener write APIs and Reactive Streams. 
+<p>Specifically a base class for writing to the HTTP response body with Servlet 3.1 non-blocking I/O and Undertow XNIO as well for writing WebSocket messages through the Java WebSocket API (JSR-356), Jetty, and Undertow.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Violeta Georgieva</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractListenerWriteProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Abstract base class for <code>Processor</code> implementations that bridge between event-listener write APIs and Reactive Streams. 
+<p>Specifically a base class for writing to the HTTP response body with Servlet 3.1 non-blocking I/O and Undertow XNIO as well for writing WebSocket messages through the Java WebSocket API (JSR-356), Jetty, and Undertow.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="cancel.html">cancel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cancel</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoked during an error or completion callback from the underlying container to cancel the upstream subscription.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-complete.html">onComplete</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onComplete</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Completion signal from the upstream, write Publisher. This is also used by sub-classes to delegate completion notifications from the container.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-error.html">onError</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.server.reactive.AbstractListenerWriteProcessor$onError(kotlin.Throwable)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Error signal from the upstream, write Publisher. This is also used by sub-classes to delegate error notifications from the container.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-next.html">onNext</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onNext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.server.reactive.AbstractListenerWriteProcessor$onNext(org.springframework.http.server.reactive.AbstractListenerWriteProcessor.T)/data">data</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="on-subscribe.html">onSubscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onSubscribe</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.server.reactive.AbstractListenerWriteProcessor$onSubscribe(org.reactivestreams.Subscription)/subscription">subscription</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Subscription.html"><span class="identifier">Subscription</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="on-write-possible.html">onWritePossible</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">onWritePossible</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoked when writing is possible, either in the same thread after a check via <code><a href="#">#isWritePossible()</a></code>, or as a callback from the underlying container.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="subscribe.html">subscribe</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">subscribe</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.server.reactive.AbstractListenerWriteProcessor$subscribe(org.reactivestreams.Subscriber((java.lang.Void)))/subscriber">subscriber</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Subscriber.html"><span class="identifier">Subscriber</span></a><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">Void</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

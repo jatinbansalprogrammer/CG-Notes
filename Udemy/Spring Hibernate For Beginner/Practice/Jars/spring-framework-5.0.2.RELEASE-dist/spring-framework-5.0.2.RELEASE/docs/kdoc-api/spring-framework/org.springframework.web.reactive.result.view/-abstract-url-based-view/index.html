@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractUrlBasedView - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.result.view</a>&nbsp;/&nbsp;<a href=".">AbstractUrlBasedView</a><br/>
+<br/>
+<h1>AbstractUrlBasedView</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractUrlBasedView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractView</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Abstract base class for URL-based views. Provides a consistent way of holding the URL that a View wraps, in the form of a "url" bean property.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="check-resource-exists.html">checkResourceExists</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">checkResourceExists</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.AbstractUrlBasedView$checkResourceExists(java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether the resource for the configured URL actually exists.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-url.html">getUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUrl</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the URL of the resource that this view wraps.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-url.html">setUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrl</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.AbstractUrlBasedView$setUrl(kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the URL of the resource that this view wraps. The URL must be appropriate for the concrete View implementation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.reactive.result.view.freemarker/-free-marker-view/index.html">FreeMarkerView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FreeMarkerView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlBasedView</span></code>
+<p>A <code>View</code> implementation that uses the FreeMarker template engine. 
+<p>Depends on a single FreeMarkerConfig object such as FreeMarkerConfigurer being accessible in the application context. Alternatively set the FreeMarker configuration can be set directly on this class via <code><a href="../../org.springframework.web.reactive.result.view.freemarker/-free-marker-view/set-configuration.html">#setConfiguration</a></code>. </p>
+<p>The <code><a href="#">url</a></code> property is the location of the FreeMarker template relative to the FreeMarkerConfigurer's <code><a href="#">templateLoaderPath</a></code>. </p>
+<p>Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.reactive.result.view.script/-script-template-view/index.html">ScriptTemplateView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScriptTemplateView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlBasedView</span></code>
+<p>An AbstractUrlBasedView subclass designed to run any template library based on a JSR-223 script engine. 
+<p>If not set, each property is auto-detected by looking up a single ScriptTemplateConfig bean in the web application context and using it to obtain the configured properties. </p>
+<p>The Nashorn JavaScript engine requires Java 8+ and may require setting the <code>sharedEngine</code> property to <code>false</code> in order to run properly. See <code><a href="#">ScriptTemplateConfigurer#setSharedEngine(Boolean)</a></code> for more details.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

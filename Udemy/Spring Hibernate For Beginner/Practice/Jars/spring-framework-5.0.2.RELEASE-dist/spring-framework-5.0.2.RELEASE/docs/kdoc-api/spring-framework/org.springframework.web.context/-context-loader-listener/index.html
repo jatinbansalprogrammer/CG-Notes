@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ContextLoaderListener - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context</a>&nbsp;/&nbsp;<a href=".">ContextLoaderListener</a><br/>
+<br/>
+<h1>ContextLoaderListener</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextLoaderListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ContextLoader</span><span class="symbol">, </span><span class="identifier">ServletContextListener</span></code>
+<p>Bootstrap listener to start up and shut down Spring's root WebApplicationContext. Simply delegates to ContextLoader as well as to ContextCleanupListener. 
+<p>As of Spring 3.1, <code>ContextLoaderListener</code> supports injecting the root web application context via the <code><a href="#">#ContextLoaderListener(WebApplicationContext)</a></code> constructor, allowing for programmatic configuration in Servlet 3.0+ environments. See org.springframework.web.WebApplicationInitializer for usage examples.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+17.02.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setContextInitializers</a>org.springframework.web.WebApplicationInitializer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ContextLoaderListener</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>ContextLoaderListener</code> that will create a web application context based on the "contextClass" and "contextConfigLocation" servlet context-params. See ContextLoader superclass documentation for details on default values for each. 
+<p>This constructor is typically used when declaring <code>ContextLoaderListener</code> as a <code>&lt;listener&gt;</code> within <code>web.xml</code>, where a no-arg constructor is required. </p>
+<p>The created application context will be registered into the ServletContext under the attribute name <code><a href="#">WebApplicationContext#ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE</a></code> and the Spring application context will be closed when the <code><a href="context-destroyed.html">#contextDestroyed</a></code> lifecycle method is invoked on this listener.</p>
+</p>
+<code><span class="identifier">ContextLoaderListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.ContextLoaderListener$<init>(org.springframework.web.context.WebApplicationContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationContext</span><span class="symbol">)</span></code>
+<p>Create a new <code>ContextLoaderListener</code> with the given application context. This constructor is useful in Servlet 3.0+ environments where instance-based registration of listeners is possible through the <code><a href="#">javax.servlet.ServletContext#addListener</a></code> API. 
+<p>The context may or may not yet be <a href="#"> </a>. If it (a) is an implementation of ConfigurableWebApplicationContext and (b) has <strong>not</strong> already been refreshed (the recommended approach), then the following will occur: </p>
+<ul> <li>If the given context has not already been assigned an <a href="#"> </a>, one will be assigned to it</li>
+ <li><code>ServletContext</code> and <code>ServletConfig</code> objects will be delegated to the application context</li>
+ <li><code><a href="#">#customizeContext</a></code> will be called</li>
+ <li>Any org.springframework.context.ApplicationContextInitializers specified through the "contextInitializerClasses" init-param will be applied.</li>
+ <li><code><a href="#">refresh()</a></code> will be called</li>
+ </ul>
+ If the context has already been refreshed or does not implement <code>ConfigurableWebApplicationContext</code>, none of the above will occur under the assumption that the user has performed these actions (or not) per his or her specific needs. 
+<p>See org.springframework.web.WebApplicationInitializer for usage examples. </p>
+<p>In any case, the given application context will be registered into the ServletContext under the attribute name <code><a href="#"> </a></code> and the Spring application context will be closed when the <code><a href="context-destroyed.html">#contextDestroyed</a></code> lifecycle method is invoked on this listener.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="context-destroyed.html">contextDestroyed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contextDestroyed</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.ContextLoaderListener$contextDestroyed(javax.servlet.ServletContextEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the root web application context.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="context-initialized.html">contextInitialized</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contextInitialized</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.ContextLoaderListener$contextInitialized(javax.servlet.ServletContextEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize the root web application context.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

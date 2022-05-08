@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AsyncWebRequest - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.request.async</a>&nbsp;/&nbsp;<a href=".">AsyncWebRequest</a><br/>
+<br/>
+<h1>AsyncWebRequest</h1>
+<code><span class="keyword">interface </span><span class="identifier">AsyncWebRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span></code>
+<p>Extends NativeWebRequest with methods for asynchronous request processing.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-completion-handler.html">addCompletionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addCompletionHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.AsyncWebRequest$addCompletionHandler(java.lang.Runnable)/runnable">runnable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a handler to invoke when request processing completes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-error-handler.html">addErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addErrorHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.AsyncWebRequest$addErrorHandler(java.util.function.Consumer((kotlin.Throwable)))/exceptionHandler">exceptionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Consumer</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a handler to invoke when an error occurred while concurrent handling of a request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-timeout-handler.html">addTimeoutHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addTimeoutHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.AsyncWebRequest$addTimeoutHandler(java.lang.Runnable)/runnable">runnable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a handler to invoke when concurrent handling has timed out.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="dispatch.html">dispatch</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">dispatch</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Dispatch the request to the container in order to resume processing after concurrent execution in an application thread.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-async-complete.html">isAsyncComplete</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isAsyncComplete</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether asynchronous processing has completed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-async-started.html">isAsyncStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isAsyncStarted</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the request is in async mode following a call to <code><a href="start-async.html">#startAsync()</a></code>. Returns "false" if asynchronous processing never started, has completed, or the request was dispatched for further processing.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-timeout.html">setTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.AsyncWebRequest$setTimeout(kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the time required for concurrent handling to complete. This property should not be set when concurrent handling is in progress, i.e. when <code><a href="is-async-started.html">#isAsyncStarted()</a></code> is <code>true</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start-async.html">startAsync</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">startAsync</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Mark the start of asynchronous request processing so that when the main processing thread exits, the response remains open for further processing in another thread.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-standard-servlet-async-web-request/index.html">StandardServletAsyncWebRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardServletAsyncWebRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletWebRequest</span><span class="symbol">, </span><span class="identifier">AsyncWebRequest</span><span class="symbol">, </span><span class="identifier">AsyncListener</span></code>
+<p>A Servlet 3.0 implementation of AsyncWebRequest. 
+<p>The servlet and all filters involved in an async request must have async support enabled using the Servlet API or by adding an <code>&lt;async-supported&gt;true&lt;/async-supported&gt;</code> element to servlet and filter declarations in <code>web.xml</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

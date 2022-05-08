@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringJtaSynchronizationAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.jta</a>&nbsp;/&nbsp;<a href=".">SpringJtaSynchronizationAdapter</a><br/>
+<br/>
+<h1>SpringJtaSynchronizationAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringJtaSynchronizationAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Synchronization</span></code>
+<p>Adapter that implements the JTA javax.transaction.Synchronization interface delegating to an underlying Spring org.springframework.transaction.support.TransactionSynchronization. 
+<p>Useful for synchronizing Spring resource management code with plain JTA / EJB CMT transactions, despite the original code being built for Spring transaction synchronization.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.transaction.Transaction#registerSynchronization</a>org.springframework.transaction.support.TransactionSynchronization</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringJtaSynchronizationAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.SpringJtaSynchronizationAdapter$<init>(org.springframework.transaction.support.TransactionSynchronization)/springSynchronization">springSynchronization</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronization</span><span class="symbol">)</span></code>
+<p>Create a new SpringJtaSynchronizationAdapter for the given Spring TransactionSynchronization and JTA TransactionManager.</p>
+<code><span class="identifier">SpringJtaSynchronizationAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.SpringJtaSynchronizationAdapter$<init>(org.springframework.transaction.support.TransactionSynchronization, javax.transaction.UserTransaction)/springSynchronization">springSynchronization</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronization</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.jta.SpringJtaSynchronizationAdapter$<init>(org.springframework.transaction.support.TransactionSynchronization, javax.transaction.UserTransaction)/jtaUserTransaction">jtaUserTransaction</span><span class="symbol">:</span>&nbsp;<span class="identifier">UserTransaction</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">SpringJtaSynchronizationAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.SpringJtaSynchronizationAdapter$<init>(org.springframework.transaction.support.TransactionSynchronization, javax.transaction.TransactionManager)/springSynchronization">springSynchronization</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronization</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.jta.SpringJtaSynchronizationAdapter$<init>(org.springframework.transaction.support.TransactionSynchronization, javax.transaction.TransactionManager)/jtaTransactionManager">jtaTransactionManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionManager</span><span class="symbol">)</span></code>
+<p>Create a new SpringJtaSynchronizationAdapter for the given Spring TransactionSynchronization and JTA TransactionManager. 
+<p>Note that this adapter will never perform a rollback-only call on WebLogic, since WebLogic Server is known to automatically mark the transaction as rollback-only in case of a <code>beforeCompletion</code> exception. Hence, on WLS, this constructor is equivalent to the single-arg constructor.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-completion.html">afterCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.SpringJtaSynchronizationAdapter$afterCompletion(kotlin.Int)/status">status</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>JTA <code>afterCompletion</code> callback: invoked after commit/rollback. 
+<p>Needs to invoke the Spring synchronization's <code>beforeCompletion</code> at this late stage in case of a rollback, since there is no corresponding callback with JTA.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-completion.html">beforeCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeCompletion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>JTA <code>beforeCompletion</code> callback: just invoked before commit. 
+<p>In case of an exception, the JTA transaction will be marked as rollback-only.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

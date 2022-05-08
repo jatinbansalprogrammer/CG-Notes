@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResourceBundleEditor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.propertyeditors</a>&nbsp;/&nbsp;<a href=".">ResourceBundleEditor</a><br/>
+<br/>
+<h1>ResourceBundleEditor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceBundleEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>java.beans.PropertyEditor implementation for standard JDK java.util.ResourceBundle. 
+<p>Only supports conversion <em>from</em> a String, but not <em>to</em> a String. Find below some examples of using this class in a (properly configured) Spring container using XML-based metadata: </p>
+<pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'messages' property is of type java.util.ResourceBundle. the 'DialogMessages.properties' file exists at the root of the CLASSPATH --&gt; &lt;property name="messages" value="DialogMessages"/&gt; &lt;/bean&gt;</code></pre> <pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'DialogMessages.properties' file exists in the 'com/messages' package --&gt; &lt;property name="messages" value="com/messages/DialogMessages"/&gt; &lt;/bean&gt;</code></pre> 
+<p>A 'properly configured' Spring org.springframework.context.ApplicationContext might contain a org.springframework.beans.factory.config.CustomEditorConfigurer definition such that the conversion can be effected transparently: </p>
+<pre><code> &lt;bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="customEditors"&gt; &lt;map&gt; &lt;entry key="java.util.ResourceBundle"&gt; &lt;bean class="org.springframework.beans.propertyeditors.ResourceBundleEditor"/&gt; &lt;/entry&gt; &lt;/map&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> 
+<p>Please note that this java.beans.PropertyEditor is <strong>not</strong> registered by default with any of the Spring infrastructure. </p>
+<p>Thanks to David Leal Valmana for the suggestion and initial prototype.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rick Evans</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ResourceBundleEditor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>java.beans.PropertyEditor implementation for standard JDK java.util.ResourceBundle. 
+<p>Only supports conversion <em>from</em> a String, but not <em>to</em> a String. Find below some examples of using this class in a (properly configured) Spring container using XML-based metadata: </p>
+<pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'messages' property is of type java.util.ResourceBundle. the 'DialogMessages.properties' file exists at the root of the CLASSPATH --&gt; &lt;property name="messages" value="DialogMessages"/&gt; &lt;/bean&gt;</code></pre> <pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'DialogMessages.properties' file exists in the 'com/messages' package --&gt; &lt;property name="messages" value="com/messages/DialogMessages"/&gt; &lt;/bean&gt;</code></pre> 
+<p>A 'properly configured' Spring org.springframework.context.ApplicationContext might contain a org.springframework.beans.factory.config.CustomEditorConfigurer definition such that the conversion can be effected transparently: </p>
+<pre><code> &lt;bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="customEditors"&gt; &lt;map&gt; &lt;entry key="java.util.ResourceBundle"&gt; &lt;bean class="org.springframework.beans.propertyeditors.ResourceBundleEditor"/&gt; &lt;/entry&gt; &lt;/map&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> 
+<p>Please note that this java.beans.PropertyEditor is <strong>not</strong> registered by default with any of the Spring infrastructure. </p>
+<p>Thanks to David Leal Valmana for the suggestion and initial prototype.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-b-a-s-e_-n-a-m-e_-s-e-p-a-r-a-t-o-r.html">BASE_NAME_SEPARATOR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">BASE_NAME_SEPARATOR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The separator used to distinguish between the base name and the locale (if any) when <code><a href="#">converting from a String</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-as-text.html">setAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAsText</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.ResourceBundleEditor$setAsText(kotlin.String)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

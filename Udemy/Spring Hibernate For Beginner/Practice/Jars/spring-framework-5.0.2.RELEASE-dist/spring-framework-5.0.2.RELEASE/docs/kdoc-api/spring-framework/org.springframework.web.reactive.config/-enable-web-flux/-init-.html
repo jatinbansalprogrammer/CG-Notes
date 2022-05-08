@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableWebFlux.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.config</a>&nbsp;/&nbsp;<a href="index.html">EnableWebFlux</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.reactive.config.EnableWebFlux$&lt;init&gt;()"></a>
+<code><span class="identifier">EnableWebFlux</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Adding this annotation to an <code>@Configuration</code> class imports the Spring Web Reactive configuration from WebFluxConfigurationSupport, e.g.: <pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration { } </code></pre> 
+<p>To customize the imported configuration implement WebFluxConfigurer and override individual methods as shown below: </p>
+<pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration implements WebFluxConfigurer { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Override public void configureMessageWriters(List&lt;HttpMessageWriter&lt;?&gt;&gt; messageWriters) { messageWriters.add(new MyHttpMessageWriter()); } } </code></pre> 
+<p><strong>Note:</strong> only one <code>@Configuration</code> class may have the <code>@EnableWebFlux</code> annotation to import the Spring WebFlux configuration. There can however be multiple <code>@Configuration</code> classes implementing <code>WebFluxConfigurer</code> in order to customize the provided configuration. </p>
+<p>If WebFluxConfigurer does not expose some more advanced setting that needs to be configured consider removing the <code>@EnableWebFlux</code> annotation and extending directly from WebFluxConfigurationSupport or DelegatingWebFluxConfiguration if you still want to allow WebFluxConfigurer instances to customize the configuration.</p>
+</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+WebFluxConfigurerWebFluxConfigurationSupport</p>
+</BODY>
+</HTML>

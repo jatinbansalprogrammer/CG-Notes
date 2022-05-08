@@ -1,0 +1,183 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WorkManagerTaskExecutor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.work</a>&nbsp;/&nbsp;<a href=".">WorkManagerTaskExecutor</a><br/>
+<br/>
+<h1>WorkManagerTaskExecutor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WorkManagerTaskExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorSupport</span><span class="symbol">, </span><span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">, </span><span class="identifier">SchedulingTaskExecutor</span><span class="symbol">, </span><span class="identifier">WorkManager</span><span class="symbol">, </span><a href="../../org.springframework.jca.context/-bootstrap-context-aware/index.html"><span class="identifier">BootstrapContextAware</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.core.task.TaskExecutor implementation that delegates to a JCA 1.7 WorkManager, implementing the javax.resource.spi.work.WorkManager interface. 
+<p>This is mainly intended for use within a JCA ResourceAdapter implementation, but may also be used in a standalone environment, delegating to a locally embedded WorkManager implementation (such as Geronimo's). </p>
+<p>Also implements the JCA 1.7 WorkManager interface itself, delegating all calls to the target WorkManager. Hence, a caller can choose whether it wants to talk to this executor through the Spring TaskExecutor interface or the WorkManager interface. </p>
+<p>This adapter is also capable of obtaining a JCA WorkManager from JNDI. This is for example appropriate on the Geronimo application server, where WorkManager GBeans (e.g. Geronimo's default "DefaultWorkManager" GBean) can be linked into the Java EE environment through "gbean-ref" entries in the <code>geronimo-web.xml</code> deployment descriptor.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+<a href="set-work-manager.html">#setWorkManager</a><a href="#">javax.resource.spi.work.WorkManager#scheduleWork</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WorkManagerTaskExecutor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new WorkManagerTaskExecutor, expecting bean-style configuration.</p>
+<code><span class="identifier">WorkManagerTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$<init>(javax.resource.spi.work.WorkManager)/workManager">workManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkManager</span><span class="symbol">)</span></code>
+<p>Create a new WorkManagerTaskExecutor for the given WorkManager.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="do-work.html">doWork</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$doWork(javax.resource.spi.work.Work)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/executionContext">executionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExecutionContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$doWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$execute(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$execute(java.lang.Runnable, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$execute(java.lang.Runnable, kotlin.Long)/startTimeout">startTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="prefers-short-lived-tasks.html">prefersShortLivedTasks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prefersShortLivedTasks</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This task executor prefers short-lived work units.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule-work.html">scheduleWork</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$scheduleWork(javax.resource.spi.work.Work)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">scheduleWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/executionContext">executionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExecutionContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$scheduleWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-block-until-completed.html">setBlockUntilCompleted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBlockUntilCompleted</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$setBlockUntilCompleted(kotlin.Boolean)/blockUntilCompleted">blockUntilCompleted</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to let <code><a href="execute.html">#execute</a></code> block until the work has been completed. 
+<p>Uses the JCA <code>doWork</code> operation underneath, instead of the default <code>scheduleWork</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-block-until-started.html">setBlockUntilStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBlockUntilStarted</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$setBlockUntilStarted(kotlin.Boolean)/blockUntilStarted">blockUntilStarted</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to let <code><a href="execute.html">#execute</a></code> block until the work has been actually started. 
+<p>Uses the JCA <code>startWork</code> operation underneath, instead of the default <code>scheduleWork</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bootstrap-context.html">setBootstrapContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBootstrapContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$setBootstrapContext(javax.resource.spi.BootstrapContext)/bootstrapContext">bootstrapContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">BootstrapContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the JCA BootstrapContext that contains the WorkManager to delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-decorator.html">setTaskDecorator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskDecorator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$setTaskDecorator(org.springframework.core.task.TaskDecorator)/taskDecorator">taskDecorator</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskDecorator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom TaskDecorator to be applied to any Runnable about to be executed. 
+<p>Note that such a decorator is not necessarily being applied to the user-supplied <code>Runnable</code>/<code>Callable</code> but rather to the actual execution callback (which may be a wrapper around the user-supplied task). </p>
+<p>The primary use case is to set some execution context around the task's invocation, or to provide some monitoring/statistics for task execution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-work-listener.html">setWorkListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWorkListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$setWorkListener(javax.resource.spi.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a JCA WorkListener to apply, if any. 
+<p>This shared WorkListener instance will be passed on to the WorkManager by all <code><a href="execute.html">#execute</a></code> calls on this TaskExecutor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-work-manager.html">setWorkManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWorkManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$setWorkManager(javax.resource.spi.work.WorkManager)/workManager">workManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the JCA WorkManager instance to delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-work-manager-name.html">setWorkManagerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWorkManagerName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$setWorkManagerName(kotlin.String)/workManagerName">workManagerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI name of the JCA WorkManager. 
+<p>This can either be a fully qualified JNDI name, or the JNDI name relative to the current environment naming context if "resourceRef" is set to "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start-work.html">startWork</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">startWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$startWork(javax.resource.spi.work.Work)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">startWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/executionContext">executionContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExecutionContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$startWork(javax.resource.spi.work.Work, kotlin.Long, javax.resource.spi.work.ExecutionContext, javax.resource.spi.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="submit.html">submit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$submit(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$submit(java.util.concurrent.Callable((org.springframework.jca.work.WorkManagerTaskExecutor.submit.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="submit-listenable.html">submitListenable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$submitListenable(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.work.WorkManagerTaskExecutor$submitListenable(java.util.concurrent.Callable((org.springframework.jca.work.WorkManagerTaskExecutor.submitListenable.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

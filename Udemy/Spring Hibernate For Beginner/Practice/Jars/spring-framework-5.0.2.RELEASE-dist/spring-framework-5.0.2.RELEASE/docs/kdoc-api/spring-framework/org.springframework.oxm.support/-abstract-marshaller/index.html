@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractMarshaller - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.oxm.support</a>&nbsp;/&nbsp;<a href=".">AbstractMarshaller</a><br/>
+<br/>
+<h1>AbstractMarshaller</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Marshaller</span><span class="symbol">, </span><span class="identifier">Unmarshaller</span></code>
+<p>Abstract implementation of the <code>Marshaller</code> and <code>Unmarshaller</code> interface. This implementation inspects the given <code>Source</code> or <code>Result</code>, and delegates further handling to overridable template methods.</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractMarshaller</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Abstract implementation of the <code>Marshaller</code> and <code>Unmarshaller</code> interface. This implementation inspects the given <code>Source</code> or <code>Result</code>, and delegates further handling to overridable template methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="is-process-external-entities.html">isProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isProcessExternalEntities</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns the configured value for whether XML external entities are allowed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-support-dtd.html">isSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSupportDtd</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether DTD parsing is supported.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="marshal.html">marshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">marshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">Result</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Marshals the object graph with the given root into the provided <code>javax.xml.transform.Result</code>. 
+<p>This implementation inspects the given result, and calls <code>marshalDomResult</code>, <code>marshalSaxResult</code>, or <code>marshalStreamResult</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-process-external-entities.html">setProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProcessExternalEntities</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setProcessExternalEntities(kotlin.Boolean)/processExternalEntities">processExternalEntities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether external XML entities are processed when unmarshalling. 
+<p>Default is <code>false</code>, meaning that external entities are not resolved. Note that processing of external entities will only be enabled/disabled when the <code>Source</code> passed to <code><a href="unmarshal.html">#unmarshal(Source)</a></code> is a SAXSource or StreamSource. It has no effect for DOMSource or StAXSource instances. </p>
+<p><strong>Note:</strong> setting this option to <code>true</code> also automatically sets <code><a href="set-support-dtd.html">#setSupportDtd</a></code> to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-support-dtd.html">setSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportDtd</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setSupportDtd(kotlin.Boolean)/supportDtd">supportDtd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether DTD parsing should be supported. 
+<p>Default is <code>false</code> meaning that DTD is disabled.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="unmarshal.html">unmarshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">unmarshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$unmarshal(javax.xml.transform.Source)/source">source</span><span class="symbol">:</span>&nbsp;<span class="identifier">Source</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Unmarshals the given provided <code>javax.xml.transform.Source</code> into an object graph. 
+<p>This implementation inspects the given result, and calls <code>unmarshalDomSource</code>, <code>unmarshalSaxSource</code>, or <code>unmarshalStreamSource</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.castor/-castor-marshaller/index.html">CastorMarshaller</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CastorMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMarshaller</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>Implementation of the <code>Marshaller</code> interface for Castor. By default, Castor does not require any further configuration, though setting target classes, target packages or providing a mapping file can be used to have more control over the behavior of Castor. 
+<p>If a target class is specified using <code>setTargetClass</code>, the <code>CastorMarshaller</code> can only be used to unmarshal XML that represents that specific class. If you want to unmarshal multiple classes, you have to provide a mapping file using <code>setMappingLocations</code>. </p>
+<p>Due to limitations of Castor's API, it is required to set the encoding used for writing to output streams. It defaults to <code>UTF-8</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.jibx/-jibx-marshaller/index.html">JibxMarshaller</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JibxMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMarshaller</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of the <code>Marshaller</code> and <code>Unmarshaller</code> interfaces for JiBX. 
+<p>The typical usage will be to set the <code>targetClass</code> and optionally the <code>bindingName</code> property on this bean.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.xstream/-x-stream-marshaller/index.html">XStreamMarshaller</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XStreamMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMarshaller</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of the <code>Marshaller</code> interface for XStream. 
+<p>By default, XStream does not require any further configuration and can (un)marshal any class on the classpath. As such, it is <strong>not recommended to use the <code>XStreamMarshaller</code> to unmarshal XML from external sources</strong> (i.e. the Web), as this can result in <strong>security vulnerabilities</strong>. If you do use the <code>XStreamMarshaller</code> to unmarshal external XML, set the <code><a href="#">supportedClasses</a></code> and <code><a href="#">converters</a></code> properties (possibly using a CatchAllConverter) or override the <code><a href="#">#customizeXStream(XStream)</a></code> method to make sure it only accepts the classes you want it to support. </p>
+<p>Due to XStream's API, it is required to set the encoding used for writing to OutputStreams. It defaults to <code>UTF-8</code>. </p>
+<p><strong>NOTE:</strong> XStream is an XML serialization library, not a data binding library. Therefore, it has limited namespace support. As such, it is rather unsuitable for usage within Web Services. </p>
+<p>This marshaller requires XStream 1.4.5 or higher, as of Spring 4.3. Note that XStream construction has been reworked in 4.0, with the stream driver and the class loader getting passed into XStream itself now.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StandardBeanExpressionResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.expression</a>&nbsp;/&nbsp;<a href=".">StandardBeanExpressionResolver</a><br/>
+<br/>
+<h1>StandardBeanExpressionResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardBeanExpressionResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.config/-bean-expression-resolver/index.html"><span class="identifier">BeanExpressionResolver</span></a></code>
+<p>Standard implementation of the org.springframework.beans.factory.config.BeanExpressionResolver interface, parsing and evaluating Spring EL using Spring's expression module.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.expression.ExpressionParserorg.springframework.expression.spel.standard.SpelExpressionParserorg.springframework.expression.spel.support.StandardEvaluationContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">StandardBeanExpressionResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>StandardBeanExpressionResolver</code> with default settings.</p>
+<code><span class="identifier">StandardBeanExpressionResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.expression.StandardBeanExpressionResolver$<init>(java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span></code>
+<p>Create a new <code>StandardBeanExpressionResolver</code> with the given bean class loader, using it as the basis for expression compilation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-x-p-r-e-s-s-i-o-n_-p-r-e-f-i-x.html">DEFAULT_EXPRESSION_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_EXPRESSION_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default expression prefix: "#{"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-x-p-r-e-s-s-i-o-n_-s-u-f-f-i-x.html">DEFAULT_EXPRESSION_SUFFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_EXPRESSION_SUFFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default expression suffix: "}"</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="evaluate.html">evaluate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">evaluate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.expression.StandardBeanExpressionResolver$evaluate(kotlin.String, org.springframework.beans.factory.config.BeanExpressionContext)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.expression.StandardBeanExpressionResolver$evaluate(kotlin.String, org.springframework.beans.factory.config.BeanExpressionContext)/evalContext">evalContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanExpressionContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-expression-parser.html">setExpressionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExpressionParser</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.expression.StandardBeanExpressionResolver$setExpressionParser(org.springframework.expression.ExpressionParser)/expressionParser">expressionParser</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExpressionParser</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the EL parser to use for expression parsing. 
+<p>Default is a org.springframework.expression.spel.standard.SpelExpressionParser, compatible with standard Unified EL style expression syntax.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-expression-prefix.html">setExpressionPrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExpressionPrefix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.expression.StandardBeanExpressionResolver$setExpressionPrefix(kotlin.String)/expressionPrefix">expressionPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the prefix that an expression string starts with. The default is "#{".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-expression-suffix.html">setExpressionSuffix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExpressionSuffix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.expression.StandardBeanExpressionResolver$setExpressionSuffix(kotlin.String)/expressionSuffix">expressionSuffix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the suffix that an expression string ends with. The default is "}".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

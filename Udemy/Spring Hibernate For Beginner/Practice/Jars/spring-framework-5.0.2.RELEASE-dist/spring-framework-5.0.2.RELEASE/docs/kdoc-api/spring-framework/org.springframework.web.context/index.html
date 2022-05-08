@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.context - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.context</a><br/>
+<br/>
+<h2>Package org.springframework.web.context</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-context-loader-initializer/index.html">AbstractContextLoaderInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractContextLoaderInitializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web/-web-application-initializer/index.html"><span class="identifier">WebApplicationInitializer</span></a></code>
+<p>Convenient base class for WebApplicationInitializer implementations that register a ContextLoaderListener in the servlet context. 
+<p>The only method required to be implemented by subclasses is <code><a href="#">#createRootApplicationContext()</a></code>, which gets invoked from <code><a href="#">#registerContextLoaderListener(ServletContext)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-cleanup-listener/index.html">ContextCleanupListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextCleanupListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextListener</span></code>
+<p>Web application listener that cleans up remaining disposable attributes in the ServletContext, i.e. attributes which implement DisposableBean and haven't been removed before. This is typically used for destroying objects in "application" scope, for which the lifecycle implies destruction at the very end of the web application's shutdown phase.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-loader-listener/index.html">ContextLoaderListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextLoaderListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ContextLoader</span><span class="symbol">, </span><span class="identifier">ServletContextListener</span></code>
+<p>Bootstrap listener to start up and shut down Spring's root WebApplicationContext. Simply delegates to ContextLoader as well as to ContextCleanupListener. 
+<p>As of Spring 3.1, <code>ContextLoaderListener</code> supports injecting the root web application context via the <code><a href="#">#ContextLoaderListener(WebApplicationContext)</a></code> constructor, allowing for programmatic configuration in Servlet 3.0+ environments. See org.springframework.web.WebApplicationInitializer for usage examples.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-config-aware/index.html">ServletConfigAware</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ServletConfigAware</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Aware</span></code>
+<p>Interface to be implemented by any object that wishes to be notified of the ServletConfig (typically determined by the WebApplicationContext) that it runs in. 
+<p>Note: Only satisfied if actually running within a Servlet-specific WebApplicationContext. Otherwise, no ServletConfig will be set.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

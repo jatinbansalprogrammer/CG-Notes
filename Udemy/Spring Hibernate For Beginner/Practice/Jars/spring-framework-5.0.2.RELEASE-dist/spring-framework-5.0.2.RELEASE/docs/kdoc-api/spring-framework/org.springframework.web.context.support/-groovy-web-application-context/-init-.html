@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GroovyWebApplicationContext.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.support</a>&nbsp;/&nbsp;<a href="index.html">GroovyWebApplicationContext</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.context.support.GroovyWebApplicationContext$&lt;init&gt;()"></a>
+<code><span class="identifier">GroovyWebApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.web.context.WebApplicationContext implementation which takes its configuration from Groovy bean definition scripts and/or XML files, as understood by an org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader. This is essentially the equivalent of org.springframework.context.support.GenericGroovyApplicationContext for a web environment. 
+<p>By default, the configuration will be taken from "/WEB-INF/applicationContext.groovy" for the root context, and "/WEB-INF/test-servlet.groovy" for a context with the namespace "test-servlet" (like for a DispatcherServlet instance with the servlet-name "test"). </p>
+<p>The config location defaults can be overridden via the "contextConfigLocation" context-param of org.springframework.web.context.ContextLoader and servlet init-param of org.springframework.web.servlet.FrameworkServlet. Config locations can either denote concrete files like "/WEB-INF/context.groovy" or Ant-style patterns like "/WEB-INF/*-context.groovy" (see org.springframework.util.PathMatcher javadoc for pattern details). Note that ".xml" files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts. </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra Groovy script. </p>
+<p><strong>For a WebApplicationContext that reads in a different bean definition format, create an analogous subclass of AbstractRefreshableWebApplicationContext.</strong> Such a context implementation can be specified as "contextClass" context-param for ContextLoader or "contextClass" init-param for FrameworkServlet.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setNamespace</a><a href="#">#setConfigLocations</a>org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader<a href="#">org.springframework.web.context.ContextLoader#initWebApplicationContext</a><a href="#">org.springframework.web.servlet.FrameworkServlet#initWebApplicationContext</a></p>
+</BODY>
+</HTML>

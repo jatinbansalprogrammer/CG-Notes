@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StatementCreatorUtils.IGNORE_GETPARAMETERTYPE_PROPERTY_NAME - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core</a>&nbsp;/&nbsp;<a href="index.html">StatementCreatorUtils</a>&nbsp;/&nbsp;<a href=".">IGNORE_GETPARAMETERTYPE_PROPERTY_NAME</a><br/>
+<br/>
+<h1>IGNORE_GETPARAMETERTYPE_PROPERTY_NAME</h1>
+<a name="org.springframework.jdbc.core.StatementCreatorUtils$IGNORE_GETPARAMETERTYPE_PROPERTY_NAME"></a>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IGNORE_GETPARAMETERTYPE_PROPERTY_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>System property that instructs Spring to ignore <code><a href="#">java.sql.ParameterMetaData#getParameterType</a></code> completely, i.e. to never even attempt to retrieve <code><a href="#">PreparedStatement#getParameterMetaData()</a></code> for <code><a href="#">StatementCreatorUtils#setNull</a></code> calls. 
+<p>The default is "false", trying <code>getParameterType</code> calls first and falling back to <code><a href="#">PreparedStatement#setNull</a></code> / <code><a href="#">PreparedStatement#setObject</a></code> calls based on well-known behavior of common databases. Spring records JDBC drivers with non-working <code>getParameterType</code> implementations and won't attempt to call that method for that driver again, always falling back. </p>
+<p>Consider switching this flag to "true" if you experience misbehavior at runtime, e.g. with a connection pool setting back the PreparedStatement instance in case of an exception thrown from <code>getParameterType</code> (as reported on JBoss AS 7).</p>
+</p>
+</BODY>
+</HTML>

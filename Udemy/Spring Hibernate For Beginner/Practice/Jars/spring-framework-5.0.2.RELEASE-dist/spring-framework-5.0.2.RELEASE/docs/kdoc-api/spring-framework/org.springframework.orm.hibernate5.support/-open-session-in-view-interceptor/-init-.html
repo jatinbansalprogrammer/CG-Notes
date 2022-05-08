@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OpenSessionInViewInterceptor.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5.support</a>&nbsp;/&nbsp;<a href="index.html">OpenSessionInViewInterceptor</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$&lt;init&gt;()"></a>
+<code><span class="identifier">OpenSessionInViewInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Spring web request interceptor that binds a Hibernate <code>Session</code> to the thread for the entire processing of the request. 
+<p>This class is a concrete expression of the "Open Session in View" pattern, which is a pattern that allows for the lazy loading of associations in web views despite the original transactions already being completed. </p>
+<p>This interceptor makes Hibernate Sessions available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.hibernate5.HibernateTransactionManager as well as for non-transactional execution (if configured appropriately). </p>
+<p>In contrast to OpenSessionInViewFilter, this interceptor is configured in a Spring application context and can thus take advantage of bean wiring. </p>
+<p><strong>WARNING:</strong> Applying this interceptor to existing logic can cause issues that have not appeared before, through the use of a single Hibernate <code>Session</code> for the processing of an entire request. In particular, the reassociation of persistent objects with a Hibernate <code>Session</code> has to occur at the very beginning of request processing, to avoid clashes with already loaded instances of the same objects.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+OpenSessionInViewFilterOpenSessionInterceptororg.springframework.orm.hibernate5.HibernateTransactionManagerTransactionSynchronizationManager<a href="#">SessionFactory#getCurrentSession()</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UserTransactionAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.jta</a>&nbsp;/&nbsp;<a href=".">UserTransactionAdapter</a><br/>
+<br/>
+<h1>UserTransactionAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UserTransactionAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UserTransaction</span></code>
+<p>Adapter for a JTA UserTransaction handle, taking a JTA javax.transaction.TransactionManager reference and creating a JTA javax.transaction.UserTransaction handle for it. 
+<p>The JTA UserTransaction interface is an exact subset of the JTA TransactionManager interface. Unfortunately, it does not serve as super-interface of TransactionManager, though, which requires an adapter such as this class to be used when intending to talk to a TransactionManager handle through the UserTransaction interface. </p>
+<p>Used internally by Spring's JtaTransactionManager for certain scenarios. Not intended for direct use in application code.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1.5</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UserTransactionAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.UserTransactionAdapter$<init>(javax.transaction.TransactionManager)/transactionManager">transactionManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionManager</span><span class="symbol">)</span></code>
+<p>Create a new UserTransactionAdapter for the given TransactionManager.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="begin.html">begin</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">begin</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="commit.html">commit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">commit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-status.html">getStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getStatus</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-transaction-manager.html">getTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getTransactionManager</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TransactionManager</span></code>
+<p>Return the JTA TransactionManager that this adapter delegates to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rollback.html">rollback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rollback</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-rollback-only.html">setRollbackOnly</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRollbackOnly</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-transaction-timeout.html">setTransactionTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTransactionTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.UserTransactionAdapter$setTransactionTimeout(kotlin.Int)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

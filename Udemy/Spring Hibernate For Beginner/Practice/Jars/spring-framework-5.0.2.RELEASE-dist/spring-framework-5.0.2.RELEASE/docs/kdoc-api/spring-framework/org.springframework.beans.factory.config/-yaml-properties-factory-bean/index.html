@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>YamlPropertiesFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">YamlPropertiesFactoryBean</a><br/>
+<br/>
+<h1>YamlPropertiesFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">YamlPropertiesFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">YamlProcessor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Properties</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Factory for java.util.Properties that reads from a YAML source, exposing a flat structure of String property values. 
+<p>YAML is a nice human-readable format for configuration, and it has some useful hierarchical properties. It's more or less a superset of JSON, so it has a lot of similar features. </p>
+<p><strong>Note: All exposed values are of type <code>String</code></strong> for access through the common <code><a href="#">Properties#getProperty</a></code> method (e.g. in configuration property resolution through <code><a href="#">PropertyResourceConfigurer#setProperties(Properties)</a></code>). If this is not desirable, use YamlMapFactoryBean instead. </p>
+<p>The Properties created by this factory have nested paths for hierarchical objects, so for instance this YAML </p>
+<pre><code> environments: dev: url: http://dev.bar.com name: Developer Setup prod: url: http://foo.bar.com name: My Cool App </code></pre> is transformed into these properties: <pre><code> environments.dev.url=http://dev.bar.com environments.dev.name=Developer Setup environments.prod.url=http://foo.bar.com environments.prod.name=My Cool App </code></pre> Lists are split as property keys with <code>[]</code> dereferencers, for example this YAML: <pre><code> servers: - dev.bar.com - foo.bar.com </code></pre> becomes properties like this: <pre><code> servers[0]=dev.bar.com servers[1]=foo.bar.com </code></pre></p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">YamlPropertiesFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Factory for java.util.Properties that reads from a YAML source, exposing a flat structure of String property values. 
+<p>YAML is a nice human-readable format for configuration, and it has some useful hierarchical properties. It's more or less a superset of JSON, so it has a lot of similar features. </p>
+<p><strong>Note: All exposed values are of type <code>String</code></strong> for access through the common <code><a href="#">Properties#getProperty</a></code> method (e.g. in configuration property resolution through <code><a href="#">PropertyResourceConfigurer#setProperties(Properties)</a></code>). If this is not desirable, use YamlMapFactoryBean instead. </p>
+<p>The Properties created by this factory have nested paths for hierarchical objects, so for instance this YAML </p>
+<pre><code> environments: dev: url: http://dev.bar.com name: Developer Setup prod: url: http://foo.bar.com name: My Cool App </code></pre> is transformed into these properties: <pre><code> environments.dev.url=http://dev.bar.com environments.dev.name=Developer Setup environments.prod.url=http://foo.bar.com environments.prod.name=My Cool App </code></pre> Lists are split as property keys with <code>[]</code> dereferencers, for example this YAML: <pre><code> servers: - dev.bar.com - foo.bar.com </code></pre> becomes properties like this: <pre><code> servers[0]=dev.bar.com servers[1]=foo.bar.com </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Properties</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-singleton.html">setSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSingleton</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.YamlPropertiesFactoryBean$setSingleton(kotlin.Boolean)/singleton">singleton</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set if a singleton should be created, or a new object on each request otherwise. Default is <code>true</code> (a singleton).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

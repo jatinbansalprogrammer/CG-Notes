@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.scheduling.quartz - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.scheduling.quartz</a><br/>
+<br/>
+<h2>Package org.springframework.scheduling.quartz</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-adaptable-job-factory/index.html">AdaptableJobFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AdaptableJobFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JobFactory</span></code>
+<p>JobFactory implementation that supports java.lang.Runnable objects as well as standard Quartz org.quartz.Job instances. 
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cron-trigger-factory-bean/index.html">CronTriggerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CronTriggerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">CronTrigger</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A Spring FactoryBean for creating a Quartz org.quartz.CronTrigger instance, supporting bean-style usage for trigger configuration. 
+<p><code>CronTrigger(Impl)</code> itself is already a JavaBean but lacks sensible defaults. This class uses the Spring bean name as job name, the Quartz default group ("DEFAULT") as job group, the current time as start time, and indefinite repetition, if not specified. </p>
+<p>This class will also register the trigger with the job name and group of a given org.quartz.JobDetail. This allows SchedulerFactoryBean to automatically register a trigger for the corresponding JobDetail, instead of registering the JobDetail separately.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-job/index.html">DelegatingJob</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingJob</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Job</span></code>
+<p>Simple Quartz org.quartz.Job adapter that delegates to a given java.lang.Runnable instance. 
+<p>Typically used in combination with property injection on the Runnable instance, receiving parameters from the Quartz JobDataMap that way instead of via the JobExecutionContext.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-job-detail-factory-bean/index.html">JobDetailFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JobDetailFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">JobDetail</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A Spring FactoryBean for creating a Quartz org.quartz.JobDetail instance, supporting bean-style usage for JobDetail configuration. 
+<p><code>JobDetail(Impl)</code> itself is already a JavaBean but lacks sensible defaults. This class uses the Spring bean name as job name, and the Quartz default group ("DEFAULT") as job group if not specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-data-source-job-store/index.html">LocalDataSourceJobStore</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalDataSourceJobStore</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JobStoreCMT</span></code>
+<p>Subclass of Quartz's JobStoreCMT class that delegates to a Spring-managed DataSource instead of using a Quartz-managed connection pool. This JobStore will be used if SchedulerFactoryBean's "dataSource" property is set. 
+<p>Supports both transactional and non-transactional DataSource access. With a non-XA DataSource and local Spring transactions, a single DataSource argument is sufficient. In case of an XA DataSource and global JTA transactions, SchedulerFactoryBean's "nonTransactionalDataSource" property should be set, passing in a non-XA DataSource that will not participate in global transactions. </p>
+<p>Operations performed by this JobStore will properly participate in any kind of Spring-managed transaction, as it uses Spring's DataSourceUtils connection handling methods that are aware of a current transaction. </p>
+<p>Note that all Quartz Scheduler operations that affect the persistent job store should usually be performed within active transactions, as they assume to get proper locks etc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-task-executor-thread-pool/index.html">LocalTaskExecutorThreadPool</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalTaskExecutorThreadPool</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ThreadPool</span></code>
+<p>Quartz ThreadPool adapter that delegates to a Spring-managed TaskExecutor instance, specified on SchedulerFactoryBean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-invoking-job-detail-factory-bean/index.html">MethodInvokingJobDetailFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvokingJobDetailFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.support/-argument-converting-method-invoker/index.html"><span class="identifier">ArgumentConvertingMethodInvoker</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">JobDetail</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.beans.factory.FactoryBean that exposes a org.quartz.JobDetail object which delegates job execution to a specified (static or non-static) method. Avoids the need for implementing a one-line Quartz Job that just invokes an existing service method on a Spring-managed target bean. 
+<p>Inherits common configuration properties from the MethodInvoker base class, such as <code><a href="#">"targetObject"</a></code> and <code><a href="#">"targetMethod"</a></code>, adding support for lookup of the target bean by name through the <code><a href="#">"targetBeanName"</a></code> property (as alternative to specifying a "targetObject" directly, allowing for non-singleton target objects). </p>
+<p>Supports both concurrently running jobs and non-currently running jobs through the "concurrent" property. Jobs created by this MethodInvokingJobDetailFactoryBean are by default volatile and durable (according to Quartz terminology). </p>
+<p><strong>NOTE: JobDetails created via this FactoryBean are <em>not</em> serializable and thus not suitable for persistent job stores.</strong> You need to implement your own Quartz Job as a thin wrapper for each case where you want a persistent job to delegate to a specific service method. </p>
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-quartz-job-bean/index.html">QuartzJobBean</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">QuartzJobBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Job</span></code>
+<p>Simple implementation of the Quartz Job interface, applying the passed-in JobDataMap and also the SchedulerContext as bean property values. This is appropriate because a new Job instance will be created for each execution. JobDataMap entries will override SchedulerContext entries with the same keys. 
+<p>For example, let's assume that the JobDataMap contains a key "myParam" with value "5": The Job implementation can then expose a bean property "myParam" of type int to receive such a value, i.e. a method "setMyParam(int)". This will also work for complex types like business objects etc. </p>
+<p><strong>Note that the preferred way to apply dependency injection to Job instances is via a JobFactory:</strong> that is, to specify SpringBeanJobFactory as Quartz JobFactory (typically via <code><a href="#">SchedulerFactoryBean#setJobFactory</a></code> SchedulerFactoryBean's "jobFactory" property}). This allows to implement dependency-injected Quartz Jobs without a dependency on Spring base classes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-loader-class-load-helper/index.html">ResourceLoaderClassLoadHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceLoaderClassLoadHelper</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoadHelper</span></code>
+<p>Wrapper that adapts from the Quartz ClassLoadHelper interface onto Spring's ResourceLoader interface. Used by default when the SchedulerFactoryBean runs in a Spring ApplicationContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scheduler-accessor-bean/index.html">SchedulerAccessorBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SchedulerAccessorBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SchedulerAccessor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Spring bean-style class for accessing a Quartz Scheduler, i.e. for registering jobs, triggers and listeners on a given org.quartz.Scheduler instance. 
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-thread-pool-task-executor/index.html">SimpleThreadPoolTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleThreadPoolTaskExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpleThreadPool</span><span class="symbol">, </span><span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">, </span><span class="identifier">SchedulingTaskExecutor</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Subclass of Quartz's SimpleThreadPool that implements Spring's org.springframework.core.task.TaskExecutor interface and listens to Spring lifecycle callbacks. 
+<p>Can be shared between a Quartz Scheduler (specified as "taskExecutor") and other TaskExecutor users, or even used completely independent of a Quartz Scheduler (as plain TaskExecutor backend).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-trigger-factory-bean/index.html">SimpleTriggerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleTriggerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">SimpleTrigger</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A Spring FactoryBean for creating a Quartz org.quartz.SimpleTrigger instance, supporting bean-style usage for trigger configuration. 
+<p><code>SimpleTrigger(Impl)</code> itself is already a JavaBean but lacks sensible defaults. This class uses the Spring bean name as job name, the Quartz default group ("DEFAULT") as job group, the current time as start time, and indefinite repetition, if not specified. </p>
+<p>This class will also register the trigger with the job name and group of a given org.quartz.JobDetail. This allows SchedulerFactoryBean to automatically register a trigger for the corresponding JobDetail, instead of registering the JobDetail separately.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-bean-job-factory/index.html">SpringBeanJobFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringBeanJobFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-adaptable-job-factory/index.html"><span class="identifier">AdaptableJobFactory</span></a><span class="symbol">, </span><span class="identifier">SchedulerContextAware</span></code>
+<p>Subclass of AdaptableJobFactory that also supports Spring-style dependency injection on bean properties. This is essentially the direct equivalent of Spring's QuartzJobBean in the shape of a Quartz org.quartz.spi.JobFactory. 
+<p>Applies scheduler context, job data map and trigger data map entries as bean property values. If no matching bean property is found, the entry is by default simply ignored. This is analogous to QuartzJobBean's behavior. </p>
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-job-method-invocation-failed-exception/index.html">JobMethodInvocationFailedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JobMethodInvocationFailedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NestedRuntimeException</span></code>
+<p>Unchecked exception that wraps an exception thrown from a target method. Propagated to the Quartz scheduler from a Job that reflectively invokes an arbitrary target method.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

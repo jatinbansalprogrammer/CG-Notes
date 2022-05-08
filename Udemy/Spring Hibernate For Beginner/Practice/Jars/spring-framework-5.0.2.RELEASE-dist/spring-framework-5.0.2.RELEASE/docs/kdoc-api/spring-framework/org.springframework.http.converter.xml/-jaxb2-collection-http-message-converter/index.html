@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Jaxb2CollectionHttpMessageConverter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.converter.xml</a>&nbsp;/&nbsp;<a href=".">Jaxb2CollectionHttpMessageConverter</a><br/>
+<br/>
+<h1>Jaxb2CollectionHttpMessageConverter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Jaxb2CollectionHttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractJaxb2HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">GenericHttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>An <code>HttpMessageConverter</code> that can read XML collections using JAXB2. 
+<p>This converter can read Collection that contain classes annotated with XmlRootElement and XmlType. Note that this converter does not support writing.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Jaxb2CollectionHttpMessageConverter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An <code>HttpMessageConverter</code> that can read XML collections using JAXB2. 
+<p>This converter can read Collection that contain classes annotated with XmlRootElement and XmlType. Note that this converter does not support writing.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="can-read.html">canRead</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canRead</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canRead(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canRead(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Always returns <code>false</code> since Jaxb2CollectionHttpMessageConverter required generic type information in order to read a Collection.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canRead</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canRead(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canRead(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/contextClass">contextClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canRead(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>{@inheritDoc} 
+<p>Jaxb2CollectionHttpMessageConverter can read a generic Collection where the generic type is a JAXB type annotated with XmlRootElement or XmlType.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="can-write.html">canWrite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canWrite</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canWrite(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canWrite(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canWrite</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canWrite(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canWrite(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$canWrite(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Always returns <code>false</code> since Jaxb2CollectionHttpMessageConverter does not convert collections to XML.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read.html">read</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">read</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$read(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.HttpInputMessage)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$read(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.HttpInputMessage)/contextClass">contextClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$read(java.lang.reflect.Type, java.lang.Class((kotlin.Any)), org.springframework.http.HttpInputMessage)/inputMessage">inputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpInputMessage</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$write(org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter.T, java.lang.reflect.Type, org.springframework.http.MediaType, org.springframework.http.HttpOutputMessage)/t">t</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$write(org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter.T, java.lang.reflect.Type, org.springframework.http.MediaType, org.springframework.http.HttpOutputMessage)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$write(org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter.T, java.lang.reflect.Type, org.springframework.http.MediaType, org.springframework.http.HttpOutputMessage)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter$write(org.springframework.http.converter.xml.Jaxb2CollectionHttpMessageConverter.T, java.lang.reflect.Type, org.springframework.http.MediaType, org.springframework.http.HttpOutputMessage)/outputMessage">outputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpOutputMessage</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,365 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReflectionUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.util</a>&nbsp;/&nbsp;<a href=".">ReflectionUtils</a><br/>
+<br/>
+<h1>ReflectionUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ReflectionUtils</span></code>
+<p>Simple utility class for working with the reflection API and handling reflection exceptions. 
+<p>Only intended for internal use.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Costin Leau</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+1.2.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ReflectionUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple utility class for working with the reflection API and handling reflection exceptions. 
+<p>Only intended for internal use.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-c-o-p-y-a-b-l-e_-f-i-e-l-d-s.html">COPYABLE_FIELDS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">COPYABLE_FIELDS</span><span class="symbol">: </span><span class="identifier">FieldFilter</span></code>
+<p>Pre-built FieldFilter that matches all non-static, non-final fields.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-n-o-n_-b-r-i-d-g-e-d_-m-e-t-h-o-d-s.html">NON_BRIDGED_METHODS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">NON_BRIDGED_METHODS</span><span class="symbol">: </span><span class="identifier">MethodFilter</span></code>
+<p>Pre-built MethodFilter that matches all non-bridge methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-u-s-e-r_-d-e-c-l-a-r-e-d_-m-e-t-h-o-d-s.html">USER_DECLARED_METHODS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">USER_DECLARED_METHODS</span><span class="symbol">: </span><span class="identifier">MethodFilter</span></code>
+<p>Pre-built MethodFilter that matches all non-bridge methods which are not declared on <code>java.lang.Object</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="accessible-constructor.html">accessibleConstructor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">accessibleConstructor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$accessibleConstructor(java.lang.Class((org.springframework.util.ReflectionUtils.accessibleConstructor.T)), kotlin.Array((java.lang.Class((kotlin.Any)))))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.util.ReflectionUtils$accessibleConstructor(java.lang.Class((org.springframework.util.ReflectionUtils.accessibleConstructor.T)), kotlin.Array((java.lang.Class((kotlin.Any)))))/parameterTypes">parameterTypes</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Constructor</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Obtain an accessible constructor for the given class and parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="clear-cache.html">clearCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">clearCache</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Clear the internal method/field cache.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="declares-exception.html">declaresException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">declaresException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$declaresException(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$declaresException(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/exceptionType">exceptionType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given method explicitly declares the given exception or one of its superclasses, which means that an exception of that type can be propagated as-is within a reflective invocation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-with-fields.html">doWithFields</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doWithFields</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithFields(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.FieldCallback)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithFields(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.FieldCallback)/fc">fc</span><span class="symbol">:</span>&nbsp;<span class="identifier">FieldCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doWithFields</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithFields(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.FieldCallback, org.springframework.util.ReflectionUtils.FieldFilter)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithFields(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.FieldCallback, org.springframework.util.ReflectionUtils.FieldFilter)/fc">fc</span><span class="symbol">:</span>&nbsp;<span class="identifier">FieldCallback</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithFields(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.FieldCallback, org.springframework.util.ReflectionUtils.FieldFilter)/ff">ff</span><span class="symbol">:</span>&nbsp;<span class="identifier">FieldFilter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoke the given callback on all fields in the target class, going up the class hierarchy to get all declared fields.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-with-local-fields.html">doWithLocalFields</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doWithLocalFields</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithLocalFields(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.FieldCallback)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithLocalFields(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.FieldCallback)/fc">fc</span><span class="symbol">:</span>&nbsp;<span class="identifier">FieldCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoke the given callback on all fields in the target class, going up the class hierarchy to get all declared fields.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-with-local-methods.html">doWithLocalMethods</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doWithLocalMethods</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithLocalMethods(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.MethodCallback)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithLocalMethods(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.MethodCallback)/mc">mc</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform the given callback operation on all matching methods of the given class, as locally declared or equivalent thereof (such as default methods on Java 8 based interfaces that the given class implements).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-with-methods.html">doWithMethods</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doWithMethods</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithMethods(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.MethodCallback)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithMethods(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.MethodCallback)/mc">mc</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform the given callback operation on all matching methods of the given class and superclasses. 
+<p>The same named method occurring on subclass and superclass will appear twice, unless excluded by a MethodFilter.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doWithMethods</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithMethods(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.MethodCallback, org.springframework.util.ReflectionUtils.MethodFilter)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithMethods(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.MethodCallback, org.springframework.util.ReflectionUtils.MethodFilter)/mc">mc</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodCallback</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$doWithMethods(java.lang.Class((kotlin.Any)), org.springframework.util.ReflectionUtils.MethodCallback, org.springframework.util.ReflectionUtils.MethodFilter)/mf">mf</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodFilter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform the given callback operation on all matching methods of the given class and superclasses (or given interface and super-interfaces). 
+<p>The same named method occurring on subclass and superclass will appear twice, unless excluded by the specified MethodFilter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-field.html">findField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$findField(java.lang.Class((kotlin.Any)), kotlin.String)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$findField(java.lang.Class((kotlin.Any)), kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Field</span></code>
+<p>Attempt to find a Field on the supplied Class with the supplied <code>name</code>. Searches all superclasses up to Object.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$findField(java.lang.Class((kotlin.Any)), kotlin.String, java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$findField(java.lang.Class((kotlin.Any)), kotlin.String, java.lang.Class((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$findField(java.lang.Class((kotlin.Any)), kotlin.String, java.lang.Class((kotlin.Any)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Field</span></code>
+<p>Attempt to find a Field on the supplied Class with the supplied <code>name</code> and/or Class. Searches all superclasses up to Object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-method.html">findMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Attempt to find a Method on the supplied class with the supplied name and no parameters. Searches all superclasses up to <code>Object</code>. 
+<p>Returns <code>null</code> if no Method can be found.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.util.ReflectionUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/paramTypes">paramTypes</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Attempt to find a Method on the supplied class with the supplied name and parameter types. Searches all superclasses up to <code>Object</code>. 
+<p>Returns <code>null</code> if no Method can be found.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-all-declared-methods.html">getAllDeclaredMethods</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getAllDeclaredMethods</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$getAllDeclaredMethods(java.lang.Class((kotlin.Any)))/leafClass">leafClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Method</span><span class="symbol">&gt;</span></code>
+<p>Get all declared methods on the leaf class and all superclasses. Leaf class methods are included first.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-field.html">getField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$getField(java.lang.reflect.Field, kotlin.Any)/field">field</span><span class="symbol">:</span>&nbsp;<span class="identifier">Field</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$getField(java.lang.reflect.Field, kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the field represented by the supplied Field on the specified Object. In accordance with <code><a href="#">Field#get(Object)</a></code> semantics, the returned value is automatically wrapped if the underlying field has a primitive type. 
+<p>Thrown exceptions are handled via a call to <code><a href="handle-reflection-exception.html">#handleReflectionException(Exception)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-unique-declared-methods.html">getUniqueDeclaredMethods</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getUniqueDeclaredMethods</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$getUniqueDeclaredMethods(java.lang.Class((kotlin.Any)))/leafClass">leafClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Method</span><span class="symbol">&gt;</span></code>
+<p>Get the unique set of declared methods on the leaf class and all superclasses. Leaf class methods are included first and while traversing the superclass hierarchy any methods found with signatures matching a method already included are filtered out.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-invocation-target-exception.html">handleInvocationTargetException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">handleInvocationTargetException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$handleInvocationTargetException(java.lang.reflect.InvocationTargetException)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">InvocationTargetException</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Handle the given invocation target exception. Should only be called if no checked exception is expected to be thrown by the target method. 
+<p>Throws the underlying RuntimeException or Error in case of such a root cause. Throws an UndeclaredThrowableException otherwise.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-reflection-exception.html">handleReflectionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">handleReflectionException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$handleReflectionException(java.lang.Exception)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Handle the given reflection exception. Should only be called if no checked exception is expected to be thrown by the target method. 
+<p>Throws the underlying RuntimeException or Error in case of an InvocationTargetException with such a root cause. Throws an IllegalStateException with an appropriate message or UndeclaredThrowableException otherwise.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-jdbc-method.html">invokeJdbcMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeJdbcMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeJdbcMethod(java.lang.reflect.Method, kotlin.Any)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeJdbcMethod(java.lang.reflect.Method, kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoke the specified JDBC API Method against the supplied target object with no arguments.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeJdbcMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeJdbcMethod(java.lang.reflect.Method, kotlin.Any, kotlin.Array((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeJdbcMethod(java.lang.reflect.Method, kotlin.Any, kotlin.Array((kotlin.Any)))/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.util.ReflectionUtils$invokeJdbcMethod(java.lang.reflect.Method, kotlin.Any, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoke the specified JDBC API Method against the supplied target object with the supplied arguments.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-method.html">invokeMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeMethod(java.lang.reflect.Method, kotlin.Any)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeMethod(java.lang.reflect.Method, kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoke the specified Method against the supplied target object with no arguments. The target object can be <code>null</code> when invoking a static Method. 
+<p>Thrown exceptions are handled via a call to <code><a href="handle-reflection-exception.html">#handleReflectionException</a></code>.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeMethod(java.lang.reflect.Method, kotlin.Any, kotlin.Array((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$invokeMethod(java.lang.reflect.Method, kotlin.Any, kotlin.Array((kotlin.Any)))/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.util.ReflectionUtils$invokeMethod(java.lang.reflect.Method, kotlin.Any, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoke the specified Method against the supplied target object with the supplied arguments. The target object can be <code>null</code> when invoking a static Method. 
+<p>Thrown exceptions are handled via a call to <code><a href="handle-reflection-exception.html">#handleReflectionException</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-cglib-renamed-method.html">isCglibRenamedMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isCglibRenamedMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$isCglibRenamedMethod(java.lang.reflect.Method)/renamedMethod">renamedMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given method is a CGLIB 'renamed' method, following the pattern "CGLIB$methodName$0".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-equals-method.html">isEqualsMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isEqualsMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$isEqualsMethod(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given method is an "equals" method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-hash-code-method.html">isHashCodeMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isHashCodeMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$isHashCodeMethod(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given method is a "hashCode" method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-object-method.html">isObjectMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isObjectMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$isObjectMethod(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given method is originally declared by java.lang.Object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-public-static-final.html">isPublicStaticFinal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isPublicStaticFinal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$isPublicStaticFinal(java.lang.reflect.Field)/field">field</span><span class="symbol">:</span>&nbsp;<span class="identifier">Field</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given field is a "public static final" constant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-to-string-method.html">isToStringMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isToStringMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$isToStringMethod(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given method is a "toString" method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="make-accessible.html">makeAccessible</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">makeAccessible</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$makeAccessible(java.lang.reflect.Field)/field">field</span><span class="symbol">:</span>&nbsp;<span class="identifier">Field</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Make the given field accessible, explicitly setting it accessible if necessary. The <code>setAccessible(true)</code> method is only called when actually necessary, to avoid unnecessary conflicts with a JVM SecurityManager (if active).</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">makeAccessible</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$makeAccessible(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Make the given method accessible, explicitly setting it accessible if necessary. The <code>setAccessible(true)</code> method is only called when actually necessary, to avoid unnecessary conflicts with a JVM SecurityManager (if active).</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">makeAccessible</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$makeAccessible(java.lang.reflect.Constructor((kotlin.Any)))/ctor">ctor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Constructor</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Make the given constructor accessible, explicitly setting it accessible if necessary. The <code>setAccessible(true)</code> method is only called when actually necessary, to avoid unnecessary conflicts with a JVM SecurityManager (if active).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rethrow-exception.html">rethrowException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">rethrowException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$rethrowException(kotlin.Throwable)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Rethrow the given Throwable, which is presumably the <em>target exception</em> of an InvocationTargetException. Should only be called if no checked exception is expected to be thrown by the target method. 
+<p>Rethrows the underlying exception cast to an Exception or Error if appropriate; otherwise, throws an UndeclaredThrowableException.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rethrow-runtime-exception.html">rethrowRuntimeException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">rethrowRuntimeException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$rethrowRuntimeException(kotlin.Throwable)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Rethrow the given Throwable, which is presumably the <em>target exception</em> of an InvocationTargetException. Should only be called if no checked exception is expected to be thrown by the target method. 
+<p>Rethrows the underlying exception cast to a RuntimeException or Error if appropriate; otherwise, throws an UndeclaredThrowableException.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-field.html">setField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$setField(java.lang.reflect.Field, kotlin.Any, kotlin.Any)/field">field</span><span class="symbol">:</span>&nbsp;<span class="identifier">Field</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$setField(java.lang.reflect.Field, kotlin.Any, kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$setField(java.lang.reflect.Field, kotlin.Any, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the field represented by the supplied Field on the specified Object to the specified <code>value</code>. In accordance with <code><a href="#">Field#set(Object, Object)</a></code> semantics, the new value is automatically unwrapped if the underlying field has a primitive type. 
+<p>Thrown exceptions are handled via a call to <code><a href="handle-reflection-exception.html">#handleReflectionException(Exception)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="shallow-copy-field-state.html">shallowCopyFieldState</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">shallowCopyFieldState</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.ReflectionUtils$shallowCopyFieldState(kotlin.Any, kotlin.Any)/src">src</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.ReflectionUtils$shallowCopyFieldState(kotlin.Any, kotlin.Any)/dest">dest</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Given the source object and the destination, which must be the same class or a subclass, copy all fields, including inherited fields. Designed to work on objects with public no-arg constructors.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

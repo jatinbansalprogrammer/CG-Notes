@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UriTemplate - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.util</a>&nbsp;/&nbsp;<a href=".">UriTemplate</a><br/>
+<br/>
+<h1>UriTemplate</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UriTemplate</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>Represents a URI template. A URI template is a URI-like String that contains variables enclosed by braces (<code>{}</code>) which can be expanded to produce an actual URI. 
+<p>See <code><a href="#">#expand(Map)</a></code>, <code><a href="#">#expand(Object[])</a></code>, and <code><a href="#">#match(String)</a></code> for example usages. </p>
+<p>This class is designed to be thread-safe and reusable, allowing for any number of expand or match calls.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UriTemplate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.UriTemplate$<init>(kotlin.String)/uriTemplate">uriTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Construct a new <code>UriTemplate</code> with the given URI String.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="expand.html">expand</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expand</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.UriTemplate$expand(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/uriVariables">uriVariables</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URI</span></code>
+<p>Given the Map of variables, expands this template into a URI. The Map keys represent variable names, the Map values variable values. The order of variables is not significant. 
+<p>Example: </p>
+<pre><code> UriTemplate template = new UriTemplate("http://example.com/hotels/{hotel}/bookings/{booking}"); Map&lt;String, String&gt; uriVariables = new HashMap&lt;String, String&gt;(); uriVariables.put("booking", "42"); uriVariables.put("hotel", "Rest &amp; Relax"); System.out.println(template.expand(uriVariables)); </code></pre> will print: <code>http://example.com/hotels/Rest%20%26%20Relax/bookings/42</code></p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expand</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.util.UriTemplate$expand(kotlin.Array((kotlin.Any)))/uriVariableValues">uriVariableValues</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URI</span></code>
+<p>Given an array of variables, expand this template into a full URI. The array represent variable values. The order of variables is significant. 
+<p>Example: </p>
+<pre><code> UriTemplate template = new UriTemplate("http://example.com/hotels/{hotel}/bookings/{booking}"); System.out.println(template.expand("Rest &amp; Relax", 42)); </code></pre> will print: <code>http://example.com/hotels/Rest%20%26%20Relax/bookings/42</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-variable-names.html">getVariableNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getVariableNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the names of the variables in the template, in order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="match.html">match</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">match</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.UriTemplate$match(kotlin.String)/uri">uri</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Match the given URI to a map of variable values. Keys in the returned map are variable names, values are variable values, as occurred in the given URI. 
+<p>Example: </p>
+<pre><code> UriTemplate template = new UriTemplate("http://example.com/hotels/{hotel}/bookings/{booking}"); System.out.println(template.match("http://example.com/hotels/1/bookings/42")); </code></pre> will print: <code>{hotel=1, booking=42}</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="matches.html">matches</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.UriTemplate$matches(kotlin.String)/uri">uri</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Indicate whether the given URI matches this template.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

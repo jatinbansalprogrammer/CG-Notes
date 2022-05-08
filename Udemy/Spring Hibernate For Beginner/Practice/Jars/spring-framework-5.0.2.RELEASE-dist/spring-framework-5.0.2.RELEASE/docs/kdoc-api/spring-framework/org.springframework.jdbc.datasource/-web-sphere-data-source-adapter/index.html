@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSphereDataSourceAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href=".">WebSphereDataSourceAdapter</a><br/>
+<br/>
+<h1>WebSphereDataSourceAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSphereDataSourceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-isolation-level-data-source-adapter/index.html"><span class="identifier">IsolationLevelDataSourceAdapter</span></a></code>
+<p>DataSource implementation that delegates all calls to a WebSphere target DataSource, typically obtained from JNDI, applying a current isolation level and/or current user credentials to every Connection obtained from it. 
+<p>Uses IBM-specific API to get a JDBC Connection with a specific isolation level (and read-only flag) from a WebSphere DataSource (<a href="#">IBM code example</a>). Supports the transaction-specific isolation level exposed by <code><a href="#">org.springframework.transaction.support.TransactionSynchronizationManager#getCurrentTransactionIsolationLevel()</a></code>. It's also possible to specify a default isolation level, to be applied when the current Spring-managed transaction does not define a specific isolation level. </p>
+<p>Usage example, defining the target DataSource as an inner-bean JNDI lookup (of course, you can link to any WebSphere DataSource through a bean reference): </p>
+<pre><code> &lt;bean id="myDataSource" class="org.springframework.jdbc.datasource.WebSphereDataSourceAdapter"&gt; &lt;property name="targetDataSource"&gt; &lt;bean class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="jdbc/myds"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> Thanks to Ricardo Olivieri for submitting the original implementation of this approach!</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+<a href="#">Lari Hotari</a></p>
+<p><strong>Author</strong><br/>
+<a href="#">Ricardo N. Olivieri</a></p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+com.ibm.websphere.rsadapter.JDBCConnectionSpeccom.ibm.websphere.rsadapter.WSDataSource#getConnection(com.ibm.websphere.rsadapter.JDBCConnectionSpec)<a href="#">org.springframework.transaction.support.TransactionSynchronizationManager#getCurrentTransactionIsolationLevel()</a><a href="#">org.springframework.transaction.support.TransactionSynchronizationManager#isCurrentTransactionReadOnly()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebSphereDataSourceAdapter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>This constructor retrieves the WebSphere JDBC connection spec API, so we can get obtain specific WebSphere Connections using reflection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Checks that the specified 'targetDataSource' actually is a WebSphere WSDataSource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-isolation-level-data-source-adapter/set-isolation-level.html">setIsolationLevel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIsolationLevel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.IsolationLevelDataSourceAdapter$setIsolationLevel(kotlin.Int)/isolationLevel">isolationLevel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the default isolation level to use for Connection retrieval, according to the JDBC java.sql.Connection constants (equivalent to the corresponding Spring org.springframework.transaction.TransactionDefinition constants). 
+<p>If not specified, the target DataSource's default will be used. Note that a transaction-specific isolation value will always override any isolation setting specified at the DataSource level.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-isolation-level-data-source-adapter/set-isolation-level-name.html">setIsolationLevelName</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setIsolationLevelName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.IsolationLevelDataSourceAdapter$setIsolationLevelName(kotlin.String)/constantName">constantName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default isolation level by the name of the corresponding constant in org.springframework.transaction.TransactionDefinition, e.g. "ISOLATION_SERIALIZABLE". 
+<p>If not specified, the target DataSource's default will be used. Note that a transaction-specific isolation value will always override any isolation setting specified at the DataSource level.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

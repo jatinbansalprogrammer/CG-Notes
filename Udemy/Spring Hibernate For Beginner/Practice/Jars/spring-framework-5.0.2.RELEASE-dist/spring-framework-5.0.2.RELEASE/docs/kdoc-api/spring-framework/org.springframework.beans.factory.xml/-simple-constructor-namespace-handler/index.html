@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleConstructorNamespaceHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.xml</a>&nbsp;/&nbsp;<a href=".">SimpleConstructorNamespaceHandler</a><br/>
+<br/>
+<h1>SimpleConstructorNamespaceHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleConstructorNamespaceHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandler</span></code>
+<p>Simple <code>NamespaceHandler</code> implementation that maps custom attributes directly through to bean properties. An important point to note is that this <code>NamespaceHandler</code> does not have a corresponding schema since there is no way to know in advance all possible attribute names. 
+<p>An example of the usage of this <code>NamespaceHandler</code> is shown below: </p>
+<pre><code> &lt;bean id="author" class="..TestBean" c:name="Enescu" c:work-ref="compositions"/&gt; </code></pre> Here the '<code>c:name</code>' corresponds directly to the '<code>name</code> ' argument declared on the constructor of class '<code>TestBean</code>'. The '<code>c:work-ref</code>' attributes corresponds to the '<code>work</code>' argument and, rather than being the concrete value, it contains the name of the bean that will be considered as a parameter. <strong>Note</strong>: This implementation supports only named parameters - there is no support for indexes or types. Further more, the names are used as hints by the container which, by default, does type introspection.</p>
+<p><strong>Author</strong><br/>
+Costin Leau</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+SimplePropertyNamespaceHandler</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleConstructorNamespaceHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple <code>NamespaceHandler</code> implementation that maps custom attributes directly through to bean properties. An important point to note is that this <code>NamespaceHandler</code> does not have a corresponding schema since there is no way to know in advance all possible attribute names. 
+<p>An example of the usage of this <code>NamespaceHandler</code> is shown below: </p>
+<pre><code> &lt;bean id="author" class="..TestBean" c:name="Enescu" c:work-ref="compositions"/&gt; </code></pre> Here the '<code>c:name</code>' corresponds directly to the '<code>name</code> ' argument declared on the constructor of class '<code>TestBean</code>'. The '<code>c:work-ref</code>' attributes corresponds to the '<code>work</code>' argument and, rather than being the concrete value, it contains the name of the bean that will be considered as a parameter. <strong>Note</strong>: This implementation supports only named parameters - there is no support for indexes or types. Further more, the names are used as hints by the container which, by default, does type introspection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="decorate.html">decorate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">decorate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler$decorate(org.w3c.dom.Node, org.springframework.beans.factory.config.BeanDefinitionHolder, org.springframework.beans.factory.xml.ParserContext)/node">node</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-node/index.html"><span class="identifier">Node</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler$decorate(org.w3c.dom.Node, org.springframework.beans.factory.config.BeanDefinitionHolder, org.springframework.beans.factory.xml.ParserContext)/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionHolder</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler$decorate(org.w3c.dom.Node, org.springframework.beans.factory.config.BeanDefinitionHolder, org.springframework.beans.factory.xml.ParserContext)/parserContext">parserContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParserContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinitionHolder</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="init.html">init</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="parse.html">parse</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">parse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler$parse(org.w3c.dom.Element, org.springframework.beans.factory.xml.ParserContext)/element">element</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-element/index.html"><span class="identifier">Element</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler$parse(org.w3c.dom.Element, org.springframework.beans.factory.xml.ParserContext)/parserContext">parserContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParserContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinition</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

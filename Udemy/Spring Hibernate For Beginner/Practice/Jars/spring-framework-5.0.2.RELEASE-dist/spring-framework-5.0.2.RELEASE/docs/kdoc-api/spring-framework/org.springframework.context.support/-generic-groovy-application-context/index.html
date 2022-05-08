@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GenericGroovyApplicationContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">GenericGroovyApplicationContext</a><br/>
+<br/>
+<h1>GenericGroovyApplicationContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericGroovyApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationContext</span><span class="symbol">, </span><span class="identifier">GroovyObject</span></code>
+<p>An org.springframework.context.ApplicationContext implementation that extends GenericApplicationContext and implements GroovyObject such that beans can be retrieved with the dot de-reference syntax instead of using <code><a href="#">#getBean</a></code>. 
+<p>Consider this as the equivalent of GenericXmlApplicationContext for Groovy bean definitions, or even an upgrade thereof since it seamlessly understands XML bean definition files as well. The main difference is that, within a Groovy script, the context can be used with an inline bean definition closure as follows: </p>
+<pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource def context = new GenericGroovyApplicationContext() context.reader.beans { dataSource(BasicDataSource) { // &lt;--- invokeMethod driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" // &lt;-- setProperty password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource // &lt;-- getProperty for retrieving references } myService(MyService) { nestedBean = { AnotherBean bean -&gt; // &lt;-- setProperty with closure for nested bean dataSource = dataSource } } } context.refresh() </code></pre> 
+<p>Alternatively, load a Groovy bean definition script like the following from an external resource (e.g. an "applicationContext.groovy" file): </p>
+<pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource beans { dataSource(BasicDataSource) { driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource } myService(MyService) { nestedBean = { AnotherBean bean -&gt; dataSource = dataSource } } } </code></pre> 
+<p>With the following Java code creating the <code>GenericGroovyApplicationContext</code> (potentially using Ant-style '*'/'**' location patterns): </p>
+<pre><code> GenericGroovyApplicationContext context = new GenericGroovyApplicationContext(); context.load("org/myapp/applicationContext.groovy"); context.refresh(); </code></pre> 
+<p>Or even more concise, provided that no extra configuration is needed: </p>
+<pre><code> ApplicationContext context = new GenericGroovyApplicationContext("org/myapp/applicationContext.groovy"); </code></pre> 
+<p><strong>This application context also understands XML bean definition files, allowing for seamless mixing and matching with Groovy bean definition files.</strong> ".xml" files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Jeff Brown</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GenericGroovyApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new GenericGroovyApplicationContext that needs to be <code><a href="#">loaded</a></code> and then manually <code><a href="#">refreshed</a></code>.</p>
+<code><span class="identifier">GenericGroovyApplicationContext</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$<init>(kotlin.Array((org.springframework.core.io.Resource)))/resources">resources</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span></code>
+<p>Create a new GenericGroovyApplicationContext, loading bean definitions from the given resources and automatically refreshing the context.</p>
+<code><span class="identifier">GenericGroovyApplicationContext</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$<init>(kotlin.Array((kotlin.String)))/resourceLocations">resourceLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">GenericGroovyApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$<init>(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/relativeClass">relativeClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$<init>(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/resourceNames">resourceNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new GenericGroovyApplicationContext, loading bean definitions from the given resource locations and automatically refreshing the context.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-meta-class.html">getMetaClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMetaClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MetaClass</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property.html">getProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$getProperty(kotlin.String)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-reader.html">getReader</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getReader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.springframework.beans.factory.groovy/-groovy-bean-definition-reader/index.html"><span class="identifier">GroovyBeanDefinitionReader</span></a></code>
+<p>Exposes the underlying GroovyBeanDefinitionReader for convenient access to the <code>loadBeanDefinition</code> methods on it as well as the ability to specify an inline Groovy bean definition closure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-method.html">invokeMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invokeMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$invokeMethod(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$invokeMethod(kotlin.String, kotlin.Any)/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="load.html">load</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">load</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$load(kotlin.Array((org.springframework.core.io.Resource)))/resources">resources</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">load</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$load(kotlin.Array((kotlin.String)))/resourceLocations">resourceLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">load</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$load(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/relativeClass">relativeClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$load(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/resourceNames">resourceNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Load bean definitions from the given Groovy scripts or XML files. 
+<p>Note that ".xml" files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$setEnvironment(org.springframework.core.env.ConfigurableEnvironment)/environment">environment</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableEnvironment</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delegates the given environment to underlying GroovyBeanDefinitionReader. Should be called before any call to <code>#load</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-meta-class.html">setMetaClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMetaClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$setMetaClass(groovy.lang.MetaClass)/metaClass">metaClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetaClass</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property.html">setProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$setProperty(kotlin.String, kotlin.Any)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.GenericGroovyApplicationContext$setProperty(kotlin.String, kotlin.Any)/newValue">newValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

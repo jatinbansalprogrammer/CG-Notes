@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AsyncResult - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.annotation</a>&nbsp;/&nbsp;<a href=".">AsyncResult</a><br/>
+<br/>
+<h1>AsyncResult</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncResult</span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>A pass-through <code>Future</code> handle that can be used for method signatures which are declared with a <code>Future</code> return type for asynchronous execution. 
+<p>As of Spring 4.1, this class implements ListenableFuture, not just plain java.util.concurrent.Future, along with the corresponding support in <code>@Async</code> processing. </p>
+<p>As of Spring 4.2, this class also supports passing execution exceptions back to the caller.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+Async<a href="#">#forValue(Object)</a><a href="#">#forExecutionException(Throwable)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AsyncResult</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$<init>(org.springframework.scheduling.annotation.AsyncResult.V)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">V</span><span class="symbol">)</span></code>
+<p>Create a new AsyncResult holder.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-callback.html">addCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCallback</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$addCallback(org.springframework.util.concurrent.ListenableFutureCallback((org.springframework.scheduling.annotation.AsyncResult.V)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">ListenableFutureCallback</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCallback</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$addCallback(org.springframework.util.concurrent.SuccessCallback((org.springframework.scheduling.annotation.AsyncResult.V)), org.springframework.util.concurrent.FailureCallback)/successCallback">successCallback</span><span class="symbol">:</span>&nbsp;<span class="identifier">SuccessCallback</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$addCallback(org.springframework.util.concurrent.SuccessCallback((org.springframework.scheduling.annotation.AsyncResult.V)), org.springframework.util.concurrent.FailureCallback)/failureCallback">failureCallback</span><span class="symbol">:</span>&nbsp;<span class="identifier">FailureCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="cancel.html">cancel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cancel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$cancel(kotlin.Boolean)/mayInterruptIfRunning">mayInterruptIfRunning</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="completable.html">completable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">completable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CompletableFuture</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="for-execution-exception.html">forExecutionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">forExecutionException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$forExecutionException(kotlin.Throwable)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Create a new async result which exposes the given exception as an ExecutionException from <code><a href="#">Future#get()</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="for-value.html">forValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">forValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$forValue(org.springframework.scheduling.annotation.AsyncResult.forValue.V)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">V</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Create a new async result which exposes the given value from <code><a href="#">Future#get()</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">get</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">V</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$get(kotlin.Long, java.util.concurrent.TimeUnit)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.annotation.AsyncResult$get(kotlin.Long, java.util.concurrent.TimeUnit)/unit">unit</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeUnit</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">V</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-cancelled.html">isCancelled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCancelled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-done.html">isDone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isDone</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

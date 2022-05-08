@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.http.codec.xml - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.http.codec.xml</a><br/>
+<br/>
+<h2>Package org.springframework.http.codec.xml</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jaxb2-xml-decoder/index.html">Jaxb2XmlDecoder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Jaxb2XmlDecoder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractDecoder</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Decode from a bytes stream containing XML elements to a stream of <code>Object</code>s (POJOs).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jaxb2-xml-encoder/index.html">Jaxb2XmlEncoder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Jaxb2XmlEncoder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.core.codec/-abstract-single-value-encoder/index.html"><span class="identifier">AbstractSingleValueEncoder</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Encode from <code>Object</code> stream to a byte stream containing XML elements.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xml-event-decoder/index.html">XmlEventDecoder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XmlEventDecoder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractDecoder</span><span class="symbol">&lt;</span><span class="identifier">XMLEvent</span><span class="symbol">&gt;</span></code>
+<p>Decodes a DataBuffer stream into a stream of XMLEvents. That is, given the following XML: <pre><code><code>&lt;root&gt; &lt;child&gt;foo&lt;/child&gt; &lt;child&gt;bar&lt;/child&gt; &lt;/root&gt;</code> </code></pre> this method with result in a flux with the following events: <ol> <li>javax.xml.stream.events.StartDocument</li>
+ <li>javax.xml.stream.events.StartElement <code>root</code></li>
+ <li>javax.xml.stream.events.StartElement <code>child</code></li>
+ <li>javax.xml.stream.events.Characters <code>foo</code></li>
+ <li>javax.xml.stream.events.EndElement <code>child</code></li>
+ <li>javax.xml.stream.events.StartElement <code>child</code></li>
+ <li>javax.xml.stream.events.Characters <code>bar</code></li>
+ <li>javax.xml.stream.events.EndElement <code>child</code></li>
+ <li>javax.xml.stream.events.EndElement <code>root</code></li>
+ </ol>
+ Note that this decoder is not registered by default but used internally by other decoders who are there by default.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReflectionHelper - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.expression.spel.support</a>&nbsp;/&nbsp;<a href=".">ReflectionHelper</a><br/>
+<br/>
+<h1>ReflectionHelper</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectionHelper</span></code>
+<p>Utility methods used by the reflection resolver code to discover the appropriate methods/constructors and fields that should be used in expressions.</p>
+<p><strong>Author</strong><br/>
+Andy Clement</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ReflectionHelper</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Utility methods used by the reflection resolver code to discover the appropriate methods/constructors and fields that should be used in expressions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="convert-all-arguments.html">convertAllArguments</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertAllArguments</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectionHelper$convertAllArguments(org.springframework.expression.TypeConverter, kotlin.Array((kotlin.Any)), java.lang.reflect.Method)/converter">converter</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeConverter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectionHelper$convertAllArguments(org.springframework.expression.TypeConverter, kotlin.Array((kotlin.Any)), java.lang.reflect.Method)/arguments">arguments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectionHelper$convertAllArguments(org.springframework.expression.TypeConverter, kotlin.Array((kotlin.Any)), java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Convert a supplied set of arguments into the requested types. If the parameterTypes are related to a varargs method then the final entry in the parameterTypes array is going to be an array itself whose component type should be used as the conversion target for extraneous arguments. (For example, if the parameterTypes are {Integer, String[]} and the input arguments are {Integer, boolean, float} then both the boolean and float must be converted to strings). This method does *not* repackage the arguments into a form suitable for the varargs invocation - a subsequent call to setupArgumentsForVarargsInvocation handles that.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-type-difference-weight.html">getTypeDifferenceWeight</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTypeDifferenceWeight</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectionHelper$getTypeDifferenceWeight(kotlin.collections.MutableList((org.springframework.core.convert.TypeDescriptor)), kotlin.collections.MutableList((org.springframework.core.convert.TypeDescriptor)))/paramTypes">paramTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">TypeDescriptor</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectionHelper$getTypeDifferenceWeight(kotlin.collections.MutableList((org.springframework.core.convert.TypeDescriptor)), kotlin.collections.MutableList((org.springframework.core.convert.TypeDescriptor)))/argTypes">argTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">TypeDescriptor</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Based on <code><a href="#">MethodInvoker#getTypeDifferenceWeight(Class[], Object[])</a></code> but operates on TypeDescriptors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="setup-arguments-for-varargs-invocation.html">setupArgumentsForVarargsInvocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setupArgumentsForVarargsInvocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectionHelper$setupArgumentsForVarargsInvocation(kotlin.Array((java.lang.Class((kotlin.Any)))), kotlin.Array((kotlin.Any)))/requiredParameterTypes">requiredParameterTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.expression.spel.support.ReflectionHelper$setupArgumentsForVarargsInvocation(kotlin.Array((java.lang.Class((kotlin.Any)))), kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Package up the arguments so that they correctly match what is expected in parameterTypes. For example, if parameterTypes is <code>(int, String[])</code> because the second parameter was declared <code>String...</code>, then if arguments is <code>[1,"a","b"]</code> then it must be repackaged as <code>[1,new String[]{"a","b"}]</code> in order to match the expected types.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

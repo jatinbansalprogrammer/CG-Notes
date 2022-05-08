@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jms.core - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jms.core</a><br/>
+<br/>
+<h2>Package org.springframework.jms.core</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-browser-callback/index.html">BrowserCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">BrowserCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Callback for browsing the messages in a JMS queue. 
+<p>To be used with JmsTemplate's callback methods that take a BrowserCallback argument, often implemented as an anonymous inner class or as a lambda expression.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jms-message-operations/index.html">JmsMessageOperations</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">JmsMessageOperations</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageSendingOperations</span><span class="symbol">&lt;</span><span class="identifier">Destination</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">MessageReceivingOperations</span><span class="symbol">&lt;</span><span class="identifier">Destination</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">MessageRequestReplyOperations</span><span class="symbol">&lt;</span><span class="identifier">Destination</span><span class="symbol">&gt;</span></code>
+<p>A specialization of MessageSendingOperations, MessageReceivingOperations and MessageRequestReplyOperations for JMS related operations that allow to specify a destination name rather than the actual javax.jms.Destination</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jms-messaging-template/index.html">JmsMessagingTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsMessagingTemplate</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessagingTemplate</span><span class="symbol">&lt;</span><span class="identifier">Destination</span><span class="symbol">&gt;</span><span class="symbol">, </span><a href="-jms-message-operations/index.html"><span class="identifier">JmsMessageOperations</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>An implementation of JmsMessageOperations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-creator/index.html">MessageCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MessageCreator</span></code>
+<p>Creates a JMS message given a Session. 
+<p>The <code>Session</code> typically is provided by an instance of the JmsTemplate class. </p>
+<p>Implementations <em>do not</em> need to concern themselves with checked <code>JMSExceptions</code> (from the '<code>javax.jms</code>' package) that may be thrown from operations they attempt. The <code>JmsTemplate</code> will catch and handle these <code>JMSExceptions</code> appropriately.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-post-processor/index.html">MessagePostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MessagePostProcessor</span></code>
+<p>To be used with JmsTemplate's send method that convert an object to a message. It allows for further modification of the message after it has been processed by the converter. This is useful for setting of JMS Header and Properties. 
+<p>This often as an anonymous class within a method implementation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-producer-callback/index.html">ProducerCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ProducerCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Callback for sending a message to a JMS destination. 
+<p>To be used with JmsTemplate's callback methods that take a ProducerCallback argument, often implemented as an anonymous inner class or as a lambda expression. </p>
+<p>The typical implementation will perform multiple operations on the supplied JMS Session and MessageProducer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-callback/index.html">SessionCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SessionCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Callback for executing any number of operations on a provided Session. 
+<p>To be used with the <code><a href="#">JmsTemplate#execute(SessionCallback)</a></code> method, often implemented as an anonymous inner class or as a lambda expression.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

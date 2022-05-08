@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.reactive.function.server - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.reactive.function.server</a><br/>
+<br/>
+<h2>Package org.springframework.web.reactive.function.server</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-entity-response/index.html">EntityResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">EntityResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServerResponse</span></code>
+<p>Entity-specific subtype of ServerResponse that exposes entity data.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rendering-response/index.html">RenderingResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RenderingResponse</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServerResponse</span></code>
+<p>Rendering-specific subtype of ServerResponse that exposes model and template data.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-router-function-dsl/index.html">RouterFunctionDsl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RouterFunctionDsl</span></code>
+<p>Provide a <a href="#">RouterFunction</a> Kotlin DSL in order to be able to write idiomatic Kotlin code.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="body.html">body</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">BodyBuilder</span><span class="symbol">.</span><span class="identifier">body</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.server$body(org.springframework.web.reactive.function.server.ServerResponse.BodyBuilder, org.reactivestreams.Publisher((org.springframework.web.reactive.function.server.body.T)))/publisher">publisher</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">ServerResponse</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ServerResponse.BodyBuilder.body</a> providing a <code>body(Publisher&lt;T&gt;)</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="body-to-flux.html">bodyToFlux</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ServerRequest</span><span class="symbol">.</span><span class="identifier">bodyToFlux</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html"><span class="identifier">Flux</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ServerRequest.bodyToFlux</a> providing a <code>bodyToFlux&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="body-to-mono.html">bodyToMono</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ServerRequest</span><span class="symbol">.</span><span class="identifier">bodyToMono</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ServerRequest.bodyToMono</a> providing a <code>bodyToMono&lt;Foo&gt;()</code> variant
+leveraging Kotlin reified type parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="body-to-server-sent-events.html">bodyToServerSentEvents</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">BodyBuilder</span><span class="symbol">.</span><span class="identifier">bodyToServerSentEvents</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.server$bodyToServerSentEvents(org.springframework.web.reactive.function.server.ServerResponse.BodyBuilder, org.reactivestreams.Publisher((org.springframework.web.reactive.function.server.bodyToServerSentEvents.T)))/publisher">publisher</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">ServerResponse</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ServerResponse.BodyBuilder.body</a> providing a <code>bodyToServerSentEvents(Publisher&lt;T&gt;)</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="router.html">router</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">router</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.server$router(kotlin.Function1((org.springframework.web.reactive.function.server.RouterFunctionDsl, kotlin.Unit)))/routes">routes</span><span class="symbol">:</span>&nbsp;<a href="-router-function-dsl/index.html"><span class="identifier">RouterFunctionDsl</span></a><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RouterFunction</span><span class="symbol">&lt;</span><span class="identifier">ServerResponse</span><span class="symbol">&gt;</span></code>
+<p>Allow to create easily a <code>RouterFunction&lt;ServerResponse&gt;</code> from a Kotlin router DSL based
+on the same building blocks than the Java one (<a href="#">RouterFunction</a>, <a href="#">RequestPredicate</a>,
+<a href="#">HandlerFunction</a>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

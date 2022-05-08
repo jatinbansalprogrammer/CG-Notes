@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.remoting.jaxws - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.remoting.jaxws</a><br/>
+<br/>
+<h2>Package org.springframework.remoting.jaxws</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-jax-ws-service-exporter/index.html">AbstractJaxWsServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractJaxWsServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Abstract exporter for JAX-WS services, autodetecting annotated service beans (through the JAX-WS javax.jws.WebService annotation). 
+<p>Subclasses need to implement the <code><a href="#">#publishEndpoint</a></code> template methods for actual endpoint exposure.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jax-ws-port-proxy-factory-bean/index.html">JaxWsPortProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JaxWsPortProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JaxWsPortClientInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>org.springframework.beans.factory.FactoryBean for a specific port of a JAX-WS service. Exposes a proxy for the port, to be used for bean references. Inherits configuration properties from JaxWsPortClientInterceptor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-jax-ws-service-factory/index.html">LocalJaxWsServiceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalJaxWsServiceFactory</span></code>
+<p>Factory for locally defined JAX-WS javax.xml.ws.Service references. Uses the JAX-WS <code><a href="#">javax.xml.ws.Service#create</a></code> factory API underneath. 
+<p>Serves as base class for LocalJaxWsServiceFactoryBean as well as JaxWsPortClientInterceptor and JaxWsPortProxyFactoryBean.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-jax-ws-service-factory-bean/index.html">LocalJaxWsServiceFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalJaxWsServiceFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-local-jax-ws-service-factory/index.html"><span class="identifier">LocalJaxWsServiceFactory</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Service</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.beans.factory.FactoryBean for locally defined JAX-WS Service references. Uses LocalJaxWsServiceFactory's facilities underneath. 
+<p>Alternatively, JAX-WS Service references can be looked up in the JNDI environment of the Java EE container.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-http-server-jax-ws-service-exporter/index.html">SimpleHttpServerJaxWsServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHttpServerJaxWsServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-jax-ws-service-exporter/index.html"><span class="identifier">AbstractJaxWsServiceExporter</span></a></code>
+<p>Simple exporter for JAX-WS services, autodetecting annotated service beans (through the JAX-WS javax.jws.WebService annotation) and exporting them through the HTTP server included in Sun's JDK 1.6. The full address for each service will consist of the server's base address with the service name appended (e.g. "http://localhost:8080/OrderService"). 
+<p>Note that this exporter will only work on Sun's JDK 1.6 or higher, as well as on JDKs that ship Sun's entire class library as included in the Sun JDK. For a portable JAX-WS exporter, have a look at SimpleJaxWsServiceExporter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-jax-ws-service-exporter/index.html">SimpleJaxWsServiceExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleJaxWsServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-jax-ws-service-exporter/index.html"><span class="identifier">AbstractJaxWsServiceExporter</span></a></code>
+<p>Simple exporter for JAX-WS services, autodetecting annotated service beans (through the JAX-WS javax.jws.WebService annotation) and exporting them with a configured base address (by default "http://localhost:8080/") using the JAX-WS provider's built-in publication support. The full address for each service will consist of the base address with the service name appended (e.g. "http://localhost:8080/OrderService"). 
+<p>Note that this exporter will only work if the JAX-WS runtime actually supports publishing with an address argument, i.e. if the JAX-WS runtime ships an internal HTTP server. This is the case with the JAX-WS runtime that's included in Sun's JDK 6 but not with the standalone JAX-WS 2.1 RI. </p>
+<p>For explicit configuration of JAX-WS endpoints with Sun's JDK 6 HTTP server, consider using SimpleHttpServerJaxWsServiceExporter!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jax-ws-soap-fault-exception/index.html">JaxWsSoapFaultException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JaxWsSoapFaultException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.remoting.soap/-soap-fault-exception/index.html"><span class="identifier">SoapFaultException</span></a></code>
+<p>Spring SoapFaultException adapter for the JAX-WS javax.xml.ws.soap.SOAPFaultException class.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

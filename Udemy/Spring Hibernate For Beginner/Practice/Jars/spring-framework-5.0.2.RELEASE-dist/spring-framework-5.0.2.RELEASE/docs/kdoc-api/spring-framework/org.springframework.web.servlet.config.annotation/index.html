@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.config.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.config.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.config.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cors-registration/index.html">CorsRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CorsRegistration</span></code>
+<p>Assists with the creation of a CorsConfiguration instance mapped to a path pattern. By default all origins, headers, and credentials for <code>GET</code>, <code>HEAD</code>, and <code>POST</code> requests are allowed while the max age is set to 30 minutes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-interceptor-registration/index.html">InterceptorRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InterceptorRegistration</span></code>
+<p>Assists with the creation of a MappedInterceptor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-redirect-view-controller-registration/index.html">RedirectViewControllerRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RedirectViewControllerRegistration</span></code>
+<p>Assist with the registration of a single redirect view controller.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-handler-registration/index.html">ResourceHandlerRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceHandlerRegistration</span></code>
+<p>Encapsulates information required to create a resource handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-url-based-view-resolver-registration/index.html">UrlBasedViewResolverRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UrlBasedViewResolverRegistration</span></code>
+<p>Assist with configuring a org.springframework.web.servlet.view.UrlBasedViewResolver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-view-controller-registration/index.html">ViewControllerRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ViewControllerRegistration</span></code>
+<p>Assist with the registration of a single view controller.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-mvc-configuration-support/index.html">WebMvcConfigurationSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebMvcConfigurationSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>This is the main class providing the configuration behind the MVC Java config. It is typically imported by adding EnableWebMvc to an application Configuration class. An alternative more advanced option is to extend directly from this class and override methods as necessary, remembering to add Configuration to the subclass and Bean to overridden Bean methods. For more details see the javadoc of EnableWebMvc. 
+<p>This class registers the following HandlerMappings:</p>
+ <ul> <li>RequestMappingHandlerMapping ordered at 0 for mapping requests to annotated controller methods. </li>
+<li>HandlerMapping ordered at 1 to map URL paths directly to view names. </li>
+<li>BeanNameUrlHandlerMapping ordered at 2 to map URL paths to controller bean names. </li>
+<li>HandlerMapping ordered at <code>Integer.MAX_VALUE-1</code> to serve static resource requests. </li>
+<li>HandlerMapping ordered at <code>Integer.MAX_VALUE</code> to forward requests to the default servlet. </li>
+</ul>
+ 
+<p>Registers these HandlerAdapters: </p>
+<ul> <li>RequestMappingHandlerAdapter for processing requests with annotated controller methods. </li>
+<li>HttpRequestHandlerAdapter for processing requests with HttpRequestHandlers. </li>
+<li>SimpleControllerHandlerAdapter for processing requests with interface-based Controllers. </li>
+</ul>
+ 
+<p>Registers a HandlerExceptionResolverComposite with this chain of exception resolvers: </p>
+<ul> <li>ExceptionHandlerExceptionResolver for handling exceptions through @ExceptionHandler methods. </li>
+<li>ResponseStatusExceptionResolver for exceptions annotated with @ResponseStatus. </li>
+<li>DefaultHandlerExceptionResolver for resolving known Spring exception types </li>
+</ul>
+ 
+<p>Registers an AntPathMatcher and a UrlPathHelper to be used by: </p>
+<ul> <li>the RequestMappingHandlerMapping, </li>
+<li>the HandlerMapping for ViewControllers </li>
+<li>and the HandlerMapping for serving resources </li>
+</ul>
+ Note that those beans can be configured with a PathMatchConfigurer. 
+<p>Both the RequestMappingHandlerAdapter and the ExceptionHandlerExceptionResolver are configured with default instances of the following by default: </p>
+<ul> <li>a ContentNegotiationManager </li>
+<li>a DefaultFormattingConversionService </li>
+<li>a org.springframework.validation.beanvalidation.OptionalValidatorFactoryBean if a JSR-303 implementation is available on the classpath </li>
+<li>a range of HttpMessageConverters depending on the third-party libraries available on the classpath. </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-mvc-configurer-adapter/index.html">WebMvcConfigurerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">WebMvcConfigurerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebMvcConfigurer</span></code>
+<p>An implementation of WebMvcConfigurer with empty methods allowing subclasses to override only the methods they're interested in.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-enable-web-mvc/index.html">EnableWebMvc</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableWebMvc</span></code>
+<p>Adding this annotation to an <code>@Configuration</code> class imports the Spring MVC configuration from WebMvcConfigurationSupport, e.g.: <pre><code> @Configuration @EnableWebMvc @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration { } </code></pre> 
+<p>To customize the imported configuration, implement the interface WebMvcConfigurer and override individual methods, e.g.: </p>
+<pre><code> @Configuration @EnableWebMvc @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration implements WebMvcConfigurer { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Override public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) { converters.add(new MyHttpMessageConverter()); } } </code></pre> 
+<p><strong>Note:</strong> only one <code>@Configuration</code> class may have the <code>@EnableWebMvc</code> annotation to import the Spring Web MVC configuration. There can however be multiple <code>@Configuration</code> classes implementing <code>WebMvcConfigurer</code> in order to customize the provided configuration. </p>
+<p>If WebMvcConfigurer does not expose some more advanced setting that needs to be configured consider removing the <code>@EnableWebMvc</code> annotation and extending directly from WebMvcConfigurationSupport or DelegatingWebMvcConfiguration, e.g.: </p>
+<pre><code> @Configuration @ComponentScan(basePackageClasses = { MyConfiguration.class }) public class MyConfiguration extends WebMvcConfigurationSupport { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Bean public RequestMappingHandlerAdapter requestMappingHandlerAdapter() { // Create or delegate to "super" to create and // customize properties of RequestMappingHandlerAdapter } } </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

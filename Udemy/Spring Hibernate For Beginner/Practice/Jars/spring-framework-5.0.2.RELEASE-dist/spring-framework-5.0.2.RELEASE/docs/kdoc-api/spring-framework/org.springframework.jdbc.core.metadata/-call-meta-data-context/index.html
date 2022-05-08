@@ -1,0 +1,285 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CallMetaDataContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core.metadata</a>&nbsp;/&nbsp;<a href=".">CallMetaDataContext</a><br/>
+<br/>
+<h1>CallMetaDataContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallMetaDataContext</span></code>
+<p>Class to manage context metadata used for the configuration and execution of the call.</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Kiril Nugmanov</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CallMetaDataContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Class to manage context metadata used for the configuration and execution of the call.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-call-string.html">createCallString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createCallString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Build the call string based on configuration and metadata information.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-return-result-set-parameter.html">createReturnResultSetParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createReturnResultSetParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$createReturnResultSetParameter(kotlin.String, org.springframework.jdbc.core.RowMapper((kotlin.Any)))/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$createReturnResultSetParameter(kotlin.String, org.springframework.jdbc.core.RowMapper((kotlin.Any)))/rowMapper">rowMapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">RowMapper</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SqlParameter</span></code>
+<p>Create a ReturnResultSetParameter/SqlOutParameter depending on the support provided by the JDBC driver used for the database in use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-call-parameters.html">getCallParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCallParameters</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SqlParameter</span><span class="symbol">&gt;</span></code>
+<p>Get the List of SqlParameter objects to be used in call execution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-catalog-name.html">getCatalogName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCatalogName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the catalog.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-function-return-name.html">getFunctionReturnName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFunctionReturnName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name used for the return value of the function.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-limited-in-parameter-names.html">getLimitedInParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLimitedInParameterNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Get a limited set of in parameters to be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-out-parameter-names.html">getOutParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOutParameterNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Get a list of the out parameter names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-procedure-name.html">getProcedureName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getProcedureName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the procedure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scalar-out-parameter-name.html">getScalarOutParameterName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScalarOutParameterName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the single out parameter for this call. If there are multiple parameters, the name of the first one will be returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-schema-name.html">getSchemaName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSchemaName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the schema.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="initialize-meta-data.html">initializeMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">initializeMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$initializeMetaData(javax.sql.DataSource)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize this class with metadata from the database.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-access-call-parameter-meta-data.html">isAccessCallParameterMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAccessCallParameterMetaData</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether call parameter metadata should be accessed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-function.html">isFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFunction</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether this call is a function call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-named-binding.html">isNamedBinding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isNamedBinding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether parameters should be bound by name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-return-value-required.html">isReturnValueRequired</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isReturnValueRequired</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether a return value is required.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="match-in-parameter-values-with-call-parameters.html">matchInParameterValuesWithCallParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matchInParameterValuesWithCallParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$matchInParameterValuesWithCallParameters(org.springframework.jdbc.core.namedparam.SqlParameterSource)/parameterSource">parameterSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matchInParameterValuesWithCallParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$matchInParameterValuesWithCallParameters(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/inParameters">inParameters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Match input parameter values with the parameters declared to be used in the call.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matchInParameterValuesWithCallParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$matchInParameterValuesWithCallParameters(kotlin.Array((kotlin.Any)))/parameterValues">parameterValues</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="process-parameters.html">processParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">processParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$processParameters(kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/parameters">parameters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SqlParameter</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Process the list of parameters provided, and if procedure column metadata is used, the parameters will be matched against the metadata information and any missing ones will be automatically included.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-access-call-parameter-meta-data.html">setAccessCallParameterMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAccessCallParameterMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setAccessCallParameterMetaData(kotlin.Boolean)/accessCallParameterMetaData">accessCallParameterMetaData</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether call parameter metadata should be accessed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-catalog-name.html">setCatalogName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCatalogName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setCatalogName(kotlin.String)/catalogName">catalogName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name of the catalog.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-function.html">setFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFunction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setFunction(kotlin.Boolean)/function">function</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether this call is a function call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-function-return-name.html">setFunctionReturnName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFunctionReturnName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setFunctionReturnName(kotlin.String)/functionReturnName">functionReturnName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name used for the return value of the function.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-limited-in-parameter-names.html">setLimitedInParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLimitedInParameterNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setLimitedInParameterNames(kotlin.collections.MutableSet((kotlin.String)))/limitedInParameterNames">limitedInParameterNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a limited set of in parameters to be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-named-binding.html">setNamedBinding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNamedBinding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setNamedBinding(kotlin.Boolean)/namedBinding">namedBinding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether parameters should be bound by name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-out-parameter-names.html">setOutParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOutParameterNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setOutParameterNames(kotlin.collections.MutableList((kotlin.String)))/outParameterNames">outParameterNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the names of the out parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-procedure-name.html">setProcedureName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProcedureName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setProcedureName(kotlin.String)/procedureName">procedureName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name of the procedure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-return-value-required.html">setReturnValueRequired</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReturnValueRequired</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setReturnValueRequired(kotlin.Boolean)/returnValueRequired">returnValueRequired</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether a return value is required.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-schema-name.html">setSchemaName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchemaName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataContext$setSchemaName(kotlin.String)/schemaName">schemaName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Secify the name of the schema.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

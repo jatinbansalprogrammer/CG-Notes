@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableTransactionManagement - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.annotation</a>&nbsp;/&nbsp;<a href=".">EnableTransactionManagement</a><br/>
+<br/>
+<h1>EnableTransactionManagement</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE]<span class="symbol">)</span> <span class="identifier">@Import</span><span class="symbol">(</span>TransactionManagementConfigurationSelector<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">EnableTransactionManagement</span></code>
+<p>Enables Spring's annotation-driven transaction management capability, similar to the support found in Spring's <code>&lt;tx:*&gt;</code> XML namespace. To be used on org.springframework.context.annotation.Configuration classes as follows: <pre><code> @Configuration @EnableTransactionManagement public class AppConfig { @Bean public FooRepository fooRepository() { // configure and return a class having @Transactional methods return new JdbcFooRepository(dataSource()); } @Bean public DataSource dataSource() { // configure and return the necessary JDBC DataSource } @Bean public PlatformTransactionManager txManager() { return new DataSourceTransactionManager(dataSource()); } }</code></pre> 
+<p>For reference, the example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;tx:annotation-driven/&gt; &lt;bean id="fooRepository" class="com.foo.JdbcFooRepository"&gt; &lt;constructor-arg ref="dataSource"/&gt; &lt;/bean&gt; &lt;bean id="dataSource" class="com.vendor.VendorDataSource"/&gt; &lt;bean id="transactionManager" class="org.sfwk...DataSourceTransactionManager"&gt; &lt;constructor-arg ref="dataSource"/&gt; &lt;/bean&gt; &lt;/beans&gt; </code></code></pre> In both of the scenarios above, <code>@EnableTransactionManagement</code> and <code>&lt;tx:annotation-driven/&gt;</code> are responsible for registering the necessary Spring components that power annotation-driven transaction management, such as the TransactionInterceptor and the proxy- or AspectJ-based advice that weave the interceptor into the call stack when <code>JdbcFooRepository</code>'s <code>@Transactional</code> methods are invoked. 
+<p>A minor difference between the two examples lies in the naming of the <code>PlatformTransactionManager</code> bean: In the <code>@Bean</code> case, the name is <em>"txManager"</em> (per the name of the method); in the XML case, the name is <em>"transactionManager"</em>. The <code>&lt;tx:annotation-driven/&gt;</code> is hard-wired to look for a bean named "transactionManager" by default, however <code>@EnableTransactionManagement</code> is more flexible; it will fall back to a by-type lookup for any <code>PlatformTransactionManager</code> bean in the container. Thus the name can be "txManager", "transactionManager", or "tm": it simply does not matter. </p>
+<p>For those that wish to establish a more direct relationship between <code>@EnableTransactionManagement</code> and the exact transaction manager bean to be used, the TransactionManagementConfigurer callback interface may be implemented - notice the <code>implements</code> clause and the <code>@Override</code>-annotated method below: </p>
+<pre><code> @Configuration @EnableTransactionManagement public class AppConfig implements TransactionManagementConfigurer { @Bean public FooRepository fooRepository() { // configure and return a class having @Transactional methods return new JdbcFooRepository(dataSource()); } @Bean public DataSource dataSource() { // configure and return the necessary JDBC DataSource } @Bean public PlatformTransactionManager txManager() { return new DataSourceTransactionManager(dataSource()); } @Override public PlatformTransactionManager annotationDrivenTransactionManager() { return txManager(); } }</code></pre> This approach may be desirable simply because it is more explicit, or it may be necessary in order to distinguish between two <code>PlatformTransactionManager</code> beans present in the same container. As the name suggests, the <code>annotationDrivenTransactionManager()</code> will be the one used for processing <code>@Transactional</code> methods. See TransactionManagementConfigurer Javadoc for further details. 
+<p>The <code><a href="#">#mode</a></code> attribute controls how advice is applied: If the mode is <code><a href="#">AdviceMode#PROXY</a></code> (the default), then the other attributes control the behavior of the proxying. Please note that proxy mode allows for interception of calls through the proxy only; local calls within the same class cannot get intercepted that way. </p>
+<p>Note that if the <a href="#">#mode</a> is set to <code><a href="#">AdviceMode#ASPECTJ</a></code>, then the value of the <code><a href="#">#proxyTargetClass</a></code> attribute will be ignored. Note also that in this case the <code>spring-aspects</code> module JAR must be present on the classpath, with compile-time weaving or load-time weaving applying the aspect to the affected classes. There is no proxy involved in such a scenario; local calls will be intercepted as well.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+TransactionManagementConfigurerTransactionManagementConfigurationSelectorProxyTransactionManagementConfigurationorg.springframework.transaction.aspectj.AspectJTransactionManagementConfiguration</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EnableTransactionManagement</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.annotation.EnableTransactionManagement$<init>(kotlin.Boolean, org.springframework.context.annotation.AdviceMode, kotlin.Int)/proxyTargetClass">proxyTargetClass</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.annotation.EnableTransactionManagement$<init>(kotlin.Boolean, org.springframework.context.annotation.AdviceMode, kotlin.Int)/mode">mode</span><span class="symbol">:</span>&nbsp;<span class="identifier">AdviceMode</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.annotation.EnableTransactionManagement$<init>(kotlin.Boolean, org.springframework.context.annotation.AdviceMode, kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Enables Spring's annotation-driven transaction management capability, similar to the support found in Spring's <code>&lt;tx:*&gt;</code> XML namespace. To be used on org.springframework.context.annotation.Configuration classes as follows: <pre><code> @Configuration @EnableTransactionManagement public class AppConfig { @Bean public FooRepository fooRepository() { // configure and return a class having @Transactional methods return new JdbcFooRepository(dataSource()); } @Bean public DataSource dataSource() { // configure and return the necessary JDBC DataSource } @Bean public PlatformTransactionManager txManager() { return new DataSourceTransactionManager(dataSource()); } }</code></pre> 
+<p>For reference, the example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;tx:annotation-driven/&gt; &lt;bean id="fooRepository" class="com.foo.JdbcFooRepository"&gt; &lt;constructor-arg ref="dataSource"/&gt; &lt;/bean&gt; &lt;bean id="dataSource" class="com.vendor.VendorDataSource"/&gt; &lt;bean id="transactionManager" class="org.sfwk...DataSourceTransactionManager"&gt; &lt;constructor-arg ref="dataSource"/&gt; &lt;/bean&gt; &lt;/beans&gt; </code></code></pre> In both of the scenarios above, <code>@EnableTransactionManagement</code> and <code>&lt;tx:annotation-driven/&gt;</code> are responsible for registering the necessary Spring components that power annotation-driven transaction management, such as the TransactionInterceptor and the proxy- or AspectJ-based advice that weave the interceptor into the call stack when <code>JdbcFooRepository</code>'s <code>@Transactional</code> methods are invoked. 
+<p>A minor difference between the two examples lies in the naming of the <code>PlatformTransactionManager</code> bean: In the <code>@Bean</code> case, the name is <em>"txManager"</em> (per the name of the method); in the XML case, the name is <em>"transactionManager"</em>. The <code>&lt;tx:annotation-driven/&gt;</code> is hard-wired to look for a bean named "transactionManager" by default, however <code>@EnableTransactionManagement</code> is more flexible; it will fall back to a by-type lookup for any <code>PlatformTransactionManager</code> bean in the container. Thus the name can be "txManager", "transactionManager", or "tm": it simply does not matter. </p>
+<p>For those that wish to establish a more direct relationship between <code>@EnableTransactionManagement</code> and the exact transaction manager bean to be used, the TransactionManagementConfigurer callback interface may be implemented - notice the <code>implements</code> clause and the <code>@Override</code>-annotated method below: </p>
+<pre><code> @Configuration @EnableTransactionManagement public class AppConfig implements TransactionManagementConfigurer { @Bean public FooRepository fooRepository() { // configure and return a class having @Transactional methods return new JdbcFooRepository(dataSource()); } @Bean public DataSource dataSource() { // configure and return the necessary JDBC DataSource } @Bean public PlatformTransactionManager txManager() { return new DataSourceTransactionManager(dataSource()); } @Override public PlatformTransactionManager annotationDrivenTransactionManager() { return txManager(); } }</code></pre> This approach may be desirable simply because it is more explicit, or it may be necessary in order to distinguish between two <code>PlatformTransactionManager</code> beans present in the same container. As the name suggests, the <code>annotationDrivenTransactionManager()</code> will be the one used for processing <code>@Transactional</code> methods. See TransactionManagementConfigurer Javadoc for further details. 
+<p>The <code><a href="#">#mode</a></code> attribute controls how advice is applied: If the mode is <code><a href="#">AdviceMode#PROXY</a></code> (the default), then the other attributes control the behavior of the proxying. Please note that proxy mode allows for interception of calls through the proxy only; local calls within the same class cannot get intercepted that way. </p>
+<p>Note that if the <a href="#">#mode</a> is set to <code><a href="#">AdviceMode#ASPECTJ</a></code>, then the value of the <code><a href="#">#proxyTargetClass</a></code> attribute will be ignored. Note also that in this case the <code>spring-aspects</code> module JAR must be present on the classpath, with compile-time weaving or load-time weaving applying the aspect to the affected classes. There is no proxy involved in such a scenario; local calls will be intercepted as well.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="mode.html">mode</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">mode</span><span class="symbol">: </span><span class="identifier">AdviceMode</span></code>
+<p>Indicate how transactional advice should be applied. 
+<p><strong>The default is <code><a href="#">AdviceMode#PROXY</a></code>.</strong> Please note that proxy mode allows for interception of calls through the proxy only. Local calls within the same class cannot get intercepted that way; an Transactional annotation on such a method within a local call will be ignored since Spring's interceptor does not even kick in for such a runtime scenario. For a more advanced mode of interception, consider switching this to <code><a href="#">AdviceMode#ASPECTJ</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="order.html">order</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">order</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Indicate the ordering of the execution of the transaction advisor when multiple advices are applied at a specific joinpoint. 
+<p>The default is <code><a href="#">Ordered#LOWEST_PRECEDENCE</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="proxy-target-class.html">proxyTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">proxyTargetClass</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Indicate whether subclass-based (CGLIB) proxies are to be created (<code>true</code>) as opposed to standard Java interface-based proxies (<code>false</code>). The default is <code>false</code>. <strong>Applicable only if <code><a href="#">#mode()</a></code> is set to <code><a href="#">AdviceMode#PROXY</a></code></strong>. 
+<p>Note that setting this attribute to <code>true</code> will affect <em>all</em> Spring-managed beans requiring proxying, not just those marked with <code>@Transactional</code>. For example, other beans marked with Spring's <code>@Async</code> annotation will be upgraded to subclass proxying at the same time. This approach has no negative impact in practice unless one is explicitly expecting one type of proxy vs another, e.g. in tests.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

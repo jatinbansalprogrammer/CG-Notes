@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.stereotype - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.stereotype</a><br/>
+<br/>
+<h2>Package org.springframework.stereotype</h2>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-indexed/index.html">Indexed</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Indexed</span></code>
+<p>Indicate that the annotated element represents a stereotype for the index. 
+<p>The <code>CandidateComponentsIndex</code> is an alternative to classpath scanning that uses a metadata file generated at compilation time. The index allows retrieving the candidate components (i.e. fully qualified name) based on a stereotype. This annotation instructs the generator to index the element on which the annotated element is present or if it implements or extends from the annotated element. The stereotype is the fully qualified name of the annotated element. </p>
+<p>Consider the default Component annotation that is meta-annotated with this annotation. If a component is annotated with Component, an entry for that component will be added to the index using the <code>org.springframework.stereotype.Component</code> stereotype. </p>
+<p>This annotation is also honored on meta-annotations. Consider this custom annotation: </p>
+<pre><code> package com.example; @Target(ElementType.TYPE) @Retention(RetentionPolicy.RUNTIME) @Documented @Indexed @Service public @interface PrivilegedService { ... } </code></pre> If the above annotation is present on a type, it will be indexed with two stereotypes: <code>org.springframework.stereotype.Component</code> and <code>com.example.PrivilegedService</code>. While Service isn't directly annotated with <code>Indexed</code>, it is meta-annotated with Component. 
+<p>It is also possible to index all implementations of a certain interface or all the subclasses of a given class by adding <code>@Indexed</code> on it. Consider this base interface: </p>
+<pre><code> package com.example; @Indexed public interface AdminService { ... } </code></pre> Now, consider an implementation of this <code>AdminService</code> somewhere: <pre><code> package com.example.foo; import com.example.AdminService; public class ConfigurationAdminService implements AdminService { ... } </code></pre> Because this class implements an interface that is indexed, it will be automatically included with the <code>com.example.AdminService</code> stereotype. If there are more <code>@Indexed</code> interfaces and/or superclasses in the hierarchy, the class will map to all their stereotypes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

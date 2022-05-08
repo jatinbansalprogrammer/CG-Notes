@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CustomMapEditor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.propertyeditors</a>&nbsp;/&nbsp;<a href=".">CustomMapEditor</a><br/>
+<br/>
+<h1>CustomMapEditor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomMapEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for Maps, converting any source Map to a given target Map type.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.1</p>
+<p><strong>See Also</strong><br/>
+java.util.Mapjava.util.SortedMap</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CustomMapEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomMapEditor$<init>(java.lang.Class((kotlin.collections.MutableMap((kotlin.Any, )))))/mapType">mapType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new CustomMapEditor for the given target type, keeping an incoming <code>null</code> as-is.</p>
+<code><span class="identifier">CustomMapEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomMapEditor$<init>(java.lang.Class((kotlin.collections.MutableMap((kotlin.Any, )))), kotlin.Boolean)/mapType">mapType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomMapEditor$<init>(java.lang.Class((kotlin.collections.MutableMap((kotlin.Any, )))), kotlin.Boolean)/nullAsEmptyMap">nullAsEmptyMap</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new CustomMapEditor for the given target type. 
+<p>If the incoming value is of the given type, it will be used as-is. If it is a different Map type or an array, it will be converted to a default implementation of the given Map type. If the value is anything else, a target Map with that single value will be created. </p>
+<p>The default Map implementations are: TreeMap for SortedMap, and LinkedHashMap for Map.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-as-text.html">getAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAsText</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>This implementation returns <code>null</code> to indicate that there is no appropriate text representation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-as-text.html">setAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAsText</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomMapEditor$setAsText(kotlin.String)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Convert the given text value to a Map with a single element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-value.html">setValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomMapEditor$setValue(kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Convert the given value to a Map of the target type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

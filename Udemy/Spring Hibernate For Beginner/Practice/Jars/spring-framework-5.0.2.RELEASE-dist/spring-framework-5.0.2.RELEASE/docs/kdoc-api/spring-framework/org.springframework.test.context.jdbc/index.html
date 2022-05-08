@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.context.jdbc - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.context.jdbc</a><br/>
+<br/>
+<h2>Package org.springframework.test.context.jdbc</h2>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-sql/index.html">Sql</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Sql</span></code>
+<p><code>@Sql</code> is used to annotate a test class or test method to configure SQL <code><a href="#">#scripts</a></code> and <code><a href="#">#statements</a></code> to be executed against a given database during integration tests. 
+<p>Method-level declarations override class-level declarations. </p>
+<p>Script execution is performed by the SqlScriptsTestExecutionListener, which is enabled by default. </p>
+<p>The configuration options provided by this annotation and SqlConfig are equivalent to those supported by org.springframework.jdbc.datasource.init.ScriptUtils and org.springframework.jdbc.datasource.init.ResourceDatabasePopulator but are a superset of those provided by the <code>&lt;jdbc:initialize-database/&gt;</code> XML namespace element. Consult the javadocs of individual attributes in this annotation and SqlConfig for details. </p>
+<p>Beginning with Java 8, <code>@Sql</code> can be used as a <em>Repeatable</em> annotation. Otherwise, SqlGroup can be used as an explicit container for declaring multiple instances of <code>@Sql</code>. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em> with attribute overrides.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-group/index.html">SqlGroup</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SqlGroup</span></code>
+<p>Container annotation that aggregates several Sql annotations. 
+<p>Can be used natively, declaring several nested <code>@Sql</code> annotations. Can also be used in conjunction with Java 8's support for repeatable annotations, where <code>@Sql</code> can simply be declared several times on the same class or method, implicitly generating this container annotation. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReflectiveMethodInvocation - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.framework</a>&nbsp;/&nbsp;<a href=".">ReflectiveMethodInvocation</a><br/>
+<br/>
+<h1>ReflectiveMethodInvocation</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectiveMethodInvocation</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyMethodInvocation</span><span class="symbol">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-cloneable/index.html"><span class="identifier">Cloneable</span></a></code>
+<p>Spring's implementation of the AOP Alliance org.aopalliance.intercept.MethodInvocation interface, implementing the extended org.springframework.aop.ProxyMethodInvocation interface. 
+<p>Invokes the target object using reflection. Subclasses can override the <code><a href="#">#invokeJoinpoint()</a></code> method to change this behavior, so this is also a useful base class for more specialized MethodInvocation implementations. </p>
+<p>It is possible to clone an invocation, to invoke <code><a href="proceed.html">#proceed()</a></code> repeatedly (once per clone), using the <code><a href="invocable-clone.html">#invocableClone()</a></code> method. It is also possible to attach custom attributes to the invocation, using the <code><a href="#">#setUserAttribute</a></code> / <code><a href="#">#getUserAttribute</a></code> methods. </p>
+<p><strong>NOTE:</strong> This class is considered internal and should not be directly accessed. The sole reason for it being public is compatibility with existing framework integrations (e.g. Pitchfork). For any other purposes, use the ProxyMethodInvocation interface instead.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#invokeJoinpoint</a><a href="proceed.html">#proceed</a><a href="invocable-clone.html">#invocableClone</a><a href="#">#setUserAttribute</a><a href="#">#getUserAttribute</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-arguments.html">getArguments</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getArguments</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-method.html">getMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getMethod</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Return the method invoked on the proxied interface. May or may not correspond with a method invoked on an underlying implementation of that interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-proxy.html">getProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getProxy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-static-part.html">getStaticPart</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getStaticPart</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AccessibleObject</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-this.html">getThis</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getThis</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-user-attribute.html">getUserAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUserAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ReflectiveMethodInvocation$getUserAttribute(kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-user-attributes.html">getUserAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUserAttributes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Return user attributes associated with this invocation. This method provides an invocation-bound alternative to a ThreadLocal. 
+<p>This map is initialized lazily and is not used in the AOP framework itself.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invocable-clone.html">invocableClone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invocableClone</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a></code>
+<p>This implementation returns a shallow copy of this invocation object, including an independent copy of the original arguments array. 
+<p>We want a shallow copy in this case: We want to use the same interceptor chain and other object references, but we want an independent value for the current interceptor index.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invocableClone</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.framework.ReflectiveMethodInvocation$invocableClone(kotlin.Array((kotlin.Any)))/arguments">arguments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a></code>
+<p>This implementation returns a shallow copy of this invocation object, using the given arguments array for the clone. 
+<p>We want a shallow copy in this case: We want to use the same interceptor chain and other object references, but we want an independent value for the current interceptor index.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="proceed.html">proceed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">proceed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-arguments.html">setArguments</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setArguments</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.framework.ReflectiveMethodInvocation$setArguments(kotlin.Array((kotlin.Any)))/arguments">arguments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-user-attribute.html">setUserAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUserAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ReflectiveMethodInvocation$setUserAttribute(kotlin.String, kotlin.Any)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.framework.ReflectiveMethodInvocation$setUserAttribute(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

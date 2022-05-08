@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>InvocableHandlerMethod - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.method.support</a>&nbsp;/&nbsp;<a href=".">InvocableHandlerMethod</a><br/>
+<br/>
+<h1>InvocableHandlerMethod</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvocableHandlerMethod</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethod</span></code>
+<p>Provides a method for invoking the handler method for a given request after resolving its method argument values through registered HandlerMethodArgumentResolvers. 
+<p>Argument resolution often requires a WebDataBinder for data binding or for type conversion. Use the <code><a href="set-data-binder-factory.html">#setDataBinderFactory(WebDataBinderFactory)</a></code> property to supply a binder factory to pass to argument resolvers. </p>
+<p>Use <code><a href="set-handler-method-argument-resolvers.html">#setHandlerMethodArgumentResolvers</a></code> to customize the list of argument resolvers.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">InvocableHandlerMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$<init>(org.springframework.web.method.HandlerMethod)/handlerMethod">handlerMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethod</span><span class="symbol">)</span></code>
+<p>Create an instance from a <code>HandlerMethod</code>.</p>
+<code><span class="identifier">InvocableHandlerMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$<init>(kotlin.Any, java.lang.reflect.Method)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$<init>(kotlin.Any, java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span></code>
+<p>Create an instance from a bean instance and a method.</p>
+<code><span class="identifier">InvocableHandlerMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$<init>(kotlin.Any, kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$<init>(kotlin.Any, kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/methodName">methodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$<init>(kotlin.Any, kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/parameterTypes">parameterTypes</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Construct a new handler method with the given bean instance, method name and parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="invoke-for-request.html">invokeForRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invokeForRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$invokeForRequest(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer, kotlin.Array((kotlin.Any)))/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$invokeForRequest(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer, kotlin.Array((kotlin.Any)))/mavContainer">mavContainer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ModelAndViewContainer</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$invokeForRequest(org.springframework.web.context.request.NativeWebRequest, org.springframework.web.method.support.ModelAndViewContainer, kotlin.Array((kotlin.Any)))/providedArgs">providedArgs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoke the method after resolving its argument values in the context of the given request. 
+<p>Argument values are commonly resolved through HandlerMethodArgumentResolvers. The <code>providedArgs</code> parameter however may supply argument values to be used directly, i.e. without argument resolution. Examples of provided argument values include a WebDataBinder, a SessionStatus, or a thrown exception instance. Provided argument values are checked before argument resolvers.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-data-binder-factory.html">setDataBinderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDataBinderFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$setDataBinderFactory(org.springframework.web.bind.support.WebDataBinderFactory)/dataBinderFactory">dataBinderFactory</span><span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.bind.support/-web-data-binder-factory/index.html"><span class="identifier">WebDataBinderFactory</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the WebDataBinderFactory to be passed to argument resolvers allowing them to create a WebDataBinder for data binding and type conversion purposes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-handler-method-argument-resolvers.html">setHandlerMethodArgumentResolvers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHandlerMethodArgumentResolvers</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$setHandlerMethodArgumentResolvers(org.springframework.web.method.support.HandlerMethodArgumentResolverComposite)/argumentResolvers">argumentResolvers</span><span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodArgumentResolverComposite</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set HandlerMethodArgumentResolvers to use to use for resolving method argument values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parameter-name-discoverer.html">setParameterNameDiscoverer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParameterNameDiscoverer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.support.InvocableHandlerMethod$setParameterNameDiscoverer(org.springframework.core.ParameterNameDiscoverer)/parameterNameDiscoverer">parameterNameDiscoverer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterNameDiscoverer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ParameterNameDiscoverer for resolving parameter names when needed (e.g. default request attribute name). 
+<p>Default is a org.springframework.core.DefaultParameterNameDiscoverer.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.mvc.method.annotation/-servlet-invocable-handler-method/index.html">ServletInvocableHandlerMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletInvocableHandlerMethod</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvocableHandlerMethod</span></code>
+<p>Extends InvocableHandlerMethod with the ability to handle return values through a registered HandlerMethodReturnValueHandler and also supports setting the response status based on a method-level <code>@ResponseStatus</code> annotation. 
+<p>A <code>null</code> return value (including void) may be interpreted as the end of request processing in combination with a <code>@ResponseStatus</code> annotation, a not-modified check condition (see <code><a href="#">ServletWebRequest#checkNotModified(long)</a></code>), or a method argument that provides access to the response stream.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

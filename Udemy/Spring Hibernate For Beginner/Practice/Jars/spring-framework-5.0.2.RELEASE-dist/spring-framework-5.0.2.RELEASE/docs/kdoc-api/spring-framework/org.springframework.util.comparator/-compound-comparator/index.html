@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CompoundComparator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.util.comparator</a>&nbsp;/&nbsp;<a href=".">CompoundComparator</a><br/>
+<br/>
+<h1>CompoundComparator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompoundComparator</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>A comparator that chains a sequence of one or more Comparators. 
+<p>A compound comparator calls each Comparator in sequence until a single Comparator returns a non-zero result, or the comparators are exhausted and zero is returned. </p>
+<p>This facilitates in-memory sorting similar to multi-column sorting in SQL. The order of any single Comparator in the list can also be reversed.</p>
+</p>
+<p><strong>Author</strong><br/>
+Keith Donald</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CompoundComparator</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Construct a CompoundComparator with initially no Comparators. Clients must add at least one Comparator before calling the compare method or an IllegalStateException is thrown.</p>
+<code><span class="identifier">CompoundComparator</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.util.comparator.CompoundComparator$<init>(kotlin.Array((java.util.Comparator((kotlin.Any)))))/comparators">comparators</span><span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Construct a CompoundComparator from the Comparators in the provided array. 
+<p>All Comparators will default to ascending sort order, unless they are InvertibleComparators.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-comparator.html">addComparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addComparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$addComparator(java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)))/comparator">comparator</span><span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a Comparator to the end of the chain. 
+<p>The Comparator will default to ascending sort order, unless it is a InvertibleComparator.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addComparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$addComparator(java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)), kotlin.Boolean)/comparator">comparator</span><span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$addComparator(java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)), kotlin.Boolean)/ascending">ascending</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a Comparator to the end of the chain using the provided sort order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="compare.html">compare</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">compare</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$compare(org.springframework.util.comparator.CompoundComparator.T, org.springframework.util.comparator.CompoundComparator.T)/o1">o1</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$compare(org.springframework.util.comparator.CompoundComparator.T, org.springframework.util.comparator.CompoundComparator.T)/o2">o2</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-comparator-count.html">getComparatorCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getComparatorCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the number of aggregated comparators.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="invert-order.html">invertOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invertOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invert the sort order of each sort definition contained by this compound comparator.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invertOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$invertOrder(kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invert the sort order of the sort definition at the specified index.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ascending-order.html">setAscendingOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAscendingOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$setAscendingOrder(kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Change the sort order at the given index to ascending.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-comparator.html">setComparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setComparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$setComparator(kotlin.Int, java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)))/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$setComparator(kotlin.Int, java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)))/comparator">comparator</span><span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Replace the Comparator at the given index. 
+<p>The Comparator will default to ascending sort order, unless it is a InvertibleComparator.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setComparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$setComparator(kotlin.Int, java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)), kotlin.Boolean)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$setComparator(kotlin.Int, java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)), kotlin.Boolean)/comparator">comparator</span><span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$setComparator(kotlin.Int, java.util.Comparator((org.springframework.util.comparator.CompoundComparator.T)), kotlin.Boolean)/ascending">ascending</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Replace the Comparator at the given index using the given sort order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-descending-order.html">setDescendingOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDescendingOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.comparator.CompoundComparator$setDescendingOrder(kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Change the sort order at the given index to descending sort.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

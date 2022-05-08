@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ForkJoinPoolFactoryBean.setAwaitTerminationSeconds - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.concurrent</a>&nbsp;/&nbsp;<a href="index.html">ForkJoinPoolFactoryBean</a>&nbsp;/&nbsp;<a href=".">setAwaitTerminationSeconds</a><br/>
+<br/>
+<h1>setAwaitTerminationSeconds</h1>
+<a name="org.springframework.scheduling.concurrent.ForkJoinPoolFactoryBean$setAwaitTerminationSeconds(kotlin.Int)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAwaitTerminationSeconds</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ForkJoinPoolFactoryBean$setAwaitTerminationSeconds(kotlin.Int)/awaitTerminationSeconds">awaitTerminationSeconds</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the maximum number of seconds that this ForkJoinPool is supposed to block on shutdown in order to wait for remaining tasks to complete their execution before the rest of the container continues to shut down. This is particularly useful if your remaining tasks are likely to need access to other resources that are also managed by the container. 
+<p>By default, this ForkJoinPool won't wait for the termination of tasks at all. It will continue to fully execute all ongoing tasks as well as all remaining tasks in the queue, in parallel to the rest of the container shutting down. In contrast, if you specify an await-termination period using this property, this executor will wait for the given time (max) for the termination of tasks. </p>
+<p>Note that this feature works for the <code><a href="set-common-pool.html">"commonPool"</a></code> mode as well. The underlying ForkJoinPool won't actually terminate in that case but will wait for all tasks to terminate.</p>
+</p>
+<p><strong>See Also</strong><br/>
+<a href="#">java.util.concurrent.ForkJoinPool#shutdown()</a><a href="#">java.util.concurrent.ForkJoinPool#awaitTermination</a></p>
+</BODY>
+</HTML>

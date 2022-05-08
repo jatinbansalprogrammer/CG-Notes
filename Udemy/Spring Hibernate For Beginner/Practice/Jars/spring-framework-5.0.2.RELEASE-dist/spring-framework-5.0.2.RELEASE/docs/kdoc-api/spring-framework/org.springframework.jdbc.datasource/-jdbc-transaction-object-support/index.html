@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JdbcTransactionObjectSupport - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href=".">JdbcTransactionObjectSupport</a><br/>
+<br/>
+<h1>JdbcTransactionObjectSupport</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JdbcTransactionObjectSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SavepointManager</span><span class="symbol">, </span><span class="identifier">SmartTransactionObject</span></code>
+<p>Convenient base class for JDBC-aware transaction objects. Can contain a ConnectionHolder with a JDBC <code>Connection</code>, and implements the SavepointManager interface based on that <code>ConnectionHolder</code>. 
+<p>Allows for programmatic management of JDBC java.sql.Savepoint. Spring's org.springframework.transaction.support.DefaultTransactionStatus automatically delegates to this, as it autodetects transaction objects which implement the SavepointManager interface.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+DataSourceTransactionManager</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JdbcTransactionObjectSupport</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient base class for JDBC-aware transaction objects. Can contain a ConnectionHolder with a JDBC <code>Connection</code>, and implements the SavepointManager interface based on that <code>ConnectionHolder</code>. 
+<p>Allows for programmatic management of JDBC java.sql.Savepoint. Spring's org.springframework.transaction.support.DefaultTransactionStatus automatically delegates to this, as it autodetects transaction objects which implement the SavepointManager interface.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-savepoint.html">createSavepoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createSavepoint</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>This implementation creates a JDBC 3.0 Savepoint and returns it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="flush.html">flush</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">flush</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection-holder.html">getConnectionHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnectionHolder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConnectionHolder</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-previous-isolation-level.html">getPreviousIsolationLevel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPreviousIsolationLevel</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="has-connection-holder.html">hasConnectionHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hasConnectionHolder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-savepoint-allowed.html">isSavepointAllowed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSavepointAllowed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="release-savepoint.html">releaseSavepoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">releaseSavepoint</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.JdbcTransactionObjectSupport$releaseSavepoint(kotlin.Any)/savepoint">savepoint</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation releases the given JDBC 3.0 Savepoint.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="rollback-to-savepoint.html">rollbackToSavepoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">rollbackToSavepoint</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.JdbcTransactionObjectSupport$rollbackToSavepoint(kotlin.Any)/savepoint">savepoint</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation rolls back to the given JDBC 3.0 Savepoint.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-connection-holder.html">setConnectionHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectionHolder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.JdbcTransactionObjectSupport$setConnectionHolder(org.springframework.jdbc.datasource.ConnectionHolder)/connectionHolder">connectionHolder</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionHolder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-previous-isolation-level.html">setPreviousIsolationLevel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPreviousIsolationLevel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.JdbcTransactionObjectSupport$setPreviousIsolationLevel(kotlin.Int)/previousIsolationLevel">previousIsolationLevel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-savepoint-allowed.html">setSavepointAllowed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSavepointAllowed</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.JdbcTransactionObjectSupport$setSavepointAllowed(kotlin.Boolean)/savepointAllowed">savepointAllowed</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

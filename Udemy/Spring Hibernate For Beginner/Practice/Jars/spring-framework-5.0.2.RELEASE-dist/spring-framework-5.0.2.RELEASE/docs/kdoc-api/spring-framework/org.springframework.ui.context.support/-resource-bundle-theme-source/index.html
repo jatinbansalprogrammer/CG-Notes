@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResourceBundleThemeSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.ui.context.support</a>&nbsp;/&nbsp;<a href=".">ResourceBundleThemeSource</a><br/>
+<br/>
+<h1>ResourceBundleThemeSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceBundleThemeSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HierarchicalThemeSource</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>ThemeSource implementation that looks up an individual java.util.ResourceBundle per theme. The theme name gets interpreted as ResourceBundle basename, supporting a common basename prefix for all themes.</p>
+<p><strong>Author</strong><br/>
+Jean-Pierre Pawlak</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setBasenamePrefix</a>java.util.ResourceBundleorg.springframework.context.support.ResourceBundleMessageSource</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ResourceBundleThemeSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>ThemeSource implementation that looks up an individual java.util.ResourceBundle per theme. The theme name gets interpreted as ResourceBundle basename, supporting a common basename prefix for all themes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-parent-theme-source.html">getParentThemeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParentThemeSource</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.springframework.ui.context/-theme-source/index.html"><span class="identifier">ThemeSource</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-theme.html">getTheme</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTheme</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.context.support.ResourceBundleThemeSource$getTheme(kotlin.String)/themeName">themeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Theme</span></code>
+<p>This implementation returns a SimpleTheme instance, holding a ResourceBundle-based MessageSource whose basename corresponds to the given theme name (prefixed by the configured "basenamePrefix"). 
+<p>SimpleTheme instances are cached per theme name. Use a reloadable MessageSource if themes should reflect changes to the underlying files.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-basename-prefix.html">setBasenamePrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBasenamePrefix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.context.support.ResourceBundleThemeSource$setBasenamePrefix(kotlin.String)/basenamePrefix">basenamePrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the prefix that gets applied to the ResourceBundle basenames, i.e. the theme names. E.g.: basenamePrefix="test.", themeName="theme" -&gt; basename="test.theme". 
+<p>Note that ResourceBundle names are effectively classpath locations: As a consequence, the JDK's standard ResourceBundle treats dots as package separators. This means that "test.theme" is effectively equivalent to "test/theme", just like it is for programmatic <code>java.util.ResourceBundle</code> usage.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.context.support.ResourceBundleThemeSource$setBeanClassLoader(java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-encoding.html">setDefaultEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.context.support.ResourceBundleThemeSource$setDefaultEncoding(kotlin.String)/defaultEncoding">defaultEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default charset to use for parsing resource bundle files. 
+<p>ResourceBundleMessageSource's default is the <code>java.util.ResourceBundle</code> default encoding: ISO-8859-1.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fallback-to-system-locale.html">setFallbackToSystemLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFallbackToSystemLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.context.support.ResourceBundleThemeSource$setFallbackToSystemLocale(kotlin.Boolean)/fallbackToSystemLocale">fallbackToSystemLocale</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to fall back to the system Locale if no files for a specific Locale have been found. 
+<p>ResourceBundleMessageSource's default is "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parent-theme-source.html">setParentThemeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParentThemeSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.context.support.ResourceBundleThemeSource$setParentThemeSource(org.springframework.ui.context.ThemeSource)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="../../org.springframework.ui.context/-theme-source/index.html"><span class="identifier">ThemeSource</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingConnectionFactory.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href="index.html">DelegatingConnectionFactory</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jms.connection.DelegatingConnectionFactory$&lt;init&gt;()"></a>
+<code><span class="identifier">DelegatingConnectionFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>javax.jms.ConnectionFactory implementation that delegates all calls to a given target javax.jms.ConnectionFactory, adapting specific <code>create(Queue/Topic)Connection</code> calls to the target ConnectionFactory if necessary (e.g. when running JMS 1.0.2 API based code against a generic JMS 1.1 ConnectionFactory, such as ActiveMQ's PooledConnectionFactory). 
+<p>This class allows for being subclassed, with subclasses overriding only those methods (such as <code><a href="create-connection.html">#createConnection()</a></code>) that should not simply delegate to the target ConnectionFactory. </p>
+<p>Can also be defined as-is, wrapping a specific target ConnectionFactory, using the "shouldStopConnections" flag to indicate whether Connections obtained from the target factory are supposed to be stopped before closed. The latter may be necessary for some connection pools that simply return released connections to the pool, not stopping them while they sit in the pool.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.2</p>
+<p><strong>See Also</strong><br/>
+<a href="create-connection.html">#createConnection()</a><a href="set-should-stop-connections.html">#setShouldStopConnections</a><a href="#">ConnectionFactoryUtils#releaseConnection</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.context.request.async - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.context.request.async</a><br/>
+<br/>
+<h2>Package org.springframework.web.context.request.async</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-async-web-request/index.html">AsyncWebRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">AsyncWebRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span></code>
+<p>Extends NativeWebRequest with methods for asynchronous request processing.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-callable-processing-interceptor-adapter/index.html">CallableProcessingInterceptorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CallableProcessingInterceptorAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CallableProcessingInterceptor</span></code>
+<p>Abstract adapter class for the CallableProcessingInterceptor interface, for simplified implementation of individual methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-deferred-result-processing-interceptor-adapter/index.html">DeferredResultProcessingInterceptorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">DeferredResultProcessingInterceptorAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DeferredResultProcessingInterceptor</span></code>
+<p>Abstract adapter class for the DeferredResultProcessingInterceptor interface for simplified implementation of individual methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-standard-servlet-async-web-request/index.html">StandardServletAsyncWebRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardServletAsyncWebRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletWebRequest</span><span class="symbol">, </span><a href="-async-web-request/index.html"><span class="identifier">AsyncWebRequest</span></a><span class="symbol">, </span><span class="identifier">AsyncListener</span></code>
+<p>A Servlet 3.0 implementation of AsyncWebRequest. 
+<p>The servlet and all filters involved in an async request must have async support enabled using the Servlet API or by adding an <code>&lt;async-supported&gt;true&lt;/async-supported&gt;</code> element to servlet and filter declarations in <code>web.xml</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timeout-callable-processing-interceptor/index.html">TimeoutCallableProcessingInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimeoutCallableProcessingInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CallableProcessingInterceptor</span></code>
+<p>Sends a 503 (SERVICE_UNAVAILABLE) in case of a timeout if the response is not already committed. As of 4.2.8 this is done indirectly by setting the result to an AsyncRequestTimeoutException which is then handled by Spring MVC's default exception handling as a 503 error. 
+<p>Registered at the end, after all other interceptors and therefore invoked only if no other interceptor handles the timeout. </p>
+<p>Note that according to RFC 7231, a 503 without a 'Retry-After' header is interpreted as a 500 error and the client should not retry. Applications can install their own interceptor to handle a timeout and add a 'Retry-After' header if necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timeout-deferred-result-processing-interceptor/index.html">TimeoutDeferredResultProcessingInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimeoutDeferredResultProcessingInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DeferredResultProcessingInterceptor</span></code>
+<p>Sends a 503 (SERVICE_UNAVAILABLE) in case of a timeout if the response is not already committed. As of 4.2.8 this is done indirectly by returning AsyncRequestTimeoutException as the result of processing which is then handled by Spring MVC's default exception handling as a 503 error. 
+<p>Registered at the end, after all other interceptors and therefore invoked only if no other interceptor handles the timeout. </p>
+<p>Note that according to RFC 7231, a 503 without a 'Retry-After' header is interpreted as a 500 error and the client should not retry. Applications can install their own interceptor to handle a timeout and add a 'Retry-After' header if necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-async-task/index.html">WebAsyncTask</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebAsyncTask</span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAware</span></code>
+<p>Holder for a Callable, a timeout value, and a task executor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-async-utils/index.html">WebAsyncUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">WebAsyncUtils</span></code>
+<p>Utility methods related to processing asynchronous web requests.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-async-request-timeout-exception/index.html">AsyncRequestTimeoutException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncRequestTimeoutException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RuntimeException</span></code>
+<p>Exception to be thrown when an async request times out. Alternatively an applications can register a DeferredResultProcessingInterceptor or a CallableProcessingInterceptor to handle the timeout through the MVC Java config or the MVC XML namespace or directly through properties of the <code>RequestMappingHandlerAdapter</code>. 
+<p>By default the exception will be handled as a 503 error.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

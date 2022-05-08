@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JpaDialect - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href=".">JpaDialect</a><br/>
+<br/>
+<h1>JpaDialect</h1>
+<code><span class="keyword">interface </span><span class="identifier">JpaDialect</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PersistenceExceptionTranslator</span></code>
+<p>SPI strategy that encapsulates certain functionality that standard JPA 2.1 does not offer, such as access to the underlying JDBC Connection. This strategy is mainly intended for standalone usage of a JPA provider; most of its functionality is not relevant when running with JTA transactions. 
+<p>In general, it is recommended to derive from DefaultJpaDialect instead of implementing this interface directly. This allows for inheriting common behavior (present and future) from DefaultJpaDialect, only overriding specific hooks to plug in concrete vendor-specific behavior.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+DefaultJpaDialect<a href="#">JpaTransactionManager#setJpaDialect</a><a href="#">JpaVendorAdapter#getJpaDialect()</a><a href="#">AbstractEntityManagerFactoryBean#setJpaDialect</a><a href="#">AbstractEntityManagerFactoryBean#setJpaVendorAdapter</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="begin-transaction.html">beginTransaction</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">beginTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$beginTransaction(javax.persistence.EntityManager, org.springframework.transaction.TransactionDefinition)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$beginTransaction(javax.persistence.EntityManager, org.springframework.transaction.TransactionDefinition)/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Begin the given JPA transaction, applying the semantics specified by the given Spring transaction definition (in particular, an isolation level and a timeout). Called by JpaTransactionManager on transaction begin. 
+<p>An implementation can configure the JPA Transaction object and then invoke <code>begin</code>, or invoke a special begin method that takes, for example, an isolation level. </p>
+<p>An implementation can apply the read-only flag as flush mode. In that case, a transaction data object can be returned that holds the previous flush mode (and possibly other data), to be reset in <code>cleanupTransaction</code>. It may also apply the read-only flag and isolation level to the underlying JDBC Connection before beginning the transaction. </p>
+<p>Implementations can also use the Spring transaction name, as exposed by the passed-in TransactionDefinition, to optimize for specific data access use cases (effectively using the current transaction name as use case identifier). </p>
+<p>This method also allows for exposing savepoint capabilities if supported by the persistence provider, through returning an Object that implements Spring's org.springframework.transaction.SavepointManager interface. JpaTransactionManager will use this capability if needed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="cleanup-transaction.html">cleanupTransaction</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">cleanupTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$cleanupTransaction(kotlin.Any)/transactionData">transactionData</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Clean up the transaction via the given transaction data. Called by JpaTransactionManager and EntityManagerFactoryUtils on transaction cleanup. 
+<p>An implementation can, for example, reset read-only flag and isolation level of the underlying JDBC Connection. Furthermore, an exposed data access use case can be reset here.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-jdbc-connection.html">getJdbcConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getJdbcConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$getJdbcConnection(javax.persistence.EntityManager, kotlin.Boolean)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$getJdbcConnection(javax.persistence.EntityManager, kotlin.Boolean)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConnectionHandle</span></code>
+<p>Retrieve the JDBC Connection that the given JPA EntityManager uses underneath, if accessing a relational database. This method will just get invoked if actually needing access to the underlying JDBC Connection, usually within an active JPA transaction (for example, by JpaTransactionManager). The returned handle will be passed into the <code>releaseJdbcConnection</code> method when not needed anymore. 
+<p>This strategy is necessary as JPA does not provide a standard way to retrieve the underlying JDBC Connection (due to the fact that a JPA implementation might not work with a relational database at all). </p>
+<p>Implementations are encouraged to return an unwrapped Connection object, i.e. the Connection as they got it from the connection pool. This makes it easier for application code to get at the underlying native JDBC Connection, like an OracleConnection, which is sometimes necessary for LOB handling etc. We assume that calling code knows how to properly handle the returned Connection object. </p>
+<p>In a simple case where the returned Connection will be auto-closed with the EntityManager or can be released via the Connection object itself, an implementation can return a SimpleConnectionHandle that just contains the Connection. If some other object is needed in <code>releaseJdbcConnection</code>, an implementation should use a special handle that references that other object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="prepare-transaction.html">prepareTransaction</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">prepareTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Prepare a JPA transaction, applying the specified semantics. Called by EntityManagerFactoryUtils when enlisting an EntityManager in a JTA transaction or a locally joined transaction (e.g. after upgrading an unsynchronized EntityManager to a synchronized one). 
+<p>An implementation can apply the read-only flag as flush mode. In that case, a transaction data object can be returned that holds the previous flush mode (and possibly other data), to be reset in <code>cleanupTransaction</code>. </p>
+<p>Implementations can also use the Spring transaction name to optimize for specific data access use cases (effectively using the current transaction name as use case identifier).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="release-jdbc-connection.html">releaseJdbcConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">releaseJdbcConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$releaseJdbcConnection(org.springframework.jdbc.datasource.ConnectionHandle, javax.persistence.EntityManager)/conHandle">conHandle</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionHandle</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$releaseJdbcConnection(org.springframework.jdbc.datasource.ConnectionHandle, javax.persistence.EntityManager)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Release the given JDBC Connection, which has originally been retrieved via <code>getJdbcConnection</code>. This should be invoked in any case, to allow for proper release of the retrieved Connection handle. 
+<p>An implementation might simply do nothing, if the Connection returned by <code>getJdbcConnection</code> will be implicitly closed when the JPA transaction completes or when the EntityManager is closed.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-default-jpa-dialect/index.html">DefaultJpaDialect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultJpaDialect</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JpaDialect</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the JpaDialect interface. Used as default dialect by JpaTransactionManager. 
+<p>Simply begins a standard JPA transaction in <code><a href="#">#beginTransaction</a></code> and performs standard exception translation through EntityManagerFactoryUtils. </p>
+<p><strong>NOTE: Spring's JPA support requires JPA 2.1 or higher, as of Spring 5.0.</strong></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

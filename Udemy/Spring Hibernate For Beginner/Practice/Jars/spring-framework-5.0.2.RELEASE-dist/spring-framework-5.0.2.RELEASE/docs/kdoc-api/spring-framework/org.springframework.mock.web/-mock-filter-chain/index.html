@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MockFilterChain - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.mock.web</a>&nbsp;/&nbsp;<a href=".">MockFilterChain</a><br/>
+<br/>
+<h1>MockFilterChain</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockFilterChain</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FilterChain</span></code>
+<p>Mock implementation of the javax.servlet.FilterChain interface. 
+<p>A MockFilterChain can be configured with one or more filters and a Servlet to invoke. The first time the chain is called, it invokes all filters and the Servlet, and saves the request and response. Subsequent invocations raise an IllegalStateException unless <code><a href="reset.html">#reset()</a></code> is called.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+MockFilterConfigPassThroughFilterChain</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MockFilterChain</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Register a single do-nothing Filter implementation. The first invocation saves the request and response. Subsequent invocations raise an IllegalStateException unless <code><a href="reset.html">#reset()</a></code> is called.</p>
+<code><span class="identifier">MockFilterChain</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockFilterChain$<init>(javax.servlet.Servlet)/servlet">servlet</span><span class="symbol">:</span>&nbsp;<span class="identifier">Servlet</span><span class="symbol">)</span></code>
+<p>Create a FilterChain with a Servlet.</p>
+<code><span class="identifier">MockFilterChain</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockFilterChain$<init>(javax.servlet.Servlet, kotlin.Array((javax.servlet.Filter)))/servlet">servlet</span><span class="symbol">:</span>&nbsp;<span class="identifier">Servlet</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.mock.web.MockFilterChain$<init>(javax.servlet.Servlet, kotlin.Array((javax.servlet.Filter)))/filters">filters</span><span class="symbol">:</span>&nbsp;<span class="identifier">Filter</span><span class="symbol">)</span></code>
+<p>Create a <code>FilterChain</code> with Filter's and a Servlet.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-filter.html">doFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockFilterChain$doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockFilterChain$doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletResponse</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoke registered Filters and/or Servlet also saving the request and response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-request.html">getRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRequest</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletRequest</span></code>
+<p>Return the request that <code><a href="#">#doFilter</a></code> has been called with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-response.html">getResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResponse</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletResponse</span></code>
+<p>Return the response that <code><a href="#">#doFilter</a></code> has been called with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset the MockFilterChain allowing it to be invoked again.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AopUtils.getMostSpecificMethod - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.support</a>&nbsp;/&nbsp;<a href="index.html">AopUtils</a>&nbsp;/&nbsp;<a href=".">getMostSpecificMethod</a><br/>
+<br/>
+<h1>getMostSpecificMethod</h1>
+<a name="org.springframework.aop.support.AopUtils$getMostSpecificMethod(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getMostSpecificMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.AopUtils$getMostSpecificMethod(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.aop.support.AopUtils$getMostSpecificMethod(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Given a method, which may come from an interface, and a target class used in the current AOP invocation, find the corresponding target method if there is one. E.g. the method may be <code>IFoo.bar()</code> and the target class may be <code>DefaultFoo</code>. In this case, the method may be <code>DefaultFoo.bar()</code>. This enables attributes on that method to be found. 
+<p><strong>NOTE:</strong> In contrast to <code><a href="#">org.springframework.util.ClassUtils#getMostSpecificMethod</a></code>, this method resolves Java 5 bridge methods in order to retrieve attributes from the <em>original</em> method definition.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="method"></a>
+<code>method</code> - the method to be invoked, which may come from an interface</p>
+<p><a name="targetClass"></a>
+<code>targetClass</code> - the target class for the current invocation. May be <code>null</code> or may not even implement the method.</p>
+<p><strong>Return</strong><br/>
+the specific target method, or the original method if the <code>targetClass</code> doesn't implement it or is <code>null</code></p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.util.ClassUtils#getMostSpecificMethod</a></p>
+</BODY>
+</HTML>

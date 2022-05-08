@@ -1,0 +1,479 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.expression.spel.ast - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.expression.spel.ast</a><br/>
+<br/>
+<h2>Package org.springframework.expression.spel.ast</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-assign/index.html">Assign</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Assign</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents assignment. An alternative to calling setValue() for an expression is to use an assign. 
+<p>Example: 'someNumberProperty=42'</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-ast-utils/index.html">AstUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AstUtils</span></code>
+<p>Utilities methods for use in the Ast classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-reference/index.html">BeanReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a bean reference to a type, for example @foo or @'foo.bar'. For a FactoryBean the syntax &amp;foo can be used to access the factory itself.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-boolean-literal/index.html">BooleanLiteral</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BooleanLiteral</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-literal/index.html"><span class="identifier">Literal</span></a></code>
+<p>Represents the literal values <code>TRUE</code> and <code>FALSE</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-compound-expression/index.html">CompoundExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompoundExpression</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a DOT separated expression sequence, such as 'property1.property2.methodOne()'</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-constructor-reference/index.html">ConstructorReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConstructorReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents the invocation of a constructor. Either a constructor on a regular type or construction of an array. When an array is constructed, an initializer can be specified. 
+<p>Examples: new String('hello world') new int[]{1,2,3,4} new int[3] new int[3]{1,2,3}</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-elvis/index.html">Elvis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Elvis</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents the elvis operator ?:. For an expression "a?:b" if a is not null, the value of the expression is "a", if a is null then the value of the expression is "b".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-float-literal/index.html">FloatLiteral</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FloatLiteral</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-literal/index.html"><span class="identifier">Literal</span></a></code>
+<p>Expression language AST node that represents a float literal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-format-helper/index.html">FormatHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FormatHelper</span></code>
+<p>Utility methods (formatters, etc) used during parsing and evaluation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-function-reference/index.html">FunctionReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FunctionReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>A function reference is of the form "#someFunction(a,b,c)". Functions may be defined in the context prior to the expression being evaluated or within the expression itself using a lambda function definition. For example: Lambda function definition in an expression: "(#max = {|x,y|$x&gt;$y?$x:$y};max(2,3))" Calling context defined function: "#isEven(37)". Functions may also be static java methods, registered in the context prior to invocation of the expression. 
+<p>Functions are very simplistic, the arguments are not part of the definition (right now), so the names must be unique.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-identifier/index.html">Identifier</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Identifier</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-indexer/index.html">Indexer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Indexer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>An Indexer can index into some proceeding structure to access a particular piece of it. Supported structures are: strings / collections (lists/sets) / arrays.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-inline-list/index.html">InlineList</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InlineList</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represent a list in an expression, e.g. '{1,2,3}'</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-inline-map/index.html">InlineMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InlineMap</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represent a map in an expression, e.g. '{name:'foo',age:12}'</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-int-literal/index.html">IntLiteral</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IntLiteral</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-literal/index.html"><span class="identifier">Literal</span></a></code>
+<p>Expression language AST node that represents an integer literal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-literal/index.html">Literal</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Literal</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Common superclass for nodes representing literals (boolean, string, number, etc).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-long-literal/index.html">LongLiteral</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LongLiteral</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-literal/index.html"><span class="identifier">Literal</span></a></code>
+<p>Expression language AST node that represents a long integer literal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-reference/index.html">MethodReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Expression language AST node that represents a method reference.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-null-literal/index.html">NullLiteral</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NullLiteral</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-literal/index.html"><span class="identifier">Literal</span></a></code>
+<p>Expression language AST node that represents null.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-and/index.html">OpAnd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpAnd</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Represents the boolean AND operation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-dec/index.html">OpDec</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpDec</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Decrement operator. Can be used in a prefix or postfix form. This will throw appropriate exceptions if the operand in question does not support decrement.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-divide/index.html">OpDivide</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpDivide</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements division operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-e-q/index.html">OpEQ</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpEQ</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the equality operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-g-e/index.html">OpGE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpGE</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements greater-than-or-equal operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-g-t/index.html">OpGT</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpGT</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the greater-than operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-inc/index.html">OpInc</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpInc</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Increment operator. Can be used in a prefix or postfix form. This will throw appropriate exceptions if the operand in question does not support increment.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-l-e/index.html">OpLE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpLE</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the less-than-or-equal operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-l-t/index.html">OpLT</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpLT</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the less-than operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-minus/index.html">OpMinus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpMinus</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>The minus operator supports: <ul> <li>subtraction of numbers </li>
+<li>subtraction of an int from a string of one character (effectively decreasing that character), so 'd'-3='a' </li>
+</ul>
+ 
+<p>It can be used as a unary operator for numbers. The standard promotions are performed when the operand types vary (double-int=double). For other options it defers to the registered overloader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-modulus/index.html">OpModulus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpModulus</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the modulus operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-multiply/index.html">OpMultiply</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpMultiply</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the <code>multiply</code> operator. 
+<p>Conversions and promotions are handled as defined in <a href="#">Section 5.6.2 of the Java Language Specification</a>, with the addiction of <code>BigDecimal</code>/<code>BigInteger</code> management: </p>
+<p>If any of the operands is of a reference type, unboxing conversion (Section 5.1.8) is performed. Then: If either operand is of type <code>BigDecimal</code>, the other is converted to <code>BigDecimal</code>. If either operand is of type double, the other is converted to double. Otherwise, if either operand is of type float, the other is converted to float. If either operand is of type <code>BigInteger</code>, the other is converted to <code>BigInteger</code>. Otherwise, if either operand is of type long, the other is converted to long. Otherwise, both operands are converted to type int.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-n-e/index.html">OpNE</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpNE</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the not-equal operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-or/index.html">OpOr</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpOr</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Represents the boolean OR operation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-op-plus/index.html">OpPlus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpPlus</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>The plus operator will: <ul> <li>add numbers </li>
+<li>concatenate strings </li>
+</ul>
+ 
+<p>It can be used as a unary operator for numbers. The standard promotions are performed when the operand types vary (double+int=double). For other options it defers to the registered overloader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-operator-between/index.html">OperatorBetween</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OperatorBetween</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Represents the between operator. The left operand to between must be a single value and the right operand must be a list - this operator returns true if the left operand is between (using the registered comparator) the two elements in the list. The definition of between being inclusive follows the SQL BETWEEN definition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-operator-instanceof/index.html">OperatorInstanceof</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OperatorInstanceof</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>The operator 'instanceof' checks if an object is of the class specified in the right hand operand, in the same way that <code>instanceof</code> does in Java.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-operator-matches/index.html">OperatorMatches</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OperatorMatches</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the matches operator. Matches takes two operands: The first is a String and the second is a Java regex. It will return <code>true</code> when <code><a href="#">#getValue</a></code> is called if the first operand matches the regex.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-operator-not/index.html">OperatorNot</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OperatorNot</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a NOT operation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-operator-power/index.html">OperatorPower</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OperatorPower</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>The power operator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-projection/index.html">Projection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Projection</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents projection, where a given operation is performed on all elements in some input sequence, returning a new sequence of the same size. For example: "{1,2,3,4,5,6,7,8,9,10}.!{#isEven(#this)}" returns "[n, y, n, y, n, y, n, y, n, y]"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-or-field-reference/index.html">PropertyOrFieldReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyOrFieldReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a simple property or field reference.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-qualified-identifier/index.html">QualifiedIdentifier</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">QualifiedIdentifier</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a dot separated sequence of strings that indicate a package qualified type reference. 
+<p>Example: "java.lang.String" as in the expression "new java.lang.String('hello')"</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-real-literal/index.html">RealLiteral</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RealLiteral</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-literal/index.html"><span class="identifier">Literal</span></a></code>
+<p>Expression language AST node that represents a real literal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-selection/index.html">Selection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Selection</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents selection over a map or collection. For example: {1,2,3,4,5,6,7,8,9,10}.?{#isEven(#this) == 'y'} returns [2, 4, 6, 8, 10] 
+<p>Basically a subset of the input data is returned based on the evaluation of the expression supplied as selection criteria.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-string-literal/index.html">StringLiteral</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StringLiteral</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-literal/index.html"><span class="identifier">Literal</span></a></code>
+<p>Expression language AST node that represents a string literal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-ternary/index.html">Ternary</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Ternary</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a ternary expression, for example: "someCheck()?true:false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-type-code/index.html">TypeCode</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">TypeCode</span></code>
+<p>Captures primitive types and their corresponding class objects, plus one special entry that represents all reference (non-primitive) types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-type-reference/index.html">TypeReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypeReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a reference to a type, for example "T(String)" or "T(com.somewhere.Foo)"</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-variable-reference/index.html">VariableReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">VariableReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span></code>
+<p>Represents a variable reference, eg. #someVar. Note this is different to a *local* variable like $someVar</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

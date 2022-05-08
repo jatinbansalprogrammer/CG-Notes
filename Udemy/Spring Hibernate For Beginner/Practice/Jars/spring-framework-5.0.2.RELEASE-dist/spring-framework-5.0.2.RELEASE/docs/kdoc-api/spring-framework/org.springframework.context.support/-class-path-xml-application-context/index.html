@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ClassPathXmlApplicationContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">ClassPathXmlApplicationContext</a><br/>
+<br/>
+<h1>ClassPathXmlApplicationContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ClassPathXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-xml-application-context/index.html"><span class="identifier">AbstractXmlApplicationContext</span></a></code>
+<p>Standalone XML application context, taking the context definition files from the class path, interpreting plain paths as class path resource names that include the package path (e.g. "mypackage/myresource.txt"). Useful for test harnesses as well as for application contexts embedded within JARs. 
+<p>The config location defaults can be overridden via <code><a href="#">#getConfigLocations</a></code>, Config locations can either denote concrete files like "/myfiles/context.xml" or Ant-style patterns like "/myfiles/*-context.xml" (see the org.springframework.util.AntPathMatcher javadoc for pattern details). </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra XML file. </p>
+<p><strong>This is a simple, one-stop shop convenience ApplicationContext. Consider using the GenericApplicationContext class in combination with an org.springframework.beans.factory.xml.XmlBeanDefinitionReader for more flexible context setup.</strong></p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getResource</a><a href="#">#getResourceByPath</a>GenericApplicationContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(org.springframework.context.ApplicationContext)/parent">parent</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span></code>
+<p>Create a new ClassPathXmlApplicationContext for bean-style configuration.</p>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.String)/configLocation">configLocation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new ClassPathXmlApplicationContext, loading the definitions from the given XML file and automatically refreshing the context.</p>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)))/configLocations">configLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), java.lang.Class((kotlin.Any)))/paths">paths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new ClassPathXmlApplicationContext, loading the definitions from the given XML files and automatically refreshing the context.</p>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), org.springframework.context.ApplicationContext)/configLocations">configLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), org.springframework.context.ApplicationContext)/parent">parent</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), java.lang.Class((kotlin.Any)), org.springframework.context.ApplicationContext)/paths">paths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), java.lang.Class((kotlin.Any)), org.springframework.context.ApplicationContext)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), java.lang.Class((kotlin.Any)), org.springframework.context.ApplicationContext)/parent">parent</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span></code>
+<p>Create a new ClassPathXmlApplicationContext with the given parent, loading the definitions from the given XML files and automatically refreshing the context.</p>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), kotlin.Boolean)/configLocations">configLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), kotlin.Boolean)/refresh">refresh</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new ClassPathXmlApplicationContext, loading the definitions from the given XML files.</p>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), kotlin.Boolean, org.springframework.context.ApplicationContext)/configLocations">configLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), kotlin.Boolean, org.springframework.context.ApplicationContext)/refresh">refresh</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.Array((kotlin.String)), kotlin.Boolean, org.springframework.context.ApplicationContext)/parent">parent</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span></code>
+<p>Create a new ClassPathXmlApplicationContext with the given parent, loading the definitions from the given XML files.</p>
+<code><span class="identifier">ClassPathXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.String, java.lang.Class((kotlin.Any)))/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.support.ClassPathXmlApplicationContext$<init>(kotlin.String, java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new ClassPathXmlApplicationContext, loading the definitions from the given XML file and automatically refreshing the context. 
+<p>This is a convenience method to load class path resources relative to a given Class. For full flexibility, consider using a GenericApplicationContext with an XmlBeanDefinitionReader and a ClassPathResource argument.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-xml-application-context/set-validating.html">setValidating</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidating</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.AbstractXmlApplicationContext$setValidating(kotlin.Boolean)/validating">validating</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use XML validation. Default is <code>true</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

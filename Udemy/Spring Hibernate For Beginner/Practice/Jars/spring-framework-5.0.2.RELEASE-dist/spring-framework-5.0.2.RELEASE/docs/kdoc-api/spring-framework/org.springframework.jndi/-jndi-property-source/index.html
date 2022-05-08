@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JndiPropertySource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jndi</a>&nbsp;/&nbsp;<a href=".">JndiPropertySource</a><br/>
+<br/>
+<h1>JndiPropertySource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiPropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertySource</span><span class="symbol">&lt;</span><span class="identifier">JndiLocatorDelegate</span><span class="symbol">&gt;</span></code>
+<p>PropertySource implementation that reads properties from an underlying Spring JndiLocatorDelegate. 
+<p>By default, the underlying <code>JndiLocatorDelegate</code> will be configured with its <code><a href="#">"resourceRef"</a></code> property set to <code>true</code>, meaning that names looked up will automatically be prefixed with "java:comp/env/" in alignment with published <a href="#">JNDI naming conventions</a>. To override this setting or to change the prefix, manually configure a <code>JndiLocatorDelegate</code> and provide it to one of the constructors here that accepts it. The same applies when providing custom JNDI properties. These should be specified using <code><a href="#">JndiLocatorDelegate#setJndiEnvironment(java.util.Properties)</a></code> prior to construction of the <code>JndiPropertySource</code>. </p>
+<p>Note that org.springframework.web.context.support.StandardServletEnvironment includes a <code>JndiPropertySource</code> by default, and any customization of the underlying JndiLocatorDelegate may be performed within an org.springframework.context.ApplicationContextInitializer or org.springframework.web.WebApplicationInitializer.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+JndiLocatorDelegateorg.springframework.context.ApplicationContextInitializerorg.springframework.web.WebApplicationInitializerorg.springframework.web.context.support.StandardServletEnvironment</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JndiPropertySource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiPropertySource$<init>(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>JndiPropertySource</code> with the given name and a JndiLocatorDelegate configured to prefix any names with "java:comp/env/".</p>
+<code><span class="identifier">JndiPropertySource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiPropertySource$<init>(kotlin.String, org.springframework.jndi.JndiLocatorDelegate)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jndi.JndiPropertySource$<init>(kotlin.String, org.springframework.jndi.JndiLocatorDelegate)/jndiLocator">jndiLocator</span><span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorDelegate</span><span class="symbol">)</span></code>
+<p>Create a new <code>JndiPropertySource</code> with the given name and the given <code>JndiLocatorDelegate</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-property.html">getProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiPropertySource$getProperty(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>This implementation looks up and returns the value associated with the given name from the underlying JndiLocatorDelegate. If a NamingException is thrown during the call to <code><a href="#">JndiLocatorDelegate#lookup(String)</a></code>, returns <code>null</code> and issues a DEBUG-level log statement with the exception message.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

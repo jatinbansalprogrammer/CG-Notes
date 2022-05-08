@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResultActions - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet</a>&nbsp;/&nbsp;<a href=".">ResultActions</a><br/>
+<br/>
+<h1>ResultActions</h1>
+<code><span class="keyword">interface </span><span class="identifier">ResultActions</span></code>
+<p>Allows applying actions, such as expectations, on the result of an executed request. 
+<p>See static factory methods in org.springframework.test.web.servlet.result.MockMvcResultMatchers and org.springframework.test.web.servlet.result.MockMvcResultHandlers.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="and-do.html">andDo</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">andDo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.ResultActions$andDo(org.springframework.test.web.servlet.ResultHandler)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultHandler</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultActions</span></code>
+<p>Perform a general action. Example <pre><code> static imports: MockMvcRequestBuilders.*, MockMvcResultMatchers.* mockMvc.perform(get("/form")).andDo(print()); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="and-expect.html">andExpect</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">andExpect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.ResultActions$andExpect(org.springframework.test.web.servlet.ResultMatcher)/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultMatcher</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultActions</span></code>
+<p>Perform an expectation. Example <pre><code> static imports: MockMvcRequestBuilders.*, MockMvcResultMatchers.* mockMvc.perform(get("/person/1")) .andExpect(status().isOk()) .andExpect(content().contentType(MediaType.APPLICATION_JSON)) .andExpect(jsonPath("$.person.name").value("Jason")); mockMvc.perform(post("/form")) .andExpect(status().isOk()) .andExpect(redirectedUrl("/person/1")) .andExpect(model().size(1)) .andExpect(model().attributeExists("person")) .andExpect(flash().attributeCount(1)) .andExpect(flash().attribute("message", "success!")); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="and-return.html">andReturn</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">andReturn</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MvcResult</span></code>
+<p>Return the result of the executed request for direct access to the results.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

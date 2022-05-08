@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessageBuilder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.support</a>&nbsp;/&nbsp;<a href=".">MessageBuilder</a><br/>
+<br/>
+<h1>MessageBuilder</h1>
+<code><span class="keyword">class </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>A builder for creating a GenericMessage (or ErrorMessage if the payload is of type Throwable).</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Mark Fisher</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<p><strong>See Also</strong><br/>
+GenericMessageErrorMessage</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="build.html">build</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="copy-headers.html">copyHeaders</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">copyHeaders</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$copyHeaders(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/headersToCopy">headersToCopy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Copy the name-value pairs from the provided Map. This operation will overwrite any existing values. Use { <code><a href="#">#copyHeadersIfAbsent(Map)</a></code> to avoid overwriting values. Note that the 'id' and 'timestamp' header values will never be overwritten.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="copy-headers-if-absent.html">copyHeadersIfAbsent</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">copyHeadersIfAbsent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$copyHeadersIfAbsent(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/headersToCopy">headersToCopy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Copy the name-value pairs from the provided Map. This operation will <em>not</em> overwrite any existing values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-message.html">createMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$createMessage(org.springframework.messaging.support.MessageBuilder.createMessage.T, org.springframework.messaging.MessageHeaders)/payload">payload</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$createMessage(org.springframework.messaging.support.MessageBuilder.createMessage.T, org.springframework.messaging.MessageHeaders)/messageHeaders">messageHeaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaders</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>A shortcut factory method for creating a message with the given payload and <code>MessageHeaders</code>. 
+<p><strong>Note:</strong> the given <code>MessageHeaders</code> instance is used directly in the new message, i.e. it is not copied.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-message.html">fromMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">fromMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$fromMessage(org.springframework.messaging.Message((org.springframework.messaging.support.MessageBuilder.fromMessage.T)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a builder for a new Message instance pre-populated with all of the headers copied from the provided message. The payload of the provided Message will also be used as the payload for the new message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-header.html">removeHeader</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">removeHeader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$removeHeader(kotlin.String)/headerName">headerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Remove the value for the given header name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-headers.html">removeHeaders</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">removeHeaders</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.messaging.support.MessageBuilder$removeHeaders(kotlin.Array((kotlin.String)))/headerPatterns">headerPatterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Removes all headers provided via array of 'headerPatterns'. As the name suggests the array may contain simple matching patterns for header names. Supported pattern styles are: "xxx*", "*xxx", "*xxx*" and "xxx*yyy".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-error-channel.html">setErrorChannel</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setErrorChannel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setErrorChannel(org.springframework.messaging.MessageChannel)/errorChannel">errorChannel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-error-channel-name.html">setErrorChannelName</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setErrorChannelName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setErrorChannelName(kotlin.String)/errorChannelName">errorChannelName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-header.html">setHeader</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setHeader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setHeader(kotlin.String, kotlin.Any)/headerName">headerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setHeader(kotlin.String, kotlin.Any)/headerValue">headerValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Set the value for the given header name. If the provided value is <code>null</code>, the header will be removed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-header-if-absent.html">setHeaderIfAbsent</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setHeaderIfAbsent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setHeaderIfAbsent(kotlin.String, kotlin.Any)/headerName">headerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setHeaderIfAbsent(kotlin.String, kotlin.Any)/headerValue">headerValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Set the value for the given header name only if the header name is not already associated with a value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-headers.html">setHeaders</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setHeaders</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setHeaders(org.springframework.messaging.support.MessageHeaderAccessor)/accessor">accessor</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaderAccessor</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Set the message headers to use by providing a <code>MessageHeaderAccessor</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-reply-channel.html">setReplyChannel</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setReplyChannel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setReplyChannel(org.springframework.messaging.MessageChannel)/replyChannel">replyChannel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-reply-channel-name.html">setReplyChannelName</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setReplyChannelName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$setReplyChannelName(kotlin.String)/replyChannelName">replyChannelName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="with-payload.html">withPayload</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">withPayload</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.support.MessageBuilder$withPayload(org.springframework.messaging.support.MessageBuilder.withPayload.T)/payload">payload</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageBuilder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Create a new builder for a message with the given payload.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

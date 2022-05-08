@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConnectorServerFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jmx.support</a>&nbsp;/&nbsp;<a href=".">ConnectorServerFactoryBean</a><br/>
+<br/>
+<h1>ConnectorServerFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConnectorServerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MBeanRegistrationSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">JMXConnectorServer</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that creates a JSR-160 JMXConnectorServer, optionally registers it with the MBeanServer and then starts it. 
+<p>The <code>JMXConnectorServer</code> can be started in a separate thread by setting the <code>threaded</code> property to <code>true</code>. You can configure this thread to be a daemon thread by setting the <code>daemon</code> property to <code>true</code>. </p>
+<p>The <code>JMXConnectorServer</code> is correctly shutdown when an instance of this class is destroyed on shutdown of the containing <code>ApplicationContext</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+JMXConnectorServerMBeanServer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConnectorServerFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>FactoryBean that creates a JSR-160 JMXConnectorServer, optionally registers it with the MBeanServer and then starts it. 
+<p>The <code>JMXConnectorServer</code> can be started in a separate thread by setting the <code>threaded</code> property to <code>true</code>. You can configure this thread to be a daemon thread by setting the <code>daemon</code> property to <code>true</code>. </p>
+<p>The <code>JMXConnectorServer</code> is correctly shutdown when an instance of this class is destroyed on shutdown of the containing <code>ApplicationContext</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-e-r-v-i-c-e_-u-r-l.html">DEFAULT_SERVICE_URL</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_SERVICE_URL</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default service URL</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Start the connector server. If the <code>threaded</code> flag is set to <code>true</code>, the <code>JMXConnectorServer</code> will be started in a separate thread. If the <code>daemon</code> flag is set to <code>true</code>, that thread will be started as a daemon thread.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Stop the <code>JMXConnectorServer</code> managed by an instance of this class. Automatically called on <code>ApplicationContext</code> shutdown.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMXConnectorServer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">JMXConnectorServer</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-daemon.html">setDaemon</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDaemon</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.ConnectorServerFactoryBean$setDaemon(kotlin.Boolean)/daemon">daemon</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether any threads started for the <code>JMXConnectorServer</code> should be started as daemon threads.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.ConnectorServerFactoryBean$setEnvironment(java.util.Properties)/environment">environment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the environment properties used to construct the <code>JMXConnectorServer</code> as <code>java.util.Properties</code> (String key/value pairs).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-environment-map.html">setEnvironmentMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironmentMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.ConnectorServerFactoryBean$setEnvironmentMap(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/environment">environment</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the environment properties used to construct the <code>JMXConnector</code> as a <code>Map</code> of String keys and arbitrary Object values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-forwarder.html">setForwarder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setForwarder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.ConnectorServerFactoryBean$setForwarder(javax.management.remote.MBeanServerForwarder)/forwarder">forwarder</span><span class="symbol">:</span>&nbsp;<span class="identifier">MBeanServerForwarder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an MBeanServerForwarder to be applied to the <code>JMXConnectorServer</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-object-name.html">setObjectName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setObjectName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.ConnectorServerFactoryBean$setObjectName(kotlin.Any)/objectName">objectName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the <code>ObjectName</code> used to register the <code>JMXConnectorServer</code> itself with the <code>MBeanServer</code>, as <code>ObjectName</code> instance or as <code>String</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-service-url.html">setServiceUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServiceUrl</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.ConnectorServerFactoryBean$setServiceUrl(kotlin.String)/serviceUrl">serviceUrl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the service URL for the <code>JMXConnectorServer</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-threaded.html">setThreaded</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setThreaded</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.ConnectorServerFactoryBean$setThreaded(kotlin.Boolean)/threaded">threaded</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the <code>JMXConnectorServer</code> should be started in a separate thread.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

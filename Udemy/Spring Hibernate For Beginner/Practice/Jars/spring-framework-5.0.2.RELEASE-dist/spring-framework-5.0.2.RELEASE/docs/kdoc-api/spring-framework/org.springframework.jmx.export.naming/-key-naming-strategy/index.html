@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>KeyNamingStrategy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jmx.export.naming</a>&nbsp;/&nbsp;<a href=".">KeyNamingStrategy</a><br/>
+<br/>
+<h1>KeyNamingStrategy</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">KeyNamingStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectNamingStrategy</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p><code>ObjectNamingStrategy</code> implementation that builds <code>ObjectName</code> instances from the key used in the "beans" map passed to <code>MBeanExporter</code>. 
+<p>Can also check object name mappings, given as <code>Properties</code> or as <code>mappingLocations</code> of properties files. The key used to look up is the key used in <code>MBeanExporter</code>'s "beans" map. If no mapping is found for a given key, the key itself is used to build an <code>ObjectName</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="set-mappings.html">#setMappings</a><a href="set-mapping-location.html">#setMappingLocation</a><a href="#">#setMappingLocations</a><a href="#">org.springframework.jmx.export.MBeanExporter#setBeans</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">KeyNamingStrategy</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p><code>ObjectNamingStrategy</code> implementation that builds <code>ObjectName</code> instances from the key used in the "beans" map passed to <code>MBeanExporter</code>. 
+<p>Can also check object name mappings, given as <code>Properties</code> or as <code>mappingLocations</code> of properties files. The key used to look up is the key used in <code>MBeanExporter</code>'s "beans" map. If no mapping is found for a given key, the key itself is used to build an <code>ObjectName</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Merges the <code>Properties</code> configured in the <code>mappings</code> and <code>mappingLocations</code> into the final <code>Properties</code> instance used for <code>ObjectName</code> resolution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-name.html">getObjectName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.naming.KeyNamingStrategy$getObjectName(kotlin.Any, kotlin.String)/managedBean">managedBean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jmx.export.naming.KeyNamingStrategy$getObjectName(kotlin.Any, kotlin.String)/beanKey">beanKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObjectName</span></code>
+<p>Attempts to retrieve the <code>ObjectName</code> via the given key, trying to find a mapped value in the mappings first.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapping-location.html">setMappingLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappingLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.naming.KeyNamingStrategy$setMappingLocation(org.springframework.core.io.Resource)/location">location</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a location of a properties file to be loaded, containing object name mappings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapping-locations.html">setMappingLocations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappingLocations</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jmx.export.naming.KeyNamingStrategy$setMappingLocations(kotlin.Array((org.springframework.core.io.Resource)))/mappingLocations">mappingLocations</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set location of properties files to be loaded, containing object name mappings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mappings.html">setMappings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.naming.KeyNamingStrategy$setMappings(java.util.Properties)/mappings">mappings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set local properties, containing object name mappings, e.g. via the "props" tag in XML bean definitions. These can be considered defaults, to be overridden by properties loaded from files.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

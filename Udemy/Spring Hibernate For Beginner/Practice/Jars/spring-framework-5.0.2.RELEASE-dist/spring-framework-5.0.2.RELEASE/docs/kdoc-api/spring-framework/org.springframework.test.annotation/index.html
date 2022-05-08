@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.test.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-profile-value-utils/index.html">ProfileValueUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ProfileValueUtils</span></code>
+<p>General utility methods for working with <em>profile values</em>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-system-profile-value-source/index.html">SystemProfileValueSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SystemProfileValueSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProfileValueSource</span></code>
+<p>Implementation of ProfileValueSource which uses system properties as the underlying source.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-test-annotation-utils/index.html">TestAnnotationUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TestAnnotationUtils</span></code>
+<p>Collection of utility methods for working with Spring's core testing annotations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-commit/index.html">Commit</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Commit</span></code>
+<p><code>@Commit</code> is a test annotation that is used to indicate that a <em>test-managed transaction</em> should be <em>committed</em> after the test method has completed. 
+<p>Consult the class-level Javadoc for org.springframework.test.context.transaction.TransactionalTestExecutionListener for an explanation of <em>test-managed transactions</em>. </p>
+<p>When declared as a class-level annotation, <code>@Commit</code> defines the default commit semantics for all test methods within the test class hierarchy. When declared as a method-level annotation, <code>@Commit</code> defines commit semantics for the specific test method, potentially overriding class-level default commit or rollback semantics. </p>
+<p><strong>Warning</strong>: <code>@Commit</code> can be used as direct replacement for <code>@Rollback(false)</code>; however, it should <strong>not</strong> be declared alongside <code>@Rollback</code>. Declaring <code>@Commit</code> and <code>@Rollback</code> on the same test method or on the same test class is unsupported and may lead to unpredictable results.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-dirties-context/index.html">DirtiesContext</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">DirtiesContext</span></code>
+<p>Test annotation which indicates that the org.springframework.context.ApplicationContext associated with a test is <em>dirty</em> and should therefore be closed and removed from the context cache. 
+<p>Use this annotation if a test has modified the context — for example, by modifying the state of a singleton bean, modifying the state of an embedded database, etc. Subsequent tests that request the same context will be supplied a new context. </p>
+<p><code>@DirtiesContext</code> may be used as a class-level and method-level annotation within the same class or class hierarchy. In such scenarios, the <code>ApplicationContext</code> will be marked as <em>dirty</em> before or after any such annotated method as well as before or after the current test class, depending on the configured <code><a href="#">#methodMode</a></code> and <code><a href="#">#classMode</a></code>. </p>
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. </p>
+Supported Test Phases <ul> <li><strong>Before current test class</strong>: when declared at the class level with class mode set to <code><a href="#">BEFORE_CLASS</a></code></li>
+ <li><strong>Before each test method in current test class</strong>: when declared at the class level with class mode set to <code><a href="#">BEFORE_EACH_TEST_METHOD</a></code></li>
+ <li><strong>Before current test method</strong>: when declared at the method level with method mode set to <code><a href="#">BEFORE_METHOD</a></code></li>
+ <li><strong>After current test method</strong>: when declared at the method level with method mode set to <code><a href="#">AFTER_METHOD</a></code></li>
+ <li><strong>After each test method in current test class</strong>: when declared at the class level with class mode set to <code><a href="#">AFTER_EACH_TEST_METHOD</a></code></li>
+ <li><strong>After current test class</strong>: when declared at the class level with class mode set to <code><a href="#">AFTER_CLASS</a></code></li>
+ </ul>
+ 
+<p><code>BEFORE_*</code> modes are supported by the org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener; <code>AFTER_*</code> modes are supported by the org.springframework.test.context.support.DirtiesContextTestExecutionListener.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-if-profile-value/index.html">IfProfileValue</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">IfProfileValue</span></code>
+<p>Test annotation to indicate whether a test is enabled or disabled for a specific testing profile. 
+<p>In the context of this annotation, the term <em>profile</em> refers to a Java system property by default; however, the semantics can be changed by implementing a custom ProfileValueSource. If the configured <code>ProfileValueSource</code> returns a matching <code><a href="#">#value</a></code> for the declared <code><a href="#">#name</a></code>, the test will be enabled. Otherwise, the test will be disabled and effectively <em>ignored</em>. </p>
+<p><code>@IfProfileValue</code> can be applied at the class level, the method level, or both. Class-level usage of <code>@IfProfileValue</code> takes precedence over method-level usage for any methods within that class or its subclasses. Specifically, a test is enabled if it is enabled both at the class level <em>and</em> at the method level; the absence of <code>@IfProfileValue</code> means the test is implicitly enabled. This is analogous to the semantics of JUnit's org.junit.Ignore annotation, except that the presence of <code>@Ignore</code> always disables a test. </p>
+Example When using SystemProfileValueSource as the <code>ProfileValueSource</code> implementation (which is configured by default), you can configure a test method to run only on Java VMs from Oracle as follows: <pre><code> @IfProfileValue(name = "java.vendor", value = "Oracle Corporation") public void testSomething() { // ... }</code></pre> 'OR' Semantics 
+<p>You can alternatively configure <code>@IfProfileValue</code> with <em>OR</em> semantics for multiple <code><a href="#">#values</a></code>. The following test will be enabled if a <code>ProfileValueSource</code> has been appropriately configured for the <code>"test-groups"</code> profile with a value of either <code>unit-tests</code> <em>or</em> <code>integration-tests</code>. This functionality is similar to TestNG's support for test <em>groups</em> and JUnit's experimental support for test <em>categories</em>. </p>
+<pre><code> @IfProfileValue(name = "test-groups", values = { "unit-tests", "integration-tests" }) public void testWhichRunsForUnitOrIntegrationTestGroups() { // ... }</code></pre> <code>@IfProfileValue</code> vs. <code>@Profile</code> 
+<p>Although the <code>@IfProfileValue</code> and org.springframework.context.annotation.Profile annotations both involve <em>profiles</em>, they are not directly related. <code>@Profile</code> involves bean definition profiles configured in the org.springframework.core.env.Environment; whereas, <code>@IfProfileValue</code> is used to enable or disable tests. </p>
+Meta-annotation Support 
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-profile-value-source-configuration/index.html">ProfileValueSourceConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ProfileValueSourceConfiguration</span></code>
+<p><code>ProfileValueSourceConfiguration</code> is a class-level annotation which is used to specify what type of ProfileValueSource to use when retrieving <em>profile values</em> configured via the IfProfileValue annotation. 
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-repeat/index.html">Repeat</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Repeat</span></code>
+<p>Test annotation to indicate that a test method should be invoked repeatedly. 
+<p>Note that the scope of execution to be repeated includes execution of the test method itself as well as any <em>set up</em> or <em>tear down</em> of the test fixture. </p>
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rollback/index.html">Rollback</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Rollback</span></code>
+<p><code>@Rollback</code> is a test annotation that is used to indicate whether a <em>test-managed transaction</em> should be <em>rolled back</em> after the test method has completed. 
+<p>Consult the class-level Javadoc for org.springframework.test.context.transaction.TransactionalTestExecutionListener for an explanation of <em>test-managed transactions</em>. </p>
+<p>When declared as a class-level annotation, <code>@Rollback</code> defines the default rollback semantics for all test methods within the test class hierarchy. When declared as a method-level annotation, <code>@Rollback</code> defines rollback semantics for the specific test method, potentially overriding class-level default commit or rollback semantics. </p>
+<p>As of Spring Framework 4.2, <code>@Commit</code> can be used as direct replacement for <code>@Rollback(false)</code>. </p>
+<p><strong>Warning</strong>: Declaring <code>@Commit</code> and <code>@Rollback</code> on the same test method or on the same test class is unsupported and may lead to unpredictable results. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. Consult the source code for Commit for a concrete example.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timed/index.html">Timed</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Timed</span></code>
+<p>Test-specific annotation to indicate that a test method has to finish execution in a <a href="#">specified time period</a>. 
+<p>If the text execution takes longer than the specified time period, then the test is considered to have failed. </p>
+<p>Note that the time period includes execution of the test method itself, any Repeat of the test, and any <em>set up</em> or <em>tear down</em> of the test fixture. </p>
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

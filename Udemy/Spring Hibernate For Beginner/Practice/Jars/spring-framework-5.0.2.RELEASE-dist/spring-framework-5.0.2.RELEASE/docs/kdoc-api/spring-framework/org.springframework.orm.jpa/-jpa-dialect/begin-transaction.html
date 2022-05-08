@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JpaDialect.beginTransaction - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href="index.html">JpaDialect</a>&nbsp;/&nbsp;<a href=".">beginTransaction</a><br/>
+<br/>
+<h1>beginTransaction</h1>
+<a name="org.springframework.orm.jpa.JpaDialect$beginTransaction(javax.persistence.EntityManager, org.springframework.transaction.TransactionDefinition)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">beginTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$beginTransaction(javax.persistence.EntityManager, org.springframework.transaction.TransactionDefinition)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$beginTransaction(javax.persistence.EntityManager, org.springframework.transaction.TransactionDefinition)/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Begin the given JPA transaction, applying the semantics specified by the given Spring transaction definition (in particular, an isolation level and a timeout). Called by JpaTransactionManager on transaction begin. 
+<p>An implementation can configure the JPA Transaction object and then invoke <code>begin</code>, or invoke a special begin method that takes, for example, an isolation level. </p>
+<p>An implementation can apply the read-only flag as flush mode. In that case, a transaction data object can be returned that holds the previous flush mode (and possibly other data), to be reset in <code>cleanupTransaction</code>. It may also apply the read-only flag and isolation level to the underlying JDBC Connection before beginning the transaction. </p>
+<p>Implementations can also use the Spring transaction name, as exposed by the passed-in TransactionDefinition, to optimize for specific data access use cases (effectively using the current transaction name as use case identifier). </p>
+<p>This method also allows for exposing savepoint capabilities if supported by the persistence provider, through returning an Object that implements Spring's org.springframework.transaction.SavepointManager interface. JpaTransactionManager will use this capability if needed.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="entityManager"></a>
+<code>entityManager</code> - the EntityManager to begin a JPA transaction on</p>
+<p><a name="definition"></a>
+<code>definition</code> - the Spring transaction definition that defines semantics</p>
+<h3>Exceptions</h3>
+<p><a name="javax.persistence.PersistenceException"></a>
+<code>javax.persistence.PersistenceException</code> - if thrown by JPA methods</p>
+<p><a name="java.sql.SQLException"></a>
+<code>java.sql.SQLException</code> - if thrown by JDBC methods</p>
+<p><a name="org.springframework.transaction.TransactionException"></a>
+<code>org.springframework.transaction.TransactionException</code> - in case of invalid arguments</p>
+<p><strong>Return</strong><br/>
+an arbitrary object that holds transaction data, if any (to be passed into <code><a href="#">#cleanupTransaction</a></code>). May implement the org.springframework.transaction.SavepointManager interface.</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#cleanupTransaction</a><a href="#">javax.persistence.EntityTransaction#begin</a><a href="#">org.springframework.jdbc.datasource.DataSourceUtils#prepareConnectionForTransaction</a></p>
+</BODY>
+</HTML>

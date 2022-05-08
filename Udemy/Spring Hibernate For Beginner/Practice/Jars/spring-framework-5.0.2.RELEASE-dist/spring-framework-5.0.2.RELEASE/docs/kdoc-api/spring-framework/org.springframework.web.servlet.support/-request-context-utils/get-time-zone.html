@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestContextUtils.getTimeZone - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.support</a>&nbsp;/&nbsp;<a href="index.html">RequestContextUtils</a>&nbsp;/&nbsp;<a href=".">getTimeZone</a><br/>
+<br/>
+<h1>getTimeZone</h1>
+<a name="org.springframework.web.servlet.support.RequestContextUtils$getTimeZone(javax.servlet.http.HttpServletRequest)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTimeZone</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getTimeZone(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TimeZone</span></code>
+<p>Retrieve the current time zone from the given request, using the TimeZoneAwareLocaleResolver bound to the request by the DispatcherServlet (if available), falling back to the system's default time zone. 
+<p>Note: This method returns <code>null</code> if no specific time zone can be resolved for the given request. This is in contrast to <code><a href="get-locale.html">#getLocale</a></code> where there is always the request's accept-header locale to fall back to. </p>
+<p>Consider using <code><a href="#">org.springframework.context.i18n.LocaleContextHolder#getTimeZone()</a></code> which will normally be populated with the same TimeZone: That method only differs in terms of its fallback to the system time zone if the LocaleResolver hasn't provided a specific time zone (instead of this method's <code>null</code>).</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="request"></a>
+<code>request</code> - current HTTP request</p>
+<p><strong>Return</strong><br/>
+the current time zone for the given request, either from the TimeZoneAwareLocaleResolver or <code>null</code> if none associated</p>
+<p><strong>See Also</strong><br/>
+<a href="get-locale-resolver.html">#getLocaleResolver</a><a href="#">org.springframework.context.i18n.LocaleContextHolder#getTimeZone()</a></p>
+</BODY>
+</HTML>

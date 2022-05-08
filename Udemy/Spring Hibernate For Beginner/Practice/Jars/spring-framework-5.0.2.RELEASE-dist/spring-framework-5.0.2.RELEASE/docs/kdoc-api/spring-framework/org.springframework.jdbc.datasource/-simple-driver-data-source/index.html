@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleDriverDataSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href=".">SimpleDriverDataSource</a><br/>
+<br/>
+<h1>SimpleDriverDataSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleDriverDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-driver-based-data-source/index.html"><span class="identifier">AbstractDriverBasedDataSource</span></a></code>
+<p>Simple implementation of the standard JDBC javax.sql.DataSource interface, configuring a plain old JDBC java.sql.Driver via bean properties, and returning a new java.sql.Connection from every <code>getConnection</code> call. 
+<p><strong>NOTE: This class is not an actual connection pool; it does not actually pool Connections.</strong> It just serves as simple replacement for a full-blown connection pool, implementing the same standard interface, but creating new Connections on every call. </p>
+<p>In a Java EE container, it is recommended to use a JNDI DataSource provided by the container. Such a DataSource can be exposed as a DataSource bean in a Spring ApplicationContext via org.springframework.jndi.JndiObjectFactoryBean, for seamless switching to and from a local DataSource bean like this class. </p>
+<p>If you need a "real" connection pool outside of a Java EE container, consider <a href="#">Apache Commons DBCP</a> or <a href="#">C3P0</a>. Commons DBCP's BasicDataSource and C3P0's ComboPooledDataSource are full connection pool beans, supporting the same basic properties as this class plus specific settings (such as minimal/maximal pool size etc).</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5.5</p>
+<p><strong>See Also</strong><br/>
+DriverManagerDataSource</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleDriverDataSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor for bean-style configuration.</p>
+<code><span class="identifier">SimpleDriverDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String)/driver">driver</span><span class="symbol">:</span>&nbsp;<span class="identifier">Driver</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">SimpleDriverDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String, kotlin.String, kotlin.String)/driver">driver</span><span class="symbol">:</span>&nbsp;<span class="identifier">Driver</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String, kotlin.String, kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String, kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String, kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">SimpleDriverDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String, java.util.Properties)/driver">driver</span><span class="symbol">:</span>&nbsp;<span class="identifier">Driver</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String, java.util.Properties)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$<init>(java.sql.Driver, kotlin.String, java.util.Properties)/conProps">conProps</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span></code>
+<p>Create a new DriverManagerDataSource with the given standard Driver parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-driver.html">getDriver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDriver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Driver</span></code>
+<p>Return the JDBC Driver instance to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-driver.html">setDriver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDriver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$setDriver(java.sql.Driver)/driver">driver</span><span class="symbol">:</span>&nbsp;<span class="identifier">Driver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the JDBC Driver instance to use. 
+<p>This allows for passing in a shared, possibly pre-configured Driver instance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-driver-class.html">setDriverClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDriverClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SimpleDriverDataSource$setDriverClass(java.lang.Class((java.sql.Driver)))/driverClass">driverClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Driver</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the JDBC Driver implementation class to use. 
+<p>An instance of this Driver class will be created and held within the SimpleDriverDataSource.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/get-catalog.html">getCatalog</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCatalog</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the database catalog to be applied to each Connection, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/get-connection.html">getConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code>
+<p>This implementation delegates to <code>getConnectionFromDriver</code>, using the default username and password of this DataSource.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$getConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$getConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code>
+<p>This implementation delegates to <code>getConnectionFromDriver</code>, using the given username and password.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/get-connection-properties.html">getConnectionProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnectionProperties</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Properties</span></code>
+<p>Return the connection properties to be passed to the Driver, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/get-password.html">getPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPassword</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the JDBC password to use for connecting through the Driver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/get-schema.html">getSchema</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSchema</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the database schema to be applied to each Connection, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/get-url.html">getUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUrl</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the JDBC URL to use for connecting through the Driver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/get-username.html">getUsername</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUsername</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the JDBC username to use for connecting through the Driver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/set-catalog.html">setCatalog</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCatalog</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$setCatalog(kotlin.String)/catalog">catalog</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a database catalog to be applied to each Connection.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/set-connection-properties.html">setConnectionProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectionProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$setConnectionProperties(java.util.Properties)/connectionProperties">connectionProperties</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify arbitrary connection properties as key/value pairs, to be passed to the Driver. 
+<p>Can also contain "user" and "password" properties. However, any "username" and "password" bean properties specified on this DataSource will override the corresponding connection properties.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/set-password.html">setPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPassword</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$setPassword(kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDBC password to use for connecting through the Driver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/set-schema.html">setSchema</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchema</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$setSchema(kotlin.String)/schema">schema</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a database schema to be applied to each Connection.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/set-url.html">setUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrl</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$setUrl(kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDBC URL to use for connecting through the Driver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-driver-based-data-source/set-username.html">setUsername</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUsername</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.AbstractDriverBasedDataSource$setUsername(kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDBC username to use for connecting through the Driver.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

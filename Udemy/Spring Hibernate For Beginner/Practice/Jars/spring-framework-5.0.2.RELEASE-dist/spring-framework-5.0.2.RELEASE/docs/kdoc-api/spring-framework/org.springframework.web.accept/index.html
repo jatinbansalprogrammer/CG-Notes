@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.accept - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.accept</a><br/>
+<br/>
+<h2>Package org.springframework.web.accept</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-content-negotiation-manager/index.html">ContentNegotiationManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentNegotiationManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ContentNegotiationStrategy</span><span class="symbol">, </span><span class="identifier">MediaTypeFileExtensionResolver</span></code>
+<p>Central class to determine requested MediaType for a request. This is done by delegating to a list of configured <code>ContentNegotiationStrategy</code> instances. 
+<p>Also provides methods to look up file extensions for a media type. This is done by delegating to the list of configured <code>MediaTypeFileExtensionResolver</code> instances.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-content-negotiation-manager-factory-bean/index.html">ContentNegotiationManagerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentNegotiationManagerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="-content-negotiation-manager/index.html"><span class="identifier">ContentNegotiationManager</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Factory to create a <code>ContentNegotiationManager</code> and configure it with one or more ContentNegotiationStrategy instances. 
+<p>As of 5.0 you can set the exact strategies to use via <code><a href="#">#setStrategies(List)</a></code>. </p>
+<p>As an alternative you can also rely on the set of defaults described below which can be turned on or off or customized through the methods of this builder: </p>
+  Property Setter Underlying Strategy Default Setting   <code><a href="-content-negotiation-manager-factory-bean/set-favor-path-extension.html">#setFavorPathExtension</a></code> PathExtensionContentNegotiationStrategy On   <code><a href="-content-negotiation-manager-factory-bean/set-favor-parameter.html">favorParameter</a></code> ParameterContentNegotiationStrategy Off   <code><a href="-content-negotiation-manager-factory-bean/set-ignore-accept-header.html">ignoreAcceptHeader</a></code> HeaderContentNegotiationStrategy On   <code><a href="-content-negotiation-manager-factory-bean/set-default-content-type.html">defaultContentType</a></code> FixedContentNegotiationStrategy Not set   <code><a href="-content-negotiation-manager-factory-bean/set-default-content-type-strategy.html">defaultContentTypeStrategy</a></code> ContentNegotiationStrategy Not set   <strong>Note:</strong> if you must use URL-based content type resolution, the use of a query parameter is simpler and preferable to the use of a path extension since the latter can cause issues with URI variables, path parameters, and URI decoding. Consider setting <code><a href="-content-negotiation-manager-factory-bean/set-favor-path-extension.html">#setFavorPathExtension</a></code> to false or otherwise set the strategies to use explicitly via <code><a href="#">#setStrategies(List)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-fixed-content-negotiation-strategy/index.html">FixedContentNegotiationStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FixedContentNegotiationStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ContentNegotiationStrategy</span></code>
+<p>A <code>ContentNegotiationStrategy</code> that returns a fixed content type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-header-content-negotiation-strategy/index.html">HeaderContentNegotiationStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HeaderContentNegotiationStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ContentNegotiationStrategy</span></code>
+<p>A <code>ContentNegotiationStrategy</code> that checks the 'Accept' request header.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-parameter-content-negotiation-strategy/index.html">ParameterContentNegotiationStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ParameterContentNegotiationStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMappingContentNegotiationStrategy</span></code>
+<p>Strategy that resolves the requested content type from a query parameter. The default query parameter name is "format". 
+<p>You can register static mappings between keys (i.e. the expected value of the query parameter) and MediaType's via <code><a href="#">#addMapping(String, MediaType)</a></code>. As of 5.0 this strategy also supports dynamic lookups of keys via <code><a href="../org.springframework.http/-media-type-factory/get-media-type.html">org.springframework.http.MediaTypeFactory#getMediaType</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-extension-content-negotiation-strategy/index.html">PathExtensionContentNegotiationStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathExtensionContentNegotiationStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMappingContentNegotiationStrategy</span></code>
+<p>A <code>ContentNegotiationStrategy</code> that resolves the file extension in the request path to a key to be used to look up a media type. 
+<p>If the file extension is not found in the explicit registrations provided to the constructor, the MediaTypeFactory is used as a fallback mechanism.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-path-extension-content-negotiation-strategy/index.html">ServletPathExtensionContentNegotiationStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletPathExtensionContentNegotiationStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-path-extension-content-negotiation-strategy/index.html"><span class="identifier">PathExtensionContentNegotiationStrategy</span></a></code>
+<p>Extends <code>PathExtensionContentNegotiationStrategy</code> that also uses <code><a href="#">ServletContext#getMimeType(String)</a></code> to resolve file extensions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

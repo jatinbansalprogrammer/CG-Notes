@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestBodyAdvice - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.mvc.method.annotation</a>&nbsp;/&nbsp;<a href=".">RequestBodyAdvice</a><br/>
+<br/>
+<h1>RequestBodyAdvice</h1>
+<code><span class="keyword">interface </span><span class="identifier">RequestBodyAdvice</span></code>
+<p>Allows customizing the request before its body is read and converted into an Object and also allows for processing of the resulting Object before it is passed into a controller method as an <code>@RequestBody</code> or an <code>HttpEntity</code> method argument. 
+<p>Implementations of this contract may be registered directly with the <code>RequestMappingHandlerAdapter</code> or more likely annotated with <code>@ControllerAdvice</code> in which case they are auto-detected.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-body-read.html">afterBodyRead</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">afterBodyRead</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$afterBodyRead(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/body">body</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$afterBodyRead(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/inputMessage">inputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpInputMessage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$afterBodyRead(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/parameter">parameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$afterBodyRead(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/targetType">targetType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$afterBodyRead(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/converterType">converterType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoked third (and last) after the request body is converted to an Object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-body-read.html">beforeBodyRead</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">beforeBodyRead</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$beforeBodyRead(org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/inputMessage">inputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpInputMessage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$beforeBodyRead(org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/parameter">parameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$beforeBodyRead(org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/targetType">targetType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$beforeBodyRead(org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/converterType">converterType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpInputMessage</span></code>
+<p>Invoked second before the request body is read and converted.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-empty-body.html">handleEmptyBody</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handleEmptyBody</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$handleEmptyBody(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/body">body</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$handleEmptyBody(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/inputMessage">inputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpInputMessage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$handleEmptyBody(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/parameter">parameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$handleEmptyBody(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/targetType">targetType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$handleEmptyBody(kotlin.Any, org.springframework.http.HttpInputMessage, org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/converterType">converterType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoked second (and last) if the body is empty.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports.html">supports</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">supports</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$supports(org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/methodParameter">methodParameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$supports(org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/targetType">targetType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice$supports(org.springframework.core.MethodParameter, java.lang.reflect.Type, java.lang.Class((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/converterType">converterType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Invoked first to determine if this interceptor applies.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

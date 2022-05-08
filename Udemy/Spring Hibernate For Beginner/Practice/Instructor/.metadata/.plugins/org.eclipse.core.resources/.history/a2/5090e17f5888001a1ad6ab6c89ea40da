@@ -1,0 +1,42 @@
+package com.luv2code.springdemo;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class HelloSpringApp {
+
+	public static void main(String[] args) {
+
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+		TRack trackCoach = context.getBean("TRack#0", TRack.class);
+		System.out.println(trackCoach.getEmail());
+		context.close();
+
+	}
+
+}
+
+interface I {
+	public void display();
+}
+
+class A implements I {
+	@Override
+	public void display() {
+		System.out.println("A");
+	}
+}
+
+class B extends A {
+	@Override
+	public void display() {
+		System.out.println("B");
+	}
+}
+
+class C extends B {
+	@Override
+	public void display() {
+		System.out.println("C");
+	}
+}

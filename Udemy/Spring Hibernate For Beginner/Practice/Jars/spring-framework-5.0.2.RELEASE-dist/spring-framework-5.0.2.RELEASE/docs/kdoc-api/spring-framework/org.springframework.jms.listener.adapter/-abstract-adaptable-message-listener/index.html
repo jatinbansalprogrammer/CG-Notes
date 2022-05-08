@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractAdaptableMessageListener - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.listener.adapter</a>&nbsp;/&nbsp;<a href=".">AbstractAdaptableMessageListener</a><br/>
+<br/>
+<h1>AbstractAdaptableMessageListener</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractAdaptableMessageListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageListener</span><span class="symbol">, </span><span class="identifier">SessionAwareMessageListener</span><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&gt;</span></code>
+<p>An abstract JMS MessageListener adapter providing the necessary infrastructure to extract the payload of a JMS Message.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+MessageListenerSessionAwareMessageListener</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractAdaptableMessageListener</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An abstract JMS MessageListener adapter providing the necessary infrastructure to extract the payload of a JMS Message.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="on-message.html">onMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$onMessage(javax.jms.Message)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Standard JMS MessageListener entry point. 
+<p>Delegates the message to the target listener method, with appropriate conversion of the message argument. In case of an exception, the <code><a href="#">#handleListenerException(Throwable)</a></code> method will be invoked. </p>
+<p><strong>Note:</strong> Does not support sending response messages based on result objects returned from listener methods. Use the SessionAwareMessageListener entry point (typically through a Spring message listener container) for handling result objects as well.</p>
+</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">onMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$onMessage(javax.jms.Message, javax.jms.Session)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$onMessage(javax.jms.Message, javax.jms.Session)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-response-destination.html">setDefaultResponseDestination</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultResponseDestination</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$setDefaultResponseDestination(javax.jms.Destination)/destination">destination</span><span class="symbol">:</span>&nbsp;<span class="identifier">Destination</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default destination to send response messages to. This will be applied in case of a request message that does not carry a "JMSReplyTo" field. 
+<p>Response destinations are only relevant for listener methods that return result objects, which will be wrapped in a response message and sent to a response destination. </p>
+<p>Alternatively, specify a "defaultResponseQueueName" or "defaultResponseTopicName", to be dynamically resolved via the DestinationResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-response-queue-name.html">setDefaultResponseQueueName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultResponseQueueName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$setDefaultResponseQueueName(kotlin.String)/destinationName">destinationName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the default response queue to send response messages to. This will be applied in case of a request message that does not carry a "JMSReplyTo" field. 
+<p>Alternatively, specify a JMS Destination object as "defaultResponseDestination".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-response-topic-name.html">setDefaultResponseTopicName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultResponseTopicName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$setDefaultResponseTopicName(kotlin.String)/destinationName">destinationName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the default response topic to send response messages to. This will be applied in case of a request message that does not carry a "JMSReplyTo" field. 
+<p>Alternatively, specify a JMS Destination object as "defaultResponseDestination".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-destination-resolver.html">setDestinationResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDestinationResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$setDestinationResolver(org.springframework.jms.support.destination.DestinationResolver)/destinationResolver">destinationResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">DestinationResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the DestinationResolver that should be used to resolve response destination names for this adapter. 
+<p>The default resolver is a DynamicDestinationResolver. Specify a JndiDestinationResolver for resolving destination names as JNDI locations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-header-mapper.html">setHeaderMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHeaderMapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$setHeaderMapper(org.springframework.jms.support.JmsHeaderMapper)/headerMapper">headerMapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">JmsHeaderMapper</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JmsHeaderMapper implementation to use to map the standard JMS headers. By default, a SimpleJmsHeaderMapper is used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-converter.html">setMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageConverter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$setMessageConverter(org.springframework.jms.support.converter.MessageConverter)/messageConverter">messageConverter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageConverter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the converter that will convert incoming JMS messages to listener method arguments, and objects returned from listener methods back to JMS messages. 
+<p>The default converter is a SimpleMessageConverter, which is able to handle javax.jms.BytesMessage, javax.jms.TextMessage and javax.jms.ObjectMessage.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-response-qos-settings.html">setResponseQosSettings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResponseQosSettings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.listener.adapter.AbstractAdaptableMessageListener$setResponseQosSettings(org.springframework.jms.support.QosSettings)/responseQosSettings">responseQosSettings</span><span class="symbol">:</span>&nbsp;<span class="identifier">QosSettings</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the QosSettings to use when sending a response. Can be set to <code>null</code> to indicate that the broker's defaults should be used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-message-listener-adapter/index.html">MessageListenerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageListenerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAdaptableMessageListener</span><span class="symbol">, </span><span class="identifier">SubscriptionNameProvider</span></code>
+<p>Message listener adapter that delegates the handling of messages to target listener methods via reflection, with flexible message type conversion. Allows listener methods to operate on message content types, completely independent from the JMS API. 
+<p>By default, the content of incoming JMS messages gets extracted before being passed into the target listener method, to let the target method operate on message content types such as String or byte array instead of the raw Message. Message type conversion is delegated to a Spring JMS MessageConverter. By default, a SimpleMessageConverter will be used. (If you do not want such automatic message conversion taking place, then be sure to set the <code><a href="set-message-converter.html">MessageConverter</a></code> to <code>null</code>.) </p>
+<p>If a target listener method returns a non-null object (typically of a message content type such as <code>String</code> or byte array), it will get wrapped in a JMS <code>Message</code> and sent to the response destination (either the JMS "reply-to" destination or a <code><a href="set-default-response-destination.html">specified default</a></code>). </p>
+<p><strong>Note:</strong> The sending of response messages is only available when using the SessionAwareMessageListener entry point (typically through a Spring message listener container). Usage as standard JMS MessageListener does <em>not</em> support the generation of response messages. </p>
+<p>Find below some examples of method signatures compliant with this adapter class. This first example handles all <code>Message</code> types and gets passed the contents of each <code>Message</code> type as an argument. No <code>Message</code> will be sent back as all of these methods return <code>void</code>. </p>
+<pre><code>public interface MessageContentsDelegate { void handleMessage(String text); void handleMessage(Map map); void handleMessage(byte[] bytes); void handleMessage(Serializable obj); }</code></pre> This next example handles all <code>Message</code> types and gets passed the actual (raw) <code>Message</code> as an argument. Again, no <code>Message</code> will be sent back as all of these methods return <code>void</code>. <pre><code>public interface RawMessageDelegate { void handleMessage(TextMessage message); void handleMessage(MapMessage message); void handleMessage(BytesMessage message); void handleMessage(ObjectMessage message); }</code></pre> This next example illustrates a <code>Message</code> delegate that just consumes the <code>String</code> contents of javax.jms.TextMessage. Notice also how the name of the <code>Message</code> handling method is different from the <code><a href="../-message-listener-adapter/-o-r-i-g-i-n-a-l_-d-e-f-a-u-l-t_-l-i-s-t-e-n-e-r_-m-e-t-h-o-d.html">original</a></code> (this will have to be configured in the attandant bean definition). Again, no <code>Message</code> will be sent back as the method returns <code>void</code>. <pre><code>public interface TextMessageContentDelegate { void onMessage(String text); }</code></pre> This final example illustrates a <code>Message</code> delegate that just consumes the <code>String</code> contents of javax.jms.TextMessage. Notice how the return type of this method is <code>String</code>: This will result in the configured MessageListenerAdapter sending a javax.jms.TextMessage in response. <pre><code>public interface ResponsiveTextMessageContentDelegate { String handleMessage(String text); }</code></pre> For further examples and discussion please do refer to the Spring reference documentation which describes this class (and it's attendant XML configuration) in detail.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

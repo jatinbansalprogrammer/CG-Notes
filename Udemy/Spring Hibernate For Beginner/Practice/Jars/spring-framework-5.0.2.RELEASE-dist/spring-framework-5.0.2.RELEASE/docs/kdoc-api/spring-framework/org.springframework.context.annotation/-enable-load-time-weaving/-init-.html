@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableLoadTimeWeaving.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href="index.html">EnableLoadTimeWeaving</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.context.annotation.EnableLoadTimeWeaving$&lt;init&gt;(org.springframework.context.annotation.EnableLoadTimeWeaving.AspectJWeaving)"></a>
+<code><span class="identifier">EnableLoadTimeWeaving</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.EnableLoadTimeWeaving$<init>(org.springframework.context.annotation.EnableLoadTimeWeaving.AspectJWeaving)/aspectjWeaving">aspectjWeaving</span><span class="symbol">:</span>&nbsp;<span class="identifier">AspectJWeaving</span><span class="symbol">)</span></code>
+<p>Activates a Spring LoadTimeWeaver for this application context, available as a bean with the name "loadTimeWeaver", similar to the <code>&lt;context:load-time-weaver&gt;</code> element in Spring XML. 
+<p>To be used on @org.springframework.context.annotation.Configuration classes; the simplest possible example of which follows: </p>
+<pre><code> @Configuration @EnableLoadTimeWeaving public class AppConfig { // application-specific @Bean definitions ... }</code></pre> The example above is equivalent to the following Spring XML configuration: <pre><code><code>&lt;beans&gt; &lt;context:load-time-weaver/&gt; &lt;!-- application-specific &lt;bean&gt; definitions --&gt; &lt;/beans&gt; </code></code></pre> The <code>LoadTimeWeaverAware</code> interface Any bean that implements the interface will then receive the <code>LoadTimeWeaver</code> reference automatically; for example, Spring's JPA bootstrap support. Customizing the <code>LoadTimeWeaver</code> The default weaver is determined automatically: see DefaultContextLoadTimeWeaver. 
+<p>To customize the weaver used, the <code>@Configuration</code> class annotated with <code>@EnableLoadTimeWeaving</code> may also implement the LoadTimeWeavingConfigurer interface and return a custom <code>LoadTimeWeaver</code> instance through the <code>#getLoadTimeWeaver</code> method: </p>
+<pre><code> @Configuration @EnableLoadTimeWeaving public class AppConfig implements LoadTimeWeavingConfigurer { @Override public LoadTimeWeaver getLoadTimeWeaver() { MyLoadTimeWeaver ltw = new MyLoadTimeWeaver(); ltw.addClassTransformer(myClassFileTransformer); // ... return ltw; } }</code></pre> 
+<p>The example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;context:load-time-weaver weaverClass="com.acme.MyLoadTimeWeaver"/&gt; &lt;/beans&gt; </code></code></pre> 
+<p>The code example differs from the XML example in that it actually instantiates the <code>MyLoadTimeWeaver</code> type, meaning that it can also configure the instance, e.g. calling the <code>#addClassTransformer</code> method. This demonstrates how the code-based configuration approach is more flexible through direct programmatic access. </p>
+Enabling AspectJ-based weaving AspectJ load-time weaving may be enabled with the <code><a href="#">#aspectjWeaving()</a></code> attribute, which will cause the to be registered through <code><a href="#">LoadTimeWeaver#addTransformer</a></code>. AspectJ weaving will be activated by default if a "META-INF/aop.xml" resource is present on the classpath. Example: <pre><code> @Configuration @EnableLoadTimeWeaving(aspectjWeaving=ENABLED) public class AppConfig { }</code></pre> 
+<p>The example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;context:load-time-weaver aspectj-weaving="on"/&gt; &lt;/beans&gt; </code></code></pre> 
+<p>The two examples are equivalent with one significant exception: in the XML case, the functionality of <code>&lt;context:spring-configured&gt;</code> is implicitly enabled when <code>aspectj-weaving</code> is "on". This does not occur when using <code>@EnableLoadTimeWeaving(aspectjWeaving=ENABLED)</code>. Instead you must explicitly add <code>@EnableSpringConfigured</code> (included in the <code>spring-aspects</code> module)</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+LoadTimeWeaverDefaultContextLoadTimeWeaverorg.aspectj.weaver.loadtime.ClassPreProcessorAgentAdapter</p>
+</BODY>
+</HTML>

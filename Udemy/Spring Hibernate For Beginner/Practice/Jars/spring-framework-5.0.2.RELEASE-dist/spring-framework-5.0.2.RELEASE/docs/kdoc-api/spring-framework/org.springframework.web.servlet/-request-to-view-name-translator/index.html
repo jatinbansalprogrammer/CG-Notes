@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestToViewNameTranslator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet</a>&nbsp;/&nbsp;<a href=".">RequestToViewNameTranslator</a><br/>
+<br/>
+<h1>RequestToViewNameTranslator</h1>
+<code><span class="keyword">interface </span><span class="identifier">RequestToViewNameTranslator</span></code>
+<p>Strategy interface for translating an incoming javax.servlet.http.HttpServletRequest into a logical view name when no view name is explicitly supplied.</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-view-name.html">getViewName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getViewName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.RequestToViewNameTranslator$getViewName(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Translate the given HttpServletRequest into a view name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.view/-default-request-to-view-name-translator/index.html">DefaultRequestToViewNameTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultRequestToViewNameTranslator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestToViewNameTranslator</span></code>
+<p>RequestToViewNameTranslator that simply transforms the URI of the incoming request into a view name. 
+<p>Can be explicitly defined as the <code>viewNameTranslator</code> bean in a org.springframework.web.servlet.DispatcherServlet context. Otherwise, a plain default instance will be used. </p>
+<p>The default transformation simply strips leading and trailing slashes as well as the file extension of the URI, and returns the result as the view name with the configured <code><a href="#">prefix</a></code> and a <code><a href="#">suffix</a></code> added as appropriate. </p>
+<p>The stripping of the leading slash and file extension can be disabled using the <code><a href="../../org.springframework.web.servlet.view/-default-request-to-view-name-translator/set-strip-leading-slash.html">stripLeadingSlash</a></code> and <code><a href="../../org.springframework.web.servlet.view/-default-request-to-view-name-translator/set-strip-extension.html">stripExtension</a></code> properties, respectively. </p>
+<p>Find below some examples of request to view name translation. </p>
+<ul> <li><code>http://localhost:8080/gamecast/display.html</code> » <code>display</code></li>
+ <li><code>http://localhost:8080/gamecast/displayShoppingCart.html</code> » <code>displayShoppingCart</code></li>
+ <li><code>http://localhost:8080/gamecast/admin/index.html</code> » <code>admin/index</code></li>
+ </ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

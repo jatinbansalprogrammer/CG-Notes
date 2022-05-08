@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PluggableSchemaResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.xml</a>&nbsp;/&nbsp;<a href=".">PluggableSchemaResolver</a><br/>
+<br/>
+<h1>PluggableSchemaResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PluggableSchemaResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EntityResolver</span></code>
+<p>EntityResolver implementation that attempts to resolve schema URLs into local ClassPathResource using a set of mappings files. 
+<p>By default, this class will look for mapping files in the classpath using the pattern: <code>META-INF/spring.schemas</code> allowing for multiple files to exist on the classpath at any one time. The format of <code>META-INF/spring.schemas</code> is a properties file where each line should be of the form <code>systemId=schema-location</code> where <code>schema-location</code> should also be a schema file in the classpath. Since systemId is commonly a URL, one must be careful to escape any ':' characters which are treated as delimiters in properties files. </p>
+<p>The pattern for the mapping files can be overidden using the <code><a href="#">#PluggableSchemaResolver(ClassLoader, String)</a></code> constructor</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PluggableSchemaResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.PluggableSchemaResolver$<init>(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span></code>
+<p>Loads the schema URL -&gt; schema file location mappings using the default mapping file pattern "META-INF/spring.schemas".</p>
+<code><span class="identifier">PluggableSchemaResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.PluggableSchemaResolver$<init>(java.lang.ClassLoader, kotlin.String)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.PluggableSchemaResolver$<init>(java.lang.ClassLoader, kotlin.String)/schemaMappingsLocation">schemaMappingsLocation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Loads the schema URL -&gt; schema file location mappings using the given mapping file pattern.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-c-h-e-m-a_-m-a-p-p-i-n-g-s_-l-o-c-a-t-i-o-n.html">DEFAULT_SCHEMA_MAPPINGS_LOCATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_SCHEMA_MAPPINGS_LOCATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The location of the file that defines schema mappings. Can be present in multiple JAR files.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="resolve-entity.html">resolveEntity</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveEntity</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.PluggableSchemaResolver$resolveEntity(kotlin.String, kotlin.String)/publicId">publicId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.PluggableSchemaResolver$resolveEntity(kotlin.String, kotlin.String)/systemId">systemId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InputSource</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

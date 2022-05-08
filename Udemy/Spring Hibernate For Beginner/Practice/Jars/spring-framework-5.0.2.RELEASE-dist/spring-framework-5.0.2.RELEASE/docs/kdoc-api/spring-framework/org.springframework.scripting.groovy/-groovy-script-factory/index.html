@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GroovyScriptFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scripting.groovy</a>&nbsp;/&nbsp;<a href=".">GroovyScriptFactory</a><br/>
+<br/>
+<h1>GroovyScriptFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyScriptFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ScriptFactory</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>org.springframework.scripting.ScriptFactory implementation for a Groovy script. 
+<p>Typically used in combination with a org.springframework.scripting.support.ScriptFactoryPostProcessor; see the latter's javadoc for a configuration example. </p>
+<p>Note: Spring 4.0 supports Groovy 1.8 and higher.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+groovy.lang.GroovyClassLoaderorg.springframework.scripting.support.ScriptFactoryPostProcessor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GroovyScriptFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$<init>(kotlin.String)/scriptSourceLocator">scriptSourceLocator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new GroovyScriptFactory for the given script source. 
+<p>We don't need to specify script interfaces here, since a Groovy script defines its Java interfaces itself.</p>
+</p>
+<code><span class="identifier">GroovyScriptFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$<init>(kotlin.String, org.springframework.scripting.groovy.GroovyObjectCustomizer)/scriptSourceLocator">scriptSourceLocator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$<init>(kotlin.String, org.springframework.scripting.groovy.GroovyObjectCustomizer)/groovyObjectCustomizer">groovyObjectCustomizer</span><span class="symbol">:</span>&nbsp;<span class="identifier">GroovyObjectCustomizer</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">GroovyScriptFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$<init>(kotlin.String, org.codehaus.groovy.control.CompilerConfiguration)/scriptSourceLocator">scriptSourceLocator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$<init>(kotlin.String, org.codehaus.groovy.control.CompilerConfiguration)/compilerConfiguration">compilerConfiguration</span><span class="symbol">:</span>&nbsp;<span class="identifier">CompilerConfiguration</span><span class="symbol">)</span></code>
+<p>Create a new GroovyScriptFactory for the given script source, specifying a strategy interface that can create a custom MetaClass to supply missing methods and otherwise change the behavior of the object.</p>
+<code><span class="identifier">GroovyScriptFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$<init>(kotlin.String, kotlin.Array((org.codehaus.groovy.control.customizers.CompilationCustomizer)))/scriptSourceLocator">scriptSourceLocator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$<init>(kotlin.String, kotlin.Array((org.codehaus.groovy.control.customizers.CompilationCustomizer)))/compilationCustomizers">compilationCustomizers</span><span class="symbol">:</span>&nbsp;<span class="identifier">CompilationCustomizer</span><span class="symbol">)</span></code>
+<p>Create a new GroovyScriptFactory for the given script source, specifying a strategy interface that can customize Groovy's compilation process within the underlying GroovyClassLoader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-groovy-class-loader.html">getGroovyClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getGroovyClassLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GroovyClassLoader</span></code>
+<p>Return the GroovyClassLoader used by this script factory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-script-interfaces.html">getScriptInterfaces</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptInterfaces</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Groovy scripts determine their interfaces themselves, hence we don't need to explicitly expose interfaces here.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-script-source-locator.html">getScriptSourceLocator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptSourceLocator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scripted-object.html">getScriptedObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptedObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$getScriptedObject(org.springframework.scripting.ScriptSource, kotlin.Array((java.lang.Class((kotlin.Any)))))/scriptSource">scriptSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScriptSource</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$getScriptedObject(org.springframework.scripting.ScriptSource, kotlin.Array((java.lang.Class((kotlin.Any)))))/actualInterfaces">actualInterfaces</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Loads and parses the Groovy script via the GroovyClassLoader.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scripted-object-type.html">getScriptedObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptedObjectType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$getScriptedObjectType(org.springframework.scripting.ScriptSource)/scriptSource">scriptSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScriptSource</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="requires-config-interface.html">requiresConfigInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresConfigInterface</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Groovy scripts do not need a config interface, since they expose their setters as public methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="requires-scripted-object-refresh.html">requiresScriptedObjectRefresh</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresScriptedObjectRefresh</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$requiresScriptedObjectRefresh(org.springframework.scripting.ScriptSource)/scriptSource">scriptSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScriptSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.groovy.GroovyScriptFactory$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

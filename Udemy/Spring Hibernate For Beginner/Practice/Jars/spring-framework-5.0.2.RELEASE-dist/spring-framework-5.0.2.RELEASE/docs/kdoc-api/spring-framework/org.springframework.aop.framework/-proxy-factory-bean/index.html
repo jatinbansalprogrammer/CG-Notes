@@ -1,0 +1,183 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ProxyFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.framework</a>&nbsp;/&nbsp;<a href=".">ProxyFactoryBean</a><br/>
+<br/>
+<h1>ProxyFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyCreatorSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>org.springframework.beans.factory.FactoryBean implementation that builds an AOP proxy based on beans in Spring org.springframework.beans.factory.BeanFactory. 
+<p>org.aopalliance.intercept.MethodInterceptor and org.springframework.aop.Advisor are identified by a list of bean names in the current bean factory, specified through the "interceptorNames" property. The last entry in the list can be the name of a target bean or a org.springframework.aop.TargetSource; however, it is normally preferable to use the "targetName"/"target"/"targetSource" properties instead. </p>
+<p>Global interceptors and advisors can be added at the factory level. The specified ones are expanded in an interceptor list where an "xxx*" entry is included in the list, matching the given prefix with the bean names (e.g. "global*" would match both "globalBean1" and "globalBean2", "*" all defined interceptors). The matching interceptors get applied according to their returned order value, if they implement the org.springframework.core.Ordered interface. </p>
+<p>Creates a JDK proxy when proxy interfaces are given, and a CGLIB proxy for the actual target class if not. Note that the latter will only work if the target class does not have final methods, as a dynamic subclass will be created at runtime. </p>
+<p>It's possible to cast a proxy obtained from this factory to Advised, or to obtain the ProxyFactoryBean reference and programmatically manipulate it. This won't work for existing prototype references, which are independent. However, it will work for prototypes subsequently obtained from the factory. Changes to interception will work immediately on singletons (including existing references). However, to change interfaces or target it's necessary to obtain a new instance from the factory. This means that singleton instances obtained from the factory do not have the same object identity. However, they do have the same interceptors and target, and changing any reference will change all objects.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setInterceptorNames</a><a href="#">#setProxyInterfaces</a>org.aopalliance.intercept.MethodInterceptororg.springframework.aop.AdvisorAdvised</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ProxyFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean implementation that builds an AOP proxy based on beans in Spring org.springframework.beans.factory.BeanFactory. 
+<p>org.aopalliance.intercept.MethodInterceptor and org.springframework.aop.Advisor are identified by a list of bean names in the current bean factory, specified through the "interceptorNames" property. The last entry in the list can be the name of a target bean or a org.springframework.aop.TargetSource; however, it is normally preferable to use the "targetName"/"target"/"targetSource" properties instead. </p>
+<p>Global interceptors and advisors can be added at the factory level. The specified ones are expanded in an interceptor list where an "xxx*" entry is included in the list, matching the given prefix with the bean names (e.g. "global*" would match both "globalBean1" and "globalBean2", "*" all defined interceptors). The matching interceptors get applied according to their returned order value, if they implement the org.springframework.core.Ordered interface. </p>
+<p>Creates a JDK proxy when proxy interfaces are given, and a CGLIB proxy for the actual target class if not. Note that the latter will only work if the target class does not have final methods, as a dynamic subclass will be created at runtime. </p>
+<p>It's possible to cast a proxy obtained from this factory to Advised, or to obtain the ProxyFactoryBean reference and programmatically manipulate it. This won't work for existing prototype references, which are independent. However, it will work for prototypes subsequently obtained from the factory. Changes to interception will work immediately on singletons (including existing references). However, to change interfaces or target it's necessary to obtain a new instance from the factory. This means that singleton instances obtained from the factory do not have the same object identity. However, they do have the same interceptors and target, and changing any reference will change all objects.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-g-l-o-b-a-l_-s-u-f-f-i-x.html">GLOBAL_SUFFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">GLOBAL_SUFFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>This suffix in a value in an interceptor list indicates to expand globals.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return a proxy. Invoked when clients obtain beans from this factory bean. Create an instance of the AOP proxy to be returned by this factory. The instance will be cached for a singleton, and create on each call to <code>getObject()</code> for a proxy.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the type of the proxy. Will check the singleton instance if already created, else fall back to the proxy interface (in case of just a single one), the target bean type, or the TargetSource's target class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-advisor-adapter-registry.html">setAdvisorAdapterRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAdvisorAdapterRegistry</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setAdvisorAdapterRegistry(org.springframework.aop.framework.adapter.AdvisorAdapterRegistry)/advisorAdapterRegistry">advisorAdapterRegistry</span><span class="symbol">:</span>&nbsp;<span class="identifier">AdvisorAdapterRegistry</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the AdvisorAdapterRegistry to use. Default is the global AdvisorAdapterRegistry.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-autodetect-interfaces.html">setAutodetectInterfaces</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutodetectInterfaces</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setAutodetectInterfaces(kotlin.Boolean)/autodetectInterfaces">autodetectInterfaces</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to autodetect proxy interfaces if none specified. 
+<p>Default is "true". Turn this flag off to create a CGLIB proxy for the full target class if no interfaces specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-frozen.html">setFrozen</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFrozen</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setFrozen(kotlin.Boolean)/frozen">frozen</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-interceptor-names.html">setInterceptorNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInterceptorNames</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setInterceptorNames(kotlin.Array((kotlin.String)))/interceptorNames">interceptorNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the list of Advice/Advisor bean names. This must always be set to use this factory bean in a bean factory. 
+<p>The referenced beans should be of type Interceptor, Advisor or Advice The last entry in the list can be the name of any bean in the factory. If it's neither an Advice nor an Advisor, a new SingletonTargetSource is added to wrap it. Such a target bean cannot be used if the "target" or "targetSource" or "targetName" property is set, in which case the "interceptorNames" array must contain only Advice/Advisor bean names. </p>
+<p><strong>NOTE: Specifying a target bean as final name in the "interceptorNames" list is deprecated and will be removed in a future Spring version.</strong> Use the <code><a href="#">"targetName"</a></code> property instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-proxy-class-loader.html">setProxyClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProxyClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setProxyClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ClassLoader to generate the proxy class in. 
+<p>Default is the bean ClassLoader, i.e. the ClassLoader used by the containing BeanFactory for loading all bean classes. This can be overridden here for specific proxies.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-proxy-interfaces.html">setProxyInterfaces</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProxyInterfaces</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setProxyInterfaces(kotlin.Array((java.lang.Class((kotlin.Any)))))/proxyInterfaces">proxyInterfaces</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the names of the interfaces we're proxying. If no interface is given, a CGLIB for the actual class will be created. 
+<p>This is essentially equivalent to the "setInterfaces" method, but mirrors TransactionProxyFactoryBean's "setProxyInterfaces".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-singleton.html">setSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSingleton</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setSingleton(kotlin.Boolean)/singleton">singleton</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the value of the singleton property. Governs whether this factory should always return the same proxy instance (which implies the same target) or whether it should return a new prototype instance, which implies that the target and interceptors may be new instances also, if they are obtained from prototype bean definitions. This allows for fine control of independence/uniqueness in the object graph.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-name.html">setTargetName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.ProxyFactoryBean$setTargetName(kotlin.String)/targetName">targetName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the target bean. This is an alternative to specifying the target name at the end of the "interceptorNames" array. 
+<p>You can also specify a target object or a TargetSource object directly, via the "target"/"targetSource" property, respectively.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

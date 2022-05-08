@@ -1,0 +1,323 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertiesBeanDefinitionReader - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.support</a>&nbsp;/&nbsp;<a href=".">PropertiesBeanDefinitionReader</a><br/>
+<br/>
+<h1>PropertiesBeanDefinitionReader</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertiesBeanDefinitionReader</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-bean-definition-reader/index.html"><span class="identifier">AbstractBeanDefinitionReader</span></a></code>
+<p>Bean definition reader for a simple properties format. 
+<p>Provides bean definition registration methods for Map/Properties and ResourceBundle. Typically applied to a DefaultListableBeanFactory. </p>
+<p><strong>Example:</strong> </p>
+<pre><code> employee.(class)=MyClass // bean is of class MyClass employee.(abstract)=true // this bean can't be instantiated directly employee.group=Insurance // real property employee.usesDialUp=false // real property (potentially overridden) salesrep.(parent)=employee // derives from "employee" bean definition salesrep.(lazy-init)=true // lazily initialize this singleton bean salesrep.manager(ref)=tony // reference to another bean salesrep.department=Sales // real property techie.(parent)=employee // derives from "employee" bean definition techie.(scope)=prototype // bean is a prototype (not a shared instance) techie.manager(ref)=jeff // reference to another bean techie.department=Engineering // real property techie.usesDialUp=true // real property (overriding parent value) ceo.$0(ref)=secretary // inject 'secretary' bean as 0th constructor arg ceo.$1=1000000 // inject value '1000000' at 1st constructor arg </code></pre></p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Since</strong><br/>
+26.11.2003</p>
+<p><strong>See Also</strong><br/>
+DefaultListableBeanFactory</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PropertiesBeanDefinitionReader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$<init>(org.springframework.beans.factory.support.BeanDefinitionRegistry)/registry">registry</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionRegistry</span><span class="symbol">)</span></code>
+<p>Create new PropertiesBeanDefinitionReader for the given bean factory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-a-b-s-t-r-a-c-t_-k-e-y.html">ABSTRACT_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ABSTRACT_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Special key to distinguish <code>owner.(abstract)=true</code> Default is "false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-l-a-s-s_-k-e-y.html">CLASS_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CLASS_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Special key to distinguish <code>owner.(class)=com.myapp.MyClass</code>-</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-s-t-r-u-c-t-o-r_-a-r-g_-p-r-e-f-i-x.html">CONSTRUCTOR_ARG_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONSTRUCTOR_ARG_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Prefix used to denote a constructor argument definition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-l-a-z-y_-i-n-i-t_-k-e-y.html">LAZY_INIT_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LAZY_INIT_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Special key to distinguish <code>owner.(lazy-init)=true</code> Default is "false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-a-r-e-n-t_-k-e-y.html">PARENT_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PARENT_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Special key to distinguish <code>owner.(parent)=parentBeanName</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-r-e-f_-p-r-e-f-i-x.html">REF_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">REF_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Prefix before values referencing other beans.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-r-e-f_-s-u-f-f-i-x.html">REF_SUFFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">REF_SUFFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Property suffix for references to other beans in the current BeanFactory: e.g. <code>owner.dog(ref)=fido</code>. Whether this is a reference to a singleton or a prototype will depend on the definition of the target bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-c-o-p-e_-k-e-y.html">SCOPE_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SCOPE_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Special key to distinguish <code>owner.(scope)=prototype</code>. Default is "true".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-e-p-a-r-a-t-o-r.html">SEPARATOR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SEPARATOR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Separator between bean name and property name. We follow normal Java conventions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-i-n-g-l-e-t-o-n_-k-e-y.html">SINGLETON_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SINGLETON_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Special key to distinguish <code>owner.(singleton)=false</code>. Default is "true".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-r-u-e_-v-a-l-u-e.html">TRUE_VALUE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TRUE_VALUE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Value of a T/F attribute that represents true. Anything else represents false. Case seNsItive.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-default-parent-bean.html">getDefaultParentBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultParentBean</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the default parent bean for this bean factory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-properties-persister.html">getPropertiesPersister</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPropertiesPersister</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertiesPersister</span></code>
+<p>Return the PropertiesPersister to use for parsing properties files.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="load-bean-definitions.html">loadBeanDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.Resource)/resource">resource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Load bean definitions from the specified properties file, using all property keys (i.e. not filtering by prefix).</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.Resource, kotlin.String)/resource">resource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.Resource, kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.support.EncodedResource)/encodedResource">encodedResource</span><span class="symbol">:</span>&nbsp;<span class="identifier">EncodedResource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.support.EncodedResource, kotlin.String)/encodedResource">encodedResource</span><span class="symbol">:</span>&nbsp;<span class="identifier">EncodedResource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.support.EncodedResource, kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Load bean definitions from the specified properties file.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-bean-definitions.html">registerBeanDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(java.util.ResourceBundle)/rb">rb</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceBundle</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Register bean definitions contained in a resource bundle, using all property keys (i.e. not filtering by prefix).</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(java.util.ResourceBundle, kotlin.String)/rb">rb</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceBundle</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(java.util.ResourceBundle, kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Register bean definitions contained in a ResourceBundle. 
+<p>Similar syntax as for a Map. This method is useful to enable standard Java internationalization support.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(kotlin.collections.MutableMap((kotlin.Any, )))/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Register bean definitions contained in a Map, using all property keys (i.e. not filtering by prefix).</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(kotlin.collections.MutableMap((kotlin.Any, )), kotlin.String)/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(kotlin.collections.MutableMap((kotlin.Any, )), kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(kotlin.collections.MutableMap((kotlin.Any, )), kotlin.String, kotlin.String)/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(kotlin.collections.MutableMap((kotlin.Any, )), kotlin.String, kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$registerBeanDefinitions(kotlin.collections.MutableMap((kotlin.Any, )), kotlin.String, kotlin.String)/resourceDescription">resourceDescription</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Register bean definitions contained in a Map. Ignore ineligible properties.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-parent-bean.html">setDefaultParentBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultParentBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$setDefaultParentBean(kotlin.String)/defaultParentBean">defaultParentBean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default parent bean for this bean factory. If a child bean definition handled by this factory provides neither a parent nor a class attribute, this default value gets used. 
+<p>Can be used e.g. for view definition files, to define a parent with a default view class and common attributes for all views. View definitions that define their own parent or carry their own class can still override this. </p>
+<p>Strictly speaking, the rule that a default parent setting does not apply to a bean definition that carries a class is there for backwards compatibility reasons. It still matches the typical use case.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-properties-persister.html">setPropertiesPersister</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPropertiesPersister</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.PropertiesBeanDefinitionReader$setPropertiesPersister(org.springframework.util.PropertiesPersister)/propertiesPersister">propertiesPersister</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertiesPersister</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the PropertiesPersister to use for parsing properties files. The default is DefaultPropertiesPersister.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/get-bean-class-loader.html">getBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBeanClassLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClassLoader</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/get-bean-factory.html">getBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getBeanFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinitionRegistry</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/get-bean-name-generator.html">getBeanNameGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBeanNameGenerator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanNameGenerator</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/get-environment.html">getEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEnvironment</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Environment</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/get-registry.html">getRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getRegistry</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinitionRegistry</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/get-resource-loader.html">getResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourceLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResourceLoader</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/load-bean-definitions.html">loadBeanDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.Array((org.springframework.core.io.Resource)))/resources">resources</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.String)/location">location</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.Array((kotlin.String)))/locations">locations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.String, kotlin.collections.MutableSet((org.springframework.core.io.Resource)))/location">location</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.String, kotlin.collections.MutableSet((org.springframework.core.io.Resource)))/actualResources">actualResources</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><span class="identifier">Resource</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Load bean definitions from the specified resource location. 
+<p>The location can also be a location pattern, provided that the ResourceLoader of this bean definition reader is a ResourcePatternResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setBeanClassLoader(java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ClassLoader to use for bean classes. 
+<p>Default is <code>null</code>, which suggests to not load bean classes eagerly but rather to just register bean definitions with class names, with the corresponding Classes to be resolved later (or never).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/set-bean-name-generator.html">setBeanNameGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanNameGenerator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setBeanNameGenerator(org.springframework.beans.factory.support.BeanNameGenerator)/beanNameGenerator">beanNameGenerator</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanNameGenerator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the BeanNameGenerator to use for anonymous beans (without explicit bean name specified). 
+<p>Default is a DefaultBeanNameGenerator.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setEnvironment(org.springframework.core.env.Environment)/environment">environment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Environment</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Environment to use when reading bean definitions. Most often used for evaluating profile information to determine which bean definitions should be read and which should be omitted.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-reader/set-resource-loader.html">setResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setResourceLoader(org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ResourceLoader to use for resource locations. If specifying a ResourcePatternResolver, the bean definition reader will be capable of resolving resource patterns to Resource arrays. 
+<p>Default is PathMatchingResourcePatternResolver, also capable of resource pattern resolving through the ResourcePatternResolver interface. </p>
+<p>Setting this to <code>null</code> suggests that absolute resource loading is not available for this bean definition reader.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

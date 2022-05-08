@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.socket.sockjs.client - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.socket.sockjs.client</a><br/>
+<br/>
+<h2>Package org.springframework.web.socket.sockjs.client</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jetty-xhr-transport/index.html">JettyXhrTransport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JettyXhrTransport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractXhrTransport</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>An XHR transport based on Jetty's org.eclipse.jetty.client.HttpClient. 
+<p>When used for testing purposes (e.g. load testing) the <code>HttpClient</code> properties must be set to allow a larger than usual number of connections and threads. For example: </p>
+<pre><code> HttpClient httpClient = new HttpClient(); httpClient.setMaxConnectionsPerDestination(1000); httpClient.setExecutor(new QueuedThreadPool(500)); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rest-template-xhr-transport/index.html">RestTemplateXhrTransport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RestTemplateXhrTransport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractXhrTransport</span></code>
+<p>An <code>XhrTransport</code> implementation that uses a org.springframework.web.client.RestTemplate.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sock-js-client/index.html">SockJsClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SockJsClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketClient</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A SockJS implementation of org.springframework.web.socket.client.WebSocketClient with fallback alternatives that simulate a WebSocket interaction through plain HTTP streaming and long polling techniques.. 
+<p>Implements Lifecycle in order to propagate lifecycle events to the transports it is configured with.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sock-js-url-info/index.html">SockJsUrlInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SockJsUrlInfo</span></code>
+<p>Container for the base URL of a SockJS endpoint with additional helper methods to derive related SockJS URLs as the <code><a href="-sock-js-url-info/get-info-url.html">info</a></code> URL and <code><a href="-sock-js-url-info/get-transport-url.html">transport</a></code> URLs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transport/index.html">Transport</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Transport</span></code>
+<p>A client-side implementation for a SockJS transport.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-undertow-xhr-transport/index.html">UndertowXhrTransport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UndertowXhrTransport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractXhrTransport</span></code>
+<p>An XHR transport based on Undertow's io.undertow.client.UndertowClient. Requires Undertow 1.3 or 1.4, including XNIO, as of Spring Framework 5.0. 
+<p>When used for testing purposes (e.g. load testing) or for specific use cases (like HTTPS configuration), a custom OptionMap should be provided: </p>
+<pre><code> OptionMap optionMap = OptionMap.builder() .set(Options.WORKER_IO_THREADS, 8) .set(Options.TCP_NODELAY, true) .set(Options.KEEP_ALIVE, true) .set(Options.WORKER_NAME, "SockJSClient") .getMap(); UndertowXhrTransport transport = new UndertowXhrTransport(optionMap); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-client-sock-js-session/index.html">WebSocketClientSockJsSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketClientSockJsSession</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractClientSockJsSession</span><span class="symbol">, </span><span class="identifier">NativeWebSocketSession</span></code>
+<p>An extension of AbstractClientSockJsSession wrapping and delegating to an actual WebSocket session.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-transport/index.html">WebSocketTransport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketTransport</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-transport/index.html"><span class="identifier">Transport</span></a><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A SockJS Transport that uses a org.springframework.web.socket.client.WebSocketClient.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xhr-client-sock-js-session/index.html">XhrClientSockJsSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XhrClientSockJsSession</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractClientSockJsSession</span></code>
+<p>An extension of AbstractClientSockJsSession for use with HTTP transports simulating a WebSocket session.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

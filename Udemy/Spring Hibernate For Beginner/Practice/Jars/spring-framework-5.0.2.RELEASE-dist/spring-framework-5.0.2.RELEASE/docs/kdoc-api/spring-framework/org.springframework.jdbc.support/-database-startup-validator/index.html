@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DatabaseStartupValidator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support</a>&nbsp;/&nbsp;<a href=".">DatabaseStartupValidator</a><br/>
+<br/>
+<h1>DatabaseStartupValidator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DatabaseStartupValidator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InitializingBean</span></code>
+<p>Bean that checks if a database has already started up. To be referenced via "depends-on" from beans that depend on database startup, like a Hibernate SessionFactory or custom data access objects that access a DataSource directly. 
+<p>Useful to defer application initialization until a database has started up. Particularly appropriate for waiting on a slowly starting Oracle database.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+18.12.2003</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DatabaseStartupValidator</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Bean that checks if a database has already started up. To be referenced via "depends-on" from beans that depend on database startup, like a Hibernate SessionFactory or custom data access objects that access a DataSource directly. 
+<p>Useful to defer application initialization until a database has started up. Particularly appropriate for waiting on a slowly starting Oracle database.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-i-n-t-e-r-v-a-l.html">DEFAULT_INTERVAL</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_INTERVAL</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-t-i-m-e-o-u-t.html">DEFAULT_TIMEOUT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_TIMEOUT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Check whether the validation query can be executed on a Connection from the specified DataSource, with the specified interval between checks, until the specified timeout.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-data-source.html">setDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.DatabaseStartupValidator$setDataSource(javax.sql.DataSource)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the DataSource to validate.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-interval.html">setInterval</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInterval</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.DatabaseStartupValidator$setInterval(kotlin.Int)/interval">interval</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the interval between validation runs (in seconds). Default is 1.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-timeout.html">setTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.DatabaseStartupValidator$setTimeout(kotlin.Int)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the timeout (in seconds) after which a fatal exception will be thrown. Default is 60.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-query.html">setValidationQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationQuery</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.DatabaseStartupValidator$setValidationQuery(kotlin.String)/validationQuery">validationQuery</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the SQL query string to use for validation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

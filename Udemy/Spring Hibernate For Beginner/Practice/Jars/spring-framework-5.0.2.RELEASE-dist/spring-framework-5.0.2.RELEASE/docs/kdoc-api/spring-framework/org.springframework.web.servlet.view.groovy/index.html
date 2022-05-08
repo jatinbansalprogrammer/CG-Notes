@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.view.groovy - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.view.groovy</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.view.groovy</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-groovy-markup-config/index.html">GroovyMarkupConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">GroovyMarkupConfig</span></code>
+<p>Interface to be implemented by objects that configure and manage a Groovy MarkupTemplateEngine for automatic lookup in a web environment. Detected and used by GroovyMarkupView.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-groovy-markup-configurer/index.html">GroovyMarkupConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyMarkupConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TemplateConfiguration</span><span class="symbol">, </span><a href="-groovy-markup-config/index.html"><span class="identifier">GroovyMarkupConfig</span></a><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>An extension of Groovy's groovy.text.markup.TemplateConfiguration and an implementation of Spring MVC's GroovyMarkupConfig for creating a <code>MarkupTemplateEngine</code> for use in a web application. The most basic way to configure this class is to set the "resourceLoaderPath". For example: <pre><code> // Add the following to an @Configuration class @Bean public GroovyMarkupConfig groovyMarkupConfigurer() { GroovyMarkupConfigurer configurer = new GroovyMarkupConfigurer(); configurer.setResourceLoaderPath("classpath:/WEB-INF/groovymarkup/"); return configurer; } </code></pre> By default this bean will create a MarkupTemplateEngine with: <ul> <li>a parent ClassLoader for loading Groovy templates with their references </li>
+<li>the default configuration in the base class TemplateConfiguration </li>
+<li>a groovy.text.markup.TemplateResolver for resolving template files </li>
+</ul>
+ You can provide the MarkupTemplateEngine instance directly to this bean in which case all other properties will not be effectively ignored. 
+<p>This bean must be included in the application context of any application using the Spring MVC GroovyMarkupView for rendering. It exists purely for the purpose of configuring Groovy's Markup templates. It is not meant to be referenced by application components directly. It implements GroovyMarkupConfig to be found by GroovyMarkupView without depending on a bean name. Each DispatcherServlet can define its own GroovyMarkupConfigurer if desired. </p>
+<p>Note that resource caching is enabled by default in MarkupTemplateEngine. Use the <code><a href="#">#setCacheTemplates(boolean)</a></code> to configure that as necessary. </p>
+<p>Spring's Groovy Markup template support requires Groovy 2.3.1 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-groovy-markup-view/index.html">GroovyMarkupView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyMarkupView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTemplateView</span></code>
+<p>An AbstractTemplateView subclass based on Groovy XML/XHTML markup templates. 
+<p>Spring's Groovy Markup Template support requires Groovy 2.3.1 and higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-groovy-markup-view-resolver/index.html">GroovyMarkupViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyMarkupViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.servlet.view/-abstract-template-view-resolver/index.html"><span class="identifier">AbstractTemplateViewResolver</span></a></code>
+<p>Convenience subclass of @link AbstractTemplateViewResolver} that supports GroovyMarkupView (i.e. Groovy XML/XHTML markup templates) and custom subclasses of it. 
+<p>The view class for all views created by this resolver can be specified via the <code><a href="#">#setViewClass(Class)</a></code> property. </p>
+<p><strong>Note:</strong> When chaining ViewResolvers this resolver will check for the existence of the specified template resources and only return a non-null View object if a template is actually found.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

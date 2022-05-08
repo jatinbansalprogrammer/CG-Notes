@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.multipart.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.multipart.support</a><br/>
+<br/>
+<h2>Package org.springframework.web.multipart.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-byte-array-multipart-file-editor/index.html">ByteArrayMultipartFileEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ByteArrayMultipartFileEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.propertyeditors/-byte-array-property-editor/index.html"><span class="identifier">ByteArrayPropertyEditor</span></a></code>
+<p>Custom java.beans.PropertyEditor for converting MultipartFile to byte arrays.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-multipart-http-servlet-request/index.html">DefaultMultipartHttpServletRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultMultipartHttpServletRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMultipartHttpServletRequest</span></code>
+<p>Default implementation of the org.springframework.web.multipart.MultipartHttpServletRequest interface. Provides management of pre-generated parameter values. 
+<p>Used by org.springframework.web.multipart.commons.CommonsMultipartResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-multipart-filter/index.html">MultipartFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MultipartFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Servlet Filter that resolves multipart requests via a MultipartResolver. in the root web application context. 
+<p>Looks up the MultipartResolver in Spring's root web application context. Supports a "multipartResolverBeanName" filter init-param in <code>web.xml</code>; the default bean name is "filterMultipartResolver". </p>
+<p>If no MultipartResolver bean is found, this filter falls back to a default MultipartResolver: StandardServletMultipartResolver for Servlet 3.0, based on a multipart-config section in <code>web.xml</code>. Note however that at present the Servlet specification only defines how to enable multipart configuration on a Servlet and as a result multipart request processing is likely not possible in a Filter unless the Servlet container provides a workaround such as Tomcat's "allowCasualMultipartParsing" property. </p>
+<p>MultipartResolver lookup is customizable: Override this filter's <code>lookupMultipartResolver</code> method to use a custom MultipartResolver instance, for example if not using a Spring web application context. Note that the lookup method should not create a new MultipartResolver instance for each call but rather return a reference to a pre-built instance. </p>
+<p>Note: This filter is an <strong>alternative</strong> to using DispatcherServlet's MultipartResolver support, for example for web applications with custom web views which do not use Spring's web MVC, or for custom filters applied before a Spring MVC DispatcherServlet (e.g. org.springframework.web.filter.HiddenHttpMethodFilter). In any case, this filter should not be combined with servlet-specific multipart resolution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-multipart-resolution-delegate/index.html">MultipartResolutionDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">MultipartResolutionDelegate</span></code>
+<p>A common delegate for <code>HandlerMethodArgumentResolver</code> implementations which need to resolve MultipartFile and Part arguments.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-part-servlet-server-http-request/index.html">RequestPartServletServerHttpRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestPartServletServerHttpRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.http.server/-servlet-server-http-request/index.html"><span class="identifier">ServletServerHttpRequest</span></a></code>
+<p>ServerHttpRequest implementation that accesses one part of a multipart request. If using MultipartResolver configuration the part is accessed through a MultipartFile. Or if using Servlet 3.0 multipart processing the part is accessed through <code>ServletRequest.getPart</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-standard-multipart-http-servlet-request/index.html">StandardMultipartHttpServletRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardMultipartHttpServletRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMultipartHttpServletRequest</span></code>
+<p>Spring MultipartHttpServletRequest adapter, wrapping a Servlet 3.0 HttpServletRequest and its Part objects. Parameters get exposed through the native request's getParameter methods - without any custom processing on our side.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-standard-servlet-multipart-resolver/index.html">StandardServletMultipartResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardServletMultipartResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MultipartResolver</span></code>
+<p>Standard implementation of the MultipartResolver interface, based on the Servlet 3.0 javax.servlet.http.Part API. To be added as "multipartResolver" bean to a Spring DispatcherServlet context, without any extra configuration at the bean level (see below). 
+<p><strong>Note:</strong> In order to use Servlet 3.0 based multipart parsing, you need to mark the affected servlet with a "multipart-config" section in <code>web.xml</code>, or with a javax.servlet.MultipartConfigElement in programmatic servlet registration, or (in case of a custom servlet class) possibly with a javax.servlet.annotation.MultipartConfig annotation on your servlet class. Configuration settings such as maximum sizes or storage locations need to be applied at that servlet registration level; Servlet 3.0 does not allow for them to be set at the MultipartResolver level.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-string-multipart-file-editor/index.html">StringMultipartFileEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StringMultipartFileEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Custom java.beans.PropertyEditor for converting MultipartFile to Strings. 
+<p>Allows one to specify the charset to use.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-missing-servlet-request-part-exception/index.html">MissingServletRequestPartException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MissingServletRequestPartException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletException</span></code>
+<p>Raised when the part of a "multipart/form-data" request identified by its name cannot be found. 
+<p>This may be because the request is not a multipart/form-data request, because the part is not present in the request, or because the web application is not configured correctly for processing multipart requests, e.g. no MultipartResolver.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

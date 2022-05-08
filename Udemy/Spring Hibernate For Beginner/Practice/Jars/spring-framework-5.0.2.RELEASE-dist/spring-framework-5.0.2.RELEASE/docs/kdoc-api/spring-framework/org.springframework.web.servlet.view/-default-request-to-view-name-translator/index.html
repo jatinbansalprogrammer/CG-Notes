@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultRequestToViewNameTranslator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view</a>&nbsp;/&nbsp;<a href=".">DefaultRequestToViewNameTranslator</a><br/>
+<br/>
+<h1>DefaultRequestToViewNameTranslator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultRequestToViewNameTranslator</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.servlet/-request-to-view-name-translator/index.html"><span class="identifier">RequestToViewNameTranslator</span></a></code>
+<p>RequestToViewNameTranslator that simply transforms the URI of the incoming request into a view name. 
+<p>Can be explicitly defined as the <code>viewNameTranslator</code> bean in a org.springframework.web.servlet.DispatcherServlet context. Otherwise, a plain default instance will be used. </p>
+<p>The default transformation simply strips leading and trailing slashes as well as the file extension of the URI, and returns the result as the view name with the configured <code><a href="#">prefix</a></code> and a <code><a href="#">suffix</a></code> added as appropriate. </p>
+<p>The stripping of the leading slash and file extension can be disabled using the <code><a href="set-strip-leading-slash.html">stripLeadingSlash</a></code> and <code><a href="set-strip-extension.html">stripExtension</a></code> properties, respectively. </p>
+<p>Find below some examples of request to view name translation. </p>
+<ul> <li><code>http://localhost:8080/gamecast/display.html</code> » <code>display</code></li>
+ <li><code>http://localhost:8080/gamecast/displayShoppingCart.html</code> » <code>displayShoppingCart</code></li>
+ <li><code>http://localhost:8080/gamecast/admin/index.html</code> » <code>admin/index</code></li>
+ </ul>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.servlet.RequestToViewNameTranslatororg.springframework.web.servlet.ViewResolver</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultRequestToViewNameTranslator</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>RequestToViewNameTranslator that simply transforms the URI of the incoming request into a view name. 
+<p>Can be explicitly defined as the <code>viewNameTranslator</code> bean in a org.springframework.web.servlet.DispatcherServlet context. Otherwise, a plain default instance will be used. </p>
+<p>The default transformation simply strips leading and trailing slashes as well as the file extension of the URI, and returns the result as the view name with the configured <code><a href="#">prefix</a></code> and a <code><a href="#">suffix</a></code> added as appropriate. </p>
+<p>The stripping of the leading slash and file extension can be disabled using the <code><a href="set-strip-leading-slash.html">stripLeadingSlash</a></code> and <code><a href="set-strip-extension.html">stripExtension</a></code> properties, respectively. </p>
+<p>Find below some examples of request to view name translation. </p>
+<ul> <li><code>http://localhost:8080/gamecast/display.html</code> » <code>display</code></li>
+ <li><code>http://localhost:8080/gamecast/displayShoppingCart.html</code> » <code>displayShoppingCart</code></li>
+ <li><code>http://localhost:8080/gamecast/admin/index.html</code> » <code>admin/index</code></li>
+ </ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-view-name.html">getViewName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getViewName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$getViewName(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Translates the request URI of the incoming HttpServletRequest into the view name based on the configured parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-always-use-full-path.html">setAlwaysUseFullPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAlwaysUseFullPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setAlwaysUseFullPath(kotlin.Boolean)/alwaysUseFullPath">alwaysUseFullPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut to same property on underlying <code><a href="set-url-path-helper.html">UrlPathHelper</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-prefix.html">setPrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPrefix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setPrefix(kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the prefix to prepend to generated view names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-remove-semicolon-content.html">setRemoveSemicolonContent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRemoveSemicolonContent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setRemoveSemicolonContent(kotlin.Boolean)/removeSemicolonContent">removeSemicolonContent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set if ";" (semicolon) content should be stripped from the request URI.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-separator.html">setSeparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSeparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setSeparator(kotlin.String)/separator">separator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the value that will replace '<code>/</code>' as the separator in the view name. The default behavior simply leaves '<code>/</code>' as the separator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-strip-extension.html">setStripExtension</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStripExtension</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setStripExtension(kotlin.Boolean)/stripExtension">stripExtension</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether or not file extensions should be stripped from the URI when generating the view name. Default is "true".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-strip-leading-slash.html">setStripLeadingSlash</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStripLeadingSlash</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setStripLeadingSlash(kotlin.Boolean)/stripLeadingSlash">stripLeadingSlash</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether or not leading slashes should be stripped from the URI when generating the view name. Default is "true".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-strip-trailing-slash.html">setStripTrailingSlash</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStripTrailingSlash</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setStripTrailingSlash(kotlin.Boolean)/stripTrailingSlash">stripTrailingSlash</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether or not trailing slashes should be stripped from the URI when generating the view name. Default is "true".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-suffix.html">setSuffix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSuffix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setSuffix(kotlin.String)/suffix">suffix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the suffix to append to generated view names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-url-decode.html">setUrlDecode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrlDecode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setUrlDecode(kotlin.Boolean)/urlDecode">urlDecode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut to same property on underlying <code><a href="set-url-path-helper.html">UrlPathHelper</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-url-path-helper.html">setUrlPathHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrlPathHelper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator$setUrlPathHelper(org.springframework.web.util.UrlPathHelper)/urlPathHelper">urlPathHelper</span><span class="symbol">:</span>&nbsp;<span class="identifier">UrlPathHelper</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the org.springframework.web.util.UrlPathHelper to use for the resolution of lookup paths. 
+<p>Use this to override the default UrlPathHelper with a custom subclass, or to share common UrlPathHelper settings across multiple web components.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

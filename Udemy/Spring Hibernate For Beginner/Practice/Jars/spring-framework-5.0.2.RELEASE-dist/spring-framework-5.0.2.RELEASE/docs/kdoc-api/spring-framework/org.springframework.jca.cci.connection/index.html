@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jca.cci.connection - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jca.cci.connection</a><br/>
+<br/>
+<h2>Package org.springframework.jca.cci.connection</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cci-local-transaction-manager/index.html">CciLocalTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CciLocalTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPlatformTransactionManager</span><span class="symbol">, </span><span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.transaction.PlatformTransactionManager implementation that manages local transactions for a single CCI ConnectionFactory. Binds a CCI Connection from the specified ConnectionFactory to the thread, potentially allowing for one thread-bound Connection per ConnectionFactory. 
+<p>Application code is required to retrieve the CCI Connection via <code><a href="#">ConnectionFactoryUtils#getConnection(ConnectionFactory)</a></code> instead of a standard Java EE-style <code><a href="#">ConnectionFactory#getConnection()</a></code> call. Spring classes such as org.springframework.jca.cci.core.CciTemplate use this strategy implicitly. If not used in combination with this transaction manager, the ConnectionFactoryUtils lookup strategy behaves exactly like the native DataSource lookup; it can thus be used in a portable fashion. </p>
+<p>Alternatively, you can allow application code to work with the standard Java EE lookup pattern <code><a href="#">ConnectionFactory#getConnection()</a></code>, for example for legacy code that is not aware of Spring at all. In that case, define a TransactionAwareConnectionFactoryProxy for your target ConnectionFactory, which will automatically participate in Spring-managed transactions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-connection-holder/index.html">ConnectionHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConnectionHolder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceHolderSupport</span></code>
+<p>Connection holder, wrapping a CCI Connection. 
+<p>CciLocalTransactionManager binds instances of this class to the thread, for a given ConnectionFactory. </p>
+<p>Note: This is an SPI class, not intended to be used by applications.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-connection-spec-connection-factory-adapter/index.html">ConnectionSpecConnectionFactoryAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConnectionSpecConnectionFactoryAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingConnectionFactory</span></code>
+<p>An adapter for a target CCI javax.resource.cci.ConnectionFactory, applying the given ConnectionSpec to every standard <code>getConnection()</code> call, that is, implicitly invoking <code>getConnection(ConnectionSpec)</code> on the target. All other methods simply delegate to the corresponding methods of the target ConnectionFactory. 
+<p>Can be used to proxy a target JNDI ConnectionFactory that does not have a ConnectionSpec configured. Client code can work with the ConnectionFactory without passing in a ConnectionSpec on every <code>getConnection()</code> call. </p>
+<p>In the following example, client code can simply transparently work with the preconfigured "myConnectionFactory", implicitly accessing "myTargetConnectionFactory" with the specified user credentials. </p>
+<pre><code> &lt;bean id="myTargetConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="java:comp/env/cci/mycf"/&gt; &lt;/bean&gt; &lt;bean id="myConnectionFactory" class="org.springframework.jca.cci.connection.ConnectionSpecConnectionFactoryAdapter"&gt; &lt;property name="targetConnectionFactory" ref="myTargetConnectionFactory"/&gt; &lt;property name="connectionSpec"&gt; &lt;bean class="your.resource.adapter.ConnectionSpecImpl"&gt; &lt;property name="username" value="myusername"/&gt; &lt;property name="password" value="mypassword"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> 
+<p>If the "connectionSpec" is empty, this proxy will simply delegate to the standard <code>getConnection()</code> method of the target ConnectionFactory. This can be used to keep a UserCredentialsConnectionFactoryAdapter bean definition just for the <em>option</em> of implicitly passing in a ConnectionSpec if the particular target ConnectionFactory requires it.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-not-supported-record-factory/index.html">NotSupportedRecordFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NotSupportedRecordFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RecordFactory</span></code>
+<p>Implementation of the CCI RecordFactory interface that always throws NotSupportedException. 
+<p>Useful as a placeholder for a RecordFactory argument (for example as defined by the RecordCreator callback), in particular when the connector's <code>ConnectionFactory.getRecordFactory()</code> implementation happens to throw NotSupportedException early rather than throwing the exception from RecordFactory's methods.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-single-connection-factory/index.html">SingleConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingleConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingConnectionFactory</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A CCI ConnectionFactory adapter that returns the same Connection on all <code>getConnection</code> calls, and ignores calls to <code>Connection.close()</code>. 
+<p>Useful for testing and standalone environments, to keep using the same Connection for multiple CciTemplate calls, without having a pooling ConnectionFactory, also spanning any number of transactions. </p>
+<p>You can either pass in a CCI Connection directly, or let this factory lazily create a Connection via a given target ConnectionFactory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-aware-connection-factory-proxy/index.html">TransactionAwareConnectionFactoryProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAwareConnectionFactoryProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingConnectionFactory</span></code>
+<p>Proxy for a target CCI javax.resource.cci.ConnectionFactory, adding awareness of Spring-managed transactions. Similar to a transactional JNDI ConnectionFactory as provided by a Java EE server. 
+<p>Data access code that should remain unaware of Spring's data access support can work with this proxy to seamlessly participate in Spring-managed transactions. Note that the transaction manager, for example the CciLocalTransactionManager, still needs to work with underlying ConnectionFactory, <em>not</em> with this proxy. </p>
+<p><strong>Make sure that TransactionAwareConnectionFactoryProxy is the outermost ConnectionFactory of a chain of ConnectionFactory proxies/adapters.</strong> TransactionAwareConnectionFactoryProxy can delegate either directly to the target connection pool or to some intermediate proxy/adapter like ConnectionSpecConnectionFactoryAdapter. </p>
+<p>Delegates to ConnectionFactoryUtils for automatically participating in thread-bound transactions, for example managed by CciLocalTransactionManager. <code>getConnection</code> calls and <code>close</code> calls on returned Connections will behave properly within a transaction, i.e. always operate on the transactional Connection. If not within a transaction, normal ConnectionFactory behavior applies. </p>
+<p>This proxy allows data access code to work with the plain JCA CCI API and still participate in Spring-managed transactions, similar to CCI code in a Java EE/JTA environment. However, if possible, use Spring's ConnectionFactoryUtils, CciTemplate or CCI operation objects to get transaction participation even without a proxy for the target ConnectionFactory, avoiding the need to define such a proxy in the first place. </p>
+<p><strong>NOTE:</strong> This ConnectionFactory proxy needs to return wrapped Connections in order to handle close calls properly. Therefore, the returned Connections cannot be cast to a native CCI Connection type or to a connection pool implementation type.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

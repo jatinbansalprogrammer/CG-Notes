@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.mail.javamail - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.mail.javamail</a><br/>
+<br/>
+<h2>Package org.springframework.mail.javamail</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-configurable-mime-file-type-map/index.html">ConfigurableMimeFileTypeMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConfigurableMimeFileTypeMap</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FileTypeMap</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Spring-configurable <code>FileTypeMap</code> implementation that will read MIME type to file extension mappings from a standard JavaMail MIME type mapping file, using a standard <code>MimetypesFileTypeMap</code> underneath. 
+<p>The mapping file should be in the following format, as specified by the Java Activation Framework: </p>
+<pre><code> # map text/html to .htm and .html files text/html html htm HTML HTM</code></pre> Lines starting with <code>#</code> are treated as comments and are ignored. All other lines are treated as mappings. Each mapping line should contain the MIME type as the first entry and then each file extension to map to that MIME type as subsequent entries. Each entry is separated by spaces or tabs. 
+<p>By default, the mappings in the <code>mime.types</code> file located in the same package as this class are used, which cover many common file extensions (in contrast to the out-of-the-box mappings in <code>activation.jar</code>). This can be overridden using the <code>mappingLocation</code> property. </p>
+<p>Additional mappings can be added via the <code>mappings</code> bean property, as lines that follow the <code>mime.types</code> file format.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-internet-address-editor/index.html">InternetAddressEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InternetAddressEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.mail.internet.InternetAddress</code>, to directly populate an InternetAddress property. 
+<p>Expects the same syntax as InternetAddress's constructor with a String argument. Converts empty Strings into null values.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-java-mail-sender-impl/index.html">JavaMailSenderImpl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JavaMailSenderImpl</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JavaMailSender</span></code>
+<p>Production implementation of the JavaMailSender interface, supporting both JavaMail MimeMessage and Spring SimpleMailMessage. Can also be used as a plain org.springframework.mail.MailSender implementation. 
+<p>Allows for defining all settings locally as bean properties. Alternatively, a pre-configured JavaMail javax.mail.Session can be specified, possibly pulled from an application server's JNDI environment. </p>
+<p>Non-default properties in this object will always override the settings in the JavaMail <code>Session</code>. Note that if overriding all values locally, there is no added value in setting a pre-configured <code>Session</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mime-mail-message/index.html">MimeMailMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MimeMailMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MailMessage</span></code>
+<p>Implementation of the MailMessage interface for a JavaMail MIME message, to let message population code interact with a simple message or a MIME message through a common interface. 
+<p>Uses a MimeMessageHelper underneath. Can either be created with a MimeMessageHelper instance or with a JavaMail MimeMessage instance.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

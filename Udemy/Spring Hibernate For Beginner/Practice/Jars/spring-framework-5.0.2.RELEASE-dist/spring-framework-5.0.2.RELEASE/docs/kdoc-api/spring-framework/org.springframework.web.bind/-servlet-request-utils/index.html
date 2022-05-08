@@ -1,0 +1,281 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServletRequestUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind</a>&nbsp;/&nbsp;<a href=".">ServletRequestUtils</a><br/>
+<br/>
+<h1>ServletRequestUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ServletRequestUtils</span></code>
+<p>Parameter extraction methods, for an approach distinct from data binding, in which parameters of specific types are required. 
+<p>This approach is very useful for simple submissions, where binding request parameters to a command object would be overkill.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Keith Donald</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServletRequestUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Parameter extraction methods, for an approach distinct from data binding, in which parameters of specific types are required. 
+<p>This approach is very useful for simple submissions, where binding request parameters to a command object would be overkill.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-boolean-parameter.html">getBooleanParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getBooleanParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getBooleanParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getBooleanParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Get a Boolean parameter, or <code>null</code> if not present. Throws an exception if it the parameter value isn't a boolean. 
+<p>Accepts "true", "on", "yes" (any case) and "1" as values for true; treats every other non-empty value as false (i.e. parses leniently).</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getBooleanParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getBooleanParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Boolean)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getBooleanParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getBooleanParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Boolean)/defaultVal">defaultVal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Get a boolean parameter, with a fallback value. Never throws an exception. Can pass a distinguished value as default to enable checks of whether it was supplied. 
+<p>Accepts "true", "on", "yes" (any case) and "1" as values for true; treats every other non-empty value as false (i.e. parses leniently).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-boolean-parameters.html">getBooleanParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getBooleanParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getBooleanParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getBooleanParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/index.html"><span class="identifier">BooleanArray</span></a></code>
+<p>Get an array of boolean parameters, return an empty array if not found. 
+<p>Accepts "true", "on", "yes" (any case) and "1" as values for true; treats every other non-empty value as false (i.e. parses leniently).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-double-parameter.html">getDoubleParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getDoubleParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getDoubleParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getDoubleParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code>
+<p>Get a Double parameter, or <code>null</code> if not present. Throws an exception if it the parameter value isn't a number.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getDoubleParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getDoubleParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Double)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getDoubleParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Double)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getDoubleParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Double)/defaultVal">defaultVal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code>
+<p>Get a double parameter, with a fallback value. Never throws an exception. Can pass a distinguished value as default to enable checks of whether it was supplied.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-double-parameters.html">getDoubleParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getDoubleParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getDoubleParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getDoubleParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html"><span class="identifier">DoubleArray</span></a></code>
+<p>Get an array of double parameters, return an empty array if not found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-float-parameter.html">getFloatParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getFloatParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getFloatParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getFloatParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Get a Float parameter, or <code>null</code> if not present. Throws an exception if it the parameter value isn't a number.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getFloatParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getFloatParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Float)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getFloatParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Float)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getFloatParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Float)/defaultVal">defaultVal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Get a float parameter, with a fallback value. Never throws an exception. Can pass a distinguished value as default to enable checks of whether it was supplied.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-float-parameters.html">getFloatParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getFloatParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getFloatParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getFloatParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float-array/index.html"><span class="identifier">FloatArray</span></a></code>
+<p>Get an array of float parameters, return an empty array if not found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-int-parameter.html">getIntParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getIntParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getIntParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getIntParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get an Integer parameter, or <code>null</code> if not present. Throws an exception if it the parameter value isn't a number.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getIntParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getIntParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Int)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getIntParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Int)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getIntParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Int)/defaultVal">defaultVal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get an int parameter, with a fallback value. Never throws an exception. Can pass a distinguished value as default to enable checks of whether it was supplied.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-int-parameters.html">getIntParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getIntParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getIntParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getIntParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code>
+<p>Get an array of int parameters, return an empty array if not found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-long-parameter.html">getLongParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getLongParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getLongParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getLongParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get a Long parameter, or <code>null</code> if not present. Throws an exception if it the parameter value isn't a number.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getLongParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getLongParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Long)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getLongParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Long)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getLongParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.Long)/defaultVal">defaultVal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get a long parameter, with a fallback value. Never throws an exception. Can pass a distinguished value as default to enable checks of whether it was supplied.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-long-parameters.html">getLongParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getLongParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getLongParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getLongParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long-array/index.html"><span class="identifier">LongArray</span></a></code>
+<p>Get an array of long parameters, return an empty array if not found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-boolean-parameter.html">getRequiredBooleanParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredBooleanParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredBooleanParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredBooleanParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Get a boolean parameter, throwing an exception if it isn't found or isn't a boolean. 
+<p>Accepts "true", "on", "yes" (any case) and "1" as values for true; treats every other non-empty value as false (i.e. parses leniently).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-boolean-parameters.html">getRequiredBooleanParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredBooleanParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredBooleanParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredBooleanParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean-array/index.html"><span class="identifier">BooleanArray</span></a></code>
+<p>Get an array of boolean parameters, throwing an exception if not found or one isn't a boolean. 
+<p>Accepts "true", "on", "yes" (any case) and "1" as values for true; treats every other non-empty value as false (i.e. parses leniently).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-double-parameter.html">getRequiredDoubleParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredDoubleParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredDoubleParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredDoubleParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code>
+<p>Get a double parameter, throwing an exception if it isn't found or isn't a number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-double-parameters.html">getRequiredDoubleParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredDoubleParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredDoubleParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredDoubleParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double-array/index.html"><span class="identifier">DoubleArray</span></a></code>
+<p>Get an array of double parameters, throwing an exception if not found or one is not a number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-float-parameter.html">getRequiredFloatParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredFloatParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredFloatParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredFloatParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code>
+<p>Get a float parameter, throwing an exception if it isn't found or isn't a number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-float-parameters.html">getRequiredFloatParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredFloatParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredFloatParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredFloatParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float-array/index.html"><span class="identifier">FloatArray</span></a></code>
+<p>Get an array of float parameters, throwing an exception if not found or one is not a number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-int-parameter.html">getRequiredIntParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredIntParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredIntParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredIntParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get an int parameter, throwing an exception if it isn't found or isn't a number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-int-parameters.html">getRequiredIntParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredIntParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredIntParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredIntParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code>
+<p>Get an array of int parameters, throwing an exception if not found or one is not a number..</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-long-parameter.html">getRequiredLongParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredLongParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredLongParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredLongParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Get a long parameter, throwing an exception if it isn't found or isn't a number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-long-parameters.html">getRequiredLongParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredLongParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredLongParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredLongParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long-array/index.html"><span class="identifier">LongArray</span></a></code>
+<p>Get an array of long parameters, throwing an exception if not found or one is not a number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-string-parameter.html">getRequiredStringParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredStringParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredStringParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredStringParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get a String parameter, throwing an exception if it isn't found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-string-parameters.html">getRequiredStringParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredStringParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredStringParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getRequiredStringParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Get an array of String parameters, throwing an exception if not found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-string-parameter.html">getStringParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getStringParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getStringParameter(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getStringParameter(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get a String parameter, or <code>null</code> if not present.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getStringParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getStringParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getStringParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getStringParameter(javax.servlet.ServletRequest, kotlin.String, kotlin.String)/defaultVal">defaultVal</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get a String parameter, with a fallback value. Never throws an exception. Can pass a distinguished value to default to enable checks of whether it was supplied.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-string-parameters.html">getStringParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getStringParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getStringParameters(javax.servlet.ServletRequest, kotlin.String)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestUtils$getStringParameters(javax.servlet.ServletRequest, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Get an array of String parameters, return an empty array if not found.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

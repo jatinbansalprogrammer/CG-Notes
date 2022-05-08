@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.remoting.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.remoting.support</a><br/>
+<br/>
+<h2>Package org.springframework.remoting.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-default-remote-invocation-executor/index.html">DefaultRemoteInvocationExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultRemoteInvocationExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-remote-invocation-executor/index.html"><span class="identifier">RemoteInvocationExecutor</span></a></code>
+<p>Default implementation of the RemoteInvocationExecutor interface. Simply delegates to RemoteInvocation's invoke method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-remote-invocation-factory/index.html">DefaultRemoteInvocationFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultRemoteInvocationFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RemoteInvocationFactory</span></code>
+<p>Default implementation of the RemoteInvocationFactory interface. Simply creates a new standard RemoteInvocation object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-remote-invocation-based-accessor/index.html">RemoteInvocationBasedAccessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">RemoteInvocationBasedAccessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlBasedRemoteAccessor</span></code>
+<p>Abstract base class for remote service accessors that are based on serialization of RemoteInvocation objects. Provides a "remoteInvocationFactory" property, with a DefaultRemoteInvocationFactory as default strategy.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-remote-invocation-executor/index.html">RemoteInvocationExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RemoteInvocationExecutor</span></code>
+<p>Strategy interface for executing a RemoteInvocation on a target object. 
+<p>Used by org.springframework.remoting.rmi.RmiServiceExporter (for RMI invokers) and by org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-remote-invocation-trace-interceptor/index.html">RemoteInvocationTraceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RemoteInvocationTraceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a></code>
+<p>AOP Alliance MethodInterceptor for tracing remote invocations. Automatically applied by RemoteExporter and its subclasses. 
+<p>Logs an incoming remote call as well as the finished processing of a remote call at DEBUG level. If the processing of a remote call results in a checked exception, the exception will get logged at INFO level; if it results in an unchecked exception (or error), the exception will get logged at WARN level. </p>
+<p>The logging of exceptions is particularly useful to save the stacktrace information on the server-side rather than just propagating the exception to the client (who might or might not log it properly).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-remote-invocation-utils/index.html">RemoteInvocationUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">RemoteInvocationUtils</span></code>
+<p>General utilities for handling remote invocations. 
+<p>Mainly intended for use within the remoting framework.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-http-server-factory-bean/index.html">SimpleHttpServerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHttpServerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">HttpServer</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>org.springframework.beans.factory.FactoryBean that creates a simple HTTP server, based on the HTTP server that is included in Sun's JRE 1.6. Starts the HTTP server on initialization and stops it on destruction. Exposes the resulting com.sun.net.httpserver.HttpServer object. 
+<p>Allows for registering com.sun.net.httpserver.HttpHandler for specific <code><a href="#">context paths</a></code>. Alternatively, register such context-specific handlers programmatically on the com.sun.net.httpserver.HttpServer itself.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

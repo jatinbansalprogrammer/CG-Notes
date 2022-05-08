@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.core.metadata - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.core.metadata</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.core.metadata</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-call-meta-data-context/index.html">CallMetaDataContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallMetaDataContext</span></code>
+<p>Class to manage context metadata used for the configuration and execution of the call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-call-meta-data-provider/index.html">CallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CallMetaDataProvider</span></code>
+<p>Interface specifying the API to be implemented by a class providing call metadata. 
+<p>This is intended for internal use by Spring's org.springframework.jdbc.core.simple.SimpleJdbcCall.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-call-meta-data-provider-factory/index.html">CallMetaDataProviderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallMetaDataProviderFactory</span></code>
+<p>Factory used to create a CallMetaDataProvider implementation based on the type of database being used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-db2-call-meta-data-provider/index.html">Db2CallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Db2CallMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericCallMetaDataProvider</span></code>
+<p>DB2 specific implementation for the CallMetaDataProvider interface. This class is intended for internal use by the Simple JDBC classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-derby-call-meta-data-provider/index.html">DerbyCallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DerbyCallMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericCallMetaDataProvider</span></code>
+<p>Derby specific implementation for the CallMetaDataProvider interface. This class is intended for internal use by the Simple JDBC classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-derby-table-meta-data-provider/index.html">DerbyTableMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DerbyTableMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericTableMetaDataProvider</span></code>
+<p>The Derby specific implementation of the org.springframework.jdbc.core.metadata.TableMetaDataProvider. Overrides the Derby metadata info regarding retrieving generated keys. It seems to work OK so not sure why they claim it's not supported.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hana-call-meta-data-provider/index.html">HanaCallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HanaCallMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericCallMetaDataProvider</span></code>
+<p>SAP HANA specific implementation for the CallMetaDataProvider interface. This class is intended for internal use by the Simple JDBC classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hsql-table-meta-data-provider/index.html">HsqlTableMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HsqlTableMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericTableMetaDataProvider</span></code>
+<p>The HSQL specific implementation of TableMetaDataProvider. Supports a feature for retrieving generated keys without the JDBC 3.0 <code>getGeneratedKeys</code> support.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-oracle-call-meta-data-provider/index.html">OracleCallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OracleCallMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericCallMetaDataProvider</span></code>
+<p>Oracle-specific implementation for the CallMetaDataProvider interface. This class is intended for internal use by the Simple JDBC classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-oracle-table-meta-data-provider/index.html">OracleTableMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OracleTableMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericTableMetaDataProvider</span></code>
+<p>Oracle-specific implementation of the org.springframework.jdbc.core.metadata.TableMetaDataProvider. Supports a feature for including synonyms in the metadata lookup. Also supports lookup of current schema using the <code>sys_context</code>. 
+<p>Thanks to Mike Youngstrom and Bruce Campbell for submitting the original suggestion for the Oracle current schema lookup implementation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-postgres-call-meta-data-provider/index.html">PostgresCallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PostgresCallMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericCallMetaDataProvider</span></code>
+<p>Postgres-specific implementation for the CallMetaDataProvider interface. This class is intended for internal use by the Simple JDBC classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-postgres-table-meta-data-provider/index.html">PostgresTableMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PostgresTableMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericTableMetaDataProvider</span></code>
+<p>The PostgreSQL specific implementation of TableMetaDataProvider. Supports a feature for retrieving generated keys without the JDBC 3.0 <code>getGeneratedKeys</code> support.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-server-call-meta-data-provider/index.html">SqlServerCallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlServerCallMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericCallMetaDataProvider</span></code>
+<p>SQL Server specific implementation for the CallMetaDataProvider interface. This class is intended for internal use by the Simple JDBC classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sybase-call-meta-data-provider/index.html">SybaseCallMetaDataProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SybaseCallMetaDataProvider</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericCallMetaDataProvider</span></code>
+<p>Sybase specific implementation for the CallMetaDataProvider interface. This class is intended for internal use by the Simple JDBC classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-table-meta-data-provider-factory/index.html">TableMetaDataProviderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TableMetaDataProviderFactory</span></code>
+<p>Factory used to create a TableMetaDataProvider implementation based on the type of database being used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

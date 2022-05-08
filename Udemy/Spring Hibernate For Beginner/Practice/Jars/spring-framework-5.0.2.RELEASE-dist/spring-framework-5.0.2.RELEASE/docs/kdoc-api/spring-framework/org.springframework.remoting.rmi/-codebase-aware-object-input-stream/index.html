@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CodebaseAwareObjectInputStream - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.rmi</a>&nbsp;/&nbsp;<a href=".">CodebaseAwareObjectInputStream</a><br/>
+<br/>
+<h1>CodebaseAwareObjectInputStream</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CodebaseAwareObjectInputStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableObjectInputStream</span></code>
+<p>Special ObjectInputStream subclass that falls back to a specified codebase to load classes from if not found locally. In contrast to standard RMI conventions for dynamic class download, it is the client that determines the codebase URL here, rather than the "java.rmi.server.codebase" system property on the server. 
+<p>Uses the JDK's RMIClassLoader to load classes from the specified codebase. The codebase can consist of multiple URLs, separated by spaces. Note that RMIClassLoader requires a SecurityManager to be set, like when using dynamic class download with standard RMI! (See the RMI documentation for details.) </p>
+<p>Despite residing in the RMI package, this class is <em>not</em> used for RmiClientInterceptor, which uses the standard RMI infrastructure instead and thus is only able to rely on RMI's standard dynamic class download via "java.rmi.server.codebase". CodebaseAwareObjectInputStream is used by HttpInvokerClientInterceptor (see the "codebaseUrl" property there). </p>
+<p>Thanks to Lionel Mestre for suggesting the option and providing a prototype!</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1.3</p>
+<p><strong>See Also</strong><br/>
+java.rmi.server.RMIClassLoader<a href="#">RemoteInvocationSerializingExporter#createObjectInputStream</a><a href="#">org.springframework.remoting.httpinvoker.HttpInvokerClientInterceptor#setCodebaseUrl</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CodebaseAwareObjectInputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, kotlin.String)/in">in</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, kotlin.String)/codebaseUrl">codebaseUrl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">CodebaseAwareObjectInputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, java.lang.ClassLoader, kotlin.String)/in">in</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, java.lang.ClassLoader, kotlin.String)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, java.lang.ClassLoader, kotlin.String)/codebaseUrl">codebaseUrl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">CodebaseAwareObjectInputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, java.lang.ClassLoader, kotlin.Boolean)/in">in</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, java.lang.ClassLoader, kotlin.Boolean)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.CodebaseAwareObjectInputStream$<init>(java.io.InputStream, java.lang.ClassLoader, kotlin.Boolean)/acceptProxyClasses">acceptProxyClasses</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new CodebaseAwareObjectInputStream for the given InputStream and codebase.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

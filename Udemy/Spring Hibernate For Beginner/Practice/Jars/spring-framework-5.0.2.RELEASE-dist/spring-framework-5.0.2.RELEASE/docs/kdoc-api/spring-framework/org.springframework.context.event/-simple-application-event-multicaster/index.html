@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleApplicationEventMulticaster - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.event</a>&nbsp;/&nbsp;<a href=".">SimpleApplicationEventMulticaster</a><br/>
+<br/>
+<h1>SimpleApplicationEventMulticaster</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleApplicationEventMulticaster</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractApplicationEventMulticaster</span></code>
+<p>Simple implementation of the ApplicationEventMulticaster interface. 
+<p>Multicasts all events to all registered listeners, leaving it up to the listeners to ignore events that they are not interested in. Listeners will usually perform corresponding <code>instanceof</code> checks on the passed-in event object. </p>
+<p>By default, all listeners are invoked in the calling thread. This allows the danger of a rogue listener blocking the entire application, but adds minimal overhead. Specify an alternative task executor to have listeners executed in different threads, for example from a thread pool.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>See Also</strong><br/>
+<a href="set-task-executor.html">#setTaskExecutor</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleApplicationEventMulticaster</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new SimpleApplicationEventMulticaster.</p>
+<code><span class="identifier">SimpleApplicationEventMulticaster</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.SimpleApplicationEventMulticaster$<init>(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span></code>
+<p>Create a new SimpleApplicationEventMulticaster for the given BeanFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="multicast-event.html">multicastEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">multicastEvent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.SimpleApplicationEventMulticaster$multicastEvent(org.springframework.context.ApplicationEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">multicastEvent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.SimpleApplicationEventMulticaster$multicastEvent(org.springframework.context.ApplicationEvent, org.springframework.core.ResolvableType)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationEvent</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.event.SimpleApplicationEventMulticaster$multicastEvent(org.springframework.context.ApplicationEvent, org.springframework.core.ResolvableType)/eventType">eventType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-error-handler.html">setErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setErrorHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.SimpleApplicationEventMulticaster$setErrorHandler(org.springframework.util.ErrorHandler)/errorHandler">errorHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">ErrorHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ErrorHandler to invoke in case an exception is thrown from a listener. 
+<p>Default is none, with a listener exception stopping the current multicast and getting propagated to the publisher of the current event. If a <a href="set-task-executor.html">task executor</a> is specified, each individual listener exception will get propagated to the executor but won't necessarily stop execution of other listeners. </p>
+<p>Consider setting an ErrorHandler implementation that catches and logs exceptions (a la <code><a href="../../org.springframework.scheduling.support/-task-utils/-l-o-g_-a-n-d_-s-u-p-p-r-e-s-s_-e-r-r-o-r_-h-a-n-d-l-e-r.html">org.springframework.scheduling.support.TaskUtils#LOG_AND_SUPPRESS_ERROR_HANDLER</a></code>) or an implementation that logs exceptions while nevertheless propagating them (e.g. <code><a href="../../org.springframework.scheduling.support/-task-utils/-l-o-g_-a-n-d_-p-r-o-p-a-g-a-t-e_-e-r-r-o-r_-h-a-n-d-l-e-r.html">org.springframework.scheduling.support.TaskUtils#LOG_AND_PROPAGATE_ERROR_HANDLER</a></code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-executor.html">setTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.SimpleApplicationEventMulticaster$setTaskExecutor(java.util.concurrent.Executor)/taskExecutor">taskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom executor (typically a org.springframework.core.task.TaskExecutor) to invoke each listener with. 
+<p>Default is equivalent to org.springframework.core.task.SyncTaskExecutor, executing all listeners synchronously in the calling thread. </p>
+<p>Consider specifying an asynchronous task executor here to not block the caller until all listeners have been executed. However, note that asynchronous execution will not participate in the caller's thread context (class loader, transaction association) unless the TaskExecutor explicitly supports this.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

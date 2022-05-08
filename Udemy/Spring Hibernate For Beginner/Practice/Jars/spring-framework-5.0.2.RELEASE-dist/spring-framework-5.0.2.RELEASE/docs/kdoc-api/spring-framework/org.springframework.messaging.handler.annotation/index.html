@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.handler.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.handler.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.handler.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-value-constants/index.html">ValueConstants</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ValueConstants</span></code>
+<p>Common annotation value constants.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-destination-variable/index.html">DestinationVariable</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">DestinationVariable</span></code>
+<p>Annotation that indicates a method parameter should be bound to a template variable in a destination template string. Supported on message handling methods such as MessageMapping. 
+<p> A <code>@DestinationVariable</code> template variable is always required.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-headers/index.html">Headers</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Headers</span></code>
+<p>Annotation which indicates that a method parameter should be bound to the headers of a message. The annotated parameter must be assignable to java.util.Map with String keys and Object values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-exception-handler/index.html">MessageExceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MessageExceptionHandler</span></code>
+<p>Annotation for handling exceptions thrown from message-handling methods within a specific handler class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-mapping/index.html">MessageMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MessageMapping</span></code>
+<p>Annotation for mapping a Message onto message-handling methods by matching to the message destination. This annotation can also be used on the type-level in which case it defines a common destination prefix or pattern for all method-level annotations including method-level org.springframework.messaging.simp.annotation.SubscribeMapping annotations. 
+<p>Handler methods which are annotated with this annotation are allowed to have flexible signatures. They may have arguments of the following types, in arbitrary order: </p>
+<ul> <li>Message to get access to the complete message being processed.</li>
+ <li>Payload-annotated method arguments to extract the payload of a message and optionally convert it using a org.springframework.messaging.converter.MessageConverter. The presence of the annotation is not required since it is assumed by default for method arguments that are not annotated. Payload method arguments annotated with Validation annotations (like org.springframework.validation.annotation.Validated) will be subject to JSR-303 validation.</li>
+ <li>Header-annotated method arguments to extract a specific header value along with type conversion with a org.springframework.core.convert.converter.Converter if necessary.</li>
+ <li>Headers-annotated argument that must also be assignable to java.util.Map for getting access to all headers.</li>
+ <li>org.springframework.messaging.MessageHeaders arguments for getting access to all headers.</li>
+ <li>org.springframework.messaging.support.MessageHeaderAccessor or with STOMP over WebSocket support also sub-classes such as org.springframework.messaging.simp.SimpMessageHeaderAccessor for convenient access to all method arguments.</li>
+ <li>DestinationVariable-annotated arguments for access to template variable values extracted from the message destination (e.g. /hotels/{hotel}). Variable values will be converted to the declared method argument type.</li>
+ <li>java.security.Principal method arguments are supported with STOMP over WebSocket messages. It reflects the user logged in to the WebSocket session on which the message was received. Regular HTTP-based authentication (e.g. Spring Security based) can be used to secure the HTTP handshake that initiates WebSocket sessions.</li>
+ </ul>
+ 
+<p>A return value will get wrapped as a message and sent to a default response destination or to a custom destination specified with an SendTo method-level annotation. Such a response may also be provided asynchronously via a org.springframework.util.concurrent.ListenableFuture return type or a corresponding JDK 8 java.util.concurrent.CompletableFuture / java.util.concurrent.CompletionStage handle. </p>
+STOMP over WebSocket 
+<p>An SendTo annotation is not strictly required — by default the message will be sent to the same destination as the incoming message but with an additional prefix (<code>"/topic"</code> by default). It is also possible to use the org.springframework.messaging.simp.annotation.SendToUser annotation to have the message directed to a specific user if connected. The return value is converted with a org.springframework.messaging.converter.MessageConverter. </p>
+<p><strong>NOTE:</strong> When using controller interfaces (e.g. for AOP proxying), make sure to consistently put <em>all</em> your mapping annotations - such as <code>@MessageMapping</code> and <code>@SubscribeMapping</code> - on the controller <em>interface</em> rather than on the implementation class.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-payload/index.html">Payload</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Payload</span></code>
+<p>Annotation that binds a method parameter to the payload of a message. Can also be used to associate a payload to a method invocation. The payload may be passed through a MessageConverter to convert it from serialized form with a specific MIME type to an Object matching the target method parameter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

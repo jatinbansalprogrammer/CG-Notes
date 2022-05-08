@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SubProtocolHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.messaging</a>&nbsp;/&nbsp;<a href=".">SubProtocolHandler</a><br/>
+<br/>
+<h1>SubProtocolHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">SubProtocolHandler</span></code>
+<p>A contract for handling WebSocket messages as part of a higher level protocol, referred to as "sub-protocol" in the WebSocket RFC specification. Handles both WebSocketMessages from a client as well as Messages to a client. 
+<p>Implementations of this interface can be configured on a SubProtocolWebSocketHandler which selects a sub-protocol handler to delegate messages to based on the sub-protocol requested by the client through the <code>Sec-WebSocket-Protocol</code> request header.</p>
+</p>
+<p><strong>Author</strong><br/>
+Andy Wilkinson</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-session-ended.html">afterSessionEnded</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">afterSessionEnded</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$afterSessionEnded(org.springframework.web.socket.WebSocketSession, org.springframework.web.socket.CloseStatus, org.springframework.messaging.MessageChannel)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketSession</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$afterSessionEnded(org.springframework.web.socket.WebSocketSession, org.springframework.web.socket.CloseStatus, org.springframework.messaging.MessageChannel)/closeStatus">closeStatus</span><span class="symbol">:</span>&nbsp;<span class="identifier">CloseStatus</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$afterSessionEnded(org.springframework.web.socket.WebSocketSession, org.springframework.web.socket.CloseStatus, org.springframework.messaging.MessageChannel)/outputChannel">outputChannel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoked after a WebSocketSession has ended.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-session-started.html">afterSessionStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">afterSessionStarted</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$afterSessionStarted(org.springframework.web.socket.WebSocketSession, org.springframework.messaging.MessageChannel)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketSession</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$afterSessionStarted(org.springframework.web.socket.WebSocketSession, org.springframework.messaging.MessageChannel)/outputChannel">outputChannel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoked after a WebSocketSession has started.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-supported-protocols.html">getSupportedProtocols</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getSupportedProtocols</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the list of sub-protocols supported by this handler (never <code>null</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-message-from-client.html">handleMessageFromClient</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handleMessageFromClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$handleMessageFromClient(org.springframework.web.socket.WebSocketSession, org.springframework.web.socket.WebSocketMessage((kotlin.Any)), org.springframework.messaging.MessageChannel)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketSession</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$handleMessageFromClient(org.springframework.web.socket.WebSocketSession, org.springframework.web.socket.WebSocketMessage((kotlin.Any)), org.springframework.messaging.MessageChannel)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketMessage</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$handleMessageFromClient(org.springframework.web.socket.WebSocketSession, org.springframework.web.socket.WebSocketMessage((kotlin.Any)), org.springframework.messaging.MessageChannel)/outputChannel">outputChannel</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageChannel</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Handle the given WebSocketMessage received from a client.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-message-to-client.html">handleMessageToClient</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handleMessageToClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$handleMessageToClient(org.springframework.web.socket.WebSocketSession, org.springframework.messaging.Message((kotlin.Any)))/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketSession</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$handleMessageToClient(org.springframework.web.socket.WebSocketSession, org.springframework.messaging.Message((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Handle the given Message to the client associated with the given WebSocket session.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-session-id.html">resolveSessionId</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveSessionId</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolHandler$resolveSessionId(org.springframework.messaging.Message((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Resolve the session id from the given message or return <code>null</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

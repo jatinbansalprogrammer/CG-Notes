@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.mvc.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.mvc.support</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.mvc.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-redirect-attributes/index.html">RedirectAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RedirectAttributes</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Model</span></code>
+<p>A specialization of the Model interface that controllers can use to select attributes for a redirect scenario. Since the intent of adding redirect attributes is very explicit -- i.e. to be used for a redirect URL, attribute values may be formatted as Strings and stored that way to make them eligible to be appended to the query string or expanded as URI variables in <code>org.springframework.web.servlet.view.RedirectView</code>. 
+<p>This interface also provides a way to add flash attributes. For a general overview of flash attributes see FlashMap. You can use RedirectAttributes to store flash attributes and they will be automatically propagated to the "output" FlashMap of the current request. </p>
+<p>Example usage in an <code>@Controller</code>: </p>
+<pre><code> @RequestMapping(value = "/accounts", method = RequestMethod.POST) public String handle(Account account, BindingResult result, RedirectAttributes redirectAttrs) { if (result.hasErrors()) { return "accounts/new"; } // Save account ... redirectAttrs.addAttribute("id", account.getId()).addFlashAttribute("message", "Account created!"); return "redirect:/accounts/{id}"; } </code></pre> 
+<p>A RedirectAttributes model is empty when the method is called and is never used unless the method returns a redirect view name or a RedirectView. </p>
+<p>After the redirect, flash attributes are automatically added to the model of the controller that serves the target URL.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-redirect-attributes-model-map/index.html">RedirectAttributesModelMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RedirectAttributesModelMap</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ModelMap</span><span class="symbol">, </span><a href="-redirect-attributes/index.html"><span class="identifier">RedirectAttributes</span></a></code>
+<p>A ModelMap implementation of RedirectAttributes that formats values as Strings using a DataBinder. Also provides a place to store flash attributes so they can survive a redirect without the need to be embedded in the redirect URL.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

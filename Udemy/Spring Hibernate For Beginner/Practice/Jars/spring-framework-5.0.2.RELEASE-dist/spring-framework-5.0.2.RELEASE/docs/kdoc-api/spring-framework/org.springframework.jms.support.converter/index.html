@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jms.support.converter - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jms.support.converter</a><br/>
+<br/>
+<h2>Package org.springframework.jms.support.converter</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-mapping-jackson2-message-converter/index.html">MappingJackson2MessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MappingJackson2MessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SmartMessageConverter</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>Message converter that uses Jackson 2.x to convert messages to and from JSON. Maps an object to a BytesMessage, or to a TextMessage if the <code><a href="-mapping-jackson2-message-converter/set-target-type.html">targetType</a></code> is set to <code><a href="#">MessageType#TEXT</a></code>. Converts from a TextMessage or BytesMessage to an object. 
+<p>It customizes Jackson's default properties with the following ones: </p>
+<ul> <li><code><a href="#">MapperFeature#DEFAULT_VIEW_INCLUSION</a></code> is disabled</li>
+ <li><code><a href="#">DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES</a></code> is disabled</li>
+ </ul>
+ 
+<p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-marshalling-message-converter/index.html">MarshallingMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MarshallingMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageConverter</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Spring JMS MessageConverter that uses a Marshaller and Unmarshaller. Marshals an object to a BytesMessage, or to a TextMessage if the <code><a href="-marshalling-message-converter/set-target-type.html">targetType</a></code> is set to <code><a href="#">MessageType#TEXT</a></code>. Unmarshals from a TextMessage or BytesMessage to an object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-message-conversion-exception/index.html">MessageConversionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageConversionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmsException</span></code>
+<p>Thrown by MessageConverter implementations when the conversion of an object to/from a javax.jms.Message fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

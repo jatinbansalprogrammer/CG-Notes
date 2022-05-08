@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestExecutionListener - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context</a>&nbsp;/&nbsp;<a href=".">TestExecutionListener</a><br/>
+<br/>
+<h1>TestExecutionListener</h1>
+<code><span class="keyword">interface </span><span class="identifier">TestExecutionListener</span></code>
+<p><code>TestExecutionListener</code> defines a <em>listener</em> API for reacting to test execution events published by the TestContextManager with which the listener is registered. 
+<p>Note that not all testing frameworks support all lifecycle callbacks defined in this API. For example, <code><a href="before-test-execution.html">#beforeTestExecution</a></code> and <code><a href="after-test-execution.html">#afterTestExecution</a></code> are not supported in conjunction with JUnit 4 when using the org.springframework.test.context.junit4.rules.SpringMethodRule. </p>
+<p>This interface provides empty <code>default</code> implementations for all methods. Concrete implementations can therefore choose to override only those methods suitable for the task at hand. </p>
+<p>Concrete implementations must provide a <code>public</code> no-args constructor, so that listeners can be instantiated transparently by tools and configuration mechanisms. </p>
+<p>Implementations may optionally declare the position in which they should be ordered among the chain of default listeners via the org.springframework.core.Ordered interface or org.springframework.core.annotation.Order annotation. See <code><a href="#">TestContextBootstrapper#getTestExecutionListeners()</a></code> for details. </p>
+<p>Spring provides the following out-of-the-box implementations (all of which implement <code>Ordered</code>): </p>
+<ul> <li>org.springframework.test.context.web.ServletTestExecutionListener</li>
+ <li>org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener</li>
+ <li>org.springframework.test.context.support.DependencyInjectionTestExecutionListener</li>
+ <li>org.springframework.test.context.support.DirtiesContextTestExecutionListener</li>
+ <li>org.springframework.test.context.transaction.TransactionalTestExecutionListener</li>
+ <li>org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener</li>
+ </ul>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+TestContextManagerorg.springframework.test.context.support.AbstractTestExecutionListener</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-test-class.html">afterTestClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterTestClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.TestExecutionListener$afterTestClass(org.springframework.test.context.TestContext)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Post-processes a test class <em>after</em> execution of all tests within the class. 
+<p>This method should be called immediately after framework-specific <em>after class</em> lifecycle callbacks. </p>
+<p>The default implementation is <em>empty</em>. Can be overridden by concrete classes as necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-test-execution.html">afterTestExecution</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterTestExecution</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.TestExecutionListener$afterTestExecution(org.springframework.test.context.TestContext)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Post-processes a test <em>immediately after</em> execution of the java.lang.reflect.Method in the supplied TestContext — for example, for timing or logging purposes. 
+<p>This method <strong>must</strong> be called before framework-specific <em>after</em> lifecycle callbacks. </p>
+<p>The default implementation is <em>empty</em>. Can be overridden by concrete classes as necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-test-method.html">afterTestMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterTestMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.TestExecutionListener$afterTestMethod(org.springframework.test.context.TestContext)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Post-processes a test <em>after</em> execution of <em>after</em> lifecycle callbacks of the underlying test framework — for example, by tearing down test fixtures. 
+<p>This method <strong>must</strong> be called immediately after framework-specific <em>after</em> lifecycle callbacks. For historical reasons, this method is named <code>afterTestMethod</code>. Since the introduction of <code><a href="after-test-execution.html">#afterTestExecution</a></code>, a more suitable name for this method might be something like <code>afterTestTearDown</code> or <code>afterEach</code>; however, it is unfortunately impossible to rename this method due to backward compatibility concerns. </p>
+<p>The default implementation is <em>empty</em>. Can be overridden by concrete classes as necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-test-class.html">beforeTestClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeTestClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.TestExecutionListener$beforeTestClass(org.springframework.test.context.TestContext)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Pre-processes a test class <em>before</em> execution of all tests within the class. 
+<p>This method should be called immediately before framework-specific <em>before class</em> lifecycle callbacks. </p>
+<p>The default implementation is <em>empty</em>. Can be overridden by concrete classes as necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-test-execution.html">beforeTestExecution</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeTestExecution</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.TestExecutionListener$beforeTestExecution(org.springframework.test.context.TestContext)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Pre-processes a test <em>immediately before</em> execution of the java.lang.reflect.Method in the supplied TestContext — for example, for timing or logging purposes. 
+<p>This method <strong>must</strong> be called after framework-specific <em>before</em> lifecycle callbacks. </p>
+<p>The default implementation is <em>empty</em>. Can be overridden by concrete classes as necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="before-test-method.html">beforeTestMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeTestMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.TestExecutionListener$beforeTestMethod(org.springframework.test.context.TestContext)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Pre-processes a test <em>before</em> execution of <em>before</em> lifecycle callbacks of the underlying test framework — for example, by setting up test fixtures. 
+<p>This method <strong>must</strong> be called immediately prior to framework-specific <em>before</em> lifecycle callbacks. For historical reasons, this method is named <code>beforeTestMethod</code>. Since the introduction of <code><a href="before-test-execution.html">#beforeTestExecution</a></code>, a more suitable name for this method might be something like <code>beforeTestSetUp</code> or <code>beforeEach</code>; however, it is unfortunately impossible to rename this method due to backward compatibility concerns. </p>
+<p>The default implementation is <em>empty</em>. Can be overridden by concrete classes as necessary.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="prepare-test-instance.html">prepareTestInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prepareTestInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.TestExecutionListener$prepareTestInstance(org.springframework.test.context.TestContext)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Prepares the Object of the supplied TestContext, for example by injecting dependencies. 
+<p>This method should be called immediately after instantiation of the test instance but prior to any framework-specific lifecycle callbacks. </p>
+<p>The default implementation is <em>empty</em>. Can be overridden by concrete classes as necessary.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

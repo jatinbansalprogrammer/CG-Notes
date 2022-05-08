@@ -1,0 +1,261 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.reactive.result.method.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.reactive.result.method.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.web.reactive.result.method.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-message-writer-result-handler/index.html">AbstractMessageWriterResultHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractMessageWriterResultHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result/-handler-result-handler-support/index.html"><span class="identifier">HandlerResultHandlerSupport</span></a></code>
+<p>Abstract base class for result handlers that handle return values by writing to the response with HttpMessageWriter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cookie-value-method-argument-resolver/index.html">CookieValueMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CookieValueMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueSyncArgumentResolver</span></code>
+<p>Resolve method arguments annotated with <code>@CookieValue</code>. 
+<p>An <code>@CookieValue</code> is a named value that is resolved from a cookie. It has a required flag and a default value to fall back on when the cookie does not exist.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-errors-method-argument-resolver/index.html">ErrorsMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ErrorsMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a></code>
+<p>Resolve Errors or BindingResult method arguments. An <code>Errors</code> argument is expected to appear immediately after the model attribute in the method signature.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-expression-value-method-argument-resolver/index.html">ExpressionValueMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExpressionValueMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueSyncArgumentResolver</span></code>
+<p>Resolves method arguments annotated with <code>@Value</code>. 
+<p>An <code>@Value</code> does not have a name but gets resolved from the default value string, which may contain ${...} placeholder or Spring Expression Language #{...} expressions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-entity-argument-resolver/index.html">HttpEntityArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpEntityArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageReaderArgumentResolver</span></code>
+<p>Resolves method arguments of type HttpEntity or RequestEntity by reading the body of the request through a compatible <code>HttpMessageReader</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-matrix-variable-map-method-argument-resolver/index.html">MatrixVariableMapMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MatrixVariableMapMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a><span class="symbol">, </span><span class="identifier">SyncHandlerMethodArgumentResolver</span></code>
+<p>Resolves arguments of type Map annotated with where</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-matrix-variable-method-argument-resolver/index.html">MatrixVariableMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MatrixVariableMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueSyncArgumentResolver</span></code>
+<p>Resolves arguments annotated with MatrixVariable. 
+<p>If the method parameter is of type Map it will by resolved by MatrixVariableMapMethodArgumentResolver instead unless the annotation specifies a name in which case it is considered to be a single attribute of type map (vs multiple attributes collected in a map).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-model-argument-resolver/index.html">ModelArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModelArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a><span class="symbol">, </span><span class="identifier">SyncHandlerMethodArgumentResolver</span></code>
+<p>Resolver for a controller method argument of type Model that can also be resolved as a java.util.Map.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-model-attribute-method-argument-resolver/index.html">ModelAttributeMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModelAttributeMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a></code>
+<p>Resolve <code>@ModelAttribute</code> annotated method arguments. 
+<p>Model attributes are sourced from the model, or created using a default constructor and then added to the model. Once created the attribute is populated via data binding to the request (form data, query params). Validation also may be applied if the argument is annotated with <code>@javax.validation.Valid</code> or Spring's own <code>@org.springframework.validation.annotation.Validated</code>. </p>
+<p>When this handler is created with <code>useDefaultResolution=true</code> any non-simple type argument and return value is regarded as a model attribute with or without the presence of an <code>@ModelAttribute</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-variable-map-method-argument-resolver/index.html">PathVariableMapMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathVariableMapMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a><span class="symbol">, </span><span class="identifier">SyncHandlerMethodArgumentResolver</span></code>
+<p>Resolver for Map method arguments also annotated with PathVariable where the annotation does not specify a path variable name. The resulting Map argument is a coyp of all URI template name-value pairs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-variable-method-argument-resolver/index.html">PathVariableMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathVariableMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueSyncArgumentResolver</span></code>
+<p>Resolves method arguments annotated with @PathVariable. 
+<p>An @PathVariable is a named value that gets resolved from a URI template variable. It is always required and does not have a default value to fall back on. See the base class org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver for more information on how named values are processed. </p>
+<p>If the method parameter type is Map, the name specified in the annotation is used to resolve the URI variable String value. The value is then converted to a Map via type conversion, assuming a suitable Converter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-principal-argument-resolver/index.html">PrincipalArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PrincipalArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a></code>
+<p>Resolves method argument value of type java.security.Principal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-attribute-method-argument-resolver/index.html">RequestAttributeMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestAttributeMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueSyncArgumentResolver</span></code>
+<p>Resolves method arguments annotated with an @RequestAttribute.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-body-argument-resolver/index.html">RequestBodyArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestBodyArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageReaderArgumentResolver</span></code>
+<p>Resolves method arguments annotated with <code>@RequestBody</code> by reading the body of the request through a compatible <code>HttpMessageReader</code>. 
+<p>An <code>@RequestBody</code> method argument is also validated if it is annotated with <code>@javax.validation.Valid</code> or org.springframework.validation.annotation.Validated. Validation failure results in an ServerWebInputException.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-header-map-method-argument-resolver/index.html">RequestHeaderMapMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestHeaderMapMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a><span class="symbol">, </span><span class="identifier">SyncHandlerMethodArgumentResolver</span></code>
+<p>Resolves Map method arguments annotated with <code>@RequestHeader</code>. For individual header values annotated with <code>@RequestHeader</code> see RequestHeaderMethodArgumentResolver instead. 
+<p>The created Map contains all request header name/value pairs. The method parameter type may be a MultiValueMap to receive all values for a header, not only the first one.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-header-method-argument-resolver/index.html">RequestHeaderMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestHeaderMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueSyncArgumentResolver</span></code>
+<p>Resolves method arguments annotated with <code>@RequestHeader</code> except for Map arguments. See RequestHeaderMapMethodArgumentResolver for details on Map arguments annotated with <code>@RequestHeader</code>. 
+<p>An <code>@RequestHeader</code> is a named value resolved from a request header. It has a required flag and a default value to fall back on when the request header does not exist. </p>
+<p>A ConversionService is invoked to apply type conversion to resolved request header values that don't yet match the method parameter type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-param-map-method-argument-resolver/index.html">RequestParamMapMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestParamMapMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a><span class="symbol">, </span><span class="identifier">SyncHandlerMethodArgumentResolver</span></code>
+<p>Resolver for Map method arguments annotated with RequestParam where the annotation does not specify a request parameter name. See RequestParamMethodArgumentResolver for resolving Map method arguments with a request parameter name. 
+<p>The created Map contains all request parameter name-value pairs. If the method parameter type is MultiValueMap instead, the created map contains all request parameters and all there values for cases where request parameters have multiple values.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-param-method-argument-resolver/index.html">RequestParamMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestParamMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueSyncArgumentResolver</span></code>
+<p>Resolver for method arguments annotated with @RequestParam from URI query string parameters. 
+<p>This resolver can also be created in default resolution mode in which simple types (int, long, etc.) not annotated with @RequestParam are also treated as request parameters with the parameter name derived from the argument name. </p>
+<p>If the method parameter type is Map, the name specified in the annotation is used to resolve the request parameter String value. The value is then converted to a Map via type conversion assuming a suitable Converter has been registered. Or if a request parameter name is not specified the RequestParamMapMethodArgumentResolver is used instead to provide access to all request parameters in the form of a map.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-part-method-argument-resolver/index.html">RequestPartMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestPartMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageReaderArgumentResolver</span></code>
+<p>Resolver for <code>@RequestPart</code> arguments where the named part is decoded much like an <code>@RequestBody</code> argument but based on the content of an individual part instead. The arguments may be wrapped with a reactive type for a single value (e.g. Reactor <code>Mono</code>, RxJava <code>Single</code>). 
+<p>This resolver also supports arguments of type Part which may be wrapped with are reactive type for a single or multiple values.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-server-web-exchange-argument-resolver/index.html">ServerWebExchangeArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServerWebExchangeArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a><span class="symbol">, </span><span class="identifier">SyncHandlerMethodArgumentResolver</span></code>
+<p>Resolves ServerWebExchange-related method argument values of the following types: <ul> <li>ServerWebExchange </li>
+<li>ServerHttpRequest </li>
+<li>ServerHttpResponse </li>
+<li>HttpMethod </li>
+<li>Locale </li>
+<li>TimeZone </li>
+<li>ZoneId </li>
+<li>UriBuilder or UriComponentsBuilder -- for building URL's relative to the current request </li>
+</ul>
+ 
+<p>For the <code>WebSession</code> see WebSessionArgumentResolver and for the <code>Principal</code> see PrincipalArgumentResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-attribute-method-argument-resolver/index.html">SessionAttributeMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionAttributeMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNamedValueArgumentResolver</span></code>
+<p>Resolves method arguments annotated with an @SessionAttribute.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-status-method-argument-resolver/index.html">SessionStatusMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionStatusMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SyncHandlerMethodArgumentResolver</span></code>
+<p>Resolver for a SessionStatus argument obtaining it from the BindingContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-session-argument-resolver/index.html">WebSessionArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSessionArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.method/-handler-method-argument-resolver-support/index.html"><span class="identifier">HandlerMethodArgumentResolverSupport</span></a></code>
+<p>Resolves method argument value of type WebSession.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

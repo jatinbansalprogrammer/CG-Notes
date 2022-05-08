@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.socket.server.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.socket.server.support</a><br/>
+<br/>
+<h2>Package org.springframework.web.socket.server.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-handshake-handler/index.html">AbstractHandshakeHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractHandshakeHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandshakeHandler</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A base class for HandshakeHandler implementations, independent from the Servlet API. 
+<p>Performs initial validation of the WebSocket handshake request - possibly rejecting it through the appropriate HTTP status code - while also allowing its subclasses to override various parts of the negotiation process (e.g. origin validation, sub-protocol negotiation, extensions negotiation, etc). </p>
+<p>If the negotiation succeeds, the actual upgrade is delegated to a server-specific org.springframework.web.socket.server.RequestUpgradeStrategy, which will update the response as necessary and initialize the WebSocket. Currently supported servers are Jetty 9.0-9.3, Tomcat 7.0.47+ and 8.x, Undertow 1.0-1.3, GlassFish 4.1+, WebLogic 12.1.3+.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-handshake-interceptor-chain/index.html">HandshakeInterceptorChain</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HandshakeInterceptorChain</span></code>
+<p>A helper class that assists with invoking a list of handshake interceptors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-session-handshake-interceptor/index.html">HttpSessionHandshakeInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpSessionHandshakeInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandshakeInterceptor</span></code>
+<p>An interceptor to copy information from the HTTP session to the "handshake attributes" map to made available via<code><a href="#">WebSocketSession#getAttributes()</a></code>. 
+<p>Copies a subset or all HTTP session attributes and/or the HTTP session id under the key <code><a href="-http-session-handshake-interceptor/-h-t-t-p_-s-e-s-s-i-o-n_-i-d_-a-t-t-r_-n-a-m-e.html">#HTTP_SESSION_ID_ATTR_NAME</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-handler-mapping/index.html">WebSocketHandlerMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketHandlerMapping</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.servlet.handler/-simple-url-handler-mapping/index.html"><span class="identifier">SimpleUrlHandlerMapping</span></a><span class="symbol">, </span><span class="identifier">SmartLifecycle</span></code>
+<p>An extension of SimpleUrlHandlerMapping that is also a SmartLifecycle container and propagates start and stop calls to any handlers that implement Lifecycle. The handlers are typically expected to be <code>WebSocketHttpRequestHandler</code> or <code>SockJsHttpRequestHandler</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-http-request-handler/index.html">WebSocketHttpRequestHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketHttpRequestHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpRequestHandler</span><span class="symbol">, </span><span class="identifier">Lifecycle</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>A HttpRequestHandler for processing WebSocket handshake requests. 
+<p>This is the main class to use when configuring a server WebSocket at a specific URL. It is a very thin wrapper around a WebSocketHandler and a HandshakeHandler, also adapting the HttpServletRequest and HttpServletResponse to ServerHttpRequest and ServerHttpResponse, respectively.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

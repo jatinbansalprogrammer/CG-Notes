@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ScheduledExecutorTask - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.concurrent</a>&nbsp;/&nbsp;<a href=".">ScheduledExecutorTask</a><br/>
+<br/>
+<h1>ScheduledExecutorTask</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledExecutorTask</span></code>
+<p>JavaBean that describes a scheduled executor task, consisting of the Runnable and a delay plus period. The period needs to be specified; there is no point in a default for it. 
+<p>The java.util.concurrent.ScheduledExecutorService does not offer more sophisticated scheduling options such as cron expressions. Consider using ThreadPoolTaskScheduler for such needs. </p>
+<p>Note that the java.util.concurrent.ScheduledExecutorService mechanism uses a Runnable instance that is shared between repeated executions, in contrast to Quartz which creates a new Job instance for each execution.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">java.util.concurrent.ScheduledExecutorService#scheduleWithFixedDelay(java.lang.Runnable, long, long, java.util.concurrent.TimeUnit)</a><a href="#">java.util.concurrent.ScheduledExecutorService#scheduleAtFixedRate(java.lang.Runnable, long, long, java.util.concurrent.TimeUnit)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ScheduledExecutorTask</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new ScheduledExecutorTask, to be populated via bean properties.</p>
+<code><span class="identifier">ScheduledExecutorTask</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$<init>(java.lang.Runnable)/executorTask">executorTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span></code>
+<p>Create a new ScheduledExecutorTask, with default one-time execution without delay.</p>
+<code><span class="identifier">ScheduledExecutorTask</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$<init>(java.lang.Runnable, kotlin.Long)/executorTask">executorTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$<init>(java.lang.Runnable, kotlin.Long)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span></code>
+<p>Create a new ScheduledExecutorTask, with default one-time execution with the given delay.</p>
+<code><span class="identifier">ScheduledExecutorTask</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/executorTask">executorTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/fixedRate">fixedRate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new ScheduledExecutorTask.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-delay.html">getDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelay</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the delay before starting the job for the first time.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-period.html">getPeriod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPeriod</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the period between repeated task executions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-runnable.html">getRunnable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRunnable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Runnable</span></code>
+<p>Return the Runnable to schedule as executor task.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-time-unit.html">getTimeUnit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimeUnit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TimeUnit</span></code>
+<p>Return the time unit for the delay and period values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-fixed-rate.html">isFixedRate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFixedRate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to schedule as fixed-rate execution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-one-time-task.html">isOneTimeTask</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isOneTimeTask</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Is this task only ever going to execute once?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-delay.html">setDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$setDelay(kotlin.Long)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the delay before starting the task for the first time, in milliseconds. Default is 0, immediately starting the task after successful scheduling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fixed-rate.html">setFixedRate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFixedRate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$setFixedRate(kotlin.Boolean)/fixedRate">fixedRate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to schedule as fixed-rate execution, rather than fixed-delay execution. Default is "false", that is, fixed delay. 
+<p>See ScheduledExecutorService javadoc for details on those execution modes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-period.html">setPeriod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPeriod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$setPeriod(kotlin.Long)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the period between repeated task executions, in milliseconds. 
+<p>Default is -1, leading to one-time execution. In case of a positive value, the task will be executed repeatedly, with the given interval inbetween executions. </p>
+<p>Note that the semantics of the period value vary between fixed-rate and fixed-delay execution. </p>
+<p><strong>Note:</strong> A period of 0 (for example as fixed delay) is <em>not</em> supported, simply because <code>java.util.concurrent.ScheduledExecutorService</code> itself does not support it. Hence a value of 0 will be treated as one-time execution; however, that value should never be specified explicitly in the first place!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-runnable.html">setRunnable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRunnable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$setRunnable(java.lang.Runnable)/executorTask">executorTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Runnable to schedule as executor task.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-time-unit.html">setTimeUnit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimeUnit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorTask$setTimeUnit(java.util.concurrent.TimeUnit)/timeUnit">timeUnit</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeUnit</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the time unit for the delay and period values. Default is milliseconds (<code>TimeUnit.MILLISECONDS</code>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

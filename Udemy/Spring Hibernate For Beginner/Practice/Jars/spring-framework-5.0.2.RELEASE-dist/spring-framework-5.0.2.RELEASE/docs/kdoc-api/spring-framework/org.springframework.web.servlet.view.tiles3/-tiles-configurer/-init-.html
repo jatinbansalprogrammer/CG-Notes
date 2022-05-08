@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TilesConfigurer.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.tiles3</a>&nbsp;/&nbsp;<a href="index.html">TilesConfigurer</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.servlet.view.tiles3.TilesConfigurer$&lt;init&gt;()"></a>
+<code><span class="identifier">TilesConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Helper class to configure Tiles 3.x for the Spring Framework. See <a href="#">http://tiles.apache.org</a> for more information about Tiles, which basically is a templating mechanism for web applications using JSPs and other template engines. 
+<p>The TilesConfigurer simply configures a TilesContainer using a set of files containing definitions, to be accessed by TilesView instances. This is a Spring-based alternative (for usage in Spring configuration) to the Tiles-provided <code>ServletContextListener</code> (e.g. org.apache.tiles.extras.complete.CompleteAutoloadTilesListener for usage in <code>web.xml</code>. </p>
+<p>TilesViews can be managed by any org.springframework.web.servlet.ViewResolver. For simple convention-based view resolution, consider using TilesViewResolver. </p>
+<p>A typical TilesConfigurer bean definition looks as follows: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/general.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/widgets.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/administrator.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/customer.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/templates.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> The values in the list are the actual Tiles XML files containing the definitions. If the list is not specified, the default is <code>"/WEB-INF/tiles.xml"</code>. 
+<p>Note that in Tiles 3 an underscore in the name of a file containing Tiles definitions is used to indicate locale information, for example: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/tiles.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/tiles_fr_FR.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre></p>
+<p><strong>Author</strong><br/>
+mick semb wever</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<p><strong>See Also</strong><br/>
+TilesViewTilesViewResolver</p>
+</BODY>
+</HTML>

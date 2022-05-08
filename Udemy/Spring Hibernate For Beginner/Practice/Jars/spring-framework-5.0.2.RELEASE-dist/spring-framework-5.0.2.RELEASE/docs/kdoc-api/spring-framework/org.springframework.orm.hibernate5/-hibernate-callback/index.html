@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HibernateCallback - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5</a>&nbsp;/&nbsp;<a href=".">HibernateCallback</a><br/>
+<br/>
+<h1>HibernateCallback</h1>
+<code><span class="identifier">@FunctionalInterface</span> <span class="keyword">interface </span><span class="identifier">HibernateCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Callback interface for Hibernate code. To be used with HibernateTemplate's execution methods, often as anonymous classes within a method implementation. A typical implementation will call <code>Session.load/find/update</code> to perform some operations on persistent objects.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+HibernateTemplateHibernateTransactionManager</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-in-hibernate.html">doInHibernate</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">doInHibernate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateCallback$doInHibernate(org.hibernate.Session)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Gets called by <code>HibernateTemplate.execute</code> with an active Hibernate <code>Session</code>. Does not need to care about activating or closing the <code>Session</code>, or handling transactions. 
+<p>Allows for returning a result object created within the callback, i.e. a domain object or a collection of domain objects. A thrown custom RuntimeException is treated as an application exception: It gets propagated to the caller of the template.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

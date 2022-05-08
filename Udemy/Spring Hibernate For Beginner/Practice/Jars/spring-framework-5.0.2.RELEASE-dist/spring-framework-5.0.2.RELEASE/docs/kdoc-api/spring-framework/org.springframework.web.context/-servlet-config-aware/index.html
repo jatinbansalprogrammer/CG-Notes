@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServletConfigAware - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context</a>&nbsp;/&nbsp;<a href=".">ServletConfigAware</a><br/>
+<br/>
+<h1>ServletConfigAware</h1>
+<code><span class="keyword">interface </span><span class="identifier">ServletConfigAware</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Aware</span></code>
+<p>Interface to be implemented by any object that wishes to be notified of the ServletConfig (typically determined by the WebApplicationContext) that it runs in. 
+<p>Note: Only satisfied if actually running within a Servlet-specific WebApplicationContext. Otherwise, no ServletConfig will be set.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+ServletContextAware</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-servlet-config.html">setServletConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setServletConfig</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.ServletConfigAware$setServletConfig(javax.servlet.ServletConfig)/servletConfig">servletConfig</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletConfig</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ServletConfig that this object runs in. 
+<p>Invoked after population of normal bean properties but before an init callback like InitializingBean's <code>afterPropertiesSet</code> or a custom init-method. Invoked after ApplicationContextAware's <code>setApplicationContext</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.handler/-simple-servlet-post-processor/index.html">SimpleServletPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleServletPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.config/-destruction-aware-bean-post-processor/index.html"><span class="identifier">DestructionAwareBeanPostProcessor</span></a><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><span class="identifier">ServletConfigAware</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor that applies initialization and destruction callbacks to beans that implement the javax.servlet.Servlet interface. 
+<p>After initialization of the bean instance, the Servlet <code>init</code> method will be called with a ServletConfig that contains the bean name of the Servlet and the ServletContext that it is running in. </p>
+<p>Before destruction of the bean instance, the Servlet <code>destroy</code> will be called. </p>
+<p><strong>Note that this post-processor does not support Servlet initialization parameters.</strong> Bean instances that implement the Servlet interface are supposed to be configured like any other Spring bean, that is, through constructor arguments or bean properties. </p>
+<p>For reuse of a Servlet implementation in a plain Servlet container and as a bean in a Spring context, consider deriving from Spring's org.springframework.web.servlet.HttpServletBean base class that applies Servlet initialization parameters as bean properties, supporting both the standard Servlet and the Spring bean initialization style. </p>
+<p><strong>Alternatively, consider wrapping a Servlet with Spring's org.springframework.web.servlet.mvc.ServletWrappingController.</strong> This is particularly appropriate for existing Servlet classes, allowing to specify Servlet initialization parameters etc.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

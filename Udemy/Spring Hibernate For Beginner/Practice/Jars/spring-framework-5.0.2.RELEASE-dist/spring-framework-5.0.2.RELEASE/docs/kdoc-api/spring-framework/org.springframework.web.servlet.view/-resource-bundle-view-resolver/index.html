@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResourceBundleViewResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view</a>&nbsp;/&nbsp;<a href=".">ResourceBundleViewResolver</a><br/>
+<br/>
+<h1>ResourceBundleViewResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceBundleViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCachingViewResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A org.springframework.web.servlet.ViewResolver implementation that uses bean definitions in a ResourceBundle, specified by the bundle basename. 
+<p>The bundle is typically defined in a properties file, located in the classpath. The default bundle basename is "views". </p>
+<p>This <code>ViewResolver</code> supports localized view definitions, using the default support of java.util.PropertyResourceBundle. For example, the basename "views" will be resolved as class path resources "views_de_AT.properties", "views_de.properties", "views.properties" - for a given Locale "de_AT". </p>
+<p>Note: This <code>ViewResolver</code> implements the Ordered interface in order to allow for flexible participation in <code>ViewResolver</code> chaining. For example, some special views could be defined via this <code>ViewResolver</code> (giving it 0 as "order" value), while all remaining views could be resolved by a UrlBasedViewResolver.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">java.util.ResourceBundle#getBundle</a>java.util.PropertyResourceBundleUrlBasedViewResolver</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ResourceBundleViewResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A org.springframework.web.servlet.ViewResolver implementation that uses bean definitions in a ResourceBundle, specified by the bundle basename. 
+<p>The bundle is typically defined in a properties file, located in the classpath. The default bundle basename is "views". </p>
+<p>This <code>ViewResolver</code> supports localized view definitions, using the default support of java.util.PropertyResourceBundle. For example, the basename "views" will be resolved as class path resources "views_de_AT.properties", "views_de.properties", "views.properties" - for a given Locale "de_AT". </p>
+<p>Note: This <code>ViewResolver</code> implements the Ordered interface in order to allow for flexible participation in <code>ViewResolver</code> chaining. For example, some special views could be defined via this <code>ViewResolver</code> (giving it 0 as "order" value), while all remaining views could be resolved by a UrlBasedViewResolver.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-b-a-s-e-n-a-m-e.html">DEFAULT_BASENAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_BASENAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default basename if no other basename is supplied.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Eagerly initialize Locales if necessary.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the bundle View factories on context shutdown.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-basename.html">setBasename</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBasename</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ResourceBundleViewResolver$setBasename(kotlin.String)/basename">basename</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a single basename, following java.util.ResourceBundle conventions. The default is "views". 
+<p><code>ResourceBundle</code> supports different suffixes. For example, a base name of "views" might map to <code>ResourceBundle</code> files "views", "views_en_au" and "views_de". </p>
+<p>Note that ResourceBundle names are effectively classpath locations: As a consequence, the JDK's standard ResourceBundle treats dots as package separators. This means that "test.theme" is effectively equivalent to "test/theme", just like it is for programmatic <code>java.util.ResourceBundle</code> usage.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-basenames.html">setBasenames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBasenames</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.servlet.view.ResourceBundleViewResolver$setBasenames(kotlin.Array((kotlin.String)))/basenames">basenames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an array of basenames, each following java.util.ResourceBundle conventions. The default is a single basename "views". 
+<p><code>ResourceBundle</code> supports different suffixes. For example, a base name of "views" might map to <code>ResourceBundle</code> files "views", "views_en_au" and "views_de". </p>
+<p>The associated resource bundles will be checked sequentially when resolving a message code. Note that message definitions in a <em>previous</em> resource bundle will override ones in a later bundle, due to the sequential lookup. </p>
+<p>Note that ResourceBundle names are effectively classpath locations: As a consequence, the JDK's standard ResourceBundle treats dots as package separators. This means that "test.theme" is effectively equivalent to "test/theme", just like it is for programmatic <code>java.util.ResourceBundle</code> usage.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bundle-class-loader.html">setBundleClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBundleClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ResourceBundleViewResolver$setBundleClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ClassLoader to load resource bundles with. Default is the thread context <code>ClassLoader</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-parent-view.html">setDefaultParentView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultParentView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ResourceBundleViewResolver$setDefaultParentView(kotlin.String)/defaultParentView">defaultParentView</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default parent for views defined in the <code>ResourceBundle</code>. 
+<p>This avoids repeated "yyy1.(parent)=xxx", "yyy2.(parent)=xxx" definitions in the bundle, especially if all defined views share the same parent. </p>
+<p>The parent will typically define the view class and common attributes. Concrete views might simply consist of an URL definition then: a la "yyy1.url=/my.jsp", "yyy2.url=/your.jsp". </p>
+<p>View definitions that define their own parent or carry their own class can still override this. Strictly speaking, the rule that a default parent setting does not apply to a bean definition that carries a class is there for backwards compatibility reasons. It still matches the typical use case.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locales-to-initialize.html">setLocalesToInitialize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocalesToInitialize</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.servlet.view.ResourceBundleViewResolver$setLocalesToInitialize(kotlin.Array((java.util.Locale)))/localesToInitialize">localesToInitialize</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify Locales to initialize eagerly, rather than lazily when actually accessed. 
+<p>Allows for pre-initialization of common Locales, eagerly checking the view configuration for those Locales.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-order.html">setOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ResourceBundleViewResolver$setOrder(kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

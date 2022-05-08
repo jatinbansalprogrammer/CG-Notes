@@ -1,0 +1,186 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AspectJExpressionPointcut - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.aspectj</a>&nbsp;/&nbsp;<a href=".">AspectJExpressionPointcut</a><br/>
+<br/>
+<h1>AspectJExpressionPointcut</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectJExpressionPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.aop.support/-abstract-expression-pointcut/index.html"><span class="identifier">AbstractExpressionPointcut</span></a><span class="symbol">, </span><span class="identifier">ClassFilter</span><span class="symbol">, </span><a href="../../org.springframework.aop/-introduction-aware-method-matcher/index.html"><span class="identifier">IntroductionAwareMethodMatcher</span></a><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Spring org.springframework.aop.Pointcut implementation that uses the AspectJ weaver to evaluate a pointcut expression. 
+<p>The pointcut expression value is an AspectJ expression. This can reference other pointcuts and use composition and other operations. </p>
+<p>Naturally, as this is to be processed by Spring AOP's proxy-based model, only method execution pointcuts are supported.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Ramnivas Laddad</p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AspectJExpressionPointcut</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new default AspectJExpressionPointcut.</p>
+<code><span class="identifier">AspectJExpressionPointcut</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$<init>(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)), kotlin.Array((java.lang.Class((kotlin.Any)))))/declarationScope">declarationScope</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$<init>(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)), kotlin.Array((java.lang.Class((kotlin.Any)))))/paramNames">paramNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$<init>(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)), kotlin.Array((java.lang.Class((kotlin.Any)))))/paramTypes">paramTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new AspectJExpressionPointcut with the given settings.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-class-filter.html">getClassFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClassFilter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClassFilter</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-method-matcher.html">getMethodMatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMethodMatcher</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MethodMatcher</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-pointcut-expression.html">getPointcutExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPointcutExpression</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PointcutExpression</span></code>
+<p>Return the underlying AspectJ pointcut expression.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-runtime.html">isRuntime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRuntime</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="matches.html">matches</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Boolean)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Boolean)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Boolean)/beanHasIntroductions">beanHasIntroductions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parameter-names.html">setParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParameterNames</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$setParameterNames(kotlin.Array((kotlin.String)))/names">names</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the parameter names for the pointcut.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parameter-types.html">setParameterTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParameterTypes</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$setParameterTypes(kotlin.Array((java.lang.Class((kotlin.Any)))))/types">types</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the parameter types for the pointcut.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-pointcut-declaration-scope.html">setPointcutDeclarationScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPointcutDeclarationScope</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJExpressionPointcut$setPointcutDeclarationScope(java.lang.Class((kotlin.Any)))/pointcutDeclarationScope">pointcutDeclarationScope</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the declaration scope for the pointcut.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.support/-abstract-expression-pointcut/get-expression.html">getExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExpression</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return this pointcut's expression.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.support/-abstract-expression-pointcut/get-location.html">getLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLocation</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return location information about the pointcut expression if available. This is useful in debugging.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.support/-abstract-expression-pointcut/set-expression.html">setExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExpression</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.AbstractExpressionPointcut$setExpression(kotlin.String)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.support/-abstract-expression-pointcut/set-location.html">setLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.AbstractExpressionPointcut$setLocation(kotlin.String)/location">location</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the location for debugging.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

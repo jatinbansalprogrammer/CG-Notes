@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Primary.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href="index.html">Primary</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.context.annotation.Primary$&lt;init&gt;()"></a>
+<code><span class="identifier">Primary</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Indicates that a bean should be given preference when multiple candidates are qualified to autowire a single-valued dependency. If exactly one 'primary' bean exists among the candidates, it will be the autowired value. 
+<p>This annotation is semantically equivalent to the <code>&lt;bean&gt;</code> element's <code>primary</code> attribute in Spring XML. </p>
+<p>May be used on any class directly or indirectly annotated with <code>@Component</code> or on methods annotated with @Bean. </p>
+Example <pre><code> @Component public class FooService { private FooRepository fooRepository; @Autowired public FooService(FooRepository fooRepository) { this.fooRepository = fooRepository; } } @Component public class JdbcFooRepository extends FooRepository { public JdbcFooRepository(DataSource dataSource) { // ... } } @Primary @Component public class HibernateFooRepository extends FooRepository { public HibernateFooRepository(SessionFactory sessionFactory) { // ... } } </code></pre> 
+<p>Because <code>HibernateFooRepository</code> is marked with <code>@Primary</code>, it will be injected preferentially over the jdbc-based variant assuming both are present as beans within the same Spring application context, which is often the case when component-scanning is applied liberally. </p>
+<p>Note that using <code>@Primary</code> at the class level has no effect unless component-scanning is being used. If a <code>@Primary</code>-annotated class is declared via XML, <code>@Primary</code> annotation metadata is ignored, and <code>&lt;bean primary="true|false"/&gt;</code> is respected instead.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+LazyBeanComponentScanorg.springframework.stereotype.Component</p>
+</BODY>
+</HTML>

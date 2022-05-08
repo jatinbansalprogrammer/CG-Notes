@@ -1,0 +1,173 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.datasource - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.datasource</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.datasource</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-driver-based-data-source/index.html">AbstractDriverBasedDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractDriverBasedDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractDataSource</span></code>
+<p>Abstract base class for JDBC javax.sql.DataSource implementations that operate on a JDBC java.sql.Driver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-connection-proxy/index.html">ConnectionProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ConnectionProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span></code>
+<p>Subinterface of java.sql.Connection to be implemented by Connection proxies. Allows access to the underlying target Connection. 
+<p>This interface can be checked when there is a need to cast to a native JDBC Connection such as Oracle's OracleConnection. Alternatively, all such connections also support JDBC 4.0's <code><a href="#">Connection#unwrap</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-data-source-transaction-manager/index.html">DataSourceTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DataSourceTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPlatformTransactionManager</span><span class="symbol">, </span><span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.transaction.PlatformTransactionManager implementation for a single JDBC javax.sql.DataSource. This class is capable of working in any environment with any JDBC driver, as long as the setup uses a <code>javax.sql.DataSource</code> as its <code>Connection</code> factory mechanism. Binds a JDBC Connection from the specified DataSource to the current thread, potentially allowing for one thread-bound Connection per DataSource. 
+<p><strong>Note: The DataSource that this transaction manager operates on needs to return independent Connections.</strong> The Connections may come from a pool (the typical case), but the DataSource must not return thread-scoped / request-scoped Connections or the like. This transaction manager will associate Connections with thread-bound transactions itself, according to the specified propagation behavior. It assumes that a separate, independent Connection can be obtained even during an ongoing transaction. </p>
+<p>Application code is required to retrieve the JDBC Connection via <code><a href="#">DataSourceUtils#getConnection(DataSource)</a></code> instead of a standard Java EE-style <code><a href="#">DataSource#getConnection()</a></code> call. Spring classes such as org.springframework.jdbc.core.JdbcTemplate use this strategy implicitly. If not used in combination with this transaction manager, the DataSourceUtils lookup strategy behaves exactly like the native DataSource lookup; it can thus be used in a portable fashion. </p>
+<p>Alternatively, you can allow application code to work with the standard Java EE-style lookup pattern <code><a href="#">DataSource#getConnection()</a></code>, for example for legacy code that is not aware of Spring at all. In that case, define a TransactionAwareDataSourceProxy for your target DataSource, and pass that proxy DataSource to your DAOs, which will automatically participate in Spring-managed transactions when accessing it. </p>
+<p>Supports custom isolation levels, and timeouts which get applied as appropriate JDBC statement timeouts. To support the latter, application code must either use org.springframework.jdbc.core.JdbcTemplate, call <code><a href="#">DataSourceUtils#applyTransactionTimeout</a></code> for each created JDBC Statement, or go through a TransactionAwareDataSourceProxy which will create timeout-aware JDBC Connections and Statements automatically. </p>
+<p>Consider defining a LazyConnectionDataSourceProxy for your target DataSource, pointing both this transaction manager and your DAOs to it. This will lead to optimized handling of "empty" transactions, i.e. of transactions without any JDBC statements executed. A LazyConnectionDataSourceProxy will not fetch an actual JDBC Connection from the target DataSource until a Statement gets executed, lazily applying the specified transaction settings to the target Connection. </p>
+<p>This transaction manager supports nested transactions via the JDBC 3.0 java.sql.Savepoint mechanism. The <code><a href="#">"nestedTransactionAllowed"</a></code> flag defaults to "true", since nested transactions will work without restrictions on JDBC drivers that support savepoints (such as the Oracle JDBC driver). </p>
+<p>This transaction manager can be used as a replacement for the org.springframework.transaction.jta.JtaTransactionManager in the single resource case, as it does not require a container that supports JTA, typically in combination with a locally defined JDBC DataSource (e.g. an Apache Commons DBCP connection pool). Switching between this local strategy and a JTA environment is just a matter of configuration! </p>
+<p>As of 4.3.4, this transaction manager triggers flush callbacks on registered transaction synchronizations (if synchronization is generally active), assuming resources operating on the underlying JDBC <code>Connection</code>. This allows for setup analogous to <code>JtaTransactionManager</code>, in particular with respect to lazily registered ORM resources (e.g. a Hibernate <code>Session</code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-driver-manager-data-source/index.html">DriverManagerDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DriverManagerDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-driver-based-data-source/index.html"><span class="identifier">AbstractDriverBasedDataSource</span></a></code>
+<p>Simple implementation of the standard JDBC javax.sql.DataSource interface, configuring the plain old JDBC java.sql.DriverManager via bean properties, and returning a new java.sql.Connection from every <code>getConnection</code> call. 
+<p><strong>NOTE: This class is not an actual connection pool; it does not actually pool Connections.</strong> It just serves as simple replacement for a full-blown connection pool, implementing the same standard interface, but creating new Connections on every call. </p>
+<p>Useful for test or standalone environments outside of a Java EE container, either as a DataSource bean in a corresponding ApplicationContext or in conjunction with a simple JNDI environment. Pool-assuming <code>Connection.close()</code> calls will simply close the Connection, so any DataSource-aware persistence code should work. </p>
+<p><strong>NOTE: Within special class loading environments such as OSGi, this class is effectively superseded by SimpleDriverDataSource due to general class loading issues with the JDBC DriverManager that be resolved through direct Driver usage (which is exactly what SimpleDriverDataSource does).</strong> </p>
+<p>In a Java EE container, it is recommended to use a JNDI DataSource provided by the container. Such a DataSource can be exposed as a DataSource bean in a Spring ApplicationContext via org.springframework.jndi.JndiObjectFactoryBean, for seamless switching to and from a local DataSource bean like this class. For tests, you can then either set up a mock JNDI environment through Spring's org.springframework.mock.jndi.SimpleNamingContextBuilder, or switch the bean definition to a local DataSource (which is simpler and thus recommended). </p>
+<p>If you need a "real" connection pool outside of a Java EE container, consider <a href="#">Apache Commons DBCP</a> or <a href="#">C3P0</a>. Commons DBCP's BasicDataSource and C3P0's ComboPooledDataSource are full connection pool beans, supporting the same basic properties as this class plus specific settings (such as minimal/maximal pool size etc).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-isolation-level-data-source-adapter/index.html">IsolationLevelDataSourceAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IsolationLevelDataSourceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UserCredentialsDataSourceAdapter</span></code>
+<p>An adapter for a target javax.sql.DataSource, applying the current Spring transaction's isolation level (and potentially specified user credentials) to every <code>getConnection</code> call. Also applies the read-only flag, if specified. 
+<p>Can be used to proxy a target JNDI DataSource that does not have the desired isolation level (and user credentials) configured. Client code can work with this DataSource as usual, not worrying about such settings. </p>
+<p>Inherits the capability to apply specific user credentials from its superclass UserCredentialsDataSourceAdapter; see the latter's javadoc for details on that functionality (e.g. <code><a href="#">#setCredentialsForCurrentThread</a></code>). </p>
+<p><strong>WARNING:</strong> This adapter simply calls <code><a href="#">java.sql.Connection#setTransactionIsolation</a></code> and/or <code><a href="#">java.sql.Connection#setReadOnly</a></code> for every Connection obtained from it. It does, however, <em>not</em> reset those settings; it rather expects the target DataSource to perform such resetting as part of its connection pool handling. <strong>Make sure that the target DataSource properly cleans up such transaction state.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdbc-transaction-object-support/index.html">JdbcTransactionObjectSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JdbcTransactionObjectSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SavepointManager</span><span class="symbol">, </span><span class="identifier">SmartTransactionObject</span></code>
+<p>Convenient base class for JDBC-aware transaction objects. Can contain a ConnectionHolder with a JDBC <code>Connection</code>, and implements the SavepointManager interface based on that <code>ConnectionHolder</code>. 
+<p>Allows for programmatic management of JDBC java.sql.Savepoint. Spring's org.springframework.transaction.support.DefaultTransactionStatus automatically delegates to this, as it autodetects transaction objects which implement the SavepointManager interface.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-lazy-connection-data-source-proxy/index.html">LazyConnectionDataSourceProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LazyConnectionDataSourceProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingDataSource</span></code>
+<p>Proxy for a target DataSource, fetching actual JDBC Connections lazily, i.e. not until first creation of a Statement. Connection initialization properties like auto-commit mode, transaction isolation and read-only mode will be kept and applied to the actual JDBC Connection as soon as an actual Connection is fetched (if ever). Consequently, commit and rollback calls will be ignored if no Statements have been created. 
+<p>This DataSource proxy allows to avoid fetching JDBC Connections from a pool unless actually necessary. JDBC transaction control can happen without fetching a Connection from the pool or communicating with the database; this will be done lazily on first creation of a JDBC Statement. </p>
+<p><strong>If you configure both a LazyConnectionDataSourceProxy and a TransactionAwareDataSourceProxy, make sure that the latter is the outermost DataSource.</strong> In such a scenario, data access code will talk to the transaction-aware DataSource, which will in turn work with the LazyConnectionDataSourceProxy. </p>
+<p>Lazy fetching of physical JDBC Connections is particularly beneficial in a generic transaction demarcation environment. It allows you to demarcate transactions on all methods that could potentially perform data access, without paying a performance penalty if no actual data access happens. </p>
+<p>This DataSource proxy gives you behavior analogous to JTA and a transactional JNDI DataSource (as provided by the Java EE server), even with a local transaction strategy like DataSourceTransactionManager or HibernateTransactionManager. It does not add value with Spring's JtaTransactionManager as transaction strategy. </p>
+<p>Lazy fetching of JDBC Connections is also recommended for read-only operations with Hibernate, in particular if the chances of resolving the result in the second-level cache are high. This avoids the need to communicate with the database at all for such read-only operations. You will get the same effect with non-transactional reads, but lazy fetching of JDBC Connections allows you to still perform reads in transactions. </p>
+<p><strong>NOTE:</strong> This DataSource proxy needs to return wrapped Connections (which implement the ConnectionProxy interface) in order to handle lazy fetching of an actual JDBC Connection. Use <code><a href="#">Connection#unwrap</a></code> to retrieve the native JDBC Connection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-connection-handle/index.html">SimpleConnectionHandle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleConnectionHandle</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionHandle</span></code>
+<p>Simple implementation of the ConnectionHandle interface, containing a given JDBC Connection.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-driver-data-source/index.html">SimpleDriverDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleDriverDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-driver-based-data-source/index.html"><span class="identifier">AbstractDriverBasedDataSource</span></a></code>
+<p>Simple implementation of the standard JDBC javax.sql.DataSource interface, configuring a plain old JDBC java.sql.Driver via bean properties, and returning a new java.sql.Connection from every <code>getConnection</code> call. 
+<p><strong>NOTE: This class is not an actual connection pool; it does not actually pool Connections.</strong> It just serves as simple replacement for a full-blown connection pool, implementing the same standard interface, but creating new Connections on every call. </p>
+<p>In a Java EE container, it is recommended to use a JNDI DataSource provided by the container. Such a DataSource can be exposed as a DataSource bean in a Spring ApplicationContext via org.springframework.jndi.JndiObjectFactoryBean, for seamless switching to and from a local DataSource bean like this class. </p>
+<p>If you need a "real" connection pool outside of a Java EE container, consider <a href="#">Apache Commons DBCP</a> or <a href="#">C3P0</a>. Commons DBCP's BasicDataSource and C3P0's ComboPooledDataSource are full connection pool beans, supporting the same basic properties as this class plus specific settings (such as minimal/maximal pool size etc).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-single-connection-data-source/index.html">SingleConnectionDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingleConnectionDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-driver-manager-data-source/index.html"><span class="identifier">DriverManagerDataSource</span></a><span class="symbol">, </span><span class="identifier">SmartDataSource</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Implementation of SmartDataSource that wraps a single JDBC Connection which is not closed after use. Obviously, this is not multi-threading capable. 
+<p>Note that at shutdown, someone should close the underlying Connection via the <code>close()</code> method. Client code will never call close on the Connection handle if it is SmartDataSource-aware (e.g. uses <code>DataSourceUtils.releaseConnection</code>). </p>
+<p>If client code will call <code>close()</code> in the assumption of a pooled Connection, like when using persistence tools, set "suppressClose" to "true". This will return a close-suppressing proxy instead of the physical Connection. </p>
+<p>This is primarily intended for testing. For example, it enables easy testing outside an application server, for code that expects to work on a DataSource. In contrast to DriverManagerDataSource, it reuses the same Connection all the time, avoiding excessive creation of physical Connections.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-aware-data-source-proxy/index.html">TransactionAwareDataSourceProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAwareDataSourceProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingDataSource</span></code>
+<p>Proxy for a target JDBC javax.sql.DataSource, adding awareness of Spring-managed transactions. Similar to a transactional JNDI DataSource as provided by a Java EE server. 
+<p>Data access code that should remain unaware of Spring's data access support can work with this proxy to seamlessly participate in Spring-managed transactions. Note that the transaction manager, for example DataSourceTransactionManager, still needs to work with the underlying DataSource, <em>not</em> with this proxy. </p>
+<p><strong>Make sure that TransactionAwareDataSourceProxy is the outermost DataSource of a chain of DataSource proxies/adapters.</strong> TransactionAwareDataSourceProxy can delegate either directly to the target connection pool or to some intermediary proxy/adapter like LazyConnectionDataSourceProxy or UserCredentialsDataSourceAdapter. </p>
+<p>Delegates to DataSourceUtils for automatically participating in thread-bound transactions, for example managed by DataSourceTransactionManager. <code>getConnection</code> calls and <code>close</code> calls on returned Connections will behave properly within a transaction, i.e. always operate on the transactional Connection. If not within a transaction, normal DataSource behavior applies. </p>
+<p>This proxy allows data access code to work with the plain JDBC API and still participate in Spring-managed transactions, similar to JDBC code in a Java EE/JTA environment. However, if possible, use Spring's DataSourceUtils, JdbcTemplate or JDBC operation objects to get transaction participation even without a proxy for the target DataSource, avoiding the need to define such a proxy in the first place. </p>
+<p>As a further effect, using a transaction-aware DataSource will apply remaining transaction timeouts to all created JDBC (Prepared/Callable)Statement. This means that all operations performed through standard JDBC will automatically participate in Spring-managed transaction timeouts. </p>
+<p><strong>NOTE:</strong> This DataSource proxy needs to return wrapped Connections (which implement the ConnectionProxy interface) in order to handle close calls properly. Use <code><a href="#">Connection#unwrap</a></code> to retrieve the native JDBC Connection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-sphere-data-source-adapter/index.html">WebSphereDataSourceAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSphereDataSourceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-isolation-level-data-source-adapter/index.html"><span class="identifier">IsolationLevelDataSourceAdapter</span></a></code>
+<p>DataSource implementation that delegates all calls to a WebSphere target DataSource, typically obtained from JNDI, applying a current isolation level and/or current user credentials to every Connection obtained from it. 
+<p>Uses IBM-specific API to get a JDBC Connection with a specific isolation level (and read-only flag) from a WebSphere DataSource (<a href="#">IBM code example</a>). Supports the transaction-specific isolation level exposed by <code><a href="#">org.springframework.transaction.support.TransactionSynchronizationManager#getCurrentTransactionIsolationLevel()</a></code>. It's also possible to specify a default isolation level, to be applied when the current Spring-managed transaction does not define a specific isolation level. </p>
+<p>Usage example, defining the target DataSource as an inner-bean JNDI lookup (of course, you can link to any WebSphere DataSource through a bean reference): </p>
+<pre><code> &lt;bean id="myDataSource" class="org.springframework.jdbc.datasource.WebSphereDataSourceAdapter"&gt; &lt;property name="targetDataSource"&gt; &lt;bean class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="jdbc/myds"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> Thanks to Ricardo Olivieri for submitting the original implementation of this approach!</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

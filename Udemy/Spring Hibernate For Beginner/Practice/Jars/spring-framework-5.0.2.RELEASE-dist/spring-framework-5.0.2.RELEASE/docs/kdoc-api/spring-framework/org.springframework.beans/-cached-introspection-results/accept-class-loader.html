@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CachedIntrospectionResults.acceptClassLoader - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href="index.html">CachedIntrospectionResults</a>&nbsp;/&nbsp;<a href=".">acceptClassLoader</a><br/>
+<br/>
+<h1>acceptClassLoader</h1>
+<a name="org.springframework.beans.CachedIntrospectionResults$acceptClassLoader(java.lang.ClassLoader)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">acceptClassLoader</span><span class="symbol">(</span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.beans.CachedIntrospectionResults$acceptClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Accept the given ClassLoader as cache-safe, even if its classes would not qualify as cache-safe in this CachedIntrospectionResults class. 
+<p>This configuration method is only relevant in scenarios where the Spring classes reside in a 'common' ClassLoader (e.g. the system ClassLoader) whose lifecycle is not coupled to the application. In such a scenario, CachedIntrospectionResults would by default not cache any of the application's classes, since they would create a leak in the common ClassLoader. </p>
+<p>Any <code>acceptClassLoader</code> call at application startup should be paired with a <code><a href="clear-class-loader.html">#clearClassLoader</a></code> call at application shutdown.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="classLoader"></a>
+<code>classLoader</code> - the ClassLoader to accept</p>
+</BODY>
+</HTML>

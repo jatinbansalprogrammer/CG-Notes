@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JdbcAccessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support</a>&nbsp;/&nbsp;<a href=".">JdbcAccessor</a><br/>
+<br/>
+<h1>JdbcAccessor</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JdbcAccessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InitializingBean</span></code>
+<p>Base class for org.springframework.jdbc.core.JdbcTemplate and other JDBC-accessing DAO helpers, defining common properties such as DataSource and exception translator. 
+<p>Not intended to be used directly. See org.springframework.jdbc.core.JdbcTemplate.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+28.11.2003</p>
+<p><strong>See Also</strong><br/>
+org.springframework.jdbc.core.JdbcTemplate</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JdbcAccessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Base class for org.springframework.jdbc.core.JdbcTemplate and other JDBC-accessing DAO helpers, defining common properties such as DataSource and exception translator. 
+<p>Not intended to be used directly. See org.springframework.jdbc.core.JdbcTemplate.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Eagerly initialize the exception translator, if demanded, creating a default one for the specified DataSource if none set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-data-source.html">getDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDataSource</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataSource</span></code>
+<p>Return the DataSource used by this template.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-exception-translator.html">getExceptionTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExceptionTranslator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-s-q-l-exception-translator/index.html"><span class="identifier">SQLExceptionTranslator</span></a></code>
+<p>Return the exception translator for this instance. 
+<p>Creates a default SQLErrorCodeSQLExceptionTranslator for the specified DataSource if none set, or a SQLStateSQLExceptionTranslator in case of no DataSource.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-lazy-init.html">isLazyInit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isLazyInit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to lazily initialize the SQLExceptionTranslator for this accessor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-data-source.html">setDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcAccessor$setDataSource(javax.sql.DataSource)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDBC DataSource to obtain connections from.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-database-product-name.html">setDatabaseProductName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDatabaseProductName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcAccessor$setDatabaseProductName(kotlin.String)/dbName">dbName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the database product name for the DataSource that this accessor uses. This allows to initialize a SQLErrorCodeSQLExceptionTranslator without obtaining a Connection from the DataSource to get the metadata.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-exception-translator.html">setExceptionTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExceptionTranslator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcAccessor$setExceptionTranslator(org.springframework.jdbc.support.SQLExceptionTranslator)/exceptionTranslator">exceptionTranslator</span><span class="symbol">:</span>&nbsp;<a href="../-s-q-l-exception-translator/index.html"><span class="identifier">SQLExceptionTranslator</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the exception translator for this instance. 
+<p>If no custom translator is provided, a default SQLErrorCodeSQLExceptionTranslator is used which examines the SQLException's vendor-specific error code.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-lazy-init.html">setLazyInit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLazyInit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcAccessor$setLazyInit(kotlin.Boolean)/lazyInit">lazyInit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to lazily initialize the SQLExceptionTranslator for this accessor, on first encounter of a SQLException. Default is "true"; can be switched to "false" for initialization on startup. 
+<p>Early initialization just applies if <code>afterPropertiesSet()</code> is called.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableAspectJAutoProxy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">EnableAspectJAutoProxy</a><br/>
+<br/>
+<h1>EnableAspectJAutoProxy</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE]<span class="symbol">)</span> <span class="identifier">@Import</span><span class="symbol">(</span>AspectJAutoProxyRegistrar<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">EnableAspectJAutoProxy</span></code>
+<p>Enables support for handling components marked with AspectJ's <code>@Aspect</code> annotation, similar to functionality found in Spring's <code>&lt;aop:aspectj-autoproxy&gt;</code> XML element. To be used on @Configuration classes as follows: <pre><code> @Configuration @EnableAspectJAutoProxy public class AppConfig { @Bean public FooService fooService() { return new FooService(); } @Bean public MyAspect myAspect() { return new MyAspect(); } }</code></pre> Where <code>FooService</code> is a typical POJO component and <code>MyAspect</code> is an <code>@Aspect</code>-style aspect: <pre><code> public class FooService { // various methods }</code></pre> <pre><code> @Aspect public class MyAspect { @Before("execution(* FooService+.*(..))") public void advice() { // advise FooService methods as appropriate } }</code></pre> In the scenario above, <code>@EnableAspectJAutoProxy</code> ensures that <code>MyAspect</code> will be properly processed and that <code>FooService</code> will be proxied mixing in the advice that it contributes. 
+<p>Users can control the type of proxy that gets created for <code>FooService</code> using the <code><a href="#">#proxyTargetClass()</a></code> attribute. The following enables CGLIB-style 'subclass' proxies as opposed to the default interface-based JDK proxy approach. </p>
+<pre><code> @Configuration @EnableAspectJAutoProxy(proxyTargetClass=true) public class AppConfig { // ... }</code></pre> 
+<p>Note that <code>@Aspect</code> beans may be component-scanned like any other. Simply mark the aspect with both <code>@Aspect</code> and <code>@Component</code>: </p>
+<pre><code> package com.foo; @Component public class FooService { ... } @Aspect @Component public class MyAspect { ... }</code></pre> Then use the @ComponentScan annotation to pick both up: <pre><code> @Configuration @ComponentScan("com.foo") @EnableAspectJAutoProxy public class AppConfig { // no explicit @Bean definitions required }</code></pre></p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+org.aspectj.lang.annotation.Aspect</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EnableAspectJAutoProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.EnableAspectJAutoProxy$<init>(kotlin.Boolean, kotlin.Boolean)/proxyTargetClass">proxyTargetClass</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.annotation.EnableAspectJAutoProxy$<init>(kotlin.Boolean, kotlin.Boolean)/exposeProxy">exposeProxy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Enables support for handling components marked with AspectJ's <code>@Aspect</code> annotation, similar to functionality found in Spring's <code>&lt;aop:aspectj-autoproxy&gt;</code> XML element. To be used on @Configuration classes as follows: <pre><code> @Configuration @EnableAspectJAutoProxy public class AppConfig { @Bean public FooService fooService() { return new FooService(); } @Bean public MyAspect myAspect() { return new MyAspect(); } }</code></pre> Where <code>FooService</code> is a typical POJO component and <code>MyAspect</code> is an <code>@Aspect</code>-style aspect: <pre><code> public class FooService { // various methods }</code></pre> <pre><code> @Aspect public class MyAspect { @Before("execution(* FooService+.*(..))") public void advice() { // advise FooService methods as appropriate } }</code></pre> In the scenario above, <code>@EnableAspectJAutoProxy</code> ensures that <code>MyAspect</code> will be properly processed and that <code>FooService</code> will be proxied mixing in the advice that it contributes. 
+<p>Users can control the type of proxy that gets created for <code>FooService</code> using the <code><a href="#">#proxyTargetClass()</a></code> attribute. The following enables CGLIB-style 'subclass' proxies as opposed to the default interface-based JDK proxy approach. </p>
+<pre><code> @Configuration @EnableAspectJAutoProxy(proxyTargetClass=true) public class AppConfig { // ... }</code></pre> 
+<p>Note that <code>@Aspect</code> beans may be component-scanned like any other. Simply mark the aspect with both <code>@Aspect</code> and <code>@Component</code>: </p>
+<pre><code> package com.foo; @Component public class FooService { ... } @Aspect @Component public class MyAspect { ... }</code></pre> Then use the @ComponentScan annotation to pick both up: <pre><code> @Configuration @ComponentScan("com.foo") @EnableAspectJAutoProxy public class AppConfig { // no explicit @Bean definitions required }</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="expose-proxy.html">exposeProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">exposeProxy</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Indicate that the proxy should be exposed by the AOP framework as a <code>ThreadLocal</code> for retrieval via the org.springframework.aop.framework.AopContext class. Off by default, i.e. no guarantees that <code>AopContext</code> access will work.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="proxy-target-class.html">proxyTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">proxyTargetClass</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Indicate whether subclass-based (CGLIB) proxies are to be created as opposed to standard Java interface-based proxies. The default is <code>false</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

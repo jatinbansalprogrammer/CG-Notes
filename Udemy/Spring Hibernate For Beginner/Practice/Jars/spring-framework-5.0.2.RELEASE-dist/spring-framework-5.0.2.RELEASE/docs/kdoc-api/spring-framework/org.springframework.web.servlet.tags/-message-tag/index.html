@@ -1,0 +1,178 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessageTag - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.tags</a>&nbsp;/&nbsp;<a href=".">MessageTag</a><br/>
+<br/>
+<h1>MessageTag</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span><span class="symbol">, </span><span class="identifier">ArgumentAware</span></code>
+<p>The <code>&lt;message&gt;</code> tag looks up a message in the scope of this page. Messages are resolved using the ApplicationContext and thus support internationalization. 
+<p>Detects an HTML escaping setting, either on this tag instance, the page level, or the <code>web.xml</code> level. Can also apply JavaScript escaping. </p>
+<p>If "code" isn't set or cannot be resolved, "text" will be used as default message. Thus, this tag can also be used for HTML escaping of any texts. </p>
+<p>Message arguments can be specified via the <code><a href="#">arguments</a></code> attribute or by using nested <code>&lt;spring:argument&gt;</code> tags. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     arguments false true Set optional message arguments for this tag, as a (comma-)delimited String (each String argument can contain JSP EL), an Object array (used as argument array), or a single Object (used as single argument).   argumentSeparator false true The separator character to be used for splitting the arguments string value; defaults to a 'comma' (',').   code false true The code (key) to use when looking up the message. If code is not provided, the text attribute will be used.   htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as boolean value. Default is false.   message false true A MessageSourceResolvable argument (direct or through JSP EL). Fits nicely when used in conjunction with Spring’s own validation error classes which all implement the MessageSourceResolvable interface. For example, this allows you to iterate over all of the errors in a form, passing each error (using a runtime expression) as the value of this 'message' attribute, thus effecting the easy display of such error messages.   scope false true The scope to use when exporting the result to a variable. This attribute is only used when var is also set. Possible values are page, request, session and application.   text false true Default text to output when a message for the given code could not be found. If both text and code are not set, the tag will output null.   var false true The string to use when binding the result to the page, request, session or application scope. If not specified, the result gets outputted to the writer (i.e. typically directly to the JSP).   </p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Nicholas Williams</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setCode</a><a href="#">#setText</a><a href="#">#setHtmlEscape</a><a href="set-java-script-escape.html">#setJavaScriptEscape</a><a href="../-html-escape-tag/set-default-html-escape.html">HtmlEscapeTag#setDefaultHtmlEscape</a><a href="#">org.springframework.web.util.WebUtils#HTML_ESCAPE_CONTEXT_PARAM</a>ArgumentTag</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MessageTag</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>The <code>&lt;message&gt;</code> tag looks up a message in the scope of this page. Messages are resolved using the ApplicationContext and thus support internationalization. 
+<p>Detects an HTML escaping setting, either on this tag instance, the page level, or the <code>web.xml</code> level. Can also apply JavaScript escaping. </p>
+<p>If "code" isn't set or cannot be resolved, "text" will be used as default message. Thus, this tag can also be used for HTML escaping of any texts. </p>
+<p>Message arguments can be specified via the <code><a href="#">arguments</a></code> attribute or by using nested <code>&lt;spring:argument&gt;</code> tags. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     arguments false true Set optional message arguments for this tag, as a (comma-)delimited String (each String argument can contain JSP EL), an Object array (used as argument array), or a single Object (used as single argument).   argumentSeparator false true The separator character to be used for splitting the arguments string value; defaults to a 'comma' (',').   code false true The code (key) to use when looking up the message. If code is not provided, the text attribute will be used.   htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as boolean value. Default is false.   message false true A MessageSourceResolvable argument (direct or through JSP EL). Fits nicely when used in conjunction with Spring’s own validation error classes which all implement the MessageSourceResolvable interface. For example, this allows you to iterate over all of the errors in a form, passing each error (using a runtime expression) as the value of this 'message' attribute, thus effecting the easy display of such error messages.   scope false true The scope to use when exporting the result to a variable. This attribute is only used when var is also set. Possible values are page, request, session and application.   text false true Default text to output when a message for the given code could not be found. If both text and code are not set, the tag will output null.   var false true The string to use when binding the result to the page, request, session or application scope. If not specified, the result gets outputted to the writer (i.e. typically directly to the JSP).   </p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-a-r-g-u-m-e-n-t_-s-e-p-a-r-a-t-o-r.html">DEFAULT_ARGUMENT_SEPARATOR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ARGUMENT_SEPARATOR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default separator for splitting an arguments String: a comma (",")</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-argument.html">addArgument</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addArgument</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$addArgument(kotlin.Any)/argument">argument</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="do-end-tag.html">doEndTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doEndTag</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Resolves the message, escapes it if demanded, and writes it to the page (or exposes it as variable).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="release.html">release</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">release</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-argument-separator.html">setArgumentSeparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setArgumentSeparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setArgumentSeparator(kotlin.String)/argumentSeparator">argumentSeparator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the separator to use for splitting an arguments String. Default is a comma (",").</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-arguments.html">setArguments</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setArguments</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setArguments(kotlin.Any)/arguments">arguments</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set optional message arguments for this tag, as a comma-delimited String (each String argument can contain JSP EL), an Object array (used as argument array), or a single Object (used as single argument).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-code.html">setCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setCode(kotlin.String)/code">code</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the message code for this tag.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-java-script-escape.html">setJavaScriptEscape</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJavaScriptEscape</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setJavaScriptEscape(kotlin.Boolean)/javaScriptEscape">javaScriptEscape</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set JavaScript escaping for this tag, as boolean value. Default is "false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message.html">setMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setMessage(org.springframework.context.MessageSourceResolvable)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageSourceResolvable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the MessageSourceResolvable for this tag. 
+<p>If a MessageSourceResolvable is specified, it effectively overrides any code, arguments or text specified on this tag.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scope.html">setScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setScope</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setScope(kotlin.String)/scope">scope</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the scope to export the variable to. Default is SCOPE_PAGE ("page").</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-text.html">setText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setText</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setText(kotlin.String)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the message text for this tag.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-var.html">setVar</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setVar</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.MessageTag$setVar(kotlin.String)/var">var</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set PageContext attribute name under which to expose a variable that contains the resolved message.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-theme-tag/index.html">ThemeTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThemeTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageTag</span></code>
+<p>The <code>&lt;theme&gt;</code> tag looks up a theme message in the scope of this page. Messages are looked up using the ApplicationContext's ThemeSource, and thus should support internationalization. 
+<p>Regards a HTML escaping setting, either on this tag instance, the page level, or the web.xml level. </p>
+<p>If "code" isn't set or cannot be resolved, "text" will be used as default message. </p>
+<p>Message arguments can be specified via the <code><a href="#"> arguments</a></code> attribute or by using nested <code>&lt;spring:argument&gt;</code> tags. </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     arguments false true Set optional message arguments for this tag, as a (comma-)delimited String (each String argument can contain JSP EL), an Object array (used as argument array), or a single Object (used as single argument).   argumentSeparator false true The separator character to be used for splitting the arguments string value; defaults to a 'comma' (',').   code false true The code (key) to use when looking up the message. If code is not provided, the text attribute will be used.   htmlEscape false true Set HTML escaping for this tag, as boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as boolean value. Default is false.   message false true A MessageSourceResolvable argument (direct or through JSP EL).   scope false true The scope to use when exporting the result to a variable. This attribute is only used when var is also set. Possible values are page, request, session and application.   text false true Default text to output when a message for the given code could not be found. If both text and code are not set, the tag will output null.   var false true The string to use when binding the result to the page, request, session or application scope. If not specified, the result gets outputted to the writer (i.e. typically directly to the JSP).   </p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

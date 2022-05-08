@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSessionStore - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.server.session</a>&nbsp;/&nbsp;<a href=".">WebSessionStore</a><br/>
+<br/>
+<h1>WebSessionStore</h1>
+<code><span class="keyword">interface </span><span class="identifier">WebSessionStore</span></code>
+<p>Strategy for WebSession persistence.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-web-session.html">createWebSession</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createWebSession</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">WebSession</span><span class="symbol">&gt;</span></code>
+<p>Create a new WebSession. 
+<p>Note that this does nothing more than create a new instance. The session can later be started explicitly via <code><a href="#">WebSession#start()</a></code> or implicitly by adding attributes -- and then persisted via <code><a href="#">WebSession#save()</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-session.html">removeSession</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.WebSessionStore$removeSession(kotlin.String)/sessionId">sessionId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Remove the WebSession for the specified id.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="retrieve-session.html">retrieveSession</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">retrieveSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.WebSessionStore$retrieveSession(kotlin.String)/sessionId">sessionId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">WebSession</span><span class="symbol">&gt;</span></code>
+<p>Return the WebSession for the given id. 
+<p><strong>Note:</strong> This method should perform an expiration check, and if it has expired remove the session and return empty. This method should also update the lastAccessTime of retrieved sessions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-last-access-time.html">updateLastAccessTime</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">updateLastAccessTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.WebSessionStore$updateLastAccessTime(org.springframework.web.server.WebSession)/webSession">webSession</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSession</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">WebSession</span><span class="symbol">&gt;</span></code>
+<p>Update the last accessed timestamp to "now".</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-in-memory-web-session-store/index.html">InMemoryWebSessionStore</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InMemoryWebSessionStore</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSessionStore</span></code>
+<p>Simple Map-based storage for WebSession instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

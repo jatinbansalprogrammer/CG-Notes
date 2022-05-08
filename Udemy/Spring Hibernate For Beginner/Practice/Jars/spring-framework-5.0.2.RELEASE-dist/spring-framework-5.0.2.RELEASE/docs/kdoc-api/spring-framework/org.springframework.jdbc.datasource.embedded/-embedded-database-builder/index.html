@@ -1,0 +1,207 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EmbeddedDatabaseBuilder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource.embedded</a>&nbsp;/&nbsp;<a href=".">EmbeddedDatabaseBuilder</a><br/>
+<br/>
+<h1>EmbeddedDatabaseBuilder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>A builder that provides a convenient API for constructing an embedded database. Usage Example <pre><code> EmbeddedDatabase db = new EmbeddedDatabaseBuilder() .generateUniqueName(true) .setType(H2) .setScriptEncoding("UTF-8") .ignoreFailedDrops(true) .addScript("schema.sql") .addScripts("user_data.sql", "country_data.sql") .build(); // perform actions against the db (EmbeddedDatabase extends javax.sql.DataSource) db.shutdown(); </code></pre></p>
+<p><strong>Author</strong><br/>
+Keith Donald</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.jdbc.datasource.init.ScriptUtilsorg.springframework.jdbc.datasource.init.ResourceDatabasePopulatororg.springframework.jdbc.datasource.init.DatabasePopulatorUtils</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EmbeddedDatabaseBuilder</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new embedded database builder with a DefaultResourceLoader.</p>
+<code><span class="identifier">EmbeddedDatabaseBuilder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$<init>(org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span></code>
+<p>Create a new embedded database builder with the given ResourceLoader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-default-scripts.html">addDefaultScripts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addDefaultScripts</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Add default SQL scripts to execute to populate the database. 
+<p>The default scripts are <code>"schema.sql"</code> to create the database schema and <code>"data.sql"</code> to populate the database with data.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-script.html">addScript</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addScript</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$addScript(kotlin.String)/script">script</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Add an SQL script to execute to initialize or populate the database.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-scripts.html">addScripts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addScripts</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$addScripts(kotlin.Array((kotlin.String)))/scripts">scripts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Add multiple SQL scripts to execute to initialize or populate the database.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="build.html">build</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-embedded-database/index.html"><span class="identifier">EmbeddedDatabase</span></a></code>
+<p>Build the embedded database.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="continue-on-error.html">continueOnError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">continueOnError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$continueOnError(kotlin.Boolean)/flag">flag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify that all failures which occur while executing SQL scripts should be logged but should not cause a failure. 
+<p>Defaults to <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="generate-unique-name.html">generateUniqueName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">generateUniqueName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$generateUniqueName(kotlin.Boolean)/flag">flag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify whether a unique ID should be generated and used as the database name. 
+<p>If the configuration for this builder is reused across multiple application contexts within a single JVM, this flag should be <em>enabled</em> (i.e., set to <code>true</code>) in order to ensure that each application context gets its own embedded database. </p>
+<p>Enabling this flag overrides any explicit name set via <code><a href="#">#setName</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="ignore-failed-drops.html">ignoreFailedDrops</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">ignoreFailedDrops</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$ignoreFailedDrops(kotlin.Boolean)/flag">flag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify that a failed SQL <code>DROP</code> statement within an executed script can be ignored. 
+<p>This is useful for a database whose SQL dialect does not support an <code>IF EXISTS</code> clause in a <code>DROP</code> statement. </p>
+<p>The default is <code>false</code> so that <code><a href="build.html">building</a></code> will fail fast if a script starts with a <code>DROP</code> statement.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-block-comment-end-delimiter.html">setBlockCommentEndDelimiter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBlockCommentEndDelimiter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setBlockCommentEndDelimiter(kotlin.String)/blockCommentEndDelimiter">blockCommentEndDelimiter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify the end delimiter for block comments in all SQL scripts. 
+<p>Defaults to <code>"*/"</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-block-comment-start-delimiter.html">setBlockCommentStartDelimiter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBlockCommentStartDelimiter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setBlockCommentStartDelimiter(kotlin.String)/blockCommentStartDelimiter">blockCommentStartDelimiter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify the start delimiter for block comments in all SQL scripts. 
+<p>Defaults to <code>"/*"</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-comment-prefix.html">setCommentPrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCommentPrefix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setCommentPrefix(kotlin.String)/commentPrefix">commentPrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify the single-line comment prefix used in all SQL scripts. 
+<p>Defaults to <code>"--"</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-data-source-factory.html">setDataSourceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDataSourceFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setDataSourceFactory(org.springframework.jdbc.datasource.embedded.DataSourceFactory)/dataSourceFactory">dataSourceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSourceFactory</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Set the factory to use to create the DataSource instance that connects to the embedded database. 
+<p>Defaults to SimpleDriverDataSourceFactory but can be overridden, for example to introduce connection pooling.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-name.html">setName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setName(kotlin.String)/databaseName">databaseName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Set the name of the embedded database. 
+<p>Defaults to <code><a href="../-embedded-database-factory/-d-e-f-a-u-l-t_-d-a-t-a-b-a-s-e_-n-a-m-e.html">EmbeddedDatabaseFactory#DEFAULT_DATABASE_NAME</a></code> if not called. </p>
+<p>Will be overridden if the <code>generateUniqueName</code> flag has been set to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-script-encoding.html">setScriptEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setScriptEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setScriptEncoding(kotlin.String)/scriptEncoding">scriptEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify the character encoding used in all SQL scripts, if different from the platform encoding.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-separator.html">setSeparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSeparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setSeparator(kotlin.String)/separator">separator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Specify the statement separator used in all SQL scripts, if a custom one. 
+<p>Defaults to <code>";"</code> if not specified and falls back to <code>"\n"</code> as a last resort; may be set to <code><a href="#">ScriptUtils#EOF_STATEMENT_SEPARATOR</a></code> to signal that each script contains a single statement without a separator.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-type.html">setType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder$setType(org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType)/databaseType">databaseType</span><span class="symbol">:</span>&nbsp;<span class="identifier">EmbeddedDatabaseType</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>Set the type of embedded database. 
+<p>Defaults to HSQL if not called.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

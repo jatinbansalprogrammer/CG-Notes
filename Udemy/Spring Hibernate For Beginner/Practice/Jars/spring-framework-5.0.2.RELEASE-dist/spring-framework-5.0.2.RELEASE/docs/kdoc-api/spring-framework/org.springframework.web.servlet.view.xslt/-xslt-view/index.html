@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>XsltView - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.xslt</a>&nbsp;/&nbsp;<a href=".">XsltView</a><br/>
+<br/>
+<h1>XsltView</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XsltView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlBasedView</span></code>
+<p>XSLT-driven View that allows for response context to be rendered as the result of an XSLT transformation. 
+<p>The XSLT Source object is supplied as a parameter in the model and then <code><a href="#">detected</a></code> during response rendering. Users can either specify a specific entry in the model via the <code><a href="#">sourceKey</a></code> property or have Spring locate the Source object. This class also provides basic conversion of objects into Source implementations. See <code><a href="#">here</a></code> for more details. </p>
+<p>All model parameters are passed to the XSLT Transformer as parameters. In addition the user can configure <code><a href="set-output-properties.html">output properties</a></code> to be passed to the Transformer.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">XsltView</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>XSLT-driven View that allows for response context to be rendered as the result of an XSLT transformation. 
+<p>The XSLT Source object is supplied as a parameter in the model and then <code><a href="#">detected</a></code> during response rendering. Users can either specify a specific entry in the model via the <code><a href="#">sourceKey</a></code> property or have Spring locate the Source object. This class also provides basic conversion of objects into Source implementations. See <code><a href="#">here</a></code> for more details. </p>
+<p>All model parameters are passed to the XSLT Transformer as parameters. In addition the user can configure <code><a href="set-output-properties.html">output properties</a></code> to be passed to the Transformer.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-cache-templates.html">setCacheTemplates</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheTemplates</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltView$setCacheTemplates(kotlin.Boolean)/cacheTemplates">cacheTemplates</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Turn on/off the caching of the XSLT Templates instance. 
+<p>The default value is "true". Only set this to "false" in development, where caching does not seriously impact performance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-error-listener.html">setErrorListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setErrorListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltView$setErrorListener(javax.xml.transform.ErrorListener)/errorListener">errorListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">ErrorListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an implementation of the javax.xml.transform.ErrorListener interface for custom handling of transformation errors and warnings. 
+<p>If not set, a default org.springframework.util.xml.SimpleTransformErrorListener is used that simply logs warnings using the logger instance of the view class, and rethrows errors to discontinue the XML transformation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-indent.html">setIndent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIndent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltView$setIndent(kotlin.Boolean)/indent">indent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the XSLT transformer may add additional whitespace when outputting the result tree. 
+<p>Default is <code>true</code> (on); set this to <code>false</code> (off) to not specify an "indent" key, leaving the choice up to the stylesheet.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-output-properties.html">setOutputProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOutputProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltView$setOutputProperties(java.util.Properties)/outputProperties">outputProperties</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set arbitrary transformer output properties to be applied to the stylesheet. 
+<p>Any values specified here will override defaults that this view sets programmatically.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-source-key.html">setSourceKey</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSourceKey</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltView$setSourceKey(kotlin.String)/sourceKey">sourceKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the model attribute that represents the XSLT Source. If not specified, the model map will be searched for a matching value type. 
+<p>The following source types are supported out of the box: Source, Document, Node, Reader, InputStream and Resource.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-transformer-factory-class.html">setTransformerFactoryClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTransformerFactoryClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltView$setTransformerFactoryClass(java.lang.Class((javax.xml.transform.TransformerFactory)))/transformerFactoryClass">transformerFactoryClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">TransformerFactory</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the XSLT TransformerFactory class to use. 
+<p>The default constructor of the specified class will be called to build the TransformerFactory for this view.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-uri-resolver.html">setUriResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUriResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltView$setUriResolver(javax.xml.transform.URIResolver)/uriResolver">uriResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">URIResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the URIResolver used in the transform. 
+<p>The URIResolver handles calls to the XSLT <code>document()</code> function.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

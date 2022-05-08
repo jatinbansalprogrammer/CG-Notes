@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.web.servlet.htmlunit - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.web.servlet.htmlunit</a><br/>
+<br/>
+<h2>Package org.springframework.test.web.servlet.htmlunit</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-delegating-web-connection/index.html">DelegatingWebConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">DelegatingWebConnection</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebConnection</span></code>
+<p>Implementation of WebConnection that allows delegating to various <code>WebConnection</code> implementations. 
+<p>For example, if you host your JavaScript on the domain <code>code.jquery.com</code>, you might want to use the following. </p>
+<pre><code> WebClient webClient = new WebClient(); MockMvc mockMvc = ... MockMvcWebConnection mockConnection = new MockMvcWebConnection(mockMvc, webClient); WebRequestMatcher cdnMatcher = new UrlRegexRequestMatcher(".*?//code.jquery.com/.*"); WebConnection httpConnection = new HttpWebConnection(webClient); WebConnection webConnection = new DelegatingWebConnection(mockConnection, new DelegateWebConnection(cdnMatcher, httpConnection)); webClient.setWebConnection(webConnection); WebClient webClient = new WebClient(); webClient.setWebConnection(webConnection); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-host-request-matcher/index.html">HostRequestMatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">HostRequestMatcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebRequestMatcher</span></code>
+<p>A WebRequestMatcher that allows matching on the host and optionally the port of <code>WebRequest#getUrl()</code>. 
+<p>For example, the following would match any request to the host <code>"code.jquery.com"</code> without regard for the port. </p>
+<pre><code>WebRequestMatcher cdnMatcher = new HostMatcher("code.jquery.com");</code></pre> 
+<p>Multiple hosts can also be passed in. For example, the following would match any request to the host <code>"code.jquery.com"</code> or the host <code>"cdn.com"</code> without regard for the port. </p>
+<pre><code>WebRequestMatcher cdnMatcher = new HostMatcher("code.jquery.com", "cdn.com");</code></pre> 
+<p>Alternatively, one can also specify the port. For example, the following would match any request to the host <code>"code.jquery.com"</code> with the port of <code>80</code>. </p>
+<pre><code>WebRequestMatcher cdnMatcher = new HostMatcher("code.jquery.com:80");</code></pre> 
+<p>The above <code>cdnMatcher</code> would match <code>"http://code.jquery.com/jquery.js"</code> which has a default port of <code>80</code> and <code>"http://code.jquery.com:80/jquery.js"</code>. However, it would not match <code>"https://code.jquery.com/jquery.js"</code> which has a default port of <code>443</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-mvc-web-client-builder/index.html">MockMvcWebClientBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockMvcWebClientBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mock-mvc-web-connection-builder-support/index.html"><span class="identifier">MockMvcWebConnectionBuilderSupport</span></a><span class="symbol">&lt;</span><a href="-mock-mvc-web-client-builder/index.html"><span class="identifier">MockMvcWebClientBuilder</span></a><span class="symbol">&gt;</span></code>
+<p><code>MockMvcWebClientBuilder</code> simplifies the creation of an HtmlUnit WebClient that delegates to a MockMvc instance. 
+<p>The <code>MockMvc</code> instance used by the builder may be <a href="-mock-mvc-web-client-builder/mock-mvc-setup.html">supplied directly</a> or created transparently from a <code><a href="-mock-mvc-web-client-builder/web-app-context-setup.html">WebApplicationContext</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-mvc-web-connection/index.html">MockMvcWebConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MockMvcWebConnection</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebConnection</span></code>
+<p><code>MockMvcWebConnection</code> enables MockMvc to transform a WebRequest into a WebResponse. 
+<p>This is the core integration with <a href="#">HtmlUnit</a>. </p>
+<p>Example usage can be seen below. </p>
+<pre><code> WebClient webClient = new WebClient(); MockMvc mockMvc = ... MockMvcWebConnection webConnection = new MockMvcWebConnection(mockMvc, webClient); webClient.setWebConnection(webConnection); // Use webClient as normal ... </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-mvc-web-connection-builder-support/index.html">MockMvcWebConnectionBuilderSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">MockMvcWebConnectionBuilderSupport</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mock-mvc-web-connection-builder-support/index.html"><span class="identifier">MockMvcWebConnectionBuilderSupport</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Support class that simplifies the creation of a WebConnection that uses MockMvc and optionally delegates to a real WebConnection for specific requests. 
+<p>The default is to use MockMvc for requests to <code>localhost</code> and otherwise use a real WebConnection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-url-regex-request-matcher/index.html">UrlRegexRequestMatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">UrlRegexRequestMatcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebRequestMatcher</span></code>
+<p>A WebRequestMatcher that allows matching on <code>WebRequest#getUrl().toExternalForm()</code> using a regular expression. 
+<p>For example, if you would like to match on the domain <code>code.jquery.com</code>, you might want to use the following. </p>
+<pre><code> WebRequestMatcher cdnMatcher = new UrlRegexRequestMatcher(".*?//code.jquery.com/.*"); </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

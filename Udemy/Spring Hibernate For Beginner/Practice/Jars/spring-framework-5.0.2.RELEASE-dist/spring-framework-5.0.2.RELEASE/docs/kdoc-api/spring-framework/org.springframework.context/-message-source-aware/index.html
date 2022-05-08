@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessageSourceAware - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context</a>&nbsp;/&nbsp;<a href=".">MessageSourceAware</a><br/>
+<br/>
+<h1>MessageSourceAware</h1>
+<code><span class="keyword">interface </span><span class="identifier">MessageSourceAware</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Aware</span></code>
+<p>Interface to be implemented by any object that wishes to be notified of the MessageSource (typically the ApplicationContext) that it runs in. 
+<p>Note that the MessageSource can usually also be passed on as bean reference (to arbitrary bean properties or constructor arguments), because it is defined as bean with name "messageSource" in the application context.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+1.1.1</p>
+<p><strong>See Also</strong><br/>
+ApplicationContextAware</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-message-source.html">setMessageSource</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setMessageSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.MessageSourceAware$setMessageSource(org.springframework.context.MessageSource)/messageSource">messageSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the MessageSource that this object runs in. 
+<p>Invoked after population of normal bean properties but before an init callback like InitializingBean's afterPropertiesSet or a custom init-method. Invoked before ApplicationContextAware's setApplicationContext.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.mvc.annotation/-response-status-exception-resolver/index.html">ResponseStatusExceptionResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResponseStatusExceptionResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHandlerExceptionResolver</span><span class="symbol">, </span><span class="identifier">MessageSourceAware</span></code>
+<p>A org.springframework.web.servlet.HandlerExceptionResolver that uses the ResponseStatus annotation to map exceptions to HTTP status codes. 
+<p>This exception resolver is enabled by default in the org.springframework.web.servlet.DispatcherServlet and the MVC Java config and the MVC namespace. </p>
+<p>As of 4.2 this resolver also looks recursively for <code>@ResponseStatus</code> present on cause exceptions, and as of 4.2.2 this resolver supports attribute overrides for <code>@ResponseStatus</code> in custom composed annotations. </p>
+<p>As of 5.0 this resolver also supports ResponseStatusException.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

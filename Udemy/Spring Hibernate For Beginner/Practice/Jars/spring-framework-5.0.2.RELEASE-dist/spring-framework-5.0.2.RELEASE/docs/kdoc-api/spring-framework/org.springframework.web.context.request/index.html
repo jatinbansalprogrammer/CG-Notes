@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.context.request - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.context.request</a><br/>
+<br/>
+<h2>Package org.springframework.web.context.request</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-destruction-callback-binding-listener/index.html">DestructionCallbackBindingListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DestructionCallbackBindingListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpSessionBindingListener</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Adapter that implements the Servlet HttpSessionBindingListener interface, wrapping a session destruction callback.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-faces-web-request/index.html">FacesWebRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FacesWebRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FacesRequestAttributes</span><span class="symbol">, </span><span class="identifier">NativeWebRequest</span></code>
+<p>WebRequest adapter for a JSF javax.faces.context.FacesContext. 
+<p>Requires JSF 2.0 or higher, as of Spring 4.0.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-context-listener/index.html">RequestContextListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestContextListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequestListener</span></code>
+<p>Servlet listener that exposes the request to the current thread, through both org.springframework.context.i18n.LocaleContextHolder and RequestContextHolder. To be registered as listener in <code>web.xml</code>. 
+<p>Alternatively, Spring's org.springframework.web.filter.RequestContextFilter and Spring's org.springframework.web.servlet.DispatcherServlet also expose the same request context to the current thread. In contrast to this listener, advanced options are available there (e.g. "threadContextInheritable"). </p>
+<p>This listener is mainly for use with third-party servlets, e.g. the JSF FacesServlet. Within Spring's own web support, DispatcherServlet's processing is perfectly sufficient.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-scope/index.html">RequestScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestScope</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRequestAttributesScope</span></code>
+<p>Request-backed org.springframework.beans.factory.config.Scope implementation. 
+<p>Relies on a thread-bound RequestAttributes instance, which can be exported through RequestContextListener, org.springframework.web.filter.RequestContextFilter or org.springframework.web.servlet.DispatcherServlet.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-scope/index.html">SessionScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionScope</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRequestAttributesScope</span></code>
+<p>Session-backed org.springframework.beans.factory.config.Scope implementation. 
+<p>Relies on a thread-bound RequestAttributes instance, which can be exported through RequestContextListener, org.springframework.web.filter.RequestContextFilter or org.springframework.web.servlet.DispatcherServlet.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

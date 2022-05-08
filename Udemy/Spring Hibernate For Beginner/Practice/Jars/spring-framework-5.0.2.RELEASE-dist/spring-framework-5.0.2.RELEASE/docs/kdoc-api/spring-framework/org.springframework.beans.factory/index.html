@@ -1,0 +1,247 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.factory - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.factory</a><br/>
+<br/>
+<h2>Package org.springframework.beans.factory</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-factory-utils/index.html">BeanFactoryUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BeanFactoryUtils</span></code>
+<p>Convenience methods operating on bean factories, in particular on the ListableBeanFactory interface. 
+<p>Returns bean counts, bean names or bean instances, taking into account the nesting hierarchy of a bean factory (which the methods defined on the ListableBeanFactory interface don't, in contrast to the methods defined on the BeanFactory interface).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-named-bean/index.html">NamedBean</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">NamedBean</span></code>
+<p>Counterpart of BeanNameAware. Returns the bean name of an object. 
+<p>This interface can be introduced to avoid a brittle dependence on bean name in objects used with Spring IoC and Spring AOP.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-object-provider/index.html">ObjectProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ObjectProvider</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectFactory</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>A variant of ObjectFactory designed specifically for injection points, allowing for programmatic optionality and lenient not-unique handling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-smart-factory-bean/index.html">SmartFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SmartFactoryBean</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension of the FactoryBean interface. Implementations may indicate whether they always return independent instances, for the case where their <code><a href="#">#isSingleton()</a></code> implementation returning <code>false</code> does not clearly indicate independent instances. 
+<p>Plain FactoryBean implementations which do not implement this extended interface are simply assumed to always return independent instances if their <code><a href="#">#isSingleton()</a></code> implementation returns <code>false</code>; the exposed object is only accessed on demand. </p>
+<p><strong>NOTE:</strong> This interface is a special purpose interface, mainly for internal use within the framework and within collaborating frameworks. In general, application-provided FactoryBeans should simply implement the plain FactoryBean interface. New methods might be added to this extended interface even in point releases.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-smart-initializing-singleton/index.html">SmartInitializingSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SmartInitializingSingleton</span></code>
+<p>Callback interface triggered at the end of the singleton pre-instantiation phase during BeanFactory bootstrap. This interface can be implemented by singleton beans in order to perform some initialization after the regular singleton instantiation algorithm, avoiding side effects with accidental early initialization (e.g. from <code><a href="#">ListableBeanFactory#getBeansOfType</a></code> calls). In that sense, it is an alternative to InitializingBean which gets triggered right at the end of a bean's local construction phase. 
+<p>This callback variant is somewhat similar to org.springframework.context.event.ContextRefreshedEvent but doesn't require an implementation of org.springframework.context.ApplicationListener, with no need to filter context references across a context hierarchy etc. It also implies a more minimal dependency on just the <code>beans</code> package and is being honored by standalone ListableBeanFactory implementations, not just in an org.springframework.context.ApplicationContext environment. </p>
+<p><strong>NOTE:</strong> If you intend to start/manage asynchronous tasks, preferably implement org.springframework.context.Lifecycle instead which offers a richer model for runtime management and allows for phased startup/shutdown.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-creation-not-allowed-exception/index.html">BeanCreationNotAllowedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanCreationNotAllowedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanCreationException</span></code>
+<p>Exception thrown in case of a bean being requested despite bean creation currently not being allowed (for example, during the shutdown phase of a bean factory).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-currently-in-creation-exception/index.html">BeanCurrentlyInCreationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanCurrentlyInCreationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanCreationException</span></code>
+<p>Exception thrown in case of a reference to a bean that's currently in creation. Typically happens when constructor autowiring matches the currently constructed bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-expression-exception/index.html">BeanExpressionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanExpressionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans/-fatal-bean-exception/index.html"><span class="identifier">FatalBeanException</span></a></code>
+<p>Exception that indicates an expression evaluation attempt having failed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-initialization-exception/index.html">BeanInitializationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanInitializationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans/-fatal-bean-exception/index.html"><span class="identifier">FatalBeanException</span></a></code>
+<p>Exception that a bean implementation is suggested to throw if its own factory-aware initialization code fails. BeansExceptions thrown by bean factory methods themselves should simply be propagated as-is. 
+<p>Note that <code>afterPropertiesSet()</code> or a custom "init-method" can throw any exception.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-is-abstract-exception/index.html">BeanIsAbstractException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanIsAbstractException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanCreationException</span></code>
+<p>Exception thrown when a bean instance has been requested for a bean definition which has been marked as abstract.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-is-not-a-factory-exception/index.html">BeanIsNotAFactoryException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanIsNotAFactoryException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-bean-not-of-required-type-exception/index.html"><span class="identifier">BeanNotOfRequiredTypeException</span></a></code>
+<p>Exception thrown when a bean is not a factory, but a user tries to get at the factory for the given bean name. Whether a bean is a factory is determined by whether it implements the FactoryBean interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-not-of-required-type-exception/index.html">BeanNotOfRequiredTypeException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanNotOfRequiredTypeException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeansException</span></code>
+<p>Thrown when a bean doesn't match the expected type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cannot-load-bean-class-exception/index.html">CannotLoadBeanClassException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CannotLoadBeanClassException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans/-fatal-bean-exception/index.html"><span class="identifier">FatalBeanException</span></a></code>
+<p>Exception thrown when the BeanFactory cannot load the specified class of a given bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-factory-bean-not-initialized-exception/index.html">FactoryBeanNotInitializedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FactoryBeanNotInitializedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans/-fatal-bean-exception/index.html"><span class="identifier">FatalBeanException</span></a></code>
+<p>Exception to be thrown from a FactoryBean's <code>getObject()</code> method if the bean is not fully initialized yet, for example because it is involved in a circular reference. 
+<p>Note: A circular reference with a FactoryBean cannot be solved by eagerly caching singleton instances like with normal beans. The reason is that <em>every</em> FactoryBean needs to be fully initialized before it can return the created bean, while only <em>specific</em> normal beans need to be initialized - that is, if a collaborating bean actually invokes them on initialization instead of just storing the reference.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-no-unique-bean-definition-exception/index.html">NoUniqueBeanDefinitionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NoUniqueBeanDefinitionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NoSuchBeanDefinitionException</span></code>
+<p>Exception thrown when a <code>BeanFactory</code> is asked for a bean instance for which multiple matching candidates have been found when only one matching bean was expected.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-unsatisfied-dependency-exception/index.html">UnsatisfiedDependencyException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnsatisfiedDependencyException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanCreationException</span></code>
+<p>Exception thrown when a bean depends on other beans or simple properties that were not specified in the bean factory definition, although dependency checking was enabled.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="find-annotation-on-bean.html">findAnnotationOnBean</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span> <span class="identifier">ListableBeanFactory</span><span class="symbol">.</span><span class="identifier">findAnnotationOnBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory$findAnnotationOnBean(org.springframework.beans.factory.ListableBeanFactory, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">?</span></code>
+<p>Extension for <a href="#">ListableBeanFactory.findAnnotationOnBean</a> providing a
+<code>findAnnotationOnBean&lt;Foo&gt;("foo")</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-bean.html">getBean</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">BeanFactory</span><span class="symbol">.</span><span class="identifier">getBean</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Extension for <a href="#">BeanFactory.getBean</a> providing a <code>getBean&lt;Foo&gt;()</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">BeanFactory</span><span class="symbol">.</span><span class="identifier">getBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory$getBean(org.springframework.beans.factory.BeanFactory, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Extension for <a href="#">BeanFactory.getBean</a> providing a <code>getBean&lt;Foo&gt;("foo")</code> variant.</p>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">BeanFactory</span><span class="symbol">.</span><span class="identifier">getBean</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.factory$getBean(org.springframework.beans.factory.BeanFactory, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Extension for <a href="#">BeanFactory.getBean</a> providing a <code>getBean&lt;Foo&gt;(arg1, arg2)</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-bean-names-for-annotation.html">getBeanNamesForAnnotation</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span> <span class="identifier">ListableBeanFactory</span><span class="symbol">.</span><span class="identifier">getBeanNamesForAnnotation</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ListableBeanFactory.getBeanNamesForAnnotation</a> providing a
+<code>getBeansOfType&lt;Foo&gt;()</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-bean-names-for-type.html">getBeanNamesForType</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ListableBeanFactory</span><span class="symbol">.</span><span class="identifier">getBeanNamesForType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory$getBeanNamesForType(org.springframework.beans.factory.ListableBeanFactory, kotlin.Boolean, kotlin.Boolean)/includeNonSingletons">includeNonSingletons</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory$getBeanNamesForType(org.springframework.beans.factory.ListableBeanFactory, kotlin.Boolean, kotlin.Boolean)/allowEagerInit">allowEagerInit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ListableBeanFactory.getBeanNamesForType</a> providing a
+<code>getBeanNamesForType&lt;Foo&gt;()</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-beans-of-type.html">getBeansOfType</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">ListableBeanFactory</span><span class="symbol">.</span><span class="identifier">getBeansOfType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory$getBeansOfType(org.springframework.beans.factory.ListableBeanFactory, kotlin.Boolean, kotlin.Boolean)/includeNonSingletons">includeNonSingletons</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory$getBeansOfType(org.springframework.beans.factory.ListableBeanFactory, kotlin.Boolean, kotlin.Boolean)/allowEagerInit">allowEagerInit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html"><span class="identifier">Map</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ListableBeanFactory.getBeansOfType</a> providing a <code>getBeansOfType&lt;Foo&gt;()</code> variant.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-beans-with-annotation.html">getBeansWithAnnotation</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span> <span class="identifier">ListableBeanFactory</span><span class="symbol">.</span><span class="identifier">getBeansWithAnnotation</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html"><span class="identifier">Map</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Extension for <a href="#">ListableBeanFactory.getBeansWithAnnotation</a> providing a
+<code>getBeansWithAnnotation&lt;Foo&gt;()</code> variant.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

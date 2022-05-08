@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.framework.adapter - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.framework.adapter</a><br/>
+<br/>
+<h2>Package org.springframework.aop.framework.adapter</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-advisor-adapter/index.html">AdvisorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">AdvisorAdapter</span></code>
+<p>Interface allowing extension to the Spring AOP framework to allow handling of new Advisors and Advice types. 
+<p>Implementing objects can create AOP Alliance Interceptors from custom advice types, enabling these advice types to be used in the Spring AOP framework, which uses interception under the covers. </p>
+<p>There is no need for most Spring users to implement this interface; do so only if you need to introduce more Advisor or Advice types to Spring.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-advisor-adapter-registration-manager/index.html">AdvisorAdapterRegistrationManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AdvisorAdapterRegistrationManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanPostProcessor</span></code>
+<p>BeanPostProcessor that registers AdvisorAdapter beans in the BeanFactory with an AdvisorAdapterRegistry (by default the GlobalAdvisorAdapterRegistry). 
+<p>The only requirement for it to work is that it needs to be defined in application context along with "non-native" Spring AdvisorAdapters that need to be "recognized" by Spring's AOP framework.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-after-returning-advice-interceptor/index.html">AfterReturningAdviceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AfterReturningAdviceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">AfterAdvice</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor to wrap an org.springframework.aop.AfterReturningAdvice. Used internally by the AOP framework; application developers should not need to use this class directly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-advisor-adapter-registry/index.html">DefaultAdvisorAdapterRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultAdvisorAdapterRegistry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AdvisorAdapterRegistry</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the AdvisorAdapterRegistry interface. Supports org.aopalliance.intercept.MethodInterceptor, org.springframework.aop.MethodBeforeAdvice, org.springframework.aop.AfterReturningAdvice, org.springframework.aop.ThrowsAdvice.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-global-advisor-adapter-registry/index.html">GlobalAdvisorAdapterRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">GlobalAdvisorAdapterRegistry</span></code>
+<p>Singleton to publish a shared DefaultAdvisorAdapterRegistry instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-before-advice-interceptor/index.html">MethodBeforeAdviceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodBeforeAdviceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor to wrap am org.springframework.aop.MethodBeforeAdvice. Used internally by the AOP framework; application developers should not need to use this class directly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-throws-advice-interceptor/index.html">ThrowsAdviceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThrowsAdviceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">AfterAdvice</span></code>
+<p>Interceptor to wrap an after-throwing advice. 
+<p>The signatures on handler methods on the <code>ThrowsAdvice</code> implementation method argument must be of the form: <code>void afterThrowing([Method, args, target], ThrowableSubclass);</code> </p>
+<p>Only the last argument is required. </p>
+<p>Some examples of valid methods would be: </p>
+<pre><code>public void afterThrowing(Exception ex)</code></pre> <pre><code>public void afterThrowing(RemoteException)</code></pre> <pre><code>public void afterThrowing(Method method, Object[] args, Object target, Exception ex)</code></pre> <pre><code>public void afterThrowing(Method method, Object[] args, Object target, ServletException ex)</code></pre> 
+<p>This is a framework class that need not be used directly by Spring users.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-unknown-advice-type-exception/index.html">UnknownAdviceTypeException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnknownAdviceTypeException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IllegalArgumentException</span></code>
+<p>Exception thrown when an attempt is made to use an unsupported Advisor or Advice type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

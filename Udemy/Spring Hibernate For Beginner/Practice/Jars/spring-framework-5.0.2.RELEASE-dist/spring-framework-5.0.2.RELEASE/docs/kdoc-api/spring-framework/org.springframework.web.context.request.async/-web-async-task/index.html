@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebAsyncTask - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.request.async</a>&nbsp;/&nbsp;<a href=".">WebAsyncTask</a><br/>
+<br/>
+<h1>WebAsyncTask</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebAsyncTask</span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAware</span></code>
+<p>Holder for a Callable, a timeout value, and a task executor.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebAsyncTask</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/callable">callable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a <code>WebAsyncTask</code> wrapping the given Callable.</p>
+<code><span class="identifier">WebAsyncTask</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/callable">callable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a <code>WebAsyncTask</code> with a timeout value and a Callable.</p>
+<code><span class="identifier">WebAsyncTask</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, kotlin.String, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, kotlin.String, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/executorName">executorName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, kotlin.String, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/callable">callable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a <code>WebAsyncTask</code> with a timeout value, an executor name, and a Callable.</p>
+<code><span class="identifier">WebAsyncTask</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, org.springframework.core.task.AsyncTaskExecutor, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, org.springframework.core.task.AsyncTaskExecutor, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/executor">executor</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncTaskExecutor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$<init>(kotlin.Long, org.springframework.core.task.AsyncTaskExecutor, java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/callable">callable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a <code>WebAsyncTask</code> with a timeout value, an executor instance, and a Callable.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-callable.html">getCallable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCallable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the Callable to use for concurrent handling (never <code>null</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-executor.html">getExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExecutor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncTaskExecutor</span></code>
+<p>Return the AsyncTaskExecutor to use for concurrent handling, or <code>null</code> if none specified.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-timeout.html">getTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimeout</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the timeout value in milliseconds, or <code>null</code> if no timeout is set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-completion.html">onCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$onCompletion(java.lang.Runnable)/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register code to invoke when the async request completes. 
+<p>This method is called from a container thread when an async request completed for any reason, including timeout and network error.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-error.html">onError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$onError(java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register code to invoke for an error during async request processing. 
+<p>This method is called from a container thread when an error occurred while processing an async request before the <code>Callable</code> has completed. The callback is executed in the same thread and therefore should return without blocking. It may return an alternative value to use, including an Exception or return <code><a href="#">RESULT_NONE</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="on-timeout.html">onTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$onTimeout(java.util.concurrent.Callable((org.springframework.web.context.request.async.WebAsyncTask.V)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register code to invoke when the async request times out. 
+<p>This method is called from a container thread when an async request times out before the <code>Callable</code> has completed. The callback is executed in the same thread and therefore should return without blocking. It may return an alternative value to use, including an Exception or return <code><a href="#">RESULT_NONE</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.request.async.WebAsyncTask$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>A BeanFactory to use for resolving an executor name. 
+<p>This factory reference will automatically be set when <code>WebAsyncTask</code> is used within a Spring MVC controller.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

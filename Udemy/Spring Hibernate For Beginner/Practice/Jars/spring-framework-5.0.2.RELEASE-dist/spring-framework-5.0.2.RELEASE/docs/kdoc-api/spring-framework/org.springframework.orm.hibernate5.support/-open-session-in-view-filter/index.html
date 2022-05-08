@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OpenSessionInViewFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5.support</a>&nbsp;/&nbsp;<a href=".">OpenSessionInViewFilter</a><br/>
+<br/>
+<h1>OpenSessionInViewFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenSessionInViewFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Servlet Filter that binds a Hibernate Session to the thread for the entire processing of the request. Intended for the "Open Session in View" pattern, i.e. to allow for lazy loading in web views despite the original transactions already being completed. 
+<p>This filter makes Hibernate Sessions available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.hibernate5.HibernateTransactionManager as well as for non-transactional execution (if configured appropriately). </p>
+<p><strong>NOTE</strong>: This filter will by default <em>not</em> flush the Hibernate Session, with the flush mode set to <code>FlushMode.NEVER</code>. It assumes to be used in combination with service layer transactions that care for the flushing: The active transaction manager will temporarily change the flush mode to <code>FlushMode.AUTO</code> during a read-write transaction, with the flush mode reset to <code>FlushMode.NEVER</code> at the end of each transaction. </p>
+<p><strong>WARNING:</strong> Applying this filter to existing logic can cause issues that have not appeared before, through the use of a single Hibernate Session for the processing of an entire request. In particular, the reassociation of persistent objects with a Hibernate Session has to occur at the very beginning of request processing, to avoid clashes with already loaded instances of the same objects. </p>
+<p>Looks up the SessionFactory in Spring's root web application context. Supports a "sessionFactoryBeanName" filter init-param in <code>web.xml</code>; the default bean name is "sessionFactory".</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#lookupSessionFactory</a>OpenSessionInViewInterceptorOpenSessionInterceptororg.springframework.orm.hibernate5.HibernateTransactionManagerTransactionSynchronizationManager<a href="#">SessionFactory#getCurrentSession()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">OpenSessionInViewFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Servlet Filter that binds a Hibernate Session to the thread for the entire processing of the request. Intended for the "Open Session in View" pattern, i.e. to allow for lazy loading in web views despite the original transactions already being completed. 
+<p>This filter makes Hibernate Sessions available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.hibernate5.HibernateTransactionManager as well as for non-transactional execution (if configured appropriately). </p>
+<p><strong>NOTE</strong>: This filter will by default <em>not</em> flush the Hibernate Session, with the flush mode set to <code>FlushMode.NEVER</code>. It assumes to be used in combination with service layer transactions that care for the flushing: The active transaction manager will temporarily change the flush mode to <code>FlushMode.AUTO</code> during a read-write transaction, with the flush mode reset to <code>FlushMode.NEVER</code> at the end of each transaction. </p>
+<p><strong>WARNING:</strong> Applying this filter to existing logic can cause issues that have not appeared before, through the use of a single Hibernate Session for the processing of an entire request. In particular, the reassociation of persistent objects with a Hibernate Session has to occur at the very beginning of request processing, to avoid clashes with already loaded instances of the same objects. </p>
+<p>Looks up the SessionFactory in Spring's root web application context. Supports a "sessionFactoryBeanName" filter init-param in <code>web.xml</code>; the default bean name is "sessionFactory".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-s-e-s-s-i-o-n_-f-a-c-t-o-r-y_-b-e-a-n_-n-a-m-e.html">DEFAULT_SESSION_FACTORY_BEAN_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_SESSION_FACTORY_BEAN_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-session-factory-bean-name.html">setSessionFactoryBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionFactoryBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewFilter$setSessionFactoryBeanName(kotlin.String)/sessionFactoryBeanName">sessionFactoryBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the bean name of the SessionFactory to fetch from Spring's root application context. Default is "sessionFactory".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

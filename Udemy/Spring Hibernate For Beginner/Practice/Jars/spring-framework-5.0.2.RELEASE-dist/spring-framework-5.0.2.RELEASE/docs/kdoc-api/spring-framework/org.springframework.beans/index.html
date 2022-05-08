@@ -1,0 +1,225 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans</a><br/>
+<br/>
+<h2>Package org.springframework.beans</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-utils/index.html">BeanUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BeanUtils</span></code>
+<p>Static convenience methods for JavaBeans: for instantiating beans, checking bean property types, copying bean properties, etc. 
+<p>Mainly for use within the framework, but to some degree also useful for application classes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cached-introspection-results/index.html">CachedIntrospectionResults</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachedIntrospectionResults</span></code>
+<p>Internal class that caches JavaBeans java.beans.PropertyDescriptor information for a Java class. Not intended for direct use by application code. 
+<p>Necessary for own caching of descriptors within the application's ClassLoader, rather than rely on the JDK's system-wide BeanInfo cache (in order to avoid leaks on ClassLoader shutdown). </p>
+<p>Information is cached statically, so we don't need to create new objects of this class for every JavaBean we manipulate. Hence, this class implements the factory design pattern, using a private constructor and a static <code><a href="#">#forClass(Class)</a></code> factory method to obtain instances. </p>
+<p>Note that for caching to work effectively, some preconditions need to be met: Prefer an arrangement where the Spring jars live in the same ClassLoader as the application classes, which allows for clean caching along with the application's lifecycle in any case. For a web application, consider declaring a local org.springframework.web.util.IntrospectorCleanupListener in <code>web.xml</code> in case of a multi-ClassLoader layout, which will allow for effective caching as well. </p>
+<p>In case of a non-clean ClassLoader arrangement without a cleanup listener having been set up, this class will fall back to a weak-reference-based caching model that recreates much-requested entries every time the garbage collector removed them. In such a scenario, consider the <code><a href="-cached-introspection-results/-i-g-n-o-r-e_-b-e-a-n-i-n-f-o_-p-r-o-p-e-r-t-y_-n-a-m-e.html">#IGNORE_BEANINFO_PROPERTY_NAME</a></code> system property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-direct-field-accessor/index.html">DirectFieldAccessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DirectFieldAccessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractNestablePropertyAccessor</span></code>
+<p>ConfigurablePropertyAccessor implementation that directly accesses instance fields. Allows for direct binding to fields instead of going through JavaBean setters. 
+<p>As of Spring 4.2, the vast majority of the BeanWrapper features have been merged to AbstractPropertyAccessor, which means that property traversal as well as collections and map access is now supported here as well. </p>
+<p>A DirectFieldAccessor's default for the "extractOldValueForEditor" setting is "true", since a field can always be read without side effects.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-extended-bean-info-factory/index.html">ExtendedBeanInfoFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExtendedBeanInfoFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanInfoFactory</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>BeanInfoFactory implementation that evaluates whether bean classes have "non-standard" JavaBeans setter methods and are thus candidates for introspection by Spring's (package-visible) <code>ExtendedBeanInfo</code> implementation. 
+<p>Ordered at <code><a href="#">Ordered#LOWEST_PRECEDENCE</a></code> to allow other user-defined BeanInfoFactory types to take precedence.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mergeable/index.html">Mergeable</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">Mergeable</span></code>
+<p>Interface representing an object whose value set can be merged with that of a parent object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-accessor/index.html">PropertyAccessor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">PropertyAccessor</span></code>
+<p>Common interface for classes that can access named properties (such as bean properties of an object or fields in an object) Serves as base interface for BeanWrapper.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-accessor-utils/index.html">PropertyAccessorUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">PropertyAccessorUtils</span></code>
+<p>Utility methods for classes that perform bean property access according to the PropertyAccessor interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-matches/index.html">PropertyMatches</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">PropertyMatches</span></code>
+<p>Helper class for calculating property matches, according to a configurable distance. Provide the list of potential matches and an easy way to generate an error message. Works for both java bean properties and fields. 
+<p>Mainly for use within the framework and in particular the binding facility.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-value/index.html">PropertyValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanMetadataAttributeAccessor</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Object to hold information and value for an individual bean property. Using an object here, rather than just storing all properties in a map keyed by property name, allows for more flexibility, and the ability to handle indexed properties etc in an optimized way. 
+<p>Note that the value doesn't need to be the final required type: A BeanWrapper implementation should handle any necessary conversion, as this object doesn't know anything about the objects it will be applied to.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-values-editor/index.html">PropertyValuesEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyValuesEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>java.beans.PropertyEditor for a PropertyValues object. 
+<p>The required format is defined in the java.util.Properties documentation. Each property must be on a new line. </p>
+<p>The present implementation relies on a org.springframework.beans.propertyeditors.PropertiesEditor underneath.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-instantiation-exception/index.html">BeanInstantiationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanInstantiationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-fatal-bean-exception/index.html"><span class="identifier">FatalBeanException</span></a></code>
+<p>Exception thrown when instantiation of a bean failed. Carries the offending bean class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-conversion-not-supported-exception/index.html">ConversionNotSupportedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConversionNotSupportedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-type-mismatch-exception/index.html"><span class="identifier">TypeMismatchException</span></a></code>
+<p>Exception thrown when no suitable editor or converter can be found for a bean property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-fatal-bean-exception/index.html">FatalBeanException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FatalBeanException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeansException</span></code>
+<p>Thrown on an unrecoverable problem encountered in the beans packages or sub-packages, e.g. bad class or field.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-invocation-exception/index.html">MethodInvocationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvocationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-property-access-exception/index.html"><span class="identifier">PropertyAccessException</span></a></code>
+<p>Thrown when a bean property getter or setter method throws an exception, analogous to an InvocationTargetException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-not-readable-property-exception/index.html">NotReadablePropertyException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NotReadablePropertyException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvalidPropertyException</span></code>
+<p>Exception thrown on an attempt to get the value of a property that isn't readable, because there's no getter method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-not-writable-property-exception/index.html">NotWritablePropertyException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NotWritablePropertyException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvalidPropertyException</span></code>
+<p>Exception thrown on an attempt to set the value of a property that is not writable (typically because there is no setter method).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-null-value-in-nested-path-exception/index.html">NullValueInNestedPathException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NullValueInNestedPathException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvalidPropertyException</span></code>
+<p>Exception thrown when navigation of a valid nested property path encounters a NullPointerException. 
+<p>For example, navigating "spouse.age" could fail because the spouse property of the target object has a null value.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-access-exception/index.html">PropertyAccessException</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">PropertyAccessException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeansException</span></code>
+<p>Superclass for exceptions related to a property access, such as type mismatch or invocation target exception.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-batch-update-exception/index.html">PropertyBatchUpdateException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyBatchUpdateException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeansException</span></code>
+<p>Combined exception, composed of individual PropertyAccessException instances. An object of this class is created at the beginning of the binding process, and errors added to it as necessary. 
+<p>The binding process continues when it encounters application-level PropertyAccessExceptions, applying those changes that can be applied and storing rejected changes in an object of this class.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-type-mismatch-exception/index.html">TypeMismatchException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypeMismatchException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-property-access-exception/index.html"><span class="identifier">PropertyAccessException</span></a></code>
+<p>Exception thrown on a type mismatch when trying to set a bean property.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

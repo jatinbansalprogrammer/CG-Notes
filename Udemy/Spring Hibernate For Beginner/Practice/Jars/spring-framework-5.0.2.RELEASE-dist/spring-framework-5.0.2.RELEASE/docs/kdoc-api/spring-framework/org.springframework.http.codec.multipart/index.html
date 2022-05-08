@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.http.codec.multipart - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.http.codec.multipart</a><br/>
+<br/>
+<h2>Package org.springframework.http.codec.multipart</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-file-part/index.html">FilePart</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">FilePart</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Part</span></code>
+<p>Specialization of Part for a file upload.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-form-field-part/index.html">FormFieldPart</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">FormFieldPart</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Part</span></code>
+<p>Specialization of Part for a form field.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-multipart-http-message-reader/index.html">MultipartHttpMessageReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MultipartHttpMessageReader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageReader</span><span class="symbol">&lt;</span><span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">Part</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p><code>HttpMessageReader</code> for reading <code>"multipart/form-data"</code> requests into a <code>MultiValueMap&lt;String, Part&gt;</code>. 
+<p>Note that this reader depends on access to an <code>HttpMessageReader&lt;Part&gt;</code> for the actual parsing of multipart content. The purpose of this reader is to collect the parts into a map.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-multipart-http-message-writer/index.html">MultipartHttpMessageWriter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MultipartHttpMessageWriter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>HttpMessageWriter for writing a <code>MultiValueMap&lt;String, ?&gt;</code> as multipart form data, i.e. <code>"multipart/form-data"</code>, to the body of a request. 
+<p>The serialization of individual parts is delegated to other writers. By default only String and Resource parts are supported but you can configure others through a constructor argument. </p>
+<p>This writer can be configured with a FormHttpMessageWriter to delegate to. It is the preferred way of supporting both form data and multipart data (as opposed to registering each writer separately) so that when the MediaType is not specified and generics are not present on the target element type, we can inspect the values in the actual map and decide whether to write plain form data (String values only) or otherwise.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-synchronoss-part-http-message-reader/index.html">SynchronossPartHttpMessageReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SynchronossPartHttpMessageReader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageReader</span><span class="symbol">&lt;</span><span class="identifier">Part</span><span class="symbol">&gt;</span></code>
+<p><code>HttpMessageReader</code> for parsing <code>"multipart/form-data"</code> requests to a stream of Part's using the Synchronoss NIO Multipart library. 
+<p>This reader can be provided to MultipartHttpMessageReader in order to aggregate all parts into a Map.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

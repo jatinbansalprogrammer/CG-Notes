@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleJdbcInsert - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core.simple</a>&nbsp;/&nbsp;<a href=".">SimpleJdbcInsert</a><br/>
+<br/>
+<h1>SimpleJdbcInsert</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleJdbcInsert</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractJdbcInsert</span><span class="symbol">, </span><span class="identifier">SimpleJdbcInsertOperations</span></code>
+<p>A SimpleJdbcInsert is a multi-threaded, reusable object providing easy insert capabilities for a table. It provides meta data processing to simplify the code needed to construct a basic insert statement. All you need to provide is the name of the table and a Map containing the column names and the column values. 
+<p>The meta data processing is based on the DatabaseMetaData provided by the JDBC driver. As long as the JDBC driver can provide the names of the columns for a specified table than we can rely on this auto-detection feature. If that is not the case, then the column names must be specified explicitly. </p>
+<p>The actual insert is being handled using Spring's org.springframework.jdbc.core.JdbcTemplate. </p>
+<p>Many of the configuration methods return the current instance of the SimpleJdbcInsert to provide the ability to chain multiple ones together in a "fluent" interface style.</p>
+</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+java.sql.DatabaseMetaDataorg.springframework.jdbc.core.JdbcTemplate</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleJdbcInsert</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$<init>(javax.sql.DataSource)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span></code>
+<p>Constructor that takes one parameter with the JDBC DataSource to use when creating the JdbcTemplate.</p>
+<code><span class="identifier">SimpleJdbcInsert</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$<init>(org.springframework.jdbc.core.JdbcTemplate)/jdbcTemplate">jdbcTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">JdbcTemplate</span><span class="symbol">)</span></code>
+<p>Alternative Constructor that takes one parameter with the JdbcTemplate to be used.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$execute(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$execute(org.springframework.jdbc.core.namedparam.SqlParameterSource)/parameterSource">parameterSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-and-return-key.html">executeAndReturnKey</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executeAndReturnKey</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$executeAndReturnKey(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html"><span class="identifier">Number</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executeAndReturnKey</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$executeAndReturnKey(org.springframework.jdbc.core.namedparam.SqlParameterSource)/parameterSource">parameterSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-number/index.html"><span class="identifier">Number</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-and-return-key-holder.html">executeAndReturnKeyHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executeAndReturnKeyHolder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$executeAndReturnKeyHolder(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">KeyHolder</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executeAndReturnKeyHolder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$executeAndReturnKeyHolder(org.springframework.jdbc.core.namedparam.SqlParameterSource)/parameterSource">parameterSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">KeyHolder</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute-batch.html">executeBatch</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executeBatch</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$executeBatch(kotlin.Array((kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))))/batch">batch</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">executeBatch</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$executeBatch(kotlin.Array((org.springframework.jdbc.core.namedparam.SqlParameterSource)))/batch">batch</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="include-synonyms-for-table-column-meta-data.html">includeSynonymsForTableColumnMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">includeSynonymsForTableColumnMetaData</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SimpleJdbcInsertOperations</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="using-columns.html">usingColumns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">usingColumns</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$usingColumns(kotlin.Array((kotlin.String)))/columnNames">columnNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SimpleJdbcInsert</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="using-generated-key-columns.html">usingGeneratedKeyColumns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">usingGeneratedKeyColumns</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$usingGeneratedKeyColumns(kotlin.Array((kotlin.String)))/columnNames">columnNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SimpleJdbcInsert</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="with-catalog-name.html">withCatalogName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withCatalogName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$withCatalogName(kotlin.String)/catalogName">catalogName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SimpleJdbcInsert</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="with-schema-name.html">withSchemaName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withSchemaName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$withSchemaName(kotlin.String)/schemaName">schemaName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SimpleJdbcInsert</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="with-table-name.html">withTableName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withTableName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.simple.SimpleJdbcInsert$withTableName(kotlin.String)/tableName">tableName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SimpleJdbcInsert</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="without-table-column-meta-data-access.html">withoutTableColumnMetaDataAccess</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withoutTableColumnMetaDataAccess</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SimpleJdbcInsertOperations</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

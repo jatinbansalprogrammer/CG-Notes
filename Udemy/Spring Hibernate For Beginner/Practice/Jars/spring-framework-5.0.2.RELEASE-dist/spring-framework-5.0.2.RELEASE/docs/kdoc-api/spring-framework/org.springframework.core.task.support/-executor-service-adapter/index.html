@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExecutorServiceAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core.task.support</a>&nbsp;/&nbsp;<a href=".">ExecutorServiceAdapter</a><br/>
+<br/>
+<h1>ExecutorServiceAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExecutorServiceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractExecutorService</span></code>
+<p>Adapter that takes a Spring org.springframework.core.task.TaskExecutor) and exposes a full <code>java.util.concurrent.ExecutorService</code> for it. 
+<p>This is primarily for adapting to client components that communicate via the <code>java.util.concurrent.ExecutorService</code> API. It can also be used as common ground between a local Spring <code>TaskExecutor</code> backend and a JNDI-located <code>ManagedExecutorService</code> in a Java EE 6 environment. </p>
+<p><strong>NOTE:</strong> This ExecutorService adapter does <em>not</em> support the lifecycle methods in the <code>java.util.concurrent.ExecutorService</code> API ("shutdown()" etc), similar to a server-wide <code>ManagedExecutorService</code> in a Java EE 6 environment. The lifecycle is always up to the backend pool, with this adapter acting as an access-only proxy for that target pool.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+java.util.concurrent.ExecutorService</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ExecutorServiceAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.task.support.ExecutorServiceAdapter$<init>(org.springframework.core.task.TaskExecutor)/taskExecutor">taskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskExecutor</span><span class="symbol">)</span></code>
+<p>Create a new ExecutorServiceAdapter, using the given target executor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="await-termination.html">awaitTermination</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">awaitTermination</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.task.support.ExecutorServiceAdapter$awaitTermination(kotlin.Long, java.util.concurrent.TimeUnit)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.core.task.support.ExecutorServiceAdapter$awaitTermination(kotlin.Long, java.util.concurrent.TimeUnit)/unit">unit</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeUnit</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.task.support.ExecutorServiceAdapter$execute(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-shutdown.html">isShutdown</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isShutdown</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-terminated.html">isTerminated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isTerminated</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="shutdown.html">shutdown</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shutdown</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="shutdown-now.html">shutdownNow</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shutdownNow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Runnable</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

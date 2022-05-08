@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ForwardedHeaderFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href=".">ForwardedHeaderFilter</a><br/>
+<br/>
+<h1>ForwardedHeaderFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ForwardedHeaderFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Extract values from "Forwarded" and "X-Forwarded-*" headers in order to wrap and override the following from the request and response: <code><a href="#">getServerName()</a></code>, <code><a href="#">getServerPort()</a></code>, <code><a href="#">getScheme()</a></code>, <code><a href="#">isSecure()</a></code>, and <code><a href="#">sendRedirect(String)</a></code>. In effect the wrapped request and response reflect the client-originated protocol and address. 
+<p><strong>Note:</strong> This filter can also be used in a <code><a href="set-remove-only.html">removeOnly</a></code> mode where "Forwarded" and "X-Forwarded-*" headers are only eliminated without being used.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Eddú Meléndez</p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Since</strong><br/>
+4.3</p>
+<p><strong>See Also</strong><br/>
+&lt;a href="https://tools.ietf.org/html/rfc7239"&gt;https://tools.ietf.org/html/rfc7239&lt;/a&gt;</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ForwardedHeaderFilter</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-relative-redirects.html">setRelativeRedirects</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRelativeRedirects</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.ForwardedHeaderFilter$setRelativeRedirects(kotlin.Boolean)/relativeRedirects">relativeRedirects</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Use this property to enable relative redirects as explained in and also using the same response wrapper as RelativeRedirectFilter does. Or if both filters are used, only one will wrap the response. 
+<p>By default, if this property is set to false, in which case calls to <code><a href="#">HttpServletResponse#sendRedirect(String)</a></code> are overridden in order to turn relative into absolute URLs since (which Servlet containers are also required to do) also taking forwarded headers into consideration.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-remove-only.html">setRemoveOnly</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRemoveOnly</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.ForwardedHeaderFilter$setRemoveOnly(kotlin.Boolean)/removeOnly">removeOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Enables mode in which any "Forwarded" or "X-Forwarded-*" headers are removed only and the information in them ignored.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

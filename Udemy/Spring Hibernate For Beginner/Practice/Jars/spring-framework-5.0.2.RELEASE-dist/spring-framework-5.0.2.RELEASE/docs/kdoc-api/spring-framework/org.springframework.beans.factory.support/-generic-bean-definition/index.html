@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GenericBeanDefinition - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.support</a>&nbsp;/&nbsp;<a href=".">GenericBeanDefinition</a><br/>
+<br/>
+<h1>GenericBeanDefinition</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractBeanDefinition</span></code>
+<p>GenericBeanDefinition is a one-stop shop for standard bean definition purposes. Like any bean definition, it allows for specifying a class plus optionally constructor argument values and property values. Additionally, deriving from a parent bean definition can be flexibly configured through the "parentName" property. 
+<p>In general, use this <code>GenericBeanDefinition</code> class for the purpose of registering user-visible bean definitions (which a post-processor might operate on, potentially even reconfiguring the parent name). Use <code>RootBeanDefinition</code> / <code>ChildBeanDefinition</code> where parent/child relationships happen to be pre-determined.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setParentName</a>RootBeanDefinitionChildBeanDefinition</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GenericBeanDefinition</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new GenericBeanDefinition, to be configured through its bean properties and configuration methods.</p>
+<code><span class="identifier">GenericBeanDefinition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.GenericBeanDefinition$<init>(org.springframework.beans.factory.config.BeanDefinition)/original">original</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinition</span><span class="symbol">)</span></code>
+<p>Create a new GenericBeanDefinition as deep copy of the given bean definition.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clone-bean-definition.html">cloneBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cloneBeanDefinition</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractBeanDefinition</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.GenericBeanDefinition$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-parent-name.html">getParentName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParentName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parent-name.html">setParentName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParentName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.GenericBeanDefinition$setParentName(kotlin.String)/parentName">parentName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.annotation/-annotated-generic-bean-definition/index.html">AnnotatedGenericBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotatedGenericBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericBeanDefinition</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory.annotation/-annotated-bean-definition/index.html"><span class="identifier">AnnotatedBeanDefinition</span></a></code>
+<p>Extension of the org.springframework.beans.factory.support.GenericBeanDefinition class, adding support for annotation metadata exposed through the AnnotatedBeanDefinition interface. 
+<p>This GenericBeanDefinition variant is mainly useful for testing code that expects to operate on an AnnotatedBeanDefinition, for example strategy implementations in Spring's component scanning support (where the default definition class is org.springframework.context.annotation.ScannedGenericBeanDefinition, which also implements the AnnotatedBeanDefinition interface).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.annotation/-scanned-generic-bean-definition/index.html">ScannedGenericBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScannedGenericBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericBeanDefinition</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory.annotation/-annotated-bean-definition/index.html"><span class="identifier">AnnotatedBeanDefinition</span></a></code>
+<p>Extension of the org.springframework.beans.factory.support.GenericBeanDefinition class, based on an ASM ClassReader, with support for annotation metadata exposed through the AnnotatedBeanDefinition interface. 
+<p>This class does <em>not</em> load the bean <code>Class</code> early. It rather retrieves all relevant metadata from the ".class" file itself, parsed with the ASM ClassReader. It is functionally equivalent to <code><a href="#">AnnotatedGenericBeanDefinition#AnnotatedGenericBeanDefinition(AnnotationMetadata)</a></code> but distinguishes by type beans that have been <em>scanned</em> vs those that have been otherwise registered or detected by other means.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

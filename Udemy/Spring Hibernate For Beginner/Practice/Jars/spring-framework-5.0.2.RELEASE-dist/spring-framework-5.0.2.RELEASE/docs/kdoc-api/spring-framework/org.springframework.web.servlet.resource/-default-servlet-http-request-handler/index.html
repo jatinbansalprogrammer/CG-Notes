@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultServletHttpRequestHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.resource</a>&nbsp;/&nbsp;<a href=".">DefaultServletHttpRequestHandler</a><br/>
+<br/>
+<h1>DefaultServletHttpRequestHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultServletHttpRequestHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpRequestHandler</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>An HttpRequestHandler for serving static files using the Servlet container's "default" Servlet. 
+<p>This handler is intended to be used with a "/*" mapping when the org.springframework.web.servlet.DispatcherServlet is mapped to "/", thus overriding the Servlet container's default handling of static resources. The mapping to this handler should generally be ordered as the last in the chain so that it will only execute when no other more specific mappings (i.e., to controllers) can be matched. </p>
+<p>Requests are handled by forwarding through the RequestDispatcher obtained via the name specified through the <code><a href="#">"defaultServletName" property</a></code>. In most cases, the <code>defaultServletName</code> does not need to be set explicitly, as the handler checks at initialization time for the presence of the default Servlet of well-known containers such as Tomcat, Jetty, Resin, WebLogic and WebSphere. However, when running in a container where the default Servlet's name is not known, or where it has been customized via server configuration, the <code>defaultServletName</code> will need to be set explicitly.</p>
+</p>
+<p><strong>Author</strong><br/>
+Jeremy Grelle</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0.4</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultServletHttpRequestHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An HttpRequestHandler for serving static files using the Servlet container's "default" Servlet. 
+<p>This handler is intended to be used with a "/*" mapping when the org.springframework.web.servlet.DispatcherServlet is mapped to "/", thus overriding the Servlet container's default handling of static resources. The mapping to this handler should generally be ordered as the last in the chain so that it will only execute when no other more specific mappings (i.e., to controllers) can be matched. </p>
+<p>Requests are handled by forwarding through the RequestDispatcher obtained via the name specified through the <code><a href="#">"defaultServletName" property</a></code>. In most cases, the <code>defaultServletName</code> does not need to be set explicitly, as the handler checks at initialization time for the presence of the default Servlet of well-known containers such as Tomcat, Jetty, Resin, WebLogic and WebSphere. However, when running in a container where the default Servlet's name is not known, or where it has been customized via server configuration, the <code>defaultServletName</code> will need to be set explicitly.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="handle-request.html">handleRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handleRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler$handleRequest(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler$handleRequest(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-servlet-name.html">setDefaultServletName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultServletName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler$setDefaultServletName(kotlin.String)/defaultServletName">defaultServletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the default Servlet to be forwarded to for static resource requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>If the <code>defaultServletName</code> property has not been explicitly set, attempts to locate the default Servlet using the known common container-specific names.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SockJsClient - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.sockjs.client</a>&nbsp;/&nbsp;<a href=".">SockJsClient</a><br/>
+<br/>
+<h1>SockJsClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SockJsClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketClient</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A SockJS implementation of org.springframework.web.socket.client.WebSocketClient with fallback alternatives that simulate a WebSocket interaction through plain HTTP streaming and long polling techniques.. 
+<p>Implements Lifecycle in order to propagate lifecycle events to the transports it is configured with.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+&lt;a href="http://sockjs.org"&gt;http://sockjs.org&lt;/a&gt;org.springframework.web.socket.sockjs.client.Transport</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SockJsClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$<init>(kotlin.collections.MutableList((org.springframework.web.socket.sockjs.client.Transport)))/transports">transports</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../-transport/index.html"><span class="identifier">Transport</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a <code>SockJsClient</code> with the given transports. 
+<p>If the list includes an XhrTransport (or more specifically an implementation of InfoReceiver) the instance is used to initialize the <code><a href="set-info-receiver.html">infoReceiver</a></code> property, or otherwise is defaulted to RestTemplateXhrTransport.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clear-server-info-cache.html">clearServerInfoCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clearServerInfoCache</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>By default the result of a SockJS "Info" request, including whether the server has WebSocket disabled and how long the request took (used for calculating transport timeout time) is cached. This method can be used to clear that cache hence causing it to re-populate.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-handshake.html">doHandshake</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doHandshake</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$doHandshake(org.springframework.web.socket.WebSocketHandler, kotlin.String, kotlin.Array((kotlin.Any)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$doHandshake(org.springframework.web.socket.WebSocketHandler, kotlin.String, kotlin.Array((kotlin.Any)))/uriTemplate">uriTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$doHandshake(org.springframework.web.socket.WebSocketHandler, kotlin.String, kotlin.Array((kotlin.Any)))/uriVars">uriVars</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">WebSocketSession</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">doHandshake</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$doHandshake(org.springframework.web.socket.WebSocketHandler, org.springframework.web.socket.WebSocketHttpHeaders, java.net.URI)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$doHandshake(org.springframework.web.socket.WebSocketHandler, org.springframework.web.socket.WebSocketHttpHeaders, java.net.URI)/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHttpHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$doHandshake(org.springframework.web.socket.WebSocketHandler, org.springframework.web.socket.WebSocketHttpHeaders, java.net.URI)/url">url</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">WebSocketSession</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-http-header-names.html">getHttpHeaderNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHttpHeaderNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>The configured HTTP header names to be copied from the handshake headers and also included in other HTTP requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-info-receiver.html">getInfoReceiver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInfoReceiver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InfoReceiver</span></code>
+<p>Return the configured <code>InfoReceiver</code> (never <code>null</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-message-codec.html">getMessageCodec</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMessageCodec</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SockJsMessageCodec</span></code>
+<p>Return the SockJsMessageCodec to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-connect-timeout-scheduler.html">setConnectTimeoutScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectTimeoutScheduler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$setConnectTimeoutScheduler(org.springframework.scheduling.TaskScheduler)/connectTimeoutScheduler">connectTimeoutScheduler</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskScheduler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure a <code>TaskScheduler</code> for scheduling a connect timeout task where the timeout value is calculated based on the duration of the initial SockJS "Info" request. The connect timeout task ensures a more timely fallback but is otherwise entirely optional. 
+<p>By default this is not configured in which case a fallback may take longer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-http-header-names.html">setHttpHeaderNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHttpHeaderNames</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$setHttpHeaderNames(kotlin.Array((kotlin.String)))/httpHeaderNames">httpHeaderNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The names of HTTP headers that should be copied from the handshake headers of each call to <code><a href="#">SockJsClient#doHandshake(WebSocketHandler, WebSocketHttpHeaders, URI)</a></code> and also used with other HTTP requests issued as part of that SockJS connection, e.g. the initial info request, XHR send or receive requests. 
+<p>By default if this property is not set, all handshake headers are also used for other HTTP requests. Set it if you want only a subset of handshake headers (e.g. auth headers) to be used for other HTTP requests.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-info-receiver.html">setInfoReceiver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInfoReceiver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$setInfoReceiver(org.springframework.web.socket.sockjs.client.InfoReceiver)/infoReceiver">infoReceiver</span><span class="symbol">:</span>&nbsp;<span class="identifier">InfoReceiver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the <code>InfoReceiver</code> to use to perform the SockJS "Info" request before the SockJS session starts. 
+<p>If the list of transports provided to the constructor contained an XhrTransport or an implementation of InfoReceiver that instance would have been used to initialize this property, or otherwise it defaults to RestTemplateXhrTransport.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-codec.html">setMessageCodec</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageCodec</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.SockJsClient$setMessageCodec(org.springframework.web.socket.sockjs.frame.SockJsMessageCodec)/messageCodec">messageCodec</span><span class="symbol">:</span>&nbsp;<span class="identifier">SockJsMessageCodec</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the SockJsMessageCodec to use. 
+<p>By default org.springframework.web.socket.sockjs.frame.Jackson2SockJsMessageCodec is used if Jackson is on the classpath.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

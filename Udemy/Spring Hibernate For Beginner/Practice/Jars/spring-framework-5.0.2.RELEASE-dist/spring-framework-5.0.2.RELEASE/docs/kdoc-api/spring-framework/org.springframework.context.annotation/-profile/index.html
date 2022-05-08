@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Profile - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">Profile</a><br/>
+<br/>
+<h1>Profile</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="identifier">@Conditional</span><span class="symbol">(</span>ProfileCondition<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">Profile</span></code>
+<p>Indicates that a component is eligible for registration when one or more <a href="#">specified profiles</a> are active. 
+<p>A <em>profile</em> is a named logical grouping that may be activated programmatically via <code><a href="#">ConfigurableEnvironment#setActiveProfiles</a></code> or declaratively by setting the <code><a href="#"> spring.profiles.active</a></code> property as a JVM system property, as an environment variable, or as a Servlet context parameter in <code>web.xml</code> for web applications. Profiles may also be activated declaratively in integration tests via the <code>@ActiveProfiles</code> annotation. </p>
+<p>The <code>@Profile</code> annotation may be used in any of the following ways: </p>
+<ul> <li>as a type-level annotation on any class directly or indirectly annotated with <code>@Component</code>, including Configuration classes</li>
+ <li>as a meta-annotation, for the purpose of composing custom stereotype annotations</li>
+ <li>as a method-level annotation on any Bean method</li>
+ </ul>
+ 
+<p>If a <code>@Configuration</code> class is marked with <code>@Profile</code>, all of the <code>@Bean</code> methods and Import annotations associated with that class will be bypassed unless one or more of the specified profiles are active. This is analogous to the behavior in Spring XML: if the <code>profile</code> attribute of the <code>beans</code> element is supplied e.g., <code>&lt;beans profile="p1,p2"&gt;</code>, the <code>beans</code> element will not be parsed unless at least profile 'p1' or 'p2' has been activated. Likewise, if a <code>@Component</code> or <code>@Configuration</code> class is marked with <code>@Profile({"p1", "p2"})</code>, that class will not be registered or processed unless at least profile 'p1' or 'p2' has been activated. </p>
+<p>If a given profile is prefixed with the NOT operator (<code>!</code>), the annotated component will be registered if the profile is <em>not</em> active — for example, given <code>@Profile({"p1", "!p2"})</code>, registration will occur if profile 'p1' is active or if profile 'p2' is <em>not</em> active. </p>
+<p>If the <code>@Profile</code> annotation is omitted, registration will occur regardless of which (if any) profiles are active. </p>
+<p><strong>NOTE:</strong> With <code>@Profile</code> on <code>@Bean</code> methods, a special scenario may apply: In the case of overloaded <code>@Bean</code> methods of the same Java method name (analogous to constructor overloading), an <code>@Profile</code> condition needs to be consistently declared on all overloaded methods. If the conditions are inconsistent, only the condition on the first declaration among the overloaded methods will matter. <code>@Profile</code> can therefore not be used to select an overloaded method with a particular argument signature over another; resolution between all factory methods for the same bean follows Spring's constructor resolution algorithm at creation time. <strong>Use distinct Java method names pointing to the same <code><a href="#">bean name</a></code> if you'd like to define alternative beans with different profile conditions</strong>; see <code>ProfileDatabaseConfig</code> in Configuration's javadoc. </p>
+<p>When defining Spring beans via XML, the <code>"profile"</code> attribute of the <code>&lt;beans&gt;</code> element may be used. See the documentation in the <code>spring-beans</code> XSD (version 3.1 or greater) for details.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">ConfigurableEnvironment#setActiveProfiles</a><a href="#">ConfigurableEnvironment#setDefaultProfiles</a><a href="#">AbstractEnvironment#ACTIVE_PROFILES_PROPERTY_NAME</a><a href="#">AbstractEnvironment#DEFAULT_PROFILES_PROPERTY_NAME</a>Conditionalorg.springframework.test.context.ActiveProfiles</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Profile</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.annotation.Profile$<init>(kotlin.Array((kotlin.String)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Indicates that a component is eligible for registration when one or more <a href="#">specified profiles</a> are active. 
+<p>A <em>profile</em> is a named logical grouping that may be activated programmatically via <code><a href="#">ConfigurableEnvironment#setActiveProfiles</a></code> or declaratively by setting the <code><a href="#"> spring.profiles.active</a></code> property as a JVM system property, as an environment variable, or as a Servlet context parameter in <code>web.xml</code> for web applications. Profiles may also be activated declaratively in integration tests via the <code>@ActiveProfiles</code> annotation. </p>
+<p>The <code>@Profile</code> annotation may be used in any of the following ways: </p>
+<ul> <li>as a type-level annotation on any class directly or indirectly annotated with <code>@Component</code>, including Configuration classes</li>
+ <li>as a meta-annotation, for the purpose of composing custom stereotype annotations</li>
+ <li>as a method-level annotation on any Bean method</li>
+ </ul>
+ 
+<p>If a <code>@Configuration</code> class is marked with <code>@Profile</code>, all of the <code>@Bean</code> methods and Import annotations associated with that class will be bypassed unless one or more of the specified profiles are active. This is analogous to the behavior in Spring XML: if the <code>profile</code> attribute of the <code>beans</code> element is supplied e.g., <code>&lt;beans profile="p1,p2"&gt;</code>, the <code>beans</code> element will not be parsed unless at least profile 'p1' or 'p2' has been activated. Likewise, if a <code>@Component</code> or <code>@Configuration</code> class is marked with <code>@Profile({"p1", "p2"})</code>, that class will not be registered or processed unless at least profile 'p1' or 'p2' has been activated. </p>
+<p>If a given profile is prefixed with the NOT operator (<code>!</code>), the annotated component will be registered if the profile is <em>not</em> active — for example, given <code>@Profile({"p1", "!p2"})</code>, registration will occur if profile 'p1' is active or if profile 'p2' is <em>not</em> active. </p>
+<p>If the <code>@Profile</code> annotation is omitted, registration will occur regardless of which (if any) profiles are active. </p>
+<p><strong>NOTE:</strong> With <code>@Profile</code> on <code>@Bean</code> methods, a special scenario may apply: In the case of overloaded <code>@Bean</code> methods of the same Java method name (analogous to constructor overloading), an <code>@Profile</code> condition needs to be consistently declared on all overloaded methods. If the conditions are inconsistent, only the condition on the first declaration among the overloaded methods will matter. <code>@Profile</code> can therefore not be used to select an overloaded method with a particular argument signature over another; resolution between all factory methods for the same bean follows Spring's constructor resolution algorithm at creation time. <strong>Use distinct Java method names pointing to the same <code><a href="#">bean name</a></code> if you'd like to define alternative beans with different profile conditions</strong>; see <code>ProfileDatabaseConfig</code> in Configuration's javadoc. </p>
+<p>When defining Spring beans via XML, the <code>"profile"</code> attribute of the <code>&lt;beans&gt;</code> element may be used. See the documentation in the <code>spring-beans</code> XSD (version 3.1 or greater) for details.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>The set of profiles for which the annotated component should be registered.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

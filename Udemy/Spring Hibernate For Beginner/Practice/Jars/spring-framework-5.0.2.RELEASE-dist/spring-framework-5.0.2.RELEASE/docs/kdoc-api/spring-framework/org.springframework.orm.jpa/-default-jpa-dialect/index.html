@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultJpaDialect - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href=".">DefaultJpaDialect</a><br/>
+<br/>
+<h1>DefaultJpaDialect</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultJpaDialect</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-jpa-dialect/index.html"><span class="identifier">JpaDialect</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the JpaDialect interface. Used as default dialect by JpaTransactionManager. 
+<p>Simply begins a standard JPA transaction in <code><a href="#">#beginTransaction</a></code> and performs standard exception translation through EntityManagerFactoryUtils. </p>
+<p><strong>NOTE: Spring's JPA support requires JPA 2.1 or higher, as of Spring 5.0.</strong></p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">JpaTransactionManager#setJpaDialect</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultJpaDialect</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default implementation of the JpaDialect interface. Used as default dialect by JpaTransactionManager. 
+<p>Simply begins a standard JPA transaction in <code><a href="#">#beginTransaction</a></code> and performs standard exception translation through EntityManagerFactoryUtils. </p>
+<p><strong>NOTE: Spring's JPA support requires JPA 2.1 or higher, as of Spring 5.0.</strong></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="begin-transaction.html">beginTransaction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beginTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$beginTransaction(javax.persistence.EntityManager, org.springframework.transaction.TransactionDefinition)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$beginTransaction(javax.persistence.EntityManager, org.springframework.transaction.TransactionDefinition)/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionDefinition</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>This implementation invokes the standard JPA <code>Transaction.begin</code> method. Throws an InvalidIsolationLevelException if a non-default isolation level is set. 
+<p>This implementation does not return any transaction data Object, since there is no state to be kept for a standard JPA transaction. Hence, subclasses do not have to care about the return value (<code>null</code>) of this implementation and are free to return their own transaction data Object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="cleanup-transaction.html">cleanupTransaction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cleanupTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$cleanupTransaction(kotlin.Any)/transactionData">transactionData</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation does nothing, since the default <code>beginTransaction</code> implementation does not require any cleanup.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-jdbc-connection.html">getJdbcConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJdbcConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$getJdbcConnection(javax.persistence.EntityManager, kotlin.Boolean)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$getJdbcConnection(javax.persistence.EntityManager, kotlin.Boolean)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConnectionHandle</span></code>
+<p>This implementation always returns <code>null</code>, indicating that no JDBC Connection can be provided.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="prepare-transaction.html">prepareTransaction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prepareTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="release-jdbc-connection.html">releaseJdbcConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">releaseJdbcConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$releaseJdbcConnection(org.springframework.jdbc.datasource.ConnectionHandle, javax.persistence.EntityManager)/conHandle">conHandle</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionHandle</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$releaseJdbcConnection(org.springframework.jdbc.datasource.ConnectionHandle, javax.persistence.EntityManager)/em">em</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation does nothing, assuming that the Connection will implicitly be closed with the EntityManager. 
+<p>If the JPA implementation returns a Connection handle that it expects the application to close after use, the dialect implementation needs to invoke <code>Connection.close()</code> (or some other method with similar effect) here.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="translate-exception-if-possible.html">translateExceptionIfPossible</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">translateExceptionIfPossible</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.DefaultJpaDialect$translateExceptionIfPossible(java.lang.RuntimeException)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">RuntimeException</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataAccessException</span></code>
+<p>This implementation delegates to EntityManagerFactoryUtils.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.orm.jpa.vendor/-hibernate-jpa-dialect/index.html">HibernateJpaDialect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateJpaDialect</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultJpaDialect</span></code>
+<p>org.springframework.orm.jpa.JpaDialect implementation for Hibernate EntityManager. Developed against Hibernate 5.0/5.1/5.2.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

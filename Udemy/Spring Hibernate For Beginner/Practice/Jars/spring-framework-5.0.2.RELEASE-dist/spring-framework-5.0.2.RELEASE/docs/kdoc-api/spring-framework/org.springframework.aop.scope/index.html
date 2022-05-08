@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.scope - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.scope</a><br/>
+<br/>
+<h2>Package org.springframework.aop.scope</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-default-scoped-object/index.html">DefaultScopedObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultScopedObject</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-scoped-object/index.html"><span class="identifier">ScopedObject</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the ScopedObject interface. 
+<p>Simply delegates the calls to the underlying ConfigurableBeanFactory (<code><a href="#">ConfigurableBeanFactory#getBean(String)</a></code>/ <code><a href="#">ConfigurableBeanFactory#destroyScopedBean(String)</a></code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scoped-object/index.html">ScopedObject</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ScopedObject</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.aop/-raw-target-access.html"><span class="identifier">RawTargetAccess</span></a></code>
+<p>An AOP introduction interface for scoped objects. 
+<p>Objects created from the ScopedProxyFactoryBean can be cast to this interface, enabling access to the raw target object and programmatic removal of the target object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scoped-proxy-factory-bean/index.html">ScopedProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScopedProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyConfig</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Convenient proxy factory bean for scoped objects. 
+<p>Proxies created using this factory bean are thread-safe singletons and may be injected into shared objects, with transparent scoping behavior. </p>
+<p>Proxies returned by this class implement the ScopedObject interface. This presently allows for removing the corresponding object from the scope, seamlessly creating a new instance in the scope on next access. </p>
+<p>Please note that the proxies created by this factory are <em>class-based</em> proxies by default. This can be customized through switching the "proxyTargetClass" property to "false".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scoped-proxy-utils/index.html">ScopedProxyUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ScopedProxyUtils</span></code>
+<p>Utility class for creating a scoped proxy. Used by ScopedProxyBeanDefinitionDecorator and ClassPathBeanDefinitionScanner.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

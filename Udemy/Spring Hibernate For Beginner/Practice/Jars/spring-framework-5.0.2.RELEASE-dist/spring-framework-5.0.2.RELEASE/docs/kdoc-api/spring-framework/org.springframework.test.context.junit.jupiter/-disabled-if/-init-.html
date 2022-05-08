@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DisabledIf.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.junit.jupiter</a>&nbsp;/&nbsp;<a href="index.html">DisabledIf</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.test.context.junit.jupiter.DisabledIf$&lt;init&gt;(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)"></a>
+<code><span class="identifier">DisabledIf</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/reason">reason</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/loadContext">loadContext</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p><code>@DisabledIf</code> is used to signal that the annotated test class or test method is <em>disabled</em> and should not be executed if the supplied <code><a href="#">#expression</a></code> evaluates to <code>true</code>. 
+<p>When applied at the class level, all test methods within that class are automatically disabled as well. </p>
+<p>For basic examples, see the Javadoc for <code><a href="#">#expression</a></code>. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. For example, a custom <code>@DisabledOnMac</code> annotation can be created as follows. </p>
+<pre><code> @Target({ ElementType.TYPE, ElementType.METHOD }) @Retention(RetentionPolicy.RUNTIME) @DisabledIf( expression = "#{systemProperties['os.name'].toLowerCase().contains('mac')}", reason = "Disabled on Mac OS" ) public @interface DisabledOnMac {} </code></pre></p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Tadaya Tsuyukubo</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+SpringExtensionEnabledIforg.junit.jupiter.api.Disabled</p>
+</BODY>
+</HTML>

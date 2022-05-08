@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ScriptTemplateConfig - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.result.view.script</a>&nbsp;/&nbsp;<a href=".">ScriptTemplateConfig</a><br/>
+<br/>
+<h1>ScriptTemplateConfig</h1>
+<code><span class="keyword">interface </span><span class="identifier">ScriptTemplateConfig</span></code>
+<p>Interface to be implemented by objects that configure and manage a JSR-223 ScriptEngine for automatic lookup in a web environment. Detected and used by ScriptTemplateView.</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-charset.html">getCharset</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getCharset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Charset</span></code>
+<p>Return the charset used to read script and template files.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-engine.html">getEngine</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getEngine</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScriptEngine</span></code>
+<p>Return the ScriptEngine to use by the views.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-engine-name.html">getEngineName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getEngineName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the engine name that will be used to instantiate the ScriptEngine.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-render-function.html">getRenderFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getRenderFunction</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the render function name (optional). If not specified, the script templates will be evaluated with <code><a href="#">ScriptEngine#eval(String, Bindings)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-render-object.html">getRenderObject</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getRenderObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the object where the render function belongs (optional).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-loader-path.html">getResourceLoaderPath</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getResourceLoaderPath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the resource loader path(s) via a Spring resource location.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scripts.html">getScripts</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getScripts</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the scripts to be loaded by the script engine (library or user provided).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-shared-engine.html">isSharedEngine</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isSharedEngine</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to use a shared engine for all threads or whether to create thread-local engine instances for each thread.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Jackson2ObjectMapperFactoryBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.converter.json</a>&nbsp;/&nbsp;<a href="index.html">Jackson2ObjectMapperFactoryBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$&lt;init&gt;()"></a>
+<code><span class="identifier">Jackson2ObjectMapperFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A FactoryBean for creating a Jackson 2.x ObjectMapper (default) or XmlMapper (<code>createXmlMapper</code> property set to true) with setters to enable or disable Jackson features from within XML configuration. 
+<p>It customizes Jackson defaults properties with the following ones: </p>
+<ul> <li><code><a href="#">MapperFeature#DEFAULT_VIEW_INCLUSION</a></code> is disabled</li>
+ <li><code><a href="#">DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES</a></code> is disabled</li>
+ </ul>
+ 
+<p>Example usage with MappingJackson2HttpMessageConverter: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:autoDetectFields="false" p:autoDetectGettersSetters="false" p:annotationIntrospector-ref="jaxbAnnotationIntrospector" /&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>Example usage with MappingJackson2JsonView: </p>
+<pre><code> &lt;bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:failOnEmptyBeans="false" p:indentOutput="true"&gt; &lt;property name="serializers"&gt; &lt;array&gt; &lt;bean class="org.mycompany.MyCustomSerializer" /&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>In case there are no specific setters provided (for some rarely used options), you can still use the more general methods <code><a href="#">#setFeaturesToEnable</a></code> and <code><a href="#">#setFeaturesToDisable</a></code>. </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="featuresToEnable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.WRAP_ROOT_VALUE"/&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.CLOSE_CLOSEABLE"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;property name="featuresToDisable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.MapperFeature.USE_ANNOTATIONS"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>It also automatically registers the following well-known modules if they are detected on the classpath: </p>
+<ul> <li><a href="#">jackson-datatype-jdk7</a>: support for Java 7 types like java.nio.file.Path</li>
+ <li><a href="#">jackson-datatype-jdk8</a>: support for other Java 8 types like java.util.Optional</li>
+ <li><a href="#">jackson-datatype-jsr310</a>: support for Java 8 Date &amp; Time API types</li>
+ <li><a href="#">jackson-datatype-joda</a>: support for Joda-Time types</li>
+ <li><a href="#">jackson-module-kotlin</a>: support for Kotlin classes and data classes</li>
+ </ul>
+ 
+<p>In case you want to configure Jackson's ObjectMapper with a custom Module, you can register one or more such Modules by class name via <code><a href="#">#setModulesToInstall</a></code>: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="modulesToInstall" value="myapp.jackson.MySampleModule,myapp.jackson.MyOtherModule"/&gt; &lt;/bean </code></pre> 
+<p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Dmitry Katsubo</a></p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Tadaya Tsuyukubo</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+</BODY>
+</HTML>

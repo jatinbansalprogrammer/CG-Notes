@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SessionAttributesHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.method.annotation</a>&nbsp;/&nbsp;<a href=".">SessionAttributesHandler</a><br/>
+<br/>
+<h1>SessionAttributesHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionAttributesHandler</span></code>
+<p>Manages controller-specific session attributes declared via SessionAttributes. Actual storage is delegated to a SessionAttributeStore instance. 
+<p>When a controller annotated with <code>@SessionAttributes</code> adds attributes to its model, those attributes are checked against names and types specified via <code>@SessionAttributes</code>. Matching model attributes are saved in the HTTP session and remain there until the controller calls <code><a href="#">SessionStatus#setComplete()</a></code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SessionAttributesHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$<init>(java.lang.Class((kotlin.Any)), org.springframework.web.bind.support.SessionAttributeStore)/handlerType">handlerType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$<init>(java.lang.Class((kotlin.Any)), org.springframework.web.bind.support.SessionAttributeStore)/sessionAttributeStore">sessionAttributeStore</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionAttributeStore</span><span class="symbol">)</span></code>
+<p>Create a new instance for a controller type. Session attribute names and types are extracted from the <code>@SessionAttributes</code> annotation, if present, on the given type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="cleanup-attributes.html">cleanupAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cleanupAttributes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$cleanupAttributes(org.springframework.web.context.request.WebRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove "known" attributes from the session, i.e. attributes listed by name in <code>@SessionAttributes</code> or attributes previously stored in the model that matched by type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="has-session-attributes.html">hasSessionAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hasSessionAttributes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the controller represented by this instance has declared any session attributes through an SessionAttributes annotation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-handler-session-attribute.html">isHandlerSessionAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isHandlerSessionAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$isHandlerSessionAttribute(kotlin.String, java.lang.Class((kotlin.Any)))/attributeName">attributeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$isHandlerSessionAttribute(kotlin.String, java.lang.Class((kotlin.Any)))/attributeType">attributeType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the attribute name or type match the names and types specified via <code>@SessionAttributes</code> on the underlying controller. 
+<p>Attributes successfully resolved through this method are "remembered" and subsequently used in <code><a href="retrieve-attributes.html">#retrieveAttributes(WebRequest)</a></code> and <code><a href="cleanup-attributes.html">#cleanupAttributes(WebRequest)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="retrieve-attributes.html">retrieveAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">retrieveAttributes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$retrieveAttributes(org.springframework.web.context.request.WebRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Retrieve "known" attributes from the session, i.e. attributes listed by name in <code>@SessionAttributes</code> or attributes previously stored in the model that matched by type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="store-attributes.html">storeAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">storeAttributes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$storeAttributes(org.springframework.web.context.request.WebRequest, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.method.annotation.SessionAttributesHandler$storeAttributes(org.springframework.web.context.request.WebRequest, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/attributes">attributes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Store a subset of the given attributes in the session. Attributes not declared as session attributes via <code>@SessionAttributes</code> are ignored.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

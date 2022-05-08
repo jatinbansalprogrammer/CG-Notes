@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.http.converter.json - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.http.converter.json</a><br/>
+<br/>
+<h2>Package org.springframework.http.converter.json</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-jackson2-http-message-converter/index.html">AbstractJackson2HttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractJackson2HttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericHttpMessageConverter</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Abstract base class for Jackson based and content type independent HttpMessageConverter implementations. 
+<p>Compatible with Jackson 2.9 and higher, as of Spring 5.0.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-gson-builder-utils/index.html">GsonBuilderUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">GsonBuilderUtils</span></code>
+<p>A simple utility class for obtaining a Google Gson 2.x GsonBuilder which Base64-encodes <code>byte[]</code> properties when reading and writing JSON.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-gson-http-message-converter/index.html">GsonHttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GsonHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractJsonHttpMessageConverter</span></code>
+<p>Implementation of org.springframework.http.converter.HttpMessageConverter that can read and write JSON using the <a href="#">Google Gson</a> library. 
+<p>This converter can be used to bind to typed beans or untyped <code>HashMap</code>s. By default, it supports <code>application/json</code> and <code>application/*+json</code> with <code>UTF-8</code> character set. </p>
+<p>Tested against Gson 2.6; compatible with Gson 2.0 and higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jackson2-object-mapper-factory-bean/index.html">Jackson2ObjectMapperFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Jackson2ObjectMapperFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ObjectMapper</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A FactoryBean for creating a Jackson 2.x ObjectMapper (default) or XmlMapper (<code>createXmlMapper</code> property set to true) with setters to enable or disable Jackson features from within XML configuration. 
+<p>It customizes Jackson defaults properties with the following ones: </p>
+<ul> <li><code><a href="#">MapperFeature#DEFAULT_VIEW_INCLUSION</a></code> is disabled</li>
+ <li><code><a href="#">DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES</a></code> is disabled</li>
+ </ul>
+ 
+<p>Example usage with MappingJackson2HttpMessageConverter: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:autoDetectFields="false" p:autoDetectGettersSetters="false" p:annotationIntrospector-ref="jaxbAnnotationIntrospector" /&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>Example usage with MappingJackson2JsonView: </p>
+<pre><code> &lt;bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:failOnEmptyBeans="false" p:indentOutput="true"&gt; &lt;property name="serializers"&gt; &lt;array&gt; &lt;bean class="org.mycompany.MyCustomSerializer" /&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>In case there are no specific setters provided (for some rarely used options), you can still use the more general methods <code><a href="#">#setFeaturesToEnable</a></code> and <code><a href="#">#setFeaturesToDisable</a></code>. </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="featuresToEnable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.WRAP_ROOT_VALUE"/&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.CLOSE_CLOSEABLE"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;property name="featuresToDisable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.MapperFeature.USE_ANNOTATIONS"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>It also automatically registers the following well-known modules if they are detected on the classpath: </p>
+<ul> <li><a href="#">jackson-datatype-jdk7</a>: support for Java 7 types like java.nio.file.Path</li>
+ <li><a href="#">jackson-datatype-jdk8</a>: support for other Java 8 types like java.util.Optional</li>
+ <li><a href="#">jackson-datatype-jsr310</a>: support for Java 8 Date &amp; Time API types</li>
+ <li><a href="#">jackson-datatype-joda</a>: support for Joda-Time types</li>
+ <li><a href="#">jackson-module-kotlin</a>: support for Kotlin classes and data classes</li>
+ </ul>
+ 
+<p>In case you want to configure Jackson's ObjectMapper with a custom Module, you can register one or more such Modules by class name via <code><a href="#">#setModulesToInstall</a></code>: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="modulesToInstall" value="myapp.jackson.MySampleModule,myapp.jackson.MyOtherModule"/&gt; &lt;/bean </code></pre> 
+<p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jsonb-http-message-converter/index.html">JsonbHttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JsonbHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractJsonHttpMessageConverter</span></code>
+<p>Implementation of org.springframework.http.converter.HttpMessageConverter that can read and write JSON using the <a href="#">JSON Binding API</a>. 
+<p>This converter can be used to bind to typed beans or untyped <code>HashMap</code>s. By default, it supports <code>application/json</code> and <code>application/*+json</code> with <code>UTF-8</code> character set.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mapping-jackson2-http-message-converter/index.html">MappingJackson2HttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MappingJackson2HttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-jackson2-http-message-converter/index.html"><span class="identifier">AbstractJackson2HttpMessageConverter</span></a></code>
+<p>Implementation of org.springframework.http.converter.HttpMessageConverter that can read and write JSON using <a href="#">Jackson 2.x's</a> ObjectMapper. 
+<p>This converter can be used to bind to typed beans, or untyped <code>HashMap</code> instances. </p>
+<p>By default, this converter supports <code>application/json</code> and <code>application/*+json</code> with <code>UTF-8</code> character set. This can be overridden by setting the <code><a href="#">supportedMediaTypes</a></code> property. </p>
+<p>The default constructor uses the default configuration provided by Jackson2ObjectMapperBuilder. </p>
+<p>Compatible with Jackson 2.9 and higher, as of Spring 5.0.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mapping-jackson-input-message/index.html">MappingJacksonInputMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MappingJacksonInputMessage</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpInputMessage</span></code>
+<p>HttpInputMessage that can eventually stores a Jackson view that will be used to deserialize the message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mapping-jackson-value/index.html">MappingJacksonValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MappingJacksonValue</span></code>
+<p>A simple holder for the POJO to serialize via MappingJackson2HttpMessageConverter along with further serialization instructions to be passed in to the converter. 
+<p>On the server side this wrapper is added with a <code>ResponseBodyInterceptor</code> after content negotiation selects the converter to use but before the write. </p>
+<p>On the client side, simply wrap the POJO and pass it in to the <code>RestTemplate</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-handler-instantiator/index.html">SpringHandlerInstantiator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringHandlerInstantiator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerInstantiator</span></code>
+<p>Allows for creating Jackson (JsonSerializer, JsonDeserializer, KeyDeserializer, TypeResolverBuilder, TypeIdResolver) beans with autowiring against a Spring ApplicationContext. 
+<p>As of Spring 4.3, this overrides all factory methods in HandlerInstantiator, including non-abstract ones and recently introduced ones from Jackson 2.4 and 2.5: for ValueInstantiator, ObjectIdGenerator, ObjectIdResolver, PropertyNamingStrategy, Converter, VirtualBeanPropertyWriter.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

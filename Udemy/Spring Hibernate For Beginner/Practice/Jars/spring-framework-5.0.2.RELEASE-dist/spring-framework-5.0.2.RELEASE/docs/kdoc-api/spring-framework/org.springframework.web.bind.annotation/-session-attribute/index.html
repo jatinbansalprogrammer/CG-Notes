@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SessionAttribute - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind.annotation</a>&nbsp;/&nbsp;<a href=".">SessionAttribute</a><br/>
+<br/>
+<h1>SessionAttribute</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.VALUE_PARAMETER]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">SessionAttribute</span></code>
+<p>Annotation to bind a method parameter to a session attribute. 
+<p>The main motivation is to provide convenient access to existing, permanent session attributes (e.g. user authentication object) with an optional/required check and a cast to the target method parameter type. </p>
+<p>For use cases that require adding or removing session attributes consider injecting <code>org.springframework.web.context.request.WebRequest</code> or <code>javax.servlet.http.HttpSession</code> into the controller method. </p>
+<p>For temporary storage of model attributes in the session as part of the workflow for a controller, consider using SessionAttributes instead.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.3</p>
+<p><strong>See Also</strong><br/>
+RequestMappingSessionAttributesRequestAttribute</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SessionAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.annotation.SessionAttribute$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.SessionAttribute$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.SessionAttribute$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/required">required</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Annotation to bind a method parameter to a session attribute. 
+<p>The main motivation is to provide convenient access to existing, permanent session attributes (e.g. user authentication object) with an optional/required check and a cast to the target method parameter type. </p>
+<p>For use cases that require adding or removing session attributes consider injecting <code>org.springframework.web.context.request.WebRequest</code> or <code>javax.servlet.http.HttpSession</code> into the controller method. </p>
+<p>For temporary storage of model attributes in the session as part of the workflow for a controller, consider using SessionAttributes instead.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="name.html">name</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">name</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the session attribute to bind to. 
+<p>The default name is inferred from the method parameter name.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="required.html">required</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">required</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the session attribute is required. 
+<p>Defaults to <code>true</code>, leading to an exception being thrown if the attribute is missing in the session or there is no session. Switch this to <code>false</code> if you prefer a <code>null</code> or Java 8 <code>java.util.Optional</code> if the attribute doesn't exist.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Alias for <code><a href="#">#name</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

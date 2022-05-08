@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.simp.user - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.simp.user</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.simp.user</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-destination-user-name-provider/index.html">DestinationUserNameProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">DestinationUserNameProvider</span></code>
+<p>A java.security.Principal can also implement this contract when <code><a href="#">getName()</a></code> isn't globally unique and therefore not suited for use with "user" destinations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-multi-server-user-registry/index.html">MultiServerUserRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MultiServerUserRegistry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpUserRegistry</span><span class="symbol">, </span><a href="../org.springframework.context.event/-smart-application-listener/index.html"><span class="identifier">SmartApplicationListener</span></a></code>
+<p><code>SimpUserRegistry</code> that looks up users in a "local" user registry as well as a set of "remote" user registries. The local registry is provided as a constructor argument while remote registries are updated via broadcasts handled by UserRegistryMessageHandler which in turn notifies this registry when updates are received.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simp-user/index.html">SimpUser</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SimpUser</span></code>
+<p>Represents a connected user.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-user-destination-result/index.html">UserDestinationResult</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UserDestinationResult</span></code>
+<p>Contains the result from parsing a "user" destination from a source message and translating it to target destinations (one per active user session).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

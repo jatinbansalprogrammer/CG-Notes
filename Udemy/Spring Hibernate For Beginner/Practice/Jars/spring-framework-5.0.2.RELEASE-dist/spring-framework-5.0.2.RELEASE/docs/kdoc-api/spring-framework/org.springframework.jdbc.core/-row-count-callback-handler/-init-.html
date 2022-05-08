@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RowCountCallbackHandler.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core</a>&nbsp;/&nbsp;<a href="index.html">RowCountCallbackHandler</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jdbc.core.RowCountCallbackHandler$&lt;init&gt;()"></a>
+<code><span class="identifier">RowCountCallbackHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of RowCallbackHandler. Convenient superclass for callback handlers. An instance can only be used once. 
+<p>We can either use this on its own (for example, in a test case, to ensure that our result sets have valid dimensions), or use it as a superclass for callback handlers that actually do something, and will benefit from the dimension information it provides. </p>
+<p>A usage example with JdbcTemplate: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object RowCountCallbackHandler countCallback = new RowCountCallbackHandler(); // not reusable jdbcTemplate.query("select * from user", countCallback); int rowCount = countCallback.getRowCount();</code></pre></p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+May 3, 2001</p>
+</BODY>
+</HTML>

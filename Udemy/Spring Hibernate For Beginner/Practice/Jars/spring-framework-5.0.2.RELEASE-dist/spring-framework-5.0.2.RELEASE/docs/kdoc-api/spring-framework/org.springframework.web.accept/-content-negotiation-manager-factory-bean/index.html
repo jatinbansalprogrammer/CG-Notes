@@ -1,0 +1,237 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ContentNegotiationManagerFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.accept</a>&nbsp;/&nbsp;<a href=".">ContentNegotiationManagerFactoryBean</a><br/>
+<br/>
+<h1>ContentNegotiationManagerFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentNegotiationManagerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="../-content-negotiation-manager/index.html"><span class="identifier">ContentNegotiationManager</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Factory to create a <code>ContentNegotiationManager</code> and configure it with one or more ContentNegotiationStrategy instances. 
+<p>As of 5.0 you can set the exact strategies to use via <code><a href="#">#setStrategies(List)</a></code>. </p>
+<p>As an alternative you can also rely on the set of defaults described below which can be turned on or off or customized through the methods of this builder: </p>
+  Property Setter Underlying Strategy Default Setting   <code><a href="set-favor-path-extension.html">#setFavorPathExtension</a></code> PathExtensionContentNegotiationStrategy On   <code><a href="set-favor-parameter.html">favorParameter</a></code> ParameterContentNegotiationStrategy Off   <code><a href="set-ignore-accept-header.html">ignoreAcceptHeader</a></code> HeaderContentNegotiationStrategy On   <code><a href="set-default-content-type.html">defaultContentType</a></code> FixedContentNegotiationStrategy Not set   <code><a href="set-default-content-type-strategy.html">defaultContentTypeStrategy</a></code> ContentNegotiationStrategy Not set   <strong>Note:</strong> if you must use URL-based content type resolution, the use of a query parameter is simpler and preferable to the use of a path extension since the latter can cause issues with URI variables, path parameters, and URI decoding. Consider setting <code><a href="set-favor-path-extension.html">#setFavorPathExtension</a></code> to false or otherwise set the strategies to use explicitly via <code><a href="#">#setStrategies(List)</a></code>.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ContentNegotiationManagerFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Factory to create a <code>ContentNegotiationManager</code> and configure it with one or more ContentNegotiationStrategy instances. 
+<p>As of 5.0 you can set the exact strategies to use via <code><a href="#">#setStrategies(List)</a></code>. </p>
+<p>As an alternative you can also rely on the set of defaults described below which can be turned on or off or customized through the methods of this builder: </p>
+  Property Setter Underlying Strategy Default Setting   <code><a href="set-favor-path-extension.html">#setFavorPathExtension</a></code> PathExtensionContentNegotiationStrategy On   <code><a href="set-favor-parameter.html">favorParameter</a></code> ParameterContentNegotiationStrategy Off   <code><a href="set-ignore-accept-header.html">ignoreAcceptHeader</a></code> HeaderContentNegotiationStrategy On   <code><a href="set-default-content-type.html">defaultContentType</a></code> FixedContentNegotiationStrategy Not set   <code><a href="set-default-content-type-strategy.html">defaultContentTypeStrategy</a></code> ContentNegotiationStrategy Not set   <strong>Note:</strong> if you must use URL-based content type resolution, the use of a query parameter is simpler and preferable to the use of a path extension since the latter can cause issues with URI variables, path parameters, and URI decoding. Consider setting <code><a href="set-favor-path-extension.html">#setFavorPathExtension</a></code> to false or otherwise set the strategies to use explicitly via <code><a href="#">#setStrategies(List)</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-media-type.html">addMediaType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addMediaType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$addMediaType(kotlin.String, org.springframework.http.MediaType)/fileExtension">fileExtension</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$addMediaType(kotlin.String, org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>An alternative to <code><a href="set-media-types.html">#setMediaTypes</a></code> for use in Java code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-media-types.html">addMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addMediaTypes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$addMediaTypes(kotlin.collections.MutableMap((kotlin.String, org.springframework.http.MediaType)))/mediaTypes">mediaTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>An alternative to <code><a href="set-media-types.html">#setMediaTypes</a></code> for use in Java code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="build.html">build</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-content-negotiation-manager/index.html"><span class="identifier">ContentNegotiationManager</span></a></code>
+<p>Actually build the ContentNegotiationManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-content-negotiation-manager/index.html"><span class="identifier">ContentNegotiationManager</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-content-type.html">setDefaultContentType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultContentType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setDefaultContentType(org.springframework.http.MediaType)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default content type to use when no content type is requested. 
+<p>By default this is not set.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-content-type-strategy.html">setDefaultContentTypeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultContentTypeStrategy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setDefaultContentTypeStrategy(org.springframework.web.accept.ContentNegotiationStrategy)/strategy">strategy</span><span class="symbol">:</span>&nbsp;<span class="identifier">ContentNegotiationStrategy</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom ContentNegotiationStrategy to use to determine the content type to use when no content type is requested. 
+<p>By default this is not set.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-content-types.html">setDefaultContentTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultContentTypes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setDefaultContentTypes(kotlin.collections.MutableList((org.springframework.http.MediaType)))/contentTypes">contentTypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MediaType</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default content types to use when no content type is requested. 
+<p>By default this is not set.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-favor-parameter.html">setFavorParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFavorParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setFavorParameter(kotlin.Boolean)/favorParameter">favorParameter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether a request parameter ("format" by default) should be used to determine the requested media type. For this option to work you must register <code><a href="set-media-types.html">media type mappings</a></code>. 
+<p>By default this is set to <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-favor-path-extension.html">setFavorPathExtension</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFavorPathExtension</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setFavorPathExtension(kotlin.Boolean)/favorPathExtension">favorPathExtension</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether the path extension in the URL path should be used to determine the requested media type. 
+<p>By default this is set to <code>true</code> in which case a request for <code>/hotels.pdf</code> will be interpreted as a request for <code>"application/pdf"</code> regardless of the 'Accept' header.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ignore-accept-header.html">setIgnoreAcceptHeader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIgnoreAcceptHeader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setIgnoreAcceptHeader(kotlin.Boolean)/ignoreAcceptHeader">ignoreAcceptHeader</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether to disable checking the 'Accept' request header. 
+<p>By default this value is set to <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ignore-unknown-path-extensions.html">setIgnoreUnknownPathExtensions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIgnoreUnknownPathExtensions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setIgnoreUnknownPathExtensions(kotlin.Boolean)/ignore">ignore</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether to ignore requests with path extension that cannot be resolved to any media type. Setting this to <code>false</code> will result in an <code>HttpMediaTypeNotAcceptableException</code> if there is no match. 
+<p>By default this is set to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-media-types.html">setMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMediaTypes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setMediaTypes(java.util.Properties)/mediaTypes">mediaTypes</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a mapping from a key, extracted from a path extension or a query parameter, to a MediaType. This is required in order for the parameter strategy to work. Any extensions explicitly registered here are also whitelisted for the purpose of Reflected File Download attack detection (see Spring Framework reference documentation for more details on RFD attack protection). 
+<p>The path extension strategy will also try to use <code><a href="#">ServletContext#getMimeType</a></code> and org.springframework.http.MediaTypeFactory to resolve path extensions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parameter-name.html">setParameterName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParameterName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setParameterName(kotlin.String)/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the query parameter name to use when <code><a href="set-favor-parameter.html">#setFavorParameter</a></code> is on. 
+<p>The default parameter name is <code>"format"</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoked by Spring to inject the ServletContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-strategies.html">setStrategies</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStrategies</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setStrategies(kotlin.collections.MutableList((org.springframework.web.accept.ContentNegotiationStrategy)))/strategies">strategies</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">ContentNegotiationStrategy</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the exact list of strategies to use. 
+<p><strong>Note:</strong> use of this method is mutually exclusive with use of all other setters in this class which customize a default, fixed set of strategies. See class level doc for more details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-jaf.html">setUseJaf</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseJaf</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setUseJaf(kotlin.Boolean)/useJaf">useJaf</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-registered-extensions-only.html">setUseRegisteredExtensionsOnly</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseRegisteredExtensionsOnly</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.accept.ContentNegotiationManagerFactoryBean$setUseRegisteredExtensionsOnly(kotlin.Boolean)/useRegisteredExtensionsOnly">useRegisteredExtensionsOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>When <code><a href="set-favor-path-extension.html">favorPathExtension</a></code> or <code><a href="set-favor-parameter.html">#setFavorParameter(boolean)</a></code> is set, this property determines whether to use only registered <code>MediaType</code> mappings or to allow dynamic resolution, e.g. via MediaTypeFactory. 
+<p>By default this is not set in which case dynamic resolution is on.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

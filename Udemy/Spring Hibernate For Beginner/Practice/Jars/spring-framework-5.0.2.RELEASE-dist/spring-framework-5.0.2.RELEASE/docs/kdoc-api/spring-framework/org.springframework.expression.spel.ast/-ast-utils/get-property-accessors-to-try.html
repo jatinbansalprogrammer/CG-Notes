@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AstUtils.getPropertyAccessorsToTry - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.expression.spel.ast</a>&nbsp;/&nbsp;<a href="index.html">AstUtils</a>&nbsp;/&nbsp;<a href=".">getPropertyAccessorsToTry</a><br/>
+<br/>
+<h1>getPropertyAccessorsToTry</h1>
+<a name="org.springframework.expression.spel.ast.AstUtils$getPropertyAccessorsToTry(java.lang.Class((kotlin.Any)), kotlin.collections.MutableList((org.springframework.expression.PropertyAccessor)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getPropertyAccessorsToTry</span><span class="symbol">(</span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.expression.spel.ast.AstUtils$getPropertyAccessorsToTry(java.lang.Class((kotlin.Any)), kotlin.collections.MutableList((org.springframework.expression.PropertyAccessor)))/targetType">targetType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.ast.AstUtils$getPropertyAccessorsToTry(java.lang.Class((kotlin.Any)), kotlin.collections.MutableList((org.springframework.expression.PropertyAccessor)))/propertyAccessors">propertyAccessors</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">PropertyAccessor</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">PropertyAccessor</span><span class="symbol">&gt;</span></code>
+<p>Determines the set of property resolvers that should be used to try and access a property on the specified target type. The resolvers are considered to be in an ordered list, however in the returned list any that are exact matches for the input target type (as opposed to 'general' resolvers that could work for any type) are placed at the start of the list. In addition, there are specific resolvers that exactly name the class in question and resolvers that name a specific class but it is a supertype of the class we have. These are put at the end of the specific resolvers set and will be tried after exactly matching accessors but before generic accessors.</p>
+<h3>Parameters</h3>
+<p><a name="targetType"></a>
+<code>targetType</code> - the type upon which property access is being attempted</p>
+<p><strong>Return</strong><br/>
+a list of resolvers that should be tried in order to access the property</p>
+</BODY>
+</HTML>

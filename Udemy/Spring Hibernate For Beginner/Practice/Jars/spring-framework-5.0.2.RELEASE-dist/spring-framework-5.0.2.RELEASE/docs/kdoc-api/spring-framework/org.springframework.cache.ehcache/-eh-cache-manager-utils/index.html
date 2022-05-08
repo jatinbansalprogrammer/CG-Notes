@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EhCacheManagerUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.cache.ehcache</a>&nbsp;/&nbsp;<a href=".">EhCacheManagerUtils</a><br/>
+<br/>
+<h1>EhCacheManagerUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">EhCacheManagerUtils</span></code>
+<p>Convenient builder methods for EhCache 2.5+ CacheManager setup, providing easy programmatic bootstrapping from a Spring-provided resource. This is primarily intended for use within <code>@Bean</code> methods in a Spring configuration class. 
+<p>These methods are a simple alternative to custom CacheManager setup code. For any advanced purposes, consider using <code><a href="parse-configuration.html">#parseConfiguration</a></code>, customizing the configuration object, and then calling the <code><a href="#">CacheManager#CacheManager(Configuration)</a></code> constructor.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EhCacheManagerUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient builder methods for EhCache 2.5+ CacheManager setup, providing easy programmatic bootstrapping from a Spring-provided resource. This is primarily intended for use within <code>@Bean</code> methods in a Spring configuration class. 
+<p>These methods are a simple alternative to custom CacheManager setup code. For any advanced purposes, consider using <code><a href="parse-configuration.html">#parseConfiguration</a></code>, customizing the configuration object, and then calling the <code><a href="#">CacheManager#CacheManager(Configuration)</a></code> constructor.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="build-cache-manager.html">buildCacheManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildCacheManager</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CacheManager</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildCacheManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.ehcache.EhCacheManagerUtils$buildCacheManager(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CacheManager</span></code>
+<p>Build an EhCache CacheManager from the default configuration. 
+<p>The CacheManager will be configured from "ehcache.xml" in the root of the class path (that is, default EhCache initialization - as defined in the EhCache docs - will apply). If no configuration file can be found, a fail-safe fallback configuration will be used.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildCacheManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.ehcache.EhCacheManagerUtils$buildCacheManager(org.springframework.core.io.Resource)/configLocation">configLocation</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CacheManager</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildCacheManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.ehcache.EhCacheManagerUtils$buildCacheManager(kotlin.String, org.springframework.core.io.Resource)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.cache.ehcache.EhCacheManagerUtils$buildCacheManager(kotlin.String, org.springframework.core.io.Resource)/configLocation">configLocation</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CacheManager</span></code>
+<p>Build an EhCache CacheManager from the given configuration resource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="parse-configuration.html">parseConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">parseConfiguration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.ehcache.EhCacheManagerUtils$parseConfiguration(org.springframework.core.io.Resource)/configLocation">configLocation</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code>
+<p>Parse EhCache configuration from the given resource, for further use with custom CacheManager creation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

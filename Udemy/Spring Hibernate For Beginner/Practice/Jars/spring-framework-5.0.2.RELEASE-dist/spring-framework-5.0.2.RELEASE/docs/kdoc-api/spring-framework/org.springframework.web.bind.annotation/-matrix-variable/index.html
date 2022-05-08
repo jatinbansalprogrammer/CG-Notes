@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MatrixVariable - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind.annotation</a>&nbsp;/&nbsp;<a href=".">MatrixVariable</a><br/>
+<br/>
+<h1>MatrixVariable</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.VALUE_PARAMETER]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">MatrixVariable</span></code>
+<p>Annotation which indicates that a method parameter should be bound to a name-value pair within a path segment. Supported for RequestMapping annotated handler methods in Servlet environments. 
+<p>If the method parameter type is java.util.Map and a matrix variable name is specified, then the matrix variable value is converted to a java.util.Map assuming an appropriate conversion strategy is available. </p>
+<p>If the method parameter is java.util.Map or org.springframework.util.MultiValueMap and a variable name is not specified, then the map is populated with all matrix variable names and values.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MatrixVariable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.annotation.MatrixVariable$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.MatrixVariable$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.MatrixVariable$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean, kotlin.String)/pathVar">pathVar</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.MatrixVariable$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean, kotlin.String)/required">required</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.MatrixVariable$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean, kotlin.String)/defaultValue">defaultValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Annotation which indicates that a method parameter should be bound to a name-value pair within a path segment. Supported for RequestMapping annotated handler methods in Servlet environments. 
+<p>If the method parameter type is java.util.Map and a matrix variable name is specified, then the matrix variable value is converted to a java.util.Map assuming an appropriate conversion strategy is available. </p>
+<p>If the method parameter is java.util.Map or org.springframework.util.MultiValueMap and a variable name is not specified, then the map is populated with all matrix variable names and values.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="default-value.html">defaultValue</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">defaultValue</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default value to use as a fallback. 
+<p>Supplying a default value implicitly sets <code><a href="#">#required</a></code> to <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="name.html">name</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">name</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the matrix variable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="path-var.html">pathVar</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">pathVar</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the URI path variable where the matrix variable is located, if necessary for disambiguation (e.g. a matrix variable with the same name present in more than one path segment).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="required.html">required</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">required</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the matrix variable is required. 
+<p>Default is <code>true</code>, leading to an exception being thrown in case the variable is missing in the request. Switch this to <code>false</code> if you prefer a <code>null</code> if the variable is missing. </p>
+<p>Alternatively, provide a <code><a href="#">#defaultValue</a></code>, which implicitly sets this flag to <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Alias for <code><a href="#">#name</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

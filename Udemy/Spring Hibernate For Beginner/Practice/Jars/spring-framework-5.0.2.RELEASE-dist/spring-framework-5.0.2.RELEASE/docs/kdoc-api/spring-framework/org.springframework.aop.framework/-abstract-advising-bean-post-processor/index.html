@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractAdvisingBeanPostProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.framework</a>&nbsp;/&nbsp;<a href=".">AbstractAdvisingBeanPostProcessor</a><br/>
+<br/>
+<h1>AbstractAdvisingBeanPostProcessor</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractAdvisingBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyProcessorSupport</span><span class="symbol">, </span><span class="identifier">BeanPostProcessor</span></code>
+<p>Base class for BeanPostProcessor implementations that apply a Spring AOP Advisor to specific beans.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractAdvisingBeanPostProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Base class for BeanPostProcessor implementations that apply a Spring AOP Advisor to specific beans.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="post-process-after-initialization.html">postProcessAfterInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-initialization.html">postProcessBeforeInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-before-existing-advisors.html">setBeforeExistingAdvisors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeforeExistingAdvisors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.AbstractAdvisingBeanPostProcessor$setBeforeExistingAdvisors(kotlin.Boolean)/beforeExistingAdvisors">beforeExistingAdvisors</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether this post-processor's advisor is supposed to apply before existing advisors when encountering a pre-advised object. 
+<p>Default is "false", applying the advisor after existing advisors, i.e. as close as possible to the target method. Switch this to "true" in order for this post-processor's advisor to wrap existing advisors as well. </p>
+<p>Note: Check the concrete post-processor's javadoc whether it possibly changes this flag by default, depending on the nature of its advisor.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.framework.autoproxy/-abstract-bean-factory-aware-advising-post-processor/index.html">AbstractBeanFactoryAwareAdvisingPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractBeanFactoryAwareAdvisingPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAdvisingBeanPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Extension of AbstractAutoProxyCreator which implements BeanFactoryAware, adds exposure of the original target class for each proxied bean (<code><a href="#">AutoProxyUtils#ORIGINAL_TARGET_CLASS_ATTRIBUTE</a></code>), and participates in an externally enforced target-class mode for any given bean (<code><a href="#">AutoProxyUtils#PRESERVE_TARGET_CLASS_ATTRIBUTE</a></code>). This post-processor is therefore aligned with AbstractAutoProxyCreator.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

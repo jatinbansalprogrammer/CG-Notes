@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractSingleBeanDefinitionParser - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.xml</a>&nbsp;/&nbsp;<a href=".">AbstractSingleBeanDefinitionParser</a><br/>
+<br/>
+<h1>AbstractSingleBeanDefinitionParser</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSingleBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-bean-definition-parser/index.html"><span class="identifier">AbstractBeanDefinitionParser</span></a></code>
+<p>Base class for those BeanDefinitionParser implementations that need to parse and define just a <em>single</em> <code>BeanDefinition</code>. 
+<p>Extend this parser class when you want to create a single bean definition from an arbitrarily complex XML element. You may wish to consider extending the AbstractSimpleBeanDefinitionParser when you want to create a single bean definition from a relatively simple custom XML element. </p>
+<p>The resulting <code>BeanDefinition</code> will be automatically registered with the org.springframework.beans.factory.support.BeanDefinitionRegistry. Your job simply is to <code><a href="#">parse</a></code> the custom XML Element into a single <code>BeanDefinition</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rick Evans</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getBeanClass</a><a href="#">#getBeanClassName</a><a href="#">#doParse</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractSingleBeanDefinitionParser</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Base class for those BeanDefinitionParser implementations that need to parse and define just a <em>single</em> <code>BeanDefinition</code>. 
+<p>Extend this parser class when you want to create a single bean definition from an arbitrarily complex XML element. You may wish to consider extending the AbstractSimpleBeanDefinitionParser when you want to create a single bean definition from a relatively simple custom XML element. </p>
+<p>The resulting <code>BeanDefinition</code> will be automatically registered with the org.springframework.beans.factory.support.BeanDefinitionRegistry. Your job simply is to <code><a href="#">parse</a></code> the custom XML Element into a single <code>BeanDefinition</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-parser/-i-d_-a-t-t-r-i-b-u-t-e.html">ID_ATTRIBUTE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ID_ATTRIBUTE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Constant for the "id" attribute</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-parser/-n-a-m-e_-a-t-t-r-i-b-u-t-e.html">NAME_ATTRIBUTE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">NAME_ATTRIBUTE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Constant for the "name" attribute</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-bean-definition-parser/parse.html">parse</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">parse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.xml.AbstractBeanDefinitionParser$parse(org.w3c.dom.Element, org.springframework.beans.factory.xml.ParserContext)/element">element</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-element/index.html"><span class="identifier">Element</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.xml.AbstractBeanDefinitionParser$parse(org.w3c.dom.Element, org.springframework.beans.factory.xml.ParserContext)/parserContext">parserContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParserContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinition</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-simple-bean-definition-parser/index.html">AbstractSimpleBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSimpleBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSingleBeanDefinitionParser</span></code>
+<p>Convenient base class for when there exists a one-to-one mapping between attribute names on the element that is to be parsed and the property names on the Class being configured. 
+<p>Extend this parser class when you want to create a single bean definition from a relatively simple custom XML element. The resulting <code>BeanDefinition</code> will be automatically registered with the relevant org.springframework.beans.factory.support.BeanDefinitionRegistry. </p>
+<p>An example will hopefully make the use of this particular parser class immediately clear. Consider the following class definition: </p>
+<pre><code>public class SimpleCache implements Cache { public void setName(String name) {...} public void setTimeout(int timeout) {...} public void setEvictionPolicy(EvictionPolicy policy) {...} // remaining class definition elided for clarity... }</code></pre> 
+<p>Then let us assume the following XML tag has been defined to permit the easy configuration of instances of the above class; </p>
+<pre><code>&lt;caching:cache name="..." timeout="..." eviction-policy="..."/&gt;</code></pre> 
+<p>All that is required of the Java developer tasked with writing the parser to parse the above XML tag into an actual <code>SimpleCache</code> bean definition is the following: </p>
+<pre><code>public class SimpleCacheBeanDefinitionParser extends AbstractSimpleBeanDefinitionParser { protected Class getBeanClass(Element element) { return SimpleCache.class; } }</code></pre> 
+<p>Please note that the <code>AbstractSimpleBeanDefinitionParser</code> is limited to populating the created bean definition with property values. if you want to parse constructor arguments and nested elements from the supplied XML element, then you will have to implement the <code><a href="#">#postProcess(org.springframework.beans.factory.support.BeanDefinitionBuilder, org.w3c.dom.Element)</a></code> method and do such parsing yourself, or (more likely) subclass the AbstractSingleBeanDefinitionParser or AbstractBeanDefinitionParser classes directly. </p>
+<p>The process of actually registering the <code>SimpleCacheBeanDefinitionParser</code> with the Spring XML parsing infrastructure is described in the Spring Framework reference documentation (in one of the appendices). </p>
+<p>For an example of this parser in action (so to speak), do look at the source code for the org.springframework.beans.factory.xml.UtilNamespaceHandler.PropertiesBeanDefinitionParser; the observant (and even not so observant) reader will immediately notice that there is next to no code in the implementation. The <code>PropertiesBeanDefinitionParser</code> populates a org.springframework.beans.factory.config.PropertiesFactoryBean from an XML element that looks like this: </p>
+<pre><code>&lt;util:properties location="jdbc.properties"/&gt;</code></pre> 
+<p>The observant reader will notice that the sole attribute on the <code>&lt;util:properties/&gt;</code> element matches the <code><a href="#">org.springframework.beans.factory.config.PropertiesFactoryBean#setLocation(org.springframework.core.io.Resource)</a></code> method name on the <code>PropertiesFactoryBean</code> (the general usage thus illustrated holds true for any number of attributes). All that the <code>PropertiesBeanDefinitionParser</code> needs actually do is supply an implementation of the <code><a href="#">#getBeanClass(org.w3c.dom.Element)</a></code> method to return the <code>PropertiesFactoryBean</code> type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.scheduling.config/-executor-bean-definition-parser/index.html">ExecutorBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExecutorBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSingleBeanDefinitionParser</span></code>
+<p>Parser for the 'executor' element of the 'task' namespace.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.config/-free-marker-configurer-bean-definition-parser/index.html">FreeMarkerConfigurerBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FreeMarkerConfigurerBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSingleBeanDefinitionParser</span></code>
+<p>Parse the  MVC namespace element and register FreeMarkerConfigurer bean</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.transaction.config/-jta-transaction-manager-bean-definition-parser/index.html">JtaTransactionManagerBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JtaTransactionManagerBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSingleBeanDefinitionParser</span></code>
+<p>Parser for the &lt;tx:jta-transaction-manager/&gt; XML configuration element, autodetecting WebLogic and WebSphere servers and exposing the corresponding org.springframework.transaction.jta.JtaTransactionManager subclass.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.scheduling.config/-scheduled-tasks-bean-definition-parser/index.html">ScheduledTasksBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledTasksBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSingleBeanDefinitionParser</span></code>
+<p>Parser for the 'scheduled-tasks' element of the scheduling namespace.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.scheduling.config/-scheduler-bean-definition-parser/index.html">SchedulerBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SchedulerBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSingleBeanDefinitionParser</span></code>
+<p>Parser for the 'scheduler' element of the 'task' namespace.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.config/-tiles-configurer-bean-definition-parser/index.html">TilesConfigurerBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TilesConfigurerBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSingleBeanDefinitionParser</span></code>
+<p>Parse the  MVC namespace element and register a corresponding TilesConfigurer bean.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

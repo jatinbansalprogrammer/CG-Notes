@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JndiRmiServiceExporter.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.rmi</a>&nbsp;/&nbsp;<a href="index.html">JndiRmiServiceExporter</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.remoting.rmi.JndiRmiServiceExporter$&lt;init&gt;()"></a>
+<code><span class="identifier">JndiRmiServiceExporter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Service exporter which binds RMI services to JNDI. Typically used for RMI-IIOP (CORBA). 
+<p>Exports services via the javax.rmi.PortableRemoteObject class. You need to run "rmic" with the "-iiop" option to generate corresponding stubs and skeletons for each exported service. </p>
+<p>Also supports exposing any non-RMI service via RMI invokers, to be accessed via JndiRmiClientInterceptor / JndiRmiProxyFactoryBean's automatic detection of such invokers. </p>
+<p>With an RMI invoker, RMI communication works on the RmiInvocationHandler level, needing only one stub for any service. Service interfaces do not have to extend <code>java.rmi.Remote</code> or throw <code>java.rmi.RemoteException</code> on all methods, but in and out parameters have to be serializable. </p>
+<p>The JNDI environment can be specified as "jndiEnvironment" bean property, or be configured in a <code>jndi.properties</code> file or as system properties. For example: </p>
+<pre><code>&lt;property name="jndiEnvironment"&gt; &lt;props&gt; &lt;prop key="java.naming.factory.initial"&gt;com.sun.jndi.cosnaming.CNCtxFactory&lt;/prop&gt; &lt;prop key="java.naming.provider.url"&gt;iiop://localhost:1050&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setService</a><a href="set-jndi-template.html">#setJndiTemplate</a><a href="set-jndi-environment.html">#setJndiEnvironment</a><a href="#">#setJndiName</a>JndiRmiClientInterceptorJndiRmiProxyFactoryBean<a href="#">javax.rmi.PortableRemoteObject#exportObject</a></p>
+</BODY>
+</HTML>

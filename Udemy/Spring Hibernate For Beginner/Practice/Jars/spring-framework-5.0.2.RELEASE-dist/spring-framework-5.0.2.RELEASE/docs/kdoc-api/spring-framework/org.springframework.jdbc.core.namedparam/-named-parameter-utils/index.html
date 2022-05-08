@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>NamedParameterUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core.namedparam</a>&nbsp;/&nbsp;<a href=".">NamedParameterUtils</a><br/>
+<br/>
+<h1>NamedParameterUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">NamedParameterUtils</span></code>
+<p>Helper methods for named parameter parsing. 
+<p>Only intended for internal use within Spring's JDBC framework.</p>
+</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">NamedParameterUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Helper methods for named parameter parsing. 
+<p>Only intended for internal use within Spring's JDBC framework.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="build-sql-parameter-list.html">buildSqlParameterList</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildSqlParameterList</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildSqlParameterList(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource)/parsedSql">parsedSql</span><span class="symbol">:</span>&nbsp;<a href="../-parsed-sql/index.html"><span class="identifier">ParsedSql</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildSqlParameterList(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource)/paramSource">paramSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SqlParameter</span><span class="symbol">&gt;</span></code>
+<p>Convert parameter declarations from an SqlParameterSource to a corresponding List of SqlParameters. This is necessary in order to reuse existing methods on JdbcTemplate. The SqlParameter for a named parameter is placed in the correct position in the resulting list based on the parsed SQL statement info.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="build-sql-type-array.html">buildSqlTypeArray</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildSqlTypeArray</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildSqlTypeArray(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource)/parsedSql">parsedSql</span><span class="symbol">:</span>&nbsp;<a href="../-parsed-sql/index.html"><span class="identifier">ParsedSql</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildSqlTypeArray(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource)/paramSource">paramSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code>
+<p>Convert parameter types from an SqlParameterSource into a corresponding int array. This is necessary in order to reuse existing methods on JdbcTemplate. Any named parameter types are placed in the correct position in the Object array based on the parsed SQL statement info.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="build-value-array.html">buildValueArray</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildValueArray</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildValueArray(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource, kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/parsedSql">parsedSql</span><span class="symbol">:</span>&nbsp;<a href="../-parsed-sql/index.html"><span class="identifier">ParsedSql</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildValueArray(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource, kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/paramSource">paramSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildValueArray(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource, kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/declaredParams">declaredParams</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SqlParameter</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Convert a Map of named parameter values to a corresponding array.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">buildValueArray</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildValueArray(kotlin.String, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$buildValueArray(kotlin.String, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/paramMap">paramMap</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Convert a Map of named parameter values to a corresponding array. 
+<p>This is a shortcut version of <code><a href="#">#buildValueArray(ParsedSql, SqlParameterSource, java.util.List)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="parse-sql-statement.html">parseSqlStatement</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">parseSqlStatement</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$parseSqlStatement(kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="../-parsed-sql/index.html"><span class="identifier">ParsedSql</span></a></code>
+<p>Parse the SQL statement and locate any placeholders or named parameters. Named parameters are substituted for a JDBC placeholder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="parse-sql-statement-into-string.html">parseSqlStatementIntoString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">parseSqlStatementIntoString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$parseSqlStatementIntoString(kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Parse the SQL statement and locate any placeholders or named parameters. Named parameters are substituted for a JDBC placeholder. 
+<p>This is a shortcut version of <code><a href="#">#parseSqlStatement(String)</a></code> in combination with <code><a href="#">#substituteNamedParameters(ParsedSql, SqlParameterSource)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="substitute-named-parameters.html">substituteNamedParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">substituteNamedParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$substituteNamedParameters(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource)/parsedSql">parsedSql</span><span class="symbol">:</span>&nbsp;<a href="../-parsed-sql/index.html"><span class="identifier">ParsedSql</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$substituteNamedParameters(org.springframework.jdbc.core.namedparam.ParsedSql, org.springframework.jdbc.core.namedparam.SqlParameterSource)/paramSource">paramSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Parse the SQL statement and locate any placeholders or named parameters. Named parameters are substituted for a JDBC placeholder, and any select list is expanded to the required number of placeholders. Select lists may contain an array of objects, and in that case the placeholders will be grouped and enclosed with parentheses. This allows for the use of "expression lists" in the SQL statement like:  <code>select id, name, state from table where (name, age) in (('John', 35), ('Ann', 50))</code> 
+<p>The parameter values passed in are used to determine the number of placeholders to be used for a select list. Select lists should be limited to 100 or fewer elements. A larger number of elements is not guaranteed to be supported by the database and is strictly vendor-dependent.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">substituteNamedParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$substituteNamedParameters(kotlin.String, org.springframework.jdbc.core.namedparam.SqlParameterSource)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.namedparam.NamedParameterUtils$substituteNamedParameters(kotlin.String, org.springframework.jdbc.core.namedparam.SqlParameterSource)/paramSource">paramSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameterSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Parse the SQL statement and locate any placeholders or named parameters. Named parameters are substituted for a JDBC placeholder and any select list is expanded to the required number of placeholders. 
+<p>This is a shortcut version of <code><a href="#">#substituteNamedParameters(ParsedSql, SqlParameterSource)</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

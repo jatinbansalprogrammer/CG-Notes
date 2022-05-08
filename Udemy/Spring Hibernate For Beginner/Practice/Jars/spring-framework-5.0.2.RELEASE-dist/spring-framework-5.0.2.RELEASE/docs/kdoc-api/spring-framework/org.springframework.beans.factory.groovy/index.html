@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.factory.groovy - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.factory.groovy</a><br/>
+<br/>
+<h2>Package org.springframework.beans.factory.groovy</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-groovy-bean-definition-reader/index.html">GroovyBeanDefinitionReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyBeanDefinitionReader</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.support/-abstract-bean-definition-reader/index.html"><span class="identifier">AbstractBeanDefinitionReader</span></a><span class="symbol">, </span><span class="identifier">GroovyObject</span></code>
+<p>A Groovy-based reader for Spring bean definitions: like a Groovy builder, but more of a DSL for Spring configuration. 
+<p>This bean definition reader also understands XML bean definition files, allowing for seamless mixing and matching with Groovy bean definition files. </p>
+<p>Typically applied to a org.springframework.beans.factory.support.DefaultListableBeanFactory or a org.springframework.context.support.GenericApplicationContext, but can be used against any BeanDefinitionRegistry implementation. </p>
+Example Syntax <pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource def reader = new GroovyBeanDefinitionReader(myApplicationContext) reader.beans { dataSource(BasicDataSource) { // &lt;--- invokeMethod driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" // &lt;-- setProperty password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource // &lt;-- getProperty for retrieving references } myService(MyService) { nestedBean = { AnotherBean bean -&gt; // &lt;-- setProperty with closure for nested bean dataSource = dataSource } } }</code></pre> 
+<p>You can also load resources containing beans defined in a Groovy script using either the <code><a href="#">#loadBeanDefinitions(Resource...)</a></code> or <code><a href="#">#loadBeanDefinitions(String...)</a></code> method, with a script looking similar to the following. </p>
+<pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource beans { dataSource(BasicDataSource) { driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource } myService(MyService) { nestedBean = { AnotherBean bean -&gt; dataSource = dataSource } } }</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

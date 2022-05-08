@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.bind - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.bind</a><br/>
+<br/>
+<h2>Package org.springframework.web.bind</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-escaped-errors/index.html">EscapedErrors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EscapedErrors</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Errors</span></code>
+<p>Errors wrapper that adds automatic HTML escaping to the wrapped instance, for convenient usage in HTML views. Can be retrieved easily via RequestContext's <code>getErrors</code> method. 
+<p>Note that BindTag does <em>not</em> use this class to avoid unnecessary creation of ObjectError instances. It just escapes the messages and values that get copied into the respective BindStatus instance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-request-data-binder/index.html">ServletRequestDataBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletRequestDataBinder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebDataBinder</span></code>
+<p>Special org.springframework.validation.DataBinder to perform data binding from servlet request parameters to JavaBeans, including support for multipart files. 
+<p>See the DataBinder/WebDataBinder superclasses for customization options, which include specifying allowed/required fields, and registering custom property editors. </p>
+<p>Can also be used for manual data binding in custom web controllers: for example, in a plain Controller implementation or in a MultiActionController handler method. Simply instantiate a ServletRequestDataBinder for each binding process, and invoke <code>bind</code> with the current ServletRequest as argument: </p>
+<pre><code> MyBean myBean = new MyBean(); // apply binder to custom target object ServletRequestDataBinder binder = new ServletRequestDataBinder(myBean); // register custom editors, if desired binder.registerCustomEditor(...); // trigger actual binding of request parameters binder.bind(request); // optionally evaluate binding errors Errors errors = binder.getErrors(); ...</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-request-parameter-property-values/index.html">ServletRequestParameterPropertyValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletRequestParameterPropertyValues</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MutablePropertyValues</span></code>
+<p>PropertyValues implementation created from parameters in a ServletRequest. Can look for all property values beginning with a certain prefix and prefix separator (default is "_"). 
+<p>For example, with a prefix of "spring", "spring_param1" and "spring_param2" result in a Map with "param1" and "param2" as keys. </p>
+<p>This class is not immutable to be able to efficiently remove property values that should be ignored for binding.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-request-utils/index.html">ServletRequestUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ServletRequestUtils</span></code>
+<p>Parameter extraction methods, for an approach distinct from data binding, in which parameters of specific types are required. 
+<p>This approach is very useful for simple submissions, where binding request parameters to a command object would be overkill.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-method-argument-not-valid-exception/index.html">MethodArgumentNotValidException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodArgumentNotValidException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span></code>
+<p>Exception to be thrown when validation on an argument annotated with <code>@Valid</code> fails.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-missing-path-variable-exception/index.html">MissingPathVariableException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MissingPathVariableException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequestBindingException</span></code>
+<p>ServletRequestBindingException subclass that indicates that a path variable expected in the method parameters of an <code>@RequestMapping</code> method is not present among the URI variables extracted from the URL. Typically that means the URI template does not match the path variable name declared on the method parameter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-missing-servlet-request-parameter-exception/index.html">MissingServletRequestParameterException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MissingServletRequestParameterException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequestBindingException</span></code>
+<p>ServletRequestBindingException subclass that indicates a missing parameter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-unsatisfied-servlet-request-parameter-exception/index.html">UnsatisfiedServletRequestParameterException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnsatisfiedServletRequestParameterException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequestBindingException</span></code>
+<p>ServletRequestBindingException subclass that indicates an unsatisfied parameter condition, as typically expressed using an <code>@RequestMapping</code> annotation at the <code>@Controller</code> type level.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SQLExceptionTranslator.translate - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support</a>&nbsp;/&nbsp;<a href="index.html">SQLExceptionTranslator</a>&nbsp;/&nbsp;<a href=".">translate</a><br/>
+<br/>
+<h1>translate</h1>
+<a name="org.springframework.jdbc.support.SQLExceptionTranslator$translate(kotlin.String, kotlin.String, java.sql.SQLException)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">translate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.SQLExceptionTranslator$translate(kotlin.String, kotlin.String, java.sql.SQLException)/task">task</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.jdbc.support.SQLExceptionTranslator$translate(kotlin.String, kotlin.String, java.sql.SQLException)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.SQLExceptionTranslator$translate(kotlin.String, kotlin.String, java.sql.SQLException)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">SQLException</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataAccessException</span></code>
+<p>Translate the given SQLException into a generic DataAccessException. 
+<p>The returned DataAccessException is supposed to contain the original <code>SQLException</code> as root cause. However, client code may not generally rely on this due to DataAccessExceptions possibly being caused by other resource APIs as well. That said, a <code>getRootCause() instanceof SQLException</code> check (and subsequent cast) is considered reliable when expecting JDBC-based access to have happened.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="task"></a>
+<code>task</code> - readable text describing the task being attempted</p>
+<p><a name="sql"></a>
+<code>sql</code> - SQL query or update that caused the problem (if known)</p>
+<p><a name="ex"></a>
+<code>ex</code> - the offending <code>SQLException</code></p>
+<p><strong>Return</strong><br/>
+the DataAccessException wrapping the <code>SQLException</code>, or <code>null</code> if no translation could be applied (in a custom translator; the default translators always throw an org.springframework.jdbc.UncategorizedSQLException in such a case)</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.dao.DataAccessException#getRootCause()</a></p>
+</BODY>
+</HTML>

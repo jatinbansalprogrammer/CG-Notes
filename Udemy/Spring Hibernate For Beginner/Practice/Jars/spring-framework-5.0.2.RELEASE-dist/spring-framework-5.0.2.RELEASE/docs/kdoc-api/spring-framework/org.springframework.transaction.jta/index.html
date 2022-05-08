@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.transaction.jta - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.transaction.jta</a><br/>
+<br/>
+<h2>Package org.springframework.transaction.jta</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jta-after-completion-synchronization/index.html">JtaAfterCompletionSynchronization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JtaAfterCompletionSynchronization</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Synchronization</span></code>
+<p>Adapter for a JTA Synchronization, invoking the <code>afterCommit</code> / <code>afterCompletion</code> callbacks of Spring TransactionSynchronization objects callbacks after the outer JTA transaction has completed. Applied when participating in an existing (non-Spring) JTA transaction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-managed-transaction-adapter/index.html">ManagedTransactionAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ManagedTransactionAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Transaction</span></code>
+<p>Adapter for a managed JTA Transaction handle, taking a JTA javax.transaction.TransactionManager reference and creating a JTA javax.transaction.Transaction handle for it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-transaction-factory/index.html">SimpleTransactionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleTransactionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionFactory</span></code>
+<p>Default implementation of the TransactionFactory strategy interface, simply wrapping a standard JTA javax.transaction.TransactionManager. 
+<p>Does not support transaction names; simply ignores any specified name.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-jta-synchronization-adapter/index.html">SpringJtaSynchronizationAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringJtaSynchronizationAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Synchronization</span></code>
+<p>Adapter that implements the JTA javax.transaction.Synchronization interface delegating to an underlying Spring org.springframework.transaction.support.TransactionSynchronization. 
+<p>Useful for synchronizing Spring resource management code with plain JTA / EJB CMT transactions, despite the original code being built for Spring transaction synchronization.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-user-transaction-adapter/index.html">UserTransactionAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UserTransactionAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UserTransaction</span></code>
+<p>Adapter for a JTA UserTransaction handle, taking a JTA javax.transaction.TransactionManager reference and creating a JTA javax.transaction.UserTransaction handle for it. 
+<p>The JTA UserTransaction interface is an exact subset of the JTA TransactionManager interface. Unfortunately, it does not serve as super-interface of TransactionManager, though, which requires an adapter such as this class to be used when intending to talk to a TransactionManager handle through the UserTransaction interface. </p>
+<p>Used internally by Spring's JtaTransactionManager for certain scenarios. Not intended for direct use in application code.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-logic-jta-transaction-manager/index.html">WebLogicJtaTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebLogicJtaTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JtaTransactionManager</span></code>
+<p>Special JtaTransactionManager variant for BEA WebLogic (9.0 and higher). Supports the full power of Spring's transaction definitions on WebLogic's transaction coordinator, <em>beyond standard JTA</em>: transaction names, per-transaction isolation levels, and proper resuming of transactions in all cases. 
+<p>Uses WebLogic's special <code>begin(name)</code> method to start a JTA transaction, in order to make <strong>Spring-driven transactions visible in WebLogic's transaction monitor</strong>. In case of Spring's declarative transactions, the exposed name will (by default) be the fully-qualified class name + "." + method name. </p>
+<p>Supports a <strong>per-transaction isolation level</strong> through WebLogic's corresponding JTA transaction property "ISOLATION LEVEL". This will apply the specified isolation level (e.g. ISOLATION_SERIALIZABLE) to all JDBC Connections that participate in the given transaction. </p>
+<p>Invokes WebLogic's special <code>forceResume</code> method if standard JTA resume failed, to <strong>also resume if the target transaction was marked rollback-only</strong>. If you're not relying on this feature of transaction suspension in the first place, Spring's standard JtaTransactionManager will behave properly too. </p>
+<p>By default, the JTA UserTransaction and TransactionManager handles are fetched directly from WebLogic's <code>TransactionHelper</code>. This can be overridden by specifying "userTransaction"/"userTransactionName" and "transactionManager"/"transactionManagerName", passing in existing handles or specifying corresponding JNDI locations to look up. </p>
+<p><strong>NOTE: This JtaTransactionManager is intended to refine specific transaction demarcation behavior on Spring's side. It will happily co-exist with independently configured WebLogic transaction strategies in your persistence provider, with no need to specifically connect those setups in any way.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-sphere-uow-transaction-manager/index.html">WebSphereUowTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSphereUowTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JtaTransactionManager</span><span class="symbol">, </span><a href="../org.springframework.transaction.support/-callback-preferring-platform-transaction-manager/index.html"><span class="identifier">CallbackPreferringPlatformTransactionManager</span></a></code>
+<p>WebSphere-specific PlatformTransactionManager implementation that delegates to a com.ibm.wsspi.uow.UOWManager instance, obtained from WebSphere's JNDI environment. This allows Spring to leverage the full power of the WebSphere transaction coordinator, including transaction suspension, in a manner that is perfectly compliant with officially supported WebSphere API. 
+<p>The CallbackPreferringPlatformTransactionManager interface implemented by this class indicates that callers should preferably pass in a TransactionCallback through the <code><a href="#">#execute</a></code> method, which will be handled through the callback-based WebSphere UOWManager API instead of through standard JTA API (UserTransaction / TransactionManager). This avoids the use of the non-public <code>javax.transaction.TransactionManager</code> API on WebSphere, staying within supported WebSphere API boundaries. </p>
+<p>This transaction manager implementation derives from Spring's standard JtaTransactionManager, inheriting the capability to support programmatic transaction demarcation via <code>getTransaction</code> / <code>commit</code> / <code>rollback</code> calls through a JTA UserTransaction handle, for callers that do not use the TransactionCallback-based <code><a href="#">#execute</a></code> method. However, transaction suspension is <em>not</em> supported in this <code>getTransaction</code> style (unless you explicitly specify a <code><a href="#">#setTransactionManager</a></code> reference, despite the official WebSphere recommendations). Use the <code><a href="#">#execute</a></code> style for any code that might require transaction suspension. </p>
+<p>This transaction manager is compatible with WebSphere 6.1.0.9 and above. The default JNDI location for the UOWManager is "java:comp/websphere/UOWManager". If the location happens to differ according to your WebSphere documentation, simply specify the actual location through this transaction manager's "uowManagerName" bean property. </p>
+<p><strong>NOTE: This JtaTransactionManager is intended to refine specific transaction demarcation behavior on Spring's side. It will happily co-exist with independently configured WebSphere transaction strategies in your persistence provider, with no need to specifically connect those setups in any way.</strong></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

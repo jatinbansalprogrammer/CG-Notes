@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>IfProfileValue - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.annotation</a>&nbsp;/&nbsp;<a href=".">IfProfileValue</a><br/>
+<br/>
+<h1>IfProfileValue</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="identifier">@Inherited</span> <span class="keyword">class </span><span class="identifier">IfProfileValue</span></code>
+<p>Test annotation to indicate whether a test is enabled or disabled for a specific testing profile. 
+<p>In the context of this annotation, the term <em>profile</em> refers to a Java system property by default; however, the semantics can be changed by implementing a custom ProfileValueSource. If the configured <code>ProfileValueSource</code> returns a matching <code><a href="#">#value</a></code> for the declared <code><a href="#">#name</a></code>, the test will be enabled. Otherwise, the test will be disabled and effectively <em>ignored</em>. </p>
+<p><code>@IfProfileValue</code> can be applied at the class level, the method level, or both. Class-level usage of <code>@IfProfileValue</code> takes precedence over method-level usage for any methods within that class or its subclasses. Specifically, a test is enabled if it is enabled both at the class level <em>and</em> at the method level; the absence of <code>@IfProfileValue</code> means the test is implicitly enabled. This is analogous to the semantics of JUnit's org.junit.Ignore annotation, except that the presence of <code>@Ignore</code> always disables a test. </p>
+Example When using SystemProfileValueSource as the <code>ProfileValueSource</code> implementation (which is configured by default), you can configure a test method to run only on Java VMs from Oracle as follows: <pre><code> @IfProfileValue(name = "java.vendor", value = "Oracle Corporation") public void testSomething() { // ... }</code></pre> 'OR' Semantics 
+<p>You can alternatively configure <code>@IfProfileValue</code> with <em>OR</em> semantics for multiple <code><a href="#">#values</a></code>. The following test will be enabled if a <code>ProfileValueSource</code> has been appropriately configured for the <code>"test-groups"</code> profile with a value of either <code>unit-tests</code> <em>or</em> <code>integration-tests</code>. This functionality is similar to TestNG's support for test <em>groups</em> and JUnit's experimental support for test <em>categories</em>. </p>
+<pre><code> @IfProfileValue(name = "test-groups", values = { "unit-tests", "integration-tests" }) public void testWhichRunsForUnitOrIntegrationTestGroups() { // ... }</code></pre> <code>@IfProfileValue</code> vs. <code>@Profile</code> 
+<p>Although the <code>@IfProfileValue</code> and org.springframework.context.annotation.Profile annotations both involve <em>profiles</em>, they are not directly related. <code>@Profile</code> involves bean definition profiles configured in the org.springframework.core.env.Environment; whereas, <code>@IfProfileValue</code> is used to enable or disable tests. </p>
+Meta-annotation Support 
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+ProfileValueSourceSystemProfileValueSourceProfileValueSourceConfigurationProfileValueUtilsorg.springframework.test.context.junit4.AbstractJUnit4SpringContextTestsorg.springframework.test.context.junit4.SpringJUnit4ClassRunnerorg.springframework.test.context.junit4.statements.ProfileValueCheckerorg.springframework.context.annotation.Profileorg.springframework.test.context.ActiveProfiles</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">IfProfileValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.annotation.IfProfileValue$<init>(kotlin.String, kotlin.String, kotlin.Array((kotlin.String)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.annotation.IfProfileValue$<init>(kotlin.String, kotlin.String, kotlin.Array((kotlin.String)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.annotation.IfProfileValue$<init>(kotlin.String, kotlin.String, kotlin.Array((kotlin.String)))/values">values</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Test annotation to indicate whether a test is enabled or disabled for a specific testing profile. 
+<p>In the context of this annotation, the term <em>profile</em> refers to a Java system property by default; however, the semantics can be changed by implementing a custom ProfileValueSource. If the configured <code>ProfileValueSource</code> returns a matching <code><a href="#">#value</a></code> for the declared <code><a href="#">#name</a></code>, the test will be enabled. Otherwise, the test will be disabled and effectively <em>ignored</em>. </p>
+<p><code>@IfProfileValue</code> can be applied at the class level, the method level, or both. Class-level usage of <code>@IfProfileValue</code> takes precedence over method-level usage for any methods within that class or its subclasses. Specifically, a test is enabled if it is enabled both at the class level <em>and</em> at the method level; the absence of <code>@IfProfileValue</code> means the test is implicitly enabled. This is analogous to the semantics of JUnit's org.junit.Ignore annotation, except that the presence of <code>@Ignore</code> always disables a test. </p>
+Example When using SystemProfileValueSource as the <code>ProfileValueSource</code> implementation (which is configured by default), you can configure a test method to run only on Java VMs from Oracle as follows: <pre><code> @IfProfileValue(name = "java.vendor", value = "Oracle Corporation") public void testSomething() { // ... }</code></pre> 'OR' Semantics 
+<p>You can alternatively configure <code>@IfProfileValue</code> with <em>OR</em> semantics for multiple <code><a href="#">#values</a></code>. The following test will be enabled if a <code>ProfileValueSource</code> has been appropriately configured for the <code>"test-groups"</code> profile with a value of either <code>unit-tests</code> <em>or</em> <code>integration-tests</code>. This functionality is similar to TestNG's support for test <em>groups</em> and JUnit's experimental support for test <em>categories</em>. </p>
+<pre><code> @IfProfileValue(name = "test-groups", values = { "unit-tests", "integration-tests" }) public void testWhichRunsForUnitOrIntegrationTestGroups() { // ... }</code></pre> <code>@IfProfileValue</code> vs. <code>@Profile</code> 
+<p>Although the <code>@IfProfileValue</code> and org.springframework.context.annotation.Profile annotations both involve <em>profiles</em>, they are not directly related. <code>@Profile</code> involves bean definition profiles configured in the org.springframework.core.env.Environment; whereas, <code>@IfProfileValue</code> is used to enable or disable tests. </p>
+Meta-annotation Support 
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="name.html">name</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">name</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The <code>name</code> of the <em>profile value</em> against which to test.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>A single, permissible <code>value</code> of the <em>profile value</em> for the given <code><a href="#">#name</a></code>. 
+<p>Note: Assigning values to both <code><a href="#">#value</a></code> and <code><a href="#">#values</a></code> will lead to a configuration conflict.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="values.html">values</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">values</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>A list of all permissible <code>values</code> of the <em>profile value</em> for the given <code><a href="#">#name</a></code>. 
+<p>Note: Assigning values to both <code><a href="#">#value</a></code> and <code><a href="#">#values</a></code> will lead to a configuration conflict.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

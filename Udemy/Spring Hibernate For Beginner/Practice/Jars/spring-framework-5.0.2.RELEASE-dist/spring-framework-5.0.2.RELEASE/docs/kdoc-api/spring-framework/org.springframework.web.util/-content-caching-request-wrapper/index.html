@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ContentCachingRequestWrapper - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.util</a>&nbsp;/&nbsp;<a href=".">ContentCachingRequestWrapper</a><br/>
+<br/>
+<h1>ContentCachingRequestWrapper</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentCachingRequestWrapper</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequestWrapper</span></code>
+<p>javax.servlet.http.HttpServletRequest wrapper that caches all content read from the <a href="get-input-stream.html">input stream</a> and <a href="get-reader.html">reader</a>, and allows this content to be retrieved via a <code><a href="get-content-as-byte-array.html">byte array</a></code>. 
+<p>Used e.g. by org.springframework.web.filter.AbstractRequestLoggingFilter. Note: As of Spring Framework 5.0, this wrapper is built on the Servlet 3.1 API.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Since</strong><br/>
+4.1.3</p>
+<p><strong>See Also</strong><br/>
+ContentCachingResponseWrapper</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ContentCachingRequestWrapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.ContentCachingRequestWrapper$<init>(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ContentCachingRequestWrapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.ContentCachingRequestWrapper$<init>(javax.servlet.http.HttpServletRequest, kotlin.Int)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.util.ContentCachingRequestWrapper$<init>(javax.servlet.http.HttpServletRequest, kotlin.Int)/contentCacheLimit">contentCacheLimit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new ContentCachingRequestWrapper for the given servlet request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-character-encoding.html">getCharacterEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCharacterEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-content-as-byte-array.html">getContentAsByteArray</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContentAsByteArray</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a></code>
+<p>Return the cached request content as a byte array. 
+<p>The returned array will never be larger than the content cache limit.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-input-stream.html">getInputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInputStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletInputStream</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-parameter.html">getParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.ContentCachingRequestWrapper$getParameter(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-parameter-map.html">getParameterMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParameterMap</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-parameter-names.html">getParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParameterNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Enumeration</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-parameter-values.html">getParameterValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParameterValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.ContentCachingRequestWrapper$getParameterValues(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-reader.html">getReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getReader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BufferedReader</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ScheduledTimerListener - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.commonj</a>&nbsp;/&nbsp;<a href=".">ScheduledTimerListener</a><br/>
+<br/>
+<h1>ScheduledTimerListener</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledTimerListener</span></code>
+<p>JavaBean that describes a scheduled TimerListener, consisting of the TimerListener itself (or a Runnable to create a TimerListener for) and a delay plus period. Period needs to be specified; there is no point in a default for it. 
+<p>The CommonJ TimerManager does not offer more sophisticated scheduling options such as cron expressions. Consider using Quartz for such advanced needs. </p>
+<p>Note that the TimerManager uses a TimerListener instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+commonj.timers.TimerListener<a href="#">commonj.timers.TimerManager#schedule(commonj.timers.TimerListener, long, long)</a><a href="#">commonj.timers.TimerManager#scheduleAtFixedRate(commonj.timers.TimerListener, long, long)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ScheduledTimerListener</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new ScheduledTimerListener, to be populated via bean properties.</p>
+<code><span class="identifier">ScheduledTimerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(commonj.timers.TimerListener)/timerListener">timerListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimerListener</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ScheduledTimerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(java.lang.Runnable)/timerTask">timerTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span></code>
+<p>Create a new ScheduledTimerListener, with default one-time execution without delay.</p>
+<code><span class="identifier">ScheduledTimerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(commonj.timers.TimerListener, kotlin.Long)/timerListener">timerListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimerListener</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(commonj.timers.TimerListener, kotlin.Long)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ScheduledTimerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(java.lang.Runnable, kotlin.Long)/timerTask">timerTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(java.lang.Runnable, kotlin.Long)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span></code>
+<p>Create a new ScheduledTimerListener, with default one-time execution with the given delay.</p>
+<code><span class="identifier">ScheduledTimerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(commonj.timers.TimerListener, kotlin.Long, kotlin.Long, kotlin.Boolean)/timerListener">timerListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimerListener</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(commonj.timers.TimerListener, kotlin.Long, kotlin.Long, kotlin.Boolean)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(commonj.timers.TimerListener, kotlin.Long, kotlin.Long, kotlin.Boolean)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(commonj.timers.TimerListener, kotlin.Long, kotlin.Long, kotlin.Boolean)/fixedRate">fixedRate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">ScheduledTimerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/timerTask">timerTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$<init>(java.lang.Runnable, kotlin.Long, kotlin.Long, kotlin.Boolean)/fixedRate">fixedRate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new ScheduledTimerListener.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-delay.html">getDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDelay</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the delay before starting the job for the first time.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-period.html">getPeriod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPeriod</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the period between repeated task executions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-timer-listener.html">getTimerListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimerListener</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TimerListener</span></code>
+<p>Return the TimerListener to schedule.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-fixed-rate.html">isFixedRate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFixedRate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to schedule as fixed-rate execution.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-one-time-task.html">isOneTimeTask</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isOneTimeTask</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Is this task only ever going to execute once?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-delay.html">setDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$setDelay(kotlin.Long)/delay">delay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the delay before starting the task for the first time, in milliseconds. Default is 0, immediately starting the task after successful scheduling. 
+<p>If the "firstTime" property is specified, this property will be ignored. Specify one or the other, not both.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fixed-rate.html">setFixedRate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFixedRate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$setFixedRate(kotlin.Boolean)/fixedRate">fixedRate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to schedule as fixed-rate execution, rather than fixed-delay execution. Default is "false", i.e. fixed delay. 
+<p>See TimerManager javadoc for details on those execution modes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-period.html">setPeriod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPeriod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$setPeriod(kotlin.Long)/period">period</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the period between repeated task executions, in milliseconds. 
+<p>Default is -1, leading to one-time execution. In case of zero or a positive value, the task will be executed repeatedly, with the given interval inbetween executions. </p>
+<p>Note that the semantics of the period value vary between fixed-rate and fixed-delay execution. </p>
+<p><strong>Note:</strong> A period of 0 (for example as fixed delay) <em>is</em> supported, because the CommonJ specification defines this as a legal value. Hence a value of 0 will result in immediate re-execution after a job has finished (not in one-time execution like with <code>java.util.Timer</code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-runnable.html">setRunnable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRunnable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$setRunnable(java.lang.Runnable)/timerTask">timerTask</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Runnable to schedule as TimerListener.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-timer-listener.html">setTimerListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.ScheduledTimerListener$setTimerListener(commonj.timers.TimerListener)/timerListener">timerListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimerListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the TimerListener to schedule.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

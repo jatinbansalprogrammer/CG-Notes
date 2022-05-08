@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingFilterProxy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href=".">DelegatingFilterProxy</a><br/>
+<br/>
+<h1>DelegatingFilterProxy</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingFilterProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericFilterBean</span></code>
+<p>Proxy for a standard Servlet Filter, delegating to a Spring-managed bean that implements the Filter interface. Supports a "targetBeanName" filter init-param in <code>web.xml</code>, specifying the name of the target bean in the Spring application context. 
+<p><code>web.xml</code> will usually contain a <code>DelegatingFilterProxy</code> definition, with the specified <code>filter-name</code> corresponding to a bean name in Spring's root application context. All calls to the filter proxy will then be delegated to that bean in the Spring context, which is required to implement the standard Servlet Filter interface. </p>
+<p>This approach is particularly useful for Filter implementation with complex setup needs, allowing to apply the full Spring bean definition machinery to Filter instances. Alternatively, consider standard Filter setup in combination with looking up service beans from the Spring root application context. </p>
+<p><strong>NOTE:</strong> The lifecycle methods defined by the Servlet Filter interface will by default <em>not</em> be delegated to the target bean, relying on the Spring application context to manage the lifecycle of that bean. Specifying the "targetFilterLifecycle" filter init-param as "true" will enforce invocation of the <code>Filter.init</code> and <code>Filter.destroy</code> lifecycle methods on the target bean, letting the servlet container manage the filter lifecycle. </p>
+<p>As of Spring 3.1, <code>DelegatingFilterProxy</code> has been updated to optionally accept constructor parameters when using Servlet 3.0's instance-based filter registration methods, usually in conjunction with Spring 3.1's org.springframework.web.WebApplicationInitializer SPI. These constructors allow for providing the delegate Filter bean directly, or providing the application context and bean name to fetch, avoiding the need to look up the application context from the ServletContext. </p>
+<p>This class was originally inspired by Spring Security's <code>FilterToBeanProxy</code> class, written by Ben Alex.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setTargetBeanName</a><a href="set-target-filter-lifecycle.html">#setTargetFilterLifecycle</a><a href="#">javax.servlet.Filter#doFilter</a><a href="#">javax.servlet.Filter#init</a><a href="#">javax.servlet.Filter#destroy</a><a href="#">#DelegatingFilterProxy(Filter)</a><a href="#">#DelegatingFilterProxy(String)</a><a href="#">#DelegatingFilterProxy(String, WebApplicationContext)</a><a href="#">javax.servlet.ServletContext#addFilter(String, Filter)</a>org.springframework.web.WebApplicationInitializer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DelegatingFilterProxy</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>DelegatingFilterProxy</code>. For traditional (pre-Servlet 3.0) use in <code>web.xml</code>.</p>
+<code><span class="identifier">DelegatingFilterProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$<init>(javax.servlet.Filter)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">Filter</span><span class="symbol">)</span></code>
+<p>Create a new <code>DelegatingFilterProxy</code> with the given Filter delegate. Bypasses entirely the need for interacting with a Spring application context, specifying the <a href="#">target bean name</a>, etc. 
+<p>For use in Servlet 3.0+ environments where instance-based registration of filters is supported.</p>
+</p>
+<code><span class="identifier">DelegatingFilterProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$<init>(kotlin.String)/targetBeanName">targetBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>DelegatingFilterProxy</code> that will retrieve the named target bean from the Spring <code>WebApplicationContext</code> found in the <code>ServletContext</code> (either the 'root' application context or the context named by <code><a href="#">#setContextAttribute</a></code>). 
+<p>For use in Servlet 3.0+ environments where instance-based registration of filters is supported. </p>
+<p>The target bean must implement the standard Servlet Filter.</p>
+</p>
+<code><span class="identifier">DelegatingFilterProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$<init>(kotlin.String, org.springframework.web.context.WebApplicationContext)/targetBeanName">targetBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$<init>(kotlin.String, org.springframework.web.context.WebApplicationContext)/wac">wac</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationContext</span><span class="symbol">)</span></code>
+<p>Create a new <code>DelegatingFilterProxy</code> that will retrieve the named target bean from the given Spring <code>WebApplicationContext</code>. 
+<p>For use in Servlet 3.0+ environments where instance-based registration of filters is supported. </p>
+<p>The target bean must implement the standard Servlet Filter interface. </p>
+<p>The given <code>WebApplicationContext</code> may or may not be refreshed when passed in. If it has not, and if the context implements ConfigurableApplicationContext, a <code><a href="#">refresh()</a></code> will be attempted before retrieving the named target bean. </p>
+<p>This proxy's <code>Environment</code> will be inherited from the given <code>WebApplicationContext</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="do-filter.html">doFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)/filterChain">filterChain</span><span class="symbol">:</span>&nbsp;<span class="identifier">FilterChain</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-context-attribute.html">getContextAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContextAttribute</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the name of the ServletContext attribute which should be used to retrieve the WebApplicationContext from which to load the delegate Filter bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-context-attribute.html">setContextAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContextAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$setContextAttribute(kotlin.String)/contextAttribute">contextAttribute</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the ServletContext attribute which should be used to retrieve the WebApplicationContext from which to load the delegate Filter bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-bean-name.html">setTargetBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$setTargetBeanName(kotlin.String)/targetBeanName">targetBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the target bean in the Spring application context. The target bean must implement the standard Servlet Filter interface. 
+<p>By default, the <code>filter-name</code> as specified for the DelegatingFilterProxy in <code>web.xml</code> will be used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-filter-lifecycle.html">setTargetFilterLifecycle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetFilterLifecycle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.DelegatingFilterProxy$setTargetFilterLifecycle(kotlin.Boolean)/targetFilterLifecycle">targetFilterLifecycle</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to invoke the <code>Filter.init</code> and <code>Filter.destroy</code> lifecycle methods on the target bean. 
+<p>Default is "false"; target beans usually rely on the Spring application context for managing their lifecycle. Setting this flag to "true" means that the servlet container will control the lifecycle of the target Filter, with this proxy delegating the corresponding calls.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

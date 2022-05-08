@@ -1,0 +1,360 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.factory.config - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.factory.config</a><br/>
+<br/>
+<h2>Package org.springframework.beans.factory.config</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-definition-visitor/index.html">BeanDefinitionVisitor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanDefinitionVisitor</span></code>
+<p>Visitor class for traversing BeanDefinition objects, in particular the property values and constructor argument values contained in them, resolving bean metadata values. 
+<p>Used by PropertyPlaceholderConfigurer to parse all String values contained in a BeanDefinition, resolving any placeholders found.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-expression-resolver/index.html">BeanExpressionResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">BeanExpressionResolver</span></code>
+<p>Strategy interface for resolving a value through evaluating it as an expression, if applicable. 
+<p>A raw org.springframework.beans.factory.BeanFactory does not contain a default implementation of this strategy. However, org.springframework.context.ApplicationContext implementations will provide expression support out of the box.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-editor-configurer/index.html">CustomEditorConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomEditorConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryPostProcessor</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>BeanFactoryPostProcessor implementation that allows for convenient registration of custom PropertyEditor. 
+<p>In case you want to register PropertyEditor instances, the recommended usage as of Spring 2.0 is to use custom PropertyEditorRegistrar implementations that in turn register any desired editor instances on a given org.springframework.beans.PropertyEditorRegistry. Each PropertyEditorRegistrar can register any number of custom editors. </p>
+<pre><code> &lt;bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="propertyEditorRegistrars"&gt; &lt;list&gt; &lt;bean class="mypackage.MyCustomDateEditorRegistrar"/&gt; &lt;bean class="mypackage.MyObjectEditorRegistrar"/&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p> It's perfectly fine to register PropertyEditor <em>classes</em> via the <code>customEditors</code> property. Spring will create fresh instances of them for each editing attempt then: </p>
+<pre><code> &lt;bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="customEditors"&gt; &lt;map&gt; &lt;entry key="java.util.Date" value="mypackage.MyCustomDateEditor"/&gt; &lt;entry key="mypackage.MyObject" value="mypackage.MyObjectEditor"/&gt; &lt;/map&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p> Note, that you shouldn't register PropertyEditor bean instances via the <code>customEditors</code> property as PropertyEditors are stateful and the instances will then have to be synchronized for every editing attempt. In case you need control over the instantiation process of PropertyEditors, use a PropertyEditorRegistrar to register them. </p>
+<p> Also supports "java.lang.String[]"-style array class names and primitive class names (e.g. "boolean"). Delegates to ClassUtils for actual class name resolution. </p>
+<p><strong>NOTE:</strong> Custom property editors registered with this configurer do <em>not</em> apply to data binding. Custom editors for data binding need to be registered on the org.springframework.validation.DataBinder: Use a common base class or delegate to common PropertyEditorRegistrar implementations to reuse editor registration there.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-scope-configurer/index.html">CustomScopeConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomScopeConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Simple BeanFactoryPostProcessor implementation that registers custom Scope with the containing ConfigurableBeanFactory. 
+<p>Will register all of the supplied <code><a href="#">scopes</a></code> with the ConfigurableListableBeanFactory that is passed to the <code><a href="-custom-scope-configurer/post-process-bean-factory.html">#postProcessBeanFactory(ConfigurableListableBeanFactory)</a></code> method. </p>
+<p>This class allows for <em>declarative</em> registration of custom scopes. Alternatively, consider implementing a custom BeanFactoryPostProcessor that calls <code><a href="#">ConfigurableBeanFactory#registerScope</a></code> programmatically.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-deprecated-bean-warner/index.html">DeprecatedBeanWarner</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DeprecatedBeanWarner</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryPostProcessor</span></code>
+<p>Bean factory post processor that logs a warning for Deprecated beans.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-destruction-aware-bean-post-processor/index.html">DestructionAwareBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">DestructionAwareBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanPostProcessor</span></code>
+<p>Subinterface of BeanPostProcessor that adds a before-destruction callback. 
+<p>The typical usage will be to invoke custom destruction callbacks on specific bean types, matching corresponding initialization callbacks.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-embedded-value-resolver/index.html">EmbeddedValueResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedValueResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StringValueResolver</span></code>
+<p>StringValueResolver adapter for resolving placeholders and expressions against a ConfigurableBeanFactory. 
+<p>Note that this adapter resolves expressions as well, in contrast to the <code><a href="#">ConfigurableBeanFactory#resolveEmbeddedValue</a></code> method. The BeanExpressionContext used is for the plain bean factory, with no scope specified for any contextual objects to access.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-field-retrieving-factory-bean/index.html">FieldRetrievingFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FieldRetrievingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>FactoryBean which retrieves a static or non-static field value. 
+<p>Typically used for retrieving public static final constants. Usage example: </p>
+<pre><code>// standard definition for exposing a static field, specifying the "staticField" property &lt;bean id="myField" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"&gt; &lt;property name="staticField" value="java.sql.Connection.TRANSACTION_SERIALIZABLE"/&gt; &lt;/bean&gt; // convenience version that specifies a static field pattern as bean name &lt;bean id="java.sql.Connection.TRANSACTION_SERIALIZABLE" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean"/&gt;</code></pre>  
+<p>If you are using Spring 2.0, you can also use the following style of configuration for public static fields. </p>
+<pre><code>&lt;util:constant static-field="java.sql.Connection.TRANSACTION_SERIALIZABLE"/&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-instantiation-aware-bean-post-processor-adapter/index.html">InstantiationAwareBeanPostProcessorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">InstantiationAwareBeanPostProcessorAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SmartInstantiationAwareBeanPostProcessor</span></code>
+<p>Adapter that implements all methods on SmartInstantiationAwareBeanPostProcessor as no-ops, which will not change normal processing of each bean instantiated by the container. Subclasses may override merely those methods that they are actually interested in. 
+<p>Note that this base class is only recommendable if you actually require InstantiationAwareBeanPostProcessor functionality. If all you need is plain BeanPostProcessor functionality, prefer a straight implementation of that (simpler) interface.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-list-factory-bean/index.html">ListFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ListFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Simple factory for shared List instances. Allows for central setup of Lists via the "list" element in XML bean definitions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-map-factory-bean/index.html">MapFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MapFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Simple factory for shared Map instances. Allows for central setup of Maps via the "map" element in XML bean definitions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-invoking-bean/index.html">MethodInvokingBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvokingBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.support/-argument-converting-method-invoker/index.html"><span class="identifier">ArgumentConvertingMethodInvoker</span></a><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Simple method invoker bean: just invoking a target method, not expecting a result to expose to the container (in contrast to MethodInvokingFactoryBean). 
+<p>This invoker supports any kind of target method. A static method may be specified by setting the <code><a href="#">targetMethod</a></code> property to a String representing the static method name, with <code><a href="#">targetClass</a></code> specifying the Class that the static method is defined on. Alternatively, a target instance method may be specified, by setting the <code><a href="#">targetObject</a></code> property as the target object, and the <code><a href="#">targetMethod</a></code> property as the name of the method to call on that target object. Arguments for the method invocation may be specified by setting the <code><a href="#">arguments</a></code> property. </p>
+<p>This class depends on <code><a href="-method-invoking-bean/after-properties-set.html">#afterPropertiesSet()</a></code> being called once all properties have been set, as per the InitializingBean contract. </p>
+<p>An example (in an XML based bean factory definition) of a bean definition which uses this class to call a static initialization method: </p>
+<pre><code> &lt;bean id="myObject" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="staticMethod" value="com.whatever.MyClass.init"/&gt; &lt;/bean&gt;</code></pre> 
+<p>An example of calling an instance method to start some server bean: </p>
+<pre><code> &lt;bean id="myStarter" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="targetObject" ref="myServer"/&gt; &lt;property name="targetMethod" value="start"/&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-invoking-factory-bean/index.html">MethodInvokingFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvokingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-method-invoking-bean/index.html"><span class="identifier">MethodInvokingBean</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>FactoryBean which returns a value which is the result of a static or instance method invocation. For most use cases it is better to just use the container's built-in factory method support for the same purpose, since that is smarter at converting arguments. This factory bean is still useful though when you need to call a method which doesn't return any value (for example, a static class method to force some sort of initialization to happen). This use case is not supported by factory methods, since a return value is needed to obtain the bean instance. 
+<p>Note that as it is expected to be used mostly for accessing factory methods, this factory by default operates in a <strong>singleton</strong> fashion. The first request to <code><a href="-method-invoking-factory-bean/get-object.html">#getObject</a></code> by the owning bean factory will cause a method invocation, whose return value will be cached for subsequent requests. An internal <code><a href="-method-invoking-factory-bean/set-singleton.html">singleton</a></code> property may be set to "false", to cause this factory to invoke the target method each time it is asked for an object. </p>
+<p><strong>NOTE: If your target method does not produce a result to expose, consider MethodInvokingBean instead, which avoids the type determination and lifecycle limitations that this MethodInvokingFactoryBean comes with.</strong> </p>
+<p>This invoker supports any kind of target method. A static method may be specified by setting the <code><a href="#">targetMethod</a></code> property to a String representing the static method name, with <code><a href="#">targetClass</a></code> specifying the Class that the static method is defined on. Alternatively, a target instance method may be specified, by setting the <code><a href="#">targetObject</a></code> property as the target object, and the <code><a href="#">targetMethod</a></code> property as the name of the method to call on that target object. Arguments for the method invocation may be specified by setting the <code><a href="#">arguments</a></code> property. </p>
+<p>This class depends on <code><a href="-method-invoking-factory-bean/after-properties-set.html">#afterPropertiesSet()</a></code> being called once all properties have been set, as per the InitializingBean contract. </p>
+<p>An example (in an XML based bean factory definition) of a bean definition which uses this class to call a static factory method: </p>
+<pre><code> &lt;bean id="myObject" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"&gt; &lt;property name="staticMethod" value="com.whatever.MyClassFactory.getInstance"/&gt; &lt;/bean&gt;</code></pre> 
+<p>An example of calling a static method then an instance method to get at a Java system property. Somewhat verbose, but it works. </p>
+<pre><code> &lt;bean id="sysProps" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"&gt; &lt;property name="targetClass" value="java.lang.System"/&gt; &lt;property name="targetMethod" value="getProperties"/&gt; &lt;/bean&gt; &lt;bean id="javaVersion" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"&gt; &lt;property name="targetObject" ref="sysProps"/&gt; &lt;property name="targetMethod" value="getProperty"/&gt; &lt;property name="arguments" value="java.version"/&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-object-factory-creating-factory-bean/index.html">ObjectFactoryCreatingFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ObjectFactoryCreatingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ObjectFactory</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>A org.springframework.beans.factory.FactoryBean implementation that returns a value which is an org.springframework.beans.factory.ObjectFactory that in turn returns a bean sourced from a org.springframework.beans.factory.BeanFactory. 
+<p>As such, this may be used to avoid having a client object directly calling <code><a href="#">org.springframework.beans.factory.BeanFactory#getBean(String)</a></code> to get a (typically prototype) bean from a org.springframework.beans.factory.BeanFactory, which would be a violation of the inversion of control principle. Instead, with the use of this class, the client object can be fed an org.springframework.beans.factory.ObjectFactory instance as a property which directly returns only the one target bean (again, which is typically a prototype bean). </p>
+<p>A sample config in an XML-based org.springframework.beans.factory.BeanFactory might look as follows: </p>
+<pre><code>&lt;beans&gt; &lt;!-- Prototype bean since we have state --&gt; &lt;bean id="myService" class="a.b.c.MyService" scope="prototype"/&gt; &lt;bean id="myServiceFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean"&gt; &lt;property name="targetBeanName"&gt;&lt;idref local="myService"/&gt;&lt;/property&gt; &lt;/bean&gt; &lt;bean id="clientBean" class="a.b.c.MyClientBean"&gt; &lt;property name="myServiceFactory" ref="myServiceFactory"/&gt; &lt;/bean&gt; &lt;/beans&gt;</code></pre> 
+<p>The attendant <code>MyClientBean</code> class implementation might look something like this: </p>
+<pre><code>package a.b.c; import org.springframework.beans.factory.ObjectFactory; public class MyClientBean { private ObjectFactory&lt;MyService&gt; myServiceFactory; public void setMyServiceFactory(ObjectFactory&lt;MyService&gt; myServiceFactory) { this.myServiceFactory = myServiceFactory; } public void someBusinessMethod() { // get a 'fresh', brand new MyService instance MyService service = this.myServiceFactory.getObject(); // use the service object to effect the business logic... } }</code></pre> 
+<p>An alternate approach to this application of an object creational pattern would be to use the ServiceLocatorFactoryBean to source (prototype) beans. The ServiceLocatorFactoryBean approach has the advantage of the fact that one doesn't have to depend on any Spring-specific interface such as org.springframework.beans.factory.ObjectFactory, but has the disadvantage of requiring runtime class generation. Please do consult the ServiceLocatorFactoryBean for a fuller discussion of this issue.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-preferences-placeholder-configurer/index.html">PreferencesPlaceholderConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PreferencesPlaceholderConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-property-placeholder-configurer/index.html"><span class="identifier">PropertyPlaceholderConfigurer</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Subclass of PropertyPlaceholderConfigurer that supports JDK 1.4's Preferences API (<code>java.util.prefs</code>). 
+<p>Tries to resolve placeholders as keys first in the user preferences, then in the system preferences, then in this configurer's properties. Thus, behaves like PropertyPlaceholderConfigurer if no corresponding preferences defined. </p>
+<p>Supports custom paths for the system and user preferences trees. Also supports custom paths specified in placeholders ("myPath/myPlaceholderKey"). Uses the respective root node if not specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-properties-factory-bean/index.html">PropertiesFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertiesFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertiesLoaderSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Properties</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Allows for making a properties file from a classpath location available as Properties instance in a bean factory. Can be used to populate any bean property of type Properties via a bean reference. 
+<p>Supports loading from a properties file and/or setting local properties on this FactoryBean. The created Properties instance will be merged from loaded and local values. If neither a location nor local properties are set, an exception will be thrown on initialization. </p>
+<p>Can create a singleton or a new object on each request. Default is a singleton.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-override-configurer/index.html">PropertyOverrideConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyOverrideConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyResourceConfigurer</span></code>
+<p>Property resource configurer that overrides bean property values in an application context definition. It <em>pushes</em> values from a properties file into bean definitions. 
+<p>Configuration lines are expected to be of the following form: </p>
+<pre><code>beanName.property=value</code></pre> Example properties file: <pre><code>dataSource.driverClassName=com.mysql.jdbc.Driver dataSource.url=jdbc:mysql:mydb</code></pre> In contrast to PropertyPlaceholderConfigurer, the original definition can have default values or no values at all for such bean properties. If an overriding properties file does not have an entry for a certain bean property, the default context definition is used. 
+<p>Note that the context definition <em>is not</em> aware of being overridden; so this is not immediately obvious when looking at the XML definition file. Furthermore, note that specified override values are always <em>literal</em> values; they are not translated into bean references. This also applies when the original value in the XML bean definition specifies a bean reference. </p>
+<p>In case of multiple PropertyOverrideConfigurers that define different values for the same bean property, the <em>last</em> one will win (due to the overriding mechanism). </p>
+<p>Property values can be converted after reading them in, through overriding the <code>convertPropertyValue</code> method. For example, encrypted values can be detected and decrypted accordingly before processing them.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-path-factory-bean/index.html">PropertyPathFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyPathFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>FactoryBean that evaluates a property path on a given target object. 
+<p>The target object can be specified directly or via a bean name. </p>
+<p>Usage examples: </p>
+<pre><code>&lt;!-- target bean to be referenced by name --&gt; &lt;bean id="tb" class="org.springframework.beans.TestBean" singleton="false"&gt; &lt;property name="age" value="10"/&gt; &lt;property name="spouse"&gt; &lt;bean class="org.springframework.beans.TestBean"&gt; &lt;property name="age" value="11"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt; &lt;!-- will result in 12, which is the value of property 'age' of the inner bean --&gt; &lt;bean id="propertyPath1" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"&gt; &lt;property name="targetObject"&gt; &lt;bean class="org.springframework.beans.TestBean"&gt; &lt;property name="age" value="12"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;property name="propertyPath" value="age"/&gt; &lt;/bean&gt; &lt;!-- will result in 11, which is the value of property 'spouse.age' of bean 'tb' --&gt; &lt;bean id="propertyPath2" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"&gt; &lt;property name="targetBeanName" value="tb"/&gt; &lt;property name="propertyPath" value="spouse.age"/&gt; &lt;/bean&gt; &lt;!-- will result in 10, which is the value of property 'age' of bean 'tb' --&gt; &lt;bean id="tb.age" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"/&gt;</code></pre> 
+<p>If you are using Spring 2.0 and XML Schema support in your configuration file(s), you can also use the following style of configuration for property path access. (See also the appendix entitled 'XML Schema-based configuration' in the Spring reference manual for more examples.) </p>
+<pre><code> &lt;!-- will result in 10, which is the value of property 'age' of bean 'tb' --&gt; &lt;util:property-path id="name" path="testBean.age"/&gt;</code></pre> Thanks to Matthias Ernst for the suggestion and initial prototype!</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-placeholder-configurer/index.html">PropertyPlaceholderConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyPlaceholderConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PlaceholderConfigurerSupport</span></code>
+<p>PlaceholderConfigurerSupport subclass that resolves ${...} placeholders against <code><a href="#">local</a></code> <code><a href="#">properties</a></code> and/or system properties and environment variables. 
+<p>As of Spring 3.1, org.springframework.context.support.PropertySourcesPlaceholderConfigurer should be used preferentially over this implementation; it is more flexible through taking advantage of the org.springframework.core.env.Environment and org.springframework.core.env.PropertySource mechanisms also made available in Spring 3.1. </p>
+<p>PropertyPlaceholderConfigurer is still appropriate for use when: </p>
+<ul> <li>the <code>spring-context</code> module is not available (i.e., one is using Spring's <code>BeanFactory</code> API as opposed to <code>ApplicationContext</code>). </li>
+<li>existing configuration makes use of the <code><a href="-property-placeholder-configurer/set-system-properties-mode.html">"systemPropertiesMode"</a></code> and/or <code><a href="#">"systemPropertiesModeName"</a></code> properties. Users are encouraged to move away from using these settings, and rather configure property source search order through the container's <code>Environment</code>; however, exact preservation of functionality may be maintained by continuing to use <code>PropertyPlaceholderConfigurer</code>. </li>
+</ul>
+ 
+<p>Prior to Spring 3.1, the <code>&lt;context:property-placeholder/&gt;</code> namespace element registered an instance of <code>PropertyPlaceholderConfigurer</code>. It will still do so if using the <code>spring-context-3.0.xsd</code> definition of the namespace. That is, you can preserve registration of <code>PropertyPlaceholderConfigurer</code> through the namespace, even if using Spring 3.1; simply do not update your <code>xsi:schemaLocation</code> and continue using the 3.0 XSD.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-provider-creating-factory-bean/index.html">ProviderCreatingFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ProviderCreatingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Provider</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>A org.springframework.beans.factory.FactoryBean implementation that returns a value which is a JSR-330 javax.inject.Provider that in turn returns a bean sourced from a org.springframework.beans.factory.BeanFactory. 
+<p>This is basically a JSR-330 compliant variant of Spring's good old ObjectFactoryCreatingFactoryBean. It can be used for traditional external dependency injection configuration that targets a property or constructor argument of type <code>javax.inject.Provider</code>, as an alternative to JSR-330's <code>@Inject</code> annotation-driven approach.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-runtime-bean-name-reference/index.html">RuntimeBeanNameReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RuntimeBeanNameReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanReference</span></code>
+<p>Immutable placeholder class used for a property value object when it's a reference to another bean name in the factory, to be resolved at runtime.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-runtime-bean-reference/index.html">RuntimeBeanReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RuntimeBeanReference</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanReference</span></code>
+<p>Immutable placeholder class used for a property value object when it's a reference to another bean in the factory, to be resolved at runtime.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-service-locator-factory-bean/index.html">ServiceLocatorFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServiceLocatorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A FactoryBean implementation that takes an interface which must have one or more methods with the signatures <code>MyType xxx()</code> or <code>MyType xxx(MyIdType id)</code> (typically, <code>MyService getService()</code> or <code>MyService getService(String id)</code>) and creates a dynamic proxy which implements that interface, delegating to an underlying org.springframework.beans.factory.BeanFactory. 
+<p>Such service locators permit the decoupling of calling code from the org.springframework.beans.factory.BeanFactory API, by using an appropriate custom locator interface. They will typically be used for <strong>prototype beans</strong>, i.e. for factory methods that are supposed to return a new instance for each call. The client receives a reference to the service locator via setter or constructor injection, to be able to invoke the locator's factory methods on demand. <strong>For singleton beans, direct setter or constructor injection of the target bean is preferable.</strong> </p>
+<p>On invocation of the no-arg factory method, or the single-arg factory method with a String id of <code>null</code> or empty String, if exactly <strong>one</strong> bean in the factory matches the return type of the factory method, that bean is returned, otherwise a org.springframework.beans.factory.NoSuchBeanDefinitionException is thrown. </p>
+<p>On invocation of the single-arg factory method with a non-null (and non-empty) argument, the proxy returns the result of a <code><a href="#">org.springframework.beans.factory.BeanFactory#getBean(String)</a></code> call, using a stringified version of the passed-in id as bean name. </p>
+<p>A factory method argument will usually be a String, but can also be an int or a custom enumeration type, for example, stringified via <code>toString</code>. The resulting String can be used as bean name as-is, provided that corresponding beans are defined in the bean factory. Alternatively, <a href="-service-locator-factory-bean/set-service-mappings.html">a custom</a> between service IDs and bean names can be defined. </p>
+<p>By way of an example, consider the following service locator interface. Note that this interface is not dependent on any Spring APIs. </p>
+<pre><code>package a.b.c; public interface ServiceFactory { public MyService getService(); }</code></pre> 
+<p>A sample config in an XML-based org.springframework.beans.factory.BeanFactory might look as follows: </p>
+<pre><code>&lt;beans&gt; &lt;!-- Prototype bean since we have state --&gt; &lt;bean id="myService" class="a.b.c.MyService" singleton="false"/&gt; &lt;!-- will lookup the above 'myService' bean by *TYPE* --&gt; &lt;bean id="myServiceFactory" class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean"&gt; &lt;property name="serviceLocatorInterface" value="a.b.c.ServiceFactory"/&gt; &lt;/bean&gt; &lt;bean id="clientBean" class="a.b.c.MyClientBean"&gt; &lt;property name="myServiceFactory" ref="myServiceFactory"/&gt; &lt;/bean&gt; &lt;/beans&gt;</code></pre> 
+<p>The attendant <code>MyClientBean</code> class implementation might then look something like this: </p>
+<pre><code>package a.b.c; public class MyClientBean { private ServiceFactory myServiceFactory; // actual implementation provided by the Spring container public void setServiceFactory(ServiceFactory myServiceFactory) { this.myServiceFactory = myServiceFactory; } public void someBusinessMethod() { // get a 'fresh', brand new MyService instance MyService service = this.myServiceFactory.getService(); // use the service object to effect the business logic... } }</code></pre> 
+<p>By way of an example that looks up a bean <strong>by name</strong>, consider the following service locator interface. Again, note that this interface is not dependent on any Spring APIs. </p>
+<pre><code>package a.b.c; public interface ServiceFactory { public MyService getService (String serviceName); }</code></pre> 
+<p>A sample config in an XML-based org.springframework.beans.factory.BeanFactory might look as follows: </p>
+<pre><code>&lt;beans&gt; &lt;!-- Prototype beans since we have state (both extend MyService) --&gt; &lt;bean id="specialService" class="a.b.c.SpecialService" singleton="false"/&gt; &lt;bean id="anotherService" class="a.b.c.AnotherService" singleton="false"/&gt; &lt;bean id="myServiceFactory" class="org.springframework.beans.factory.config.ServiceLocatorFactoryBean"&gt; &lt;property name="serviceLocatorInterface" value="a.b.c.ServiceFactory"/&gt; &lt;/bean&gt; &lt;bean id="clientBean" class="a.b.c.MyClientBean"&gt; &lt;property name="myServiceFactory" ref="myServiceFactory"/&gt; &lt;/bean&gt; &lt;/beans&gt;</code></pre> 
+<p>The attendant <code>MyClientBean</code> class implementation might then look something like this: </p>
+<pre><code>package a.b.c; public class MyClientBean { private ServiceFactory myServiceFactory; // actual implementation provided by the Spring container public void setServiceFactory(ServiceFactory myServiceFactory) { this.myServiceFactory = myServiceFactory; } public void someBusinessMethod() { // get a 'fresh', brand new MyService instance MyService service = this.myServiceFactory.getService("specialService"); // use the service object to effect the business logic... } public void anotherBusinessMethod() { // get a 'fresh', brand new MyService instance MyService service = this.myServiceFactory.getService("anotherService"); // use the service object to effect the business logic... } }</code></pre> 
+<p>See ObjectFactoryCreatingFactoryBean for an alternate approach.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-set-factory-bean/index.html">SetFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SetFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Simple factory for shared Set instances. Allows for central setup of Sets via the "set" element in XML bean definitions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-typed-string-value/index.html">TypedStringValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypedStringValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanMetadataElement</span></code>
+<p>Holder for a typed String value. Can be added to bean definitions in order to explicitly specify a target type for a String value, for example for collection elements. 
+<p>This holder will just store the String value and the target type. The actual conversion will be performed by the bean factory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-yaml-map-factory-bean/index.html">YamlMapFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">YamlMapFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">YamlProcessor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Factory for a <code>Map</code> that reads from a YAML source, preserving the YAML-declared value types and their structure. 
+<p>YAML is a nice human-readable format for configuration, and it has some useful hierarchical properties. It's more or less a superset of JSON, so it has a lot of similar features. </p>
+<p>If multiple resources are provided the later ones will override entries in the earlier ones hierarchically; that is, all entries with the same nested key of type <code>Map</code> at any depth are merged. For example: </p>
+<pre><code> foo: bar: one: two three: four </code></pre> plus (later in the list) <pre><code> foo: bar: one: 2 five: six </code></pre> results in an effective input of <pre><code> foo: bar: one: 2 three: four five: six </code></pre> Note that the value of "foo" in the first document is not simply replaced with the value in the second, but its nested values are merged.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-yaml-properties-factory-bean/index.html">YamlPropertiesFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">YamlPropertiesFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">YamlProcessor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Properties</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Factory for java.util.Properties that reads from a YAML source, exposing a flat structure of String property values. 
+<p>YAML is a nice human-readable format for configuration, and it has some useful hierarchical properties. It's more or less a superset of JSON, so it has a lot of similar features. </p>
+<p><strong>Note: All exposed values are of type <code>String</code></strong> for access through the common <code><a href="#">Properties#getProperty</a></code> method (e.g. in configuration property resolution through <code><a href="#">PropertyResourceConfigurer#setProperties(Properties)</a></code>). If this is not desirable, use YamlMapFactoryBean instead. </p>
+<p>The Properties created by this factory have nested paths for hierarchical objects, so for instance this YAML </p>
+<pre><code> environments: dev: url: http://dev.bar.com name: Developer Setup prod: url: http://foo.bar.com name: My Cool App </code></pre> is transformed into these properties: <pre><code> environments.dev.url=http://dev.bar.com environments.dev.name=Developer Setup environments.prod.url=http://foo.bar.com environments.prod.name=My Cool App </code></pre> Lists are split as property keys with <code>[]</code> dereferencers, for example this YAML: <pre><code> servers: - dev.bar.com - foo.bar.com </code></pre> becomes properties like this: <pre><code> servers[0]=dev.bar.com servers[1]=foo.bar.com </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

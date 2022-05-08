@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.support.rowset - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.support.rowset</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.support.rowset</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-result-set-wrapping-sql-row-set/index.html">ResultSetWrappingSqlRowSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResultSetWrappingSqlRowSet</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlRowSet</span></code>
+<p>The default implementation of Spring's SqlRowSet interface, wrapping a java.sql.ResultSet, catching any SQLExceptions and translating them to a corresponding Spring InvalidResultSetAccessException. 
+<p>The passed-in ResultSet should already be disconnected if the SqlRowSet is supposed to be usable in a disconnected fashion. This means that you will usually pass in a <code>javax.sql.rowset.CachedRowSet</code>, which implements the ResultSet interface. </p>
+<p>Note: Since JDBC 4.0, it has been clarified that any methods using a String to identify the column should be using the column label. The column label is assigned using the ALIAS keyword in the SQL query string. When the query doesn't use an ALIAS, the default label is the column name. Most JDBC ResultSet implementations follow this new pattern but there are exceptions such as the <code>com.sun.rowset.CachedRowSetImpl</code> class which only uses the column name, ignoring any column labels. As of Spring 3.0.5, ResultSetWrappingSqlRowSet will translate column labels to the correct column index to provide better support for the <code>com.sun.rowset.CachedRowSetImpl</code> which is the default implementation used by org.springframework.jdbc.core.JdbcTemplate when working with RowSets. </p>
+<p>Note: This class implements the <code>java.io.Serializable</code> marker interface through the SqlRowSet interface, but is only actually serializable if the disconnected ResultSet/RowSet contained in it is serializable. Most CachedRowSet implementations are actually serializable, so this should usually work out.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-result-set-wrapping-sql-row-set-meta-data/index.html">ResultSetWrappingSqlRowSetMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResultSetWrappingSqlRowSetMetaData</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlRowSetMetaData</span></code>
+<p>The default implementation of Spring's SqlRowSetMetaData interface, wrapping a java.sql.ResultSetMetaData instance, catching any SQLExceptions and translating them to a corresponding Spring InvalidResultSetAccessException. 
+<p>Used by ResultSetWrappingSqlRowSet.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

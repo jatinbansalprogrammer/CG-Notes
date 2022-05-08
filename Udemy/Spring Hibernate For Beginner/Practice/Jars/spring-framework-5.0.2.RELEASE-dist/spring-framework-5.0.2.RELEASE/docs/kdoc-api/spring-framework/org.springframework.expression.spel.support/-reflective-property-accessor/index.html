@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReflectivePropertyAccessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.expression.spel.support</a>&nbsp;/&nbsp;<a href=".">ReflectivePropertyAccessor</a><br/>
+<br/>
+<h1>ReflectivePropertyAccessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectivePropertyAccessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyAccessor</span></code>
+<p>Simple PropertyAccessor that uses reflection to access properties for reading and writing. 
+<p>A property can be accessed through a public getter method (when being read) or a public setter method (when being written), and also as a public field.</p>
+</p>
+<p><strong>Author</strong><br/>
+Andy Clement</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ReflectivePropertyAccessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple PropertyAccessor that uses reflection to access properties for reading and writing. 
+<p>A property can be accessed through a public getter method (when being read) or a public setter method (when being written), and also as a public field.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="can-read.html">canRead</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canRead</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$canRead(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">EvaluationContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$canRead(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$canRead(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="can-write.html">canWrite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canWrite</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$canWrite(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">EvaluationContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$canWrite(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$canWrite(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-optimal-accessor.html">createOptimalAccessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createOptimalAccessor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$createOptimalAccessor(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/evalContext">evalContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">EvaluationContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$createOptimalAccessor(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$createOptimalAccessor(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyAccessor</span></code>
+<p>Attempt to create an optimized property accessor tailored for a property of a particular name on a particular class. The general ReflectivePropertyAccessor will always work but is not optimal due to the need to lookup which reflective member (method/field) to use each time read() is called. This method will just return the ReflectivePropertyAccessor instance if it is unable to build something more optimal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-last-read-invoker-pair.html">getLastReadInvokerPair</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLastReadInvokerPair</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Member</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-specific-target-classes.html">getSpecificTargetClasses</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSpecificTargetClasses</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Returns <code>null</code> which means this is a general purpose accessor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="read.html">read</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">read</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$read(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">EvaluationContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$read(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$read(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypedValue</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$write(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String, kotlin.Any)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">EvaluationContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$write(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String, kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$write(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.support.ReflectivePropertyAccessor$write(org.springframework.expression.EvaluationContext, kotlin.Any, kotlin.String, kotlin.Any)/newValue">newValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

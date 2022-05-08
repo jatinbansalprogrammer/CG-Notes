@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionAwareConnectionFactoryProxy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href=".">TransactionAwareConnectionFactoryProxy</a><br/>
+<br/>
+<h1>TransactionAwareConnectionFactoryProxy</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAwareConnectionFactoryProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier">TopicConnectionFactory</span></code>
+<p>Proxy for a target JMS javax.jms.ConnectionFactory, adding awareness of Spring-managed transactions. Similar to a transactional JNDI ConnectionFactory as provided by a Java EE application server. 
+<p>Messaging code which should remain unaware of Spring's JMS support can work with this proxy to seamlessly participate in Spring-managed transactions. Note that the transaction manager, for example JmsTransactionManager, still needs to work with the underlying ConnectionFactory, <em>not</em> with this proxy. </p>
+<p><strong>Make sure that TransactionAwareConnectionFactoryProxy is the outermost ConnectionFactory of a chain of ConnectionFactory proxies/adapters.</strong> TransactionAwareConnectionFactoryProxy can delegate either directly to the target factory or to some intermediary adapter like UserCredentialsConnectionFactoryAdapter. </p>
+<p>Delegates to ConnectionFactoryUtils for automatically participating in thread-bound transactions, for example managed by JmsTransactionManager. <code>createSession</code> calls and <code>close</code> calls on returned Sessions will behave properly within a transaction, that is, always work on the transactional Session. If not within a transaction, normal ConnectionFactory behavior applies. </p>
+<p>Note that transactional JMS Sessions will be registered on a per-Connection basis. To share the same JMS Session across a transaction, make sure that you operate on the same JMS Connection handle - either through reusing the handle or through configuring a SingleConnectionFactory underneath. </p>
+<p>Returned transactional Session proxies will implement the SessionProxy interface to allow for access to the underlying target Session. This is only intended for accessing vendor-specific Session API or for testing purposes (e.g. to perform manual transaction control). For typical application purposes, simply use the standard JMS Session interface.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+UserCredentialsConnectionFactoryAdapterSingleConnectionFactory</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TransactionAwareConnectionFactoryProxy</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">TransactionAwareConnectionFactoryProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$<init>(javax.jms.ConnectionFactory)/targetConnectionFactory">targetConnectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span></code>
+<p>Create a new TransactionAwareConnectionFactoryProxy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-connection.html">createConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-context.html">createContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createContext(kotlin.String, kotlin.String)/userName">userName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createContext(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createContext(kotlin.String, kotlin.String, kotlin.Int)/userName">userName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createContext(kotlin.String, kotlin.String, kotlin.Int)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createContext(kotlin.String, kotlin.String, kotlin.Int)/sessionMode">sessionMode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createContext(kotlin.Int)/sessionMode">sessionMode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-queue-connection.html">createQueueConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createQueueConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">QueueConnection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createQueueConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createQueueConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createQueueConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">QueueConnection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-topic-connection.html">createTopicConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTopicConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TopicConnection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTopicConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createTopicConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$createTopicConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TopicConnection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-synched-local-transaction-allowed.html">setSynchedLocalTransactionAllowed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSynchedLocalTransactionAllowed</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$setSynchedLocalTransactionAllowed(kotlin.Boolean)/synchedLocalTransactionAllowed">synchedLocalTransactionAllowed</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to allow for a local JMS transaction that is synchronized with a Spring-managed transaction (where the main transaction might be a JDBC-based one for a specific DataSource, for example), with the JMS transaction committing right after the main transaction. If not allowed, the given ConnectionFactory needs to handle transaction enlistment underneath the covers. 
+<p>Default is "false": If not within a managed transaction that encompasses the underlying JMS ConnectionFactory, standard Sessions will be returned. Turn this flag on to allow participation in any Spring-managed transaction, with a local JMS transaction synchronized with the main transaction.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-connection-factory.html">setTargetConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setTargetConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.TransactionAwareConnectionFactoryProxy$setTargetConnectionFactory(javax.jms.ConnectionFactory)/targetConnectionFactory">targetConnectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the target ConnectionFactory that this ConnectionFactory should delegate to.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

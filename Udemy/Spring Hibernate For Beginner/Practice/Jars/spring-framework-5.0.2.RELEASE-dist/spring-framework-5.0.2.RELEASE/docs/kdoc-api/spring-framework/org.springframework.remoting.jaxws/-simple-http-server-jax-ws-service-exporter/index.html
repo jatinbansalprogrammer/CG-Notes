@@ -1,0 +1,200 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleHttpServerJaxWsServiceExporter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.jaxws</a>&nbsp;/&nbsp;<a href=".">SimpleHttpServerJaxWsServiceExporter</a><br/>
+<br/>
+<h1>SimpleHttpServerJaxWsServiceExporter</h1>
+<code><span class="identifier">@UsesSunHttpServer</span> <span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHttpServerJaxWsServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-jax-ws-service-exporter/index.html"><span class="identifier">AbstractJaxWsServiceExporter</span></a></code>
+<p>Simple exporter for JAX-WS services, autodetecting annotated service beans (through the JAX-WS javax.jws.WebService annotation) and exporting them through the HTTP server included in Sun's JDK 1.6. The full address for each service will consist of the server's base address with the service name appended (e.g. "http://localhost:8080/OrderService"). 
+<p>Note that this exporter will only work on Sun's JDK 1.6 or higher, as well as on JDKs that ship Sun's entire class library as included in the Sun JDK. For a portable JAX-WS exporter, have a look at SimpleJaxWsServiceExporter.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5.5</p>
+<p><strong>See Also</strong><br/>
+javax.jws.WebService<a href="#">javax.xml.ws.Endpoint#publish(Object)</a>SimpleJaxWsServiceExporter</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleHttpServerJaxWsServiceExporter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple exporter for JAX-WS services, autodetecting annotated service beans (through the JAX-WS javax.jws.WebService annotation) and exporting them through the HTTP server included in Sun's JDK 1.6. The full address for each service will consist of the server's base address with the service name appended (e.g. "http://localhost:8080/OrderService"). 
+<p>Note that this exporter will only work on Sun's JDK 1.6 or higher, as well as on JDKs that ship Sun's entire class library as included in the Sun JDK. For a portable JAX-WS exporter, have a look at SimpleJaxWsServiceExporter.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-authenticator.html">setAuthenticator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAuthenticator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setAuthenticator(com.sun.net.httpserver.Authenticator)/authenticator">authenticator</span><span class="symbol">:</span>&nbsp;<span class="identifier">Authenticator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a common com.sun.net.httpserver.Authenticator to be applied to all detected javax.jws.WebService annotated beans.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-backlog.html">setBacklog</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBacklog</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setBacklog(kotlin.Int)/backlog">backlog</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the HTTP server's TCP backlog. Default is -1, indicating the system's default value. 
+<p>Only applicable for a locally configured HTTP server. Ignored when the <code><a href="set-server.html">"server"</a></code> property has been specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-base-path.html">setBasePath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBasePath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setBasePath(kotlin.String)/basePath">basePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the base path for context publication. Default is "/". 
+<p>For each context publication path, the service name will be appended to this base address. E.g. service name "OrderService" -&gt; "/OrderService".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-filters.html">setFilters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFilters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setFilters(kotlin.collections.MutableList((com.sun.net.httpserver.Filter)))/filters">filters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Filter</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register common com.sun.net.httpserver.Filter to be applied to all detected javax.jws.WebService annotated beans.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-hostname.html">setHostname</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHostname</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setHostname(kotlin.String)/hostname">hostname</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the HTTP server's hostname to bind to. Default is localhost; can be overridden with a specific network address to bind to. 
+<p>Only applicable for a locally configured HTTP server. Ignored when the <code><a href="set-server.html">"server"</a></code> property has been specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-port.html">setPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setPort(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the HTTP server's port. Default is 8080. 
+<p>Only applicable for a locally configured HTTP server. Ignored when the <code><a href="set-server.html">"server"</a></code> property has been specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-server.html">setServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setServer(com.sun.net.httpserver.HttpServer)/server">server</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify an existing HTTP server to register the web service contexts with. This will typically be a server managed by the general Spring org.springframework.remoting.support.SimpleHttpServerFactoryBean. 
+<p>Alternatively, configure a local HTTP server through the <code><a href="set-port.html">"port"</a></code>, <code><a href="#">"hostname"</a></code> and <code><a href="set-backlog.html">"backlog"</a></code> properties (or rely on the defaults there).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-shutdown-delay.html">setShutdownDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setShutdownDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.SimpleHttpServerJaxWsServiceExporter$setShutdownDelay(kotlin.Int)/shutdownDelay">shutdownDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the number of seconds to wait until HTTP exchanges have completed when shutting down the HTTP server. Default is 0. 
+<p>Only applicable for a locally configured HTTP server. Ignored when the <code><a href="set-server.html">"server"</a></code> property has been specified.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-jax-ws-service-exporter/publish-endpoints.html">publishEndpoints</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">publishEndpoints</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Publish all javax.jws.WebService annotated beans in the containing BeanFactory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-jax-ws-service-exporter/set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.AbstractJaxWsServiceExporter$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Obtains all web service beans and publishes them as JAX-WS endpoints.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-jax-ws-service-exporter/set-binding-type.html">setBindingType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBindingType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.AbstractJaxWsServiceExporter$setBindingType(kotlin.String)/bindingType">bindingType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the binding type to use, overriding the value of the JAX-WS javax.xml.ws.BindingType annotation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-jax-ws-service-exporter/set-endpoint-features.html">setEndpointFeatures</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEndpointFeatures</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.remoting.jaxws.AbstractJaxWsServiceExporter$setEndpointFeatures(kotlin.Array((javax.xml.ws.WebServiceFeature)))/endpointFeatures">endpointFeatures</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebServiceFeature</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify WebServiceFeature objects (e.g. as inner bean definitions) to apply to JAX-WS endpoint creation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-jax-ws-service-exporter/set-endpoint-properties.html">setEndpointProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEndpointProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.AbstractJaxWsServiceExporter$setEndpointProperties(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/endpointProperties">endpointProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the property bag for the endpoint, including properties such as "javax.xml.ws.wsdl.service" or "javax.xml.ws.wsdl.port".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-jax-ws-service-exporter/set-executor.html">setExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.jaxws.AbstractJaxWsServiceExporter$setExecutor(java.util.concurrent.Executor)/executor">executor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDK concurrent executor to use for dispatching incoming requests to exported service instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

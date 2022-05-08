@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FreeMarkerConfigurer.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.freemarker</a>&nbsp;/&nbsp;<a href="index.html">FreeMarkerConfigurer</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer$&lt;init&gt;()"></a>
+<code><span class="identifier">FreeMarkerConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JavaBean to configure FreeMarker for web usage, via the "configLocation" and/or "freemarkerSettings" and/or "templateLoaderPath" properties. The simplest way to use this class is to specify just a "templateLoaderPath"; you do not need any further configuration then. <pre><code> &lt;bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"&gt; &lt;property name="templateLoaderPath"&gt;&lt;value&gt;/WEB-INF/freemarker/&lt;/value&gt;&lt;/property&gt; &lt;/bean&gt;</code></pre> This bean must be included in the application context of any application using Spring's FreeMarkerView for web MVC. It exists purely to configure FreeMarker. It is not meant to be referenced by application components but just internally by FreeMarkerView. Implements FreeMarkerConfig to be found by FreeMarkerView without depending on the bean name the configurer. Each DispatcherServlet can define its own FreeMarkerConfigurer if desired. 
+<p>Note that you can also refer to a preconfigured FreeMarker Configuration instance, for example one set up by FreeMarkerConfigurationFactoryBean, via the "configuration" property. This allows to share a FreeMarker Configuration for web and email usage, for example. </p>
+<p>This configurer registers a template loader for this package, allowing to reference the "spring.ftl" macro library (contained in this package and thus in spring.jar) like this: </p>
+<pre><code> &lt;#import "/spring.ftl" as spring/&gt; &lt;@spring.bind "person.age"/&gt; age is ${spring.status.value}</code></pre> Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+<p><strong>Author</strong><br/>
+Darren Davison</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Since</strong><br/>
+03.03.2004</p>
+<p><strong>See Also</strong><br/>
+<a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-config-location.html">#setConfigLocation</a><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-freemarker-settings.html">#setFreemarkerSettings</a><a href="#">#setTemplateLoaderPath</a><a href="set-configuration.html">#setConfiguration</a>org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBeanFreeMarkerView</p>
+</BODY>
+</HTML>

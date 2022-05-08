@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebApplicationContextUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.support</a>&nbsp;/&nbsp;<a href=".">WebApplicationContextUtils</a><br/>
+<br/>
+<h1>WebApplicationContextUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">WebApplicationContextUtils</span></code>
+<p>Convenience methods for retrieving the root WebApplicationContext for a given ServletContext. This is useful for programmatically accessing a Spring application context from within custom web views or MVC actions. 
+<p>Note that there are more convenient ways of accessing the root context for many web frameworks, either part of Spring or available as an external library. This helper class is just the most generic way to access the root context.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.context.ContextLoaderorg.springframework.web.servlet.FrameworkServletorg.springframework.web.servlet.DispatcherServletorg.springframework.web.jsf.FacesContextUtilsorg.springframework.web.jsf.el.SpringBeanFacesELResolver</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebApplicationContextUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenience methods for retrieving the root WebApplicationContext for a given ServletContext. This is useful for programmatically accessing a Spring application context from within custom web views or MVC actions. 
+<p>Note that there are more convenient ways of accessing the root context for many web frameworks, either part of Spring or available as an external library. This helper class is just the most generic way to access the root context.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="find-web-application-context.html">findWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$findWebApplicationContext(javax.servlet.ServletContext)/sc">sc</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Find a unique <code>WebApplicationContext</code> for this web app: either the root web app context (preferred) or a unique <code>WebApplicationContext</code> among the registered <code>ServletContext</code> attributes (typically coming from a single <code>DispatcherServlet</code> in the current web application). 
+<p>Note that <code>DispatcherServlet</code>'s exposure of its context can be controlled through its <code>publishContext</code> property, which is <code>true</code> by default but can be selectively switched to only publish a single context despite multiple <code>DispatcherServlet</code> registrations in the web app.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-required-web-application-context.html">getRequiredWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getRequiredWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$getRequiredWebApplicationContext(javax.servlet.ServletContext)/sc">sc</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Find the root <code>WebApplicationContext</code> for this web app, typically loaded via org.springframework.web.context.ContextLoaderListener. 
+<p>Will rethrow an exception that happened on root context startup, to differentiate between a failed context startup and no context at all.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-web-application-context.html">getWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$getWebApplicationContext(javax.servlet.ServletContext)/sc">sc</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Find the root <code>WebApplicationContext</code> for this web app, typically loaded via org.springframework.web.context.ContextLoaderListener. 
+<p>Will rethrow an exception that happened on root context startup, to differentiate between a failed context startup and no context at all.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$getWebApplicationContext(javax.servlet.ServletContext, kotlin.String)/sc">sc</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$getWebApplicationContext(javax.servlet.ServletContext, kotlin.String)/attrName">attrName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Find a custom <code>WebApplicationContext</code> for this web app.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="init-servlet-property-sources.html">initServletPropertySources</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">initServletPropertySources</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$initServletPropertySources(org.springframework.core.env.MutablePropertySources, javax.servlet.ServletContext)/propertySources">propertySources</span><span class="symbol">:</span>&nbsp;<span class="identifier">MutablePropertySources</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$initServletPropertySources(org.springframework.core.env.MutablePropertySources, javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Convenient variant of <code><a href="#">#initServletPropertySources(MutablePropertySources, * ServletContext, ServletConfig)</a></code> that always provides <code>null</code> for the ServletConfig parameter.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">initServletPropertySources</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$initServletPropertySources(org.springframework.core.env.MutablePropertySources, javax.servlet.ServletContext, javax.servlet.ServletConfig)/sources">sources</span><span class="symbol">:</span>&nbsp;<span class="identifier">MutablePropertySources</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$initServletPropertySources(org.springframework.core.env.MutablePropertySources, javax.servlet.ServletContext, javax.servlet.ServletConfig)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$initServletPropertySources(org.springframework.core.env.MutablePropertySources, javax.servlet.ServletContext, javax.servlet.ServletConfig)/servletConfig">servletConfig</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletConfig</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Replace <code>Servlet</code>-based StubPropertySource with actual instances populated with the given <code>servletContext</code> and <code>servletConfig</code> objects. 
+<p>This method is idempotent with respect to the fact it may be called any number of times but will perform replacement of stub property sources with their corresponding actual property sources once and only once.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-environment-beans.html">registerEnvironmentBeans</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">registerEnvironmentBeans</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerEnvironmentBeans(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, javax.servlet.ServletContext)/bf">bf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerEnvironmentBeans(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, javax.servlet.ServletContext)/sc">sc</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">registerEnvironmentBeans</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerEnvironmentBeans(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, javax.servlet.ServletContext, javax.servlet.ServletConfig)/bf">bf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerEnvironmentBeans(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, javax.servlet.ServletContext, javax.servlet.ServletConfig)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerEnvironmentBeans(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, javax.servlet.ServletContext, javax.servlet.ServletConfig)/servletConfig">servletConfig</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletConfig</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register web-specific environment beans ("contextParameters", "contextAttributes") with the given BeanFactory, as used by the WebApplicationContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-web-application-scopes.html">registerWebApplicationScopes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">registerWebApplicationScopes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerWebApplicationScopes(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register web-specific scopes ("request", "session", "globalSession") with the given BeanFactory, as used by the WebApplicationContext.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">registerWebApplicationScopes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerWebApplicationScopes(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, javax.servlet.ServletContext)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.WebApplicationContextUtils$registerWebApplicationScopes(org.springframework.beans.factory.config.ConfigurableListableBeanFactory, javax.servlet.ServletContext)/sc">sc</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register web-specific scopes ("request", "session", "globalSession", "application") with the given BeanFactory, as used by the WebApplicationContext.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

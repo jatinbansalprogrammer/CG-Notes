@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MockPropertySource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.mock.env</a>&nbsp;/&nbsp;<a href=".">MockPropertySource</a><br/>
+<br/>
+<h1>MockPropertySource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockPropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertiesPropertySource</span></code>
+<p>Simple PropertySource implementation for use in testing. Accepts a user-provided Properties object, or if omitted during construction, the implementation will initialize its own. The <code><a href="#">#setProperty</a></code> and <code><a href="#">#withProperty</a></code> methods are exposed for convenience, for example: <pre><code><code>PropertySource&lt;?&gt; source = new MockPropertySource().withProperty("foo", "bar"); </code> </code></pre></p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+org.springframework.mock.env.MockEnvironment</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MockPropertySource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>MockPropertySource</code> named {@value #MOCK_PROPERTIES_PROPERTY_SOURCE_NAME} that will maintain its own internal Properties instance.</p>
+<code><span class="identifier">MockPropertySource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$<init>(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>MockPropertySource</code> with the given name that will maintain its own internal Properties instance.</p>
+<code><span class="identifier">MockPropertySource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$<init>(java.util.Properties)/properties">properties</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span></code>
+<p>Create a new <code>MockPropertySource</code> named {@value #MOCK_PROPERTIES_PROPERTY_SOURCE_NAME} and backed by the given Properties object.</p>
+<code><span class="identifier">MockPropertySource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$<init>(kotlin.String, java.util.Properties)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$<init>(kotlin.String, java.util.Properties)/properties">properties</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span></code>
+<p>Create a new <code>MockPropertySource</code> with the given name and backed by the given Properties object.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-m-o-c-k_-p-r-o-p-e-r-t-i-e-s_-p-r-o-p-e-r-t-y_-s-o-u-r-c-e_-n-a-m-e.html">MOCK_PROPERTIES_PROPERTY_SOURCE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">MOCK_PROPERTIES_PROPERTY_SOURCE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>{@value} is the default name for MockPropertySource instances not otherwise given an explicit name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-property.html">setProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$setProperty(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$setProperty(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the given property on the underlying Properties object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-property.html">withProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$withProperty(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.env.MockPropertySource$withProperty(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockPropertySource</span></code>
+<p>Convenient synonym for <code><a href="#">#setProperty</a></code> that returns the current instance. Useful for method chaining and fluent-style use.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

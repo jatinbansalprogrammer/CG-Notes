@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DirtiesContext.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.annotation</a>&nbsp;/&nbsp;<a href="index.html">DirtiesContext</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.test.annotation.DirtiesContext$&lt;init&gt;(org.springframework.test.annotation.DirtiesContext.MethodMode, org.springframework.test.annotation.DirtiesContext.ClassMode, org.springframework.test.annotation.DirtiesContext.HierarchyMode)"></a>
+<code><span class="identifier">DirtiesContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.annotation.DirtiesContext$<init>(org.springframework.test.annotation.DirtiesContext.MethodMode, org.springframework.test.annotation.DirtiesContext.ClassMode, org.springframework.test.annotation.DirtiesContext.HierarchyMode)/methodMode">methodMode</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodMode</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.annotation.DirtiesContext$<init>(org.springframework.test.annotation.DirtiesContext.MethodMode, org.springframework.test.annotation.DirtiesContext.ClassMode, org.springframework.test.annotation.DirtiesContext.HierarchyMode)/classMode">classMode</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassMode</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.annotation.DirtiesContext$<init>(org.springframework.test.annotation.DirtiesContext.MethodMode, org.springframework.test.annotation.DirtiesContext.ClassMode, org.springframework.test.annotation.DirtiesContext.HierarchyMode)/hierarchyMode">hierarchyMode</span><span class="symbol">:</span>&nbsp;<span class="identifier">HierarchyMode</span><span class="symbol">)</span></code>
+<p>Test annotation which indicates that the org.springframework.context.ApplicationContext associated with a test is <em>dirty</em> and should therefore be closed and removed from the context cache. 
+<p>Use this annotation if a test has modified the context — for example, by modifying the state of a singleton bean, modifying the state of an embedded database, etc. Subsequent tests that request the same context will be supplied a new context. </p>
+<p><code>@DirtiesContext</code> may be used as a class-level and method-level annotation within the same class or class hierarchy. In such scenarios, the <code>ApplicationContext</code> will be marked as <em>dirty</em> before or after any such annotated method as well as before or after the current test class, depending on the configured <code><a href="#">#methodMode</a></code> and <code><a href="#">#classMode</a></code>. </p>
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. </p>
+Supported Test Phases <ul> <li><strong>Before current test class</strong>: when declared at the class level with class mode set to <code><a href="#">BEFORE_CLASS</a></code></li>
+ <li><strong>Before each test method in current test class</strong>: when declared at the class level with class mode set to <code><a href="#">BEFORE_EACH_TEST_METHOD</a></code></li>
+ <li><strong>Before current test method</strong>: when declared at the method level with method mode set to <code><a href="#">BEFORE_METHOD</a></code></li>
+ <li><strong>After current test method</strong>: when declared at the method level with method mode set to <code><a href="#">AFTER_METHOD</a></code></li>
+ <li><strong>After each test method in current test class</strong>: when declared at the class level with class mode set to <code><a href="#">AFTER_EACH_TEST_METHOD</a></code></li>
+ <li><strong>After current test class</strong>: when declared at the class level with class mode set to <code><a href="#">AFTER_CLASS</a></code></li>
+ </ul>
+ 
+<p><code>BEFORE_*</code> modes are supported by the org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener; <code>AFTER_*</code> modes are supported by the org.springframework.test.context.support.DirtiesContextTestExecutionListener.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.test.context.ContextConfigurationorg.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListenerorg.springframework.test.context.support.DirtiesContextTestExecutionListener</p>
+</BODY>
+</HTML>

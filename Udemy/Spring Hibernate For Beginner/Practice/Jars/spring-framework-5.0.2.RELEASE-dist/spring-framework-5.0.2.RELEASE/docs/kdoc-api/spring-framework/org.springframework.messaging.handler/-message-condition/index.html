@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessageCondition - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.handler</a>&nbsp;/&nbsp;<a href=".">MessageCondition</a><br/>
+<br/>
+<h1>MessageCondition</h1>
+<code><span class="keyword">interface </span><span class="identifier">MessageCondition</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Contract for mapping conditions to messages. 
+<p>Message conditions can be combined (e.g. type + method-level conditions), matched to a specific Message, as well as compared to each other in the context of a Message to determine which one matches a request more closely.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the kind of condition that this condition can be combined with or compared to</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="combine.html">combine</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">combine</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.MessageCondition$combine(org.springframework.messaging.handler.MessageCondition.T)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Define the rules for combining this condition with another. For example combining type- and method-level conditions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="compare-to.html">compareTo</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">compareTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.MessageCondition$compareTo(org.springframework.messaging.handler.MessageCondition.T, org.springframework.messaging.Message((kotlin.Any)))/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.handler.MessageCondition$compareTo(org.springframework.messaging.handler.MessageCondition.T, org.springframework.messaging.Message((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Compare this condition to another in the context of a specific message. It is assumed both instances have been obtained via <code><a href="#">#getMatchingCondition(Message)</a></code> to ensure they have content relevant to current message only.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-matching-condition.html">getMatchingCondition</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getMatchingCondition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.MessageCondition$getMatchingCondition(org.springframework.messaging.Message((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Check if this condition matches the given Message and returns a potentially new condition with content tailored to the current message. For example a condition with destination patterns might return a new condition with sorted, matching patterns only.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp/-simp-message-mapping-info/index.html">SimpMessageMappingInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpMessageMappingInfo</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageCondition</span><span class="symbol">&lt;</span><a href="../../org.springframework.messaging.simp/-simp-message-mapping-info/index.html"><span class="identifier">SimpMessageMappingInfo</span></a><span class="symbol">&gt;</span></code>
+<p>Encapsulates the following request mapping conditions: <ol> <li>SimpMessageTypeMessageCondition </li>
+<li>DestinationPatternsMessageCondition </li>
+</ol>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.simp.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.simp.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.simp.annotation</h2>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-send-to-user/index.html">SendToUser</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SendToUser</span></code>
+<p>Annotation that indicates that the return value of a message-handling method should be sent as a org.springframework.messaging.Message to the specified destination(s) prepended with <code>"/user/{username}"</code> where the user name is extracted from the headers of the input message being handled. 
+<p>The annotation may also be placed at class-level in which case all methods in the class where the annotation applies will inherit it.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-subscribe-mapping/index.html">SubscribeMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SubscribeMapping</span></code>
+<p>Annotation for mapping subscription messages onto specific handler methods based on the destination of a subscription. Supported with STOMP over WebSocket only (e.g. STOMP SUBSCRIBE frame). 
+<p>This is a method-level annotation that can be combined with a type-level org.springframework.messaging.handler.annotation.MessageMapping. </p>
+<p>Supports the same method arguments as <code>@MessageMapping</code>; however, subscription messages typically do not have a body. </p>
+<p>The return value also follows the same rules as for <code>@MessageMapping</code>, except if the method is not annotated with org.springframework.messaging.handler.annotation.SendTo or SendToUser, the message is sent directly back to the connected user and does not pass through the message broker. This is useful for implementing a request-reply pattern. </p>
+<p><strong>NOTE:</strong> When using controller interfaces (e.g. for AOP proxying), make sure to consistently put <em>all</em> your mapping annotations - such as <code>@MessageMapping</code> and <code>@SubscribeMapping</code> - on the controller <em>interface</em> rather than on the implementation class.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

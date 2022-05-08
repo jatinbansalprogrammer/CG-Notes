@@ -1,0 +1,269 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GroovyBeanDefinitionReader - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.groovy</a>&nbsp;/&nbsp;<a href=".">GroovyBeanDefinitionReader</a><br/>
+<br/>
+<h1>GroovyBeanDefinitionReader</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyBeanDefinitionReader</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/index.html"><span class="identifier">AbstractBeanDefinitionReader</span></a><span class="symbol">, </span><span class="identifier">GroovyObject</span></code>
+<p>A Groovy-based reader for Spring bean definitions: like a Groovy builder, but more of a DSL for Spring configuration. 
+<p>This bean definition reader also understands XML bean definition files, allowing for seamless mixing and matching with Groovy bean definition files. </p>
+<p>Typically applied to a org.springframework.beans.factory.support.DefaultListableBeanFactory or a org.springframework.context.support.GenericApplicationContext, but can be used against any BeanDefinitionRegistry implementation. </p>
+Example Syntax <pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource def reader = new GroovyBeanDefinitionReader(myApplicationContext) reader.beans { dataSource(BasicDataSource) { // &lt;--- invokeMethod driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" // &lt;-- setProperty password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource // &lt;-- getProperty for retrieving references } myService(MyService) { nestedBean = { AnotherBean bean -&gt; // &lt;-- setProperty with closure for nested bean dataSource = dataSource } } }</code></pre> 
+<p>You can also load resources containing beans defined in a Groovy script using either the <code><a href="#">#loadBeanDefinitions(Resource...)</a></code> or <code><a href="#">#loadBeanDefinitions(String...)</a></code> method, with a script looking similar to the following. </p>
+<pre><code> import org.hibernate.SessionFactory import org.apache.commons.dbcp.BasicDataSource beans { dataSource(BasicDataSource) { driverClassName = "org.hsqldb.jdbcDriver" url = "jdbc:hsqldb:mem:grailsDB" username = "sa" password = "" settings = [mynew:"setting"] } sessionFactory(SessionFactory) { dataSource = dataSource } myService(MyService) { nestedBean = { AnotherBean bean -&gt; dataSource = dataSource } } }</code></pre></p>
+<p><strong>Author</strong><br/>
+Jeff Brown</p>
+<p><strong>Author</strong><br/>
+Graeme Rocher</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<p><strong>See Also</strong><br/>
+BeanDefinitionRegistryorg.springframework.beans.factory.support.DefaultListableBeanFactoryorg.springframework.context.support.GenericApplicationContextorg.springframework.context.support.GenericGroovyApplicationContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GroovyBeanDefinitionReader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$<init>(org.springframework.beans.factory.support.BeanDefinitionRegistry)/registry">registry</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionRegistry</span><span class="symbol">)</span></code>
+<p>Create a new <code>GroovyBeanDefinitionReader</code> for the given BeanDefinitionRegistry.</p>
+<code><span class="identifier">GroovyBeanDefinitionReader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$<init>(org.springframework.beans.factory.xml.XmlBeanDefinitionReader)/xmlBeanDefinitionReader">xmlBeanDefinitionReader</span><span class="symbol">:</span>&nbsp;<span class="identifier">XmlBeanDefinitionReader</span><span class="symbol">)</span></code>
+<p>Create a new <code>GroovyBeanDefinitionReader</code> based on the given XmlBeanDefinitionReader, loading bean definitions into its <code>BeanDefinitionRegistry</code> and delegating Groovy DSL loading to it. 
+<p>The supplied <code>XmlBeanDefinitionReader</code> should typically be pre-configured with XML validation disabled.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="bean.html">bean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$bean(java.lang.Class((kotlin.Any)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.springframework.beans.factory.support/-generic-bean-definition/index.html"><span class="identifier">GenericBeanDefinition</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$bean(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$bean(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AbstractBeanDefinition</span></code>
+<p>Define an inner bean definition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="beans.html">beans</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beans</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$beans(groovy.lang.Closure((kotlin.Any)))/closure">closure</span><span class="symbol">:</span>&nbsp;<span class="identifier">Closure</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">GroovyBeanDefinitionReader</span></code>
+<p>Defines a set of beans for the given block or closure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-binding.html">getBinding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBinding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Binding</span></code>
+<p>Return a specified binding for Groovy variables, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-meta-class.html">getMetaClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMetaClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MetaClass</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property.html">getProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$getProperty(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>This method overrides property retrieval in the scope of the <code>GroovyBeanDefinitionReader</code> to either: <ul> <li>Retrieve a variable from the bean builder's binding if it exists </li>
+<li>Retrieve a RuntimeBeanReference for a specific bean if it exists </li>
+<li>Otherwise just delegate to MetaClass.getProperty which will resolve properties from the <code>GroovyBeanDefinitionReader</code> itself </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="import-beans.html">importBeans</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">importBeans</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$importBeans(kotlin.String)/resourcePattern">resourcePattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Import Spring bean definitions from either XML or Groovy sources into the current bean builder instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-method.html">invokeMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invokeMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$invokeMethod(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$invokeMethod(kotlin.String, kotlin.Any)/arg">arg</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>This method overrides method invocation to create beans for each method name that takes a class argument.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="load-bean-definitions.html">loadBeanDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.Resource)/resource">resource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$loadBeanDefinitions(org.springframework.core.io.support.EncodedResource)/encodedResource">encodedResource</span><span class="symbol">:</span>&nbsp;<span class="identifier">EncodedResource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Load bean definitions from the specified Groovy script or XML file. 
+<p>Note that <code>".xml"</code> files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-binding.html">setBinding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBinding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$setBinding(groovy.lang.Binding)/binding">binding</span><span class="symbol">:</span>&nbsp;<span class="identifier">Binding</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the binding, i.e. the Groovy variables available in the scope of a <code>GroovyBeanDefinitionReader</code> closure.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-meta-class.html">setMetaClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMetaClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$setMetaClass(groovy.lang.MetaClass)/metaClass">metaClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetaClass</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property.html">setProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$setProperty(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$setProperty(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method overrides property setting in the scope of the <code>GroovyBeanDefinitionReader</code> to set properties on the current bean definition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="xmlns.html">xmlns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">xmlns</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader$xmlns(kotlin.collections.MutableMap((kotlin.String, )))/definition">definition</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Define a Spring XML namespace definition to use.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/get-bean-class-loader.html">getBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBeanClassLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClassLoader</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/get-bean-factory.html">getBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getBeanFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinitionRegistry</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/get-bean-name-generator.html">getBeanNameGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBeanNameGenerator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanNameGenerator</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/get-environment.html">getEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEnvironment</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Environment</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/get-registry.html">getRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getRegistry</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanDefinitionRegistry</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/get-resource-loader.html">getResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourceLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResourceLoader</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/load-bean-definitions.html">loadBeanDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.Array((org.springframework.core.io.Resource)))/resources">resources</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.String)/location">location</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.Array((kotlin.String)))/locations">locations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">loadBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.String, kotlin.collections.MutableSet((org.springframework.core.io.Resource)))/location">location</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$loadBeanDefinitions(kotlin.String, kotlin.collections.MutableSet((org.springframework.core.io.Resource)))/actualResources">actualResources</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><span class="identifier">Resource</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Load bean definitions from the specified resource location. 
+<p>The location can also be a location pattern, provided that the ResourceLoader of this bean definition reader is a ResourcePatternResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setBeanClassLoader(java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ClassLoader to use for bean classes. 
+<p>Default is <code>null</code>, which suggests to not load bean classes eagerly but rather to just register bean definitions with class names, with the corresponding Classes to be resolved later (or never).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/set-bean-name-generator.html">setBeanNameGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanNameGenerator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setBeanNameGenerator(org.springframework.beans.factory.support.BeanNameGenerator)/beanNameGenerator">beanNameGenerator</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanNameGenerator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the BeanNameGenerator to use for anonymous beans (without explicit bean name specified). 
+<p>Default is a DefaultBeanNameGenerator.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setEnvironment(org.springframework.core.env.Environment)/environment">environment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Environment</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Environment to use when reading bean definitions. Most often used for evaluating profile information to determine which bean definitions should be read and which should be omitted.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-abstract-bean-definition-reader/set-resource-loader.html">setResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.AbstractBeanDefinitionReader$setResourceLoader(org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ResourceLoader to use for resource locations. If specifying a ResourcePatternResolver, the bean definition reader will be capable of resolving resource patterns to Resource arrays. 
+<p>Default is PathMatchingResourcePatternResolver, also capable of resource pattern resolving through the ResourcePatternResolver interface. </p>
+<p>Setting this to <code>null</code> suggests that absolute resource loading is not available for this bean definition reader.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

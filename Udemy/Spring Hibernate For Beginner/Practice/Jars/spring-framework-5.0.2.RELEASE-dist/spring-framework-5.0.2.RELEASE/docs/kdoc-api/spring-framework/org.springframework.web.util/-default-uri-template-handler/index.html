@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultUriTemplateHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.util</a>&nbsp;/&nbsp;<a href=".">DefaultUriTemplateHandler</a><br/>
+<br/>
+<h1>DefaultUriTemplateHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultUriTemplateHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUriTemplateHandler</span></code>
+<p>Default implementation of UriTemplateHandler based on the use of UriComponentsBuilder for expanding and encoding variables. 
+<p>There are also several properties to customize how URI template handling is performed, including a <code><a href="#">baseUrl</a></code> to be used as a prefix for all URI templates and a couple of encoding related options — <code><a href="set-parse-path.html">parsePath</a></code> and <code><a href="set-strict-encoding.html">strictEncoding</a></code> respectively.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultUriTemplateHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default implementation of UriTemplateHandler based on the use of UriComponentsBuilder for expanding and encoding variables. 
+<p>There are also several properties to customize how URI template handling is performed, including a <code><a href="#">baseUrl</a></code> to be used as a prefix for all URI templates and a couple of encoding related options — <code><a href="set-parse-path.html">parsePath</a></code> and <code><a href="set-strict-encoding.html">strictEncoding</a></code> respectively.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="is-strict-encoding.html">isStrictEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isStrictEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether to strictly encode any character outside the unreserved set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-parse-path.html">setParsePath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setParsePath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriTemplateHandler$setParsePath(kotlin.Boolean)/parsePath">parsePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether to parse the path of a URI template string into path segments. 
+<p>If set to <code>true</code> the URI template path is immediately decomposed into path segments any URI variables expanded into it are then subject to path segment encoding rules. In effect URI variables in the path have any "/" characters percent encoded. </p>
+<p>By default this is set to <code>false</code> in which case the path is kept as a full path and expanded URI variables will preserve "/" characters.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-strict-encoding.html">setStrictEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStrictEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.DefaultUriTemplateHandler$setStrictEncoding(kotlin.Boolean)/strictEncoding">strictEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether to encode characters outside the unreserved set as defined in <a href="#">RFC 3986 Section 2</a>. This ensures a URI variable value will not contain any characters with a reserved purpose. 
+<p>By default this is set to <code>false</code> in which case only characters illegal for the given URI component are encoded. For example when expanding a URI variable into a path segment the "/" character is illegal and encoded. The ";" character however is legal and not encoded even though it has a reserved purpose. </p>
+<p><strong>Note:</strong> this property supersedes the need to also set the <code><a href="set-parse-path.html">parsePath</a></code> property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="should-parse-path.html">shouldParsePath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shouldParsePath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the handler is configured to parse the path into path segments.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

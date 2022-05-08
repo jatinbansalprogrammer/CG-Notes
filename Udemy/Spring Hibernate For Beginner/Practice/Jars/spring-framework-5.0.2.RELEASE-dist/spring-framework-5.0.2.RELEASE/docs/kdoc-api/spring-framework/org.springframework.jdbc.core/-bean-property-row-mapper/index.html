@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BeanPropertyRowMapper - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core</a>&nbsp;/&nbsp;<a href=".">BeanPropertyRowMapper</a><br/>
+<br/>
+<h1>BeanPropertyRowMapper</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanPropertyRowMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RowMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>RowMapper implementation that converts a row into a new instance of the specified mapped target class. The mapped target class must be a top-level class and it must have a default or no-arg constructor. 
+<p>Column values are mapped based on matching the column name as obtained from result set metadata to public setters for the corresponding properties. The names are matched either directly or by transforming a name separating the parts with underscores to the same name using "camel" case. </p>
+<p>Mapping is provided for fields in the target class for many common types, e.g.: String, boolean, Boolean, byte, Byte, short, Short, int, Integer, long, Long, float, Float, double, Double, BigDecimal, <code>java.util.Date</code>, etc. </p>
+<p>To facilitate mapping between columns and fields that don't have matching names, try using column aliases in the SQL statement like "select fname as first_name from customer". </p>
+<p>For 'null' values read from the database, we will attempt to call the setter, but in the case of Java primitives, this causes a TypeMismatchException. This class can be configured (using the primitivesDefaultedForNullValue property) to trap this exception and use the primitives default value. Be aware that if you use the values from the generated bean to update the database the primitive value will have been set to the primitive's default value instead of null. </p>
+<p>Please note that this class is designed to provide convenience rather than high performance. For best performance, consider using a custom RowMapper implementation.</p>
+</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BeanPropertyRowMapper</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>BeanPropertyRowMapper</code> for bean-style configuration.</p>
+<code><span class="identifier">BeanPropertyRowMapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$<init>(java.lang.Class((org.springframework.jdbc.core.BeanPropertyRowMapper.T)))/mappedClass">mappedClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new <code>BeanPropertyRowMapper</code>, accepting unpopulated properties in the target bean. 
+<p>Consider using the <code><a href="#">#newInstance</a></code> factory method instead, which allows for specifying the mapped type once only.</p>
+</p>
+<code><span class="identifier">BeanPropertyRowMapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$<init>(java.lang.Class((org.springframework.jdbc.core.BeanPropertyRowMapper.T)), kotlin.Boolean)/mappedClass">mappedClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$<init>(java.lang.Class((org.springframework.jdbc.core.BeanPropertyRowMapper.T)), kotlin.Boolean)/checkFullyPopulated">checkFullyPopulated</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>BeanPropertyRowMapper</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-conversion-service.html">getConversionService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConversionService</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConversionService</span></code>
+<p>Return a ConversionService for binding JDBC values to bean properties, or <code>null</code> if none.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-mapped-class.html">getMappedClass</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getMappedClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Get the class that we are mapping to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-check-fully-populated.html">isCheckFullyPopulated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCheckFullyPopulated</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether we're strictly validating that all bean properties have been mapped from corresponding database fields.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-primitives-defaulted-for-null-value.html">isPrimitivesDefaultedForNullValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isPrimitivesDefaultedForNullValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether we're defaulting Java primitives in the case of mapping a null value from corresponding database fields.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="map-row.html">mapRow</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">mapRow</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$mapRow(java.sql.ResultSet, kotlin.Int)/rs">rs</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$mapRow(java.sql.ResultSet, kotlin.Int)/rowNumber">rowNumber</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Extract the values for all columns in the current row. 
+<p>Utilizes public setters and result set metadata.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-instance.html">newInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">newInstance</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$newInstance(java.lang.Class((org.springframework.jdbc.core.BeanPropertyRowMapper.newInstance.T)))/mappedClass">mappedClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BeanPropertyRowMapper</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Static factory method to create a new <code>BeanPropertyRowMapper</code> (with the mapped class specified only once).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-check-fully-populated.html">setCheckFullyPopulated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCheckFullyPopulated</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$setCheckFullyPopulated(kotlin.Boolean)/checkFullyPopulated">checkFullyPopulated</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether we're strictly validating that all bean properties have been mapped from corresponding database fields. 
+<p>Default is <code>false</code>, accepting unpopulated properties in the target bean.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-conversion-service.html">setConversionService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConversionService</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$setConversionService(org.springframework.core.convert.ConversionService)/conversionService">conversionService</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConversionService</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a ConversionService for binding JDBC values to bean properties, or <code>null</code> for none. 
+<p>Default is a DefaultConversionService, as of Spring 4.3. This provides support for <code>java.time</code> conversion and other special types.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapped-class.html">setMappedClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappedClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$setMappedClass(java.lang.Class((org.springframework.jdbc.core.BeanPropertyRowMapper.T)))/mappedClass">mappedClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the class that each row should be mapped to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-primitives-defaulted-for-null-value.html">setPrimitivesDefaultedForNullValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPrimitivesDefaultedForNullValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.BeanPropertyRowMapper$setPrimitivesDefaultedForNullValue(kotlin.Boolean)/primitivesDefaultedForNullValue">primitivesDefaultedForNullValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether we're defaulting Java primitives in the case of mapping a null value from corresponding database fields. 
+<p>Default is <code>false</code>, throwing an exception when nulls are mapped to Java primitives.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

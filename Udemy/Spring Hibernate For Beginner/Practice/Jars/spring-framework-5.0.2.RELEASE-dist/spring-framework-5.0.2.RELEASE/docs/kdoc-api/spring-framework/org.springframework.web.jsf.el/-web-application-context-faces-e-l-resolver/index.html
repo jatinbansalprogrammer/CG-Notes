@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebApplicationContextFacesELResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.jsf.el</a>&nbsp;/&nbsp;<a href=".">WebApplicationContextFacesELResolver</a><br/>
+<br/>
+<h1>WebApplicationContextFacesELResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebApplicationContextFacesELResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ELResolver</span></code>
+<p>Special JSF <code>ELResolver</code> that exposes the Spring <code>WebApplicationContext</code> instance under a variable named "webApplicationContext". 
+<p>In contrast to SpringBeanFacesELResolver, this ELResolver variant does <em>not</em> resolve JSF variable names as Spring bean names. It rather exposes Spring's root WebApplicationContext <em>itself</em> under a special name, and is able to resolve "webApplicationContext.mySpringManagedBusinessObject" dereferences to Spring-defined beans in that application context. </p>
+<p>Configure this resolver in your <code>faces-config.xml</code> file as follows: </p>
+<pre><code> &lt;application&gt; ... &lt;el-resolver&gt;org.springframework.web.jsf.el.WebApplicationContextFacesELResolver&lt;/el-resolver&gt; &lt;/application&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+SpringBeanFacesELResolver<a href="#">org.springframework.web.jsf.FacesContextUtils#getWebApplicationContext</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebApplicationContextFacesELResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Special JSF <code>ELResolver</code> that exposes the Spring <code>WebApplicationContext</code> instance under a variable named "webApplicationContext". 
+<p>In contrast to SpringBeanFacesELResolver, this ELResolver variant does <em>not</em> resolve JSF variable names as Spring bean names. It rather exposes Spring's root WebApplicationContext <em>itself</em> under a special name, and is able to resolve "webApplicationContext.mySpringManagedBusinessObject" dereferences to Spring-defined beans in that application context. </p>
+<p>Configure this resolver in your <code>faces-config.xml</code> file as follows: </p>
+<pre><code> &lt;application&gt; ... &lt;el-resolver&gt;org.springframework.web.jsf.el.WebApplicationContextFacesELResolver&lt;/el-resolver&gt; &lt;/application&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-w-e-b_-a-p-p-l-i-c-a-t-i-o-n_-c-o-n-t-e-x-t_-v-a-r-i-a-b-l-e_-n-a-m-e.html">WEB_APPLICATION_CONTEXT_VARIABLE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">WEB_APPLICATION_CONTEXT_VARIABLE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Name of the exposed WebApplicationContext variable: "webApplicationContext".</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-common-property-type.html">getCommonPropertyType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCommonPropertyType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getCommonPropertyType(javax.el.ELContext, kotlin.Any)/elContext">elContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ELContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getCommonPropertyType(javax.el.ELContext, kotlin.Any)/base">base</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-feature-descriptors.html">getFeatureDescriptors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFeatureDescriptors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getFeatureDescriptors(javax.el.ELContext, kotlin.Any)/elContext">elContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ELContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getFeatureDescriptors(javax.el.ELContext, kotlin.Any)/base">base</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/index.html"><span class="identifier">MutableIterator</span></a><span class="symbol">&lt;</span><span class="identifier">FeatureDescriptor</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-type.html">getType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getType(javax.el.ELContext, kotlin.Any, kotlin.Any)/elContext">elContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ELContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getType(javax.el.ELContext, kotlin.Any, kotlin.Any)/base">base</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getType(javax.el.ELContext, kotlin.Any, kotlin.Any)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value.html">getValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getValue(javax.el.ELContext, kotlin.Any, kotlin.Any)/elContext">elContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ELContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getValue(javax.el.ELContext, kotlin.Any, kotlin.Any)/base">base</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$getValue(javax.el.ELContext, kotlin.Any, kotlin.Any)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-read-only.html">isReadOnly</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isReadOnly</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$isReadOnly(javax.el.ELContext, kotlin.Any, kotlin.Any)/elContext">elContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ELContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$isReadOnly(javax.el.ELContext, kotlin.Any, kotlin.Any)/base">base</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$isReadOnly(javax.el.ELContext, kotlin.Any, kotlin.Any)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-value.html">setValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$setValue(javax.el.ELContext, kotlin.Any, kotlin.Any, kotlin.Any)/elContext">elContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ELContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$setValue(javax.el.ELContext, kotlin.Any, kotlin.Any, kotlin.Any)/base">base</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$setValue(javax.el.ELContext, kotlin.Any, kotlin.Any, kotlin.Any)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.el.WebApplicationContextFacesELResolver$setValue(javax.el.ELContext, kotlin.Any, kotlin.Any, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

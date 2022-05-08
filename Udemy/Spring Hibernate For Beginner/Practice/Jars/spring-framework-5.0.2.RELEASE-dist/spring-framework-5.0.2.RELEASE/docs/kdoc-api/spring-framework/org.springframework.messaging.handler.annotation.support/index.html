@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.handler.annotation.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.handler.annotation.support</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.handler.annotation.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-named-value-method-argument-resolver/index.html">AbstractNamedValueMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractNamedValueMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.handler.invocation/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Abstract base class for resolving method arguments from a named value. Message headers, and path variables are examples of named values. Each may have a name, a required flag, and a default value. 
+<p>Subclasses define how to do the following: </p>
+<ul> <li>Obtain named value information for a method parameter </li>
+<li>Resolve names into argument values </li>
+<li>Handle missing argument values when argument values are required </li>
+<li>Optionally handle a resolved value </li>
+</ul>
+ 
+<p>A default value string can contain ${...} placeholders and Spring Expression Language <code>#{...}</code> expressions. For this to work a ConfigurableBeanFactory must be supplied to the class constructor. </p>
+<p>A ConversionService may be used to apply type conversion to the resolved argument value if it doesn't match the method parameter type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-exception-handler-method-resolver/index.html">AnnotationExceptionHandlerMethodResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationExceptionHandlerMethodResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractExceptionHandlerMethodResolver</span></code>
+<p>A sub-class of AbstractExceptionHandlerMethodResolver that looks for MessageExceptionHandler-annotated methods in a given class. The actual exception types handled are extracted either from the annotation, if present, or from the method signature as a fallback option.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-destination-variable-method-argument-resolver/index.html">DestinationVariableMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DestinationVariableMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-named-value-method-argument-resolver/index.html"><span class="identifier">AbstractNamedValueMethodArgumentResolver</span></a></code>
+<p>Resolves method parameters annotated with org.springframework.messaging.handler.annotation.DestinationVariable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-header-method-argument-resolver/index.html">HeaderMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HeaderMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-named-value-method-argument-resolver/index.html"><span class="identifier">AbstractNamedValueMethodArgumentResolver</span></a></code>
+<p>Resolves method parameters annotated with Header.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-headers-method-argument-resolver/index.html">HeadersMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HeadersMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.handler.invocation/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>Resolves the following method parameters: <ul> <li>Parameters assignable to Map annotated with Headers </li>
+<li>Parameters of type MessageHeaders </li>
+<li>Parameters assignable to MessageHeaderAccessor </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-method-argument-resolver/index.html">MessageMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.handler.invocation/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p><code>HandlerMethodArgumentResolver</code> for Message method arguments. Validates that the generic type of the payload matches to the message value or otherwise applies MessageConverter to convert to the expected payload type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-payload-argument-resolver/index.html">PayloadArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PayloadArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.handler.invocation/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code>
+<p>A resolver to extract and convert the payload of a message using a MessageConverter. It also validates the payload using a Validator if the argument is annotated with a Validation annotation. 
+<p>This HandlerMethodArgumentResolver should be ordered last as it supports all types and does not require the Payload annotation.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-method-argument-not-valid-exception/index.html">MethodArgumentNotValidException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodArgumentNotValidException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.handler.invocation/-method-argument-resolution-exception/index.html"><span class="identifier">MethodArgumentResolutionException</span></a></code>
+<p>Exception to be thrown when a method argument fails validation perhaps as a result of <code>@Valid</code> style validation, or perhaps because it is required.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-argument-type-mismatch-exception/index.html">MethodArgumentTypeMismatchException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodArgumentTypeMismatchException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.handler.invocation/-method-argument-resolution-exception/index.html"><span class="identifier">MethodArgumentResolutionException</span></a></code>
+<p>Exception that indicates that a method argument has not the expected type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

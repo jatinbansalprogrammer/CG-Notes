@@ -1,0 +1,276 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.context.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.context.support</a><br/>
+<br/>
+<h2>Package org.springframework.web.context.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-annotation-config-web-application-context/index.html">AnnotationConfigWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationConfigWebApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRefreshableWebApplicationContext</span><span class="symbol">, </span><span class="identifier">AnnotationConfigRegistry</span></code>
+<p>org.springframework.web.context.WebApplicationContext implementation which accepts annotated classes as input - in particular org.springframework.context.annotation.Configuration-annotated classes, but also plain org.springframework.stereotype.Component classes and JSR-330 compliant classes using <code>javax.inject</code> annotations. Allows for registering classes one by one (specifying class names as config location) as well as for classpath scanning (specifying base packages as config location). 
+<p>This is essentially the equivalent of org.springframework.context.annotation.AnnotationConfigApplicationContext for a web environment. </p>
+<p>To make use of this application context, the <a href="#">"contextClass"</a> context-param for ContextLoader and/or "contextClass" init-param for FrameworkServlet must be set to the fully-qualified name of this class. </p>
+<p>As of Spring 3.1, this class may also be directly instantiated and injected into Spring's <code>DispatcherServlet</code> or <code>ContextLoaderListener</code> when using the new org.springframework.web.WebApplicationInitializer code-based alternative to <code>web.xml</code>. See its Javadoc for details and usage examples. </p>
+<p>Unlike XmlWebApplicationContext, no default configuration class locations are assumed. Rather, it is a requirement to set the <a href="#">"contextConfigLocation"</a> context-param for ContextLoader and/or "contextConfigLocation" init-param for FrameworkServlet. The param-value may contain both fully-qualified class names and base packages to scan for components. See <code><a href="#">#loadBeanDefinitions</a></code> for exact details on how these locations are processed. </p>
+<p>As an alternative to setting the "contextConfigLocation" parameter, users may implement an org.springframework.context.ApplicationContextInitializer and set the <a href="#">"contextInitializerClasses"</a> context-param / init-param. In such cases, users should favor the <code><a href="#">#refresh()</a></code> and <code><a href="#">#scan(String...)</a></code> methods over the <code><a href="#">#setConfigLocation(String)</a></code> method, which is primarily for use by <code>ContextLoader</code>. </p>
+<p>Note: In case of multiple <code>@Configuration</code> classes, later <code>@Bean</code> definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra Configuration class.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-exposing-http-servlet-request/index.html">ContextExposingHttpServletRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextExposingHttpServletRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequestWrapper</span></code>
+<p>HttpServletRequest decorator that makes all Spring beans in a given WebApplicationContext accessible as request attributes, through lazy checking once an attribute gets accessed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-groovy-web-application-context/index.html">GroovyWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyWebApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRefreshableWebApplicationContext</span><span class="symbol">, </span><span class="identifier">GroovyObject</span></code>
+<p>org.springframework.web.context.WebApplicationContext implementation which takes its configuration from Groovy bean definition scripts and/or XML files, as understood by an org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader. This is essentially the equivalent of org.springframework.context.support.GenericGroovyApplicationContext for a web environment. 
+<p>By default, the configuration will be taken from "/WEB-INF/applicationContext.groovy" for the root context, and "/WEB-INF/test-servlet.groovy" for a context with the namespace "test-servlet" (like for a DispatcherServlet instance with the servlet-name "test"). </p>
+<p>The config location defaults can be overridden via the "contextConfigLocation" context-param of org.springframework.web.context.ContextLoader and servlet init-param of org.springframework.web.servlet.FrameworkServlet. Config locations can either denote concrete files like "/WEB-INF/context.groovy" or Ant-style patterns like "/WEB-INF/*-context.groovy" (see org.springframework.util.PathMatcher javadoc for pattern details). Note that ".xml" files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts. </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra Groovy script. </p>
+<p><strong>For a WebApplicationContext that reads in a different bean definition format, create an analogous subclass of AbstractRefreshableWebApplicationContext.</strong> Such a context implementation can be specified as "contextClass" context-param for ContextLoader or "contextClass" init-param for FrameworkServlet.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-request-handler-servlet/index.html">HttpRequestHandlerServlet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpRequestHandlerServlet</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpServlet</span></code>
+<p>Simple HttpServlet that delegates to an HttpRequestHandler bean defined in Spring's root web application context. The target bean name must match the HttpRequestHandlerServlet servlet-name as defined in <code>web.xml</code>. 
+<p>This can for example be used to expose a single Spring remote exporter, such as org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter or org.springframework.remoting.caucho.HessianServiceExporter, per HttpRequestHandlerServlet definition. This is a minimal alternative to defining remote exporters as beans in a DispatcherServlet context (with advanced mapping and interception facilities being available there).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-live-beans-view-servlet/index.html">LiveBeansViewServlet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LiveBeansViewServlet</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpServlet</span></code>
+<p>Servlet variant of LiveBeansView's MBean exposure. 
+<p>Generates a JSON snapshot for current beans and their dependencies in all ApplicationContexts that live within the current web application.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-handled-event/index.html">RequestHandledEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequestHandledEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationEvent</span></code>
+<p>Event raised when a request is handled within an ApplicationContext. 
+<p>Supported by Spring's own FrameworkServlet (through a specific ServletRequestHandledEvent subclass), but can also be raised by any other web component. Used, for example, by Spring's out-of-the-box PerformanceMonitorListener.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-config-property-source/index.html">ServletConfigPropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletConfigPropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EnumerablePropertySource</span><span class="symbol">&lt;</span><span class="identifier">ServletConfig</span><span class="symbol">&gt;</span></code>
+<p>PropertySource that reads init parameters from a ServletConfig object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-attribute-exporter/index.html">ServletContextAttributeExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextAttributeExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextAware</span></code>
+<p>Exporter that takes Spring-defined objects and exposes them as ServletContext attributes. Usually, bean references will be used to export Spring-defined beans as ServletContext attributes. 
+<p>Useful to make Spring-defined beans available to code that is not aware of Spring at all, but rather just of the Servlet API. Client code can then use plain ServletContext attribute lookups to access those objects, despite them being defined in a Spring application context. </p>
+<p>Alternatively, consider using the WebApplicationContextUtils class to access Spring-defined beans via the WebApplicationContext interface. This makes client code aware of Spring API, of course.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-attribute-factory-bean/index.html">ServletContextAttributeFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextAttributeFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>FactoryBean that fetches a specific, existing ServletContext attribute. Exposes that ServletContext attribute when used as bean reference, effectively making it available as named Spring bean instance. 
+<p>Intended to link in ServletContext attributes that exist before the startup of the Spring application context. Typically, such attributes will have been put there by third-party web frameworks. In a purely Spring-based web application, no such linking in of ServletContext attributes will be necessary. </p>
+<p><strong>NOTE:</strong> As of Spring 3.0, you may also use the "contextAttributes" default bean which is of type Map, and dereference it using an "#{contextAttributes.myKey}" expression to access a specific attribute by name.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-aware-processor/index.html">ServletContextAwareProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextAwareProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanPostProcessor</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that passes the ServletContext to beans that implement the ServletContextAware interface. 
+<p>Web application contexts will automatically register this with their underlying bean factory. Applications do not use this directly.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-live-beans-view/index.html">ServletContextLiveBeansView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextLiveBeansView</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.context.support/-live-beans-view/index.html"><span class="identifier">LiveBeansView</span></a></code>
+<p>LiveBeansView subclass which looks for all ApplicationContexts in the web application, as exposed in ServletContext attributes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-parameter-factory-bean/index.html">ServletContextParameterFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextParameterFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>FactoryBean that retrieves a specific ServletContext init parameter (that is, a "context-param" defined in <code>web.xml</code>). Exposes that ServletContext init parameter when used as bean reference, effectively making it available as named Spring bean instance. 
+<p><strong>NOTE:</strong> As of Spring 3.0, you may also use the "contextParameters" default bean which is of type Map, and dereference it using an "#{contextParameters.myKey}" expression to access a specific parameter by name.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-property-source/index.html">ServletContextPropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextPropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EnumerablePropertySource</span><span class="symbol">&lt;</span><span class="identifier">ServletContext</span><span class="symbol">&gt;</span></code>
+<p>PropertySource that reads init parameters from a ServletContext object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-resource/index.html">ServletContextResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFileResolvingResource</span><span class="symbol">, </span><a href="../org.springframework.core.io/-context-resource/index.html"><span class="identifier">ContextResource</span></a></code>
+<p>org.springframework.core.io.Resource implementation for javax.servlet.ServletContext resources, interpreting relative paths within the web application root directory. 
+<p>Always supports stream access and URL access, but only allows <code>java.io.File</code> access when the web application archive is expanded.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-resource-loader/index.html">ServletContextResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextResourceLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultResourceLoader</span></code>
+<p>ResourceLoader implementation that resolves paths as ServletContext resources, for use outside a WebApplicationContext (for example, in an HttpServletBean or GenericFilterBean subclass). 
+<p>Within a WebApplicationContext, resource paths are automatically resolved as ServletContext resources by the context implementation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-resource-pattern-resolver/index.html">ServletContextResourcePatternResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextResourcePatternResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.core.io.support/-path-matching-resource-pattern-resolver/index.html"><span class="identifier">PathMatchingResourcePatternResolver</span></a></code>
+<p>ServletContext-aware subclass of PathMatchingResourcePatternResolver, able to find matching resources below the web application root directory via <code><a href="#">ServletContext#getResourcePaths</a></code>. Falls back to the superclass' file system checking for other resources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-scope/index.html">ServletContextScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextScope</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Scope</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Scope wrapper for a ServletContext, i.e. for global web application attributes. 
+<p>This differs from traditional Spring singletons in that it exposes attributes in the ServletContext. Those attributes will get destroyed whenever the entire application shuts down, which might be earlier or later than the shutdown of the containing Spring ApplicationContext. </p>
+<p>The associated destruction mechanism relies on a org.springframework.web.context.ContextCleanupListener being registered in <code>web.xml</code>. Note that org.springframework.web.context.ContextLoaderListener includes ContextCleanupListener's functionality. </p>
+<p>This scope is registered as default scope with key <code><a href="#">"application"</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-request-handled-event/index.html">ServletRequestHandledEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletRequestHandledEvent</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-request-handled-event/index.html"><span class="identifier">RequestHandledEvent</span></a></code>
+<p>Servlet-specific subclass of RequestHandledEvent, adding servlet-specific context information.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-bean-autowiring-support/index.html">SpringBeanAutowiringSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">SpringBeanAutowiringSupport</span></code>
+<p>Convenient base class for self-autowiring classes that gets constructed within a Spring-based web application. Resolves <code>@Autowired</code> annotations in the endpoint class against beans in the current Spring root web application context (as determined by the current thread's context ClassLoader, which needs to be the web application's ClassLoader). Can alternatively be used as a delegate instead of as a base class. 
+<p>A typical usage of this base class is a JAX-WS endpoint class: Such a Spring-based JAX-WS endpoint implementation will follow the standard JAX-WS contract for endpoint classes but will be 'thin' in that it delegates the actual work to one or more Spring-managed service beans - typically obtained using <code>@Autowired</code>. The lifecycle of such an endpoint instance will be managed by the JAX-WS runtime, hence the need for this base class to provide <code>@Autowired</code> processing based on the current Spring context. </p>
+<p><strong>NOTE:</strong> If there is an explicit way to access the ServletContext, prefer such a way over using this class. The WebApplicationContextUtils class allows for easy access to the Spring root web application context based on the ServletContext.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-standard-servlet-environment/index.html">StandardServletEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardServletEnvironment</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StandardEnvironment</span><span class="symbol">, </span><span class="identifier">ConfigurableWebEnvironment</span></code>
+<p>Environment implementation to be used by <code>Servlet</code>-based web applications. All web-related (servlet-based) <code>ApplicationContext</code> classes initialize an instance by default. 
+<p>Contributes <code>ServletConfig</code>, <code>ServletContext</code>, and JNDI-based PropertySource instances. See <code><a href="#">#customizePropertySources</a></code> method documentation for details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-static-web-application-context/index.html">StaticWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StaticWebApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.context.support/-static-application-context/index.html"><span class="identifier">StaticApplicationContext</span></a><span class="symbol">, </span><span class="identifier">ConfigurableWebApplicationContext</span><span class="symbol">, </span><a href="../org.springframework.ui.context/-theme-source/index.html"><span class="identifier">ThemeSource</span></a></code>
+<p>Static org.springframework.web.context.WebApplicationContext implementation for testing. Not intended for use in production applications. 
+<p>Implements the org.springframework.web.context.ConfigurableWebApplicationContext interface to allow for direct replacement of an XmlWebApplicationContext, despite not actually supporting external configuration files. </p>
+<p>Interprets resource paths as servlet context resources, i.e. as paths beneath the web application root. Absolute paths, e.g. for files outside the web app root, can be accessed via "file:" URLs, as implemented by org.springframework.core.io.DefaultResourceLoader. </p>
+<p>In addition to the special beans detected by org.springframework.context.support.AbstractApplicationContext, this class detects a bean of type org.springframework.ui.context.ThemeSource in the context, under the special bean name "themeSource".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-application-context-utils/index.html">WebApplicationContextUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">WebApplicationContextUtils</span></code>
+<p>Convenience methods for retrieving the root WebApplicationContext for a given ServletContext. This is useful for programmatically accessing a Spring application context from within custom web views or MVC actions. 
+<p>Note that there are more convenient ways of accessing the root context for many web frameworks, either part of Spring or available as an external library. This helper class is just the most generic way to access the root context.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xml-web-application-context/index.html">XmlWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XmlWebApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRefreshableWebApplicationContext</span></code>
+<p>org.springframework.web.context.WebApplicationContext implementation which takes its configuration from XML documents, understood by an org.springframework.beans.factory.xml.XmlBeanDefinitionReader. This is essentially the equivalent of org.springframework.context.support.GenericXmlApplicationContext for a web environment. 
+<p>By default, the configuration will be taken from "/WEB-INF/applicationContext.xml" for the root context, and "/WEB-INF/test-servlet.xml" for a context with the namespace "test-servlet" (like for a DispatcherServlet instance with the servlet-name "test"). </p>
+<p>The config location defaults can be overridden via the "contextConfigLocation" context-param of org.springframework.web.context.ContextLoader and servlet init-param of org.springframework.web.servlet.FrameworkServlet. Config locations can either denote concrete files like "/WEB-INF/context.xml" or Ant-style patterns like "/WEB-INF/*-context.xml" (see org.springframework.util.PathMatcher javadoc for pattern details). </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra XML file. </p>
+<p><strong>For a WebApplicationContext that reads in a different bean definition format, create an analogous subclass of AbstractRefreshableWebApplicationContext.</strong> Such a context implementation can be specified as "contextClass" context-param for ContextLoader or "contextClass" init-param for FrameworkServlet.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

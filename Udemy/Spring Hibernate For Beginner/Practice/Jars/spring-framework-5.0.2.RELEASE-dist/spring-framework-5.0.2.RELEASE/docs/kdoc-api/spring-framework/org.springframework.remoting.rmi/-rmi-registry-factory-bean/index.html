@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RmiRegistryFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.rmi</a>&nbsp;/&nbsp;<a href=".">RmiRegistryFactoryBean</a><br/>
+<br/>
+<h1>RmiRegistryFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RmiRegistryFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Registry</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that locates a java.rmi.registry.Registry and exposes it for bean references. Can also create a local RMI registry on the fly if none exists already. 
+<p>Can be used to set up and pass around the actual Registry object to applications objects that need to work with RMI. One example for such an object that needs to work with RMI is Spring's RmiServiceExporter, which either works with a passed-in Registry reference or falls back to the registry as specified by its local properties and defaults. </p>
+<p>Also useful to enforce creation of a local RMI registry at a given port, for example for a JMX connector. If used in conjunction with org.springframework.jmx.support.ConnectorServerFactoryBean, it is recommended to mark the connector definition (ConnectorServerFactoryBean) as "depends-on" the registry definition (RmiRegistryFactoryBean), to guarantee starting up the registry first. </p>
+<p>Note: The implementation of this class mirrors the corresponding logic in RmiServiceExporter, and also offers the same customization hooks. RmiServiceExporter implements its own registry lookup as a convenience: It is very common to simply rely on the registry defaults.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2.3</p>
+<p><strong>See Also</strong><br/>
+<a href="#">RmiServiceExporter#setRegistry</a>org.springframework.jmx.support.ConnectorServerFactoryBeanjava.rmi.registry.Registryjava.rmi.registry.LocateRegistry</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">RmiRegistryFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>FactoryBean that locates a java.rmi.registry.Registry and exposes it for bean references. Can also create a local RMI registry on the fly if none exists already. 
+<p>Can be used to set up and pass around the actual Registry object to applications objects that need to work with RMI. One example for such an object that needs to work with RMI is Spring's RmiServiceExporter, which either works with a passed-in Registry reference or falls back to the registry as specified by its local properties and defaults. </p>
+<p>Also useful to enforce creation of a local RMI registry at a given port, for example for a JMX connector. If used in conjunction with org.springframework.jmx.support.ConnectorServerFactoryBean, it is recommended to mark the connector definition (ConnectorServerFactoryBean) as "depends-on" the registry definition (RmiRegistryFactoryBean), to guarantee starting up the registry first. </p>
+<p>Note: The implementation of this class mirrors the corresponding logic in RmiServiceExporter, and also offers the same customization hooks. RmiServiceExporter implements its own registry lookup as a convenience: It is very common to simply rely on the registry defaults.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Unexport the RMI registry on bean factory shutdown, provided that this bean actually created a registry.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-host.html">getHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHost</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the host of the registry for the exported RMI service.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Registry</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Registry</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-port.html">getPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the port of the registry for the exported RMI service.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-always-create.html">setAlwaysCreate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAlwaysCreate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiRegistryFactoryBean$setAlwaysCreate(kotlin.Boolean)/alwaysCreate">alwaysCreate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to always create the registry in-process, not attempting to locate an existing registry at the specified port. 
+<p>Default is "false". Switch this flag to "true" in order to avoid the overhead of locating an existing registry when you always intend to create a new registry in any case.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-client-socket-factory.html">setClientSocketFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClientSocketFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiRegistryFactoryBean$setClientSocketFactory(java.rmi.server.RMIClientSocketFactory)/clientSocketFactory">clientSocketFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">RMIClientSocketFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom RMI client socket factory to use for the RMI registry. 
+<p>If the given object also implements <code>java.rmi.server.RMIServerSocketFactory</code>, it will automatically be registered as server socket factory too.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-host.html">setHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHost</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiRegistryFactoryBean$setHost(kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the host of the registry for the exported RMI service, i.e. <code>rmi://HOST:port/name</code> 
+<p>Default is localhost.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-port.html">setPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiRegistryFactoryBean$setPort(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the port of the registry for the exported RMI service, i.e. <code>rmi://host:PORT/name</code> 
+<p>Default is <code>Registry.REGISTRY_PORT</code> (1099).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-server-socket-factory.html">setServerSocketFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServerSocketFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiRegistryFactoryBean$setServerSocketFactory(java.rmi.server.RMIServerSocketFactory)/serverSocketFactory">serverSocketFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">RMIServerSocketFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom RMI server socket factory to use for the RMI registry. 
+<p>Only needs to be specified when the client socket factory does not implement <code>java.rmi.server.RMIServerSocketFactory</code> already.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JettyRequestUpgradeStrategy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.server.jetty</a>&nbsp;/&nbsp;<a href=".">JettyRequestUpgradeStrategy</a><br/>
+<br/>
+<h1>JettyRequestUpgradeStrategy</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JettyRequestUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestUpgradeStrategy</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A RequestUpgradeStrategy for use with Jetty 9.4. Based on Jetty's internal <code>org.eclipse.jetty.websocket.server.WebSocketHandler</code> class.</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JettyRequestUpgradeStrategy</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor that creates WebSocketServerFactory through its default constructor thus using a default WebSocketPolicy.</p>
+<code><span class="identifier">JettyRequestUpgradeStrategy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$<init>(org.eclipse.jetty.websocket.api.WebSocketPolicy)/policy">policy</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketPolicy</span><span class="symbol">)</span></code>
+<p>A constructor accepting a WebSocketPolicy to be used when creating the WebSocketServerFactory instance.</p>
+<code><span class="identifier">JettyRequestUpgradeStrategy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$<init>(org.eclipse.jetty.websocket.server.WebSocketServerFactory)/factory">factory</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketServerFactory</span><span class="symbol">)</span></code>
+<p>A constructor accepting a WebSocketServerFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-supported-extensions.html">getSupportedExtensions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSupportedExtensions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$getSupportedExtensions(org.springframework.http.server.ServerHttpRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../../org.springframework.web.socket/-web-socket-extension/index.html"><span class="identifier">WebSocketExtension</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-supported-versions.html">getSupportedVersions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSupportedVersions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="upgrade.html">upgrade</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">upgrade</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$upgrade(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), java.security.Principal, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$upgrade(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), java.security.Principal, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$upgrade(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), java.security.Principal, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/selectedProtocol">selectedProtocol</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$upgrade(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), java.security.Principal, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/selectedExtensions">selectedExtensions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../../org.springframework.web.socket/-web-socket-extension/index.html"><span class="identifier">WebSocketExtension</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$upgrade(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), java.security.Principal, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/user">user</span><span class="symbol">:</span>&nbsp;<span class="identifier">Principal</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$upgrade(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), java.security.Principal, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/wsHandler">wsHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.server.jetty.JettyRequestUpgradeStrategy$upgrade(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), java.security.Principal, org.springframework.web.socket.WebSocketHandler, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/attributes">attributes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

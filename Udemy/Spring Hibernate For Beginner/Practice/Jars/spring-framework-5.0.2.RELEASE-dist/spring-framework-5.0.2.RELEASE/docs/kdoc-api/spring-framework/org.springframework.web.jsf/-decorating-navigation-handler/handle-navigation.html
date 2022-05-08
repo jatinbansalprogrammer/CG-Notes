@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DecoratingNavigationHandler.handleNavigation - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.jsf</a>&nbsp;/&nbsp;<a href="index.html">DecoratingNavigationHandler</a>&nbsp;/&nbsp;<a href=".">handleNavigation</a><br/>
+<br/>
+<h1>handleNavigation</h1>
+<a name="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String)"></a>
+<code><span class="keyword">fun </span><span class="identifier">handleNavigation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String)/facesContext">facesContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">FacesContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String)/fromAction">fromAction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String)/outcome">outcome</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation of the standard JSF <code>handleNavigation</code> method delegates to the overloaded variant, passing in constructor-injected NavigationHandler as argument.</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#handleNavigation(javax.faces.context.FacesContext, String, String, javax.faces.application.NavigationHandler)</a></p>
+<a name="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String, javax.faces.application.NavigationHandler)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handleNavigation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String, javax.faces.application.NavigationHandler)/facesContext">facesContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">FacesContext</span><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String, javax.faces.application.NavigationHandler)/fromAction">fromAction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String, javax.faces.application.NavigationHandler)/outcome">outcome</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.web.jsf.DecoratingNavigationHandler$handleNavigation(javax.faces.context.FacesContext, kotlin.String, kotlin.String, javax.faces.application.NavigationHandler)/originalNavigationHandler">originalNavigationHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">NavigationHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Special <code>handleNavigation</code> variant with explicit NavigationHandler argument. Either called directly, by code with an explicit original handler, or called from the standard <code>handleNavigation</code> method, as plain JSF-defined NavigationHandler. 
+<p>Implementations should invoke <code>callNextHandlerInChain</code> to delegate to the next handler in the chain. This will always call the most appropriate next handler (see <code>callNextHandlerInChain</code> javadoc). Alternatively, the decorated NavigationHandler or the passed-in original NavigationHandler can also be called directly; however, this is not as flexible in terms of reacting to potential positions in the chain.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="facesContext"></a>
+<code>facesContext</code> - the current JSF context</p>
+<p><a name="fromAction"></a>
+<code>fromAction</code> - the action binding expression that was evaluated to retrieve the specified outcome, or <code>null</code> if the outcome was acquired by some other means</p>
+<p><a name="outcome"></a>
+<code>outcome</code> - the logical outcome returned by a previous invoked application action (which may be <code>null</code>)</p>
+<p><a name="originalNavigationHandler"></a>
+<code>originalNavigationHandler</code> - the original NavigationHandler, or <code>null</code> if none</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#callNextHandlerInChain</a></p>
+</BODY>
+</HTML>

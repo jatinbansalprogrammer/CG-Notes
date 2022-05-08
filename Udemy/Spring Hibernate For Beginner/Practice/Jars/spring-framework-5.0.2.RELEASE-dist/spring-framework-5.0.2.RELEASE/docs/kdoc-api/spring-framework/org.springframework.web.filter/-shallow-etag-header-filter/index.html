@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ShallowEtagHeaderFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href=".">ShallowEtagHeaderFilter</a><br/>
+<br/>
+<h1>ShallowEtagHeaderFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ShallowEtagHeaderFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that generates an <code>ETag</code> value based on the content on the response. This ETag is compared to the <code>If-None-Match</code> header of the request. If these headers are equal, the response content is not sent, but rather a <code>304 "Not Modified"</code> status instead. 
+<p>Since the ETag is based on the response content, the response (e.g. a org.springframework.web.servlet.View) is still rendered. As such, this filter only saves bandwidth, not server performance. </p>
+<p><strong>NOTE:</strong> As of Spring Framework 5.0, this filter uses request/response decorators built on the Servlet 3.1 API.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ShallowEtagHeaderFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>javax.servlet.Filter that generates an <code>ETag</code> value based on the content on the response. This ETag is compared to the <code>If-None-Match</code> header of the request. If these headers are equal, the response content is not sent, but rather a <code>304 "Not Modified"</code> status instead. 
+<p>Since the ETag is based on the response content, the response (e.g. a org.springframework.web.servlet.View) is still rendered. As such, this filter only saves bandwidth, not server performance. </p>
+<p><strong>NOTE:</strong> As of Spring Framework 5.0, this filter uses request/response decorators built on the Servlet 3.1 API.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="disable-content-caching.html">disableContentCaching</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">disableContentCaching</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.ShallowEtagHeaderFilter$disableContentCaching(javax.servlet.ServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method can be used to disable the content caching response wrapper of the ShallowEtagHeaderFilter. This can be done before the start of HTTP streaming for example where the response will be written to asynchronously and not in the context of a Servlet container thread.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-write-weak-e-tag.html">isWriteWeakETag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isWriteWeakETag</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the ETag value written to the response should be weak, as per RFC 7232.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-write-weak-e-tag.html">setWriteWeakETag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWriteWeakETag</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.ShallowEtagHeaderFilter$setWriteWeakETag(kotlin.Boolean)/writeWeakETag">writeWeakETag</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the ETag value written to the response should be weak, as per RFC 7232. 
+<p>Should be configured using an <code>&lt;init-param&gt;</code> for parameter name "writeWeakETag" in the filter definition in <code>web.xml</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

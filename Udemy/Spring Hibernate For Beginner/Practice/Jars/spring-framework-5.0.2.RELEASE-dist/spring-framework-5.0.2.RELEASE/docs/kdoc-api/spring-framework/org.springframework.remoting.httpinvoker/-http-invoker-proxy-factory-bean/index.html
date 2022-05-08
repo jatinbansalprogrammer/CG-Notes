@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpInvokerProxyFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.httpinvoker</a>&nbsp;/&nbsp;<a href=".">HttpInvokerProxyFactoryBean</a><br/>
+<br/>
+<h1>HttpInvokerProxyFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpInvokerProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpInvokerClientInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>FactoryBean for HTTP invoker proxies. Exposes the proxied service for use as a bean reference, using the specified service interface. 
+<p>The service URL must be an HTTP URL exposing an HTTP invoker service. Optionally, a codebase URL can be specified for on-demand dynamic code download from a remote location. For details, see HttpInvokerClientInterceptor docs. </p>
+<p>Serializes remote invocation objects and deserializes remote invocation result objects. Uses Java serialization just like RMI, but provides the same ease of setup as Caucho's HTTP-based Hessian protocol. </p>
+<p><strong>HTTP invoker is the recommended protocol for Java-to-Java remoting.</strong> It is more powerful and more extensible than Hessian, at the expense of being tied to Java. Nevertheless, it is as easy to set up as Hessian, which is its main advantage compared to RMI. </p>
+<p><strong>WARNING: Be aware of vulnerabilities due to unsafe Java deserialization: Manipulated input streams could lead to unwanted code execution on the server during the deserialization step. As a consequence, do not expose HTTP invoker endpoints to untrusted clients but rather just between your own services.</strong> In general, we strongly recommend any other message format (e.g. JSON) instead.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setServiceInterface</a><a href="#">#setServiceUrl</a><a href="#">#setCodebaseUrl</a>HttpInvokerClientInterceptorHttpInvokerServiceExporterorg.springframework.remoting.rmi.RmiProxyFactoryBeanorg.springframework.remoting.caucho.HessianProxyFactoryBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpInvokerProxyFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>FactoryBean for HTTP invoker proxies. Exposes the proxied service for use as a bean reference, using the specified service interface. 
+<p>The service URL must be an HTTP URL exposing an HTTP invoker service. Optionally, a codebase URL can be specified for on-demand dynamic code download from a remote location. For details, see HttpInvokerClientInterceptor docs. </p>
+<p>Serializes remote invocation objects and deserializes remote invocation result objects. Uses Java serialization just like RMI, but provides the same ease of setup as Caucho's HTTP-based Hessian protocol. </p>
+<p><strong>HTTP invoker is the recommended protocol for Java-to-Java remoting.</strong> It is more powerful and more extensible than Hessian, at the expense of being tied to Java. Nevertheless, it is as easy to set up as Hessian, which is its main advantage compared to RMI. </p>
+<p><strong>WARNING: Be aware of vulnerabilities due to unsafe Java deserialization: Manipulated input streams could lead to unwanted code execution on the server during the deserialization step. As a consequence, do not expose HTTP invoker endpoints to untrusted clients but rather just between your own services.</strong> In general, we strongly recommend any other message format (e.g. JSON) instead.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

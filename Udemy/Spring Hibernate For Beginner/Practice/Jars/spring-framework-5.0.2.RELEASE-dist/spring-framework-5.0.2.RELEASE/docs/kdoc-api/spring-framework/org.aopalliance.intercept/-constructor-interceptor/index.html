@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConstructorInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.aopalliance.intercept</a>&nbsp;/&nbsp;<a href=".">ConstructorInterceptor</a><br/>
+<br/>
+<h1>ConstructorInterceptor</h1>
+<code><span class="keyword">interface </span><span class="identifier">ConstructorInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Interceptor</span></code>
+<p>Intercepts the construction of a new object. 
+<p>The user should implement the <code><a href="construct.html"> </a></code> method to modify the original behavior. E.g. the following class implements a singleton interceptor (allows only one unique instance for the intercepted class): </p>
+<pre><code> class DebuggingInterceptor implements ConstructorInterceptor { Object instance=null; Object construct(ConstructorInvocation i) throws Throwable { if(instance==null) { return instance=i.proceed(); } else { throw new Exception("singleton does not allow multiple instance"); } } } </code></pre></p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="construct.html">construct</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">construct</span><span class="symbol">(</span><span class="identifier" id="org.aopalliance.intercept.ConstructorInterceptor$construct(org.aopalliance.intercept.ConstructorInvocation)/invocation">invocation</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConstructorInvocation</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Implement this method to perform extra treatments before and after the construction of a new object. Polite implementations would certainly like to invoke <code><a href="#">Joinpoint#proceed()</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BeanConfigurerSupport - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.wiring</a>&nbsp;/&nbsp;<a href=".">BeanConfigurerSupport</a><br/>
+<br/>
+<h1>BeanConfigurerSupport</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanConfigurerSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Convenient base class for bean configurers that can perform Dependency Injection on objects (however they may be created). Typically subclassed by AspectJ aspects. 
+<p>Subclasses may also need a custom metadata resolution strategy, in the BeanWiringInfoResolver interface. The default implementation looks for a bean with the same name as the fully-qualified class name. (This is the default name of the bean in a Spring XML file if the '<code>id</code>' attribute is not used.)</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="set-bean-wiring-info-resolver.html">#setBeanWiringInfoResolver</a>ClassNameBeanWiringInfoResolver</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BeanConfigurerSupport</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient base class for bean configurers that can perform Dependency Injection on objects (however they may be created). Typically subclassed by AspectJ aspects. 
+<p>Subclasses may also need a custom metadata resolution strategy, in the BeanWiringInfoResolver interface. The default implementation looks for a bean with the same name as the fully-qualified class name. (This is the default name of the bean in a Spring XML file if the '<code>id</code>' attribute is not used.)</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Check that a BeanFactory has been set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="configure-bean.html">configureBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">configureBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.wiring.BeanConfigurerSupport$configureBean(kotlin.Any)/beanInstance">beanInstance</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the bean instance. 
+<p>Subclasses can override this to provide custom configuration logic. Typically called by an aspect, for all bean instances matched by a pointcut.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Release references to the BeanFactory and BeanWiringInfoResolver when the container is destroyed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.wiring.BeanConfigurerSupport$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the BeanFactory in which this aspect must configure beans.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-wiring-info-resolver.html">setBeanWiringInfoResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanWiringInfoResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.wiring.BeanConfigurerSupport$setBeanWiringInfoResolver(org.springframework.beans.factory.wiring.BeanWiringInfoResolver)/beanWiringInfoResolver">beanWiringInfoResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanWiringInfoResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the BeanWiringInfoResolver to use. 
+<p>The default behavior is to look for a bean with the same name as the class. As an alternative, consider using annotation-driven bean wiring.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServerSentEventHttpMessageReader - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.codec</a>&nbsp;/&nbsp;<a href=".">ServerSentEventHttpMessageReader</a><br/>
+<br/>
+<h1>ServerSentEventHttpMessageReader</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServerSentEventHttpMessageReader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageReader</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Reader that supports a stream of ServerSentEvents and also plain Objects which is the same as an ServerSentEvent with data only.</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServerSentEventHttpMessageReader</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor without a <code>Decoder</code>. In this mode only <code>String</code> is supported as the data of an event.</p>
+<code><span class="identifier">ServerSentEventHttpMessageReader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$<init>(org.springframework.core.codec.Decoder((kotlin.Any)))/decoder">decoder</span><span class="symbol">:</span>&nbsp;<span class="identifier">Decoder</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Constructor with JSON <code>Decoder</code> for decoding to Objects. Support for decoding to <code>String</code> event data is built-in.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="can-read.html">canRead</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canRead</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$canRead(org.springframework.core.ResolvableType, org.springframework.http.MediaType)/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$canRead(org.springframework.core.ResolvableType, org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-decoder.html">getDecoder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDecoder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Decoder</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the configured <code>Decoder</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-readable-media-types.html">getReadableMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getReadableMediaTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MediaType</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="read.html">read</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">read</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$read(org.springframework.core.ResolvableType, org.springframework.http.ReactiveHttpInputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$read(org.springframework.core.ResolvableType, org.springframework.http.ReactiveHttpInputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReactiveHttpInputMessage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$read(org.springframework.core.ResolvableType, org.springframework.http.ReactiveHttpInputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/hints">hints</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html"><span class="identifier">Flux</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="read-mono.html">readMono</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">readMono</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$readMono(org.springframework.core.ResolvableType, org.springframework.http.ReactiveHttpInputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$readMono(org.springframework.core.ResolvableType, org.springframework.http.ReactiveHttpInputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReactiveHttpInputMessage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.ServerSentEventHttpMessageReader$readMono(org.springframework.core.ResolvableType, org.springframework.http.ReactiveHttpInputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/hints">hints</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

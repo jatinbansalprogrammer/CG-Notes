@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultAdvisorAutoProxyCreator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.framework.autoproxy</a>&nbsp;/&nbsp;<a href=".">DefaultAdvisorAutoProxyCreator</a><br/>
+<br/>
+<h1>DefaultAdvisorAutoProxyCreator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultAdvisorAutoProxyCreator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAdvisorAutoProxyCreator</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span></code>
+<p><code>BeanPostProcessor</code> implementation that creates AOP proxies based on all candidate <code>Advisor</code>s in the current <code>BeanFactory</code>. This class is completely generic; it contains no special code to handle any particular aspects, such as pooling aspects. 
+<p>It's possible to filter out advisors - for example, to use multiple post processors of this type in the same factory - by setting the <code>usePrefix</code> property to true, in which case only advisors beginning with the DefaultAdvisorAutoProxyCreator's bean name followed by a dot (like "aapc.") will be used. This default prefix can be changed from the bean name by setting the <code>advisorBeanNamePrefix</code> property. The separator (.) will also be used in this case.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultAdvisorAutoProxyCreator</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p><code>BeanPostProcessor</code> implementation that creates AOP proxies based on all candidate <code>Advisor</code>s in the current <code>BeanFactory</code>. This class is completely generic; it contains no special code to handle any particular aspects, such as pooling aspects. 
+<p>It's possible to filter out advisors - for example, to use multiple post processors of this type in the same factory - by setting the <code>usePrefix</code> property to true, in which case only advisors beginning with the DefaultAdvisorAutoProxyCreator's bean name followed by a dot (like "aapc.") will be used. This default prefix can be changed from the bean name by setting the <code>advisorBeanNamePrefix</code> property. The separator (.) will also be used in this case.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-s-e-p-a-r-a-t-o-r.html">SEPARATOR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SEPARATOR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Separator between prefix and remainder of bean name</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-advisor-bean-name-prefix.html">getAdvisorBeanNamePrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAdvisorBeanNamePrefix</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the prefix for bean names that will cause them to be included for auto-proxying by this object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-use-prefix.html">isUsePrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isUsePrefix</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to only include advisors with a certain prefix in the bean name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-advisor-bean-name-prefix.html">setAdvisorBeanNamePrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAdvisorBeanNamePrefix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator$setAdvisorBeanNamePrefix(kotlin.String)/advisorBeanNamePrefix">advisorBeanNamePrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the prefix for bean names that will cause them to be included for auto-proxying by this object. This prefix should be set to avoid circular references. Default value is the bean name of this object + a dot.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-name.html">setBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator$setBeanName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-prefix.html">setUsePrefix</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUsePrefix</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator$setUsePrefix(kotlin.Boolean)/usePrefix">usePrefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to only include advisors with a certain prefix in the bean name. 
+<p>Default is <code>false</code>, including all beans of type <code>Advisor</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

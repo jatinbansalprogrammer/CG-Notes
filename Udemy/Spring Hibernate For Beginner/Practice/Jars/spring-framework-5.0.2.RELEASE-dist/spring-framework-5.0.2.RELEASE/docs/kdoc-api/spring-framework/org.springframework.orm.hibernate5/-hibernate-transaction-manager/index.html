@@ -1,0 +1,188 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HibernateTransactionManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5</a>&nbsp;/&nbsp;<a href=".">HibernateTransactionManager</a><br/>
+<br/>
+<h1>HibernateTransactionManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HibernateTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPlatformTransactionManager</span><span class="symbol">, </span><span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.transaction.PlatformTransactionManager implementation for a single Hibernate SessionFactory. Binds a Hibernate Session from the specified factory to the thread, potentially allowing for one thread-bound Session per factory. <code>SessionFactory.getCurrentSession()</code> is required for Hibernate access code that needs to support this transaction handling mechanism, with the SessionFactory being configured with SpringSessionContext. 
+<p>Supports custom isolation levels, and timeouts that get applied as Hibernate transaction timeouts. </p>
+<p>This transaction manager is appropriate for applications that use a single Hibernate SessionFactory for transactional data access, but it also supports direct DataSource access within a transaction (i.e. plain JDBC code working with the same DataSource). This allows for mixing services which access Hibernate and services which use plain JDBC (without being aware of Hibernate)! Application code needs to stick to the same simple Connection lookup pattern as with org.springframework.jdbc.datasource.DataSourceTransactionManager (i.e. <code><a href="#">org.springframework.jdbc.datasource.DataSourceUtils#getConnection</a></code> or going through a org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy). </p>
+<p>Note: To be able to register a DataSource's Connection for plain JDBC code, this instance needs to be aware of the DataSource (<code><a href="set-data-source.html">#setDataSource</a></code>). The given DataSource should obviously match the one used by the given SessionFactory. </p>
+<p>JTA (usually through org.springframework.transaction.jta.JtaTransactionManager) is necessary for accessing multiple transactional resources within the same transaction. The DataSource that Hibernate uses needs to be JTA-enabled in such a scenario (see container setup). </p>
+<p>This transaction manager supports nested transactions via JDBC 3.0 Savepoints. The <code><a href="#">#setNestedTransactionAllowed</a></code> "nestedTransactionAllowed"} flag defaults to "false", though, as nested transactions will just apply to the JDBC Connection, not to the Hibernate Session and its cached entity objects and related context. You can manually set the flag to "true" if you want to use nested transactions for JDBC access code which participates in Hibernate transactions (provided that your JDBC driver supports Savepoints). <em>Note that Hibernate itself does not support nested transactions! Hence, do not expect Hibernate access code to semantically participate in a nested transaction.</em></p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="set-session-factory.html">#setSessionFactory</a><a href="set-data-source.html">#setDataSource</a><a href="#">SessionFactory#getCurrentSession()</a><a href="#">DataSourceUtils#getConnection</a><a href="#">DataSourceUtils#releaseConnection</a>org.springframework.jdbc.core.JdbcTemplateorg.springframework.jdbc.datasource.DataSourceTransactionManagerorg.springframework.transaction.jta.JtaTransactionManager</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HibernateTransactionManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new HibernateTransactionManager instance. A SessionFactory has to be set to be able to use it.</p>
+<code><span class="identifier">HibernateTransactionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$<init>(org.hibernate.SessionFactory)/sessionFactory">sessionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionFactory</span><span class="symbol">)</span></code>
+<p>Create a new HibernateTransactionManager instance.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-data-source.html">getDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDataSource</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataSource</span></code>
+<p>Return the JDBC DataSource that this instance manages transactions for.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-entity-interceptor.html">getEntityInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEntityInterceptor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Interceptor</span></code>
+<p>Return the current Hibernate entity interceptor, or <code>null</code> if none. Resolves an entity interceptor bean name via the bean factory, if necessary.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-factory.html">getResourceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourceFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-session-factory.html">getSessionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSessionFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SessionFactory</span></code>
+<p>Return the SessionFactory that this instance should manage transactions for.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-allow-result-access-after-completion.html">setAllowResultAccessAfterCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAllowResultAccessAfterCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setAllowResultAccessAfterCompletion(kotlin.Boolean)/allowResultAccessAfterCompletion">allowResultAccessAfterCompletion</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to allow result access after completion, typically via Hibernate's ScrollableResults mechanism. 
+<p>Default is "false". Turning this flag on enforces over-commit holdability on the underlying JDBC Connection (if <code><a href="#">"prepareConnection"</a></code> is on) and skips the disconnect-on-completion step.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-autodetect-data-source.html">setAutodetectDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutodetectDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setAutodetectDataSource(kotlin.Boolean)/autodetectDataSource">autodetectDataSource</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to autodetect a JDBC DataSource used by the Hibernate SessionFactory, if set via LocalSessionFactoryBean's <code>setDataSource</code>. Default is "true". 
+<p>Can be turned off to deliberately ignore an available DataSource, in order to not expose Hibernate transactions as JDBC transactions for that DataSource.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The bean factory just needs to be known for resolving entity interceptor bean names. It does not need to be set for any other mode of operation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-data-source.html">setDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setDataSource(javax.sql.DataSource)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDBC DataSource that this instance should manage transactions for. The DataSource should match the one used by the Hibernate SessionFactory: for example, you could specify the same JNDI DataSource for both. 
+<p>If the SessionFactory was configured with LocalDataSourceConnectionProvider, i.e. by Spring's LocalSessionFactoryBean with a specified "dataSource", the DataSource will be auto-detected: You can still explicitly specify the DataSource, but you don't need to in this case. </p>
+<p>A transactional JDBC Connection for this DataSource will be provided to application code accessing this DataSource directly via DataSourceUtils or JdbcTemplate. The Connection will be taken from the Hibernate Session. </p>
+<p>The DataSource specified here should be the target DataSource to manage transactions for, not a TransactionAwareDataSourceProxy. Only data access code may work with TransactionAwareDataSourceProxy, while the transaction manager needs to work on the underlying target DataSource. If there's nevertheless a TransactionAwareDataSourceProxy passed in, it will be unwrapped to extract its target DataSource.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-entity-interceptor.html">setEntityInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEntityInterceptor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setEntityInterceptor(org.hibernate.Interceptor)/entityInterceptor">entityInterceptor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Interceptor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a Hibernate entity interceptor that allows to inspect and change property values before writing to and reading from the database. Will get applied to any new Session created by this transaction manager. 
+<p>Such an interceptor can either be set at the SessionFactory level, i.e. on LocalSessionFactoryBean, or at the Session level, i.e. on HibernateTransactionManager.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-entity-interceptor-bean-name.html">setEntityInterceptorBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEntityInterceptorBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setEntityInterceptorBeanName(kotlin.String)/entityInterceptorBeanName">entityInterceptorBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the bean name of a Hibernate entity interceptor that allows to inspect and change property values before writing to and reading from the database. Will get applied to any new Session created by this transaction manager. 
+<p>Requires the bean factory to be known, to be able to resolve the bean name to an interceptor instance on session creation. Typically used for prototype interceptors, i.e. a new interceptor instance per session. </p>
+<p>Can also be used for shared interceptor instances, but it is recommended to set the interceptor reference directly in such a scenario.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-hibernate-managed-session.html">setHibernateManagedSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHibernateManagedSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setHibernateManagedSession(kotlin.Boolean)/hibernateManagedSession">hibernateManagedSession</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to operate on a Hibernate-managed Session instead of a Spring-managed Session, that is, whether to obtain the Session through Hibernate's <code><a href="#">SessionFactory#getCurrentSession()</a></code> instead of <code><a href="#">SessionFactory#openSession()</a></code> (with a Spring TransactionSynchronizationManager check preceding it). 
+<p>Default is "false", i.e. using a Spring-managed Session: taking the current thread-bound Session if available (e.g. in an Open-Session-in-View scenario), creating a new Session for the current transaction otherwise. </p>
+<p>Switch this flag to "true" in order to enforce use of a Hibernate-managed Session. Note that this requires <code><a href="#">SessionFactory#getCurrentSession()</a></code> to always return a proper Session when called for a Spring-managed transaction; transaction begin will fail if the <code>getCurrentSession()</code> call fails. </p>
+<p>This mode will typically be used in combination with a custom Hibernate org.hibernate.context.spi.CurrentSessionContext implementation that stores Sessions in a place other than Spring's TransactionSynchronizationManager. It may also be used in combination with Spring's Open-Session-in-View support (using Spring's default SpringSessionContext), in which case it subtly differs from the Spring-managed Session mode: The pre-bound Session will <em>not</em> receive a <code>clear()</code> call (on rollback) or a <code>disconnect()</code> call (on transaction completion) in such a scenario; this is rather left up to a custom CurrentSessionContext implementation (if desired).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-prepare-connection.html">setPrepareConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPrepareConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setPrepareConnection(kotlin.Boolean)/prepareConnection">prepareConnection</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to prepare the underlying JDBC Connection of a transactional Hibernate Session, that is, whether to apply a transaction-specific isolation level and/or the transaction's read-only flag to the underlying JDBC Connection. 
+<p>Default is "true". If you turn this flag off, the transaction manager will not support per-transaction isolation levels anymore. It will not call <code>Connection.setReadOnly(true)</code> for read-only transactions anymore either. If this flag is turned off, no cleanup of a JDBC Connection is required after a transaction, since no Connection settings will get modified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-factory.html">setSessionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setSessionFactory(org.hibernate.SessionFactory)/sessionFactory">sessionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the SessionFactory that this instance should manage transactions for.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

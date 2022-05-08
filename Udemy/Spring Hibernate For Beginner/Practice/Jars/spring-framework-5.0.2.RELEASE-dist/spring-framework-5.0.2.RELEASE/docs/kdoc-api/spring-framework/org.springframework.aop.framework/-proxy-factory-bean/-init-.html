@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ProxyFactoryBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.framework</a>&nbsp;/&nbsp;<a href="index.html">ProxyFactoryBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.aop.framework.ProxyFactoryBean$&lt;init&gt;()"></a>
+<code><span class="identifier">ProxyFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean implementation that builds an AOP proxy based on beans in Spring org.springframework.beans.factory.BeanFactory. 
+<p>org.aopalliance.intercept.MethodInterceptor and org.springframework.aop.Advisor are identified by a list of bean names in the current bean factory, specified through the "interceptorNames" property. The last entry in the list can be the name of a target bean or a org.springframework.aop.TargetSource; however, it is normally preferable to use the "targetName"/"target"/"targetSource" properties instead. </p>
+<p>Global interceptors and advisors can be added at the factory level. The specified ones are expanded in an interceptor list where an "xxx*" entry is included in the list, matching the given prefix with the bean names (e.g. "global*" would match both "globalBean1" and "globalBean2", "*" all defined interceptors). The matching interceptors get applied according to their returned order value, if they implement the org.springframework.core.Ordered interface. </p>
+<p>Creates a JDK proxy when proxy interfaces are given, and a CGLIB proxy for the actual target class if not. Note that the latter will only work if the target class does not have final methods, as a dynamic subclass will be created at runtime. </p>
+<p>It's possible to cast a proxy obtained from this factory to Advised, or to obtain the ProxyFactoryBean reference and programmatically manipulate it. This won't work for existing prototype references, which are independent. However, it will work for prototypes subsequently obtained from the factory. Changes to interception will work immediately on singletons (including existing references). However, to change interfaces or target it's necessary to obtain a new instance from the factory. This means that singleton instances obtained from the factory do not have the same object identity. However, they do have the same interceptors and target, and changing any reference will change all objects.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setInterceptorNames</a><a href="#">#setProxyInterfaces</a>org.aopalliance.intercept.MethodInterceptororg.springframework.aop.AdvisorAdvised</p>
+</BODY>
+</HTML>

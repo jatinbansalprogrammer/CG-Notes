@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.mvc - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.mvc</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.mvc</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-last-modified/index.html">LastModified</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">LastModified</span></code>
+<p>Supports last-modified HTTP requests to facilitate content caching. Same contract as for the Servlet API's <code>getLastModified</code> method. 
+<p>Delegated to by a <code><a href="#">org.springframework.web.servlet.HandlerAdapter#getLastModified</a></code> implementation. By default, any Controller or HttpRequestHandler within Spring's default framework can implement this interface to enable last-modified checking. </p>
+<p><strong>Note:</strong> Alternative handler implementation approaches have different last-modified handling styles. For example, Spring 2.5's annotated controller approach (using <code>@RequestMapping</code>) provides last-modified support through the <code><a href="#">org.springframework.web.context.request.WebRequest#checkNotModified</a></code> method, allowing for last-modified checking within the main handler method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-forwarding-controller/index.html">ServletForwardingController</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletForwardingController</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractController</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span></code>
+<p>Spring Controller implementation that forwards to a named servlet, i.e. the "servlet-name" in web.xml rather than a URL path mapping. A target servlet doesn't even need a "servlet-mapping" in web.xml in the first place: A "servlet" declaration is sufficient. 
+<p>Useful to invoke an existing servlet via Spring's dispatching infrastructure, for example to apply Spring HandlerInterceptors to its requests. This will work even in a minimal Servlet container that does not support Servlet filters. </p>
+<p><strong>Example:</strong> web.xml, mapping all "/myservlet" requests to a Spring dispatcher. Also defines a custom "myServlet", but <em>without</em> servlet mapping. </p>
+<pre><code> &lt;servlet&gt; &lt;servlet-name&gt;myServlet&lt;/servlet-name&gt; &lt;servlet-class&gt;mypackage.TestServlet&lt;/servlet-class&gt; &lt;/servlet&gt; &lt;servlet&gt; &lt;servlet-name&gt;myDispatcher&lt;/servlet-name&gt; &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt; &lt;/servlet&gt; &lt;servlet-mapping&gt; &lt;servlet-name&gt;myDispatcher&lt;/servlet-name&gt; &lt;url-pattern&gt;/myservlet&lt;/url-pattern&gt; &lt;/servlet-mapping&gt;</code></pre> <strong>Example:</strong> myDispatcher-servlet.xml, in turn forwarding "/myservlet" to your servlet (identified by servlet name). All such requests will go through the configured HandlerInterceptor chain (e.g. an OpenSessionInViewInterceptor). From the servlet point of view, everything will work as usual. <pre><code> &lt;bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt; &lt;property name="interceptors"&gt; &lt;list&gt; &lt;ref bean="openSessionInViewInterceptor"/&gt; &lt;/list&gt; &lt;/property&gt; &lt;property name="mappings"&gt; &lt;props&gt; &lt;prop key="/myservlet"&gt;myServletForwardingController&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt; &lt;bean id="myServletForwardingController" class="org.springframework.web.servlet.mvc.ServletForwardingController"&gt; &lt;property name="servletName"&gt;&lt;value&gt;myServlet&lt;/value&gt;&lt;/property&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-wrapping-controller/index.html">ServletWrappingController</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletWrappingController</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractController</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Spring Controller implementation that wraps a servlet instance which it manages internally. Such a wrapped servlet is not known outside of this controller; its entire lifecycle is covered here (in contrast to ServletForwardingController). 
+<p>Useful to invoke an existing servlet via Spring's dispatching infrastructure, for example to apply Spring HandlerInterceptors to its requests. </p>
+<p>Note that Struts has a special requirement in that it parses <code>web.xml</code> to find its servlet mapping. Therefore, you need to specify the DispatcherServlet's servlet name as "servletName" on this controller, so that Struts finds the DispatcherServlet's mapping (thinking that it refers to the ActionServlet). </p>
+<p><strong>Example:</strong> a DispatcherServlet XML context, forwarding "*.do" to the Struts ActionServlet wrapped by a ServletWrappingController. All such requests will go through the configured HandlerInterceptor chain (e.g. an OpenSessionInViewInterceptor). From the Struts point of view, everything will work as usual. </p>
+<pre><code> &lt;bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt; &lt;property name="interceptors"&gt; &lt;list&gt; &lt;ref bean="openSessionInViewInterceptor"/&gt; &lt;/list&gt; &lt;/property&gt; &lt;property name="mappings"&gt; &lt;props&gt; &lt;prop key="*.do"&gt;strutsWrappingController&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt; &lt;bean id="strutsWrappingController" class="org.springframework.web.servlet.mvc.ServletWrappingController"&gt; &lt;property name="servletClass"&gt; &lt;value&gt;org.apache.struts.action.ActionServlet&lt;/value&gt; &lt;/property&gt; &lt;property name="servletName"&gt; &lt;value&gt;action&lt;/value&gt; &lt;/property&gt; &lt;property name="initParameters"&gt; &lt;props&gt; &lt;prop key="config"&gt;/WEB-INF/struts-config.xml&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-url-filename-view-controller/index.html">UrlFilenameViewController</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UrlFilenameViewController</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlViewController</span></code>
+<p>Simple <code>Controller</code> implementation that transforms the virtual path of a URL into a view name and returns that view. 
+<p>Can optionally prepend a <code><a href="#">prefix</a></code> and/or append a <code><a href="#">suffix</a></code> to build the viewname from the URL filename. </p>
+<p>Find some examples below: </p>
+<ol> <li><code>"/index" -&gt; "index"</code></li>
+ <li><code>"/index.html" -&gt; "index"</code></li>
+ <li><code>"/index.html"</code> + prefix <code>"pre_"</code> and suffix <code>"_suf" -&gt; "pre_index_suf"</code></li>
+ <li><code>"/products/view.html" -&gt; "products/view"</code></li>
+ </ol>
+ 
+<p>Thanks to David Barri for suggesting prefix/suffix support!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-content-interceptor/index.html">WebContentInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebContentInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebContentGenerator</span><span class="symbol">, </span><span class="identifier">HandlerInterceptor</span></code>
+<p>Handler interceptor that checks the request and prepares the response. Checks for supported methods and a required session, and applies the specified org.springframework.http.CacheControl builder. See superclass bean properties for configuration options. 
+<p>All the settings supported by this interceptor can also be set on AbstractController. This interceptor is mainly intended for applying checks and preparations to a set of controllers mapped by a HandlerMapping.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

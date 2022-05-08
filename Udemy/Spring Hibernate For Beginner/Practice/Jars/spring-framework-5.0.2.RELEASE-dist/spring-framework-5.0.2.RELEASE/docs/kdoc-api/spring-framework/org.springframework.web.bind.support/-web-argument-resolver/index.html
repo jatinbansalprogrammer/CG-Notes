@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebArgumentResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind.support</a>&nbsp;/&nbsp;<a href=".">WebArgumentResolver</a><br/>
+<br/>
+<h1>WebArgumentResolver</h1>
+<code><span class="identifier">@FunctionalInterface</span> <span class="keyword">interface </span><span class="identifier">WebArgumentResolver</span></code>
+<p>SPI for resolving custom arguments for a specific handler method parameter. Typically implemented to detect special parameter types, resolving well-known argument values for them. 
+<p>A typical implementation could look like as follows: </p>
+<pre><code> public class MySpecialArgumentResolver implements WebArgumentResolver { public Object resolveArgument(MethodParameter methodParameter, NativeWebRequest webRequest) { if (methodParameter.getParameterType().equals(MySpecialArg.class)) { return new MySpecialArg("myValue"); } return UNRESOLVED; } }</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#setCustomArgumentResolvers</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-u-n-r-e-s-o-l-v-e-d.html">UNRESOLVED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">UNRESOLVED</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Marker to be returned when the resolver does not know how to handle the given method parameter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="resolve-argument.html">resolveArgument</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveArgument</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.WebArgumentResolver$resolveArgument(org.springframework.core.MethodParameter, org.springframework.web.context.request.NativeWebRequest)/methodParameter">methodParameter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodParameter</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.support.WebArgumentResolver$resolveArgument(org.springframework.core.MethodParameter, org.springframework.web.context.request.NativeWebRequest)/webRequest">webRequest</span><span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Resolve an argument for the given handler method parameter within the given web request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

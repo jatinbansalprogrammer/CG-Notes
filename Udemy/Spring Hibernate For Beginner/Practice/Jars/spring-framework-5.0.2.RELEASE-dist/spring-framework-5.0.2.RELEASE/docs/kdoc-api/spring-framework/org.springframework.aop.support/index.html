@@ -1,0 +1,239 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.support</a><br/>
+<br/>
+<h2>Package org.springframework.aop.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-expression-pointcut/index.html">AbstractExpressionPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractExpressionPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-expression-pointcut/index.html"><span class="identifier">ExpressionPointcut</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Abstract superclass for expression pointcuts, offering location and expression properties.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-regexp-method-pointcut/index.html">AbstractRegexpMethodPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractRegexpMethodPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StaticMethodMatcherPointcut</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Abstract base regular expression pointcut bean. JavaBean properties are: <ul> <li>pattern: regular expression for the fully-qualified method names to match. The exact regexp syntax will depend on the subclass (e.g. Perl5 regular expressions) </li>
+<li>patterns: alternative property taking a String array of patterns. The result will be the union of these patterns. </li>
+</ul>
+ 
+<p>Note: the regular expressions must be a match. For example, <code>.*get.*</code> will match com.mycom.Foo.getBar(). <code>get.*</code> will not. </p>
+<p>This base class is serializable. Subclasses should declare all fields transient; the <code><a href="#">#initPatternRepresentation</a></code> method will be invoked again on deserialization.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aop-utils/index.html">AopUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AopUtils</span></code>
+<p>Utility methods for AOP support code. 
+<p>Mainly for internal use within Spring's AOP support. </p>
+<p>See org.springframework.aop.framework.AopProxyUtils for a collection of framework-specific AOP utility methods which depend on internals of Spring's AOP framework implementation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-class-filters/index.html">ClassFilters</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ClassFilters</span></code>
+<p>Static utility methods for composing ClassFilter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composable-pointcut/index.html">ComposablePointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ComposablePointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Convenient class for building up pointcuts. All methods return ComposablePointcut, so we can use a concise idiom like: <code>Pointcut pc = new ComposablePointcut().union(classFilter).intersection(methodMatcher).intersection(pointcut); </code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-control-flow-pointcut/index.html">ControlFlowPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ControlFlowPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span><span class="symbol">, </span><span class="identifier">ClassFilter</span><span class="symbol">, </span><span class="identifier">MethodMatcher</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Pointcut and method matcher for use in simple <strong>cflow</strong>-style pointcut. Note that evaluating such pointcuts is 10-15 times slower than evaluating normal pointcuts, but they are useful in some cases.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-bean-factory-pointcut-advisor/index.html">DefaultBeanFactoryPointcutAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultBeanFactoryPointcutAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractBeanFactoryPointcutAdvisor</span></code>
+<p>Concrete BeanFactory-based PointcutAdvisor that allows for any Advice to be configured as reference to an Advice bean in the BeanFactory, as well as the Pointcut to be configured through a bean property. 
+<p>Specifying the name of an advice bean instead of the advice object itself (if running within a BeanFactory) increases loose coupling at initialization time, in order to not initialize the advice object until the pointcut actually matches.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-introduction-advisor/index.html">DefaultIntroductionAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultIntroductionAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IntroductionAdvisor</span><span class="symbol">, </span><span class="identifier">ClassFilter</span><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Simple org.springframework.aop.IntroductionAdvisor implementation that by default applies to any class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-pointcut-advisor/index.html">DefaultPointcutAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultPointcutAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericPointcutAdvisor</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Convenient Pointcut-driven Advisor implementation. 
+<p>This is the most commonly used Advisor implementation. It can be used with any pointcut and advice type, except for introductions. There is normally no need to subclass this class, or to implement custom Advisors.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegate-per-target-object-introduction-interceptor/index.html">DelegatePerTargetObjectIntroductionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatePerTargetObjectIntroductionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IntroductionInfoSupport</span><span class="symbol">, </span><span class="identifier">IntroductionInterceptor</span></code>
+<p>Convenient implementation of the org.springframework.aop.IntroductionInterceptor interface. 
+<p>This differs from DelegatingIntroductionInterceptor in that a single instance of this class can be used to advise multiple target objects, and each target object will have its <em>own</em> delegate (whereas DelegatingIntroductionInterceptor shares the same delegate, and hence the same state across all targets). </p>
+<p>The <code>suppressInterface</code> method can be used to suppress interfaces implemented by the delegate class but which should not be introduced to the owning AOP proxy. </p>
+<p>An instance of this class is serializable if the delegates are. </p>
+<p><em>Note: There are some implementation similarities between this class and DelegatingIntroductionInterceptor that suggest a possible refactoring to extract a common ancestor class in the future.</em></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-introduction-interceptor/index.html">DelegatingIntroductionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingIntroductionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IntroductionInfoSupport</span><span class="symbol">, </span><span class="identifier">IntroductionInterceptor</span></code>
+<p>Convenient implementation of the org.springframework.aop.IntroductionInterceptor interface. 
+<p>Subclasses merely need to extend this class and implement the interfaces to be introduced themselves. In this case the delegate is the subclass instance itself. Alternatively a separate delegate may implement the interface, and be set via the delegate bean property. </p>
+<p>Delegates or subclasses may implement any number of interfaces. All interfaces except IntroductionInterceptor are picked up from the subclass or delegate by default. </p>
+<p>The <code>suppressInterface</code> method can be used to suppress interfaces implemented by the delegate but which should not be introduced to the owning AOP proxy. </p>
+<p>An instance of this class is serializable if the delegate is.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-dynamic-method-matcher-pointcut/index.html">DynamicMethodMatcherPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">DynamicMethodMatcherPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DynamicMethodMatcher</span><span class="symbol">, </span><span class="identifier">Pointcut</span></code>
+<p>Convenient superclass when we want to force subclasses to implement MethodMatcher interface, but subclasses will want to be pointcuts. The getClassFilter() method can be overriden to customize ClassFilter behaviour as well.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-expression-pointcut/index.html">ExpressionPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ExpressionPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span></code>
+<p>Interface to be implemented by pointcuts that use String expressions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdk-regexp-method-pointcut/index.html">JdkRegexpMethodPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JdkRegexpMethodPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-regexp-method-pointcut/index.html"><span class="identifier">AbstractRegexpMethodPointcut</span></a></code>
+<p>Regular expression pointcut based on the <code>java.util.regex</code> package. Supports the following JavaBean properties: <ul> <li>pattern: regular expression for the fully-qualified method names to match </li>
+<li>patterns: alternative property taking a String array of patterns. The result will be the union of these patterns. </li>
+</ul>
+ 
+<p>Note: the regular expressions must be a match. For example, <code>.*get.*</code> will match com.mycom.Foo.getBar(). <code>get.*</code> will not.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-matchers/index.html">MethodMatchers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">MethodMatchers</span></code>
+<p>Static utility methods for composing MethodMatcher. 
+<p>A MethodMatcher may be evaluated statically (based on method and target class) or need further evaluation dynamically (based on arguments at the time of method invocation).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-name-match-method-pointcut/index.html">NameMatchMethodPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NameMatchMethodPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StaticMethodMatcherPointcut</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Pointcut bean for simple method name matches, as alternative to regexp patterns. Does not handle overloaded methods: all methods with a given name will be eligible.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-name-match-method-pointcut-advisor/index.html">NameMatchMethodPointcutAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NameMatchMethodPointcutAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericPointcutAdvisor</span></code>
+<p>Convenient class for name-match method pointcuts that hold an Advice, making them an Advisor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pointcuts/index.html">Pointcuts</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Pointcuts</span></code>
+<p>Pointcut constants for matching getters and setters, and static methods useful for manipulating and evaluating pointcuts. These methods are particularly useful for composing pointcuts using the union and intersection methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-regexp-method-pointcut-advisor/index.html">RegexpMethodPointcutAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RegexpMethodPointcutAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericPointcutAdvisor</span></code>
+<p>Convenient class for regexp method pointcuts that hold an Advice, making them an org.springframework.aop.Advisor. 
+<p>Configure this class using the "pattern" and "patterns" pass-through properties. These are analogous to the pattern and patterns properties of AbstractRegexpMethodPointcut. </p>
+<p>Can delegate to any AbstractRegexpMethodPointcut subclass. By default, JdkRegexpMethodPointcut will be used. To choose a specific one, override the <code><a href="#">#createPointcut</a></code> method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-root-class-filter/index.html">RootClassFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RootClassFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClassFilter</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Simple ClassFilter implementation that passes classes (and optionally subclasses)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-static-method-matcher-pointcut-advisor/index.html">StaticMethodMatcherPointcutAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">StaticMethodMatcherPointcutAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StaticMethodMatcherPointcut</span><span class="symbol">, </span><span class="identifier">PointcutAdvisor</span><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Convenient base class for Advisors that are also static pointcuts. Serializable if Advice and subclass are.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

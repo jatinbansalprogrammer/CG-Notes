@@ -1,0 +1,161 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TimerManagerFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.commonj</a>&nbsp;/&nbsp;<a href=".">TimerManagerFactoryBean</a><br/>
+<br/>
+<h1>TimerManagerFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimerManagerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-timer-manager-accessor/index.html"><span class="identifier">TimerManagerAccessor</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">TimerManager</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>org.springframework.beans.factory.FactoryBean that retrieves a CommonJ commonj.timers.TimerManager and exposes it for bean references. 
+<p><strong>This is the central convenience class for setting up a CommonJ TimerManager in a Spring context.</strong> </p>
+<p>Allows for registration of ScheduledTimerListeners. This is the main purpose of this class; the TimerManager itself could also be fetched from JNDI via org.springframework.jndi.JndiObjectFactoryBean. In scenarios that just require static registration of tasks at startup, there is no need to access the TimerManager itself in application code. </p>
+<p>Note that the TimerManager uses a TimerListener instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+ScheduledTimerListenercommonj.timers.TimerManagercommonj.timers.TimerListener</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TimerManagerFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean that retrieves a CommonJ commonj.timers.TimerManager and exposes it for bean references. 
+<p><strong>This is the central convenience class for setting up a CommonJ TimerManager in a Spring context.</strong> </p>
+<p>Allows for registration of ScheduledTimerListeners. This is the main purpose of this class; the TimerManager itself could also be fetched from JNDI via org.springframework.jndi.JndiObjectFactoryBean. In scenarios that just require static registration of tasks at startup, there is no need to access the TimerManager itself in application code. </p>
+<p>Note that the TimerManager uses a TimerListener instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Cancels all statically registered Timers on shutdown, and stops the underlying TimerManager (if not shared).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TimerManager</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">TimerManager</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scheduled-timer-listeners.html">setScheduledTimerListeners</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setScheduledTimerListeners</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.TimerManagerFactoryBean$setScheduledTimerListeners(kotlin.Array((org.springframework.scheduling.commonj.ScheduledTimerListener)))/scheduledTimerListeners">scheduledTimerListeners</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="../-scheduled-timer-listener/index.html"><span class="identifier">ScheduledTimerListener</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a list of ScheduledTimerListener objects with the TimerManager that this FactoryBean creates. Depending on each ScheduledTimerListener's settings, it will be registered via one of TimerManager's schedule methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-timer-manager-accessor/is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Considers the underlying TimerManager as running if it is neither suspending nor stopping.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-timer-manager-accessor/set-shared.html">setShared</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setShared</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.TimerManagerAccessor$setShared(kotlin.Boolean)/shared">shared</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether the TimerManager obtained by this FactoryBean is a shared instance ("true") or an independent instance ("false"). The lifecycle of the former is supposed to be managed by the application server, while the lifecycle of the latter is up to the application. 
+<p>Default is "false", i.e. managing an independent TimerManager instance. This is what the CommonJ specification suggests that application servers are supposed to offer via JNDI lookups, typically declared as a <code>resource-ref</code> of type <code>commonj.timers.TimerManager</code> in <code>web.xml</code>, with <code>res-sharing-scope</code> set to 'Unshareable'. </p>
+<p>Switch this flag to "true" if you are obtaining a shared TimerManager, typically through specifying the JNDI location of a TimerManager that has been explicitly declared as 'Shareable'. Note that WebLogic's cluster-aware Job Scheduler is a shared TimerManager too. </p>
+<p>The sole difference between this FactoryBean being in shared or non-shared mode is that it will only attempt to suspend / resume / stop the underlying TimerManager in case of an independent (non-shared) instance. This only affects the org.springframework.context.Lifecycle support as well as application context shutdown.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-timer-manager-accessor/set-timer-manager.html">setTimerManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimerManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.TimerManagerAccessor$setTimerManager(commonj.timers.TimerManager)/timerManager">timerManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimerManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the CommonJ TimerManager to delegate to. 
+<p>Note that the given TimerManager's lifecycle will be managed by this FactoryBean. </p>
+<p>Alternatively (and typically), you can specify the JNDI name of the target TimerManager.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-timer-manager-accessor/set-timer-manager-name.html">setTimerManagerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimerManagerName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.TimerManagerAccessor$setTimerManagerName(kotlin.String)/timerManagerName">timerManagerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI name of the CommonJ TimerManager. 
+<p>This can either be a fully qualified JNDI name, or the JNDI name relative to the current environment naming context if "resourceRef" is set to "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-timer-manager-accessor/start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Resumes the underlying TimerManager (if not shared).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-timer-manager-accessor/stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Suspends the underlying TimerManager (if not shared).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BufferingStompDecoder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.simp.stomp</a>&nbsp;/&nbsp;<a href=".">BufferingStompDecoder</a><br/>
+<br/>
+<h1>BufferingStompDecoder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BufferingStompDecoder</span></code>
+<p>An extension of org.springframework.messaging.simp.stomp.StompDecoder that buffers content remaining in the input ByteBuffer after the parent class has read all (complete) STOMP frames from it. The remaining content represents an incomplete STOMP frame. When called repeatedly with additional data, the decode method returns one or more messages or, if there is not enough data still, continues to buffer. 
+<p>A single instance of this decoder can be invoked repeatedly to read all messages from a single stream (e.g. WebSocket session) as long as decoding does not fail. If there is an exception, StompDecoder instance should not be used any more as its internal state is not guaranteed to be consistent. It is expected that the underlying session is closed at that point.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0.3</p>
+<p><strong>See Also</strong><br/>
+StompDecoder</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BufferingStompDecoder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.BufferingStompDecoder$<init>(org.springframework.messaging.simp.stomp.StompDecoder, kotlin.Int)/stompDecoder">stompDecoder</span><span class="symbol">:</span>&nbsp;<a href="../-stomp-decoder/index.html"><span class="identifier">StompDecoder</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.simp.stomp.BufferingStompDecoder$<init>(org.springframework.messaging.simp.stomp.StompDecoder, kotlin.Int)/bufferSizeLimit">bufferSizeLimit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>BufferingStompDecoder</code> wrapping the given <code>StompDecoder</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="decode.html">decode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">decode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.BufferingStompDecoder$decode(java.nio.ByteBuffer)/newBuffer">newBuffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ByteBuffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Decodes one or more STOMP frames from the given <code>ByteBuffer</code> into a list of Messages. 
+<p>If there was enough data to parse a "content-length" header, then the value is used to determine how much more data is needed before a new attempt to decode is made. </p>
+<p>If there was not enough data to parse the "content-length", or if there is "content-length" header, every subsequent call to decode attempts to parse again with all available data. Therefore the presence of a "content-length" header helps to optimize the decoding of large messages.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-buffer-size.html">getBufferSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBufferSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Calculate the current buffer size.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-buffer-size-limit.html">getBufferSizeLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getBufferSizeLimit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the configured buffer size limit.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-expected-content-length.html">getExpectedContentLength</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExpectedContentLength</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the expected content length of the currently buffered, incomplete STOMP frame.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-stomp-decoder.html">getStompDecoder</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getStompDecoder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-stomp-decoder/index.html"><span class="identifier">StompDecoder</span></a></code>
+<p>Return the wrapped StompDecoder.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

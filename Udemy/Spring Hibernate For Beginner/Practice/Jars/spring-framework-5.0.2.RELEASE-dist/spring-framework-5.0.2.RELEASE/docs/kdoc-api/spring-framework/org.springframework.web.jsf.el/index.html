@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.jsf.el - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.jsf.el</a><br/>
+<br/>
+<h2>Package org.springframework.web.jsf.el</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-spring-bean-faces-e-l-resolver/index.html">SpringBeanFacesELResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringBeanFacesELResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ELResolver</span></code>
+<p>JSF <code>ELResolver</code> that delegates to the Spring root <code>WebApplicationContext</code>, resolving name references to Spring-defined beans. 
+<p>Configure this resolver in your <code>faces-config.xml</code> file as follows: </p>
+<pre><code> &lt;application&gt; ... &lt;el-resolver&gt;org.springframework.web.jsf.el.SpringBeanFacesELResolver&lt;/el-resolver&gt; &lt;/application&gt;</code></pre> All your JSF expressions can then implicitly refer to the names of Spring-managed service layer beans, for example in property values of JSF-managed beans: <pre><code> &lt;managed-bean&gt; &lt;managed-bean-name&gt;myJsfManagedBean&lt;/managed-bean-name&gt; &lt;managed-bean-class&gt;example.MyJsfManagedBean&lt;/managed-bean-class&gt; &lt;managed-bean-scope&gt;session&lt;/managed-bean-scope&gt; &lt;managed-property&gt; &lt;property-name&gt;mySpringManagedBusinessObject&lt;/property-name&gt; &lt;value&gt;#{mySpringManagedBusinessObject}&lt;/value&gt; &lt;/managed-property&gt; &lt;/managed-bean&gt;</code></pre> with "mySpringManagedBusinessObject" defined as Spring bean in applicationContext.xml: <pre><code> &lt;bean id="mySpringManagedBusinessObject" class="example.MySpringManagedBusinessObject"&gt; ... &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-application-context-faces-e-l-resolver/index.html">WebApplicationContextFacesELResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebApplicationContextFacesELResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ELResolver</span></code>
+<p>Special JSF <code>ELResolver</code> that exposes the Spring <code>WebApplicationContext</code> instance under a variable named "webApplicationContext". 
+<p>In contrast to SpringBeanFacesELResolver, this ELResolver variant does <em>not</em> resolve JSF variable names as Spring bean names. It rather exposes Spring's root WebApplicationContext <em>itself</em> under a special name, and is able to resolve "webApplicationContext.mySpringManagedBusinessObject" dereferences to Spring-defined beans in that application context. </p>
+<p>Configure this resolver in your <code>faces-config.xml</code> file as follows: </p>
+<pre><code> &lt;application&gt; ... &lt;el-resolver&gt;org.springframework.web.jsf.el.WebApplicationContextFacesELResolver&lt;/el-resolver&gt; &lt;/application&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleConnectionDataSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href=".">SingleConnectionDataSource</a><br/>
+<br/>
+<h1>SingleConnectionDataSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingleConnectionDataSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-driver-manager-data-source/index.html"><span class="identifier">DriverManagerDataSource</span></a><span class="symbol">, </span><span class="identifier">SmartDataSource</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Implementation of SmartDataSource that wraps a single JDBC Connection which is not closed after use. Obviously, this is not multi-threading capable. 
+<p>Note that at shutdown, someone should close the underlying Connection via the <code>close()</code> method. Client code will never call close on the Connection handle if it is SmartDataSource-aware (e.g. uses <code>DataSourceUtils.releaseConnection</code>). </p>
+<p>If client code will call <code>close()</code> in the assumption of a pooled Connection, like when using persistence tools, set "suppressClose" to "true". This will return a close-suppressing proxy instead of the physical Connection. </p>
+<p>This is primarily intended for testing. For example, it enables easy testing outside an application server, for code that expects to work on a DataSource. In contrast to DriverManagerDataSource, it reuses the same Connection all the time, avoiding excessive creation of physical Connections.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="get-connection.html">#getConnection()</a><a href="#">java.sql.Connection#close()</a><a href="#">DataSourceUtils#releaseConnection</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SingleConnectionDataSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor for bean-style configuration.</p>
+<code><span class="identifier">SingleConnectionDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/suppressClose">suppressClose</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">SingleConnectionDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(kotlin.String, kotlin.Boolean)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(kotlin.String, kotlin.Boolean)/suppressClose">suppressClose</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new SingleConnectionDataSource with the given standard DriverManager parameters.</p>
+<code><span class="identifier">SingleConnectionDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(java.sql.Connection, kotlin.Boolean)/target">target</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$<init>(java.sql.Connection, kotlin.Boolean)/suppressClose">suppressClose</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new SingleConnectionDataSource with a given Connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the underlying Connection. The provider of this DataSource needs to care for proper shutdown. 
+<p>As this bean implements DisposableBean, a bean factory will automatically invoke this on destruction of its cached singletons.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection.html">getConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code><code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$getConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$getConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code>
+<p>Specifying a custom username and password doesn't make sense with a single Connection. Returns the single Connection if given the same username and password; throws a SQLException else.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="init-connection.html">initConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">initConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize the underlying Connection via the DriverManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset-connection.html">resetConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resetConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset the underlying shared Connection, to be reinitialized on next access.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-auto-commit.html">setAutoCommit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutoCommit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$setAutoCommit(kotlin.Boolean)/autoCommit">autoCommit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the returned Connection's "autoCommit" setting should be overridden.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-suppress-close.html">setSuppressClose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSuppressClose</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$setSuppressClose(kotlin.Boolean)/suppressClose">suppressClose</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the returned Connection should be a close-suppressing proxy or the physical Connection.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="should-close.html">shouldClose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shouldClose</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.SingleConnectionDataSource$shouldClose(java.sql.Connection)/con">con</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This is a single Connection: Do not close it when returning to the "pool".</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-driver-manager-data-source/set-driver-class-name.html">setDriverClassName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDriverClassName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.DriverManagerDataSource$setDriverClassName(kotlin.String)/driverClassName">driverClassName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDBC driver class name. This driver will get initialized on startup, registering itself with the JDK's DriverManager. 
+<p><strong>NOTE: DriverManagerDataSource is primarily intended for accessing <em>pre-registered</em> JDBC drivers.</strong> If you need to register a new driver, consider using SimpleDriverDataSource instead. Alternatively, consider initializing the JDBC driver yourself before instantiating this DataSource. The "driverClassName" property is mainly preserved for backwards compatibility, as well as for migrating between Commons DBCP and this DataSource.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

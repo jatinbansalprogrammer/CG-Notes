@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringBeanJobFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href=".">SpringBeanJobFactory</a><br/>
+<br/>
+<h1>SpringBeanJobFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringBeanJobFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-adaptable-job-factory/index.html"><span class="identifier">AdaptableJobFactory</span></a><span class="symbol">, </span><span class="identifier">SchedulerContextAware</span></code>
+<p>Subclass of AdaptableJobFactory that also supports Spring-style dependency injection on bean properties. This is essentially the direct equivalent of Spring's QuartzJobBean in the shape of a Quartz org.quartz.spi.JobFactory. 
+<p>Applies scheduler context, job data map and trigger data map entries as bean property values. If no matching bean property is found, the entry is by default simply ignored. This is analogous to QuartzJobBean's behavior. </p>
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">SchedulerFactoryBean#setJobFactory</a>QuartzJobBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringBeanJobFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Subclass of AdaptableJobFactory that also supports Spring-style dependency injection on bean properties. This is essentially the direct equivalent of Spring's QuartzJobBean in the shape of a Quartz org.quartz.spi.JobFactory. 
+<p>Applies scheduler context, job data map and trigger data map entries as bean property values. If no matching bean property is found, the entry is by default simply ignored. This is analogous to QuartzJobBean's behavior. </p>
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-ignored-unknown-properties.html">setIgnoredUnknownProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIgnoredUnknownProperties</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.scheduling.quartz.SpringBeanJobFactory$setIgnoredUnknownProperties(kotlin.Array((kotlin.String)))/ignoredUnknownProperties">ignoredUnknownProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the unknown properties (not found in the bean) that should be ignored. 
+<p>Default is <code>null</code>, indicating that all unknown properties should be ignored. Specify an empty array to throw an exception in case of any unknown properties, or a list of property names that should be ignored if there is no corresponding property found on the particular job class (all other unknown properties will still trigger an exception).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scheduler-context.html">setSchedulerContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchedulerContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.SpringBeanJobFactory$setSchedulerContext(org.quartz.SchedulerContext)/schedulerContext">schedulerContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">SchedulerContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-adaptable-job-factory/new-job.html">newJob</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newJob</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.AdaptableJobFactory$newJob(org.quartz.spi.TriggerFiredBundle, org.quartz.Scheduler)/bundle">bundle</span><span class="symbol">:</span>&nbsp;<span class="identifier">TriggerFiredBundle</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.quartz.AdaptableJobFactory$newJob(org.quartz.spi.TriggerFiredBundle, org.quartz.Scheduler)/scheduler">scheduler</span><span class="symbol">:</span>&nbsp;<span class="identifier">Scheduler</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Job</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

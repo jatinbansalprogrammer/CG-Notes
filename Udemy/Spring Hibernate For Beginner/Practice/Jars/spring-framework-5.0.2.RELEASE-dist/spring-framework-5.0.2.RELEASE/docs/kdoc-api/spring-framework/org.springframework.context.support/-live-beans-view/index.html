@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LiveBeansView - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">LiveBeansView</a><br/>
+<br/>
+<h1>LiveBeansView</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LiveBeansView</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-live-beans-view-m-bean/index.html"><span class="identifier">LiveBeansViewMBean</span></a><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span></code>
+<p>Adapter for live beans view exposure, building a snapshot of current beans and their dependencies from either a local <code>ApplicationContext</code> (with a local <code>LiveBeansView</code> bean definition) or all registered ApplicationContexts (driven by the {@value #MBEAN_DOMAIN_PROPERTY_NAME} environment property). 
+<p>Note: This feature is still in beta and primarily designed for use with Spring Tool Suite 3.1 and higher.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<p><strong>See Also</strong><br/>
+<a href="get-snapshot-as-json.html">#getSnapshotAsJson()</a>org.springframework.web.context.support.LiveBeansViewServlet</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LiveBeansView</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Adapter for live beans view exposure, building a snapshot of current beans and their dependencies from either a local <code>ApplicationContext</code> (with a local <code>LiveBeansView</code> bean definition) or all registered ApplicationContexts (driven by the {@value #MBEAN_DOMAIN_PROPERTY_NAME} environment property). 
+<p>Note: This feature is still in beta and primarily designed for use with Spring Tool Suite 3.1 and higher.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-m-b-e-a-n_-a-p-p-l-i-c-a-t-i-o-n_-k-e-y.html">MBEAN_APPLICATION_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">MBEAN_APPLICATION_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-b-e-a-n_-d-o-m-a-i-n_-p-r-o-p-e-r-t-y_-n-a-m-e.html">MBEAN_DOMAIN_PROPERTY_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">MBEAN_DOMAIN_PROPERTY_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-snapshot-as-json.html">getSnapshotAsJson</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSnapshotAsJson</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Generate a JSON snapshot of current beans and their dependencies, finding all active ApplicationContexts through <code><a href="#">#findApplicationContexts()</a></code>, then delegating to <code><a href="#">#generateJson(java.util.Set)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-application-context.html">setApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.LiveBeansView$setApplicationContext(org.springframework.context.ApplicationContext)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.context.support/-servlet-context-live-beans-view/index.html">ServletContextLiveBeansView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextLiveBeansView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LiveBeansView</span></code>
+<p>LiveBeansView subclass which looks for all ApplicationContexts in the web application, as exposed in ServletContext attributes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

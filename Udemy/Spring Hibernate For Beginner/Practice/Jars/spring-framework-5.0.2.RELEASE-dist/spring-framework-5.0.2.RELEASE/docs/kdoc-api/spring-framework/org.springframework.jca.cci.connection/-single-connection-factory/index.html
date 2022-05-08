@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SingleConnectionFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.cci.connection</a>&nbsp;/&nbsp;<a href=".">SingleConnectionFactory</a><br/>
+<br/>
+<h1>SingleConnectionFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingleConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingConnectionFactory</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A CCI ConnectionFactory adapter that returns the same Connection on all <code>getConnection</code> calls, and ignores calls to <code>Connection.close()</code>. 
+<p>Useful for testing and standalone environments, to keep using the same Connection for multiple CciTemplate calls, without having a pooling ConnectionFactory, also spanning any number of transactions. </p>
+<p>You can either pass in a CCI Connection directly, or let this factory lazily create a Connection via a given target ConnectionFactory.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="get-connection.html">#getConnection()</a><a href="#">javax.resource.cci.Connection#close()</a>org.springframework.jca.cci.core.CciTemplate</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SingleConnectionFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new SingleConnectionFactory for bean-style usage.</p>
+<code><span class="identifier">SingleConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.cci.connection.SingleConnectionFactory$<init>(javax.resource.cci.Connection)/target">target</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">)</span></code>
+<p>Create a new SingleConnectionFactory that always returns the given Connection.</p>
+<code><span class="identifier">SingleConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.cci.connection.SingleConnectionFactory$<init>(javax.resource.cci.ConnectionFactory)/targetConnectionFactory">targetConnectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span></code>
+<p>Create a new SingleConnectionFactory that always returns a single Connection which it will lazily create via the given target ConnectionFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Make sure a Connection or ConnectionFactory has been set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the underlying Connection. The provider of this ConnectionFactory needs to care for proper shutdown. 
+<p>As this bean implements DisposableBean, a bean factory will automatically invoke this on destruction of its cached singletons.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection.html">getConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.cci.connection.SingleConnectionFactory$getConnection(javax.resource.cci.ConnectionSpec)/connectionSpec">connectionSpec</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionSpec</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="init-connection.html">initConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">initConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize the single underlying Connection. 
+<p>Closes and reinitializes the Connection if an underlying Connection is present already.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset-connection.html">resetConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resetConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset the underlying shared Connection, to be reinitialized on next access.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

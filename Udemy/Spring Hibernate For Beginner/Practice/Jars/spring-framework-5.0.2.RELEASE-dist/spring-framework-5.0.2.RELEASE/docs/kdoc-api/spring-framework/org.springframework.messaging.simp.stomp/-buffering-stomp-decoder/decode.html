@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BufferingStompDecoder.decode - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.simp.stomp</a>&nbsp;/&nbsp;<a href="index.html">BufferingStompDecoder</a>&nbsp;/&nbsp;<a href=".">decode</a><br/>
+<br/>
+<h1>decode</h1>
+<a name="org.springframework.messaging.simp.stomp.BufferingStompDecoder$decode(java.nio.ByteBuffer)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">decode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.BufferingStompDecoder$decode(java.nio.ByteBuffer)/newBuffer">newBuffer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ByteBuffer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Decodes one or more STOMP frames from the given <code>ByteBuffer</code> into a list of Messages. 
+<p>If there was enough data to parse a "content-length" header, then the value is used to determine how much more data is needed before a new attempt to decode is made. </p>
+<p>If there was not enough data to parse the "content-length", or if there is "content-length" header, every subsequent call to decode attempts to parse again with all available data. Therefore the presence of a "content-length" header helps to optimize the decoding of large messages.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="newBuffer"></a>
+<code>newBuffer</code> - a buffer containing new data to decode</p>
+<h3>Exceptions</h3>
+<p><a name="StompConversionException"></a>
+<code>StompConversionException</code> - raised in case of decoding issues</p>
+<p><strong>Return</strong><br/>
+decoded messages or an empty list</p>
+</BODY>
+</HTML>

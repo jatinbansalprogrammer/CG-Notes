@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SmartApplicationListener - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.event</a>&nbsp;/&nbsp;<a href=".">SmartApplicationListener</a><br/>
+<br/>
+<h1>SmartApplicationListener</h1>
+<code><span class="keyword">interface </span><span class="identifier">SmartApplicationListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationListener</span><span class="symbol">&lt;</span><span class="identifier">ApplicationEvent</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Extended variant of the standard ApplicationListener interface, exposing further metadata such as the supported event type. 
+<p>Users are strongly advised to use the GenericApplicationListener interface instead as it provides an improved detection of generics-based event types.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+GenericApplicationListener</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="supports-event-type.html">supportsEventType</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">supportsEventType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.SmartApplicationListener$supportsEventType(java.lang.Class((org.springframework.context.ApplicationEvent)))/eventType">eventType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">ApplicationEvent</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether this listener actually supports the given event type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-source-type.html">supportsSourceType</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">supportsSourceType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.event.SmartApplicationListener$supportsSourceType(java.lang.Class((kotlin.Any)))/sourceType">sourceType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether this listener actually supports the given source type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-generic-application-listener-adapter/index.html">GenericApplicationListenerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericApplicationListenerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationListener</span><span class="symbol">, </span><span class="identifier">SmartApplicationListener</span></code>
+<p>GenericApplicationListener adapter that determines supported event types through introspecting the generically declared type of the target listener.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.user/-multi-server-user-registry/index.html">MultiServerUserRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MultiServerUserRegistry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpUserRegistry</span><span class="symbol">, </span><span class="identifier">SmartApplicationListener</span></code>
+<p><code>SimpUserRegistry</code> that looks up users in a "local" user registry as well as a set of "remote" user registries. The local registry is provided as a constructor argument while remote registries are updated via broadcasts handled by UserRegistryMessageHandler which in turn notifies this registry when updates are received.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-source-filtering-listener/index.html">SourceFilteringListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SourceFilteringListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationListener</span><span class="symbol">, </span><span class="identifier">SmartApplicationListener</span></code>
+<p>org.springframework.context.ApplicationListener decorator that filters events from a specified event source, invoking its delegate listener for matching org.springframework.context.ApplicationEvent objects only. 
+<p>Can also be used as base class, overriding the <code><a href="#">#onApplicationEventInternal</a></code> method instead of specifying a delegate listener.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

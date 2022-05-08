@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OpenSessionInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5.support</a>&nbsp;/&nbsp;<a href=".">OpenSessionInterceptor</a><br/>
+<br/>
+<h1>OpenSessionInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenSessionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Simple AOP Alliance MethodInterceptor implementation that binds a new Hibernate Session for each method invocation, if none bound before. 
+<p>This is a simple Hibernate Session scoping interceptor along the lines of OpenSessionInViewInterceptor, just for use with AOP setup instead of MVC setup. It opens a new Session with flush mode "MANUAL" since the Session is only meant for reading, except when participating in a transaction.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+OpenSessionInViewInterceptorOpenSessionInViewFilterorg.springframework.orm.hibernate5.HibernateTransactionManagerTransactionSynchronizationManager<a href="#">SessionFactory#getCurrentSession()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">OpenSessionInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple AOP Alliance MethodInterceptor implementation that binds a new Hibernate Session for each method invocation, if none bound before. 
+<p>This is a simple Hibernate Session scoping interceptor along the lines of OpenSessionInViewInterceptor, just for use with AOP setup instead of MVC setup. It opens a new Session with flush mode "MANUAL" since the Session is only meant for reading, except when participating in a transaction.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-session-factory.html">getSessionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSessionFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SessionFactory</span></code>
+<p>Return the Hibernate SessionFactory that should be used to create Hibernate Sessions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke.html">invoke</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInterceptor$invoke(org.aopalliance.intercept.MethodInvocation)/invocation">invocation</span><span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-factory.html">setSessionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInterceptor$setSessionFactory(org.hibernate.SessionFactory)/sessionFactory">sessionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Hibernate SessionFactory that should be used to create Hibernate Sessions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

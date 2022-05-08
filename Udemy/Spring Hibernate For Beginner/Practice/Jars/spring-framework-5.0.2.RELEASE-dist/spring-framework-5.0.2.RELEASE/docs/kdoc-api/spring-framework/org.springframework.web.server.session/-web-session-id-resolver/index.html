@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSessionIdResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.server.session</a>&nbsp;/&nbsp;<a href=".">WebSessionIdResolver</a><br/>
+<br/>
+<h1>WebSessionIdResolver</h1>
+<code><span class="keyword">interface </span><span class="identifier">WebSessionIdResolver</span></code>
+<p>Contract for session id resolution strategies. Allows for session id resolution through the request and for sending the session id or expiring the session through the response.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+CookieWebSessionIdResolver</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="expire-session.html">expireSession</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">expireSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.WebSessionIdResolver$expireSession(org.springframework.web.server.ServerWebExchange)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Instruct the client to end the current session.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-session-ids.html">resolveSessionIds</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveSessionIds</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.WebSessionIdResolver$resolveSessionIds(org.springframework.web.server.ServerWebExchange)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Resolve the session id's associated with the request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-id.html">setSessionId</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setSessionId</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.WebSessionIdResolver$setSessionId(org.springframework.web.server.ServerWebExchange, kotlin.String)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.server.session.WebSessionIdResolver$setSessionId(org.springframework.web.server.ServerWebExchange, kotlin.String)/sessionId">sessionId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Send the given session id to the client.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-cookie-web-session-id-resolver/index.html">CookieWebSessionIdResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CookieWebSessionIdResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSessionIdResolver</span></code>
+<p>Cookie-based WebSessionIdResolver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-header-web-session-id-resolver/index.html">HeaderWebSessionIdResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HeaderWebSessionIdResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSessionIdResolver</span></code>
+<p>Request and response header-based WebSessionIdResolver.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpSessionMutexListener - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.util</a>&nbsp;/&nbsp;<a href=".">HttpSessionMutexListener</a><br/>
+<br/>
+<h1>HttpSessionMutexListener</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpSessionMutexListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpSessionListener</span></code>
+<p>Servlet HttpSessionListener that automatically exposes the session mutex when an HttpSession gets created. To be registered as a listener in <code>web.xml</code>. 
+<p>The session mutex is guaranteed to be the same object during the entire lifetime of the session, available under the key defined by the <code>SESSION_MUTEX_ATTRIBUTE</code> constant. It serves as a safe reference to synchronize on for locking on the current session. </p>
+<p>In many cases, the HttpSession reference itself is a safe mutex as well, since it will always be the same object reference for the same active logical session. However, this is not guaranteed across different servlet containers; the only 100% safe way is a session mutex.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2.7</p>
+<p><strong>See Also</strong><br/>
+<a href="#">WebUtils#SESSION_MUTEX_ATTRIBUTE</a><a href="#">WebUtils#getSessionMutex(javax.servlet.http.HttpSession)</a><a href="#">org.springframework.web.servlet.mvc.AbstractController#setSynchronizeOnSession</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpSessionMutexListener</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Servlet HttpSessionListener that automatically exposes the session mutex when an HttpSession gets created. To be registered as a listener in <code>web.xml</code>. 
+<p>The session mutex is guaranteed to be the same object during the entire lifetime of the session, available under the key defined by the <code>SESSION_MUTEX_ATTRIBUTE</code> constant. It serves as a safe reference to synchronize on for locking on the current session. </p>
+<p>In many cases, the HttpSession reference itself is a safe mutex as well, since it will always be the same object reference for the same active logical session. However, this is not guaranteed across different servlet containers; the only 100% safe way is a session mutex.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="session-created.html">sessionCreated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sessionCreated</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HttpSessionMutexListener$sessionCreated(javax.servlet.http.HttpSessionEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpSessionEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="session-destroyed.html">sessionDestroyed</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">sessionDestroyed</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HttpSessionMutexListener$sessionDestroyed(javax.servlet.http.HttpSessionEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpSessionEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

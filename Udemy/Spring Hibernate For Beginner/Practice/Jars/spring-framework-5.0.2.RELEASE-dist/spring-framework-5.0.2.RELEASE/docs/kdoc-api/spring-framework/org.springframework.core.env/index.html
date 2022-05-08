@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.core.env - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.core.env</a><br/>
+<br/>
+<h2>Package org.springframework.core.env</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-command-line-property-source/index.html">CommandLinePropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CommandLinePropertySource</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EnumerablePropertySource</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Abstract base class for PropertySource implementations backed by command line arguments. The parameterized type <code>T</code> represents the underlying source of command line options. This may be as simple as a String array in the case of SimpleCommandLinePropertySource, or specific to a particular API such as JOpt's <code>OptionSet</code> in the case of JOptCommandLinePropertySource. Purpose and General Usage For use in standalone Spring-based applications, i.e. those that are bootstrapped via a traditional <code>main</code> method accepting a <code>String[]</code> of arguments from the command line. In many cases, processing command-line arguments directly within the <code>main</code> method may be sufficient, but in other cases, it may be desirable to inject arguments as values into Spring beans. It is this latter set of cases in which a <code>CommandLinePropertySource</code> becomes useful. A <code>CommandLinePropertySource</code> will typically be added to the Environment of the Spring <code>ApplicationContext</code>, at which point all command line arguments become available through the <code><a href="#">Environment#getProperty(String)</a></code> family of methods. For example: <pre><code> public static void main(String[] args) { CommandLinePropertySource clps = ...; AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(); ctx.getEnvironment().getPropertySources().addFirst(clps); ctx.register(AppConfig.class); ctx.refresh(); }</code></pre> With the bootstrap logic above, the <code>AppConfig</code> class may <code>@Inject</code> the Spring <code>Environment</code> and query it directly for properties: <pre><code> @Configuration public class AppConfig { @Inject Environment env; @Bean public void DataSource dataSource() { MyVendorDataSource dataSource = new MyVendorDataSource(); dataSource.setHostname(env.getProperty("db.hostname", "localhost")); dataSource.setUsername(env.getRequiredProperty("db.username")); dataSource.setPassword(env.getRequiredProperty("db.password")); // ... return dataSource; } }</code></pre> Because the <code>CommandLinePropertySource</code> was added to the <code>Environment</code>'s set of MutablePropertySources using the <code>#addFirst</code> method, it has highest search precedence, meaning that while "db.hostname" and other properties may exist in other property sources such as the system environment variables, it will be chosen from the command line property source first. This is a reasonable approach given that arguments specified on the command line are naturally more specific than those specified as environment variables. 
+<p>As an alternative to injecting the <code>Environment</code>, Spring's <code>@Value</code> annotation may be used to inject these properties, given that a bean has been registered, either directly or through using the <code>&lt;context:property-placeholder&gt;</code> element. For example: </p>
+<pre><code> @Component public class MyComponent { @Value("my.property:defaultVal") private String myProperty; public void getMyProperty() { return this.myProperty; } // ... }</code></pre> Working with option arguments 
+<p>Individual command line arguments are represented as properties through the usual <code><a href="#">PropertySource#getProperty(String)</a></code> and <code><a href="#">PropertySource#containsProperty(String)</a></code> methods. For example, given the following command line: </p>
+<pre><code>--o1=v1 --o2</code></pre> 'o1' and 'o2' are treated as "option arguments", and the following assertions would evaluate true: <pre><code> CommandLinePropertySource ps = ... assert ps.containsProperty("o1") == true; assert ps.containsProperty("o2") == true; assert ps.containsProperty("o3") == false; assert ps.getProperty("o1").equals("v1"); assert ps.getProperty("o2").equals(""); assert ps.getProperty("o3") == null; </code></pre> Note that the 'o2' option has no argument, but <code>getProperty("o2")</code> resolves to empty string (<code>""</code>) as opposed to <code>null</code>, while <code>getProperty("o3")</code> resolves to <code>null</code> because it was not specified. This behavior is consistent with the general contract to be followed by all <code>PropertySource</code> implementations. 
+<p>Note also that while "--" was used in the examples above to denote an option argument, this syntax may vary across individual command line argument libraries. For example, a JOpt- or Commons CLI-based implementation may allow for single dash ("-") "short" option arguments, etc. </p>
+Working with non-option arguments 
+<p>Non-option arguments are also supported through this abstraction. Any arguments supplied without an option-style prefix such as "-" or "--" are considered "non-option arguments" and available through the special <a href="-command-line-property-source/-d-e-f-a-u-l-t_-n-o-n_-o-p-t-i-o-n_-a-r-g-s_-p-r-o-p-e-r-t-y_-n-a-m-e.html"> </a> property. If multiple non-option arguments are specified, the value of this property will be a comma-delimited string containing all of the arguments. This approach ensures a simple and consistent return type (String) for all properties from a <code>CommandLinePropertySource</code> and at the same time lends itself to conversion when used in conjunction with the Spring Environment and its built-in <code>ConversionService</code>. Consider the following example: </p>
+<pre><code>--o1=v1 --o2=v2 /path/to/file1 /path/to/file2</code></pre> In this example, "o1" and "o2" would be considered "option arguments", while the two filesystem paths qualify as "non-option arguments". As such, the following assertions will evaluate true: <pre><code> CommandLinePropertySource ps = ... assert ps.containsProperty("o1") == true; assert ps.containsProperty("o2") == true; assert ps.containsProperty("nonOptionArgs") == true; assert ps.getProperty("o1").equals("v1"); assert ps.getProperty("o2").equals("v2"); assert ps.getProperty("nonOptionArgs").equals("/path/to/file1,/path/to/file2"); </code></pre> 
+<p>As mentioned above, when used in conjunction with the Spring <code>Environment</code> abstraction, this comma-delimited string may easily be converted to a String array or list: </p>
+<pre><code> Environment env = applicationContext.getEnvironment(); String[] nonOptionArgs = env.getProperty("nonOptionArgs", String[].class); assert nonOptionArgs[0].equals("/path/to/file1"); assert nonOptionArgs[1].equals("/path/to/file2"); </code></pre> 
+<p>The name of the special "non-option arguments" property may be customized through the <code><a href="#">#setNonOptionArgsPropertyName(String)</a></code> method. Doing so is recommended as it gives proper semantic value to non-option arguments. For example, if filesystem paths are being specified as non-option arguments, it is likely preferable to refer to these as something like "file.locations" than the default of "nonOptionArgs": </p>
+<pre><code> public static void main(String[] args) { CommandLinePropertySource clps = ...; clps.setNonOptionArgsPropertyName("file.locations"); AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(); ctx.getEnvironment().getPropertySources().addFirst(clps); ctx.register(AppConfig.class); ctx.refresh(); }</code></pre> Limitations This abstraction is not intended to expose the full power of underlying command line parsing APIs such as JOpt or Commons CLI. It's intent is rather just the opposite: to provide the simplest possible abstraction for accessing command line arguments <em>after</em> they have been parsed. So the typical case will involve fully configuring the underlying command line parsing API, parsing the <code>String[]</code> of arguments coming into the main method, and then simply providing the parsing results to an implementation of <code>CommandLinePropertySource</code>. At that point, all arguments can be considered either 'option' or 'non-option' arguments and as described above can be accessed through the normal <code>PropertySource</code> and <code>Environment</code> APIs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-property-source/index.html">CompositePropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositePropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EnumerablePropertySource</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Composite PropertySource implementation that iterates over a set of PropertySource instances. Necessary in cases where multiple property sources share the same name, e.g. when multiple values are supplied to <code>@PropertySource</code>. 
+<p>As of Spring 4.1.2, this class extends EnumerablePropertySource instead of plain PropertySource, exposing <code><a href="-composite-property-source/get-property-names.html">#getPropertyNames()</a></code> based on the accumulated property names from all contained sources (as far as possible).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-j-opt-command-line-property-source/index.html">JOptCommandLinePropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JOptCommandLinePropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-command-line-property-source/index.html"><span class="identifier">CommandLinePropertySource</span></a><span class="symbol">&lt;</span><span class="identifier">OptionSet</span><span class="symbol">&gt;</span></code>
+<p>CommandLinePropertySource implementation backed by a JOpt OptionSet. Typical usage Configure and execute an <code>OptionParser</code> against the <code>String[]</code> of arguments supplied to the <code>main</code> method, and create a JOptCommandLinePropertySource using the resulting <code>OptionSet</code> object: <pre><code> public static void main(String[] args) { OptionParser parser = new OptionParser(); parser.accepts("option1"); parser.accepts("option2").withRequiredArg(); OptionSet options = parser.parse(args); PropertySource ps = new JOptCommandLinePropertySource(options); // ... }</code></pre> See CommandLinePropertySource for complete general usage examples. 
+<p>Requires JOpt Simple version 4.3 or higher. Tested against JOpt up until 5.0.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-sources-property-resolver/index.html">PropertySourcesPropertyResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertySourcesPropertyResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPropertyResolver</span></code>
+<p>PropertyResolver implementation that resolves property values against an underlying set of PropertySources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-command-line-property-source/index.html">SimpleCommandLinePropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleCommandLinePropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-command-line-property-source/index.html"><span class="identifier">CommandLinePropertySource</span></a><span class="symbol">&lt;</span><span class="identifier">CommandLineArgs</span><span class="symbol">&gt;</span></code>
+<p>CommandLinePropertySource implementation backed by a simple String array. Purpose This <code>CommandLinePropertySource</code> implementation aims to provide the simplest possible approach to parsing command line arguments. As with all <code>CommandLinePropertySource</code> implementations, command line arguments are broken into two distinct groups: <em>option arguments</em> and <em>non-option arguments</em>, as described below <em>(some sections copied from Javadoc for SimpleCommandLineArgsParser)</em>: Working with option arguments Option arguments must adhere to the exact syntax: <pre><code>--optName[=optValue]</code></pre> That is, options must be prefixed with "<code>--</code>", and may or may not specify a value. If a value is specified, the name and value must be separated <em>without spaces</em> by an equals sign ("="). Valid examples of option arguments <pre><code> --foo --foo=bar --foo="bar then baz" --foo=bar,baz,biz</code></pre> Invalid examples of option arguments <pre><code> -foo --foo bar --foo = bar --foo=bar --foo=baz --foo=biz</code></pre> Working with non-option arguments Any and all arguments specified at the command line without the "<code>--</code>" option prefix will be considered as "non-option arguments" and made available through the <code><a href="#">#getNonOptionArgs()</a></code> method. Typical usage <pre><code> public static void main(String[] args) { PropertySource ps = new SimpleCommandLinePropertySource(args); // ... }</code></pre> See CommandLinePropertySource for complete general usage examples. Beyond the basics 
+<p>When more fully-featured command line parsing is necessary, consider using the provided JOptCommandLinePropertySource, or implement your own <code>CommandLinePropertySource</code> against the command line parsing library of your choice!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-system-environment-property-source/index.html">SystemEnvironmentPropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SystemEnvironmentPropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MapPropertySource</span></code>
+<p>Specialization of MapPropertySource designed for use with <a href="#">system environment variables</a>. Compensates for constraints in Bash and other shells that do not allow for variables containing the period character and/or hyphen character; also allows for uppercase variations on property names for more idiomatic shell use. 
+<p>For example, a call to <code>getProperty("foo.bar")</code> will attempt to find a value for the original property or any 'equivalent' property, returning the first found: </p>
+<ul> <li><code>foo.bar</code> - the original name</li>
+ <li><code>foo_bar</code> - with underscores for periods (if any)</li>
+ <li><code>FOO.BAR</code> - original, with upper case</li>
+ <li><code>FOO_BAR</code> - with underscores and upper case</li>
+ </ul>
+ Any hyphen variant of the above would work as well, or even mix dot/hyphen variants. 
+<p>The same applies for calls to <code><a href="#">#containsProperty(String)</a></code>, which returns <code>true</code> if any of the above properties are present, otherwise <code>false</code>. </p>
+<p>This feature is particularly useful when specifying active or default profiles as environment variables. The following is not allowable under Bash: </p>
+<pre><code>spring.profiles.active=p1 java -classpath ... MyApp</code></pre> However, the following syntax is permitted and is also more conventional: <pre><code>SPRING_PROFILES_ACTIVE=p1 java -classpath ... MyApp</code></pre> 
+<p>Enable debug- or trace-level logging for this class (or package) for messages explaining when these 'property name resolutions' occur. </p>
+<p>This property source is included by default in StandardEnvironment and all its subclasses.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-missing-required-properties-exception/index.html">MissingRequiredPropertiesException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MissingRequiredPropertiesException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IllegalStateException</span></code>
+<p>Exception thrown when required properties are not found.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">operator</span> <span class="keyword">fun </span><span class="identifier">PropertyResolver</span><span class="symbol">.</span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env$get(org.springframework.core.env.PropertyResolver, kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Extension for <a href="#">PropertyResolver.getRequiredProperty</a> providing Array like getter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

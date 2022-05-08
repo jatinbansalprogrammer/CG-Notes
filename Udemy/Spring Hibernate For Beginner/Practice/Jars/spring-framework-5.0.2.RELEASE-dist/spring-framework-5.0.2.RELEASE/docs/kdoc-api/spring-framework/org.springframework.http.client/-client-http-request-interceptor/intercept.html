@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ClientHttpRequestInterceptor.intercept - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.client</a>&nbsp;/&nbsp;<a href="index.html">ClientHttpRequestInterceptor</a>&nbsp;/&nbsp;<a href=".">intercept</a><br/>
+<br/>
+<h1>intercept</h1>
+<a name="org.springframework.http.client.ClientHttpRequestInterceptor$intercept(org.springframework.http.HttpRequest, kotlin.ByteArray, org.springframework.http.client.ClientHttpRequestExecution)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">intercept</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.ClientHttpRequestInterceptor$intercept(org.springframework.http.HttpRequest, kotlin.ByteArray, org.springframework.http.client.ClientHttpRequestExecution)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.ClientHttpRequestInterceptor$intercept(org.springframework.http.HttpRequest, kotlin.ByteArray, org.springframework.http.client.ClientHttpRequestExecution)/body">body</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.ClientHttpRequestInterceptor$intercept(org.springframework.http.HttpRequest, kotlin.ByteArray, org.springframework.http.client.ClientHttpRequestExecution)/execution">execution</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestExecution</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClientHttpResponse</span></code>
+<p>Intercept the given request, and return a response. The given ClientHttpRequestExecution allows the interceptor to pass on the request and response to the next entity in the chain. 
+<p>A typical implementation of this method would follow the following pattern: </p>
+<ol> <li>Examine the HttpRequest and body</li>
+ <li>Optionally org.springframework.http.client.support.HttpRequestWrapper the request to filter HTTP attributes.</li>
+ <li>Optionally modify the body of the request.</li>
+ <li><strong>Either</strong> <ul> <li>execute the request using <code><a href="#">ClientHttpRequestExecution#execute(org.springframework.http.HttpRequest, byte[])</a></code>,</li>
+ <strong>or</strong> <li>do not execute the request to block the execution altogether.</li>
+ </ul>
+ </li>
+<li>Optionally wrap the response to filter HTTP attributes.</li>
+ </ol>
+</p>
+<h3>Parameters</h3>
+<p><a name="request"></a>
+<code>request</code> - the request, containing method, URI, and headers</p>
+<p><a name="body"></a>
+<code>body</code> - the body of the request</p>
+<p><a name="execution"></a>
+<code>execution</code> - the request execution</p>
+<h3>Exceptions</h3>
+<p><a name="IOException"></a>
+<code>IOException</code> - in case of I/O errors</p>
+<p><strong>Return</strong><br/>
+the response</p>
+</BODY>
+</HTML>

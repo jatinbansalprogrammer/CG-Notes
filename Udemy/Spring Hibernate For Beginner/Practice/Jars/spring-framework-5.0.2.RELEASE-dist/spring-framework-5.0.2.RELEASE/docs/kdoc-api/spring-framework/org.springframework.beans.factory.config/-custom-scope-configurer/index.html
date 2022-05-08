@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CustomScopeConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">CustomScopeConfigurer</a><br/>
+<br/>
+<h1>CustomScopeConfigurer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomScopeConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Simple BeanFactoryPostProcessor implementation that registers custom Scope with the containing ConfigurableBeanFactory. 
+<p>Will register all of the supplied <code><a href="#">scopes</a></code> with the ConfigurableListableBeanFactory that is passed to the <code><a href="post-process-bean-factory.html">#postProcessBeanFactory(ConfigurableListableBeanFactory)</a></code> method. </p>
+<p>This class allows for <em>declarative</em> registration of custom scopes. Alternatively, consider implementing a custom BeanFactoryPostProcessor that calls <code><a href="#">ConfigurableBeanFactory#registerScope</a></code> programmatically.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rick Evans</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">ConfigurableBeanFactory#registerScope</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CustomScopeConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple BeanFactoryPostProcessor implementation that registers custom Scope with the containing ConfigurableBeanFactory. 
+<p>Will register all of the supplied <code><a href="#">scopes</a></code> with the ConfigurableListableBeanFactory that is passed to the <code><a href="post-process-bean-factory.html">#postProcessBeanFactory(ConfigurableListableBeanFactory)</a></code> method. </p>
+<p>This class allows for <em>declarative</em> registration of custom scopes. Alternatively, consider implementing a custom BeanFactoryPostProcessor that calls <code><a href="#">ConfigurableBeanFactory#registerScope</a></code> programmatically.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-scope.html">addScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addScope</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.CustomScopeConfigurer$addScope(kotlin.String, org.springframework.beans.factory.config.Scope)/scopeName">scopeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.config.CustomScopeConfigurer$addScope(kotlin.String, org.springframework.beans.factory.config.Scope)/scope">scope</span><span class="symbol">:</span>&nbsp;<span class="identifier">Scope</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add the given scope to this configurer's map of scopes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-bean-factory.html">postProcessBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.CustomScopeConfigurer$postProcessBeanFactory(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.CustomScopeConfigurer$setBeanClassLoader(java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-order.html">setOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.CustomScopeConfigurer$setOrder(kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scopes.html">setScopes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setScopes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.CustomScopeConfigurer$setScopes(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/scopes">scopes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the custom scopes that are to be registered. 
+<p>The keys indicate the scope names (of type String); each value is expected to be the corresponding custom Scope instance or class name.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

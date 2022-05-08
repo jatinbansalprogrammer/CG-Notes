@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TilesConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.tiles3</a>&nbsp;/&nbsp;<a href=".">TilesConfigurer</a><br/>
+<br/>
+<h1>TilesConfigurer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TilesConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Helper class to configure Tiles 3.x for the Spring Framework. See <a href="#">http://tiles.apache.org</a> for more information about Tiles, which basically is a templating mechanism for web applications using JSPs and other template engines. 
+<p>The TilesConfigurer simply configures a TilesContainer using a set of files containing definitions, to be accessed by TilesView instances. This is a Spring-based alternative (for usage in Spring configuration) to the Tiles-provided <code>ServletContextListener</code> (e.g. org.apache.tiles.extras.complete.CompleteAutoloadTilesListener for usage in <code>web.xml</code>. </p>
+<p>TilesViews can be managed by any org.springframework.web.servlet.ViewResolver. For simple convention-based view resolution, consider using TilesViewResolver. </p>
+<p>A typical TilesConfigurer bean definition looks as follows: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/general.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/widgets.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/administrator.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/customer.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/templates.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> The values in the list are the actual Tiles XML files containing the definitions. If the list is not specified, the default is <code>"/WEB-INF/tiles.xml"</code>. 
+<p>Note that in Tiles 3 an underscore in the name of a file containing Tiles definitions is used to indicate locale information, for example: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/tiles.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/tiles_fr_FR.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre></p>
+<p><strong>Author</strong><br/>
+mick semb wever</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<p><strong>See Also</strong><br/>
+TilesViewTilesViewResolver</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TilesConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Helper class to configure Tiles 3.x for the Spring Framework. See <a href="#">http://tiles.apache.org</a> for more information about Tiles, which basically is a templating mechanism for web applications using JSPs and other template engines. 
+<p>The TilesConfigurer simply configures a TilesContainer using a set of files containing definitions, to be accessed by TilesView instances. This is a Spring-based alternative (for usage in Spring configuration) to the Tiles-provided <code>ServletContextListener</code> (e.g. org.apache.tiles.extras.complete.CompleteAutoloadTilesListener for usage in <code>web.xml</code>. </p>
+<p>TilesViews can be managed by any org.springframework.web.servlet.ViewResolver. For simple convention-based view resolution, consider using TilesViewResolver. </p>
+<p>A typical TilesConfigurer bean definition looks as follows: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/general.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/widgets.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/administrator.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/customer.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/templates.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> The values in the list are the actual Tiles XML files containing the definitions. If the list is not specified, the default is <code>"/WEB-INF/tiles.xml"</code>. 
+<p>Note that in Tiles 3 an underscore in the name of a file containing Tiles definitions is used to indicate locale information, for example: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/tiles.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/tiles_fr_FR.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates and exposes a TilesContainer for this web application, delegating to the TilesInitializer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Removes the TilesContainer from this web application.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-check-refresh.html">setCheckRefresh</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCheckRefresh</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setCheckRefresh(kotlin.Boolean)/checkRefresh">checkRefresh</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to check Tiles definition files for a refresh at runtime. Default is "false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-complete-autoload.html">setCompleteAutoload</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCompleteAutoload</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setCompleteAutoload(kotlin.Boolean)/completeAutoload">completeAutoload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to apply Tiles 3.0's "complete-autoload" configuration. 
+<p>See org.apache.tiles.extras.complete.CompleteAutoloadTilesContainerFactory for details on the complete-autoload mode. </p>
+<p><strong>NOTE: Specifying the complete-autoload mode effectively disables all other bean properties on this configurer.</strong> The entire initialization procedure is then left to org.apache.tiles.extras.complete.CompleteAutoloadTilesInitializer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-definitions.html">setDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefinitions</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setDefinitions(kotlin.Array((kotlin.String)))/definitions">definitions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Tiles definitions, i.e. the list of files containing the definitions. Default is "/WEB-INF/tiles.xml".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-definitions-factory-class.html">setDefinitionsFactoryClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefinitionsFactoryClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setDefinitionsFactoryClass(java.lang.Class((org.apache.tiles.definition.DefinitionsFactory)))/definitionsFactoryClass">definitionsFactoryClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">DefinitionsFactory</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the org.apache.tiles.definition.DefinitionsFactory implementation to use. Default is org.apache.tiles.definition.UnresolvingLocaleDefinitionsFactory, operating on definition resource URLs. 
+<p>Specify a custom DefinitionsFactory, e.g. a UrlDefinitionsFactory subclass, to customize the creation of Tiles Definition objects. Note that such a DefinitionsFactory has to be able to handle java.net.URL source objects, unless you configure a different TilesContainerFactory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-preparer-factory-class.html">setPreparerFactoryClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPreparerFactoryClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setPreparerFactoryClass(java.lang.Class((org.apache.tiles.preparer.factory.PreparerFactory)))/preparerFactoryClass">preparerFactoryClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">PreparerFactory</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the org.apache.tiles.preparer.factory.PreparerFactory implementation to use. Default is org.apache.tiles.preparer.factory.BasicPreparerFactory, creating shared instances for specified preparer classes. 
+<p>Specify SimpleSpringPreparerFactory to autowire org.apache.tiles.preparer.ViewPreparer instances based on specified preparer classes, applying Spring's container callbacks as well as applying configured Spring BeanPostProcessors. If Spring's context-wide annotation-config has been activated, annotations in ViewPreparer classes will be automatically detected and applied. </p>
+<p>Specify SpringBeanPreparerFactory to operate on specified preparer <em>names</em> instead of classes, obtaining the corresponding Spring bean from the DispatcherServlet's application context. The full bean creation process will be in the control of the Spring application context in this case, allowing for the use of scoped beans etc. Note that you need to define one Spring bean definition per preparer name (as used in your Tiles definitions).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-tiles-initializer.html">setTilesInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTilesInitializer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setTilesInitializer(org.apache.tiles.startup.TilesInitializer)/tilesInitializer">tilesInitializer</span><span class="symbol">:</span>&nbsp;<span class="identifier">TilesInitializer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure Tiles using a custom TilesInitializer, typically specified as an inner bean. 
+<p>Default is a variant of org.apache.tiles.startup.DefaultTilesInitializer, respecting the "definitions", "preparerFactoryClass" etc properties on this configurer. </p>
+<p><strong>NOTE: Specifying a custom TilesInitializer effectively disables all other bean properties on this configurer.</strong> The entire initialization procedure is then left to the TilesInitializer as specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-mutable-tiles-container.html">setUseMutableTilesContainer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseMutableTilesContainer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setUseMutableTilesContainer(kotlin.Boolean)/useMutableTilesContainer">useMutableTilesContainer</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use a MutableTilesContainer (typically the CachingTilesContainer implementation) for this application. Default is "false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validate-definitions.html">setValidateDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidateDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.tiles3.TilesConfigurer$setValidateDefinitions(kotlin.Boolean)/validateDefinitions">validateDefinitions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to validate the Tiles XML definitions. Default is "true".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

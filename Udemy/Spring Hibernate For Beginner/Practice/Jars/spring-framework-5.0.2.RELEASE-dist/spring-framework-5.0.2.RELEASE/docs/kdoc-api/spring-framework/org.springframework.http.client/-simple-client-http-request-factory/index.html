@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleClientHttpRequestFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.client</a>&nbsp;/&nbsp;<a href=".">SimpleClientHttpRequestFactory</a><br/>
+<br/>
+<h1>SimpleClientHttpRequestFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">AsyncClientHttpRequestFactory</span></code>
+<p>ClientHttpRequestFactory implementation that uses standard JDK facilities.</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+java.net.HttpURLConnectionHttpComponentsClientHttpRequestFactory</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleClientHttpRequestFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>ClientHttpRequestFactory implementation that uses standard JDK facilities.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-async-request.html">createAsyncRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createAsyncRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$createAsyncRequest(java.net.URI, org.springframework.http.HttpMethod)/uri">uri</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$createAsyncRequest(java.net.URI, org.springframework.http.HttpMethod)/httpMethod">httpMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncClientHttpRequest</span></code>
+<p>{@inheritDoc} 
+<p>Setting the <code><a href="set-task-executor.html">taskExecutor</a></code> property is required before calling this method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-request.html">createRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$createRequest(java.net.URI, org.springframework.http.HttpMethod)/uri">uri</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$createRequest(java.net.URI, org.springframework.http.HttpMethod)/httpMethod">httpMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClientHttpRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-buffer-request-body.html">setBufferRequestBody</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBufferRequestBody</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$setBufferRequestBody(kotlin.Boolean)/bufferRequestBody">bufferRequestBody</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicate whether this request factory should buffer the <a href="#">request body</a> internally. 
+<p>Default is <code>true</code>. When sending large amounts of data via POST or PUT, it is recommended to change this property to <code>false</code>, so as not to run out of memory. This will result in a ClientHttpRequest that either streams directly to the underlying HttpURLConnection (if the <code><a href="#">Content-Length</a></code> is known in advance), or that will use "Chunked transfer encoding" (if the <code>Content-Length</code> is not known in advance).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-chunk-size.html">setChunkSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setChunkSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$setChunkSize(kotlin.Int)/chunkSize">chunkSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the number of bytes to write in each chunk when not buffering request bodies locally. 
+<p>Note that this parameter is only used when <code><a href="set-buffer-request-body.html">bufferRequestBody</a></code> is set to <code>false</code>, and the <code><a href="#">Content-Length</a></code> is not known in advance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-connect-timeout.html">setConnectTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$setConnectTimeout(kotlin.Int)/connectTimeout">connectTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the underlying URLConnection's connect timeout (in milliseconds). A timeout value of 0 specifies an infinite timeout. 
+<p>Default is the system's default timeout.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-output-streaming.html">setOutputStreaming</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOutputStreaming</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$setOutputStreaming(kotlin.Boolean)/outputStreaming">outputStreaming</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set if the underlying URLConnection can be set to 'output streaming' mode. Default is <code>true</code>. 
+<p>When output streaming is enabled, authentication and redirection cannot be handled automatically. If output streaming is disabled, the <code><a href="#">HttpURLConnection#setFixedLengthStreamingMode</a></code> and <code><a href="#">HttpURLConnection#setChunkedStreamingMode</a></code> methods of the underlying connection will never be called.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-proxy.html">setProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$setProxy(java.net.Proxy)/proxy">proxy</span><span class="symbol">:</span>&nbsp;<span class="identifier">Proxy</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Proxy to use for this request factory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-read-timeout.html">setReadTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReadTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$setReadTimeout(kotlin.Int)/readTimeout">readTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the underlying URLConnection's read timeout (in milliseconds). A timeout value of 0 specifies an infinite timeout. 
+<p>Default is the system's default timeout.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-executor.html">setTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.SimpleClientHttpRequestFactory$setTaskExecutor(org.springframework.core.task.AsyncListenableTaskExecutor)/taskExecutor">taskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the task executor for this request factory. Setting this property is required for <a href="#">creating asynchronous requests</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

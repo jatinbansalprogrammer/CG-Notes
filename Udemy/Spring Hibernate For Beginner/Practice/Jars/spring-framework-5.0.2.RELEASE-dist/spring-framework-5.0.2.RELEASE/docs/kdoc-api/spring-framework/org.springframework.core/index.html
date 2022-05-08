@@ -1,0 +1,227 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.core - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.core</a><br/>
+<br/>
+<h2>Package org.springframework.core</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bridge-method-resolver/index.html">BridgeMethodResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BridgeMethodResolver</span></code>
+<p>Helper for resolving synthetic <code><a href="#">bridge Methods</a></code> to the Method being bridged. 
+<p>Given a synthetic <code><a href="#">bridge Method</a></code> returns the Method being bridged. A bridge method may be created by the compiler when extending a parameterized type whose methods have parameterized arguments. During runtime invocation the bridge Method may be invoked and/or used via reflection. When attempting to locate annotations on Method, it is wise to check for bridge Method as appropriate and find the bridged Method. </p>
+<p>See <a href="#"> The Java Language Specification</a> for more details on the use of bridge methods.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-collection-factory/index.html">CollectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CollectionFactory</span></code>
+<p>Factory for collections that is aware of Java 5, Java 6, and Spring collection types. 
+<p>Mainly for internal use within the framework.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-decorating-proxy/index.html">DecoratingProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">DecoratingProxy</span></code>
+<p>Interface to be implemented by decorating proxies, in particular Spring AOP proxies but potentially also custom proxies with decorator semantics. 
+<p>Note that this interface should just be implemented if the decorated class is not within the hierarchy of the proxy class to begin with. In particular, a "target-class" proxy such as a Spring AOP CGLIB proxy should not implement it since any lookup on the target class can simply be performed on the proxy class there anyway. </p>
+<p>Defined in the core module in order to allow #org.springframework.core.annotation.AnnotationAwareOrderComparator (and potential other candidates without spring-aop dependencies) to use it for introspection purposes, in particular annotation lookups.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-exception-depth-comparator/index.html">ExceptionDepthComparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExceptionDepthComparator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Comparator capable of sorting exceptions based on their depth from the thrown exception type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-type-resolver/index.html">GenericTypeResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">GenericTypeResolver</span></code>
+<p>Helper class for resolving generic types against type variables. 
+<p>Mainly intended for usage within the framework, resolving method parameter types even when they are declared generically.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-infrastructure-proxy/index.html">InfrastructureProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">InfrastructureProxy</span></code>
+<p>Interface to be implemented by transparent resource proxies that need to be considered as equal to the underlying resource, for example for consistent lookup key comparisons. Note that this interface does imply such special semantics and does not constitute a general-purpose mixin! 
+<p>Such wrappers will automatically be unwrapped for key comparisons in org.springframework.transaction.support.TransactionSynchronizationManager. </p>
+<p>Only fully transparent proxies, e.g. for redirection or service lookups, are supposed to implement this interface. Proxies that decorate the target object with new behavior, such as AOP proxies, do <em>not</em> qualify here!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-kotlin-detector/index.html">KotlinDetector</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">KotlinDetector</span></code>
+<p>A common delegate for detecting Kotlin's presence and for identifying Kotlin types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-kotlin-reflection-parameter-name-discoverer/index.html">KotlinReflectionParameterNameDiscoverer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">KotlinReflectionParameterNameDiscoverer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParameterNameDiscoverer</span></code>
+<p>ParameterNameDiscoverer implementation which uses Kotlin's reflection facilities for introspecting parameter names. Compared to StandardReflectionParameterNameDiscoverer, it allows in addition to determine interface parameter names without requiring Java 8 -parameters compiler flag.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-variable-table-parameter-name-discoverer/index.html">LocalVariableTableParameterNameDiscoverer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalVariableTableParameterNameDiscoverer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParameterNameDiscoverer</span></code>
+<p>Implementation of ParameterNameDiscoverer that uses the LocalVariableTable information in the method attributes to discover parameter names. Returns <code>null</code> if the class file was compiled without debug information. 
+<p>Uses ObjectWeb's ASM library for analyzing class files. Each discoverer instance caches the ASM discovered information for each introspected Class, in a thread-safe manner. It is recommended to reuse ParameterNameDiscoverer instances as far as possible.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-named-inheritable-thread-local/index.html">NamedInheritableThreadLocal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NamedInheritableThreadLocal</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InheritableThreadLocal</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>InheritableThreadLocal subclass that exposes a specified name as <code><a href="-named-inheritable-thread-local/to-string.html">#toString()</a></code> result (allowing for introspection).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-nested-exception-utils/index.html">NestedExceptionUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">NestedExceptionUtils</span></code>
+<p>Helper class for implementing exception classes which are capable of holding nested exceptions. Necessary because we can't share a base class among different exception types. 
+<p>Mainly for use within the framework.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-prioritized-parameter-name-discoverer/index.html">PrioritizedParameterNameDiscoverer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PrioritizedParameterNameDiscoverer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParameterNameDiscoverer</span></code>
+<p>ParameterNameDiscoverer implementation that tries several discoverer delegates in succession. Those added first in the <code>addDiscoverer</code> method have highest priority. If one returns <code>null</code>, the next will be tried. 
+<p>The default behavior is to return <code>null</code> if no discoverer matches.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reactive-adapter-registry/index.html">ReactiveAdapterRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReactiveAdapterRegistry</span></code>
+<p>A registry of adapters to adapt a Reactive Streams Publisher to/from various async/reactive types such as <code>CompletableFuture</code>, RxJava <code>Observable</code>, and others. 
+<p>By default, depending on classpath availability, adapters are registered for Reactor, RxJava 1, RxJava 2 types, CompletableFuture, and Java 9+ Flow.Publisher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resolvable-type-provider/index.html">ResolvableTypeProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ResolvableTypeProvider</span></code>
+<p>Any object can implement this interface to provide its actual ResolvableType. 
+<p>Such information is very useful when figuring out if the instance matches a generic signature as Java does not convey the signature at runtime. </p>
+<p>Users of this interface should be careful in complex hierarchy scenarios, especially when the generic type signature of the class changes in sub-classes. It is always possible to return <code>null</code> to fallback on a default behavior.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-smart-class-loader/index.html">SmartClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SmartClassLoader</span></code>
+<p>Interface to be implemented by a reloading-aware ClassLoader (e.g. a Groovy-based ClassLoader). Detected for example by Spring's CGLIB proxy factory for making a caching decision. 
+<p>If a ClassLoader does <em>not</em> implement this interface, then all of the classes obtained from it should be considered as not reloadable (i.e. cacheable).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-version/index.html">SpringVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringVersion</span></code>
+<p>Class that exposes the Spring version. Fetches the "Implementation-Version" manifest attribute from the jar file. 
+<p>Note that some ClassLoaders do not expose the package metadata, hence this class might not be able to determine the Spring version in all environments. Consider using a reflection-based check instead: For example, checking for the presence of a specific Spring 2.0 method that you intend to call.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-standard-reflection-parameter-name-discoverer/index.html">StandardReflectionParameterNameDiscoverer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardReflectionParameterNameDiscoverer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParameterNameDiscoverer</span></code>
+<p>ParameterNameDiscoverer implementation which uses JDK 8's reflection facilities for introspecting parameter names (based on the "-parameters" compiler flag).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-nested-checked-exception/index.html">NestedCheckedException</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">NestedCheckedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span></code>
+<p>Handy class for wrapping checked <code>Exceptions</code> with a root cause. 
+<p>This class is <code>abstract</code> to force the programmer to extend the class. <code>getMessage</code> will include nested exception information; <code>printStackTrace</code> and other like methods will delegate to the wrapped exception, if any. </p>
+<p>The similarity between this class and the NestedRuntimeException class is unavoidable, as Java forces these two classes to have different superclasses (ah, the inflexibility of concrete inheritance!).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-nested-i-o-exception/index.html">NestedIOException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NestedIOException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IOException</span></code>
+<p>Subclass of IOException that properly handles a root cause, exposing the root cause just like NestedChecked/RuntimeException does. 
+<p>Proper root cause handling has not been added to standard IOException before Java 6, which is why we need to do it ourselves for Java 5 compatibility purposes. </p>
+<p>The similarity between this class and the NestedChecked/RuntimeException class is unavoidable, as this class needs to derive from IOException.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

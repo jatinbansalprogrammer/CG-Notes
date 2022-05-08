@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StandardTypeLocator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.expression.spel.support</a>&nbsp;/&nbsp;<a href=".">StandardTypeLocator</a><br/>
+<br/>
+<h1>StandardTypeLocator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardTypeLocator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TypeLocator</span></code>
+<p>A simple implementation of TypeLocator that uses the context ClassLoader (or any ClassLoader set upon it). It supports 'well-known' packages: So if a type cannot be found, it will try the registered imports to locate it.</p>
+<p><strong>Author</strong><br/>
+Andy Clement</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">StandardTypeLocator</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a StandardTypeLocator for the default ClassLoader (typically, the thread context ClassLoader).</p>
+<code><span class="identifier">StandardTypeLocator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.StandardTypeLocator$<init>(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span></code>
+<p>Create a StandardTypeLocator for the given ClassLoader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="find-type.html">findType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">findType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.StandardTypeLocator$findType(kotlin.String)/typeName">typeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Find a (possibly unqualified) type reference - first using the type name as-is, then trying any registered prefixes if the type name cannot be found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-import-prefixes.html">getImportPrefixes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getImportPrefixes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return a list of all the import prefixes registered with this StandardTypeLocator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-import.html">registerImport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerImport</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.StandardTypeLocator$registerImport(kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a new import prefix that will be used when searching for unqualified types. Expected format is something like "java.lang".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-import.html">removeImport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeImport</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.support.StandardTypeLocator$removeImport(kotlin.String)/prefix">prefix</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove that specified prefix from this locator's list of imports.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionalEventListener - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.event</a>&nbsp;/&nbsp;<a href=".">TransactionalEventListener</a><br/>
+<br/>
+<h1>TransactionalEventListener</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER, AnnotationTarget.ANNOTATION_CLASS]<span class="symbol">)</span> <span class="identifier">@EventListener</span> <span class="keyword">class </span><span class="identifier">TransactionalEventListener</span></code>
+<p>An EventListener that is invoked according to a TransactionPhase. 
+<p>If the event is not published within the boundaries of a managed transaction, the event is discarded unless the <code><a href="#">#fallbackExecution</a></code> flag is explicitly set. If a transaction is running, the event is processed according to its <code>TransactionPhase</code>. </p>
+<p>Adding org.springframework.core.annotation.Order to your annotated method allows you to prioritize that listener amongst other listeners running before or after transaction completion.</p>
+</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TransactionalEventListener</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.transaction.event.TransactionalEventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), org.springframework.transaction.event.TransactionPhase, kotlin.Boolean, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.event.TransactionalEventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), org.springframework.transaction.event.TransactionPhase, kotlin.Boolean, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/phase">phase</span><span class="symbol">:</span>&nbsp;<a href="../-transaction-phase/index.html"><span class="identifier">TransactionPhase</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.event.TransactionalEventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), org.springframework.transaction.event.TransactionPhase, kotlin.Boolean, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/fallbackExecution">fallbackExecution</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.event.TransactionalEventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), org.springframework.transaction.event.TransactionPhase, kotlin.Boolean, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/classes">classes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.event.TransactionalEventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), org.springframework.transaction.event.TransactionPhase, kotlin.Boolean, kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>An EventListener that is invoked according to a TransactionPhase. 
+<p>If the event is not published within the boundaries of a managed transaction, the event is discarded unless the <code><a href="#">#fallbackExecution</a></code> flag is explicitly set. If a transaction is running, the event is processed according to its <code>TransactionPhase</code>. </p>
+<p>Adding org.springframework.core.annotation.Order to your annotated method allows you to prioritize that listener amongst other listeners running before or after transaction completion.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="classes.html">classes</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">classes</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>The event classes that this listener handles. 
+<p>If this attribute is specified with a single value, the annotated method may optionally accept a single parameter. However, if this attribute is specified with multiple values, the annotated method must <em>not</em> declare any parameters.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="condition.html">condition</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">condition</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Spring Expression Language (SpEL) attribute used for making the event handling conditional. 
+<p>The default is <code>""</code>, meaning the event is always handled.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="fallback-execution.html">fallbackExecution</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">fallbackExecution</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the event should be processed if no transaction is running.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="phase.html">phase</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">phase</span><span class="symbol">: </span><a href="../-transaction-phase/index.html"><span class="identifier">TransactionPhase</span></a></code>
+<p>Phase to bind the handling of an event to. 
+<p>The default phase is <code><a href="#">TransactionPhase#AFTER_COMMIT</a></code>. </p>
+<p>If no transaction is in progress, the event is not processed at all unless <code><a href="#">#fallbackExecution</a></code> has been enabled explicitly.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Alias for <code><a href="#">#classes</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

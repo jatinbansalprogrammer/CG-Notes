@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jmx.export.assembler - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jmx.export.assembler</a><br/>
+<br/>
+<h2>Package org.springframework.jmx.export.assembler</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-interface-based-m-bean-info-assembler/index.html">InterfaceBasedMBeanInfoAssembler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InterfaceBasedMBeanInfoAssembler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractConfigurableMBeanInfoAssembler</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Subclass of <code>AbstractReflectiveMBeanInfoAssembler</code> that allows for the management interface of a bean to be defined using arbitrary interfaces. Any methods or properties that are defined in those interfaces are exposed as MBean operations and attributes. 
+<p>By default, this class votes on the inclusion of each operation or attribute based on the interfaces implemented by the bean class. However, you can supply an array of interfaces via the <code>managedInterfaces</code> property that will be used instead. If you have multiple beans and you wish each bean to use a different set of interfaces, then you can map bean keys (that is the name used to pass the bean to the <code>MBeanExporter</code>) to a list of interface names using the <code>interfaceMappings</code> property. </p>
+<p>If you specify values for both <code>interfaceMappings</code> and <code>managedInterfaces</code>, Spring will attempt to find interfaces in the mappings first. If no interfaces for the bean are found, it will use the interfaces defined by <code>managedInterfaces</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-exclusion-m-bean-info-assembler/index.html">MethodExclusionMBeanInfoAssembler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodExclusionMBeanInfoAssembler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractConfigurableMBeanInfoAssembler</span></code>
+<p><code>AbstractReflectiveMBeanInfoAssembler</code> subclass that allows method names to be explicitly excluded as MBean operations and attributes. 
+<p>Any method not explicitly excluded from the management interface will be exposed to JMX. JavaBean getters and setters will automatically be exposed as JMX attributes. </p>
+<p>You can supply an array of method names via the <code>ignoredMethods</code> property. If you have multiple beans and you wish each bean to use a different set of method names, then you can map bean keys (that is the name used to pass the bean to the <code>MBeanExporter</code>) to a list of method names using the <code>ignoredMethodMappings</code> property. </p>
+<p>If you specify values for both <code>ignoredMethodMappings</code> and <code>ignoredMethods</code>, Spring will attempt to find method names in the mappings first. If no method names for the bean are found, it will use the method names defined by <code>ignoredMethods</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-name-based-m-bean-info-assembler/index.html">MethodNameBasedMBeanInfoAssembler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodNameBasedMBeanInfoAssembler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractConfigurableMBeanInfoAssembler</span></code>
+<p>Subclass of <code>AbstractReflectiveMBeanInfoAssembler</code> that allows to specify method names to be exposed as MBean operations and attributes. JavaBean getters and setters will automatically be exposed as JMX attributes. 
+<p>You can supply an array of method names via the <code>managedMethods</code> property. If you have multiple beans and you wish each bean to use a different set of method names, then you can map bean keys (that is the name used to pass the bean to the <code>MBeanExporter</code>) to a list of method names using the <code>methodMappings</code> property. </p>
+<p>If you specify values for both <code>methodMappings</code> and <code>managedMethods</code>, Spring will attempt to find method names in the mappings first. If no method names for the bean are found, it will use the method names defined by <code>managedMethods</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-reflective-m-bean-info-assembler/index.html">SimpleReflectiveMBeanInfoAssembler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleReflectiveMBeanInfoAssembler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractConfigurableMBeanInfoAssembler</span></code>
+<p>Simple subclass of <code>AbstractReflectiveMBeanInfoAssembler</code> that always votes yes for method and property inclusion, effectively exposing all public methods and properties as operations and attributes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

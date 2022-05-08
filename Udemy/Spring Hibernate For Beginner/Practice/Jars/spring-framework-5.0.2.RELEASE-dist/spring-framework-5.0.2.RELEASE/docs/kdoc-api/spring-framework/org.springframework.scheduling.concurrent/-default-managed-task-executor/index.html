@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultManagedTaskExecutor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.concurrent</a>&nbsp;/&nbsp;<a href=".">DefaultManagedTaskExecutor</a><br/>
+<br/>
+<h1>DefaultManagedTaskExecutor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultManagedTaskExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-concurrent-task-executor/index.html"><span class="identifier">ConcurrentTaskExecutor</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>JNDI-based variant of ConcurrentTaskExecutor, performing a default lookup for JSR-236's "java:comp/DefaultManagedExecutorService" in a Java EE 7 environment. 
+<p>Note: This class is not strictly JSR-236 based; it can work with any regular java.util.concurrent.Executor that can be found in JNDI. The actual adapting to javax.enterprise.concurrent.ManagedExecutorService happens in the base class ConcurrentTaskExecutor itself.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultManagedTaskExecutor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JNDI-based variant of ConcurrentTaskExecutor, performing a default lookup for JSR-236's "java:comp/DefaultManagedExecutorService" in a Java EE 7 environment. 
+<p>Note: This class is not strictly JSR-236 based; it can work with any regular java.util.concurrent.Executor that can be found in JNDI. The actual adapting to javax.enterprise.concurrent.ManagedExecutorService happens in the base class ConcurrentTaskExecutor itself.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-environment.html">setJndiEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskExecutor$setJndiEnvironment(java.util.Properties)/jndiEnvironment">jndiEnvironment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI environment to use for JNDI lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-name.html">setJndiName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskExecutor$setJndiName(kotlin.String)/jndiName">jndiName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a JNDI name of the java.util.concurrent.Executor to delegate to, replacing the default JNDI name "java:comp/DefaultManagedExecutorService". 
+<p>This can either be a fully qualified JNDI name, or the JNDI name relative to the current environment naming context if "resourceRef" is set to "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-template.html">setJndiTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiTemplate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskExecutor$setJndiTemplate(org.springframework.jndi.JndiTemplate)/jndiTemplate">jndiTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">JndiTemplate</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI template to use for JNDI lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-resource-ref.html">setResourceRef</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceRef</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.DefaultManagedTaskExecutor$setResourceRef(kotlin.Boolean)/resourceRef">resourceRef</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the lookup occurs in a Java EE container, i.e. if the prefix "java:comp/env/" needs to be added if the JNDI name doesn't already contain it. PersistenceAnnotationBeanPostProcessor's default is "true".</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-concurrent-task-executor/execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$execute(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$execute(java.lang.Runnable, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$execute(java.lang.Runnable, kotlin.Long)/startTimeout">startTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-concurrent-task-executor/get-concurrent-executor.html">getConcurrentExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getConcurrentExecutor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Executor</span></code>
+<p>Return the java.util.concurrent.Executor that this adapter delegates to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-concurrent-task-executor/prefers-short-lived-tasks.html">prefersShortLivedTasks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prefersShortLivedTasks</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This task executor prefers short-lived work units.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-concurrent-task-executor/set-concurrent-executor.html">setConcurrentExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setConcurrentExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$setConcurrentExecutor(java.util.concurrent.Executor)/executor">executor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the java.util.concurrent.Executor to delegate to. 
+<p>Autodetects a JSR-236 javax.enterprise.concurrent.ManagedExecutorService in order to expose javax.enterprise.concurrent.ManagedTask adapters for it.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-concurrent-task-executor/set-task-decorator.html">setTaskDecorator</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setTaskDecorator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$setTaskDecorator(org.springframework.core.task.TaskDecorator)/taskDecorator">taskDecorator</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskDecorator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom TaskDecorator to be applied to any Runnable about to be executed. 
+<p>Note that such a decorator is not necessarily being applied to the user-supplied <code>Runnable</code>/<code>Callable</code> but rather to the actual execution callback (which may be a wrapper around the user-supplied task). </p>
+<p>The primary use case is to set some execution context around the task's invocation, or to provide some monitoring/statistics for task execution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-concurrent-task-executor/submit.html">submit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$submit(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$submit(java.util.concurrent.Callable((org.springframework.scheduling.concurrent.ConcurrentTaskExecutor.submit.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-concurrent-task-executor/submit-listenable.html">submitListenable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$submitListenable(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ConcurrentTaskExecutor$submitListenable(java.util.concurrent.Callable((org.springframework.scheduling.concurrent.ConcurrentTaskExecutor.submitListenable.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

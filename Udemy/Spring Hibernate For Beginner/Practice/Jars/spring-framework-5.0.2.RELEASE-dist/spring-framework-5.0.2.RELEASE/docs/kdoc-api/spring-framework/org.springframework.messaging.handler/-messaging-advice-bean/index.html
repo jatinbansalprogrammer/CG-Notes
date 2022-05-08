@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MessagingAdviceBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.handler</a>&nbsp;/&nbsp;<a href=".">MessagingAdviceBean</a><br/>
+<br/>
+<h1>MessagingAdviceBean</h1>
+<code><span class="keyword">interface </span><span class="identifier">MessagingAdviceBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Ordered</span></code>
+<p>Represents a Spring-managed bean with cross-cutting functionality to be applied to one or more Spring beans with annotation-based message handling methods. 
+<p>Component stereotypes such as org.springframework.stereotype.Controller with annotation handler methods often need cross-cutting functionality across all or a subset of such annotated components. A primary example of this is the need for "global" annotated exception handler methods but the concept applies more generally.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-bean-type.html">getBeanType</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getBeanType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the type of the contained advice bean. 
+<p>If the bean type is a CGLIB-generated class, the original user-defined class is returned.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-applicable-to-bean-type.html">isApplicableToBeanType</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isApplicableToBeanType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.MessagingAdviceBean$isApplicableToBeanType(java.lang.Class((kotlin.Any)))/beanType">beanType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether this MessagingAdviceBean applies to the given bean type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-bean.html">resolveBean</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveBean</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the advice bean instance, if necessary resolving a bean specified by name through the BeanFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MockMvcWebClientBuilder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet.htmlunit</a>&nbsp;/&nbsp;<a href=".">MockMvcWebClientBuilder</a><br/>
+<br/>
+<h1>MockMvcWebClientBuilder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockMvcWebClientBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-mock-mvc-web-connection-builder-support/index.html"><span class="identifier">MockMvcWebConnectionBuilderSupport</span></a><span class="symbol">&lt;</span><span class="identifier">MockMvcWebClientBuilder</span><span class="symbol">&gt;</span></code>
+<p><code>MockMvcWebClientBuilder</code> simplifies the creation of an HtmlUnit WebClient that delegates to a MockMvc instance. 
+<p>The <code>MockMvc</code> instance used by the builder may be <a href="mock-mvc-setup.html">supplied directly</a> or created transparently from a <code><a href="web-app-context-setup.html">WebApplicationContext</a></code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="mock-mvc-setup.html">#mockMvcSetup(MockMvc)</a><a href="web-app-context-setup.html">#webAppContextSetup(WebApplicationContext)</a><a href="#">#webAppContextSetup(WebApplicationContext, MockMvcConfigurer)</a><a href="with-delegate.html">#withDelegate(WebClient)</a><a href="build.html">#build()</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="build.html">build</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">build</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebClient</span></code>
+<p>Build the WebClient configured via this builder. 
+<p>The returned client will use the configured MockMvc instance for processing any WebRequestMatcher requests and a delegate <code>WebClient</code> for all other requests. </p>
+<p>If a <a href="with-delegate.html">delegate</a> has been explicitly configured, it will be used; otherwise, a default <code>WebClient</code> will be configured as the delegate.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="mock-mvc-setup.html">mockMvcSetup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">mockMvcSetup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder$mockMvcSetup(org.springframework.test.web.servlet.MockMvc)/mockMvc">mockMvc</span><span class="symbol">:</span>&nbsp;<span class="identifier">MockMvc</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockMvcWebClientBuilder</span></code>
+<p>Create a new <code>MockMvcWebClientBuilder</code> based on the supplied MockMvc instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="web-app-context-setup.html">webAppContextSetup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">webAppContextSetup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder$webAppContextSetup(org.springframework.web.context.WebApplicationContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockMvcWebClientBuilder</span></code>
+<p>Create a new <code>MockMvcWebClientBuilder</code> based on the supplied WebApplicationContext.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">webAppContextSetup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder$webAppContextSetup(org.springframework.web.context.WebApplicationContext, org.springframework.test.web.servlet.setup.MockMvcConfigurer)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder$webAppContextSetup(org.springframework.web.context.WebApplicationContext, org.springframework.test.web.servlet.setup.MockMvcConfigurer)/configurer">configurer</span><span class="symbol">:</span>&nbsp;<span class="identifier">MockMvcConfigurer</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockMvcWebClientBuilder</span></code>
+<p>Create a new <code>MockMvcWebClientBuilder</code> based on the supplied WebApplicationContext and MockMvcConfigurer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="with-delegate.html">withDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">withDelegate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebClientBuilder$withDelegate(com.gargoylesoftware.htmlunit.WebClient)/webClient">webClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebClient</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockMvcWebClientBuilder</span></code>
+<p>Supply the <code>WebClient</code> that the client <a href="build.html">built</a> by this builder should delegate to when processing non-WebRequestMatcher requests.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-mock-mvc-web-connection-builder-support/always-use-mock-mvc.html">alwaysUseMockMvc</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">alwaysUseMockMvc</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Specify that MockMvc should always be used regardless of what the request looks like.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-mock-mvc-web-connection-builder-support/context-path.html">contextPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contextPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnectionBuilderSupport$contextPath(kotlin.String)/contextPath">contextPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Set the context path to use. 
+<p>If the supplied value is <code>null</code> or empty, the first path segment of the request URL is assumed to be the context path. </p>
+<p>Default is <code>""</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-mock-mvc-web-connection-builder-support/use-mock-mvc.html">useMockMvc</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">useMockMvc</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnectionBuilderSupport$useMockMvc(kotlin.Array((org.springframework.test.web.servlet.htmlunit.WebRequestMatcher)))/matchers">matchers</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequestMatcher</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Add additional WebRequestMatcher instances that will ensure that MockMvc is used to process the request, if such a matcher matches against the web request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-mock-mvc-web-connection-builder-support/use-mock-mvc-for-hosts.html">useMockMvcForHosts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">useMockMvcForHosts</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnectionBuilderSupport$useMockMvcForHosts(kotlin.Array((kotlin.String)))/hosts">hosts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Add additional WebRequestMatcher instances that return <code>true</code> if a supplied host matches — for example, <code>"example.com"</code> or <code>"example.com:8080"</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

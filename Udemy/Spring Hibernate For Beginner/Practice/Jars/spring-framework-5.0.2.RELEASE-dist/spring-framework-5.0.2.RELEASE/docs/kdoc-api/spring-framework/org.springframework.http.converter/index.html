@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.http.converter - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.http.converter</a><br/>
+<br/>
+<h2>Package org.springframework.http.converter</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-buffered-image-http-message-converter/index.html">BufferedImageHttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BufferedImageHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">BufferedImage</span><span class="symbol">&gt;</span></code>
+<p>Implementation of HttpMessageConverter that can read and write BufferedImage. 
+<p>By default, this converter can read all media types that are supported by the <a href="#">registered image readers</a>, and writes using the media type of the first available <a href="#">registered image writer</a>. The latter can be overridden by setting the <code><a href="-buffered-image-http-message-converter/set-default-content-type.html">defaultContentType</a></code> property. </p>
+<p>If the <code><a href="-buffered-image-http-message-converter/set-cache-dir.html">cacheDir</a></code> property is set, this converter will cache image data. </p>
+<p>The <code><a href="#">#process(ImageReadParam)</a></code> and <code><a href="#">#process(ImageWriteParam)</a></code> template methods allow subclasses to override Image I/O parameters.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-byte-array-http-message-converter/index.html">ByteArrayHttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ByteArrayHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpMessageConverter</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">&gt;</span></code>
+<p>Implementation of HttpMessageConverter that can read and write byte arrays. 
+<p>By default, this converter supports all media types (<code>&amp;#42;&amp;#47;&amp;#42;</code>), and writes with a <code>Content-Type</code> of <code>application/octet-stream</code>. This can be overridden by setting the <code><a href="#">supportedMediaTypes</a></code> property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-object-to-string-http-message-converter/index.html">ObjectToStringHttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ObjectToStringHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpMessageConverter</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>An <code>HttpMessageConverter</code> that uses StringHttpMessageConverter for reading and writing content and a ConversionService for converting the String content to and from the target object type. 
+<p>By default, this converter supports the media type <code>text/plain</code> only. This can be overridden through the <code><a href="#">supportedMediaTypes</a></code> property. </p>
+<p>A usage example: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.ObjectToStringHttpMessageConverter"&gt; &lt;constructor-arg&gt; &lt;bean class="org.springframework.context.support.ConversionServiceFactoryBean"/&gt; &lt;/constructor-arg&gt; &lt;/bean&gt; </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-http-message-converter/index.html">ResourceHttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">Resource</span><span class="symbol">&gt;</span></code>
+<p>Implementation of HttpMessageConverter that can read/write Resource and supports byte range requests. 
+<p>By default, this converter can read all media types. The MediaTypeFactory is used to determine the <code>Content-Type</code> of written resources.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-region-http-message-converter/index.html">ResourceRegionHttpMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceRegionHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericHttpMessageConverter</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Implementation of HttpMessageConverter that can write a single ResourceRegion, or Collections of ResourceRegion.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-http-message-conversion-exception/index.html">HttpMessageConversionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpMessageConversionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NestedRuntimeException</span></code>
+<p>Thrown by HttpMessageConverter implementations when a conversion attempt fails.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-message-not-readable-exception/index.html">HttpMessageNotReadableException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpMessageNotReadableException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-http-message-conversion-exception/index.html"><span class="identifier">HttpMessageConversionException</span></a></code>
+<p>Thrown by HttpMessageConverter implementations when the <code><a href="#">HttpMessageConverter#read</a></code> method fails.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-message-not-writable-exception/index.html">HttpMessageNotWritableException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpMessageNotWritableException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-http-message-conversion-exception/index.html"><span class="identifier">HttpMessageConversionException</span></a></code>
+<p>Thrown by HttpMessageConverter implementations when the <code><a href="#">HttpMessageConverter#write</a></code> method fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleUrlHandlerMapping - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.handler</a>&nbsp;/&nbsp;<a href=".">SimpleUrlHandlerMapping</a><br/>
+<br/>
+<h1>SimpleUrlHandlerMapping</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleUrlHandlerMapping</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlHandlerMapping</span></code>
+<p>Implementation of the org.springframework.web.servlet.HandlerMapping interface to map from URLs to request handler beans. Supports both mapping to bean instances and mapping to bean names; the latter is required for non-singleton handlers. 
+<p>The "urlMap" property is suitable for populating the handler map with bean references, e.g. via the map element in XML bean definitions. </p>
+<p>Mappings to bean names can be set via the "mappings" property, in a form accepted by the <code>java.util.Properties</code> class, like as follows: <code>/welcome.html=ticketController /show.html=ticketController </code> The syntax is <code>PATH=HANDLER_BEAN_NAME</code>. If the path doesn't begin with a slash, one is prepended. </p>
+<p>Supports direct matches (given "/test" -&gt; registered "/test") and "*" pattern matches (given "/test" -&gt; registered "/t*"). Note that the default is to map within the current servlet mapping if applicable; see the <code><a href="#">"alwaysUseFullPath"</a></code> property. For details on the pattern options, see the org.springframework.util.AntPathMatcher javadoc.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="set-mappings.html">#setMappings</a><a href="#">#setUrlMap</a>BeanNameUrlHandlerMapping</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleUrlHandlerMapping</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of the org.springframework.web.servlet.HandlerMapping interface to map from URLs to request handler beans. Supports both mapping to bean instances and mapping to bean names; the latter is required for non-singleton handlers. 
+<p>The "urlMap" property is suitable for populating the handler map with bean references, e.g. via the map element in XML bean definitions. </p>
+<p>Mappings to bean names can be set via the "mappings" property, in a form accepted by the <code>java.util.Properties</code> class, like as follows: <code>/welcome.html=ticketController /show.html=ticketController </code> The syntax is <code>PATH=HANDLER_BEAN_NAME</code>. If the path doesn't begin with a slash, one is prepended. </p>
+<p>Supports direct matches (given "/test" -&gt; registered "/test") and "*" pattern matches (given "/test" -&gt; registered "/t*"). Note that the default is to map within the current servlet mapping if applicable; see the <code><a href="#">"alwaysUseFullPath"</a></code> property. For details on the pattern options, see the org.springframework.util.AntPathMatcher javadoc.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-url-map.html">getUrlMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUrlMap</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Allow Map access to the URL path mappings, with the option to add or override specific entries. 
+<p>Useful for specifying entries directly, for example via "urlMap[myKey]". This is particularly useful for adding or overriding entries in child bean definitions.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="init-application-context.html">initApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">initApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Calls the <code><a href="#">#registerHandlers</a></code> method in addition to the superclass's initialization.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mappings.html">setMappings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping$setMappings(java.util.Properties)/mappings">mappings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Map URL paths to handler bean names. This is the typical way of configuring this HandlerMapping. 
+<p>Supports direct URL matches and Ant-style pattern matches. For syntax details, see the org.springframework.util.AntPathMatcher javadoc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-url-map.html">setUrlMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrlMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping$setUrlMap(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/urlMap">urlMap</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a Map with URL paths as keys and handler beans (or handler bean names) as values. Convenient for population with bean references. 
+<p>Supports direct URL matches and Ant-style pattern matches. For syntax details, see the org.springframework.util.AntPathMatcher javadoc.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.socket.server.support/-web-socket-handler-mapping/index.html">WebSocketHandlerMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketHandlerMapping</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpleUrlHandlerMapping</span><span class="symbol">, </span><span class="identifier">SmartLifecycle</span></code>
+<p>An extension of SimpleUrlHandlerMapping that is also a SmartLifecycle container and propagates start and stop calls to any handlers that implement Lifecycle. The handlers are typically expected to be <code>WebSocketHttpRequestHandler</code> or <code>SockJsHttpRequestHandler</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

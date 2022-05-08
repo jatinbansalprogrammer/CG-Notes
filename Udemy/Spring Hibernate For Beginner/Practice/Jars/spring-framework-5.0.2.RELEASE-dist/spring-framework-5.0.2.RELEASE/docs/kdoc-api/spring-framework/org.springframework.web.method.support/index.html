@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.method.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.method.support</a><br/>
+<br/>
+<h2>Package org.springframework.web.method.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-async-handler-method-return-value-handler/index.html">AsyncHandlerMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">AsyncHandlerMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>A return value handler that supports async types. Such return value types need to be handled with priority so the async value can be "unwrapped". 
+<p><strong>Note: </strong> implementing this contract is not required but it should be implemented when the handler needs to be prioritized ahead of others. For example custom (async) handlers, by default ordered after built-in handlers, should take precedence over <code>@ResponseBody</code> or <code>@ModelAttribute</code> handling, which should occur once the async value is ready. By contrast, built-in (async) handlers are already ordered ahead of sync handlers.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-uri-components-contributor/index.html">CompositeUriComponentsContributor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeUriComponentsContributor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UriComponentsContributor</span></code>
+<p>A UriComponentsContributor containing a list of other contributors to delegate and also encapsulating a specific ConversionService to use for formatting method argument values to Strings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-handler-method-argument-resolver/index.html">HandlerMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">HandlerMethodArgumentResolver</span></code>
+<p>Strategy interface for resolving method parameters into argument values in the context of a given request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-handler-method-return-value-handler-composite/index.html">HandlerMethodReturnValueHandlerComposite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HandlerMethodReturnValueHandlerComposite</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>Handles method return values by delegating to a list of registered HandlerMethodReturnValueHandlers. Previously resolved return types are cached for faster lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-invocable-handler-method/index.html">InvocableHandlerMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvocableHandlerMethod</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethod</span></code>
+<p>Provides a method for invoking the handler method for a given request after resolving its method argument values through registered HandlerMethodArgumentResolvers. 
+<p>Argument resolution often requires a WebDataBinder for data binding or for type conversion. Use the <code><a href="-invocable-handler-method/set-data-binder-factory.html">#setDataBinderFactory(WebDataBinderFactory)</a></code> property to supply a binder factory to pass to argument resolvers. </p>
+<p>Use <code><a href="-invocable-handler-method/set-handler-method-argument-resolvers.html">#setHandlerMethodArgumentResolvers</a></code> to customize the list of argument resolvers.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

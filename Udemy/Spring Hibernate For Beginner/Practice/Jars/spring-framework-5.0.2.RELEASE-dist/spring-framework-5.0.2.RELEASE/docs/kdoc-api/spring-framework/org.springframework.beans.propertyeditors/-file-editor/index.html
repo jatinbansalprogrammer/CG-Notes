@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FileEditor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.propertyeditors</a>&nbsp;/&nbsp;<a href=".">FileEditor</a><br/>
+<br/>
+<h1>FileEditor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.io.File</code>, to directly populate a File property from a Spring resource location. 
+<p>Supports Spring-style URL notation: any fully qualified standard URL ("file:", "http:", etc) and Spring's special "classpath:" pseudo-URL. </p>
+<p><strong>NOTE:</strong> The behavior of this editor has changed in Spring 2.0. Previously, it created a File instance directly from a filename. As of Spring 2.0, it takes a standard Spring resource location as input; this is consistent with URLEditor and InputStreamEditor now. </p>
+<p><strong>NOTE:</strong> In Spring 2.5 the following modification was made. If a file name is specified without a URL prefix or without an absolute path then we try to locate the file using standard ResourceLoader semantics. If the file was not found, then a File instance is created assuming the file name refers to a relative file location.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Since</strong><br/>
+09.12.2003</p>
+<p><strong>See Also</strong><br/>
+java.io.Fileorg.springframework.core.io.ResourceEditororg.springframework.core.io.ResourceLoaderURLEditorInputStreamEditor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FileEditor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new FileEditor, using a default ResourceEditor underneath.</p>
+<code><span class="identifier">FileEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.FileEditor$<init>(org.springframework.core.io.ResourceEditor)/resourceEditor">resourceEditor</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceEditor</span><span class="symbol">)</span></code>
+<p>Create a new FileEditor, using the given ResourceEditor underneath.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-as-text.html">getAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAsText</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-as-text.html">setAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAsText</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.FileEditor$setAsText(kotlin.String)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

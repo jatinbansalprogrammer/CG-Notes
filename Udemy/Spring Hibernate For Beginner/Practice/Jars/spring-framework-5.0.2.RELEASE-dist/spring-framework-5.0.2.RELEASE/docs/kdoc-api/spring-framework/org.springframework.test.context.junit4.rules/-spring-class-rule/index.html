@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringClassRule - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.junit4.rules</a>&nbsp;/&nbsp;<a href=".">SpringClassRule</a><br/>
+<br/>
+<h1>SpringClassRule</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringClassRule</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TestRule</span></code>
+<p><code>SpringClassRule</code> is a custom JUnit TestRule that supports <em>class-level</em> features of the <em>Spring TestContext Framework</em> in standard JUnit tests by means of the TestContextManager and associated support classes and annotations. 
+<p>In contrast to the org.springframework.test.context.junit4.SpringJUnit4ClassRunner, Spring's rule-based JUnit support has the advantage that it is independent of any org.junit.runner.Runner and can therefore be combined with existing alternative runners like JUnit's <code>Parameterized</code> or third-party runners such as the <code>MockitoJUnitRunner</code>. </p>
+<p>In order to achieve the same functionality as the <code>SpringJUnit4ClassRunner</code>, however, a <code>SpringClassRule</code> must be combined with a SpringMethodRule, since <code>SpringClassRule</code> only supports the class-level features of the <code>SpringJUnit4ClassRunner</code>. </p>
+Example Usage <pre><code><code> public class ExampleSpringIntegrationTest { @ClassRule public static final SpringClassRule springClassRule = new SpringClassRule(); @Rule public final SpringMethodRule springMethodRule = new SpringMethodRule(); // ... }</code></code></pre> 
+<p>The following list constitutes all annotations currently supported directly or indirectly by <code>SpringClassRule</code>. <em>(Note that additional annotations may be supported by various org.springframework.test.context.TestExecutionListener or org.springframework.test.context.TestContextBootstrapper implementations.)</em> </p>
+<ul> <li>org.springframework.test.annotation.ProfileValueSourceConfiguration</li>
+ <li>org.springframework.test.annotation.IfProfileValue</li>
+ </ul>
+ 
+<p><strong>NOTE:</strong> As of Spring Framework 4.3, this class requires JUnit 4.12 or higher.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Philippe Marschall</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#apply(Statement, Description)</a>SpringMethodRuleorg.springframework.test.context.TestContextManagerorg.springframework.test.context.junit4.SpringJUnit4ClassRunner</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringClassRule</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p><code>SpringClassRule</code> is a custom JUnit TestRule that supports <em>class-level</em> features of the <em>Spring TestContext Framework</em> in standard JUnit tests by means of the TestContextManager and associated support classes and annotations. 
+<p>In contrast to the org.springframework.test.context.junit4.SpringJUnit4ClassRunner, Spring's rule-based JUnit support has the advantage that it is independent of any org.junit.runner.Runner and can therefore be combined with existing alternative runners like JUnit's <code>Parameterized</code> or third-party runners such as the <code>MockitoJUnitRunner</code>. </p>
+<p>In order to achieve the same functionality as the <code>SpringJUnit4ClassRunner</code>, however, a <code>SpringClassRule</code> must be combined with a SpringMethodRule, since <code>SpringClassRule</code> only supports the class-level features of the <code>SpringJUnit4ClassRunner</code>. </p>
+Example Usage <pre><code><code> public class ExampleSpringIntegrationTest { @ClassRule public static final SpringClassRule springClassRule = new SpringClassRule(); @Rule public final SpringMethodRule springMethodRule = new SpringMethodRule(); // ... }</code></code></pre> 
+<p>The following list constitutes all annotations currently supported directly or indirectly by <code>SpringClassRule</code>. <em>(Note that additional annotations may be supported by various org.springframework.test.context.TestExecutionListener or org.springframework.test.context.TestContextBootstrapper implementations.)</em> </p>
+<ul> <li>org.springframework.test.annotation.ProfileValueSourceConfiguration</li>
+ <li>org.springframework.test.annotation.IfProfileValue</li>
+ </ul>
+ 
+<p><strong>NOTE:</strong> As of Spring Framework 4.3, this class requires JUnit 4.12 or higher.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="apply.html">apply</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">apply</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.junit4.rules.SpringClassRule$apply(org.junit.runners.model.Statement, org.junit.runner.Description)/base">base</span><span class="symbol">:</span>&nbsp;<span class="identifier">Statement</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.junit4.rules.SpringClassRule$apply(org.junit.runners.model.Statement, org.junit.runner.Description)/description">description</span><span class="symbol">:</span>&nbsp;<span class="identifier">Description</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Statement</span></code>
+<p>Apply <em>class-level</em> features of the <em>Spring TestContext Framework</em> to the supplied <code>base</code> statement. 
+<p>Specifically, this method retrieves the TestContextManager used by this rule and its associated SpringMethodRule and invokes the <code><a href="#">beforeTestClass()</a></code> and <code><a href="#">afterTestClass()</a></code> methods on the <code>TestContextManager</code>. </p>
+<p>In addition, this method checks whether the test is enabled in the current execution environment. This prevents classes with a non-matching <code>@IfProfileValue</code> annotation from running altogether, even skipping the execution of <code>beforeTestClass()</code> methods in <code>TestExecutionListeners</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

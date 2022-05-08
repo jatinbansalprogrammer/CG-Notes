@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyAccessException - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href=".">PropertyAccessException</a><br/>
+<br/>
+<h1>PropertyAccessException</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">PropertyAccessException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeansException</span></code>
+<p>Superclass for exceptions related to a property access, such as type mismatch or invocation target exception.</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PropertyAccessException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessException$<init>(java.beans.PropertyChangeEvent, kotlin.String, kotlin.Throwable)/propertyChangeEvent">propertyChangeEvent</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyChangeEvent</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessException$<init>(java.beans.PropertyChangeEvent, kotlin.String, kotlin.Throwable)/msg">msg</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessException$<init>(java.beans.PropertyChangeEvent, kotlin.String, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span></code>
+<p>Create a new PropertyAccessException.</p>
+<code><span class="identifier">PropertyAccessException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessException$<init>(kotlin.String, kotlin.Throwable)/msg">msg</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessException$<init>(kotlin.String, kotlin.Throwable)/cause">cause</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span></code>
+<p>Create a new PropertyAccessException without PropertyChangeEvent.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-error-code.html">getErrorCode</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getErrorCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return a corresponding error code for this type of exception.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-change-event.html">getPropertyChangeEvent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPropertyChangeEvent</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyChangeEvent</span></code>
+<p>Return the PropertyChangeEvent that resulted in the problem. 
+<p>May be <code>null</code>; only available if an actual bean property was affected.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-name.html">getPropertyName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPropertyName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the name of the affected property, if available.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value.html">getValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the affected value that was about to be set, if any.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-method-invocation-exception/index.html">MethodInvocationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvocationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyAccessException</span></code>
+<p>Thrown when a bean property getter or setter method throws an exception, analogous to an InvocationTargetException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-type-mismatch-exception/index.html">TypeMismatchException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypeMismatchException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyAccessException</span></code>
+<p>Exception thrown on a type mismatch when trying to set a bean property.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AdvisorAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.framework.adapter</a>&nbsp;/&nbsp;<a href=".">AdvisorAdapter</a><br/>
+<br/>
+<h1>AdvisorAdapter</h1>
+<code><span class="keyword">interface </span><span class="identifier">AdvisorAdapter</span></code>
+<p>Interface allowing extension to the Spring AOP framework to allow handling of new Advisors and Advice types. 
+<p>Implementing objects can create AOP Alliance Interceptors from custom advice types, enabling these advice types to be used in the Spring AOP framework, which uses interception under the covers. </p>
+<p>There is no need for most Spring users to implement this interface; do so only if you need to introduce more Advisor or Advice types to Spring.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-interceptor.html">getInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getInterceptor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.adapter.AdvisorAdapter$getInterceptor(org.springframework.aop.Advisor)/advisor">advisor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Advisor</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a></code>
+<p>Return an AOP Alliance MethodInterceptor exposing the behavior of the given advice to an interception-based AOP framework. 
+<p>Don't worry about any Pointcut contained in the Advisor; the AOP framework will take care of checking the pointcut.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-advice.html">supportsAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">supportsAdvice</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.framework.adapter.AdvisorAdapter$supportsAdvice(org.aopalliance.aop.Advice)/advice">advice</span><span class="symbol">:</span>&nbsp;<span class="identifier">Advice</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Does this adapter understand this advice object? Is it valid to invoke the <code>getInterceptors</code> method with an Advisor that contains this advice as an argument?</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResourceBundleMessageSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">ResourceBundleMessageSource</a><br/>
+<br/>
+<h1>ResourceBundleMessageSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceBundleMessageSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceBasedMessageSource</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>org.springframework.context.MessageSource implementation that accesses resource bundles using specified basenames. This class relies on the underlying JDK's java.util.ResourceBundle implementation, in combination with the JDK's standard message parsing provided by java.text.MessageFormat. 
+<p>This MessageSource caches both the accessed ResourceBundle instances and the generated MessageFormats for each message. It also implements rendering of no-arg messages without MessageFormat, as supported by the AbstractMessageSource base class. The caching provided by this MessageSource is significantly faster than the built-in caching of the <code>java.util.ResourceBundle</code> class. </p>
+<p>The basenames follow java.util.ResourceBundle conventions: essentially, a fully-qualified classpath location. If it doesn't contain a package qualifier (such as <code>org.mypackage</code>), it will be resolved from the classpath root. Note that the JDK's standard ResourceBundle treats dots as package separators: This means that "test.theme" is effectively equivalent to "test/theme".</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setBasenames</a>ReloadableResourceBundleMessageSourcejava.util.ResourceBundlejava.text.MessageFormat</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ResourceBundleMessageSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.context.MessageSource implementation that accesses resource bundles using specified basenames. This class relies on the underlying JDK's java.util.ResourceBundle implementation, in combination with the JDK's standard message parsing provided by java.text.MessageFormat. 
+<p>This MessageSource caches both the accessed ResourceBundle instances and the generated MessageFormats for each message. It also implements rendering of no-arg messages without MessageFormat, as supported by the AbstractMessageSource base class. The caching provided by this MessageSource is significantly faster than the built-in caching of the <code>java.util.ResourceBundle</code> class. </p>
+<p>The basenames follow java.util.ResourceBundle conventions: essentially, a fully-qualified classpath location. If it doesn't contain a package qualifier (such as <code>org.mypackage</code>), it will be resolved from the classpath root. Note that the JDK's standard ResourceBundle treats dots as package separators: This means that "test.theme" is effectively equivalent to "test/theme".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ResourceBundleMessageSource$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bundle-class-loader.html">setBundleClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBundleClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ResourceBundleMessageSource$setBundleClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ClassLoader to load resource bundles with. 
+<p>Default is the containing BeanFactory's org.springframework.beans.factory.BeanClassLoaderAware, or the default ClassLoader determined by <code><a href="#">org.springframework.util.ClassUtils#getDefaultClassLoader()</a></code> if not running within a BeanFactory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Show the configuration of this MessageSource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

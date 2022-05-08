@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResourceHandlerRegistration - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.config</a>&nbsp;/&nbsp;<a href=".">ResourceHandlerRegistration</a><br/>
+<br/>
+<h1>ResourceHandlerRegistration</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceHandlerRegistration</span></code>
+<p>Assist with creating and configuring a static resources handler.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ResourceHandlerRegistration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.config.ResourceHandlerRegistration$<init>(org.springframework.core.io.ResourceLoader, kotlin.Array((kotlin.String)))/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.reactive.config.ResourceHandlerRegistration$<init>(org.springframework.core.io.ResourceLoader, kotlin.Array((kotlin.String)))/pathPatterns">pathPatterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a ResourceHandlerRegistration instance.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-resource-locations.html">addResourceLocations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addResourceLocations</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.reactive.config.ResourceHandlerRegistration$addResourceLocations(kotlin.Array((kotlin.String)))/resourceLocations">resourceLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResourceHandlerRegistration</span></code>
+<p>Add one or more resource locations from which to serve static content. Each location must point to a valid directory. Multiple locations may be specified as a comma-separated list, and the locations will be checked for a given resource in the order specified. 
+<p>For example, {<code>"/"</code>, <code>"classpath:/META-INF/public-web-resources/"</code>} allows resources to be served both from the web application root and from any JAR on the classpath that contains a <code>/META-INF/public-web-resources/</code> directory, with resources in the web application root taking precedence.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resource-chain.html">resourceChain</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resourceChain</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.config.ResourceHandlerRegistration$resourceChain(kotlin.Boolean)/cacheResources">cacheResources</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResourceChainRegistration</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resourceChain</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.config.ResourceHandlerRegistration$resourceChain(kotlin.Boolean, org.springframework.cache.Cache)/cacheResources">cacheResources</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.config.ResourceHandlerRegistration$resourceChain(kotlin.Boolean, org.springframework.cache.Cache)/cache">cache</span><span class="symbol">:</span>&nbsp;<span class="identifier">Cache</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResourceChainRegistration</span></code>
+<p>Configure a chain of resource resolvers and transformers to use. This can be useful, for example, to apply a version strategy to resource URLs. 
+<p>If this method is not invoked, by default only a simple <code>PathResourceResolver</code> is used in order to match URL paths to resources under the configured locations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-control.html">setCacheControl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheControl</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.config.ResourceHandlerRegistration$setCacheControl(org.springframework.http.CacheControl)/cacheControl">cacheControl</span><span class="symbol">:</span>&nbsp;<span class="identifier">CacheControl</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResourceHandlerRegistration</span></code>
+<p>Specify the CacheControl which should be used by the resource handler.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

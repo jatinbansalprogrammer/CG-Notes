@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractSockJsService.setSockJsClientLibraryUrl - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.sockjs.support</a>&nbsp;/&nbsp;<a href="index.html">AbstractSockJsService</a>&nbsp;/&nbsp;<a href=".">setSockJsClientLibraryUrl</a><br/>
+<br/>
+<h1>setSockJsClientLibraryUrl</h1>
+<a name="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setSockJsClientLibraryUrl(kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSockJsClientLibraryUrl</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setSockJsClientLibraryUrl(kotlin.String)/clientLibraryUrl">clientLibraryUrl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Transports with no native cross-domain communication (e.g. "eventsource", "htmlfile") must get a simple page from the "foreign" domain in an invisible iframe so that code in the iframe can run from a domain local to the SockJS server. Since the iframe needs to load the SockJS javascript client library, this property allows specifying where to load it from. 
+<p>By default this is set to point to "https://cdn.jsdelivr.net/sockjs/1.0.0/sockjs.min.js". However, it can also be set to point to a URL served by the application. </p>
+<p>Note that it's possible to specify a relative URL in which case the URL must be relative to the iframe URL. For example assuming a SockJS endpoint mapped to "/sockjs", and resulting iframe URL "/sockjs/iframe.html", then the the relative URL must start with "../../" to traverse up to the location above the SockJS mapping. In case of a prefix-based Servlet mapping one more traversal may be needed.</p>
+</p>
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JmsTransactionManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href=".">JmsTransactionManager</a><br/>
+<br/>
+<h1>JmsTransactionManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPlatformTransactionManager</span><span class="symbol">, </span><span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.transaction.PlatformTransactionManager implementation for a single JMS javax.jms.ConnectionFactory. Binds a JMS Connection/Session pair from the specified ConnectionFactory to the thread, potentially allowing for one thread-bound Session per ConnectionFactory. 
+<p>This local strategy is an alternative to executing JMS operations within JTA transactions. Its advantage is that it is able to work in any environment, for example a standalone application or a test suite, with any message broker as target. However, this strategy is <em>not</em> able to provide XA transactions, for example in order to share transactions between messaging and database access. A full JTA/XA setup is required for XA transactions, typically using Spring's org.springframework.transaction.jta.JtaTransactionManager as strategy. </p>
+<p>Application code is required to retrieve the transactional JMS Session via <code><a href="#">ConnectionFactoryUtils#getTransactionalSession</a></code> instead of a standard Java EE-style <code><a href="#">ConnectionFactory#createConnection()</a></code> call with subsequent Session creation. Spring's org.springframework.jms.core.JmsTemplate will autodetect a thread-bound Session and automatically participate in it. </p>
+<p>Alternatively, you can allow application code to work with the standard Java EE-style lookup pattern on a ConnectionFactory, for example for legacy code that is not aware of Spring at all. In that case, define a TransactionAwareConnectionFactoryProxy for your target ConnectionFactory, which will automatically participate in Spring-managed transactions. </p>
+<p><strong>The use of CachingConnectionFactory as a target for this transaction manager is strongly recommended.</strong> CachingConnectionFactory uses a single JMS Connection for all JMS access in order to avoid the overhead of repeated Connection creation, as well as maintaining a cache of Sessions. Each transaction will then share the same JMS Connection, while still using its own individual JMS Session. </p>
+<p>The use of a <em>raw</em> target ConnectionFactory would not only be inefficient because of the lack of resource reuse. It might also lead to strange effects when your JMS driver doesn't accept <code>MessageProducer.close()</code> calls and/or <code>MessageConsumer.close()</code> calls before <code>Session.commit()</code>, with the latter supposed to commit all the messages that have been sent through the producer handle and received through the consumer handle. As a safe general solution, always pass in a CachingConnectionFactory into this transaction manager's <code><a href="set-connection-factory.html">"connectionFactory"</a></code> property. </p>
+<p>Transaction synchronization is turned off by default, as this manager might be used alongside a datastore-based Spring transaction manager such as the JDBC org.springframework.jdbc.datasource.DataSourceTransactionManager, which has stronger needs for synchronization.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">ConnectionFactoryUtils#getTransactionalSession</a>TransactionAwareConnectionFactoryProxyorg.springframework.jms.core.JmsTemplate</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JmsTransactionManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new JmsTransactionManager for bean-style usage. 
+<p>Note: The ConnectionFactory has to be set before using the instance. This constructor can be used to prepare a JmsTemplate via a BeanFactory, typically setting the ConnectionFactory via setConnectionFactory. </p>
+<p>Turns off transaction synchronization by default, as this manager might be used alongside a datastore-based Spring transaction manager like DataSourceTransactionManager, which has stronger needs for synchronization. Only one manager is allowed to drive synchronization at any point of time.</p>
+</p>
+<code><span class="identifier">JmsTransactionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.JmsTransactionManager$<init>(javax.jms.ConnectionFactory)/connectionFactory">connectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span></code>
+<p>Create a new JmsTransactionManager, given a ConnectionFactory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Make sure the ConnectionFactory has been set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection-factory.html">getConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnectionFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConnectionFactory</span></code>
+<p>Return the JMS ConnectionFactory that this instance should manage transactions for.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-factory.html">getResourceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourceFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-connection-factory.html">setConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.JmsTransactionManager$setConnectionFactory(javax.jms.ConnectionFactory)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JMS ConnectionFactory that this instance should manage transactions for.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

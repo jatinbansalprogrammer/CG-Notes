@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServletUriComponentsBuilder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.support</a>&nbsp;/&nbsp;<a href=".">ServletUriComponentsBuilder</a><br/>
+<br/>
+<h1>ServletUriComponentsBuilder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletUriComponentsBuilder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UriComponentsBuilder</span></code>
+<p>UriComponentsBuilder with additional static factory methods to create links based on the current HttpServletRequest. 
+<p><strong>Note:</strong> This class extracts and uses values from the headers "Forwarded" (<a href="#">RFC 7239</a>), or "X-Forwarded-Host", "X-Forwarded-Port", and "X-Forwarded-Proto" if "Forwarded" is not found, in order to reflect the client-originated protocol and address. As an alternative consider using the org.springframework.web.filter.ForwardedHeaderFilter to have such headers extracted once and removed, or removed only (without being used). See the reference for further information including security considerations.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clone-builder.html">cloneBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cloneBuilder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="from-context-path.html">fromContextPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromContextPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.ServletUriComponentsBuilder$fromContextPath(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Prepare a builder from the host, port, scheme, and context path of the given HttpServletRequest. 
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-current-context-path.html">fromCurrentContextPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromCurrentContextPath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Same as <code><a href="from-context-path.html">#fromContextPath(HttpServletRequest)</a></code> except the request is obtained through RequestContextHolder. 
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-current-request.html">fromCurrentRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromCurrentRequest</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Same as <code><a href="from-request.html">#fromRequest(HttpServletRequest)</a></code> except the request is obtained through RequestContextHolder. 
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-current-request-uri.html">fromCurrentRequestUri</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromCurrentRequestUri</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Same as <code><a href="from-request-uri.html">#fromRequestUri(HttpServletRequest)</a></code> except the request is obtained through RequestContextHolder. 
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-current-servlet-mapping.html">fromCurrentServletMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromCurrentServletMapping</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Same as <code><a href="from-servlet-mapping.html">#fromServletMapping(HttpServletRequest)</a></code> except the request is obtained through RequestContextHolder. 
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-request.html">fromRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.ServletUriComponentsBuilder$fromRequest(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Prepare a builder by copying the scheme, host, port, path, and query string of an HttpServletRequest. 
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-request-uri.html">fromRequestUri</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromRequestUri</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.ServletUriComponentsBuilder$fromRequestUri(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Prepare a builder from the host, port, scheme, and path (but not the query) of the HttpServletRequest. 
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="from-servlet-mapping.html">fromServletMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">fromServletMapping</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.ServletUriComponentsBuilder$fromServletMapping(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletUriComponentsBuilder</span></code>
+<p>Prepare a builder from the host, port, scheme, context path, and servlet mapping of the given HttpServletRequest. 
+<p>If the servlet is mapped by name, e.g. <code>"/main/*"</code>, the path will end with "/main". If the servlet is mapped otherwise, e.g. <code>"/"</code> or <code>"*.do"</code>, the result will be the same as if calling <code><a href="from-context-path.html">#fromContextPath(HttpServletRequest)</a></code>. </p>
+<p><strong>Note:</strong> This method extracts values from "Forwarded" and "X-Forwarded-*" headers if found. See class-level docs.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-path-extension.html">removePathExtension</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removePathExtension</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Remove any path extension from the <code><a href="#"> requestURI</a></code>. This method must be invoked before any calls to <code><a href="#">#path(String)</a></code> or <code><a href="#">#pathSegment(String...)</a></code>. <pre><code> GET http://foo.com/rest/books/6.json ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromRequestUri(this.request); String ext = builder.removePathExtension(); String uri = builder.path("/pages/1.{ext}").buildAndExpand(ext).toUriString(); assertEquals("http://foo.com/rest/books/6/pages/1.json", result); </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

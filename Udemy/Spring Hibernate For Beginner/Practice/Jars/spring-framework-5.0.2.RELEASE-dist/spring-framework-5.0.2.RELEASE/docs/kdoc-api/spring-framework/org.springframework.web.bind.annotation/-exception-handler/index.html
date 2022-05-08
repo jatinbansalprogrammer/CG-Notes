@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExceptionHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind.annotation</a>&nbsp;/&nbsp;<a href=".">ExceptionHandler</a><br/>
+<br/>
+<h1>ExceptionHandler</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">ExceptionHandler</span></code>
+<p>Annotation for handling exceptions in specific handler classes and/or handler methods. 
+<p>Handler methods which are annotated with this annotation are allowed to have very flexible signatures. They may have parameters of the following types, in arbitrary order: </p>
+<ul> <li>An exception argument: declared as a general Exception or as a more specific exception. This also serves as a mapping hint if the annotation itself does not narrow the exception types through its <code><a href="#">#value()</a></code>. </li>
+<li>Request and/or response objects (typically from the Servlet API). You may choose any specific request/response type, e.g. javax.servlet.ServletRequest / javax.servlet.http.HttpServletRequest. </li>
+<li>Session object: typically javax.servlet.http.HttpSession. An argument of this type will enforce the presence of a corresponding session. As a consequence, such an argument will never be <code>null</code>. <em>Note that session access may not be thread-safe, in particular in a Servlet environment: Consider switching the <code><a href="#"> "synchronizeOnSession"</a></code> flag to "true" if multiple requests are allowed to access a session concurrently.</em> </li>
+<li>org.springframework.web.context.request.WebRequest or org.springframework.web.context.request.NativeWebRequest. Allows for generic request parameter access as well as request/session attribute access, without ties to the native Servlet API. </li>
+<li>java.util.Locale for the current request locale (determined by the most specific locale resolver available, i.e. the configured org.springframework.web.servlet.LocaleResolver in a Servlet environment). </li>
+<li>java.io.InputStream / java.io.Reader for access to the request's content. This will be the raw InputStream/Reader as exposed by the Servlet API. </li>
+<li>java.io.OutputStream / java.io.Writer for generating the response's content. This will be the raw OutputStream/Writer as exposed by the Servlet API. </li>
+<li>org.springframework.ui.Model as an alternative to returning a model map from the handler method. Note that the provided model is not pre-populated with regular model attributes and therefore always empty, as a convenience for preparing the model for an exception-specific view. </li>
+</ul>
+ 
+<p>The following return types are supported for handler methods: </p>
+<ul> <li>A <code>ModelAndView</code> object (from Servlet MVC). </li>
+<li>A org.springframework.ui.Model object, with the view name implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator. </li>
+<li>A java.util.Map object for exposing a model, with the view name implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator. </li>
+<li>A org.springframework.web.servlet.View object. </li>
+<li>A String value which is interpreted as view name. </li>
+<li>ResponseBody annotated methods (Servlet-only) to set the response content. The return value will be converted to the response stream using org.springframework.http.converter.HttpMessageConverter. </li>
+<li>An org.springframework.http.HttpEntity or org.springframework.http.ResponseEntity object (Servlet-only) to set response headers and content. The ResponseEntity body will be converted and written to the response stream using org.springframework.http.converter.HttpMessageConverter. </li>
+<li><code>void</code> if the method handles the response itself (by writing the response content directly, declaring an argument of type javax.servlet.ServletResponse / javax.servlet.http.HttpServletResponse for that purpose) or if the view name is supposed to be implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator (not declaring a response argument in the handler method signature). </li>
+</ul>
+ 
+<p>In Servlet environments, you can combine the <code>ExceptionHandler</code> annotation with ResponseStatus, to define the response status for the HTTP response.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.context.request.WebRequest</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ExceptionHandler</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.bind.annotation.ExceptionHandler$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Throwable)))))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Annotation for handling exceptions in specific handler classes and/or handler methods. 
+<p>Handler methods which are annotated with this annotation are allowed to have very flexible signatures. They may have parameters of the following types, in arbitrary order: </p>
+<ul> <li>An exception argument: declared as a general Exception or as a more specific exception. This also serves as a mapping hint if the annotation itself does not narrow the exception types through its <code><a href="#">#value()</a></code>. </li>
+<li>Request and/or response objects (typically from the Servlet API). You may choose any specific request/response type, e.g. javax.servlet.ServletRequest / javax.servlet.http.HttpServletRequest. </li>
+<li>Session object: typically javax.servlet.http.HttpSession. An argument of this type will enforce the presence of a corresponding session. As a consequence, such an argument will never be <code>null</code>. <em>Note that session access may not be thread-safe, in particular in a Servlet environment: Consider switching the <code><a href="#"> "synchronizeOnSession"</a></code> flag to "true" if multiple requests are allowed to access a session concurrently.</em> </li>
+<li>org.springframework.web.context.request.WebRequest or org.springframework.web.context.request.NativeWebRequest. Allows for generic request parameter access as well as request/session attribute access, without ties to the native Servlet API. </li>
+<li>java.util.Locale for the current request locale (determined by the most specific locale resolver available, i.e. the configured org.springframework.web.servlet.LocaleResolver in a Servlet environment). </li>
+<li>java.io.InputStream / java.io.Reader for access to the request's content. This will be the raw InputStream/Reader as exposed by the Servlet API. </li>
+<li>java.io.OutputStream / java.io.Writer for generating the response's content. This will be the raw OutputStream/Writer as exposed by the Servlet API. </li>
+<li>org.springframework.ui.Model as an alternative to returning a model map from the handler method. Note that the provided model is not pre-populated with regular model attributes and therefore always empty, as a convenience for preparing the model for an exception-specific view. </li>
+</ul>
+ 
+<p>The following return types are supported for handler methods: </p>
+<ul> <li>A <code>ModelAndView</code> object (from Servlet MVC). </li>
+<li>A org.springframework.ui.Model object, with the view name implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator. </li>
+<li>A java.util.Map object for exposing a model, with the view name implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator. </li>
+<li>A org.springframework.web.servlet.View object. </li>
+<li>A String value which is interpreted as view name. </li>
+<li>ResponseBody annotated methods (Servlet-only) to set the response content. The return value will be converted to the response stream using org.springframework.http.converter.HttpMessageConverter. </li>
+<li>An org.springframework.http.HttpEntity or org.springframework.http.ResponseEntity object (Servlet-only) to set response headers and content. The ResponseEntity body will be converted and written to the response stream using org.springframework.http.converter.HttpMessageConverter. </li>
+<li><code>void</code> if the method handles the response itself (by writing the response content directly, declaring an argument of type javax.servlet.ServletResponse / javax.servlet.http.HttpServletResponse for that purpose) or if the view name is supposed to be implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator (not declaring a response argument in the handler method signature). </li>
+</ul>
+ 
+<p>In Servlet environments, you can combine the <code>ExceptionHandler</code> annotation with ResponseStatus, to define the response status for the HTTP response.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Exceptions handled by the annotated method. If empty, will default to any exceptions listed in the method argument list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>InMemoryWebSessionStore - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.server.session</a>&nbsp;/&nbsp;<a href=".">InMemoryWebSessionStore</a><br/>
+<br/>
+<h1>InMemoryWebSessionStore</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InMemoryWebSessionStore</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-web-session-store/index.html"><span class="identifier">WebSessionStore</span></a></code>
+<p>Simple Map-based storage for WebSession instances.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">InMemoryWebSessionStore</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple Map-based storage for WebSession instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-web-session.html">createWebSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createWebSession</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">WebSession</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-clock.html">getClock</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClock</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Clock</span></code>
+<p>Return the configured clock for session lastAccessTime calculations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-session.html">removeSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.InMemoryWebSessionStore$removeSession(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="retrieve-session.html">retrieveSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">retrieveSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.InMemoryWebSessionStore$retrieveSession(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">WebSession</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-clock.html">setClock</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClock</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.InMemoryWebSessionStore$setClock(java.time.Clock)/clock">clock</span><span class="symbol">:</span>&nbsp;<span class="identifier">Clock</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the Clock to use to set lastAccessTime on every created session and to calculate if it is expired. 
+<p>This may be useful to align to different timezone or to set the clock back in a test, e.g. <code>Clock.offset(clock, Duration.ofMinutes(-31))</code> in order to simulate session expiration. </p>
+<p>By default this is <code>Clock.system(ZoneId.of("GMT"))</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="update-last-access-time.html">updateLastAccessTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">updateLastAccessTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.server.session.InMemoryWebSessionStore$updateLastAccessTime(org.springframework.web.server.WebSession)/webSession">webSession</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSession</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">WebSession</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HibernateJpaSessionFactoryBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa.vendor</a>&nbsp;/&nbsp;<a href="index.html">HibernateJpaSessionFactoryBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean$&lt;init&gt;()"></a>
+<code><span class="identifier">HibernateJpaSessionFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
+<strong>Deprecated:</strong> as of Spring Framework 4.3.12 against Hibernate 5.2, in favor of a custom solution based on <code><a href="#">EntityManagerFactory#unwrap</a></code> with explicit qualifiers and/or primary markers
+<p>Simple <code>FactoryBean</code> that exposes the underlying SessionFactory behind a Hibernate-backed JPA EntityManagerFactory. 
+<p>Primarily available for resolving a SessionFactory by JPA persistence unit name via the <code><a href="#">"persistenceUnitName"</a></code> bean property. </p>
+<p>Note that, for straightforward cases, you could also simply declare a factory method: </p>
+<pre><code> &lt;bean id="sessionFactory" factory-bean="entityManagerFactory" factory-method="getSessionFactory"/&gt; </code></pre> 
+<p>And as of JPA 2.1, <code><a href="#">EntityManagerFactory#unwrap</a></code> provides a nice approach as well, in particular within configuration class arrangements: </p>
+<pre><code> @Bean public SessionFactory sessionFactory(@Qualifier("entityManagerFactory") EntityManagerFactory emf) { return emf.unwrap(SessionFactory.class); } </code></pre> Please note: Since Hibernate 5.2 changed its <code>SessionFactory</code> interface to extend JPA's <code>EntityManagerFactory</code>, you may get conflicts when injecting by type, with both the original factory and your custom <code>SessionFactory</code> matching <code>EntityManagerFactory</code>. An explicit qualifier for the original factory (as indicated above) is recommended here.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setPersistenceUnitName</a><a href="../../org.springframework.orm.jpa/-entity-manager-factory-accessor/set-entity-manager-factory.html">#setEntityManagerFactory</a></p>
+</BODY>
+</HTML>

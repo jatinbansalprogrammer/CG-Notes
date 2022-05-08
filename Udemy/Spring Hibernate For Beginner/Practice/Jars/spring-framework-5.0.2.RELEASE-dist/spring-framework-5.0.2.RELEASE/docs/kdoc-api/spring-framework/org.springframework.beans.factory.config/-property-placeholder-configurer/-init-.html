@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyPlaceholderConfigurer.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">PropertyPlaceholderConfigurer</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer$&lt;init&gt;()"></a>
+<code><span class="identifier">PropertyPlaceholderConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>PlaceholderConfigurerSupport subclass that resolves ${...} placeholders against <code><a href="#">local</a></code> <code><a href="#">properties</a></code> and/or system properties and environment variables. 
+<p>As of Spring 3.1, org.springframework.context.support.PropertySourcesPlaceholderConfigurer should be used preferentially over this implementation; it is more flexible through taking advantage of the org.springframework.core.env.Environment and org.springframework.core.env.PropertySource mechanisms also made available in Spring 3.1. </p>
+<p>PropertyPlaceholderConfigurer is still appropriate for use when: </p>
+<ul> <li>the <code>spring-context</code> module is not available (i.e., one is using Spring's <code>BeanFactory</code> API as opposed to <code>ApplicationContext</code>). </li>
+<li>existing configuration makes use of the <code><a href="set-system-properties-mode.html">"systemPropertiesMode"</a></code> and/or <code><a href="#">"systemPropertiesModeName"</a></code> properties. Users are encouraged to move away from using these settings, and rather configure property source search order through the container's <code>Environment</code>; however, exact preservation of functionality may be maintained by continuing to use <code>PropertyPlaceholderConfigurer</code>. </li>
+</ul>
+ 
+<p>Prior to Spring 3.1, the <code>&lt;context:property-placeholder/&gt;</code> namespace element registered an instance of <code>PropertyPlaceholderConfigurer</code>. It will still do so if using the <code>spring-context-3.0.xsd</code> definition of the namespace. That is, you can preserve registration of <code>PropertyPlaceholderConfigurer</code> through the namespace, even if using Spring 3.1; simply do not update your <code>xsi:schemaLocation</code> and continue using the 3.0 XSD.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+02.10.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setSystemPropertiesModeName</a>PlaceholderConfigurerSupportPropertyOverrideConfigurerorg.springframework.context.support.PropertySourcesPlaceholderConfigurer</p>
+</BODY>
+</HTML>

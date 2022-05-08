@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Pointcuts - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.support</a>&nbsp;/&nbsp;<a href=".">Pointcuts</a><br/>
+<br/>
+<h1>Pointcuts</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Pointcuts</span></code>
+<p>Pointcut constants for matching getters and setters, and static methods useful for manipulating and evaluating pointcuts. These methods are particularly useful for composing pointcuts using the union and intersection methods.</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Pointcuts</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Pointcut constants for matching getters and setters, and static methods useful for manipulating and evaluating pointcuts. These methods are particularly useful for composing pointcuts using the union and intersection methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-g-e-t-t-e-r-s.html">GETTERS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">GETTERS</span><span class="symbol">: </span><span class="identifier">Pointcut</span></code>
+<p>Pointcut matching all bean property getters, in any class</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-e-t-t-e-r-s.html">SETTERS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SETTERS</span><span class="symbol">: </span><span class="identifier">Pointcut</span></code>
+<p>Pointcut matching all bean property setters, in any class</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="intersection.html">intersection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">intersection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.Pointcuts$intersection(org.springframework.aop.Pointcut, org.springframework.aop.Pointcut)/pc1">pc1</span><span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.support.Pointcuts$intersection(org.springframework.aop.Pointcut, org.springframework.aop.Pointcut)/pc2">pc2</span><span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pointcut</span></code>
+<p>Match all methods that <strong>both</strong> the given pointcuts match.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="matches.html">matches</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.Pointcuts$matches(org.springframework.aop.Pointcut, java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/pointcut">pointcut</span><span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.support.Pointcuts$matches(org.springframework.aop.Pointcut, java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.support.Pointcuts$matches(org.springframework.aop.Pointcut, java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.support.Pointcuts$matches(org.springframework.aop.Pointcut, java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Perform the least expensive check for a pointcut match.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="union.html">union</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">union</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.Pointcuts$union(org.springframework.aop.Pointcut, org.springframework.aop.Pointcut)/pc1">pc1</span><span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.support.Pointcuts$union(org.springframework.aop.Pointcut, org.springframework.aop.Pointcut)/pc2">pc2</span><span class="symbol">:</span>&nbsp;<span class="identifier">Pointcut</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pointcut</span></code>
+<p>Match all methods that <strong>either</strong> (or both) of the given pointcuts matches.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

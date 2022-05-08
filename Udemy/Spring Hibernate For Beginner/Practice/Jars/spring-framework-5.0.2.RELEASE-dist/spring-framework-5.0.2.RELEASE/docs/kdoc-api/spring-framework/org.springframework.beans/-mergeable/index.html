@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Mergeable - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href=".">Mergeable</a><br/>
+<br/>
+<h1>Mergeable</h1>
+<code><span class="keyword">interface </span><span class="identifier">Mergeable</span></code>
+<p>Interface representing an object whose value set can be merged with that of a parent object.</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.beans.factory.support.ManagedSetorg.springframework.beans.factory.support.ManagedListorg.springframework.beans.factory.support.ManagedMaporg.springframework.beans.factory.support.ManagedProperties</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="is-merge-enabled.html">isMergeEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isMergeEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Is merging enabled for this particular instance?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="merge.html">merge</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">merge</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.Mergeable$merge(kotlin.Any)/parent">parent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Merge the current value set with that of the supplied object. 
+<p>The supplied object is considered the parent, and values in the callee's value set must override those of the supplied object.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-managed-list/index.html">ManagedList</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ManagedList</span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ArrayList</span><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Mergeable</span><span class="symbol">, </span><span class="identifier">BeanMetadataElement</span></code>
+<p>Tag collection class used to hold managed List elements, which may include runtime bean references (to be resolved into bean objects).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-managed-map/index.html">ManagedMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ManagedMap</span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LinkedHashMap</span><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Mergeable</span><span class="symbol">, </span><span class="identifier">BeanMetadataElement</span></code>
+<p>Tag collection class used to hold managed Map values, which may include runtime bean references (to be resolved into bean objects).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-managed-properties/index.html">ManagedProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ManagedProperties</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">, </span><span class="identifier">Mergeable</span><span class="symbol">, </span><span class="identifier">BeanMetadataElement</span></code>
+<p>Tag class which represents a Spring-managed Properties instance that supports merging of parent/child definitions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.factory.support/-managed-set/index.html">ManagedSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ManagedSet</span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LinkedHashSet</span><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Mergeable</span><span class="symbol">, </span><span class="identifier">BeanMetadataElement</span></code>
+<p>Tag collection class used to hold managed Set values, which may include runtime bean references (to be resolved into bean objects).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

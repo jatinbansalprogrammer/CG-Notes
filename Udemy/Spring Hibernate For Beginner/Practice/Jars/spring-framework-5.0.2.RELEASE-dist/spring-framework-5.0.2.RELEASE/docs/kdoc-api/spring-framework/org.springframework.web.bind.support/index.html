@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.bind.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.bind.support</a><br/>
+<br/>
+<h2>Package org.springframework.web.bind.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-configurable-web-binding-initializer/index.html">ConfigurableWebBindingInitializer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConfigurableWebBindingInitializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebBindingInitializer</span></code>
+<p>Convenient WebBindingInitializer for declarative configuration in a Spring application context. Allows for reusing pre-configured initializers with multiple controller/handlers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-data-binder-factory/index.html">DefaultDataBinderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultDataBinderFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-web-data-binder-factory/index.html"><span class="identifier">WebDataBinderFactory</span></a></code>
+<p>Create a WebRequestDataBinder instance and initialize it with a WebBindingInitializer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-session-attribute-store/index.html">DefaultSessionAttributeStore</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultSessionAttributeStore</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SessionAttributeStore</span></code>
+<p>Default implementation of the SessionAttributeStore interface, storing the attributes in the WebRequest session (i.e. HttpSession or PortletSession).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-session-status/index.html">SimpleSessionStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleSessionStatus</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SessionStatus</span></code>
+<p>Simple implementation of the SessionStatus interface, keeping the <code>complete</code> flag as an instance variable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-web-constraint-validator-factory/index.html">SpringWebConstraintValidatorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringWebConstraintValidatorFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConstraintValidatorFactory</span></code>
+<p>JSR-303 ConstraintValidatorFactory implementation that delegates to the current Spring WebApplicationContext for creating autowired ConstraintValidator instances. 
+<p>In contrast to org.springframework.validation.beanvalidation.SpringConstraintValidatorFactory, this variant is meant for declarative use in a standard <code>validation.xml</code> file, e.g. in combination with JAX-RS or JAX-WS.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-argument-resolver/index.html">WebArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WebArgumentResolver</span></code>
+<p>SPI for resolving custom arguments for a specific handler method parameter. Typically implemented to detect special parameter types, resolving well-known argument values for them. 
+<p>A typical implementation could look like as follows: </p>
+<pre><code> public class MySpecialArgumentResolver implements WebArgumentResolver { public Object resolveArgument(MethodParameter methodParameter, NativeWebRequest webRequest) { if (methodParameter.getParameterType().equals(MySpecialArg.class)) { return new MySpecialArg("myValue"); } return UNRESOLVED; } }</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-data-binder-factory/index.html">WebDataBinderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WebDataBinderFactory</span></code>
+<p>A factory for creating a WebDataBinder instance for a named target object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-exchange-data-binder/index.html">WebExchangeDataBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebExchangeDataBinder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebDataBinder</span></code>
+<p>Specialized org.springframework.validation.DataBinder to perform data binding from URL query params or form data in the request data to Java objects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-request-data-binder/index.html">WebRequestDataBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebRequestDataBinder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebDataBinder</span></code>
+<p>Special org.springframework.validation.DataBinder to perform data binding from web request parameters to JavaBeans, including support for multipart files. 
+<p>See the DataBinder/WebDataBinder superclasses for customization options, which include specifying allowed/required fields, and registering custom property editors. </p>
+<p>Can also used for manual data binding in custom web controllers or interceptors that build on Spring's org.springframework.web.context.request.WebRequest abstraction: e.g. in a org.springframework.web.context.request.WebRequestInterceptor implementation. Simply instantiate a WebRequestDataBinder for each binding process, and invoke <code>bind</code> with the current WebRequest as argument: </p>
+<pre><code> MyBean myBean = new MyBean(); // apply binder to custom target object WebRequestDataBinder binder = new WebRequestDataBinder(myBean); // register custom editors, if desired binder.registerCustomEditor(...); // trigger actual binding of request parameters binder.bind(request); // optionally evaluate binding errors Errors errors = binder.getErrors(); ...</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-web-exchange-bind-exception/index.html">WebExchangeBindException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebExchangeBindException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebInputException</span><span class="symbol">, </span><span class="identifier">BindingResult</span></code>
+<p>A specialization of ServerWebInputException thrown when after data binding and validation failure. Implements BindingResult (and its super-interface Errors) to allow for direct analysis of binding and validation errors.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

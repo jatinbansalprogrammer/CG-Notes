@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jndi - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jndi</a><br/>
+<br/>
+<h2>Package org.springframework.jndi</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jndi-callback/index.html">JndiCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">JndiCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Callback interface to be implemented by classes that need to perform an operation (such as a lookup) in a JNDI context. This callback approach is valuable in simplifying error handling, which is performed by the JndiTemplate class. This is a similar to JdbcTemplate's approach. 
+<p>Note that there is hardly any need to implement this callback interface, as JndiTemplate provides all usual JNDI operations via convenience methods.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-object-factory-bean/index.html">JndiObjectFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiObjectFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiObjectLocator</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>org.springframework.beans.factory.FactoryBean that looks up a JNDI object. Exposes the object found in JNDI for bean references, e.g. for data access object's "dataSource" property in case of a javax.sql.DataSource. 
+<p>The typical usage will be to register this as singleton factory (e.g. for a certain JNDI-bound DataSource) in an application context, and give bean references to application services that need it. </p>
+<p>The default behavior is to look up the JNDI object on startup and cache it. This can be customized through the "lookupOnStartup" and "cache" properties, using a JndiObjectTargetSource underneath. Note that you need to specify a "proxyInterface" in such a scenario, since the actual JNDI object type is not known in advance. </p>
+<p>Of course, bean classes in a Spring environment may lookup e.g. a DataSource from JNDI themselves. This class simply enables central configuration of the JNDI name, and easy switching to non-JNDI alternatives. The latter is particularly convenient for test setups, reuse in standalone clients, etc. </p>
+<p>Note that switching to e.g. DriverManagerDataSource is just a matter of configuration: Simply replace the definition of this FactoryBean with a org.springframework.jdbc.datasource.DriverManagerDataSource definition!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-object-target-source/index.html">JndiObjectTargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiObjectTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiObjectLocator</span><span class="symbol">, </span><span class="identifier">TargetSource</span></code>
+<p>AOP org.springframework.aop.TargetSource that provides configurable JNDI lookups for <code>getTarget()</code> calls. 
+<p>Can be used as alternative to JndiObjectFactoryBean, to allow for relocating a JNDI object lazily or for each operation (see "lookupOnStartup" and "cache" properties). This is particularly useful during development, as it allows for hot restarting of the JNDI server (for example, a remote JMS server). </p>
+<p>Example: </p>
+<pre><code> &lt;bean id="queueConnectionFactoryTarget" class="org.springframework.jndi.JndiObjectTargetSource"&gt; &lt;property name="jndiName" value="JmsQueueConnectionFactory"/&gt; &lt;property name="lookupOnStartup" value="false"/&gt; &lt;/bean&gt; &lt;bean id="queueConnectionFactory" class="org.springframework.aop.framework.ProxyFactoryBean"&gt; &lt;property name="proxyInterfaces" value="javax.jms.QueueConnectionFactory"/&gt; &lt;property name="targetSource" ref="queueConnectionFactoryTarget"/&gt; &lt;/bean&gt;</code></pre> A <code>createQueueConnection</code> call on the "queueConnectionFactory" proxy will cause a lazy JNDI lookup for "JmsQueueConnectionFactory" and a subsequent delegating call to the retrieved QueueConnectionFactory's <code>createQueueConnection</code>. 
+<p><strong>Alternatively, use a JndiObjectFactoryBean with a "proxyInterface".</strong> "lookupOnStartup" and "cache" can then be specified on the JndiObjectFactoryBean, creating a JndiObjectTargetSource underneath (instead of defining separate ProxyFactoryBean and JndiObjectTargetSource beans).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-property-source/index.html">JndiPropertySource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiPropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertySource</span><span class="symbol">&lt;</span><span class="identifier">JndiLocatorDelegate</span><span class="symbol">&gt;</span></code>
+<p>PropertySource implementation that reads properties from an underlying Spring JndiLocatorDelegate. 
+<p>By default, the underlying <code>JndiLocatorDelegate</code> will be configured with its <code><a href="#">"resourceRef"</a></code> property set to <code>true</code>, meaning that names looked up will automatically be prefixed with "java:comp/env/" in alignment with published <a href="#">JNDI naming conventions</a>. To override this setting or to change the prefix, manually configure a <code>JndiLocatorDelegate</code> and provide it to one of the constructors here that accepts it. The same applies when providing custom JNDI properties. These should be specified using <code><a href="#">JndiLocatorDelegate#setJndiEnvironment(java.util.Properties)</a></code> prior to construction of the <code>JndiPropertySource</code>. </p>
+<p>Note that org.springframework.web.context.support.StandardServletEnvironment includes a <code>JndiPropertySource</code> by default, and any customization of the underlying JndiLocatorDelegate may be performed within an org.springframework.context.ApplicationContextInitializer or org.springframework.web.WebApplicationInitializer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-template-editor/index.html">JndiTemplateEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiTemplateEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Properties editor for JndiTemplate objects. Allows properties of type JndiTemplate to be populated with a properties-format string.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jndi-lookup-failure-exception/index.html">JndiLookupFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiLookupFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NestedRuntimeException</span></code>
+<p>RuntimeException to be thrown in case of JNDI lookup failures, in particular from code that does not declare JNDI's checked javax.naming.NamingException: for example, from Spring's JndiObjectTargetSource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-type-mismatch-naming-exception/index.html">TypeMismatchNamingException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypeMismatchNamingException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamingException</span></code>
+<p>Exception thrown if a type mismatch is encountered for an object located in a JNDI environment. Thrown by JndiTemplate.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

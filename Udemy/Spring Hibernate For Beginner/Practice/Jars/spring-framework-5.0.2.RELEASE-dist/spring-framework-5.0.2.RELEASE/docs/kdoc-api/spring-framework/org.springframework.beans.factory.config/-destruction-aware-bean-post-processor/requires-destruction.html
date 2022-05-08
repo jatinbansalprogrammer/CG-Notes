@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DestructionAwareBeanPostProcessor.requiresDestruction - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">DestructionAwareBeanPostProcessor</a>&nbsp;/&nbsp;<a href=".">requiresDestruction</a><br/>
+<br/>
+<h1>requiresDestruction</h1>
+<a name="org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor$requiresDestruction(kotlin.Any)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor$requiresDestruction(kotlin.Any)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given bean instance requires destruction by this post-processor. 
+<p><strong>NOTE:</strong> Even as a late addition, this method has been introduced on <code>DestructionAwareBeanPostProcessor</code> itself instead of on a SmartDABPP subinterface. This allows existing <code>DestructionAwareBeanPostProcessor</code> implementations to easily provide <code>requiresDestruction</code> logic while retaining compatibility with Spring &lt;4.3, and it is also an easier onramp to declaring <code>requiresDestruction</code> as a Java 8 default method in Spring 5. </p>
+<p>If an implementation of <code>DestructionAwareBeanPostProcessor</code> does not provide a concrete implementation of this method, Spring's invocation mechanism silently assumes a method returning <code>true</code> (the effective default before 4.3, and the to-be-default in the Java 8 method in Spring 5).</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="bean"></a>
+<code>bean</code> - the bean instance to check</p>
+<p><strong>Return</strong><br/>
+<code>true</code> if <code><a href="#">#postProcessBeforeDestruction</a></code> is supposed to be called for this bean instance eventually, or <code>false</code> if not needed</p>
+<p><strong>Since</strong><br/>
+4.3</p>
+</BODY>
+</HTML>

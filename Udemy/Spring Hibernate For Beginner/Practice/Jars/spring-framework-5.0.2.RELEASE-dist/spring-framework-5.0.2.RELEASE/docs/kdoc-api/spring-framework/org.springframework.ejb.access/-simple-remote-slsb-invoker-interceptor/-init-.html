@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleRemoteSlsbInvokerInterceptor.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.ejb.access</a>&nbsp;/&nbsp;<a href="index.html">SimpleRemoteSlsbInvokerInterceptor</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.ejb.access.SimpleRemoteSlsbInvokerInterceptor$&lt;init&gt;()"></a>
+<code><span class="identifier">SimpleRemoteSlsbInvokerInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Basic invoker for a remote Stateless Session Bean. Designed for EJB 2.x, but works for EJB 3 Session Beans as well. 
+<p>"Creates" a new EJB instance for each invocation, or caches the session bean instance for all invocations (see <code><a href="set-cache-session-bean.html">#setCacheSessionBean</a></code>). See org.springframework.jndi.JndiObjectLocator for info on how to specify the JNDI location of the target EJB. </p>
+<p>In a bean container, this class is normally best used as a singleton. However, if that bean container pre-instantiates singletons (as do the XML ApplicationContext variants) you may have a problem if the bean container is loaded before the EJB container loads the target EJB. That is because by default the JNDI lookup will be performed in the init method of this class and cached, but the EJB will not have been bound at the target location yet. The best solution is to set the "lookupHomeOnStartup" property to "false", in which case the home will be fetched on first access to the EJB. (This flag is only true by default for backwards compatibility reasons). </p>
+<p>This invoker is typically used with an RMI business interface, which serves as super-interface of the EJB component interface. Alternatively, this invoker can also proxy a remote SLSB with a matching non-RMI business interface, i.e. an interface that mirrors the EJB business methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the EJB stub will automatically get converted to Spring's unchecked RemoteAccessException.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+09.05.2003</p>
+<p><strong>See Also</strong><br/>
+org.springframework.remoting.RemoteAccessException<a href="#">AbstractSlsbInvokerInterceptor#setLookupHomeOnStartup</a><a href="#">AbstractSlsbInvokerInterceptor#setCacheHome</a><a href="#">AbstractRemoteSlsbInvokerInterceptor#setRefreshHomeOnConnectFailure</a></p>
+</BODY>
+</HTML>

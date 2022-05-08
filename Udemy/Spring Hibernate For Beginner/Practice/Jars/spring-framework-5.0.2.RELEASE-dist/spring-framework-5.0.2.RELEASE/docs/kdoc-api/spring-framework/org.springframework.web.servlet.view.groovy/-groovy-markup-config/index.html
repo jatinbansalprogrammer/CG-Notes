@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GroovyMarkupConfig - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.groovy</a>&nbsp;/&nbsp;<a href=".">GroovyMarkupConfig</a><br/>
+<br/>
+<h1>GroovyMarkupConfig</h1>
+<code><span class="keyword">interface </span><span class="identifier">GroovyMarkupConfig</span></code>
+<p>Interface to be implemented by objects that configure and manage a Groovy MarkupTemplateEngine for automatic lookup in a web environment. Detected and used by GroovyMarkupView.</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+GroovyMarkupConfigurer</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-template-engine.html">getTemplateEngine</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getTemplateEngine</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MarkupTemplateEngine</span></code>
+<p>Return the Groovy MarkupTemplateEngine for the current web application context. May be unique to one servlet, or shared in the root context.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-groovy-markup-configurer/index.html">GroovyMarkupConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyMarkupConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TemplateConfiguration</span><span class="symbol">, </span><span class="identifier">GroovyMarkupConfig</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>An extension of Groovy's groovy.text.markup.TemplateConfiguration and an implementation of Spring MVC's GroovyMarkupConfig for creating a <code>MarkupTemplateEngine</code> for use in a web application. The most basic way to configure this class is to set the "resourceLoaderPath". For example: <pre><code> // Add the following to an @Configuration class @Bean public GroovyMarkupConfig groovyMarkupConfigurer() { GroovyMarkupConfigurer configurer = new GroovyMarkupConfigurer(); configurer.setResourceLoaderPath("classpath:/WEB-INF/groovymarkup/"); return configurer; } </code></pre> By default this bean will create a MarkupTemplateEngine with: <ul> <li>a parent ClassLoader for loading Groovy templates with their references </li>
+<li>the default configuration in the base class TemplateConfiguration </li>
+<li>a groovy.text.markup.TemplateResolver for resolving template files </li>
+</ul>
+ You can provide the MarkupTemplateEngine instance directly to this bean in which case all other properties will not be effectively ignored. 
+<p>This bean must be included in the application context of any application using the Spring MVC GroovyMarkupView for rendering. It exists purely for the purpose of configuring Groovy's Markup templates. It is not meant to be referenced by application components directly. It implements GroovyMarkupConfig to be found by GroovyMarkupView without depending on a bean name. Each DispatcherServlet can define its own GroovyMarkupConfigurer if desired. </p>
+<p>Note that resource caching is enabled by default in MarkupTemplateEngine. Use the <code><a href="#">#setCacheTemplates(boolean)</a></code> to configure that as necessary. </p>
+<p>Spring's Groovy Markup template support requires Groovy 2.3.1 or higher.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

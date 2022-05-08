@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BufferedImageHttpMessageConverter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.converter</a>&nbsp;/&nbsp;<a href=".">BufferedImageHttpMessageConverter</a><br/>
+<br/>
+<h1>BufferedImageHttpMessageConverter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BufferedImageHttpMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">BufferedImage</span><span class="symbol">&gt;</span></code>
+<p>Implementation of HttpMessageConverter that can read and write BufferedImage. 
+<p>By default, this converter can read all media types that are supported by the <a href="#">registered image readers</a>, and writes using the media type of the first available <a href="#">registered image writer</a>. The latter can be overridden by setting the <code><a href="set-default-content-type.html">defaultContentType</a></code> property. </p>
+<p>If the <code><a href="set-cache-dir.html">cacheDir</a></code> property is set, this converter will cache image data. </p>
+<p>The <code><a href="#">#process(ImageReadParam)</a></code> and <code><a href="#">#process(ImageWriteParam)</a></code> template methods allow subclasses to override Image I/O parameters.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BufferedImageHttpMessageConverter</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="can-read.html">canRead</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canRead</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$canRead(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$canRead(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="can-write.html">canWrite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canWrite</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$canWrite(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$canWrite(java.lang.Class((kotlin.Any)), org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-content-type.html">getDefaultContentType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultContentType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MediaType</span></code>
+<p>Returns the default <code>Content-Type</code> to be used for writing. Called when <code><a href="#">#write</a></code> is invoked without a specified content type parameter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-supported-media-types.html">getSupportedMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSupportedMediaTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MediaType</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="read.html">read</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">read</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$read(java.lang.Class((java.awt.image.BufferedImage)), org.springframework.http.HttpInputMessage)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">BufferedImage</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$read(java.lang.Class((java.awt.image.BufferedImage)), org.springframework.http.HttpInputMessage)/inputMessage">inputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpInputMessage</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BufferedImage</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-dir.html">setCacheDir</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheDir</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$setCacheDir(java.io.File)/cacheDir">cacheDir</span><span class="symbol">:</span>&nbsp;<span class="identifier">File</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the cache directory. If this property is set to an existing directory, this converter will cache image data.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-content-type.html">setDefaultContentType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultContentType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$setDefaultContentType(org.springframework.http.MediaType)/defaultContentType">defaultContentType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the default <code>Content-Type</code> to be used for writing.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$write(java.awt.image.BufferedImage, org.springframework.http.MediaType, org.springframework.http.HttpOutputMessage)/image">image</span><span class="symbol">:</span>&nbsp;<span class="identifier">BufferedImage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$write(java.awt.image.BufferedImage, org.springframework.http.MediaType, org.springframework.http.HttpOutputMessage)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.converter.BufferedImageHttpMessageConverter$write(java.awt.image.BufferedImage, org.springframework.http.MediaType, org.springframework.http.HttpOutputMessage)/outputMessage">outputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpOutputMessage</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

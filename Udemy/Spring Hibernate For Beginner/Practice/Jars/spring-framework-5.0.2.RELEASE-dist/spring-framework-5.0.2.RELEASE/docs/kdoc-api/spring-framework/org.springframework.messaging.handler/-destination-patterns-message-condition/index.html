@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DestinationPatternsMessageCondition - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.handler</a>&nbsp;/&nbsp;<a href=".">DestinationPatternsMessageCondition</a><br/>
+<br/>
+<h1>DestinationPatternsMessageCondition</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DestinationPatternsMessageCondition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageCondition</span><span class="symbol">&lt;</span><span class="identifier">DestinationPatternsMessageCondition</span><span class="symbol">&gt;</span></code>
+<p>A MessageCondition for matching the destination of a Message against one or more destination patterns using a PathMatcher.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DestinationPatternsMessageCondition</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.messaging.handler.DestinationPatternsMessageCondition$<init>(kotlin.Array((kotlin.String)))/patterns">patterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Creates a new instance with the given destination patterns. Each pattern that is not empty and does not start with "/" is prepended with "/".</p>
+<code><span class="identifier">DestinationPatternsMessageCondition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.DestinationPatternsMessageCondition$<init>(kotlin.Array((kotlin.String)), org.springframework.util.PathMatcher)/patterns">patterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.handler.DestinationPatternsMessageCondition$<init>(kotlin.Array((kotlin.String)), org.springframework.util.PathMatcher)/pathMatcher">pathMatcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">PathMatcher</span><span class="symbol">)</span></code>
+<p>Alternative constructor accepting a custom PathMatcher.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-l-o-o-k-u-p_-d-e-s-t-i-n-a-t-i-o-n_-h-e-a-d-e-r.html">LOOKUP_DESTINATION_HEADER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOOKUP_DESTINATION_HEADER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="combine.html">combine</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">combine</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.DestinationPatternsMessageCondition$combine(org.springframework.messaging.handler.DestinationPatternsMessageCondition)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">DestinationPatternsMessageCondition</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DestinationPatternsMessageCondition</span></code>
+<p>Returns a new instance with URL patterns from the current instance ("this") and the "other" instance as follows: <ul> <li>If there are patterns in both instances, combine the patterns in "this" with the patterns in "other" using <code><a href="#">org.springframework.util.PathMatcher#combine(String, String)</a></code>. </li>
+<li>If only one instance has patterns, use them. </li>
+<li>If neither instance has patterns, use an empty String (i.e. ""). </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="compare-to.html">compareTo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">compareTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.DestinationPatternsMessageCondition$compareTo(org.springframework.messaging.handler.DestinationPatternsMessageCondition, org.springframework.messaging.Message((kotlin.Any)))/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">DestinationPatternsMessageCondition</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.handler.DestinationPatternsMessageCondition$compareTo(org.springframework.messaging.handler.DestinationPatternsMessageCondition, org.springframework.messaging.Message((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Compare the two conditions based on the destination patterns they contain. Patterns are compared one at a time, from top to bottom via <code><a href="#">org.springframework.util.PathMatcher#getPatternComparator(String)</a></code>. If all compared patterns match equally, but one instance has more patterns, it is considered a closer match. 
+<p>It is assumed that both instances have been obtained via <code><a href="#">#getMatchingCondition(Message)</a></code> to ensure they contain only patterns that match the request and are sorted with the best matches on top.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-matching-condition.html">getMatchingCondition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMatchingCondition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.handler.DestinationPatternsMessageCondition$getMatchingCondition(org.springframework.messaging.Message((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DestinationPatternsMessageCondition</span></code>
+<p>Check if any of the patterns match the given Message destination and return an instance that is guaranteed to contain matching patterns, sorted via <code><a href="#">org.springframework.util.PathMatcher#getPatternComparator(String)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-patterns.html">getPatterns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPatterns</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

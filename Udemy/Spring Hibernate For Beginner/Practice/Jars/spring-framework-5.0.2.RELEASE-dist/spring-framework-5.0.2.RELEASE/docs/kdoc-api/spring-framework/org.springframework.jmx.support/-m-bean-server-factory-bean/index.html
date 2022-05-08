@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MBeanServerFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jmx.support</a>&nbsp;/&nbsp;<a href=".">MBeanServerFactoryBean</a><br/>
+<br/>
+<h1>MBeanServerFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanServerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">MBeanServer</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that obtains an javax.management.MBeanServer reference through the standard JMX 1.2 javax.management.MBeanServerFactory API (which is available on JDK 1.5 or as part of a JMX 1.2 provider). Exposes the <code>MBeanServer</code> for bean references. 
+<p>By default, <code>MBeanServerFactoryBean</code> will always create a new <code>MBeanServer</code> even if one is already running. To have the <code>MBeanServerFactoryBean</code> attempt to locate a running <code>MBeanServer</code> first, set the value of the "locateExistingServerIfPossible" property to "true".</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="set-locate-existing-server-if-possible.html">#setLocateExistingServerIfPossible</a><a href="#">#locateMBeanServer</a>javax.management.MBeanServer<a href="#">javax.management.MBeanServerFactory#findMBeanServer</a><a href="#">javax.management.MBeanServerFactory#createMBeanServer</a><a href="#">javax.management.MBeanServerFactory#newMBeanServer</a>MBeanServerConnectionFactoryBeanConnectorServerFactoryBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MBeanServerFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>FactoryBean that obtains an javax.management.MBeanServer reference through the standard JMX 1.2 javax.management.MBeanServerFactory API (which is available on JDK 1.5 or as part of a JMX 1.2 provider). Exposes the <code>MBeanServer</code> for bean references. 
+<p>By default, <code>MBeanServerFactoryBean</code> will always create a new <code>MBeanServer</code> even if one is already running. To have the <code>MBeanServerFactoryBean</code> attempt to locate a running <code>MBeanServer</code> first, set the value of the "locateExistingServerIfPossible" property to "true".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates the <code>MBeanServer</code> instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Unregisters the <code>MBeanServer</code> instance, if necessary.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MBeanServer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">MBeanServer</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-agent-id.html">setAgentId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAgentId</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.MBeanServerFactoryBean$setAgentId(kotlin.String)/agentId">agentId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the agent id of the <code>MBeanServer</code> to locate. 
+<p>Default is none. If specified, this will result in an automatic attempt being made to locate the attendant MBeanServer, and (importantly) if said MBeanServer cannot be located no attempt will be made to create a new MBeanServer (and an MBeanServerNotFoundException will be thrown at resolution time). </p>
+<p>Specifying the empty String indicates the platform MBeanServer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-domain.html">setDefaultDomain</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultDomain</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.MBeanServerFactoryBean$setDefaultDomain(kotlin.String)/defaultDomain">defaultDomain</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default domain to be used by the <code>MBeanServer</code>, to be passed to <code>MBeanServerFactory.createMBeanServer()</code> or <code>MBeanServerFactory.findMBeanServer()</code>. 
+<p>Default is none.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locate-existing-server-if-possible.html">setLocateExistingServerIfPossible</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocateExistingServerIfPossible</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.MBeanServerFactoryBean$setLocateExistingServerIfPossible(kotlin.Boolean)/locateExistingServerIfPossible">locateExistingServerIfPossible</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether or not the <code>MBeanServerFactoryBean</code> should attempt to locate a running <code>MBeanServer</code> before creating one. 
+<p>Default is <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-register-with-factory.html">setRegisterWithFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRegisterWithFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.MBeanServerFactoryBean$setRegisterWithFactory(kotlin.Boolean)/registerWithFactory">registerWithFactory</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to register the <code>MBeanServer</code> with the <code>MBeanServerFactory</code>, making it available through <code>MBeanServerFactory.findMBeanServer()</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

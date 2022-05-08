@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.mvc.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.mvc.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.mvc.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-model-and-view-resolver/index.html">ModelAndViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ModelAndViewResolver</span></code>
+<p>SPI for resolving custom return values from a specific handler method. Typically implemented to detect special return types, resolving well-known result values for them. 
+<p>A typical implementation could look like as follows: </p>
+<pre><code> public class MyModelAndViewResolver implements ModelAndViewResolver { public ModelAndView resolveModelAndView(Method handlerMethod, Class handlerType, Object returnValue, ExtendedModelMap implicitModel, NativeWebRequest webRequest) { if (returnValue instanceof MySpecialRetVal.class)) { return new MySpecialRetVal(returnValue); } return UNRESOLVED; } }</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-status-exception-resolver/index.html">ResponseStatusExceptionResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResponseStatusExceptionResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHandlerExceptionResolver</span><span class="symbol">, </span><a href="../org.springframework.context/-message-source-aware/index.html"><span class="identifier">MessageSourceAware</span></a></code>
+<p>A org.springframework.web.servlet.HandlerExceptionResolver that uses the ResponseStatus annotation to map exceptions to HTTP status codes. 
+<p>This exception resolver is enabled by default in the org.springframework.web.servlet.DispatcherServlet and the MVC Java config and the MVC namespace. </p>
+<p>As of 4.2 this resolver also looks recursively for <code>@ResponseStatus</code> present on cause exceptions, and as of 4.2.2 this resolver supports attribute overrides for <code>@ResponseStatus</code> in custom composed annotations. </p>
+<p>As of 5.0 this resolver also supports ResponseStatusException.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

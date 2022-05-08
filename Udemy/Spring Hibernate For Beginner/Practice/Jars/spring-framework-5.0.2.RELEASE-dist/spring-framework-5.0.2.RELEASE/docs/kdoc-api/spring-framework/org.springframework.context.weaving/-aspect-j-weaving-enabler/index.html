@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AspectJWeavingEnabler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.weaving</a>&nbsp;/&nbsp;<a href=".">AspectJWeavingEnabler</a><br/>
+<br/>
+<h1>AspectJWeavingEnabler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectJWeavingEnabler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">LoadTimeWeaverAware</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Post-processor that registers AspectJ's org.aspectj.weaver.loadtime.ClassPreProcessorAgentAdapter with the Spring application context's default org.springframework.instrument.classloading.LoadTimeWeaver.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Ramnivas Laddad</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AspectJWeavingEnabler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Post-processor that registers AspectJ's org.aspectj.weaver.loadtime.ClassPreProcessorAgentAdapter with the Spring application context's default org.springframework.instrument.classloading.LoadTimeWeaver.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-a-s-p-e-c-t-j_-a-o-p_-x-m-l_-r-e-s-o-u-r-c-e.html">ASPECTJ_AOP_XML_RESOURCE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ASPECTJ_AOP_XML_RESOURCE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="enable-aspect-j-weaving.html">enableAspectJWeaving</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">enableAspectJWeaving</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.AspectJWeavingEnabler$enableAspectJWeaving(org.springframework.instrument.classloading.LoadTimeWeaver, java.lang.ClassLoader)/weaverToUse">weaverToUse</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadTimeWeaver</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.weaving.AspectJWeavingEnabler$enableAspectJWeaving(org.springframework.instrument.classloading.LoadTimeWeaver, java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Enable AspectJ weaving with the given LoadTimeWeaver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-bean-factory.html">postProcessBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.AspectJWeavingEnabler$postProcessBeanFactory(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.AspectJWeavingEnabler$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-load-time-weaver.html">setLoadTimeWeaver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLoadTimeWeaver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.AspectJWeavingEnabler$setLoadTimeWeaver(org.springframework.instrument.classloading.LoadTimeWeaver)/loadTimeWeaver">loadTimeWeaver</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadTimeWeaver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

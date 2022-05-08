@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.support</a><br/>
+<br/>
+<h2>Package org.springframework.beans.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-argument-converting-method-invoker/index.html">ArgumentConvertingMethodInvoker</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ArgumentConvertingMethodInvoker</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInvoker</span></code>
+<p>Subclass of MethodInvoker that tries to convert the given arguments for the actual target method via a TypeConverter. 
+<p>Supports flexible argument conversions, in particular for invoking a specific overloaded method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-paged-list-holder/index.html">PagedListHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PagedListHolder</span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>PagedListHolder is a simple state holder for handling lists of objects, separating them into pages. Page numbering starts with 0. 
+<p>This is mainly targetted at usage in web UIs. Typically, an instance will be instantiated with a list of beans, put into the session, and exported as model. The properties can all be set/get programmatically, but the most common way will be data binding, i.e. populating the bean from request parameters. The getters will mainly be used by the view. </p>
+<p>Supports sorting the underlying list via a SortDefinition implementation, available as property "sort". By default, a MutableSortDefinition instance will be used, toggling the ascending value on setting the same property again. </p>
+<p>The data binding names have to be called "pageSize" and "sort.ascending", as expected by BeanWrapper. Note that the names and the nesting syntax match the respective JSTL EL expressions, like "myModelAttr.pageSize" and "myModelAttr.sort.ascending".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-comparator/index.html">PropertyComparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyComparator</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Comparator</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>PropertyComparator performs a comparison of two beans, evaluating the specified bean property via a BeanWrapper.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-editor-registrar/index.html">ResourceEditorRegistrar</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceEditorRegistrar</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorRegistrar</span></code>
+<p>PropertyEditorRegistrar implementation that populates a given org.springframework.beans.PropertyEditorRegistry (typically a org.springframework.beans.BeanWrapper used for bean creation within an org.springframework.context.ApplicationContext) with resource editors. Used by org.springframework.context.support.AbstractApplicationContext.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

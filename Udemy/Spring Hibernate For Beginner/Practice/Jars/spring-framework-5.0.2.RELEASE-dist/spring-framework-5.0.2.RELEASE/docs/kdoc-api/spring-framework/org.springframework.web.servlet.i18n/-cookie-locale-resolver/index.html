@@ -1,0 +1,301 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CookieLocaleResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.i18n</a>&nbsp;/&nbsp;<a href=".">CookieLocaleResolver</a><br/>
+<br/>
+<h1>CookieLocaleResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CookieLocaleResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.util/-cookie-generator/index.html"><span class="identifier">CookieGenerator</span></a><span class="symbol">, </span><span class="identifier">LocaleContextResolver</span></code>
+<p>LocaleResolver implementation that uses a cookie sent back to the user in case of a custom setting, with a fallback to the specified default locale or the request's accept-header locale. 
+<p>This is particularly useful for stateless applications without user sessions. The cookie may optionally contain an associated time zone value as well; alternatively, you may specify a default time zone. </p>
+<p>Custom controllers can override the user's locale and time zone by calling <code>#setLocale(Context)</code> on the resolver, e.g. responding to a locale change request. As a more convenient alternative, consider using <code><a href="#">org.springframework.web.servlet.support.RequestContext#changeLocale</a></code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Jean-Pierre Pawlak</p>
+<p><strong>Since</strong><br/>
+27.02.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="set-default-locale.html">#setDefaultLocale</a><a href="set-default-time-zone.html">#setDefaultTimeZone</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CookieLocaleResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new instance of the CookieLocaleResolver class using the <code><a href="-d-e-f-a-u-l-t_-c-o-o-k-i-e_-n-a-m-e.html">default cookie name</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-o-k-i-e_-n-a-m-e.html">DEFAULT_COOKIE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_COOKIE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default cookie name used if none is explicitly set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-l-o-c-a-l-e_-r-e-q-u-e-s-t_-a-t-t-r-i-b-u-t-e_-n-a-m-e.html">LOCALE_REQUEST_ATTRIBUTE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOCALE_REQUEST_ATTRIBUTE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the request attribute that holds the Locale. 
+<p>Only used for overriding a cookie value if the locale has been changed in the course of the current request! </p>
+<p>Use <code>RequestContext(Utils).getLocale()</code> to retrieve the current locale in controllers or views.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-i-m-e_-z-o-n-e_-r-e-q-u-e-s-t_-a-t-t-r-i-b-u-t-e_-n-a-m-e.html">TIME_ZONE_REQUEST_ATTRIBUTE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TIME_ZONE_REQUEST_ATTRIBUTE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the request attribute that holds the TimeZone. 
+<p>Only used for overriding a cookie value if the locale has been changed in the course of the current request! </p>
+<p>Use <code>RequestContext(Utils).getTimeZone()</code> to retrieve the current time zone in controllers or views.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/-d-e-f-a-u-l-t_-c-o-o-k-i-e_-p-a-t-h.html">DEFAULT_COOKIE_PATH</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_COOKIE_PATH</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default path that cookies will be visible to: "/", i.e. the entire server.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="is-language-tag-compliant.html">isLanguageTagCompliant</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isLanguageTagCompliant</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether this resolver's cookies should be compliant with BCP 47 language tags instead of Java's legacy locale specification format.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-locale.html">resolveLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$resolveLocale(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Locale</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-locale-context.html">resolveLocaleContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveLocaleContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$resolveLocaleContext(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocaleContext</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-locale.html">setDefaultLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setDefaultLocale(java.util.Locale)/defaultLocale">defaultLocale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a fixed Locale that this resolver will return if no cookie found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-time-zone.html">setDefaultTimeZone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultTimeZone</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setDefaultTimeZone(java.util.TimeZone)/defaultTimeZone">defaultTimeZone</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeZone</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a fixed TimeZone that this resolver will return if no cookie found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-language-tag-compliant.html">setLanguageTagCompliant</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLanguageTagCompliant</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setLanguageTagCompliant(kotlin.Boolean)/languageTagCompliant">languageTagCompliant</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether this resolver's cookies should be compliant with BCP 47 language tags instead of Java's legacy locale specification format. The default is <code>false</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale.html">setLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale-context.html">setLocaleContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocaleContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setLocaleContext(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.context.i18n.LocaleContext)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setLocaleContext(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.context.i18n.LocaleContext)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.CookieLocaleResolver$setLocaleContext(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.context.i18n.LocaleContext)/localeContext">localeContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">LocaleContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/add-cookie.html">addCookie</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCookie</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$addCookie(javax.servlet.http.HttpServletResponse, kotlin.String)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.util.CookieGenerator$addCookie(javax.servlet.http.HttpServletResponse, kotlin.String)/cookieValue">cookieValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a cookie with the given value to the response, using the cookie descriptor settings of this generator. 
+<p>Delegates to <code><a href="#">#createCookie</a></code> for cookie creation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/get-cookie-domain.html">getCookieDomain</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCookieDomain</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the domain for cookies created by this generator, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/get-cookie-max-age.html">getCookieMaxAge</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCookieMaxAge</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the maximum age for cookies created by this generator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/get-cookie-name.html">getCookieName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCookieName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the given name for cookies created by this generator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/get-cookie-path.html">getCookiePath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCookiePath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the path for cookies created by this generator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/is-cookie-http-only.html">isCookieHttpOnly</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCookieHttpOnly</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the cookie is supposed to be marked with the "HttpOnly" attribute.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/is-cookie-secure.html">isCookieSecure</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCookieSecure</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the cookie should only be sent using a secure protocol, such as HTTPS (SSL).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/remove-cookie.html">removeCookie</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeCookie</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$removeCookie(javax.servlet.http.HttpServletResponse)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove the cookie that this generator describes from the response. Will generate a cookie with empty value and max age 0. 
+<p>Delegates to <code><a href="#">#createCookie</a></code> for cookie creation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/set-cookie-domain.html">setCookieDomain</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCookieDomain</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$setCookieDomain(kotlin.String)/cookieDomain">cookieDomain</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Use the given domain for cookies created by this generator. The cookie is only visible to servers in this domain.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/set-cookie-http-only.html">setCookieHttpOnly</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCookieHttpOnly</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$setCookieHttpOnly(kotlin.Boolean)/cookieHttpOnly">cookieHttpOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the cookie is supposed to be marked with the "HttpOnly" attribute. 
+<p>Default is "false".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/set-cookie-max-age.html">setCookieMaxAge</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCookieMaxAge</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$setCookieMaxAge(kotlin.Int)/cookieMaxAge">cookieMaxAge</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Use the given maximum age (in seconds) for cookies created by this generator. Useful special value: -1 ... not persistent, deleted when client shuts down. 
+<p>Default is no specific maximum age at all, using the Servlet container's default.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/set-cookie-name.html">setCookieName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCookieName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$setCookieName(kotlin.String)/cookieName">cookieName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Use the given name for cookies created by this generator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/set-cookie-path.html">setCookiePath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCookiePath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$setCookiePath(kotlin.String)/cookiePath">cookiePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Use the given path for cookies created by this generator. The cookie is only visible to URLs in this path and below.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.util/-cookie-generator/set-cookie-secure.html">setCookieSecure</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCookieSecure</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.CookieGenerator$setCookieSecure(kotlin.Boolean)/cookieSecure">cookieSecure</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the cookie should only be sent using a secure protocol, such as HTTPS (SSL). This is an indication to the receiving browser, not processed by the HTTP server itself. 
+<p>Default is "false".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

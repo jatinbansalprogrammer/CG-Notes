@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Rendering - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.result.view</a>&nbsp;/&nbsp;<a href=".">Rendering</a><br/>
+<br/>
+<h1>Rendering</h1>
+<code><span class="keyword">interface </span><span class="identifier">Rendering</span></code>
+<p>Public API for HTML rendering. Supported as a return value in Spring WebFlux controllers. Comparable to the use of <code>ModelAndView</code> as a return value in Spring MVC controllers. 
+<p>Controllers typically return a String view name and rely on the "implicit" model which can also be injected into the controller method. Or controllers may return model attribute(s) and rely on a default view name being selected based on the request path. </p>
+<p>Rendering can be used to combine a view name with model attributes, set the HTTP status or headers, and for other more advanced options around redirect scenarios.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="headers.html">headers</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">headers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpHeaders</span></code>
+<p>Return headers to add to the response.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="model-attributes.html">modelAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">modelAttributes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Return attributes to add to the model.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="redirect-to.html">redirectTo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">redirectTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.Rendering$redirectTo(kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RedirectBuilder</span></code>
+<p>Create a new builder for a redirect through a RedirectView.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="status.html">status</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">status</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpStatus</span></code>
+<p>Return the HTTP status to set the response to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="view.html">view</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">view</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the selected String view name or View object.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">view</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.Rendering$view(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Builder</span></code>
+<p>Create a new builder for response rendering based on the given view name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

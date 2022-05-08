@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>IntroductionAwareMethodMatcher - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop</a>&nbsp;/&nbsp;<a href=".">IntroductionAwareMethodMatcher</a><br/>
+<br/>
+<h1>IntroductionAwareMethodMatcher</h1>
+<code><span class="keyword">interface </span><span class="identifier">IntroductionAwareMethodMatcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodMatcher</span></code>
+<p>A specialized type of MethodMatcher that takes into account introductions when matching methods. If there are no introductions on the target class, a method matcher may be able to optimize matching more effectively for example.</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="matches.html">matches</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">matches</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.IntroductionAwareMethodMatcher$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Boolean)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.IntroductionAwareMethodMatcher$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Boolean)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.IntroductionAwareMethodMatcher$matches(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Boolean)/hasIntroductions">hasIntroductions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Perform static checking whether the given method matches. This may be invoked instead of the 2-arg <code><a href="#">#matches(java.lang.reflect.Method, Class)</a></code> method if the caller supports the extended IntroductionAwareMethodMatcher interface.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.aop.aspectj/-aspect-j-expression-pointcut/index.html">AspectJExpressionPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectJExpressionPointcut</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.aop.support/-abstract-expression-pointcut/index.html"><span class="identifier">AbstractExpressionPointcut</span></a><span class="symbol">, </span><span class="identifier">ClassFilter</span><span class="symbol">, </span><span class="identifier">IntroductionAwareMethodMatcher</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Spring org.springframework.aop.Pointcut implementation that uses the AspectJ weaver to evaluate a pointcut expression. 
+<p>The pointcut expression value is an AspectJ expression. This can reference other pointcuts and use composition and other operations. </p>
+<p>Naturally, as this is to be processed by Spring AOP's proxy-based model, only method execution pointcuts are supported.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

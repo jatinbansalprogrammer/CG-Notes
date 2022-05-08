@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JettyWebSocketClient - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.client.jetty</a>&nbsp;/&nbsp;<a href=".">JettyWebSocketClient</a><br/>
+<br/>
+<h1>JettyWebSocketClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JettyWebSocketClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractWebSocketClient</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>Initiates WebSocket requests to a WebSocket server programmatically through the Jetty WebSocket API. 
+<p>As of 4.1 this class implements Lifecycle rather than org.springframework.context.SmartLifecycle. Use org.springframework.web.socket.client.WebSocketConnectionManager instead to auto-start a WebSocket connection.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JettyWebSocketClient</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor that creates an instance of org.eclipse.jetty.websocket.client.WebSocketClient.</p>
+<code><span class="identifier">JettyWebSocketClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$<init>(org.eclipse.jetty.websocket.client.WebSocketClient)/client">client</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketClient</span><span class="symbol">)</span></code>
+<p>Constructor that accepts an existing org.eclipse.jetty.websocket.client.WebSocketClient instance.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-handshake.html">doHandshake</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doHandshake</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshake(org.springframework.web.socket.WebSocketHandler, kotlin.String, kotlin.Array((kotlin.Any)))/webSocketHandler">webSocketHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshake(org.springframework.web.socket.WebSocketHandler, kotlin.String, kotlin.Array((kotlin.Any)))/uriTemplate">uriTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshake(org.springframework.web.socket.WebSocketHandler, kotlin.String, kotlin.Array((kotlin.Any)))/uriVars">uriVars</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">WebSocketSession</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="do-handshake-internal.html">doHandshakeInternal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doHandshakeInternal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshakeInternal(org.springframework.web.socket.WebSocketHandler, org.springframework.http.HttpHeaders, java.net.URI, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/wsHandler">wsHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshakeInternal(org.springframework.web.socket.WebSocketHandler, org.springframework.http.HttpHeaders, java.net.URI, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshakeInternal(org.springframework.web.socket.WebSocketHandler, org.springframework.http.HttpHeaders, java.net.URI, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/uri">uri</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshakeInternal(org.springframework.web.socket.WebSocketHandler, org.springframework.http.HttpHeaders, java.net.URI, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/protocols">protocols</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshakeInternal(org.springframework.web.socket.WebSocketHandler, org.springframework.http.HttpHeaders, java.net.URI, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/extensions">extensions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><a href="../../org.springframework.web.socket/-web-socket-extension/index.html"><span class="identifier">WebSocketExtension</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$doHandshakeInternal(org.springframework.web.socket.WebSocketHandler, org.springframework.http.HttpHeaders, java.net.URI, kotlin.collections.MutableList((kotlin.String)), kotlin.collections.MutableList((org.springframework.web.socket.WebSocketExtension)), kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/attributes">attributes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">WebSocketSession</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-task-executor.html">getTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTaskExecutor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncListenableTaskExecutor</span></code>
+<p>Return the configured TaskExecutor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-executor.html">setTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.client.jetty.JettyWebSocketClient$setTaskExecutor(org.springframework.core.task.AsyncListenableTaskExecutor)/taskExecutor">taskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an AsyncListenableTaskExecutor to use when opening connections. If this property is set to <code>null</code>, calls to any of the <code>doHandshake</code> methods will block until the connection is established. 
+<p>By default an instance of <code>SimpleAsyncTaskExecutor</code> is used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.mvc.condition - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.mvc.condition</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.mvc.condition</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-request-condition/index.html">AbstractRequestCondition</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractRequestCondition</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-request-condition/index.html"><span class="identifier">AbstractRequestCondition</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestCondition</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>A base class for RequestCondition types providing implementations of <code><a href="#">#equals(Object)</a></code>, <code><a href="-abstract-request-condition/hash-code.html">#hashCode()</a></code>, and <code><a href="-abstract-request-condition/to-string.html">#toString()</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-request-condition/index.html">CompositeRequestCondition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeRequestCondition</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-request-condition/index.html"><span class="identifier">AbstractRequestCondition</span></a><span class="symbol">&lt;</span><a href="-composite-request-condition/index.html"><span class="identifier">CompositeRequestCondition</span></a><span class="symbol">&gt;</span></code>
+<p>Implements the RequestCondition contract by delegating to multiple <code>RequestCondition</code> types and using a logical conjunction (' &amp;&amp; ') to ensure all conditions match a given request. 
+<p>When <code>CompositeRequestCondition</code> instances are combined or compared they are expected to (a) contain the same number of conditions and (b) that conditions in the respective index are of the same type. It is acceptable to provide <code>null</code> conditions or no conditions at all to the constructor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-media-type-expression/index.html">MediaTypeExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MediaTypeExpression</span></code>
+<p>A contract for media type expressions (e.g. "text/plain", "!text/plain") as defined in the <code>@RequestMapping</code> annotation for "consumes" and "produces" conditions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-name-value-expression/index.html">NameValueExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">NameValueExpression</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>A contract for <code>"name!=value"</code> style expression used to specify request parameters and request header conditions in <code>@RequestMapping</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

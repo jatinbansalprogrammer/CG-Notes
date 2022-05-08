@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.view - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.view</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.view</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-template-view-resolver/index.html">AbstractTemplateViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AbstractTemplateViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlBasedViewResolver</span></code>
+<p>Abstract base class for template view resolvers, in particular for FreeMarker views. 
+<p>Provides a convenient way to specify AbstractTemplateView's exposure flags for request attributes, session attributes, and Spring's macro helpers.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-name-view-resolver/index.html">BeanNameViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanNameViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationObjectSupport</span><span class="symbol">, </span><span class="identifier">ViewResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>A simple implementation of org.springframework.web.servlet.ViewResolver that interprets a view name as a bean name in the current application context, i.e. typically in the XML file of the executing <code>DispatcherServlet</code>. 
+<p>This resolver can be handy for small applications, keeping all definitions ranging from controllers to views in the same place. For larger applications, XmlViewResolver will be the better choice, as it separates the XML view bean definitions into a dedicated views file. </p>
+<p>Note: Neither this <code>ViewResolver</code> nor XmlViewResolver supports internationalization. Consider ResourceBundleViewResolver if you need to apply different view resources per locale. </p>
+<p>Note: This <code>ViewResolver</code> implements the Ordered interface in order to allow for flexible participation in <code>ViewResolver</code> chaining. For example, some special views could be defined via this <code>ViewResolver</code> (giving it 0 as "order" value), while all remaining views could be resolved by a UrlBasedViewResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-content-negotiating-view-resolver/index.html">ContentNegotiatingViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentNegotiatingViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationObjectSupport</span><span class="symbol">, </span><span class="identifier">ViewResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of ViewResolver that resolves a view based on the request file name or <code>Accept</code> header. 
+<p>The <code>ContentNegotiatingViewResolver</code> does not resolve views itself, but delegates to other ViewResolvers. By default, these other view resolvers are picked up automatically from the application context, though they can also be set explicitly by using the <code><a href="#">viewResolvers</a></code> property. <strong>Note</strong> that in order for this view resolver to work properly, the <code><a href="-content-negotiating-view-resolver/set-order.html">order</a></code> property needs to be set to a higher precedence than the others (the default is <code><a href="#">Ordered#HIGHEST_PRECEDENCE</a></code>). </p>
+<p>This view resolver uses the requested MediaType to select a suitable View for a request. The requested media type is determined through the configured ContentNegotiationManager. Once the requested media type has been determined, this resolver queries each delegate view resolver for a View and determines if the requested media type is <a href="#">compatible</a> with the view's <a href="#">content type</a>). The most compatible view is returned. </p>
+<p>Additionally, this view resolver exposes the <code><a href="#">defaultViews</a></code> property, allowing you to override the views provided by the view resolvers. Note that these default views are offered as candidates, and still need have the content type requested (via file extension, parameter, or <code>Accept</code> header, described above). </p>
+<p>For example, if the request path is <code>/view.html</code>, this view resolver will look for a view that has the <code>text/html</code> content type (based on the <code>html</code> file extension). A request for <code>/view</code> with a <code>text/html</code> request <code>Accept</code> header has the same result.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-request-to-view-name-translator/index.html">DefaultRequestToViewNameTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultRequestToViewNameTranslator</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.servlet/-request-to-view-name-translator/index.html"><span class="identifier">RequestToViewNameTranslator</span></a></code>
+<p>RequestToViewNameTranslator that simply transforms the URI of the incoming request into a view name. 
+<p>Can be explicitly defined as the <code>viewNameTranslator</code> bean in a org.springframework.web.servlet.DispatcherServlet context. Otherwise, a plain default instance will be used. </p>
+<p>The default transformation simply strips leading and trailing slashes as well as the file extension of the URI, and returns the result as the view name with the configured <code><a href="#">prefix</a></code> and a <code><a href="#">suffix</a></code> added as appropriate. </p>
+<p>The stripping of the leading slash and file extension can be disabled using the <code><a href="-default-request-to-view-name-translator/set-strip-leading-slash.html">stripLeadingSlash</a></code> and <code><a href="-default-request-to-view-name-translator/set-strip-extension.html">stripExtension</a></code> properties, respectively. </p>
+<p>Find below some examples of request to view name translation. </p>
+<ul> <li><code>http://localhost:8080/gamecast/display.html</code> » <code>display</code></li>
+ <li><code>http://localhost:8080/gamecast/displayShoppingCart.html</code> » <code>displayShoppingCart</code></li>
+ <li><code>http://localhost:8080/gamecast/admin/index.html</code> » <code>admin/index</code></li>
+ </ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-internal-resource-view/index.html">InternalResourceView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InternalResourceView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUrlBasedView</span></code>
+<p>Wrapper for a JSP or other resource within the same web application. Exposes model objects as request attributes and forwards the request to the specified resource URL using a javax.servlet.RequestDispatcher. 
+<p>A URL for this view is supposed to specify a resource within the web application, suitable for RequestDispatcher's <code>forward</code> or <code>include</code> method. </p>
+<p>If operating within an already included request or within a response that has already been committed, this view will fall back to an include instead of a forward. This can be enforced by calling <code>response.flushBuffer()</code> (which will commit the response) before rendering the view. </p>
+<p>Typical usage with InternalResourceViewResolver looks as follows, from the perspective of the DispatcherServlet context definition: </p>
+<pre><code>&lt;bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt; &lt;property name="prefix" value="/WEB-INF/jsp/"/&gt; &lt;property name="suffix" value=".jsp"/&gt; &lt;/bean&gt;</code></pre> Every view name returned from a handler will be translated to a JSP resource (for example: "myView" -&gt; "/WEB-INF/jsp/myView.jsp"), using this view class by default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jstl-view/index.html">JstlView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JstlView</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-internal-resource-view/index.html"><span class="identifier">InternalResourceView</span></a></code>
+<p>Specialization of InternalResourceView for JSTL pages, i.e. JSP pages that use the JSP Standard Tag Library. 
+<p>Exposes JSTL-specific request attributes specifying locale and resource bundle for JSTL's formatting and message tags, using Spring's locale and org.springframework.context.MessageSource. </p>
+<p>Typical usage with InternalResourceViewResolver would look as follows, from the perspective of the DispatcherServlet context definition: </p>
+<pre><code> &lt;bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt; &lt;property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/&gt; &lt;property name="prefix" value="/WEB-INF/jsp/"/&gt; &lt;property name="suffix" value=".jsp"/&gt; &lt;/bean&gt; &lt;bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"&gt; &lt;property name="basename" value="messages"/&gt; &lt;/bean&gt;</code></pre> Every view name returned from a handler will be translated to a JSP resource (for example: "myView" -&gt; "/WEB-INF/jsp/myView.jsp"), using this view class to enable explicit JSTL support. 
+<p>The specified MessageSource loads messages from "messages.properties" etc files in the class path. This will automatically be exposed to views as JSTL localization context, which the JSTL fmt tags (message etc) will use. Consider using Spring's ReloadableResourceBundleMessageSource instead of the standard ResourceBundleMessageSource for more sophistication. Of course, any other Spring components can share the same MessageSource. </p>
+<p>This is a separate class mainly to avoid JSTL dependencies in InternalResourceView itself. JSTL has not been part of standard J2EE up until J2EE 1.4, so we can't assume the JSTL API jar to be available on the class path. </p>
+<p>Hint: Set the <code><a href="#">#setExposeContextBeansAsAttributes</a></code> flag to "true" in order to make all Spring beans in the application context accessible within JSTL expressions (e.g. in a <code>c:out</code> value expression). This will also make all such beans accessible in plain <code>${...}</code> expressions in a JSP 2.0 page.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-bundle-view-resolver/index.html">ResourceBundleViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceBundleViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCachingViewResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A org.springframework.web.servlet.ViewResolver implementation that uses bean definitions in a ResourceBundle, specified by the bundle basename. 
+<p>The bundle is typically defined in a properties file, located in the classpath. The default bundle basename is "views". </p>
+<p>This <code>ViewResolver</code> supports localized view definitions, using the default support of java.util.PropertyResourceBundle. For example, the basename "views" will be resolved as class path resources "views_de_AT.properties", "views_de.properties", "views.properties" - for a given Locale "de_AT". </p>
+<p>Note: This <code>ViewResolver</code> implements the Ordered interface in order to allow for flexible participation in <code>ViewResolver</code> chaining. For example, some special views could be defined via this <code>ViewResolver</code> (giving it 0 as "order" value), while all remaining views could be resolved by a UrlBasedViewResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xml-view-resolver/index.html">XmlViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XmlViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCachingViewResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A org.springframework.web.servlet.ViewResolver implementation that uses bean definitions in a dedicated XML file for view definitions, specified by resource location. The file will typically be located in the WEB-INF directory; the default is "/WEB-INF/views.xml". 
+<p>This <code>ViewResolver</code> does not support internationalization at the level of its definition resources. Consider ResourceBundleViewResolver if you need to apply different view resources per locale. </p>
+<p>Note: This <code>ViewResolver</code> implements the Ordered interface in order to allow for flexible participation in <code>ViewResolver</code> chaining. For example, some special views could be defined via this <code>ViewResolver</code> (giving it 0 as "order" value), while all remaining views could be resolved by a UrlBasedViewResolver.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

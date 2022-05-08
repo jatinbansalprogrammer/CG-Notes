@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyPlaceholderConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">PropertyPlaceholderConfigurer</a><br/>
+<br/>
+<h1>PropertyPlaceholderConfigurer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyPlaceholderConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PlaceholderConfigurerSupport</span></code>
+<p>PlaceholderConfigurerSupport subclass that resolves ${...} placeholders against <code><a href="#">local</a></code> <code><a href="#">properties</a></code> and/or system properties and environment variables. 
+<p>As of Spring 3.1, org.springframework.context.support.PropertySourcesPlaceholderConfigurer should be used preferentially over this implementation; it is more flexible through taking advantage of the org.springframework.core.env.Environment and org.springframework.core.env.PropertySource mechanisms also made available in Spring 3.1. </p>
+<p>PropertyPlaceholderConfigurer is still appropriate for use when: </p>
+<ul> <li>the <code>spring-context</code> module is not available (i.e., one is using Spring's <code>BeanFactory</code> API as opposed to <code>ApplicationContext</code>). </li>
+<li>existing configuration makes use of the <code><a href="set-system-properties-mode.html">"systemPropertiesMode"</a></code> and/or <code><a href="#">"systemPropertiesModeName"</a></code> properties. Users are encouraged to move away from using these settings, and rather configure property source search order through the container's <code>Environment</code>; however, exact preservation of functionality may be maintained by continuing to use <code>PropertyPlaceholderConfigurer</code>. </li>
+</ul>
+ 
+<p>Prior to Spring 3.1, the <code>&lt;context:property-placeholder/&gt;</code> namespace element registered an instance of <code>PropertyPlaceholderConfigurer</code>. It will still do so if using the <code>spring-context-3.0.xsd</code> definition of the namespace. That is, you can preserve registration of <code>PropertyPlaceholderConfigurer</code> through the namespace, even if using Spring 3.1; simply do not update your <code>xsi:schemaLocation</code> and continue using the 3.0 XSD.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+02.10.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setSystemPropertiesModeName</a>PlaceholderConfigurerSupportPropertyOverrideConfigurerorg.springframework.context.support.PropertySourcesPlaceholderConfigurer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PropertyPlaceholderConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>PlaceholderConfigurerSupport subclass that resolves ${...} placeholders against <code><a href="#">local</a></code> <code><a href="#">properties</a></code> and/or system properties and environment variables. 
+<p>As of Spring 3.1, org.springframework.context.support.PropertySourcesPlaceholderConfigurer should be used preferentially over this implementation; it is more flexible through taking advantage of the org.springframework.core.env.Environment and org.springframework.core.env.PropertySource mechanisms also made available in Spring 3.1. </p>
+<p>PropertyPlaceholderConfigurer is still appropriate for use when: </p>
+<ul> <li>the <code>spring-context</code> module is not available (i.e., one is using Spring's <code>BeanFactory</code> API as opposed to <code>ApplicationContext</code>). </li>
+<li>existing configuration makes use of the <code><a href="set-system-properties-mode.html">"systemPropertiesMode"</a></code> and/or <code><a href="#">"systemPropertiesModeName"</a></code> properties. Users are encouraged to move away from using these settings, and rather configure property source search order through the container's <code>Environment</code>; however, exact preservation of functionality may be maintained by continuing to use <code>PropertyPlaceholderConfigurer</code>. </li>
+</ul>
+ 
+<p>Prior to Spring 3.1, the <code>&lt;context:property-placeholder/&gt;</code> namespace element registered an instance of <code>PropertyPlaceholderConfigurer</code>. It will still do so if using the <code>spring-context-3.0.xsd</code> definition of the namespace. That is, you can preserve registration of <code>PropertyPlaceholderConfigurer</code> through the namespace, even if using Spring 3.1; simply do not update your <code>xsi:schemaLocation</code> and continue using the 3.0 XSD.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-s-y-s-t-e-m_-p-r-o-p-e-r-t-i-e-s_-m-o-d-e_-f-a-l-l-b-a-c-k.html">SYSTEM_PROPERTIES_MODE_FALLBACK</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SYSTEM_PROPERTIES_MODE_FALLBACK</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Check system properties if not resolvable in the specified properties. This is the default.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-y-s-t-e-m_-p-r-o-p-e-r-t-i-e-s_-m-o-d-e_-n-e-v-e-r.html">SYSTEM_PROPERTIES_MODE_NEVER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SYSTEM_PROPERTIES_MODE_NEVER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Never check system properties.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-y-s-t-e-m_-p-r-o-p-e-r-t-i-e-s_-m-o-d-e_-o-v-e-r-r-i-d-e.html">SYSTEM_PROPERTIES_MODE_OVERRIDE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">SYSTEM_PROPERTIES_MODE_OVERRIDE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Check system properties first, before trying the specified properties. This allows system properties to override any other property source.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-search-system-environment.html">setSearchSystemEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSearchSystemEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer$setSearchSystemEnvironment(kotlin.Boolean)/searchSystemEnvironment">searchSystemEnvironment</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to search for a matching system environment variable if no matching system property has been found. Only applied when "systemPropertyMode" is active (i.e. "fallback" or "override"), right after checking JVM system properties. 
+<p>Default is "true". Switch this setting off to never resolve placeholders against system environment variables. Note that it is generally recommended to pass external values in as JVM system properties: This can easily be achieved in a startup script, even for existing environment variables. </p>
+<p><strong>NOTE:</strong> Access to environment variables does not work on the Sun VM 1.4, where the corresponding <code><a href="#">System#getenv</a></code> support was disabled - before it eventually got re-enabled for the Sun VM 1.5. Please upgrade to 1.5 (or higher) if you intend to rely on the environment variable support.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-system-properties-mode.html">setSystemPropertiesMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSystemPropertiesMode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer$setSystemPropertiesMode(kotlin.Int)/systemPropertiesMode">systemPropertiesMode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set how to check system properties: as fallback, as override, or never. For example, will resolve ${user.dir} to the "user.dir" system property. 
+<p>The default is "fallback": If not being able to resolve a placeholder with the specified properties, a system property will be tried. "override" will check for a system property first, before trying the specified properties. "never" will not check system properties at all.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-system-properties-mode-name.html">setSystemPropertiesModeName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSystemPropertiesModeName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer$setSystemPropertiesModeName(kotlin.String)/constantName">constantName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the system property mode by the name of the corresponding constant, e.g. "SYSTEM_PROPERTIES_MODE_OVERRIDE".</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-preferences-placeholder-configurer/index.html">PreferencesPlaceholderConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PreferencesPlaceholderConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyPlaceholderConfigurer</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Subclass of PropertyPlaceholderConfigurer that supports JDK 1.4's Preferences API (<code>java.util.prefs</code>). 
+<p>Tries to resolve placeholders as keys first in the user preferences, then in the system preferences, then in this configurer's properties. Thus, behaves like PropertyPlaceholderConfigurer if no corresponding preferences defined. </p>
+<p>Supports custom paths for the system and user preferences trees. Also supports custom paths specified in placeholders ("myPath/myPlaceholderKey"). Uses the respective root node if not specified.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestContextFilter.setThreadContextInheritable - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href="index.html">RequestContextFilter</a>&nbsp;/&nbsp;<a href=".">setThreadContextInheritable</a><br/>
+<br/>
+<h1>setThreadContextInheritable</h1>
+<a name="org.springframework.web.filter.RequestContextFilter$setThreadContextInheritable(kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setThreadContextInheritable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.RequestContextFilter$setThreadContextInheritable(kotlin.Boolean)/threadContextInheritable">threadContextInheritable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to expose the LocaleContext and RequestAttributes as inheritable for child threads (using an java.lang.InheritableThreadLocal). 
+<p>Default is "false", to avoid side effects on spawned background threads. Switch this to "true" to enable inheritance for custom child threads which are spawned during request processing and only used for this request (that is, ending after their initial task, without reuse of the thread). </p>
+<p><strong>WARNING:</strong> Do not use inheritance for child threads if you are accessing a thread pool which is configured to potentially add new threads on demand (e.g. a JDK java.util.concurrent.ThreadPoolExecutor), since this will expose the inherited context to such a pooled thread.</p>
+</p>
+</BODY>
+</HTML>

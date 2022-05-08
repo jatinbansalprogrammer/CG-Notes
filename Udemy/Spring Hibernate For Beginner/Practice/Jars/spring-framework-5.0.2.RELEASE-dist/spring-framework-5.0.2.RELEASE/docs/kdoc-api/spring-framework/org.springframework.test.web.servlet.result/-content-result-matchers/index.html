@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ContentResultMatchers - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet.result</a>&nbsp;/&nbsp;<a href=".">ContentResultMatchers</a><br/>
+<br/>
+<h1>ContentResultMatchers</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentResultMatchers</span></code>
+<p>Factory for response content assertions. 
+<p>An instance of this class is typically accessed via <code><a href="#">MockMvcResultMatchers#content</a></code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="bytes.html">bytes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bytes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$bytes(kotlin.ByteArray)/expectedContent">expectedContent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the response body content as a byte array.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="content-type.html">contentType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contentType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$contentType(kotlin.String)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the ServletResponse content type. The given content type must fully match including type, sub-type, and parameters. For checking only the type and sub-type see <code><a href="#">#contentTypeCompatibleWith(String)</a></code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contentType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$contentType(org.springframework.http.MediaType)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the ServletResponse content type after parsing it as a MediaType. The given content type must fully match including type, sub-type, and parameters. For checking only the type and sub-type see <code><a href="content-type-compatible-with.html">#contentTypeCompatibleWith(MediaType)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="content-type-compatible-with.html">contentTypeCompatibleWith</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contentTypeCompatibleWith</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$contentTypeCompatibleWith(kotlin.String)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contentTypeCompatibleWith</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$contentTypeCompatibleWith(org.springframework.http.MediaType)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the ServletResponse content type is compatible with the given content type as defined by <code><a href="#">MediaType#isCompatibleWith(MediaType)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="encoding.html">encoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">encoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$encoding(kotlin.String)/characterEncoding">characterEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the character encoding in the ServletResponse.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="json.html">json</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">json</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$json(kotlin.String)/jsonContent">jsonContent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Parse the expected and actual strings as JSON and assert the two are "similar" - i.e. they contain the same attribute-value pairs regardless of formatting with a lenient checking (extensible, and non-strict array ordering).</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">json</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$json(kotlin.String, kotlin.Boolean)/jsonContent">jsonContent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$json(kotlin.String, kotlin.Boolean)/strict">strict</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Parse the response content and the given string as JSON and assert the two are "similar" - i.e. they contain the same attribute-value pairs regardless of formatting. 
+<p>Can compare in two modes, depending on <code>strict</code> parameter value: </p>
+<ul> <li><code>true</code>: strict checking. Not extensible, and strict array ordering.</li>
+ <li><code>false</code>: lenient checking. Extensible, and non-strict array ordering.</li>
+ </ul>
+ 
+<p>Use of this matcher requires the <a href="#">JSONassert</a><a href="#"></a> library.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="node.html">node</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">node</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$node(org.hamcrest.Matcher((org.w3c.dom.Node)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/org.w3c.dom/-node/index.html"><span class="identifier">Node</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Parse the response content as Node and apply the given Hamcrest Matcher.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="source.html">source</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">source</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$source(org.hamcrest.Matcher((javax.xml.transform.Source)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">Source</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Parse the response content as DOMSource and apply the given Hamcrest Matcher.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="string.html">string</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">string</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$string(org.hamcrest.Matcher((kotlin.String)))/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">Matcher</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the response body content with a Hamcrest Matcher. <pre><code> mockMvc.perform(get("/path")) .andExpect(content().string(containsString("text"))); </code></pre></p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">string</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$string(kotlin.String)/expectedContent">expectedContent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the response body content as a String.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="xml.html">xml</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">xml</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.ContentResultMatchers$xml(kotlin.String)/xmlContent">xmlContent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Parse the response content and the given string as XML and assert the two are "similar" - i.e. they contain the same elements and attributes regardless of order. 
+<p>Use of this matcher requires the <a href="#">XMLUnit</a><a href="#"></a> library.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

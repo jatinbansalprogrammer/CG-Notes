@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReactiveAdapterRegistry - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core</a>&nbsp;/&nbsp;<a href=".">ReactiveAdapterRegistry</a><br/>
+<br/>
+<h1>ReactiveAdapterRegistry</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReactiveAdapterRegistry</span></code>
+<p>A registry of adapters to adapt a Reactive Streams Publisher to/from various async/reactive types such as <code>CompletableFuture</code>, RxJava <code>Observable</code>, and others. 
+<p>By default, depending on classpath availability, adapters are registered for Reactor, RxJava 1, RxJava 2 types, CompletableFuture, and Java 9+ Flow.Publisher.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ReactiveAdapterRegistry</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a registry and auto-register default adapters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-adapter.html">getAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.ReactiveAdapterRegistry$getAdapter(java.lang.Class((kotlin.Any)))/reactiveType">reactiveType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ReactiveAdapter</span></code>
+<p>Get the adapter for the given reactive type.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAdapter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.ReactiveAdapterRegistry$getAdapter(java.lang.Class((kotlin.Any)), kotlin.Any)/reactiveType">reactiveType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.ReactiveAdapterRegistry$getAdapter(java.lang.Class((kotlin.Any)), kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ReactiveAdapter</span></code>
+<p>Get the adapter for the given reactive type. Or if a "source" object is provided, its actual type is used instead.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-shared-instance.html">getSharedInstance</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getSharedInstance</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ReactiveAdapterRegistry</span></code>
+<p>Return a shared default <code>ReactiveAdapterRegistry</code> instance, lazily building it once needed. 
+<p><strong>NOTE:</strong> We highly recommend passing a long-lived, pre-configured <code>ReactiveAdapterRegistry</code> instance for customization purposes. This accessor is only meant as a fallback for code paths that want to fall back on a default instance if one isn't provided.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="has-adapters.html">hasAdapters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hasAdapters</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the registry has any adapters which would be the case if any of Reactor, RxJava 2, or RxJava 1 (+ RxJava Reactive Streams bridge) are present on the classpath.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-reactive-type.html">registerReactiveType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerReactiveType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.ReactiveAdapterRegistry$registerReactiveType(org.springframework.core.ReactiveTypeDescriptor, java.util.function.Function((kotlin.Any, org.reactivestreams.Publisher(()))), java.util.function.Function((org.reactivestreams.Publisher((kotlin.Any)), )))/descriptor">descriptor</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReactiveTypeDescriptor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.ReactiveAdapterRegistry$registerReactiveType(org.springframework.core.ReactiveTypeDescriptor, java.util.function.Function((kotlin.Any, org.reactivestreams.Publisher(()))), java.util.function.Function((org.reactivestreams.Publisher((kotlin.Any)), )))/toAdapter">toAdapter</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">,</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.ReactiveAdapterRegistry$registerReactiveType(org.springframework.core.ReactiveTypeDescriptor, java.util.function.Function((kotlin.Any, org.reactivestreams.Publisher(()))), java.util.function.Function((org.reactivestreams.Publisher((kotlin.Any)), )))/fromAdapter">fromAdapter</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a reactive type along with functions to adapt to and from a Reactive Streams Publisher. The functions can assume their input is never be <code>null</code> nor Optional.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

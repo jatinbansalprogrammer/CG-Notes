@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HiddenHttpMethodFilter.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href="index.html">HiddenHttpMethodFilter</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.filter.HiddenHttpMethodFilter$&lt;init&gt;()"></a>
+<code><span class="identifier">HiddenHttpMethodFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>javax.servlet.Filter that converts posted method parameters into HTTP methods, retrievable via <code><a href="#">HttpServletRequest#getMethod()</a></code>. Since browsers currently only support GET and POST, a common technique - used by the Prototype library, for instance - is to use a normal POST with an additional hidden form field (<code>_method</code>) to pass the "real" HTTP method along. This filter reads that parameter and changes the <code><a href="#">HttpServletRequestWrapper#getMethod()</a></code> return value accordingly. 
+<p>The name of the request parameter defaults to <code>_method</code>, but can be adapted via the <code><a href="#">methodParam</a></code> property. </p>
+<p><strong>NOTE: This filter needs to run after multipart processing in case of a multipart POST request, due to its inherent need for checking a POST body parameter.</strong> So typically, put a Spring org.springframework.web.multipart.support.MultipartFilter <em>before</em> this HiddenHttpMethodFilter in your <code>web.xml</code> filter chain.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+</BODY>
+</HTML>

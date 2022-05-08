@@ -1,0 +1,161 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyAccessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href=".">PropertyAccessor</a><br/>
+<br/>
+<h1>PropertyAccessor</h1>
+<code><span class="keyword">interface </span><span class="identifier">PropertyAccessor</span></code>
+<p>Common interface for classes that can access named properties (such as bean properties of an object or fields in an object) Serves as base interface for BeanWrapper.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+BeanWrapper<a href="#">PropertyAccessorFactory#forBeanPropertyAccess</a><a href="#">PropertyAccessorFactory#forDirectFieldAccess</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-n-e-s-t-e-d_-p-r-o-p-e-r-t-y_-s-e-p-a-r-a-t-o-r.html">NESTED_PROPERTY_SEPARATOR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">NESTED_PROPERTY_SEPARATOR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Path separator for nested properties. Follows normal Java conventions: getFoo().getBar() would be "foo.bar".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-n-e-s-t-e-d_-p-r-o-p-e-r-t-y_-s-e-p-a-r-a-t-o-r_-c-h-a-r.html">NESTED_PROPERTY_SEPARATOR_CHAR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">NESTED_PROPERTY_SEPARATOR_CHAR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html"><span class="identifier">Char</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-k-e-y_-p-r-e-f-i-x.html">PROPERTY_KEY_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_KEY_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Marker that indicates the start of a property key for an indexed or mapped property like "person.addresses[0]".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-k-e-y_-p-r-e-f-i-x_-c-h-a-r.html">PROPERTY_KEY_PREFIX_CHAR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_KEY_PREFIX_CHAR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html"><span class="identifier">Char</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-k-e-y_-s-u-f-f-i-x.html">PROPERTY_KEY_SUFFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_KEY_SUFFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Marker that indicates the end of a property key for an indexed or mapped property like "person.addresses[0]".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-p-r-o-p-e-r-t-y_-k-e-y_-s-u-f-f-i-x_-c-h-a-r.html">PROPERTY_KEY_SUFFIX_CHAR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PROPERTY_KEY_SUFFIX_CHAR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-char/index.html"><span class="identifier">Char</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-property-type.html">getPropertyType</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPropertyType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$getPropertyType(kotlin.String)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Determine the property type for the specified property, either checking the property descriptor or checking the value in case of an indexed or mapped element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-type-descriptor.html">getPropertyTypeDescriptor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPropertyTypeDescriptor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$getPropertyTypeDescriptor(kotlin.String)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeDescriptor</span></code>
+<p>Return a type descriptor for the specified property: preferably from the read method, falling back to the write method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-value.html">getPropertyValue</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getPropertyValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$getPropertyValue(kotlin.String)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the current value of the specified property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-readable-property.html">isReadableProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isReadableProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$isReadableProperty(kotlin.String)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the specified property is readable. 
+<p>Returns <code>false</code> if the property doesn't exist.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-writable-property.html">isWritableProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isWritableProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$isWritableProperty(kotlin.String)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the specified property is writable. 
+<p>Returns <code>false</code> if the property doesn't exist.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property-value.html">setPropertyValue</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValue(kotlin.String, kotlin.Any)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValue(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValue(org.springframework.beans.PropertyValue)/pv">pv</span><span class="symbol">:</span>&nbsp;<a href="../-property-value/index.html"><span class="identifier">PropertyValue</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the specified value as current property value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property-values.html">setPropertyValues</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(kotlin.collections.MutableMap((kotlin.Any, )))/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform a batch update from a Map. 
+<p>Bulk updates from PropertyValues are more powerful: This method is provided for convenience. Behavior will be identical to that of the <code><a href="set-property-values.html">#setPropertyValues(PropertyValues)</a></code> method.</p>
+</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The preferred way to perform a batch update. 
+<p>Note that performing a batch update differs from performing a single update, in that an implementation of this class will continue to update properties if a <strong>recoverable</strong> error (such as a type mismatch, but <strong>not</strong> an invalid field name or the like) is encountered, throwing a PropertyBatchUpdateException containing all the individual errors. This exception can be examined later to see all binding errors. Properties that were successfully updated remain changed. </p>
+<p>Does not allow unknown fields or invalid fields.</p>
+</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean)/ignoreUnknown">ignoreUnknown</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform a batch update with more control over behavior. 
+<p>Note that performing a batch update differs from performing a single update, in that an implementation of this class will continue to update properties if a <strong>recoverable</strong> error (such as a type mismatch, but <strong>not</strong> an invalid field name or the like) is encountered, throwing a PropertyBatchUpdateException containing all the individual errors. This exception can be examined later to see all binding errors. Properties that were successfully updated remain changed.</p>
+</p>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean, kotlin.Boolean)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean, kotlin.Boolean)/ignoreUnknown">ignoreUnknown</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.PropertyAccessor$setPropertyValues(org.springframework.beans.PropertyValues, kotlin.Boolean, kotlin.Boolean)/ignoreInvalid">ignoreInvalid</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Perform a batch update with full control over behavior. 
+<p>Note that performing a batch update differs from performing a single update, in that an implementation of this class will continue to update properties if a <strong>recoverable</strong> error (such as a type mismatch, but <strong>not</strong> an invalid field name or the like) is encountered, throwing a PropertyBatchUpdateException containing all the individual errors. This exception can be examined later to see all binding errors. Properties that were successfully updated remain changed.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

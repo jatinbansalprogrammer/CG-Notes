@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.core - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.core</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.core</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-factory-message-channel-destination-resolver/index.html">BeanFactoryMessageChannelDestinationResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanFactoryMessageChannelDestinationResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DestinationResolver</span><span class="symbol">&lt;</span><span class="identifier">MessageChannel</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>An implementation of DestinationResolver that interprets a destination name as the bean name of a MessageChannel and looks up the bean in the configured BeanFactory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-caching-destination-resolver-proxy/index.html">CachingDestinationResolverProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingDestinationResolverProxy</span><span class="symbol">&lt;</span><span class="identifier">D</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DestinationResolver</span><span class="symbol">&lt;</span><span class="identifier">D</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>DestinationResolver implementation that proxies a target DestinationResolver, caching its <code><a href="#">#resolveDestination</a></code> results. Such caching is particularly useful if the destination resolving process is expensive (e.g. the destination has to be resolved through an external system) and the resolution results are stable anyway.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-messaging-template/index.html">GenericMessagingTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericMessagingTemplate</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractDestinationResolvingMessagingTemplate</span><span class="symbol">&lt;</span><span class="identifier">MessageChannel</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>A messaging template that resolves destinations names to MessageChannel's to send and receive messages from.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-destination-resolution-exception/index.html">DestinationResolutionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DestinationResolutionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessagingException</span></code>
+<p>Thrown by a DestinationResolver when it cannot resolve a destination.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

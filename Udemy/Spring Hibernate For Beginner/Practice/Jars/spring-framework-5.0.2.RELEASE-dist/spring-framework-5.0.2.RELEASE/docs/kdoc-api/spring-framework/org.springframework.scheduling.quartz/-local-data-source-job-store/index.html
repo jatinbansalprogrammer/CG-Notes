@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalDataSourceJobStore - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href=".">LocalDataSourceJobStore</a><br/>
+<br/>
+<h1>LocalDataSourceJobStore</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalDataSourceJobStore</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JobStoreCMT</span></code>
+<p>Subclass of Quartz's JobStoreCMT class that delegates to a Spring-managed DataSource instead of using a Quartz-managed connection pool. This JobStore will be used if SchedulerFactoryBean's "dataSource" property is set. 
+<p>Supports both transactional and non-transactional DataSource access. With a non-XA DataSource and local Spring transactions, a single DataSource argument is sufficient. In case of an XA DataSource and global JTA transactions, SchedulerFactoryBean's "nonTransactionalDataSource" property should be set, passing in a non-XA DataSource that will not participate in global transactions. </p>
+<p>Operations performed by this JobStore will properly participate in any kind of Spring-managed transaction, as it uses Spring's DataSourceUtils connection handling methods that are aware of a current transaction. </p>
+<p>Note that all Quartz Scheduler operations that affect the persistent job store should usually be performed within active transactions, as they assume to get proper locks etc.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">SchedulerFactoryBean#setDataSource</a><a href="#">SchedulerFactoryBean#setNonTransactionalDataSource</a><a href="#">org.springframework.jdbc.datasource.DataSourceUtils#doGetConnection</a><a href="#">org.springframework.jdbc.datasource.DataSourceUtils#releaseConnection</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LocalDataSourceJobStore</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Subclass of Quartz's JobStoreCMT class that delegates to a Spring-managed DataSource instead of using a Quartz-managed connection pool. This JobStore will be used if SchedulerFactoryBean's "dataSource" property is set. 
+<p>Supports both transactional and non-transactional DataSource access. With a non-XA DataSource and local Spring transactions, a single DataSource argument is sufficient. In case of an XA DataSource and global JTA transactions, SchedulerFactoryBean's "nonTransactionalDataSource" property should be set, passing in a non-XA DataSource that will not participate in global transactions. </p>
+<p>Operations performed by this JobStore will properly participate in any kind of Spring-managed transaction, as it uses Spring's DataSourceUtils connection handling methods that are aware of a current transaction. </p>
+<p>Note that all Quartz Scheduler operations that affect the persistent job store should usually be performed within active transactions, as they assume to get proper locks etc.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-n-o-n_-t-x_-d-a-t-a_-s-o-u-r-c-e_-p-r-e-f-i-x.html">NON_TX_DATA_SOURCE_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">NON_TX_DATA_SOURCE_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Name used for the non-transactional ConnectionProvider for Quartz. This provider will delegate to the local Spring-managed DataSource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-x_-d-a-t-a_-s-o-u-r-c-e_-p-r-e-f-i-x.html">TX_DATA_SOURCE_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TX_DATA_SOURCE_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Name used for the transactional ConnectionProvider for Quartz. This provider will delegate to the local Spring-managed DataSource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="initialize.html">initialize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">initialize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.LocalDataSourceJobStore$initialize(org.quartz.spi.ClassLoadHelper, org.quartz.spi.SchedulerSignaler)/loadHelper">loadHelper</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoadHelper</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.quartz.LocalDataSourceJobStore$initialize(org.quartz.spi.ClassLoadHelper, org.quartz.spi.SchedulerSignaler)/signaler">signaler</span><span class="symbol">:</span>&nbsp;<span class="identifier">SchedulerSignaler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

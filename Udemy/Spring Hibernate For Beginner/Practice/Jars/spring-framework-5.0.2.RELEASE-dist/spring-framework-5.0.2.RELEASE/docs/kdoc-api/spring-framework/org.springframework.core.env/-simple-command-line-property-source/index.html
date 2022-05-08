@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleCommandLinePropertySource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core.env</a>&nbsp;/&nbsp;<a href=".">SimpleCommandLinePropertySource</a><br/>
+<br/>
+<h1>SimpleCommandLinePropertySource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleCommandLinePropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-command-line-property-source/index.html"><span class="identifier">CommandLinePropertySource</span></a><span class="symbol">&lt;</span><span class="identifier">CommandLineArgs</span><span class="symbol">&gt;</span></code>
+<p>CommandLinePropertySource implementation backed by a simple String array. Purpose This <code>CommandLinePropertySource</code> implementation aims to provide the simplest possible approach to parsing command line arguments. As with all <code>CommandLinePropertySource</code> implementations, command line arguments are broken into two distinct groups: <em>option arguments</em> and <em>non-option arguments</em>, as described below <em>(some sections copied from Javadoc for SimpleCommandLineArgsParser)</em>: Working with option arguments Option arguments must adhere to the exact syntax: <pre><code>--optName[=optValue]</code></pre> That is, options must be prefixed with "<code>--</code>", and may or may not specify a value. If a value is specified, the name and value must be separated <em>without spaces</em> by an equals sign ("="). Valid examples of option arguments <pre><code> --foo --foo=bar --foo="bar then baz" --foo=bar,baz,biz</code></pre> Invalid examples of option arguments <pre><code> -foo --foo bar --foo = bar --foo=bar --foo=baz --foo=biz</code></pre> Working with non-option arguments Any and all arguments specified at the command line without the "<code>--</code>" option prefix will be considered as "non-option arguments" and made available through the <code><a href="#">#getNonOptionArgs()</a></code> method. Typical usage <pre><code> public static void main(String[] args) { PropertySource ps = new SimpleCommandLinePropertySource(args); // ... }</code></pre> See CommandLinePropertySource for complete general usage examples. Beyond the basics 
+<p>When more fully-featured command line parsing is necessary, consider using the provided JOptCommandLinePropertySource, or implement your own <code>CommandLinePropertySource</code> against the command line parsing library of your choice!</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+CommandLinePropertySourceJOptCommandLinePropertySource</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleCommandLinePropertySource</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.core.env.SimpleCommandLinePropertySource$<init>(kotlin.Array((kotlin.String)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>SimpleCommandLinePropertySource</code> having the default name and backed by the given <code>String[]</code> of command line arguments.</p>
+<code><span class="identifier">SimpleCommandLinePropertySource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env.SimpleCommandLinePropertySource$<init>(kotlin.String, kotlin.Array((kotlin.String)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.core.env.SimpleCommandLinePropertySource$<init>(kotlin.String, kotlin.Array((kotlin.String)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new <code>SimpleCommandLinePropertySource</code> having the given name and backed by the given <code>String[]</code> of command line arguments.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-command-line-property-source/-c-o-m-m-a-n-d_-l-i-n-e_-p-r-o-p-e-r-t-y_-s-o-u-r-c-e_-n-a-m-e.html">COMMAND_LINE_PROPERTY_SOURCE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">COMMAND_LINE_PROPERTY_SOURCE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name given to CommandLinePropertySource instances: {@value}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-command-line-property-source/-d-e-f-a-u-l-t_-n-o-n_-o-p-t-i-o-n_-a-r-g-s_-p-r-o-p-e-r-t-y_-n-a-m-e.html">DEFAULT_NON_OPTION_ARGS_PROPERTY_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_NON_OPTION_ARGS_PROPERTY_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the property representing non-option arguments: {@value}</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-property-names.html">getPropertyNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPropertyNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Get the property names for the option arguments.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-command-line-property-source/contains-property.html">containsProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">containsProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env.CommandLinePropertySource$containsProperty(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation first checks to see if the name specified is the special <a href="#">"non-option arguments" property</a>, and if so delegates to the abstract <code><a href="#">#getNonOptionArgs()</a></code> method checking to see whether it returns an empty collection. Otherwise delegates to and returns the value of the abstract <code><a href="#">#containsOption(String)</a></code> method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-command-line-property-source/get-property.html">getProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env.CommandLinePropertySource$getProperty(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>This implementation first checks to see if the name specified is the special <a href="#">"non-option arguments" property</a>, and if so delegates to the abstract <code><a href="#">#getNonOptionArgs()</a></code> method. If so and the collection of non-option arguments is empty, this method returns <code>null</code>. If not empty, it returns a comma-separated String of all non-option arguments. Otherwise delegates to and returns the result of the abstract <code><a href="#"> </a></code> method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-command-line-property-source/set-non-option-args-property-name.html">setNonOptionArgsPropertyName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNonOptionArgsPropertyName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env.CommandLinePropertySource$setNonOptionArgsPropertyName(kotlin.String)/nonOptionArgsPropertyName">nonOptionArgsPropertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name of the special "non-option arguments" property. The default is {@value #DEFAULT_NON_OPTION_ARGS_PROPERTY_NAME}.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

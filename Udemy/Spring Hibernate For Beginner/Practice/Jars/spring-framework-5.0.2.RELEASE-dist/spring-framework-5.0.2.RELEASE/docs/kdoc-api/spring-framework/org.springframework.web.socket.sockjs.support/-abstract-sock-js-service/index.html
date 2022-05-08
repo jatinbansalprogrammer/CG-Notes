@@ -1,0 +1,261 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractSockJsService - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.sockjs.support</a>&nbsp;/&nbsp;<a href=".">AbstractSockJsService</a><br/>
+<br/>
+<h1>AbstractSockJsService</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSockJsService</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SockJsService</span><span class="symbol">, </span><span class="identifier">CorsConfigurationSource</span></code>
+<p>An abstract base class for SockJsService implementations that provides SockJS path resolution and handling of static SockJS requests (e.g. "/info", "/iframe.html", etc). Sub-classes must handle session URLs (i.e. transport-specific requests). By default, only same origin requests are allowed. Use <code><a href="#">#setAllowedOrigins</a></code> to specify a list of allowed origins (a list containing "*" will allow all origins).</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractSockJsService</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$<init>(org.springframework.scheduling.TaskScheduler)/scheduler">scheduler</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskScheduler</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-allowed-origins.html">getAllowedOrigins</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAllowedOrigins</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cors-configuration.html">getCorsConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCorsConfiguration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$getCorsConfiguration(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CorsConfiguration</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-disconnect-delay.html">getDisconnectDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDisconnectDelay</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the amount of time in milliseconds before a client is considered disconnected.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-heartbeat-time.html">getHeartbeatTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHeartbeatTime</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the amount of time in milliseconds when the server has not sent any messages.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-http-message-cache-size.html">getHttpMessageCacheSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHttpMessageCacheSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the size of the HTTP message cache.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-name.html">getName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the unique name associated with this service.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-sock-js-client-library-url.html">getSockJsClientLibraryUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSockJsClientLibraryUrl</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return he URL to the SockJS JavaScript client library.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-stream-bytes-limit.html">getStreamBytesLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getStreamBytesLimit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the minimum number of bytes that can be sent over a single HTTP streaming request before it will be closed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-task-scheduler.html">getTaskScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTaskScheduler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaskScheduler</span></code>
+<p>A scheduler instance to use for scheduling heart-beat messages.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-request.html">handleRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">handleRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$handleRequest(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, org.springframework.web.socket.WebSocketHandler)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$handleRequest(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, org.springframework.web.socket.WebSocketHandler)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$handleRequest(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, org.springframework.web.socket.WebSocketHandler)/sockJsPath">sockJsPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$handleRequest(org.springframework.http.server.ServerHttpRequest, org.springframework.http.server.ServerHttpResponse, kotlin.String, org.springframework.web.socket.WebSocketHandler)/wsHandler">wsHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method determines the SockJS path and handles SockJS static URLs. Session URLs and raw WebSocket requests are delegated to abstract methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-session-cookie-needed.html">isSessionCookieNeeded</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSessionCookieNeeded</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the JSESSIONID cookie is required for the application to function.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-web-socket-enabled.html">isWebSocketEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isWebSocketEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether WebSocket transport is enabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-allowed-origins.html">setAllowedOrigins</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAllowedOrigins</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setAllowedOrigins(kotlin.collections.MutableCollection((kotlin.String)))/allowedOrigins">allowedOrigins</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure allowed <code>Origin</code> header values. This check is mostly designed for browsers. There is nothing preventing other types of client to modify the <code>Origin</code> header value. 
+<p>When SockJS is enabled and origins are restricted, transport types that do not allow to check request origin (JSONP and Iframe based transports) are disabled. As a consequence, IE 6 to 9 are not supported when origins are restricted. </p>
+<p>Each provided allowed origin must have a scheme, and optionally a port (e.g. "http://example.org", "http://example.org:9090"). An allowed origin string may also be "*" in which case all origins are allowed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-disconnect-delay.html">setDisconnectDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDisconnectDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setDisconnectDelay(kotlin.Long)/disconnectDelay">disconnectDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The amount of time in milliseconds before a client is considered disconnected after not having a receiving connection, i.e. an active connection over which the server can send data to the client. 
+<p>The default value is 5000.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-heartbeat-time.html">setHeartbeatTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHeartbeatTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setHeartbeatTime(kotlin.Long)/heartbeatTime">heartbeatTime</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the amount of time in milliseconds when the server has not sent any messages and after which the server should send a heartbeat frame to the client in order to keep the connection from breaking. 
+<p>The default value is 25,000 (25 seconds).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-http-message-cache-size.html">setHttpMessageCacheSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHttpMessageCacheSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setHttpMessageCacheSize(kotlin.Int)/httpMessageCacheSize">httpMessageCacheSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The number of server-to-client messages that a session can cache while waiting for the next HTTP polling request from the client. All HTTP transports use this property since even streaming transports recycle HTTP requests periodically. 
+<p>The amount of time between HTTP requests should be relatively brief and will not exceed the allows disconnect delay (see <code><a href="set-disconnect-delay.html">#setDisconnectDelay(long)</a></code>); 5 seconds by default. </p>
+<p>The default size is 100.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-name.html">setName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a unique name for this service (mainly for logging purposes).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-cookie-needed.html">setSessionCookieNeeded</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionCookieNeeded</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setSessionCookieNeeded(kotlin.Boolean)/sessionCookieNeeded">sessionCookieNeeded</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The SockJS protocol requires a server to respond to an initial "/info" request from clients with a "cookie_needed" boolean property that indicates whether the use of a JSESSIONID cookie is required for the application to function correctly, e.g. for load balancing or in Java Servlet containers for the use of an HTTP session. 
+<p>This is especially important for IE 8,9 that support XDomainRequest -- a modified AJAX/XHR -- that can do requests across domains but does not send any cookies. In those cases, the SockJS client prefers the "iframe-htmlfile" transport over "xdr-streaming" in order to be able to send cookies. </p>
+<p>The SockJS protocol also expects a SockJS service to echo back the JSESSIONID cookie when this property is set to true. However, when running in a Servlet container this is not necessary since the container takes care of it. </p>
+<p>The default value is "true" to maximize the chance for applications to work correctly in IE 8,9 with support for cookies (and the JSESSIONID cookie in particular). However, an application can choose to set this to "false" if the use of cookies (and HTTP session) is not required.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-sock-js-client-library-url.html">setSockJsClientLibraryUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSockJsClientLibraryUrl</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setSockJsClientLibraryUrl(kotlin.String)/clientLibraryUrl">clientLibraryUrl</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Transports with no native cross-domain communication (e.g. "eventsource", "htmlfile") must get a simple page from the "foreign" domain in an invisible iframe so that code in the iframe can run from a domain local to the SockJS server. Since the iframe needs to load the SockJS javascript client library, this property allows specifying where to load it from. 
+<p>By default this is set to point to "https://cdn.jsdelivr.net/sockjs/1.0.0/sockjs.min.js". However, it can also be set to point to a URL served by the application. </p>
+<p>Note that it's possible to specify a relative URL in which case the URL must be relative to the iframe URL. For example assuming a SockJS endpoint mapped to "/sockjs", and resulting iframe URL "/sockjs/iframe.html", then the the relative URL must start with "../../" to traverse up to the location above the SockJS mapping. In case of a prefix-based Servlet mapping one more traversal may be needed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-stream-bytes-limit.html">setStreamBytesLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStreamBytesLimit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setStreamBytesLimit(kotlin.Int)/streamBytesLimit">streamBytesLimit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Streaming transports save responses on the client side and don't free memory used by delivered messages. Such transports need to recycle the connection once in a while. This property sets a minimum number of bytes that can be sent over a single HTTP streaming request before it will be closed. After that client will open a new request. Setting this value to one effectively disables streaming and will make streaming transports to behave like polling transports. 
+<p>The default value is 128K (i.e. 128 * 1024).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-suppress-cors.html">setSuppressCors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSuppressCors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setSuppressCors(kotlin.Boolean)/suppressCors">suppressCors</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This option can be used to disable automatic addition of CORS headers for SockJS requests. 
+<p>The default value is "false".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-web-socket-enabled.html">setWebSocketEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWebSocketEnabled</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.support.AbstractSockJsService$setWebSocketEnabled(kotlin.Boolean)/webSocketEnabled">webSocketEnabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Some load balancers do not support WebSocket. This option can be used to disable the WebSocket transport on the server side. 
+<p>The default value is "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="should-suppress-cors.html">shouldSuppressCors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shouldSuppressCors</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

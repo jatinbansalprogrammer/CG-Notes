@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WeavingTransformer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.instrument.classloading</a>&nbsp;/&nbsp;<a href=".">WeavingTransformer</a><br/>
+<br/>
+<h1>WeavingTransformer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WeavingTransformer</span></code>
+<p>ClassFileTransformer-based weaver, allowing for a list of transformers to be applied on a class byte array. Normally used inside class loaders. 
+<p>Note: This class is deliberately implemented for minimal external dependencies, since it is included in weaver jars (to be deployed into application servers).</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Costin Leau</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WeavingTransformer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$<init>(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span></code>
+<p>Create a new WeavingTransformer for the given class loader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-transformer.html">addTransformer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addTransformer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$addTransformer(java.lang.instrument.ClassFileTransformer)/transformer">transformer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassFileTransformer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a class file transformer to be applied by this weaver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="transform-if-necessary.html">transformIfNecessary</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">transformIfNecessary</span><span class="symbol">(</span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$transformIfNecessary(kotlin.String, kotlin.ByteArray)/className">className</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$transformIfNecessary(kotlin.String, kotlin.ByteArray)/bytes">bytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">transformIfNecessary</span><span class="symbol">(</span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$transformIfNecessary(kotlin.String, kotlin.String, kotlin.ByteArray, java.security.ProtectionDomain)/className">className</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$transformIfNecessary(kotlin.String, kotlin.String, kotlin.ByteArray, java.security.ProtectionDomain)/internalName">internalName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$transformIfNecessary(kotlin.String, kotlin.String, kotlin.ByteArray, java.security.ProtectionDomain)/bytes">bytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.instrument.classloading.WeavingTransformer$transformIfNecessary(kotlin.String, kotlin.String, kotlin.ByteArray, java.security.ProtectionDomain)/pd">pd</span><span class="symbol">:</span>&nbsp;<span class="identifier">ProtectionDomain</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a></code>
+<p>Apply transformation on a given class byte definition. The method will always return a non-null byte array (if no transformation has taken place the array content will be identical to the original one).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

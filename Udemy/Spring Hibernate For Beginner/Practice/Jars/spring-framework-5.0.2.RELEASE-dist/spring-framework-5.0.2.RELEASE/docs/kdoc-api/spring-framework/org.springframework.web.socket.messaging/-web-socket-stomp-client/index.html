@@ -1,0 +1,239 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSocketStompClient - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.messaging</a>&nbsp;/&nbsp;<a href=".">WebSocketStompClient</a><br/>
+<br/>
+<h1>WebSocketStompClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketStompClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/index.html"><span class="identifier">StompClientSupport</span></a><span class="symbol">, </span><span class="identifier">SmartLifecycle</span></code>
+<p>A STOMP over WebSocket client that connects using an implementation of org.springframework.web.socket.client.WebSocketClient including org.springframework.web.socket.sockjs.client.SockJsClient.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebSocketStompClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$<init>(org.springframework.web.socket.client.WebSocketClient)/webSocketClient">webSocketClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketClient</span><span class="symbol">)</span></code>
+<p>Class constructor. Sets <code><a href="#">#setDefaultHeartbeat</a></code> to "0,0" but will reset it back to the preferred "10000,10000" when a <code><a href="set-task-scheduler.html">#setTaskScheduler</a></code> is configured.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="connect.html">connect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompSessionHandler</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/uriVars">uriVars</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">StompSession</span><span class="symbol">&gt;</span></code>
+<p>Connect to the given WebSocket URL and notify the given org.springframework.messaging.simp.stomp.StompSessionHandler when connected on the STOMP level after the CONNECTED frame is received.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/handshakeHeaders">handshakeHeaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHttpHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompSessionHandler</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/uriVariables">uriVariables</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">StompSession</span><span class="symbol">&gt;</span></code>
+<p>An overloaded version of <code><a href="#">#connect(String, StompSessionHandler, Object...)</a></code> that also accepts WebSocketHttpHeaders to use for the WebSocket handshake.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/handshakeHeaders">handshakeHeaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHttpHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/connectHeaders">connectHeaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompSessionHandler</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(kotlin.String, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler, kotlin.Array((kotlin.Any)))/uriVariables">uriVariables</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">StompSession</span><span class="symbol">&gt;</span></code>
+<p>An overloaded version of <code><a href="#">#connect(String, StompSessionHandler, Object...)</a></code> that also accepts WebSocketHttpHeaders to use for the WebSocket handshake and StompHeaders for the STOMP CONNECT frame.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">connect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(java.net.URI, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler)/url">url</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(java.net.URI, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler)/handshakeHeaders">handshakeHeaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHttpHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(java.net.URI, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler)/connectHeaders">connectHeaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$connect(java.net.URI, org.springframework.web.socket.WebSocketHttpHeaders, org.springframework.messaging.simp.stomp.StompHeaders, org.springframework.messaging.simp.stomp.StompSessionHandler)/sessionHandler">sessionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">StompSessionHandler</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">StompSession</span><span class="symbol">&gt;</span></code>
+<p>An overloaded version of <code><a href="#">#connect(String, WebSocketHttpHeaders, StompSessionHandler, Object...)</a></code> that accepts a fully prepared java.net.URI.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-inbound-message-size-limit.html">getInboundMessageSizeLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInboundMessageSizeLimit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the configured inbound message buffer size in bytes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-phase.html">getPhase</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPhase</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the configured phase.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-web-socket-client.html">getWebSocketClient</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWebSocketClient</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebSocketClient</span></code>
+<p>Return the configured WebSocketClient.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-auto-startup.html">isAutoStartup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAutoStartup</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return the value for the 'autoStartup' property. If "true", this client will automatically start and stop the contained WebSocketClient.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-auto-startup.html">setAutoStartup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutoStartup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$setAutoStartup(kotlin.Boolean)/autoStartup">autoStartup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to auto-start the contained WebSocketClient when the Spring context has been refreshed. 
+<p>Default is "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-inbound-message-size-limit.html">setInboundMessageSizeLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInboundMessageSizeLimit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$setInboundMessageSizeLimit(kotlin.Int)/inboundMessageSizeLimit">inboundMessageSizeLimit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the maximum size allowed for inbound STOMP message. Since a STOMP message can be received in multiple WebSocket messages, buffering may be required and this property determines the maximum buffer size per message. 
+<p>By default this is set to 64 * 1024 (64K).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-phase.html">setPhase</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPhase</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$setPhase(kotlin.Int)/phase">phase</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the phase in which the WebSocket client should be started and subsequently closed. The startup order proceeds from lowest to highest, and the shutdown order is the reverse of that. 
+<p>By default this is Integer.MAX_VALUE meaning that the WebSocket client is started as late as possible and stopped as soon as possible.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-scheduler.html">setTaskScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskScheduler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$setTaskScheduler(org.springframework.scheduling.TaskScheduler)/taskScheduler">taskScheduler</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskScheduler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc} 
+<p>Also automatically sets the <code><a href="#">defaultHeartbeat</a></code> property to "10000,10000" if it is currently set to "0,0".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.WebSocketStompClient$stop(java.lang.Runnable)/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/get-default-heartbeat.html">getDefaultHeartbeat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultHeartbeat</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long-array/index.html"><span class="identifier">LongArray</span></a></code>
+<p>Return the configured default heart-beat value (never <code>null</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/get-message-converter.html">getMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMessageConverter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageConverter</span></code>
+<p>Return the configured MessageConverter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/get-receipt-time-limit.html">getReceiptTimeLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getReceiptTimeLimit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the configured receipt time limit.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/get-task-scheduler.html">getTaskScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTaskScheduler</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaskScheduler</span></code>
+<p>The configured TaskScheduler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/is-default-heartbeat-enabled.html">isDefaultHeartbeatEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isDefaultHeartbeatEnabled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether heartbeats are enabled. 
+<p>Returns <code>false</code> if <code><a href="#">defaultHeartbeat</a></code> is set to "0,0", and <code>true</code> otherwise.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/set-default-heartbeat.html">setDefaultHeartbeat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultHeartbeat</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.StompClientSupport$setDefaultHeartbeat(kotlin.LongArray)/heartbeat">heartbeat</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long-array/index.html"><span class="identifier">LongArray</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the default value for the "heart-beat" header of the STOMP CONNECT frame. The first number represents how often the client will write or send a heart-beat. The second is how often the server should write. A value of 0 means no heart-beats. 
+<p>By default this is set to "10000,10000" but subclasses may override that default and for example set it to "0,0" if they require a TaskScheduler to be configured first.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/set-message-converter.html">setMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageConverter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.StompClientSupport$setMessageConverter(org.springframework.messaging.converter.MessageConverter)/messageConverter">messageConverter</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageConverter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the MessageConverter to use to convert the payload of incoming and outgoing messages to and from <code>byte[]</code> based on object type and the "content-type" header. 
+<p>By default, SimpleMessageConverter is configured.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.messaging.simp.stomp/-stomp-client-support/set-receipt-time-limit.html">setReceiptTimeLimit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReceiptTimeLimit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.stomp.StompClientSupport$setReceiptTimeLimit(kotlin.Long)/receiptTimeLimit">receiptTimeLimit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the number of milliseconds before a receipt is considered expired. 
+<p>By default set to 15,000 (15 seconds).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.dao.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.dao.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.dao.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-persistence-exception-translation-advisor/index.html">PersistenceExceptionTranslationAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PersistenceExceptionTranslationAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPointcutAdvisor</span></code>
+<p>Spring AOP exception translation aspect for use at Repository or DAO layer level. Translates native persistence exceptions into Spring's DataAccessException hierarchy, based on a given PersistenceExceptionTranslator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-persistence-exception-translation-post-processor/index.html">PersistenceExceptionTranslationPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PersistenceExceptionTranslationPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.aop.framework.autoproxy/-abstract-bean-factory-aware-advising-post-processor/index.html"><span class="identifier">AbstractBeanFactoryAwareAdvisingPostProcessor</span></a></code>
+<p>Bean post-processor that automatically applies persistence exception translation to any bean marked with Spring's @org.springframework.stereotype.Repository annotation, adding a corresponding PersistenceExceptionTranslationAdvisor to the exposed proxy (either an existing AOP proxy or a newly generated proxy that implements all of the target's interfaces). 
+<p>Translates native resource exceptions to Spring's org.springframework.dao.DataAccessException hierarchy. Autodetects beans that implement the org.springframework.dao.support.PersistenceExceptionTranslator interface, which are subsequently asked to translate candidate exceptions. </p>
+<p>All of Spring's applicable resource factories (e.g. org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean) implement the <code>PersistenceExceptionTranslator</code> interface out of the box. As a consequence, all that is usually needed to enable automatic exception translation is marking all affected beans (such as Repositories or DAOs) with the <code>@Repository</code> annotation, along with defining this post-processor as a bean in the application context.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

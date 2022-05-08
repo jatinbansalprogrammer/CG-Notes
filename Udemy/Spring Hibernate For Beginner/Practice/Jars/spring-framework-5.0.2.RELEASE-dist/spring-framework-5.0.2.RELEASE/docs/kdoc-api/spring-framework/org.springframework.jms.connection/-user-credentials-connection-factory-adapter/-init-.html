@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UserCredentialsConnectionFactoryAdapter.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href="index.html">UserCredentialsConnectionFactoryAdapter</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$&lt;init&gt;()"></a>
+<code><span class="identifier">UserCredentialsConnectionFactoryAdapter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An adapter for a target JMS javax.jms.ConnectionFactory, applying the given user credentials to every standard <code>createConnection()</code> call, that is, implicitly invoking <code>createConnection(username, password)</code> on the target. All other methods simply delegate to the corresponding methods of the target ConnectionFactory. 
+<p>Can be used to proxy a target JNDI ConnectionFactory that does not have user credentials configured. Client code can work with the ConnectionFactory without passing in username and password on every <code>createConnection()</code> call. </p>
+<p>In the following example, client code can simply transparently work with the preconfigured "myConnectionFactory", implicitly accessing "myTargetConnectionFactory" with the specified user credentials. </p>
+<pre><code> &lt;bean id="myTargetConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="java:comp/env/jms/mycf"/&gt; &lt;/bean&gt; &lt;bean id="myConnectionFactory" class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter"&gt; &lt;property name="targetConnectionFactory" ref="myTargetConnectionFactory"/&gt; &lt;property name="username" value="myusername"/&gt; &lt;property name="password" value="mypassword"/&gt; &lt;/bean&gt;</code></pre> 
+<p>If the "username" is empty, this proxy will simply delegate to the standard <code>createConnection()</code> method of the target ConnectionFactory. This can be used to keep a UserCredentialsConnectionFactoryAdapter bean definition just for the <em>option</em> of implicitly passing in user credentials if the particular target ConnectionFactory requires it.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="create-connection.html">#createConnection</a><a href="create-queue-connection.html">#createQueueConnection</a><a href="create-topic-connection.html">#createTopicConnection</a></p>
+</BODY>
+</HTML>

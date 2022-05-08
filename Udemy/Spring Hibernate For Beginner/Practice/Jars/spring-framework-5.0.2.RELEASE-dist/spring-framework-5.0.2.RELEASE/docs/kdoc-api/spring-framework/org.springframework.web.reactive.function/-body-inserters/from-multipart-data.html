@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BodyInserters.fromMultipartData - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.function</a>&nbsp;/&nbsp;<a href="index.html">BodyInserters</a>&nbsp;/&nbsp;<a href=".">fromMultipartData</a><br/>
+<br/>
+<h1>fromMultipartData</h1>
+<a name="org.springframework.web.reactive.function.BodyInserters$fromMultipartData(org.springframework.util.MultiValueMap((kotlin.String, org.springframework.web.reactive.function.BodyInserters.fromMultipartData.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">fromMultipartData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.BodyInserters$fromMultipartData(org.springframework.util.MultiValueMap((kotlin.String, org.springframework.web.reactive.function.BodyInserters.fromMultipartData.T)))/multipartData">multipartData</span><span class="symbol">:</span>&nbsp;<span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FormInserter</span></code>
+<p>Return a <code>FormInserter</code> that writes the given <code>MultiValueMap</code> as multipart data. The values in the <code>MultiValueMap</code> can be any Object representing the body of the part, or an org.springframework.http.HttpEntity representing a part with body and headers. The <code>MultiValueMap</code> can be built conveniently using org.springframework.http.client.MultipartBodyBuilder. Also the returned inserter allows for additional entries to be added via <code><a href="#">FormInserter#with(String, Object)</a></code>. 
+<p>Note that you can also use the <code>syncBody(Object)</code> method in the request builders of both the <code>WebClient</code> and <code>WebTestClient</code>. In that case the setting of the content type is also not required, just be sure the map contains at least one non-String value or otherwise, without a content-type header as a hint, it would be interpreted as a plain form data request.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="multipartData"></a>
+<code>multipartData</code> - the form data to write to the output message</p>
+<p><strong>Return</strong><br/>
+a <code>BodyInserter</code> that writes multipart data</p>
+<a name="org.springframework.web.reactive.function.BodyInserters$fromMultipartData(kotlin.String, org.springframework.web.reactive.function.BodyInserters.fromMultipartData.T)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">fromMultipartData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.BodyInserters$fromMultipartData(kotlin.String, org.springframework.web.reactive.function.BodyInserters.fromMultipartData.T)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.function.BodyInserters$fromMultipartData(kotlin.String, org.springframework.web.reactive.function.BodyInserters.fromMultipartData.T)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FormInserter</span></code>
+<p>A variant of <code><a href="#">#fromMultipartData(MultiValueMap)</a></code> for adding parts as name-value pairs in-line vs building a <code>MultiValueMap</code> and passing it in.</p>
+<h3>Parameters</h3>
+<p><a name="key"></a>
+<code>key</code> - the part name</p>
+<p><a name="value"></a>
+<code>value</code> - the part value, an Object or <code>HttpEntity</code></p>
+<p><strong>Return</strong><br/>
+a <code>FormInserter</code> that can writes the provided multipart data and also allows adding more parts</p>
+</BODY>
+</HTML>

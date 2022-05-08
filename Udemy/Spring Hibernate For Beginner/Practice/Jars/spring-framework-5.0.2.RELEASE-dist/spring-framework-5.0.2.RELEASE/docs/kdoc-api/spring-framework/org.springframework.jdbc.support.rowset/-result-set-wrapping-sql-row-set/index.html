@@ -1,0 +1,288 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResultSetWrappingSqlRowSet - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support.rowset</a>&nbsp;/&nbsp;<a href=".">ResultSetWrappingSqlRowSet</a><br/>
+<br/>
+<h1>ResultSetWrappingSqlRowSet</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResultSetWrappingSqlRowSet</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlRowSet</span></code>
+<p>The default implementation of Spring's SqlRowSet interface, wrapping a java.sql.ResultSet, catching any SQLExceptions and translating them to a corresponding Spring InvalidResultSetAccessException. 
+<p>The passed-in ResultSet should already be disconnected if the SqlRowSet is supposed to be usable in a disconnected fashion. This means that you will usually pass in a <code>javax.sql.rowset.CachedRowSet</code>, which implements the ResultSet interface. </p>
+<p>Note: Since JDBC 4.0, it has been clarified that any methods using a String to identify the column should be using the column label. The column label is assigned using the ALIAS keyword in the SQL query string. When the query doesn't use an ALIAS, the default label is the column name. Most JDBC ResultSet implementations follow this new pattern but there are exceptions such as the <code>com.sun.rowset.CachedRowSetImpl</code> class which only uses the column name, ignoring any column labels. As of Spring 3.0.5, ResultSetWrappingSqlRowSet will translate column labels to the correct column index to provide better support for the <code>com.sun.rowset.CachedRowSetImpl</code> which is the default implementation used by org.springframework.jdbc.core.JdbcTemplate when working with RowSets. </p>
+<p>Note: This class implements the <code>java.io.Serializable</code> marker interface through the SqlRowSet interface, but is only actually serializable if the disconnected ResultSet/RowSet contained in it is serializable. Most CachedRowSet implementations are actually serializable, so this should usually work out.</p>
+</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+java.sql.ResultSetjavax.sql.rowset.CachedRowSet<a href="#">org.springframework.jdbc.core.JdbcTemplate#queryForRowSet</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ResultSetWrappingSqlRowSet</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$<init>(java.sql.ResultSet)/resultSet">resultSet</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">)</span></code>
+<p>Create a new ResultSetWrappingSqlRowSet for the given ResultSet.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="absolute.html">absolute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">absolute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$absolute(kotlin.Int)/row">row</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="after-last.html">afterLast</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterLast</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-first.html">beforeFirst</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeFirst</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="find-column.html">findColumn</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">findColumn</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$findColumn(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="first.html">first</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">first</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-big-decimal.html">getBigDecimal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBigDecimal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getBigDecimal(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BigDecimal</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBigDecimal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getBigDecimal(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BigDecimal</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-boolean.html">getBoolean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBoolean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getBoolean(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getBoolean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getBoolean(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-byte.html">getByte</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getByte</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getByte(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte/index.html"><span class="identifier">Byte</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getByte</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getByte(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte/index.html"><span class="identifier">Byte</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-date.html">getDate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDate(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Date</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDate(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Date</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDate(kotlin.Int, java.util.Calendar)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDate(kotlin.Int, java.util.Calendar)/cal">cal</span><span class="symbol">:</span>&nbsp;<span class="identifier">Calendar</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Date</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDate(kotlin.String, java.util.Calendar)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDate(kotlin.String, java.util.Calendar)/cal">cal</span><span class="symbol">:</span>&nbsp;<span class="identifier">Calendar</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Date</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-double.html">getDouble</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDouble</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDouble(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDouble</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getDouble(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-float.html">getFloat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFloat</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getFloat(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFloat</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getFloat(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html"><span class="identifier">Float</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-int.html">getInt</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInt</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getInt(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInt</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getInt(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-long.html">getLong</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLong</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getLong(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLong</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getLong(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-meta-data.html">getMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getMetaData</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SqlRowSetMetaData</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-n-string.html">getNString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getNString(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getNString(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.Int, kotlin.collections.MutableMap((kotlin.String, java.lang.Class((kotlin.Any)))))/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.Int, kotlin.collections.MutableMap((kotlin.String, java.lang.Class((kotlin.Any)))))/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.String, kotlin.collections.MutableMap((kotlin.String, java.lang.Class((kotlin.Any)))))/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.String, kotlin.collections.MutableMap((kotlin.String, java.lang.Class((kotlin.Any)))))/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.Int, java.lang.Class((org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet.getObject.T)))/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.Int, java.lang.Class((org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet.getObject.T)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">getObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.String, java.lang.Class((org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet.getObject.T)))/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getObject(kotlin.String, java.lang.Class((org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet.getObject.T)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-result-set.html">getResultSet</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getResultSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultSet</span></code>
+<p>Return the underlying ResultSet (usually a <code>javax.sql.rowset.CachedRowSet</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-row.html">getRow</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRow</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-short.html">getShort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getShort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getShort(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getShort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getShort(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-short/index.html"><span class="identifier">Short</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-string.html">getString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getString(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getString</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getString(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-time.html">getTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTime(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Time</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTime(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Time</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTime(kotlin.Int, java.util.Calendar)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTime(kotlin.Int, java.util.Calendar)/cal">cal</span><span class="symbol">:</span>&nbsp;<span class="identifier">Calendar</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Time</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTime(kotlin.String, java.util.Calendar)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTime(kotlin.String, java.util.Calendar)/cal">cal</span><span class="symbol">:</span>&nbsp;<span class="identifier">Calendar</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Time</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-timestamp.html">getTimestamp</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimestamp</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTimestamp(kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Timestamp</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimestamp</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTimestamp(kotlin.String)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Timestamp</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimestamp</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTimestamp(kotlin.Int, java.util.Calendar)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTimestamp(kotlin.Int, java.util.Calendar)/cal">cal</span><span class="symbol">:</span>&nbsp;<span class="identifier">Calendar</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Timestamp</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimestamp</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTimestamp(kotlin.String, java.util.Calendar)/columnLabel">columnLabel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$getTimestamp(kotlin.String, java.util.Calendar)/cal">cal</span><span class="symbol">:</span>&nbsp;<span class="identifier">Calendar</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Timestamp</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-after-last.html">isAfterLast</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAfterLast</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-before-first.html">isBeforeFirst</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isBeforeFirst</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-first.html">isFirst</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFirst</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-last.html">isLast</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isLast</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="last.html">last</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">last</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="next.html">next</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">next</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="previous.html">previous</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">previous</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="relative.html">relative</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">relative</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.rowset.ResultSetWrappingSqlRowSet$relative(kotlin.Int)/rows">rows</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="was-null.html">wasNull</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">wasNull</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConfigurationClassPostProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">ConfigurationClassPostProcessor</a><br/>
+<br/>
+<h1>ConfigurationClassPostProcessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConfigurationClassPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.support/-bean-definition-registry-post-processor/index.html"><span class="identifier">BeanDefinitionRegistryPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">ResourceLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">EnvironmentAware</span></code>
+<p>BeanFactoryPostProcessor used for bootstrapping processing of Configuration classes. 
+<p>Registered by default when using <code>&lt;context:annotation-config/&gt;</code> or <code>&lt;context:component-scan/&gt;</code>. Otherwise, may be declared manually as with any other BeanFactoryPostProcessor. </p>
+<p>This post processor is <code><a href="#">Ordered#HIGHEST_PRECEDENCE</a></code> as it is important that any Bean methods declared in Configuration classes have their respective bean definitions registered before any other BeanFactoryPostProcessor executes.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConfigurationClassPostProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>BeanFactoryPostProcessor used for bootstrapping processing of Configuration classes. 
+<p>Registered by default when using <code>&lt;context:annotation-config/&gt;</code> or <code>&lt;context:component-scan/&gt;</code>. Otherwise, may be declared manually as with any other BeanFactoryPostProcessor. </p>
+<p>This post processor is <code><a href="#">Ordered#HIGHEST_PRECEDENCE</a></code> as it is important that any Bean methods declared in Configuration classes have their respective bean definitions registered before any other BeanFactoryPostProcessor executes.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="enhance-configuration-classes.html">enhanceConfigurationClasses</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">enhanceConfigurationClasses</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$enhanceConfigurationClasses(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Post-processes a BeanFactory in search of Configuration class BeanDefinitions; any candidates are then enhanced by a ConfigurationClassEnhancer. Candidate status is determined by BeanDefinition attribute metadata.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-bean-definition-registry.html">postProcessBeanDefinitionRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeanDefinitionRegistry</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$postProcessBeanDefinitionRegistry(org.springframework.beans.factory.support.BeanDefinitionRegistry)/registry">registry</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionRegistry</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Derive further bean definitions from the configuration classes in the registry.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-bean-factory.html">postProcessBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$postProcessBeanFactory(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Prepare the Configuration classes for servicing bean requests at runtime by replacing them with CGLIB-enhanced subclasses.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="process-config-bean-definitions.html">processConfigBeanDefinitions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">processConfigBeanDefinitions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$processConfigBeanDefinitions(org.springframework.beans.factory.support.BeanDefinitionRegistry)/registry">registry</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionRegistry</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Build and validate a configuration model based on the registry of Configuration classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$setBeanClassLoader(java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-name-generator.html">setBeanNameGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanNameGenerator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$setBeanNameGenerator(org.springframework.beans.factory.support.BeanNameGenerator)/beanNameGenerator">beanNameGenerator</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanNameGenerator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the BeanNameGenerator to be used when triggering component scanning from Configuration classes and when registering Import'ed configuration classes. The default is a standard AnnotationBeanNameGenerator for scanned components (compatible with the default in ClassPathBeanDefinitionScanner) and a variant thereof for imported configuration classes (using unique fully-qualified class names instead of standard component overriding). 
+<p>Note that this strategy does <em>not</em> apply to Bean methods. </p>
+<p>This setter is typically only appropriate when configuring the post-processor as a standalone bean definition in XML, e.g. not using the dedicated <code>AnnotationConfig*</code> application contexts or the <code>&lt;context:annotation-config&gt;</code> element. Any bean name generator specified against the application context will take precedence over any value set here.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$setEnvironment(org.springframework.core.env.Environment)/environment">environment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Environment</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-metadata-reader-factory.html">setMetadataReaderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMetadataReaderFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$setMetadataReaderFactory(org.springframework.core.type.classreading.MetadataReaderFactory)/metadataReaderFactory">metadataReaderFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetadataReaderFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the MetadataReaderFactory to use. 
+<p>Default is a CachingMetadataReaderFactory for the specified <a href="set-bean-class-loader.html">bean class loader</a>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-problem-reporter.html">setProblemReporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProblemReporter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$setProblemReporter(org.springframework.beans.factory.parsing.ProblemReporter)/problemReporter">problemReporter</span><span class="symbol">:</span>&nbsp;<span class="identifier">ProblemReporter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ProblemReporter to use. 
+<p>Used to register any problems detected with Configuration or Bean declarations. For instance, an @Bean method marked as <code>final</code> is illegal and would be reported as a problem. Defaults to FailFastProblemReporter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-resource-loader.html">setResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$setResourceLoader(org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-source-extractor.html">setSourceExtractor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSourceExtractor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.ConfigurationClassPostProcessor$setSourceExtractor(org.springframework.beans.factory.parsing.SourceExtractor)/sourceExtractor">sourceExtractor</span><span class="symbol">:</span>&nbsp;<span class="identifier">SourceExtractor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the SourceExtractor to use for generated bean definitions that correspond to Bean factory methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

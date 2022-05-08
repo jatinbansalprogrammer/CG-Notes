@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.cache.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.cache.support</a><br/>
+<br/>
+<h2>Package org.springframework.cache.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-cache-manager/index.html">AbstractCacheManager</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractCacheManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Abstract base class implementing the common CacheManager methods. Useful for 'static' environments where the backing caches do not change.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-cache-manager/index.html">CompositeCacheManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeCacheManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Composite CacheManager implementation that iterates over a given collection of delegate CacheManager instances. 
+<p>Allows NoOpCacheManager to be automatically added to the end of the list for handling cache declarations without a backing store. Otherwise, any custom CacheManager may play that role of the last delegate as well, lazily creating cache regions for any requested name. </p>
+<p>Note: Regular CacheManagers that this composite manager delegates to need to return <code>null</code> from <code><a href="#">#getCache(String)</a></code> if they are unaware of the specified cache name, allowing for iteration to the next delegate in line. However, most CacheManager implementations fall back to lazy creation of named caches once requested; check out the specific configuration details for a 'static' mode with fixed cache names, if available.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-no-op-cache/index.html">NoOpCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NoOpCache</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Cache</span></code>
+<p>A no operation Cache implementation suitable for disabling caching. 
+<p>Will simply accept any items into the cache not actually storing them.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-no-op-cache-manager/index.html">NoOpCacheManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NoOpCacheManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheManager</span></code>
+<p>A basic, no operation CacheManager implementation suitable for disabling caching, typically used for backing cache declarations without an actual backing store. 
+<p>Will simply accept any items into the cache not actually storing them.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-null-value/index.html">NullValue</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">NullValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>Simple serializable class that serves as a <code>null</code> replacement for cache stores which otherwise do not support <code>null</code> values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-cache-manager/index.html">SimpleCacheManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleCacheManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-cache-manager/index.html"><span class="identifier">AbstractCacheManager</span></a></code>
+<p>Simple cache manager working against a given collection of caches. Useful for testing or simple caching declarations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-value-wrapper/index.html">SimpleValueWrapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleValueWrapper</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ValueWrapper</span></code>
+<p>Straightforward implementation of org.springframework.cache.Cache.ValueWrapper, simply holding the value as given at construction and returning it from <code><a href="-simple-value-wrapper/get.html">#get()</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LazyConnectionDataSourceProxy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href=".">LazyConnectionDataSourceProxy</a><br/>
+<br/>
+<h1>LazyConnectionDataSourceProxy</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LazyConnectionDataSourceProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingDataSource</span></code>
+<p>Proxy for a target DataSource, fetching actual JDBC Connections lazily, i.e. not until first creation of a Statement. Connection initialization properties like auto-commit mode, transaction isolation and read-only mode will be kept and applied to the actual JDBC Connection as soon as an actual Connection is fetched (if ever). Consequently, commit and rollback calls will be ignored if no Statements have been created. 
+<p>This DataSource proxy allows to avoid fetching JDBC Connections from a pool unless actually necessary. JDBC transaction control can happen without fetching a Connection from the pool or communicating with the database; this will be done lazily on first creation of a JDBC Statement. </p>
+<p><strong>If you configure both a LazyConnectionDataSourceProxy and a TransactionAwareDataSourceProxy, make sure that the latter is the outermost DataSource.</strong> In such a scenario, data access code will talk to the transaction-aware DataSource, which will in turn work with the LazyConnectionDataSourceProxy. </p>
+<p>Lazy fetching of physical JDBC Connections is particularly beneficial in a generic transaction demarcation environment. It allows you to demarcate transactions on all methods that could potentially perform data access, without paying a performance penalty if no actual data access happens. </p>
+<p>This DataSource proxy gives you behavior analogous to JTA and a transactional JNDI DataSource (as provided by the Java EE server), even with a local transaction strategy like DataSourceTransactionManager or HibernateTransactionManager. It does not add value with Spring's JtaTransactionManager as transaction strategy. </p>
+<p>Lazy fetching of JDBC Connections is also recommended for read-only operations with Hibernate, in particular if the chances of resolving the result in the second-level cache are high. This avoids the need to communicate with the database at all for such read-only operations. You will get the same effect with non-transactional reads, but lazy fetching of JDBC Connections allows you to still perform reads in transactions. </p>
+<p><strong>NOTE:</strong> This DataSource proxy needs to return wrapped Connections (which implement the ConnectionProxy interface) in order to handle lazy fetching of an actual JDBC Connection. Use <code><a href="#">Connection#unwrap</a></code> to retrieve the native JDBC Connection.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1.4</p>
+<p><strong>See Also</strong><br/>
+DataSourceTransactionManager</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LazyConnectionDataSourceProxy</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">LazyConnectionDataSourceProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy$<init>(javax.sql.DataSource)/targetDataSource">targetDataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span></code>
+<p>Create a new LazyConnectionDataSourceProxy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection.html">getConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy$getConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy$getConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code>
+<p>Return a Connection handle that lazily fetches an actual JDBC Connection when asked for a Statement (or PreparedStatement or CallableStatement). 
+<p>The returned Connection handle implements the ConnectionProxy interface, allowing to retrieve the underlying target Connection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-auto-commit.html">setDefaultAutoCommit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultAutoCommit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy$setDefaultAutoCommit(kotlin.Boolean)/defaultAutoCommit">defaultAutoCommit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default auto-commit mode to expose when no target Connection has been fetched yet (-&gt; actual JDBC Connection default not known yet). 
+<p>If not specified, the default gets determined by checking a target Connection on startup. If that check fails, the default will be determined lazily on first access of a Connection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-transaction-isolation.html">setDefaultTransactionIsolation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultTransactionIsolation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy$setDefaultTransactionIsolation(kotlin.Int)/defaultTransactionIsolation">defaultTransactionIsolation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default transaction isolation level to expose when no target Connection has been fetched yet (-&gt; actual JDBC Connection default not known yet). 
+<p>This property accepts the int constant value (e.g. 8) as defined in the java.sql.Connection interface; it is mainly intended for programmatic use. Consider using the "defaultTransactionIsolationName" property for setting the value by name (e.g. "TRANSACTION_SERIALIZABLE"). </p>
+<p>If not specified, the default gets determined by checking a target Connection on startup. If that check fails, the default will be determined lazily on first access of a Connection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-transaction-isolation-name.html">setDefaultTransactionIsolationName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultTransactionIsolationName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy$setDefaultTransactionIsolationName(kotlin.String)/constantName">constantName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default transaction isolation level by the name of the corresponding constant in java.sql.Connection, e.g. "TRANSACTION_SERIALIZABLE".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

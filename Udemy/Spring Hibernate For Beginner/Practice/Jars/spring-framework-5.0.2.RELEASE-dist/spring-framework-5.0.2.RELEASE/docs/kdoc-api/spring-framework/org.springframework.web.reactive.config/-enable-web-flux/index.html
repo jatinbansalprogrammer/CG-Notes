@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableWebFlux - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.config</a>&nbsp;/&nbsp;<a href=".">EnableWebFlux</a><br/>
+<br/>
+<h1>EnableWebFlux</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE]<span class="symbol">)</span> <span class="identifier">@Import</span><span class="symbol">(</span>DelegatingWebFluxConfiguration<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">EnableWebFlux</span></code>
+<p>Adding this annotation to an <code>@Configuration</code> class imports the Spring Web Reactive configuration from WebFluxConfigurationSupport, e.g.: <pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration { } </code></pre> 
+<p>To customize the imported configuration implement WebFluxConfigurer and override individual methods as shown below: </p>
+<pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration implements WebFluxConfigurer { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Override public void configureMessageWriters(List&lt;HttpMessageWriter&lt;?&gt;&gt; messageWriters) { messageWriters.add(new MyHttpMessageWriter()); } } </code></pre> 
+<p><strong>Note:</strong> only one <code>@Configuration</code> class may have the <code>@EnableWebFlux</code> annotation to import the Spring WebFlux configuration. There can however be multiple <code>@Configuration</code> classes implementing <code>WebFluxConfigurer</code> in order to customize the provided configuration. </p>
+<p>If WebFluxConfigurer does not expose some more advanced setting that needs to be configured consider removing the <code>@EnableWebFlux</code> annotation and extending directly from WebFluxConfigurationSupport or DelegatingWebFluxConfiguration if you still want to allow WebFluxConfigurer instances to customize the configuration.</p>
+</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+WebFluxConfigurerWebFluxConfigurationSupport</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EnableWebFlux</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Adding this annotation to an <code>@Configuration</code> class imports the Spring Web Reactive configuration from WebFluxConfigurationSupport, e.g.: <pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration { } </code></pre> 
+<p>To customize the imported configuration implement WebFluxConfigurer and override individual methods as shown below: </p>
+<pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration implements WebFluxConfigurer { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Override public void configureMessageWriters(List&lt;HttpMessageWriter&lt;?&gt;&gt; messageWriters) { messageWriters.add(new MyHttpMessageWriter()); } } </code></pre> 
+<p><strong>Note:</strong> only one <code>@Configuration</code> class may have the <code>@EnableWebFlux</code> annotation to import the Spring WebFlux configuration. There can however be multiple <code>@Configuration</code> classes implementing <code>WebFluxConfigurer</code> in order to customize the provided configuration. </p>
+<p>If WebFluxConfigurer does not expose some more advanced setting that needs to be configured consider removing the <code>@EnableWebFlux</code> annotation and extending directly from WebFluxConfigurationSupport or DelegatingWebFluxConfiguration if you still want to allow WebFluxConfigurer instances to customize the configuration.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

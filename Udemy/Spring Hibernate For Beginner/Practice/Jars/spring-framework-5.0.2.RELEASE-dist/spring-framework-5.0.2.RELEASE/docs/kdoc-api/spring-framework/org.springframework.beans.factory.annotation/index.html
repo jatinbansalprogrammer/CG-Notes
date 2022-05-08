@@ -1,0 +1,185 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.factory.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.factory.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.beans.factory.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-annotated-bean-definition/index.html">AnnotatedBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">AnnotatedBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinition</span></code>
+<p>Extended org.springframework.beans.factory.config.BeanDefinition interface that exposes org.springframework.core.type.AnnotationMetadata about its bean class - without requiring the class to be loaded yet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotated-generic-bean-definition/index.html">AnnotatedGenericBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotatedGenericBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.support/-generic-bean-definition/index.html"><span class="identifier">GenericBeanDefinition</span></a><span class="symbol">, </span><a href="-annotated-bean-definition/index.html"><span class="identifier">AnnotatedBeanDefinition</span></a></code>
+<p>Extension of the org.springframework.beans.factory.support.GenericBeanDefinition class, adding support for annotation metadata exposed through the AnnotatedBeanDefinition interface. 
+<p>This GenericBeanDefinition variant is mainly useful for testing code that expects to operate on an AnnotatedBeanDefinition, for example strategy implementations in Spring's component scanning support (where the default definition class is org.springframework.context.annotation.ScannedGenericBeanDefinition, which also implements the AnnotatedBeanDefinition interface).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-bean-wiring-info-resolver/index.html">AnnotationBeanWiringInfoResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationBeanWiringInfoResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanWiringInfoResolver</span></code>
+<p>org.springframework.beans.factory.wiring.BeanWiringInfoResolver that uses the Configurable annotation to identify which classes need autowiring. The bean name to look up will be taken from the Configurable annotation if specified; otherwise the default will be the fully-qualified name of the class being configured.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-autowired-annotation-bean-post-processor/index.html">AutowiredAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AutowiredAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.config/-instantiation-aware-bean-post-processor-adapter/index.html"><span class="identifier">InstantiationAwareBeanPostProcessorAdapter</span></a><span class="symbol">, </span><a href="../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that autowires annotated fields, setter methods and arbitrary config methods. Such members to be injected are detected through a Java 5 annotation: by default, Spring's Autowired and Value annotations. 
+<p>Also supports JSR-330's javax.inject.Inject annotation, if available, as a direct alternative to Spring's own <code>@Autowired</code>. </p>
+<p>Only one constructor (at max) of any given bean class may carry this annotation with the 'required' parameter set to <code>true</code>, indicating <em>the</em> constructor to autowire when used as a Spring bean. If multiple <em>non-required</em> constructors carry the annotation, they will be considered as candidates for autowiring. The constructor with the greatest number of dependencies that can be satisfied by matching beans in the Spring container will be chosen. If none of the candidates can be satisfied, then a default constructor (if present) will be used. An annotated constructor does not have to be public. </p>
+<p>Fields are injected right after construction of a bean, before any config methods are invoked. Such a config field does not have to be public. </p>
+<p>Config methods may have an arbitrary name and any number of arguments; each of those arguments will be autowired with a matching bean in the Spring container. Bean property setter methods are effectively just a special case of such a general config method. Config methods do not have to be public. </p>
+<p>Note: A default AutowiredAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom AutowiredAnnotationBeanPostProcessor bean definition. </p>
+<p><strong>NOTE:</strong> Annotation injection will be performed <em>before</em> XML injection; thus the latter configuration will override the former for properties wired through both approaches. </p>
+<p>In addition to regular injection points as discussed above, this post-processor also handles Spring's Lookup annotation which identifies lookup methods to be replaced by the container at runtime. This is essentially a type-safe version of <code>getBean(Class, args)</code> and <code>getBean(String, args)</code>, See Lookup for details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-factory-annotation-utils/index.html">BeanFactoryAnnotationUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BeanFactoryAnnotationUtils</span></code>
+<p>Convenience methods performing bean lookups related to annotations, for example Spring's Qualifier annotation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-autowire-configurer/index.html">CustomAutowireConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomAutowireConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>A org.springframework.beans.factory.config.BeanFactoryPostProcessor implementation that allows for convenient registration of custom autowire qualifier types. <pre><code> &lt;bean id="customAutowireConfigurer" class="org.springframework.beans.factory.annotation.CustomAutowireConfigurer"&gt; &lt;property name="customQualifierTypes"&gt; &lt;set&gt; &lt;value&gt;mypackage.MyQualifier&lt;/value&gt; &lt;/set&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-init-destroy-annotation-bean-post-processor/index.html">InitDestroyAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InitDestroyAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.config/-destruction-aware-bean-post-processor/index.html"><span class="identifier">DestructionAwareBeanPostProcessor</span></a><span class="symbol">, </span><a href="../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that invokes annotated init and destroy methods. Allows for an annotation alternative to Spring's org.springframework.beans.factory.InitializingBean and org.springframework.beans.factory.DisposableBean callback interfaces. 
+<p>The actual annotation types that this post-processor checks for can be configured through the <code><a href="#">"initAnnotationType"</a></code> and <code><a href="#">"destroyAnnotationType"</a></code> properties. Any custom annotation can be used, since there are no required annotation attributes. </p>
+<p>Init and destroy annotations may be applied to methods of any visibility: public, package-protected, protected, or private. Multiple such methods may be annotated, but it is recommended to only annotate one single init method and destroy method, respectively. </p>
+<p>Spring's org.springframework.context.annotation.CommonAnnotationBeanPostProcessor supports the JSR-250 javax.annotation.PostConstruct and javax.annotation.PreDestroy annotations out of the box, as init annotation and destroy annotation, respectively. Furthermore, it also supports the javax.annotation.Resource annotation for annotation-driven injection of named beans.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-qualifier-annotation-autowire-candidate-resolver/index.html">QualifierAnnotationAutowireCandidateResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">QualifierAnnotationAutowireCandidateResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.support/-generic-type-aware-autowire-candidate-resolver/index.html"><span class="identifier">GenericTypeAwareAutowireCandidateResolver</span></a></code>
+<p>AutowireCandidateResolver implementation that matches bean definition qualifiers against Qualifier on the field or parameter to be autowired. Also supports suggested expression values through a Value annotation. 
+<p>Also supports JSR-330's javax.inject.Qualifier annotation, if available.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-required-annotation-bean-post-processor/index.html">RequiredAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RequiredAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.config/-instantiation-aware-bean-post-processor-adapter/index.html"><span class="identifier">InstantiationAwareBeanPostProcessorAdapter</span></a><span class="symbol">, </span><a href="../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that enforces required JavaBean properties to have been configured. Required bean properties are detected through a Java 5 annotation: by default, Spring's Required annotation. 
+<p>The motivation for the existence of this BeanPostProcessor is to allow developers to annotate the setter properties of their own classes with an arbitrary JDK 1.5 annotation to indicate that the container must check for the configuration of a dependency injected value. This neatly pushes responsibility for such checking onto the container (where it arguably belongs), and obviates the need (<strong>in part</strong>) for a developer to code a method that simply checks that all required properties have actually been set. </p>
+<p>Please note that an 'init' method may still need to implemented (and may still be desirable), because all that this class does is enforce that a 'required' property has actually been configured with a value. It does <strong>not</strong> check anything else... In particular, it does not check that a configured value is not <code>null</code>. </p>
+<p>Note: A default RequiredAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom RequiredAnnotationBeanPostProcessor bean definition.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-autowired/index.html">Autowired</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Autowired</span></code>
+<p>Marks a constructor, field, setter method or config method as to be autowired by Spring's dependency injection facilities. 
+<p>Only one constructor (at max) of any given bean class may carry this annotation, indicating the constructor to autowire when used as a Spring bean. Such a constructor does not have to be public. </p>
+<p>Fields are injected right after construction of a bean, before any config methods are invoked. Such a config field does not have to be public. </p>
+<p>Config methods may have an arbitrary name and any number of arguments; each of those arguments will be autowired with a matching bean in the Spring container. Bean property setter methods are effectively just a special case of such a general config method. Such config methods do not have to be public. </p>
+<p>In the case of a multi-arg constructor or method, the 'required' parameter is applicable to all arguments. Individual parameters may be declared as Java-8-style java.util.Optional or, as of Spring Framework 5.0, also as <code>@Nullable</code> or a not-null parameter type in Kotlin, overriding the base required semantics. </p>
+<p>In case of a java.util.Collection or java.util.Map dependency type, the container autowires all beans matching the declared value type. For such purposes, the map keys must be declared as type String which will be resolved to the corresponding bean names. Such a container-provided collection will be ordered, taking into account org.springframework.core.Ordered/org.springframework.core.annotation.Order values of the target components, otherwise following their registration order in the container. Alternatively, a single matching target bean may also be a generally typed <code>Collection</code> or <code>Map</code> itself, getting injected as such. </p>
+<p>Note that actual injection is performed through a org.springframework.beans.factory.config.BeanPostProcessor which in turn means that you <em>cannot</em> use <code>@Autowired</code> to inject references into org.springframework.beans.factory.config.BeanPostProcessor or org.springframework.beans.factory.config.BeanFactoryPostProcessor types. Please consult the javadoc for the AutowiredAnnotationBeanPostProcessor class (which, by default, checks for the presence of this annotation).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-lookup/index.html">Lookup</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Lookup</span></code>
+<p>An annotation that indicates 'lookup' methods, to be overridden by the container to redirect them back to the org.springframework.beans.factory.BeanFactory for a <code>getBean</code> call. This is essentially an annotation-based version of the XML <code>lookup-method</code> attribute, resulting in the same runtime arrangement. 
+<p>The resolution of the target bean can either be based on the return type (<code>getBean(Class)</code>) or on a suggested bean name (<code>getBean(String)</code>), in both cases passing the method's arguments to the <code>getBean</code> call for applying them as target factory method arguments or constructor arguments. </p>
+<p>Such lookup methods can have default (stub) implementations that will simply get replaced by the container, or they can be declared as abstract - for the container to fill them in at runtime. In both cases, the container will generate runtime subclasses of the method's containing class via CGLIB, which is why such lookup methods can only work on beans that the container instantiates through regular constructors: i.e. lookup methods cannot get replaced on beans returned from factory methods where we cannot dynamically provide a subclass for them. </p>
+<p><strong>Concrete limitations in typical Spring configuration scenarios:</strong> When used with component scanning or any other mechanism that filters out abstract beans, provide stub implementations of your lookup methods to be able to declare them as concrete classes. And please remember that lookup methods won't work on beans returned from <code>@Bean</code> methods in configuration classes; you'll have to resort to <code>@Inject Provider&amp;lt;TargetBean&amp;gt;</code> or the like instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-qualifier/index.html">Qualifier</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Qualifier</span></code>
+<p>This annotation may be used on a field or parameter as a qualifier for candidate beans when autowiring. It may also be used to annotate other custom annotations that can then in turn be used as qualifiers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-required/index.html">Required</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Required</span></code>
+<p>Marks a method (typically a JavaBean setter method) as being 'required': that is, the setter method must be configured to be dependency-injected with a value. 
+<p>Please do consult the javadoc for the RequiredAnnotationBeanPostProcessor class (which, by default, checks for the presence of this annotation).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-value/index.html">Value</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Value</span></code>
+<p>Annotation at the field or method/constructor parameter level that indicates a default value expression for the affected argument. 
+<p>Typically used for expression-driven dependency injection. Also supported for dynamic resolution of handler method parameters, e.g. in Spring MVC. </p>
+<p>A common use case is to assign default field values using "#{systemProperties.myProp}" style expressions. </p>
+<p>Note that actual processing of the <code>@Value</code> annotation is performed by a org.springframework.beans.factory.config.BeanPostProcessor which in turn means that you <em>cannot</em> use <code>@Value</code> within org.springframework.beans.factory.config.BeanPostProcessor or org.springframework.beans.factory.config.BeanFactoryPostProcessor types. Please consult the javadoc for the AutowiredAnnotationBeanPostProcessor class (which, by default, checks for the presence of this annotation).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

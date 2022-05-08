@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalConnectionFactoryBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.support</a>&nbsp;/&nbsp;<a href="index.html">LocalConnectionFactoryBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jca.support.LocalConnectionFactoryBean$&lt;init&gt;()"></a>
+<code><span class="identifier">LocalConnectionFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean that creates a local JCA connection factory in "non-managed" mode (as defined by the Java Connector Architecture specification). This is a direct alternative to a org.springframework.jndi.JndiObjectFactoryBean definition that obtains a connection factory handle from a Java EE server's naming environment. 
+<p>The type of the connection factory is dependent on the actual connector: the connector can either expose its native API (such as a JDBC javax.sql.DataSource or a JMS javax.jms.ConnectionFactory) or follow the standard Common Client Interface (CCI), as defined by the JCA spec. The exposed interface in the CCI case is javax.resource.cci.ConnectionFactory. </p>
+<p>In order to use this FactoryBean, you must specify the connector's <code><a href="set-managed-connection-factory.html">"managedConnectionFactory"</a></code> (usually configured as separate JavaBean), which will be used to create the actual connection factory reference as exposed to the application. Optionally, you can also specify a <code><a href="set-connection-manager.html">"connectionManager"</a></code>, in order to use a custom ConnectionManager instead of the connector's default. </p>
+<p><strong>NOTE:</strong> In non-managed mode, a connector is not deployed on an application server, or more specificially not interacting with an application server. Consequently, it cannot use a Java EE server's system contracts: connection management, transaction management, and security management. A custom ConnectionManager implementation has to be used for applying those services in conjunction with a standalone transaction coordinator etc. </p>
+<p>The connector will use a local ConnectionManager (included in the connector) by default, which cannot participate in global transactions due to the lack of XA enlistment. You need to specify an XA-capable ConnectionManager in order to make the connector interact with an XA transaction coordinator. Alternatively, simply use the native local transaction facilities of the exposed API (e.g. CCI local transactions), or use a corresponding implementation of Spring's PlatformTransactionManager SPI (e.g. org.springframework.jca.cci.connection.CciLocalTransactionManager) to drive local transactions.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="set-managed-connection-factory.html">#setManagedConnectionFactory</a><a href="set-connection-manager.html">#setConnectionManager</a>javax.resource.cci.ConnectionFactory<a href="#">javax.resource.cci.Connection#getLocalTransaction</a>org.springframework.jca.cci.connection.CciLocalTransactionManager</p>
+</BODY>
+</HTML>

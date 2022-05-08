@@ -1,0 +1,314 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.propertyeditors - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.propertyeditors</a><br/>
+<br/>
+<h2>Package org.springframework.beans.propertyeditors</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-byte-array-property-editor/index.html">ByteArrayPropertyEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ByteArrayPropertyEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for byte arrays. Strings will simply be converted to their corresponding byte representations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-char-array-property-editor/index.html">CharArrayPropertyEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CharArrayPropertyEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for char arrays. Strings will simply be converted to their corresponding char representations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-character-editor/index.html">CharacterEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CharacterEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for a Character, to populate a property of type <code>Character</code> or <code>char</code> from a String value. 
+<p>Note that the JDK does not contain a default java.beans.PropertyEditor for <code>char</code>! org.springframework.beans.BeanWrapperImpl will register this editor by default. </p>
+<p>Also supports conversion from a Unicode character sequence; e.g. <code>u0041</code> ('A').</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-charset-editor/index.html">CharsetEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CharsetEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.nio.charset.Charset</code>, translating charset String representations into Charset objects and back. 
+<p>Expects the same syntax as Charset's <code><a href="#">java.nio.charset.Charset#name()</a></code>, e.g. <code>UTF-8</code>, <code>ISO-8859-16</code>, etc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-class-array-editor/index.html">ClassArrayEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ClassArrayEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for an array of Class, to enable the direct population of a <code>Class[]</code> property without having to use a <code>String</code> class name property as bridge. 
+<p>Also supports "java.lang.String[]"-style array class names, in contrast to the standard <code><a href="#">Class#forName(String)</a></code> method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-class-editor/index.html">ClassEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ClassEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for Class, to enable the direct population of a <code>Class</code> property without recourse to having to use a String class name property as bridge. 
+<p>Also supports "java.lang.String[]"-style array class names, in contrast to the standard <code><a href="#">Class#forName(String)</a></code> method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-currency-editor/index.html">CurrencyEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CurrencyEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.util.Currency</code>, translating currency codes into Currency objects. Exposes the currency code as text representation of a Currency object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-boolean-editor/index.html">CustomBooleanEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomBooleanEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for Boolean/boolean properties. 
+<p>This is not meant to be used as system PropertyEditor but rather as locale-specific Boolean editor within custom controller code, to parse UI-caused boolean strings into boolean properties of beans and check them in the UI form. </p>
+<p>In web MVC code, this editor will typically be registered with <code>binder.registerCustomEditor</code> calls.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-collection-editor/index.html">CustomCollectionEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomCollectionEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for Collections, converting any source Collection to a given target Collection type. 
+<p>By default registered for Set, SortedSet and List, to automatically convert any given Collection to one of those target types if the type does not match the target property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-date-editor/index.html">CustomDateEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomDateEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for <code>java.util.Date</code>, supporting a custom <code>java.text.DateFormat</code>. 
+<p>This is not meant to be used as system PropertyEditor but rather as locale-specific date editor within custom controller code, parsing user-entered number strings into Date properties of beans and rendering them in the UI form. </p>
+<p>In web MVC code, this editor will typically be registered with <code>binder.registerCustomEditor</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-map-editor/index.html">CustomMapEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomMapEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for Maps, converting any source Map to a given target Map type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-number-editor/index.html">CustomNumberEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomNumberEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for any Number subclass such as Short, Integer, Long, BigInteger, Float, Double, BigDecimal. Can use a given NumberFormat for (locale-specific) parsing and rendering, or alternatively the default <code>decode</code> / <code>valueOf</code> / <code>toString</code> methods. 
+<p>This is not meant to be used as system PropertyEditor but rather as locale-specific number editor within custom controller code, parsing user-entered number strings into Number properties of beans and rendering them in the UI form. </p>
+<p>In web MVC code, this editor will typically be registered with <code>binder.registerCustomEditor</code> calls.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-file-editor/index.html">FileEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.io.File</code>, to directly populate a File property from a Spring resource location. 
+<p>Supports Spring-style URL notation: any fully qualified standard URL ("file:", "http:", etc) and Spring's special "classpath:" pseudo-URL. </p>
+<p><strong>NOTE:</strong> The behavior of this editor has changed in Spring 2.0. Previously, it created a File instance directly from a filename. As of Spring 2.0, it takes a standard Spring resource location as input; this is consistent with URLEditor and InputStreamEditor now. </p>
+<p><strong>NOTE:</strong> In Spring 2.5 the following modification was made. If a file name is specified without a URL prefix or without an absolute path then we try to locate the file using standard ResourceLoader semantics. If the file was not found, then a File instance is created assuming the file name refers to a relative file location.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-input-source-editor/index.html">InputSourceEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InputSourceEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>org.xml.sax.InputSource</code>, converting from a Spring resource location String to a SAX InputSource object. 
+<p>Supports Spring-style URL notation: any fully qualified standard URL ("file:", "http:", etc) and Spring's special "classpath:" pseudo-URL.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-input-stream-editor/index.html">InputStreamEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InputStreamEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>One-way PropertyEditor which can convert from a text String to a <code>java.io.InputStream</code>, interpreting the given String as a Spring resource location (e.g. a URL String). 
+<p>Supports Spring-style URL notation: any fully qualified standard URL ("file:", "http:", etc.) and Spring's special "classpath:" pseudo-URL. </p>
+<p>Note that such streams usually do not get closed by Spring itself!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-locale-editor/index.html">LocaleEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocaleEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.util.Locale</code>, to directly populate a Locale property. 
+<p>Expects the same syntax as Locale's <code>toString</code>, i.e. language + optionally country + optionally variant, separated by "_" (e.g. "en", "en_US"). Also accepts spaces as separators, as alternative to underscores.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-editor/index.html">PathEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.nio.file.Path</code>, to directly populate a Path property instead of using a String property as bridge. 
+<p>Based on <code><a href="#">Paths#get(URI)</a></code>'s resolution algorithm, checking registered NIO file system providers, including the default file system for "file:..." paths. Also supports Spring-style URL notation: any fully qualified standard URL and Spring's special "classpath:" pseudo-URL, as well as Spring's context-specific relative file paths. As a fallback, a path will be resolved in the file system via <code>Paths#get(String)</code> if no existing context-relative resource could be found.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pattern-editor/index.html">PatternEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PatternEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.util.regex.Pattern</code>, to directly populate a Pattern property. Expects the same syntax as Pattern's <code>compile</code> method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reader-editor/index.html">ReaderEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReaderEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>One-way PropertyEditor which can convert from a text String to a <code>java.io.Reader</code>, interpreting the given String as a Spring resource location (e.g. a URL String). 
+<p>Supports Spring-style URL notation: any fully qualified standard URL ("file:", "http:", etc.) and Spring's special "classpath:" pseudo-URL. </p>
+<p>Note that such readers usually do not get closed by Spring itself!</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-bundle-editor/index.html">ResourceBundleEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceBundleEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>java.beans.PropertyEditor implementation for standard JDK java.util.ResourceBundle. 
+<p>Only supports conversion <em>from</em> a String, but not <em>to</em> a String. Find below some examples of using this class in a (properly configured) Spring container using XML-based metadata: </p>
+<pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'messages' property is of type java.util.ResourceBundle. the 'DialogMessages.properties' file exists at the root of the CLASSPATH --&gt; &lt;property name="messages" value="DialogMessages"/&gt; &lt;/bean&gt;</code></pre> <pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'DialogMessages.properties' file exists in the 'com/messages' package --&gt; &lt;property name="messages" value="com/messages/DialogMessages"/&gt; &lt;/bean&gt;</code></pre> 
+<p>A 'properly configured' Spring org.springframework.context.ApplicationContext might contain a org.springframework.beans.factory.config.CustomEditorConfigurer definition such that the conversion can be effected transparently: </p>
+<pre><code> &lt;bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="customEditors"&gt; &lt;map&gt; &lt;entry key="java.util.ResourceBundle"&gt; &lt;bean class="org.springframework.beans.propertyeditors.ResourceBundleEditor"/&gt; &lt;/entry&gt; &lt;/map&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> 
+<p>Please note that this java.beans.PropertyEditor is <strong>not</strong> registered by default with any of the Spring infrastructure. </p>
+<p>Thanks to David Leal Valmana for the suggestion and initial prototype.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-string-array-property-editor/index.html">StringArrayPropertyEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StringArrayPropertyEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Custom java.beans.PropertyEditor for String arrays. 
+<p>Strings must be in CSV format, with a customizable separator. By default values in the result are trimmed of whitespace.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-string-trimmer-editor/index.html">StringTrimmerEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StringTrimmerEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor that trims Strings. 
+<p>Optionally allows transforming an empty string into a <code>null</code> value. Needs to be explicitly registered, e.g. for command binding.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-time-zone-editor/index.html">TimeZoneEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimeZoneEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.util.TimeZone</code>, translating timezone IDs into <code>TimeZone</code> objects. Exposes the <code>TimeZone</code> ID as a text representation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-u-r-i-editor/index.html">URIEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">URIEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.net.URI</code>, to directly populate a URI property instead of using a String property as bridge. 
+<p>Supports Spring-style URI notation: any fully qualified standard URI ("file:", "http:", etc) and Spring's special "classpath:" pseudo-URL, which will be resolved to a corresponding URI. </p>
+<p>By default, this editor will encode Strings into URIs. For instance, a space will be encoded into <code>%20</code>. This behavior can be changed by calling the <code><a href="#">#URIEditor(boolean)</a></code> constructor. </p>
+<p>Note: A URI is more relaxed than a URL in that it does not require a valid protocol to be specified. Any scheme within a valid URI syntax is allowed, even without a matching protocol handler being registered.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-u-r-l-editor/index.html">URLEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">URLEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.net.URL</code>, to directly populate a URL property instead of using a String property as bridge. 
+<p>Supports Spring-style URL notation: any fully qualified standard URL ("file:", "http:", etc) and Spring's special "classpath:" pseudo-URL, as well as Spring's context-specific relative file paths. </p>
+<p>Note: A URL must specify a valid protocol, else it will be rejected upfront. However, the target resource does not necessarily have to exist at the time of URL creation; this depends on the specific resource type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-u-u-i-d-editor/index.html">UUIDEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UUIDEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.util.UUID</code>, translating UUID String representations into UUID objects and back.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-zone-id-editor/index.html">ZoneIdEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ZoneIdEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Editor for <code>java.time.ZoneId</code>, translating zone ID Strings into <code>ZoneId</code> objects. Exposes the <code>TimeZone</code> ID as a text representation.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

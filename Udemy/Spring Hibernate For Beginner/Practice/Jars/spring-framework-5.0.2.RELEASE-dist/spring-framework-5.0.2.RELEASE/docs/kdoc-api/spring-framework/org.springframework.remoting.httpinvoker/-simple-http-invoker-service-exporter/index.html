@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleHttpInvokerServiceExporter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.httpinvoker</a>&nbsp;/&nbsp;<a href=".">SimpleHttpInvokerServiceExporter</a><br/>
+<br/>
+<h1>SimpleHttpInvokerServiceExporter</h1>
+<code><span class="identifier">@UsesSunHttpServer</span> <span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleHttpInvokerServiceExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RemoteInvocationSerializingExporter</span><span class="symbol">, </span><span class="identifier">HttpHandler</span></code>
+<p>HTTP request handler that exports the specified service bean as HTTP invoker service endpoint, accessible via an HTTP invoker proxy. Designed for Sun's JRE 1.6 HTTP server, implementing the com.sun.net.httpserver.HttpHandler interface. 
+<p>Deserializes remote invocation objects and serializes remote invocation result objects. Uses Java serialization just like RMI, but provides the same ease of setup as Caucho's HTTP-based Hessian protocol. </p>
+<p><strong>HTTP invoker is the recommended protocol for Java-to-Java remoting.</strong> It is more powerful and more extensible than Hessian, at the expense of being tied to Java. Nevertheless, it is as easy to set up as Hessian, which is its main advantage compared to RMI. </p>
+<p><strong>WARNING: Be aware of vulnerabilities due to unsafe Java deserialization: Manipulated input streams could lead to unwanted code execution on the server during the deserialization step. As a consequence, do not expose HTTP invoker endpoints to untrusted clients but rather just between your own services.</strong> In general, we strongly recommend any other message format (e.g. JSON) instead.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5.1</p>
+<p><strong>See Also</strong><br/>
+org.springframework.remoting.httpinvoker.HttpInvokerClientInterceptororg.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBeanorg.springframework.remoting.caucho.SimpleHessianServiceExporter</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleHttpInvokerServiceExporter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>HTTP request handler that exports the specified service bean as HTTP invoker service endpoint, accessible via an HTTP invoker proxy. Designed for Sun's JRE 1.6 HTTP server, implementing the com.sun.net.httpserver.HttpHandler interface. 
+<p>Deserializes remote invocation objects and serializes remote invocation result objects. Uses Java serialization just like RMI, but provides the same ease of setup as Caucho's HTTP-based Hessian protocol. </p>
+<p><strong>HTTP invoker is the recommended protocol for Java-to-Java remoting.</strong> It is more powerful and more extensible than Hessian, at the expense of being tied to Java. Nevertheless, it is as easy to set up as Hessian, which is its main advantage compared to RMI. </p>
+<p><strong>WARNING: Be aware of vulnerabilities due to unsafe Java deserialization: Manipulated input streams could lead to unwanted code execution on the server during the deserialization step. As a consequence, do not expose HTTP invoker endpoints to untrusted clients but rather just between your own services.</strong> In general, we strongly recommend any other message format (e.g. JSON) instead.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="handle.html">handle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.httpinvoker.SimpleHttpInvokerServiceExporter$handle(com.sun.net.httpserver.HttpExchange)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpExchange</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reads a remote invocation from the request, executes it, and writes the remote invocation result to the response.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,421 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Jackson2ObjectMapperFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.converter.json</a>&nbsp;/&nbsp;<a href=".">Jackson2ObjectMapperFactoryBean</a><br/>
+<br/>
+<h1>Jackson2ObjectMapperFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Jackson2ObjectMapperFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ObjectMapper</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A FactoryBean for creating a Jackson 2.x ObjectMapper (default) or XmlMapper (<code>createXmlMapper</code> property set to true) with setters to enable or disable Jackson features from within XML configuration. 
+<p>It customizes Jackson defaults properties with the following ones: </p>
+<ul> <li><code><a href="#">MapperFeature#DEFAULT_VIEW_INCLUSION</a></code> is disabled</li>
+ <li><code><a href="#">DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES</a></code> is disabled</li>
+ </ul>
+ 
+<p>Example usage with MappingJackson2HttpMessageConverter: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:autoDetectFields="false" p:autoDetectGettersSetters="false" p:annotationIntrospector-ref="jaxbAnnotationIntrospector" /&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>Example usage with MappingJackson2JsonView: </p>
+<pre><code> &lt;bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:failOnEmptyBeans="false" p:indentOutput="true"&gt; &lt;property name="serializers"&gt; &lt;array&gt; &lt;bean class="org.mycompany.MyCustomSerializer" /&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>In case there are no specific setters provided (for some rarely used options), you can still use the more general methods <code><a href="#">#setFeaturesToEnable</a></code> and <code><a href="#">#setFeaturesToDisable</a></code>. </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="featuresToEnable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.WRAP_ROOT_VALUE"/&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.CLOSE_CLOSEABLE"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;property name="featuresToDisable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.MapperFeature.USE_ANNOTATIONS"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>It also automatically registers the following well-known modules if they are detected on the classpath: </p>
+<ul> <li><a href="#">jackson-datatype-jdk7</a>: support for Java 7 types like java.nio.file.Path</li>
+ <li><a href="#">jackson-datatype-jdk8</a>: support for other Java 8 types like java.util.Optional</li>
+ <li><a href="#">jackson-datatype-jsr310</a>: support for Java 8 Date &amp; Time API types</li>
+ <li><a href="#">jackson-datatype-joda</a>: support for Joda-Time types</li>
+ <li><a href="#">jackson-module-kotlin</a>: support for Kotlin classes and data classes</li>
+ </ul>
+ 
+<p>In case you want to configure Jackson's ObjectMapper with a custom Module, you can register one or more such Modules by class name via <code><a href="#">#setModulesToInstall</a></code>: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="modulesToInstall" value="myapp.jackson.MySampleModule,myapp.jackson.MyOtherModule"/&gt; &lt;/bean </code></pre> 
+<p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.</p>
+</p>
+<p><strong>Author</strong><br/>
+<a href="#">Dmitry Katsubo</a></p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Tadaya Tsuyukubo</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Jackson2ObjectMapperFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A FactoryBean for creating a Jackson 2.x ObjectMapper (default) or XmlMapper (<code>createXmlMapper</code> property set to true) with setters to enable or disable Jackson features from within XML configuration. 
+<p>It customizes Jackson defaults properties with the following ones: </p>
+<ul> <li><code><a href="#">MapperFeature#DEFAULT_VIEW_INCLUSION</a></code> is disabled</li>
+ <li><code><a href="#">DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES</a></code> is disabled</li>
+ </ul>
+ 
+<p>Example usage with MappingJackson2HttpMessageConverter: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:autoDetectFields="false" p:autoDetectGettersSetters="false" p:annotationIntrospector-ref="jaxbAnnotationIntrospector" /&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>Example usage with MappingJackson2JsonView: </p>
+<pre><code> &lt;bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"&gt; &lt;property name="objectMapper"&gt; &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean" p:failOnEmptyBeans="false" p:indentOutput="true"&gt; &lt;property name="serializers"&gt; &lt;array&gt; &lt;bean class="org.mycompany.MyCustomSerializer" /&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>In case there are no specific setters provided (for some rarely used options), you can still use the more general methods <code><a href="#">#setFeaturesToEnable</a></code> and <code><a href="#">#setFeaturesToDisable</a></code>. </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="featuresToEnable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.WRAP_ROOT_VALUE"/&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.SerializationFeature.CLOSE_CLOSEABLE"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;property name="featuresToDisable"&gt; &lt;array&gt; &lt;util:constant static-field="com.fasterxml.jackson.databind.MapperFeature.USE_ANNOTATIONS"/&gt; &lt;/array&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> 
+<p>It also automatically registers the following well-known modules if they are detected on the classpath: </p>
+<ul> <li><a href="#">jackson-datatype-jdk7</a>: support for Java 7 types like java.nio.file.Path</li>
+ <li><a href="#">jackson-datatype-jdk8</a>: support for other Java 8 types like java.util.Optional</li>
+ <li><a href="#">jackson-datatype-jsr310</a>: support for Java 8 Date &amp; Time API types</li>
+ <li><a href="#">jackson-datatype-joda</a>: support for Joda-Time types</li>
+ <li><a href="#">jackson-module-kotlin</a>: support for Kotlin classes and data classes</li>
+ </ul>
+ 
+<p>In case you want to configure Jackson's ObjectMapper with a custom Module, you can register one or more such Modules by class name via <code><a href="#">#setModulesToInstall</a></code>: </p>
+<pre><code> &lt;bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean"&gt; &lt;property name="modulesToInstall" value="myapp.jackson.MySampleModule,myapp.jackson.MyOtherModule"/&gt; &lt;/bean </code></pre> 
+<p>Compatible with Jackson 2.6 and higher, as of Spring 4.3.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObjectMapper</span></code>
+<p>Return the singleton ObjectMapper.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-annotation-introspector.html">setAnnotationIntrospector</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAnnotationIntrospector</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setAnnotationIntrospector(com.fasterxml.jackson.databind.AnnotationIntrospector)/annotationIntrospector">annotationIntrospector</span><span class="symbol">:</span>&nbsp;<span class="identifier">AnnotationIntrospector</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an AnnotationIntrospector for both serialization and deserialization.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-application-context.html">setApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setApplicationContext(org.springframework.context.ApplicationContext)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the builder ApplicationContext in order to autowire Jackson handlers (JsonSerializer, JsonDeserializer, KeyDeserializer, <code>TypeResolverBuilder</code> and <code>TypeIdResolver</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-auto-detect-fields.html">setAutoDetectFields</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutoDetectFields</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setAutoDetectFields(kotlin.Boolean)/autoDetectFields">autoDetectFields</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut for <code><a href="#">MapperFeature#AUTO_DETECT_FIELDS</a></code> option.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-auto-detect-getters-setters.html">setAutoDetectGettersSetters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutoDetectGettersSetters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setAutoDetectGettersSetters(kotlin.Boolean)/autoDetectGettersSetters">autoDetectGettersSetters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut for <code><a href="#">MapperFeature#AUTO_DETECT_SETTERS</a></code>/ <code><a href="#">MapperFeature#AUTO_DETECT_GETTERS</a></code>/<code><a href="#">MapperFeature#AUTO_DETECT_IS_GETTERS</a></code> options.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/beanClassLoader">beanClassLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-create-xml-mapper.html">setCreateXmlMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCreateXmlMapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setCreateXmlMapper(kotlin.Boolean)/createXmlMapper">createXmlMapper</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>If set to true and no custom ObjectMapper has been set, a XmlMapper will be created using its default constructor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-date-format.html">setDateFormat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDateFormat</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setDateFormat(java.text.DateFormat)/dateFormat">dateFormat</span><span class="symbol">:</span>&nbsp;<span class="identifier">DateFormat</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Define the format for date/time with the given DateFormat. 
+<p>Note: Setting this property makes the exposed ObjectMapper non-thread-safe, according to Jackson's thread safety rules.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-typing.html">setDefaultTyping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultTyping</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setDefaultTyping(com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder(()))/typeResolverBuilder">typeResolverBuilder</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeResolverBuilder</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a TypeResolverBuilder to use for Jackson's default typing.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-use-wrapper.html">setDefaultUseWrapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultUseWrapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setDefaultUseWrapper(kotlin.Boolean)/defaultUseWrapper">defaultUseWrapper</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Define if a wrapper will be used for indexed (List, array) properties or not by default (only applies to XmlMapper).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-view-inclusion.html">setDefaultViewInclusion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultViewInclusion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setDefaultViewInclusion(kotlin.Boolean)/defaultViewInclusion">defaultViewInclusion</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut for <code><a href="#">MapperFeature#DEFAULT_VIEW_INCLUSION</a></code> option.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-deserializers.html">setDeserializers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDeserializers</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setDeserializers(kotlin.Array((com.fasterxml.jackson.databind.JsonDeserializer((kotlin.Any)))))/deserializers">deserializers</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonDeserializer</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure custom deserializers. Each deserializer is registered for the type returned by <code><a href="#">JsonDeserializer#handledType()</a></code>, which must not be <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-deserializers-by-type.html">setDeserializersByType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDeserializersByType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setDeserializersByType(kotlin.collections.MutableMap((java.lang.Class((kotlin.Any)), com.fasterxml.jackson.databind.JsonDeserializer(()))))/deserializers">deserializers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">JsonDeserializer</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure custom deserializers for the given types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-factory.html">setFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setFactory(com.fasterxml.jackson.core.JsonFactory)/factory">factory</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Define the JsonFactory to be used to create the ObjectMapper instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fail-on-empty-beans.html">setFailOnEmptyBeans</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFailOnEmptyBeans</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setFailOnEmptyBeans(kotlin.Boolean)/failOnEmptyBeans">failOnEmptyBeans</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut for <code><a href="#">SerializationFeature#FAIL_ON_EMPTY_BEANS</a></code> option.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fail-on-unknown-properties.html">setFailOnUnknownProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFailOnUnknownProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setFailOnUnknownProperties(kotlin.Boolean)/failOnUnknownProperties">failOnUnknownProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut for <code><a href="#">DeserializationFeature#FAIL_ON_UNKNOWN_PROPERTIES</a></code> option.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-features-to-disable.html">setFeaturesToDisable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFeaturesToDisable</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setFeaturesToDisable(kotlin.Array((kotlin.Any)))/featuresToDisable">featuresToDisable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify features to disable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-features-to-enable.html">setFeaturesToEnable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFeaturesToEnable</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setFeaturesToEnable(kotlin.Array((kotlin.Any)))/featuresToEnable">featuresToEnable</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify features to enable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-filters.html">setFilters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFilters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setFilters(com.fasterxml.jackson.databind.ser.FilterProvider)/filters">filters</span><span class="symbol">:</span>&nbsp;<span class="identifier">FilterProvider</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the global filters to use in order to support JsonFilter annotated POJO.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-find-modules-via-service-loader.html">setFindModulesViaServiceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFindModulesViaServiceLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setFindModulesViaServiceLoader(kotlin.Boolean)/findModules">findModules</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to let Jackson find available modules via the JDK ServiceLoader, based on META-INF metadata in the classpath. Requires Jackson 2.2 or higher. 
+<p>If this mode is not set, Spring's Jackson2ObjectMapperFactoryBean itself will try to find the JSR-310 and Joda-Time support modules on the classpath - provided that Java 8 and Joda-Time themselves are available, respectively.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-handler-instantiator.html">setHandlerInstantiator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHandlerInstantiator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setHandlerInstantiator(com.fasterxml.jackson.databind.cfg.HandlerInstantiator)/handlerInstantiator">handlerInstantiator</span><span class="symbol">:</span>&nbsp;<span class="identifier">HandlerInstantiator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Customize the construction of Jackson handlers (JsonSerializer, JsonDeserializer, KeyDeserializer, <code>TypeResolverBuilder</code> and <code>TypeIdResolver</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-indent-output.html">setIndentOutput</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIndentOutput</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setIndentOutput(kotlin.Boolean)/indentOutput">indentOutput</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut for <code><a href="#">SerializationFeature#INDENT_OUTPUT</a></code> option.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale.html">setLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setLocale(java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Override the default Locale to use for formatting. Default value used is <code><a href="#">Locale#getDefault()</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mix-ins.html">setMixIns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMixIns</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setMixIns(kotlin.collections.MutableMap((java.lang.Class((kotlin.Any)), )))/mixIns">mixIns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add mix-in annotations to use for augmenting specified class or interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-modules.html">setModules</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setModules</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setModules(kotlin.collections.MutableList((com.fasterxml.jackson.databind.Module)))/modules">modules</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Module</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a complete list of modules to be registered with the ObjectMapper. 
+<p>Note: If this is set, no finding of modules is going to happen - not by Jackson, and not by Spring either (see <code><a href="set-find-modules-via-service-loader.html">#setFindModulesViaServiceLoader</a></code>). As a consequence, specifying an empty list here will suppress any kind of module detection. </p>
+<p>Specify either this or <code><a href="#">#setModulesToInstall</a></code>, not both.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-modules-to-install.html">setModulesToInstall</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setModulesToInstall</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setModulesToInstall(kotlin.Array((java.lang.Class((com.fasterxml.jackson.databind.Module)))))/modules">modules</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Module</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify one or more modules by class (or class name in XML) to be registered with the ObjectMapper. 
+<p>Modules specified here will be registered after Spring's autodetection of JSR-310 and Joda-Time, or Jackson's finding of modules (see <code><a href="set-find-modules-via-service-loader.html">#setFindModulesViaServiceLoader</a></code>), allowing to eventually override their configuration. </p>
+<p>Specify either this or <code><a href="#">#setModules</a></code>, not both.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-object-mapper.html">setObjectMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setObjectMapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setObjectMapper(com.fasterxml.jackson.databind.ObjectMapper)/objectMapper">objectMapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">ObjectMapper</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ObjectMapper instance to use. If not set, the ObjectMapper will be created using its default constructor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property-naming-strategy.html">setPropertyNamingStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPropertyNamingStrategy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setPropertyNamingStrategy(com.fasterxml.jackson.databind.PropertyNamingStrategy)/propertyNamingStrategy">propertyNamingStrategy</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyNamingStrategy</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a com.fasterxml.jackson.databind.PropertyNamingStrategy to configure the ObjectMapper with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-serialization-inclusion.html">setSerializationInclusion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSerializationInclusion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setSerializationInclusion(com.fasterxml.jackson.annotation.JsonInclude.Include)/serializationInclusion">serializationInclusion</span><span class="symbol">:</span>&nbsp;<span class="identifier">Include</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom inclusion strategy for serialization.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-serializers.html">setSerializers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSerializers</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setSerializers(kotlin.Array((com.fasterxml.jackson.databind.JsonSerializer((kotlin.Any)))))/serializers">serializers</span><span class="symbol">:</span>&nbsp;<span class="identifier">JsonSerializer</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure custom serializers. Each serializer is registered for the type returned by <code><a href="#">JsonSerializer#handledType()</a></code>, which must not be <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-serializers-by-type.html">setSerializersByType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSerializersByType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setSerializersByType(kotlin.collections.MutableMap((java.lang.Class((kotlin.Any)), com.fasterxml.jackson.databind.JsonSerializer(()))))/serializers">serializers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">JsonSerializer</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure custom serializers for the given types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-simple-date-format.html">setSimpleDateFormat</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSimpleDateFormat</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setSimpleDateFormat(kotlin.String)/format">format</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Define the date/time format with a SimpleDateFormat. 
+<p>Note: Setting this property makes the exposed ObjectMapper non-thread-safe, according to Jackson's thread safety rules.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-time-zone.html">setTimeZone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimeZone</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean$setTimeZone(java.util.TimeZone)/timeZone">timeZone</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeZone</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Override the default TimeZone to use for formatting. Default value used is UTC (NOT local timezone).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

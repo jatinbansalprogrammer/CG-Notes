@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DisabledIf - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.junit.jupiter</a>&nbsp;/&nbsp;<a href=".">DisabledIf</a><br/>
+<br/>
+<h1>DisabledIf</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="identifier">@ExtendWith</span><span class="symbol">(</span>DisabledIfCondition<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">DisabledIf</span></code>
+<p><code>@DisabledIf</code> is used to signal that the annotated test class or test method is <em>disabled</em> and should not be executed if the supplied <code><a href="#">#expression</a></code> evaluates to <code>true</code>. 
+<p>When applied at the class level, all test methods within that class are automatically disabled as well. </p>
+<p>For basic examples, see the Javadoc for <code><a href="#">#expression</a></code>. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. For example, a custom <code>@DisabledOnMac</code> annotation can be created as follows. </p>
+<pre><code> @Target({ ElementType.TYPE, ElementType.METHOD }) @Retention(RetentionPolicy.RUNTIME) @DisabledIf( expression = "#{systemProperties['os.name'].toLowerCase().contains('mac')}", reason = "Disabled on Mac OS" ) public @interface DisabledOnMac {} </code></pre></p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Tadaya Tsuyukubo</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+SpringExtensionEnabledIforg.junit.jupiter.api.Disabled</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DisabledIf</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/expression">expression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/reason">reason</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.junit.jupiter.DisabledIf$<init>(kotlin.String, kotlin.String, kotlin.String, kotlin.Boolean)/loadContext">loadContext</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p><code>@DisabledIf</code> is used to signal that the annotated test class or test method is <em>disabled</em> and should not be executed if the supplied <code><a href="#">#expression</a></code> evaluates to <code>true</code>. 
+<p>When applied at the class level, all test methods within that class are automatically disabled as well. </p>
+<p>For basic examples, see the Javadoc for <code><a href="#">#expression</a></code>. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>. For example, a custom <code>@DisabledOnMac</code> annotation can be created as follows. </p>
+<pre><code> @Target({ ElementType.TYPE, ElementType.METHOD }) @Retention(RetentionPolicy.RUNTIME) @DisabledIf( expression = "#{systemProperties['os.name'].toLowerCase().contains('mac')}", reason = "Disabled on Mac OS" ) public @interface DisabledOnMac {} </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="expression.html">expression</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">expression</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The expression that will be evaluated to determine if the annotated test class or test method is <em>disabled</em>. 
+<p>If the expression evaluates to <code><a href="#">Boolean#TRUE</a></code> or a String equal to <code>"true"</code> (ignoring case), the test will be disabled. </p>
+<p>Expressions can be any of the following. </p>
+<ul> <li>Spring Expression Language (SpEL) expression — for example: <pre><code>@DisabledIf("#{systemProperties['os.name'].toLowerCase().contains('mac')}")</code></pre> </li>
+<li>Placeholder for a property available in the Spring org.springframework.core.env.Environment — for example: <pre><code>@DisabledIf("${smoke.tests.disabled}")</code></pre> </li>
+<li>Text literal — for example: <pre><code>@DisabledIf("true")</code></pre> </li>
+</ul>
+ 
+<p>Note, however, that a <em>text literal</em> which is not the result of dynamic resolution of a property placeholder is of zero practical value since <code>@DisabledIf("true")</code> is equivalent to <code>@Disabled</code> and <code>@DisabledIf("false")</code> is logically meaningless.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="load-context.html">loadContext</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">loadContext</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the <code>ApplicationContext</code> associated with the current test should be eagerly loaded in order to evaluate the <code><a href="#">#expression</a></code>. 
+<p>Defaults to <code>false</code> so that test application contexts are not eagerly loaded unnecessarily. If an expression is based solely on system properties or environment variables or does not interact with beans in the test's application context, there is no need to load the context prematurely since doing so would be a waste of time if the test ends up being disabled.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reason.html">reason</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">reason</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The reason this test is disabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Alias for <code><a href="#">#expression</a></code>; only intended to be used if <code><a href="#">#reason</a></code> and <code><a href="#">#loadContext</a></code> are not specified.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

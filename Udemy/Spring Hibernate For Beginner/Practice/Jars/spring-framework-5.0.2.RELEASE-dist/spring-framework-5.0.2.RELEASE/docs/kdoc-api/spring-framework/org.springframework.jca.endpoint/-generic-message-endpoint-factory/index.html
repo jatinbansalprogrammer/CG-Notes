@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GenericMessageEndpointFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.endpoint</a>&nbsp;/&nbsp;<a href=".">GenericMessageEndpointFactory</a><br/>
+<br/>
+<h1>GenericMessageEndpointFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericMessageEndpointFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageEndpointFactory</span></code>
+<p>Generic implementation of the JCA 1.7 javax.resource.spi.endpoint.MessageEndpointFactory interface, providing transaction management capabilities for any kind of message listener object (e.g. javax.jms.MessageListener objects or javax.resource.cci.MessageListener objects. 
+<p>Uses AOP proxies for concrete endpoint instances, simply wrapping the specified message listener object and exposing all of its implemented interfaces on the endpoint instance. </p>
+<p>Typically used with Spring's GenericMessageEndpointManager, but not tied to it. As a consequence, this endpoint factory could also be used with programmatic endpoint management on a native javax.resource.spi.ResourceAdapter instance.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setMessageListener</a><a href="#">#setTransactionManager</a>GenericMessageEndpointManager</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GenericMessageEndpointFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Generic implementation of the JCA 1.7 javax.resource.spi.endpoint.MessageEndpointFactory interface, providing transaction management capabilities for any kind of message listener object (e.g. javax.jms.MessageListener objects or javax.resource.cci.MessageListener objects. 
+<p>Uses AOP proxies for concrete endpoint instances, simply wrapping the specified message listener object and exposing all of its implemented interfaces on the endpoint instance. </p>
+<p>Typically used with Spring's GenericMessageEndpointManager, but not tied to it. As a consequence, this endpoint factory could also be used with programmatic endpoint management on a native javax.resource.spi.ResourceAdapter instance.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-endpoint.html">createEndpoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createEndpoint</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.endpoint.GenericMessageEndpointFactory$createEndpoint(javax.transaction.xa.XAResource)/xaResource">xaResource</span><span class="symbol">:</span>&nbsp;<span class="identifier">XAResource</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageEndpoint</span></code>
+<p>Wrap each concrete endpoint instance with an AOP proxy, exposing the message listener's interfaces as well as the endpoint SPI through an AOP introduction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-listener.html">setMessageListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.endpoint.GenericMessageEndpointFactory$setMessageListener(kotlin.Any)/messageListener">messageListener</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the message listener object that the endpoint should expose (e.g. a javax.jms.MessageListener objects or javax.resource.cci.MessageListener implementation).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

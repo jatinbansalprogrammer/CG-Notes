@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BeanFactoryUtils.beanOfTypeIncludingAncestors - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory</a>&nbsp;/&nbsp;<a href="index.html">BeanFactoryUtils</a>&nbsp;/&nbsp;<a href=".">beanOfTypeIncludingAncestors</a><br/>
+<br/>
+<h1>beanOfTypeIncludingAncestors</h1>
+<a name="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">beanOfTypeIncludingAncestors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)))/lbf">lbf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ListableBeanFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Return a single bean of the given type or subtypes, also picking up beans defined in ancestor bean factories if the current bean factory is a HierarchicalBeanFactory. Useful convenience method when we expect a single bean and don't care about the bean name. 
+<p>Does consider objects created by FactoryBeans, which means that FactoryBeans will get initialized. If the object created by the FactoryBean doesn't match, the raw FactoryBean itself will be matched against the type. </p>
+<p>This version of <code>beanOfTypeIncludingAncestors</code> automatically includes prototypes and FactoryBeans. </p>
+<p><strong>Note: Beans of the same name will take precedence at the 'lowest' factory level, i.e. such beans will be returned from the lowest factory that they are being found in, hiding corresponding beans in ancestor factories.</strong> This feature allows for 'replacing' beans by explicitly choosing the same bean name in a child factory; the bean in the ancestor factory won't be visible then, not even for by-type lookups.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="lbf"></a>
+<code>lbf</code> - the bean factory</p>
+<p><a name="type"></a>
+<code>type</code> - type of bean to match</p>
+<h3>Exceptions</h3>
+<p><a name="NoSuchBeanDefinitionException"></a>
+<code>NoSuchBeanDefinitionException</code> - if no bean of the given type was found</p>
+<p><a name="NoUniqueBeanDefinitionException"></a>
+<code>NoUniqueBeanDefinitionException</code> - if more than one bean of the given type was found</p>
+<p><a name="BeansException"></a>
+<code>BeansException</code> - if the bean could not be created</p>
+<p><strong>Return</strong><br/>
+the matching bean instance</p>
+<a name="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)), kotlin.Boolean, kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">beanOfTypeIncludingAncestors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)), kotlin.Boolean, kotlin.Boolean)/lbf">lbf</span><span class="symbol">:</span>&nbsp;<span class="identifier">ListableBeanFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)), kotlin.Boolean, kotlin.Boolean)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)), kotlin.Boolean, kotlin.Boolean)/includeNonSingletons">includeNonSingletons</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.BeanFactoryUtils$beanOfTypeIncludingAncestors(org.springframework.beans.factory.ListableBeanFactory, java.lang.Class((org.springframework.beans.factory.BeanFactoryUtils.beanOfTypeIncludingAncestors.T)), kotlin.Boolean, kotlin.Boolean)/allowEagerInit">allowEagerInit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Return a single bean of the given type or subtypes, also picking up beans defined in ancestor bean factories if the current bean factory is a HierarchicalBeanFactory. Useful convenience method when we expect a single bean and don't care about the bean name. 
+<p>Does consider objects created by FactoryBeans if the "allowEagerInit" flag is set, which means that FactoryBeans will get initialized. If the object created by the FactoryBean doesn't match, the raw FactoryBean itself will be matched against the type. If "allowEagerInit" is not set, only raw FactoryBeans will be checked (which doesn't require initialization of each FactoryBean). </p>
+<p><strong>Note: Beans of the same name will take precedence at the 'lowest' factory level, i.e. such beans will be returned from the lowest factory that they are being found in, hiding corresponding beans in ancestor factories.</strong> This feature allows for 'replacing' beans by explicitly choosing the same bean name in a child factory; the bean in the ancestor factory won't be visible then, not even for by-type lookups.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="lbf"></a>
+<code>lbf</code> - the bean factory</p>
+<p><a name="type"></a>
+<code>type</code> - type of bean to match</p>
+<p><a name="includeNonSingletons"></a>
+<code>includeNonSingletons</code> - whether to include prototype or scoped beans too or just singletons (also applies to FactoryBeans)</p>
+<p><a name="allowEagerInit"></a>
+<code>allowEagerInit</code> - whether to initialize <em>lazy-init singletons</em> and <em>objects created by FactoryBeans</em> (or by factory methods with a "factory-bean" reference) for the type check. Note that FactoryBeans need to be eagerly initialized to determine their type: So be aware that passing in "true" for this flag will initialize FactoryBeans and "factory-bean" references.</p>
+<h3>Exceptions</h3>
+<p><a name="NoSuchBeanDefinitionException"></a>
+<code>NoSuchBeanDefinitionException</code> - if no bean of the given type was found</p>
+<p><a name="NoUniqueBeanDefinitionException"></a>
+<code>NoUniqueBeanDefinitionException</code> - if more than one bean of the given type was found</p>
+<p><a name="BeansException"></a>
+<code>BeansException</code> - if the bean could not be created</p>
+<p><strong>Return</strong><br/>
+the matching bean instance</p>
+</BODY>
+</HTML>

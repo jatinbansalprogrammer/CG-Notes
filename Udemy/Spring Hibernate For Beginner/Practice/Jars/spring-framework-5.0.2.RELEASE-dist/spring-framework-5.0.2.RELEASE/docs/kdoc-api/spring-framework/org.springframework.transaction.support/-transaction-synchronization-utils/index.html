@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionSynchronizationUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.support</a>&nbsp;/&nbsp;<a href=".">TransactionSynchronizationUtils</a><br/>
+<br/>
+<h1>TransactionSynchronizationUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TransactionSynchronizationUtils</span></code>
+<p>Utility methods for triggering specific TransactionSynchronization callback methods on all currently registered synchronizations.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+TransactionSynchronization<a href="#">TransactionSynchronizationManager#getSynchronizations()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TransactionSynchronizationUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Utility methods for triggering specific TransactionSynchronization callback methods on all currently registered synchronizations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="invoke-after-commit.html">invokeAfterCommit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeAfterCommit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.support.TransactionSynchronizationUtils$invokeAfterCommit(kotlin.collections.MutableList((org.springframework.transaction.support.TransactionSynchronization)))/synchronizations">synchronizations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">TransactionSynchronization</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Actually invoke the <code>afterCommit</code> methods of the given Spring TransactionSynchronization objects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-after-completion.html">invokeAfterCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeAfterCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.support.TransactionSynchronizationUtils$invokeAfterCompletion(kotlin.collections.MutableList((org.springframework.transaction.support.TransactionSynchronization)), kotlin.Int)/synchronizations">synchronizations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">TransactionSynchronization</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.support.TransactionSynchronizationUtils$invokeAfterCompletion(kotlin.collections.MutableList((org.springframework.transaction.support.TransactionSynchronization)), kotlin.Int)/completionStatus">completionStatus</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Actually invoke the <code>afterCompletion</code> methods of the given Spring TransactionSynchronization objects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="same-resource-factory.html">sameResourceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">sameResourceFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.support.TransactionSynchronizationUtils$sameResourceFactory(org.springframework.transaction.support.ResourceTransactionManager, kotlin.Any)/tm">tm</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.support.TransactionSynchronizationUtils$sameResourceFactory(org.springframework.transaction.support.ResourceTransactionManager, kotlin.Any)/resourceFactory">resourceFactory</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether the given resource transaction managers refers to the given (underlying) resource factory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="trigger-after-commit.html">triggerAfterCommit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">triggerAfterCommit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Trigger <code>afterCommit</code> callbacks on all currently registered synchronizations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="trigger-after-completion.html">triggerAfterCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">triggerAfterCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.support.TransactionSynchronizationUtils$triggerAfterCompletion(kotlin.Int)/completionStatus">completionStatus</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Trigger <code>afterCompletion</code> callbacks on all currently registered synchronizations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="trigger-before-commit.html">triggerBeforeCommit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">triggerBeforeCommit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.support.TransactionSynchronizationUtils$triggerBeforeCommit(kotlin.Boolean)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Trigger <code>beforeCommit</code> callbacks on all currently registered synchronizations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="trigger-before-completion.html">triggerBeforeCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">triggerBeforeCompletion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Trigger <code>beforeCompletion</code> callbacks on all currently registered synchronizations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="trigger-flush.html">triggerFlush</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">triggerFlush</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Trigger <code>flush</code> callbacks on all currently registered synchronizations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

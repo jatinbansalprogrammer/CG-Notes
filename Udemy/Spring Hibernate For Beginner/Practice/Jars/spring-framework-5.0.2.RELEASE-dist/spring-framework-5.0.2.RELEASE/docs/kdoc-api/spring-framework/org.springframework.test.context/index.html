@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.context - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.context</a><br/>
+<br/>
+<h2>Package org.springframework.test.context</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-test-execution-listener/index.html">TestExecutionListener</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TestExecutionListener</span></code>
+<p><code>TestExecutionListener</code> defines a <em>listener</em> API for reacting to test execution events published by the TestContextManager with which the listener is registered. 
+<p>Note that not all testing frameworks support all lifecycle callbacks defined in this API. For example, <code><a href="-test-execution-listener/before-test-execution.html">#beforeTestExecution</a></code> and <code><a href="-test-execution-listener/after-test-execution.html">#afterTestExecution</a></code> are not supported in conjunction with JUnit 4 when using the org.springframework.test.context.junit4.rules.SpringMethodRule. </p>
+<p>This interface provides empty <code>default</code> implementations for all methods. Concrete implementations can therefore choose to override only those methods suitable for the task at hand. </p>
+<p>Concrete implementations must provide a <code>public</code> no-args constructor, so that listeners can be instantiated transparently by tools and configuration mechanisms. </p>
+<p>Implementations may optionally declare the position in which they should be ordered among the chain of default listeners via the org.springframework.core.Ordered interface or org.springframework.core.annotation.Order annotation. See <code><a href="#">TestContextBootstrapper#getTestExecutionListeners()</a></code> for details. </p>
+<p>Spring provides the following out-of-the-box implementations (all of which implement <code>Ordered</code>): </p>
+<ul> <li>org.springframework.test.context.web.ServletTestExecutionListener</li>
+ <li>org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener</li>
+ <li>org.springframework.test.context.support.DependencyInjectionTestExecutionListener</li>
+ <li>org.springframework.test.context.support.DirtiesContextTestExecutionListener</li>
+ <li>org.springframework.test.context.transaction.TransactionalTestExecutionListener</li>
+ <li>org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener</li>
+ </ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bootstrap-with/index.html">BootstrapWith</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">BootstrapWith</span></code>
+<p><code>@BootstrapWith</code> defines class-level metadata that is used to determine how to bootstrap the <em>Spring TestContext Framework</em>. 
+<p>This annotation may also be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-hierarchy/index.html">ContextHierarchy</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ContextHierarchy</span></code>
+<p><code>@ContextHierarchy</code> is a class-level annotation that is used to define a hierarchy of org.springframework.context.ApplicationContext for integration tests. Examples 
+<p>The following JUnit-based examples demonstrate common configuration scenarios for integration tests that require the use of context hierarchies. </p>
+Single Test Class with Context Hierarchy 
+<p><code>ControllerIntegrationTests</code> represents a typical integration testing scenario for a Spring MVC web application by declaring a context hierarchy consisting of two levels, one for the <em>root</em> <code>WebApplicationContext</code> (with <code>TestAppConfig</code>) and one for the <em>dispatcher servlet</em> <code>WebApplicationContext</code> (with <code>WebConfig</code>). The <code>WebApplicationContext</code> that is <em>autowired</em> into the test instance is the one for the child context (i.e., the lowest context in the hierarchy). </p>
+<pre><code> @RunWith(SpringRunner.class) @WebAppConfiguration @ContextHierarchy({ @ContextConfiguration(classes = TestAppConfig.class), @ContextConfiguration(classes = WebConfig.class) }) public class ControllerIntegrationTests { @Autowired private WebApplicationContext wac; // ... }</code></pre> Class Hierarchy with Implicit Parent Context 
+<p>The following test classes define a context hierarchy within a test class hierarchy. <code>AbstractWebTests</code> declares the configuration for a root <code>WebApplicationContext</code> in a Spring-powered web application. Note, however, that <code>AbstractWebTests</code> does not declare <code>@ContextHierarchy</code>; consequently, subclasses of <code>AbstractWebTests</code> can optionally participate in a context hierarchy or follow the standard semantics for <code>@ContextConfiguration</code>. <code>SoapWebServiceTests</code> and <code>RestWebServiceTests</code> both extend <code>AbstractWebTests</code> and define a context hierarchy via <code>@ContextHierarchy</code>. The result is that three application contexts will be loaded (one for each declaration of <code>@ContextConfiguration</code>, and the application context loaded based on the configuration in <code>AbstractWebTests</code> will be set as the parent context for each of the contexts loaded for the concrete subclasses. </p>
+<pre><code> @RunWith(SpringRunner.class) @WebAppConfiguration @ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml") public abstract class AbstractWebTests {} @ContextHierarchy(@ContextConfiguration("/spring/soap-ws-config.xml") public class SoapWebServiceTests extends AbstractWebTests {} @ContextHierarchy(@ContextConfiguration("/spring/rest-ws-config.xml") public class RestWebServiceTests extends AbstractWebTests {}</code></pre> Class Hierarchy with Merged Context Hierarchy Configuration 
+<p>The following classes demonstrate the use of <em>named</em> hierarchy levels in order to <em>merge</em> the configuration for specific levels in a context hierarchy. <code>BaseTests</code> defines two levels in the hierarchy, <code>parent</code> and <code>child</code>. <code>ExtendedTests</code> extends <code>BaseTests</code> and instructs the Spring TestContext Framework to merge the context configuration for the <code>child</code> hierarchy level, simply by ensuring that the names declared via <code><a href="#">ContextConfiguration#name</a></code> are both <code>"child"</code>. The result is that three application contexts will be loaded: one for <code>"/app-config.xml"</code>, one for <code>"/user-config.xml"</code>, and one for <code>{"/user-config.xml", "/order-config.xml"}</code>. As with the previous example, the application context loaded from <code>"/app-config.xml"</code> will be set as the parent context for the contexts loaded from <code>"/user-config.xml"</code> and <code>{"/user-config.xml", "/order-config.xml"}</code>. </p>
+<pre><code> @RunWith(SpringRunner.class) @ContextHierarchy({ @ContextConfiguration(name = "parent", locations = "/app-config.xml"), @ContextConfiguration(name = "child", locations = "/user-config.xml") }) public class BaseTests {} @ContextHierarchy( @ContextConfiguration(name = "child", locations = "/order-config.xml") ) public class ExtendedTests extends BaseTests {}</code></pre> Class Hierarchy with Overridden Context Hierarchy Configuration 
+<p>In contrast to the previous example, this example demonstrates how to <em>override</em> the configuration for a given named level in a context hierarchy by setting the <code><a href="#">ContextConfiguration#inheritLocations</a></code> flag to <code>false</code>. Consequently, the application context for <code>ExtendedTests</code> will be loaded only from <code>"/test-user-config.xml"</code> and will have its parent set to the context loaded from <code>"/app-config.xml"</code>. </p>
+<pre><code> @RunWith(SpringRunner.class) @ContextHierarchy({ @ContextConfiguration(name = "parent", locations = "/app-config.xml"), @ContextConfiguration(name = "child", locations = "/user-config.xml") }) public class BaseTests {} @ContextHierarchy( @ContextConfiguration(name = "child", locations = "/test-user-config.xml", inheritLocations = false) ) public class ExtendedTests extends BaseTests {}</code></pre> 
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

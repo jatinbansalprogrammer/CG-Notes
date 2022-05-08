@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GenericXmlApplicationContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">GenericXmlApplicationContext</a><br/>
+<br/>
+<h1>GenericXmlApplicationContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericXmlApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericApplicationContext</span></code>
+<p>Convenient application context with built-in XML support. This is a flexible alternative to ClassPathXmlApplicationContext and FileSystemXmlApplicationContext, to be configured via setters, with an eventual <code><a href="#">#refresh()</a></code> call activating the context. 
+<p>In case of multiple configuration files, bean definitions in later files will override those defined in earlier files. This can be leveraged to intentionally override certain bean definitions via an extra configuration file appended to the list.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#load</a>XmlBeanDefinitionReaderorg.springframework.context.annotation.AnnotationConfigApplicationContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GenericXmlApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new GenericXmlApplicationContext that needs to be <code><a href="#">loaded</a></code> and then manually <code><a href="#">refreshed</a></code>.</p>
+<code><span class="identifier">GenericXmlApplicationContext</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$<init>(kotlin.Array((org.springframework.core.io.Resource)))/resources">resources</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span></code>
+<p>Create a new GenericXmlApplicationContext, loading bean definitions from the given resources and automatically refreshing the context.</p>
+<code><span class="identifier">GenericXmlApplicationContext</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$<init>(kotlin.Array((kotlin.String)))/resourceLocations">resourceLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">GenericXmlApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$<init>(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/relativeClass">relativeClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$<init>(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/resourceNames">resourceNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new GenericXmlApplicationContext, loading bean definitions from the given resource locations and automatically refreshing the context.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-reader.html">getReader</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getReader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XmlBeanDefinitionReader</span></code>
+<p>Exposes the underlying XmlBeanDefinitionReader for additional configuration facilities and <code>loadBeanDefinition</code> variations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="load.html">load</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">load</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$load(kotlin.Array((org.springframework.core.io.Resource)))/resources">resources</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">load</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$load(kotlin.Array((kotlin.String)))/resourceLocations">resourceLocations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">load</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$load(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/relativeClass">relativeClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$load(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/resourceNames">resourceNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Load bean definitions from the given XML resources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$setEnvironment(org.springframework.core.env.ConfigurableEnvironment)/environment">environment</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableEnvironment</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delegates the given environment to underlying XmlBeanDefinitionReader. Should be called before any call to <code>#load</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validating.html">setValidating</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidating</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.GenericXmlApplicationContext$setValidating(kotlin.Boolean)/validating">validating</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use XML validation. Default is <code>true</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop</a><br/>
+<br/>
+<h2>Package org.springframework.aop</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-introduction-aware-method-matcher/index.html">IntroductionAwareMethodMatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">IntroductionAwareMethodMatcher</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodMatcher</span></code>
+<p>A specialized type of MethodMatcher that takes into account introductions when matching methods. If there are no introductions on the target class, a method matcher may be able to optimize matching more effectively for example.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-before-advice/index.html">MethodBeforeAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">MethodBeforeAdvice</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeforeAdvice</span></code>
+<p>Advice invoked before a method is invoked. Such advices cannot prevent the method call proceeding, unless they throw a Throwable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-raw-target-access.html">RawTargetAccess</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RawTargetAccess</span></code>
+<p>Marker for AOP proxy interfaces (in particular: introduction interfaces) that explicitly intend to return the raw target object (which would normally get replaced with the proxy object when returned from a method invocation). 
+<p>Note that this is a marker interface in the style of java.io.Serializable, semantically applying to a declared interface rather than to the full class of a concrete object. In other words, this marker applies to a particular interface only (typically an introduction interface that does not serve as the primary interface of an AOP proxy), and hence does not affect other interfaces that a concrete AOP proxy may implement.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-throws-advice.html">ThrowsAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ThrowsAdvice</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AfterAdvice</span></code>
+<p>Tag interface for throws advice. 
+<p>There are not any methods on this interface, as methods are invoked by reflection. Implementing classes must implement methods of the form: </p>
+<pre><code>void afterThrowing([Method, args, target], ThrowableSubclass);</code></pre> 
+<p>Some examples of valid methods would be: </p>
+<pre><code>public void afterThrowing(Exception ex)</code></pre> <pre><code>public void afterThrowing(RemoteException)</code></pre> <pre><code>public void afterThrowing(Method method, Object[] args, Object target, Exception ex)</code></pre> <pre><code>public void afterThrowing(Method method, Object[] args, Object target, ServletException ex)</code></pre> The first three arguments are optional, and only useful if we want further information about the joinpoint, as in AspectJ <strong>after-throwing</strong> advice. 
+<p><strong>Note:</strong> If a throws-advice method throws an exception itself, it will override the original exception (i.e. change the exception thrown to the user). The overriding exception will typically be a RuntimeException; this is compatible with any method signature. However, if a throws-advice method throws a checked exception, it will have to match the declared exceptions of the target method and is hence to some degree coupled to specific target method signatures. <strong>Do not throw an undeclared checked exception that is incompatible with the target method's signature!</strong></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-aop-invocation-exception/index.html">AopInvocationException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AopInvocationException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NestedRuntimeException</span></code>
+<p>Exception that gets thrown when an AOP invocation failed because of misconfiguration or unexpected runtime issues.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

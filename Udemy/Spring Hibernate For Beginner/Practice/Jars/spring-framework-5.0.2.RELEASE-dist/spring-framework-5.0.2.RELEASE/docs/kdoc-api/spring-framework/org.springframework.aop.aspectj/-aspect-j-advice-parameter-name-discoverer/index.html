@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AspectJAdviceParameterNameDiscoverer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.aspectj</a>&nbsp;/&nbsp;<a href=".">AspectJAdviceParameterNameDiscoverer</a><br/>
+<br/>
+<h1>AspectJAdviceParameterNameDiscoverer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectJAdviceParameterNameDiscoverer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParameterNameDiscoverer</span></code>
+<p>ParameterNameDiscoverer implementation that tries to deduce parameter names for an advice method from the pointcut expression, returning, and throwing clauses. If an unambiguous interpretation is not available, it returns <code>null</code>. 
+<p>This class interprets arguments in the following way: </p>
+<ol> <li>If the first parameter of the method is of type JoinPoint or ProceedingJoinPoint, it is assumed to be for passing <code>thisJoinPoint</code> to the advice, and the parameter name will be assigned the value <code>"thisJoinPoint"</code>.</li>
+ <li>If the first parameter of the method is of type <code>JoinPoint.StaticPart</code>, it is assumed to be for passing <code>"thisJoinPointStaticPart"</code> to the advice, and the parameter name will be assigned the value <code>"thisJoinPointStaticPart"</code>.</li>
+ <li>If a <code><a href="#">throwingName</a></code> has been set, and there are no unbound arguments of type <code>Throwable+</code>, then an IllegalArgumentException is raised. If there is more than one unbound argument of type <code>Throwable+</code>, then an AmbiguousBindingException is raised. If there is exactly one unbound argument of type <code>Throwable+</code>, then the corresponding parameter name is assigned the value &lt;throwingName&gt;.</li>
+ <li>If there remain unbound arguments, then the pointcut expression is examined. Let <code>a</code> be the number of annotation-based pointcut expressions (@annotation, @this, @target, @args, @within, @withincode) that are used in binding form. Usage in binding form has itself to be deduced: if the expression inside the pointcut is a single string literal that meets Java variable name conventions it is assumed to be a variable name. If <code>a</code> is zero we proceed to the next stage. If <code>a</code> &gt; 1 then an <code>AmbiguousBindingException</code> is raised. If <code>a</code> == 1, and there are no unbound arguments of type <code>Annotation+</code>, then an <code>IllegalArgumentException</code> is raised. if there is exactly one such argument, then the corresponding parameter name is assigned the value from the pointcut expression.</li>
+ <li>If a returningName has been set, and there are no unbound arguments then an <code>IllegalArgumentException</code> is raised. If there is more than one unbound argument then an <code>AmbiguousBindingException</code> is raised. If there is exactly one unbound argument then the corresponding parameter name is assigned the value &lt;returningName&gt;.</li>
+ <li>If there remain unbound arguments, then the pointcut expression is examined once more for <code>this</code>, <code>target</code>, and <code>args</code> pointcut expressions used in the binding form (binding forms are deduced as described for the annotation based pointcuts). If there remains more than one unbound argument of a primitive type (which can only be bound in <code>args</code>) then an <code>AmbiguousBindingException</code> is raised. If there is exactly one argument of a primitive type, then if exactly one <code>args</code> bound variable was found, we assign the corresponding parameter name the variable name. If there were no <code>args</code> bound variables found an <code>IllegalStateException</code> is raised. If there are multiple <code>args</code> bound variables, an <code>AmbiguousBindingException</code> is raised. At this point, if there remains more than one unbound argument we raise an <code>AmbiguousBindingException</code>. If there are no unbound arguments remaining, we are done. If there is exactly one unbound argument remaining, and only one candidate variable name unbound from <code>this</code>, <code>target</code>, or <code>args</code>, it is assigned as the corresponding parameter name. If there are multiple possibilities, an <code>AmbiguousBindingException</code> is raised.</li>
+ </ol>
+ 
+<p>The behavior on raising an <code>IllegalArgumentException</code> or <code>AmbiguousBindingException</code> is configurable to allow this discoverer to be used as part of a chain-of-responsibility. By default the condition will be logged and the <code>getParameterNames(..)</code> method will simply return <code>null</code>. If the <code><a href="set-raise-exceptions.html">raiseExceptions</a></code> property is set to <code>true</code>, the conditions will be thrown as <code>IllegalArgumentException</code> and <code>AmbiguousBindingException</code>, respectively. </p>
+<p>Was that perfectly clear? ;) </p>
+<p>Short version: If an unambiguous binding can be deduced, then it is. If the advice requirements cannot possibly be satisfied, then <code>null</code> is returned. By setting the <code><a href="set-raise-exceptions.html">raiseExceptions</a></code> property to <code>true</code>, descriptive exceptions will be thrown instead of returning <code>null</code> in the case that the parameter names cannot be discovered.</p>
+</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AspectJAdviceParameterNameDiscoverer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJAdviceParameterNameDiscoverer$<init>(kotlin.String)/pointcutExpression">pointcutExpression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new discoverer that attempts to discover parameter names from the given pointcut expression.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-parameter-names.html">getParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParameterNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJAdviceParameterNameDiscoverer$getParameterNames(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Deduce the parameter names for an advice method. 
+<p>See the AspectJAdviceParameterNameDiscoverer for this class for details of the algorithm used.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParameterNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJAdviceParameterNameDiscoverer$getParameterNames(java.lang.reflect.Constructor((kotlin.Any)))/ctor">ctor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Constructor</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>An advice method can never be a constructor in Spring.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-raise-exceptions.html">setRaiseExceptions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRaiseExceptions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJAdviceParameterNameDiscoverer$setRaiseExceptions(kotlin.Boolean)/raiseExceptions">raiseExceptions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicate whether IllegalArgumentException and AmbiguousBindingException must be thrown as appropriate in the case of failing to deduce advice parameter names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-returning-name.html">setReturningName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReturningName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJAdviceParameterNameDiscoverer$setReturningName(kotlin.String)/returningName">returningName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>If <code>afterReturning</code> advice binds the return value, the returning variable name must be specified.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-throwing-name.html">setThrowingName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setThrowingName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.AspectJAdviceParameterNameDiscoverer$setThrowingName(kotlin.String)/throwingName">throwingName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>If <code>afterThrowing</code> advice binds the thrown value, the throwing variable name must be specified.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

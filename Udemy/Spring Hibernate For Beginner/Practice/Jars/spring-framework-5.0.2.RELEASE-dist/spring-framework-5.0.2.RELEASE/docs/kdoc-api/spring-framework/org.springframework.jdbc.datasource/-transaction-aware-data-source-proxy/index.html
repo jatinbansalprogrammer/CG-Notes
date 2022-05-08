@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionAwareDataSourceProxy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href=".">TransactionAwareDataSourceProxy</a><br/>
+<br/>
+<h1>TransactionAwareDataSourceProxy</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAwareDataSourceProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingDataSource</span></code>
+<p>Proxy for a target JDBC javax.sql.DataSource, adding awareness of Spring-managed transactions. Similar to a transactional JNDI DataSource as provided by a Java EE server. 
+<p>Data access code that should remain unaware of Spring's data access support can work with this proxy to seamlessly participate in Spring-managed transactions. Note that the transaction manager, for example DataSourceTransactionManager, still needs to work with the underlying DataSource, <em>not</em> with this proxy. </p>
+<p><strong>Make sure that TransactionAwareDataSourceProxy is the outermost DataSource of a chain of DataSource proxies/adapters.</strong> TransactionAwareDataSourceProxy can delegate either directly to the target connection pool or to some intermediary proxy/adapter like LazyConnectionDataSourceProxy or UserCredentialsDataSourceAdapter. </p>
+<p>Delegates to DataSourceUtils for automatically participating in thread-bound transactions, for example managed by DataSourceTransactionManager. <code>getConnection</code> calls and <code>close</code> calls on returned Connections will behave properly within a transaction, i.e. always operate on the transactional Connection. If not within a transaction, normal DataSource behavior applies. </p>
+<p>This proxy allows data access code to work with the plain JDBC API and still participate in Spring-managed transactions, similar to JDBC code in a Java EE/JTA environment. However, if possible, use Spring's DataSourceUtils, JdbcTemplate or JDBC operation objects to get transaction participation even without a proxy for the target DataSource, avoiding the need to define such a proxy in the first place. </p>
+<p>As a further effect, using a transaction-aware DataSource will apply remaining transaction timeouts to all created JDBC (Prepared/Callable)Statement. This means that all operations performed through standard JDBC will automatically participate in Spring-managed transaction timeouts. </p>
+<p><strong>NOTE:</strong> This DataSource proxy needs to return wrapped Connections (which implement the ConnectionProxy interface) in order to handle close calls properly. Use <code><a href="#">Connection#unwrap</a></code> to retrieve the native JDBC Connection.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.sql.DataSource#getConnection()</a><a href="#">java.sql.Connection#close()</a><a href="#">DataSourceUtils#doGetConnection</a><a href="#">DataSourceUtils#applyTransactionTimeout</a><a href="#">DataSourceUtils#doReleaseConnection</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TransactionAwareDataSourceProxy</span><span class="symbol">(</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">TransactionAwareDataSourceProxy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy$<init>(javax.sql.DataSource)/targetDataSource">targetDataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span></code>
+<p>Create a new TransactionAwareDataSourceProxy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-connection.html">getConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code>
+<p>Delegates to DataSourceUtils for automatically participating in Spring-managed transactions. Throws the original SQLException, if any. 
+<p>The returned Connection handle implements the ConnectionProxy interface, allowing to retrieve the underlying target Connection.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-reobtain-transactional-connections.html">setReobtainTransactionalConnections</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReobtainTransactionalConnections</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy$setReobtainTransactionalConnections(kotlin.Boolean)/reobtainTransactionalConnections">reobtainTransactionalConnections</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to reobtain the target Connection for each operation performed within a transaction. 
+<p>The default is "false". Specify "true" to reobtain transactional Connections for every call on the Connection proxy; this is advisable on JBoss if you hold on to a Connection handle across transaction boundaries. </p>
+<p>The effect of this setting is similar to the "hibernate.connection.release_mode" value "after_statement".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

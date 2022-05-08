@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ListenableFutureAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.util.concurrent</a>&nbsp;/&nbsp;<a href=".">ListenableFutureAdapter</a><br/>
+<br/>
+<h1>ListenableFutureAdapter</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ListenableFutureAdapter</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">S</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-future-adapter/index.html"><span class="identifier">FutureAdapter</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">,</span>&nbsp;<span class="identifier">S</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Abstract class that adapts a ListenableFuture parameterized over S into a <code>ListenableFuture</code> parameterized over T. All methods are delegated to the adaptee, where <code><a href="../-future-adapter/get.html">#get()</a></code>, <code><a href="#">#get(long, java.util.concurrent.TimeUnit)</a></code>, and <code><a href="#">ListenableFutureCallback#onSuccess(Object)</a></code> call <code><a href="#">#adapt(Object)</a></code> on the adaptee's result.</p>
+<h3>Parameters</h3>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the type of this <code>Future</code></p>
+<p><a name="&lt;S&gt;"></a>
+<code><S></code> - the type of the adaptee's <code>Future</code></p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-callback.html">addCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCallback</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.concurrent.ListenableFutureAdapter$addCallback(org.springframework.util.concurrent.ListenableFutureCallback((org.springframework.util.concurrent.ListenableFutureAdapter.T)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">ListenableFutureCallback</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCallback</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.concurrent.ListenableFutureAdapter$addCallback(org.springframework.util.concurrent.SuccessCallback((org.springframework.util.concurrent.ListenableFutureAdapter.T)), org.springframework.util.concurrent.FailureCallback)/successCallback">successCallback</span><span class="symbol">:</span>&nbsp;<span class="identifier">SuccessCallback</span><span class="symbol">&lt;</span><span class="keyword">in</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.util.concurrent.ListenableFutureAdapter$addCallback(org.springframework.util.concurrent.SuccessCallback((org.springframework.util.concurrent.ListenableFutureAdapter.T)), org.springframework.util.concurrent.FailureCallback)/failureCallback">failureCallback</span><span class="symbol">:</span>&nbsp;<span class="identifier">FailureCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-future-adapter/cancel.html">cancel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cancel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.concurrent.FutureAdapter$cancel(kotlin.Boolean)/mayInterruptIfRunning">mayInterruptIfRunning</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-future-adapter/get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">get</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.concurrent.FutureAdapter$get(kotlin.Long, java.util.concurrent.TimeUnit)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.util.concurrent.FutureAdapter$get(kotlin.Long, java.util.concurrent.TimeUnit)/unit">unit</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeUnit</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-future-adapter/is-cancelled.html">isCancelled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCancelled</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-future-adapter/is-done.html">isDone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isDone</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

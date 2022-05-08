@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.cache.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.cache.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.cache.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-annotation-cache-operation-source/index.html">AnnotationCacheOperationSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationCacheOperationSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFallbackCacheOperationSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Implementation of the org.springframework.cache.interceptor.CacheOperationSource interface for working with caching metadata in annotation format. 
+<p>This class reads Spring's Cacheable, CachePut and CacheEvict annotations and exposes corresponding caching operation definition to Spring's cache infrastructure. This class may also serve as base class for a custom <code>CacheOperationSource</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-caching-configuration-selector/index.html">CachingConfigurationSelector</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingConfigurationSelector</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.context.annotation/-advice-mode-import-selector/index.html"><span class="identifier">AdviceModeImportSelector</span></a><span class="symbol">&lt;</span><span class="identifier">EnableCaching</span><span class="symbol">&gt;</span></code>
+<p>Selects which implementation of AbstractCachingConfiguration should be used based on the value of <code><a href="#">EnableCaching#mode</a></code> on the importing <code>@Configuration</code> class. 
+<p>Detects the presence of JSR-107 and enables JCache support accordingly.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-caching-configurer-support/index.html">CachingConfigurerSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingConfigurerSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CachingConfigurer</span></code>
+<p>An implementation of CachingConfigurer with empty methods allowing sub-classes to override only the methods they're interested in.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-proxy-caching-configuration/index.html">ProxyCachingConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ProxyCachingConfiguration</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCachingConfiguration</span></code>
+<p><code>@Configuration</code> class that registers the Spring infrastructure beans necessary to enable proxy-based annotation-driven cache management.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-cache-annotation-parser/index.html">SpringCacheAnnotationParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringCacheAnnotationParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheAnnotationParser</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Strategy implementation for parsing Spring's Caching, Cacheable, CacheEvict, and CachePut annotations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cache-put/index.html">CachePut</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">CachePut</span></code>
+<p>Annotation indicating that a method (or all methods on a class) triggers a <code><a href="#">cache put</a></code> operation. 
+<p>In contrast to the Cacheable annotation, this annotation does not cause the advised method to be skipped. Rather, it always causes the method to be invoked and its result to be stored in the associated cache. Note that Java8's <code>Optional</code> return types are automatically handled and its content is stored in the cache if present. </p>
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em> with attribute overrides.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-caching/index.html">Caching</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Caching</span></code>
+<p>Group annotation for multiple cache annotations (of different or the same type). 
+<p>This annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em> with attribute overrides.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,238 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CommonsPool2TargetSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.target</a>&nbsp;/&nbsp;<a href=".">CommonsPool2TargetSource</a><br/>
+<br/>
+<h1>CommonsPool2TargetSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CommonsPool2TargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPoolingTargetSource</span><span class="symbol">, </span><span class="identifier">PooledObjectFactory</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>org.springframework.aop.TargetSource implementation that holds objects in a configurable Apache Commons2 Pool. 
+<p>By default, an instance of <code>GenericObjectPool</code> is created. Subclasses may change the type of <code>ObjectPool</code> used by overriding the <code>createObjectPool()</code> method. </p>
+<p>Provides many configuration properties mirroring those of the Commons Pool <code>GenericObjectPool</code> class; these properties are passed to the <code>GenericObjectPool</code> during construction. If creating a subclass of this class to change the <code>ObjectPool</code> implementation type, pass in the values of configuration properties that are relevant to your chosen implementation. </p>
+<p>The <code>testOnBorrow</code>, <code>testOnReturn</code> and <code>testWhileIdle</code> properties are explicitly not mirrored because the implementation of <code>PoolableObjectFactory</code> used by this class does not implement meaningful validation. All exposed Commons Pool properties use the corresponding Commons Pool defaults. </p>
+<p>Compatible with Apache Commons Pool 2.4, as of Spring 4.2.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Kazuki Shimizu</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+GenericObjectPool<a href="#">#createObjectPool()</a><a href="#">#setMaxSize</a><a href="set-max-idle.html">#setMaxIdle</a><a href="set-min-idle.html">#setMinIdle</a><a href="set-max-wait.html">#setMaxWait</a><a href="set-time-between-eviction-runs-millis.html">#setTimeBetweenEvictionRunsMillis</a><a href="set-min-evictable-idle-time-millis.html">#setMinEvictableIdleTimeMillis</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CommonsPool2TargetSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a CommonsPoolTargetSource with default settings. Default maximum size of the pool is 8.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="activate-object.html">activateObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">activateObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$activateObject(org.apache.commons.pool2.PooledObject((kotlin.Any)))/p">p</span><span class="symbol">:</span>&nbsp;<span class="identifier">PooledObject</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Closes the underlying <code>ObjectPool</code> when destroying this object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy-object.html">destroyObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroyObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$destroyObject(org.apache.commons.pool2.PooledObject((kotlin.Any)))/p">p</span><span class="symbol">:</span>&nbsp;<span class="identifier">PooledObject</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-active-count.html">getActiveCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getActiveCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-idle-count.html">getIdleCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getIdleCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-max-idle.html">getMaxIdle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMaxIdle</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the maximum number of idle objects in the pool.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-max-wait.html">getMaxWait</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMaxWait</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the maximum waiting time for fetching an object from the pool.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-min-evictable-idle-time-millis.html">getMinEvictableIdleTimeMillis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMinEvictableIdleTimeMillis</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the minimum time that an idle object can sit in the pool.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-min-idle.html">getMinIdle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMinIdle</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the minimum number of idle objects in the pool.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target.html">getTarget</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTarget</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Borrows an object from the <code>ObjectPool</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-time-between-eviction-runs-millis.html">getTimeBetweenEvictionRunsMillis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimeBetweenEvictionRunsMillis</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the time between eviction runs that check idle objects.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-block-when-exhausted.html">isBlockWhenExhausted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isBlockWhenExhausted</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Specify if the call should block when the pool is exhausted.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="make-object.html">makeObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">makeObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PooledObject</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="passivate-object.html">passivateObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">passivateObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$passivateObject(org.apache.commons.pool2.PooledObject((kotlin.Any)))/p">p</span><span class="symbol">:</span>&nbsp;<span class="identifier">PooledObject</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="release-target.html">releaseTarget</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">releaseTarget</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$releaseTarget(kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Returns the specified object to the underlying <code>ObjectPool</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-block-when-exhausted.html">setBlockWhenExhausted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBlockWhenExhausted</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$setBlockWhenExhausted(kotlin.Boolean)/blockWhenExhausted">blockWhenExhausted</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the call should bock when the pool is exhausted.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-idle.html">setMaxIdle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMaxIdle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$setMaxIdle(kotlin.Int)/maxIdle">maxIdle</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the maximum number of idle objects in the pool. Default is 8.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-wait.html">setMaxWait</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMaxWait</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$setMaxWait(kotlin.Long)/maxWait">maxWait</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the maximum waiting time for fetching an object from the pool. Default is -1, waiting forever.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-min-evictable-idle-time-millis.html">setMinEvictableIdleTimeMillis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMinEvictableIdleTimeMillis</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$setMinEvictableIdleTimeMillis(kotlin.Long)/minEvictableIdleTimeMillis">minEvictableIdleTimeMillis</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the minimum time that an idle object can sit in the pool before it becomes subject to eviction. Default is 1800000 (30 minutes). 
+<p>Note that eviction runs need to be performed to take this setting into effect.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-min-idle.html">setMinIdle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMinIdle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$setMinIdle(kotlin.Int)/minIdle">minIdle</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the minimum number of idle objects in the pool. Default is 0.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-time-between-eviction-runs-millis.html">setTimeBetweenEvictionRunsMillis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimeBetweenEvictionRunsMillis</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$setTimeBetweenEvictionRunsMillis(kotlin.Long)/timeBetweenEvictionRunsMillis">timeBetweenEvictionRunsMillis</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the time between eviction runs that check idle objects whether they have been idle for too long or have become invalid. Default is -1, not performing any eviction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="validate-object.html">validateObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">validateObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.CommonsPool2TargetSource$validateObject(org.apache.commons.pool2.PooledObject((kotlin.Any)))/p">p</span><span class="symbol">:</span>&nbsp;<span class="identifier">PooledObject</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

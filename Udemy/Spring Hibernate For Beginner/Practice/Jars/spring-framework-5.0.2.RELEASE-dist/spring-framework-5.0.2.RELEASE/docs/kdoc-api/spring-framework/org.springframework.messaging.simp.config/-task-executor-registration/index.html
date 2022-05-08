@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TaskExecutorRegistration - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.simp.config</a>&nbsp;/&nbsp;<a href=".">TaskExecutorRegistration</a><br/>
+<br/>
+<h1>TaskExecutorRegistration</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TaskExecutorRegistration</span></code>
+<p>A registration class for customizing the properties of ThreadPoolTaskExecutor.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TaskExecutorRegistration</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>TaskExecutorRegistration</code> for a default ThreadPoolTaskExecutor.</p>
+<code><span class="identifier">TaskExecutorRegistration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.config.TaskExecutorRegistration$<init>(org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor)/taskExecutor">taskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">ThreadPoolTaskExecutor</span><span class="symbol">)</span></code>
+<p>Create a new <code>TaskExecutorRegistration</code> for a given ThreadPoolTaskExecutor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="core-pool-size.html">corePoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">corePoolSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.config.TaskExecutorRegistration$corePoolSize(kotlin.Int)/corePoolSize">corePoolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaskExecutorRegistration</span></code>
+<p>Set the core pool size of the ThreadPoolExecutor. 
+<p><strong>NOTE:</strong> The core pool size is effectively the max pool size when an unbounded <code><a href="queue-capacity.html">queueCapacity</a></code> is configured (the default). This is essentially the "Unbounded queues" strategy as explained in java.util.concurrent.ThreadPoolExecutor. When this strategy is used, the <code><a href="max-pool-size.html">maxPoolSize</a></code> is ignored. </p>
+<p>By default this is set to twice the value of <code><a href="#">Runtime#availableProcessors()</a></code>. In an application where tasks do not block frequently, the number should be closer to or equal to the number of available CPUs/cores.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="keep-alive-seconds.html">keepAliveSeconds</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">keepAliveSeconds</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.config.TaskExecutorRegistration$keepAliveSeconds(kotlin.Int)/keepAliveSeconds">keepAliveSeconds</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaskExecutorRegistration</span></code>
+<p>Set the time limit for which threads may remain idle before being terminated. If there are more than the core number of threads currently in the pool, after waiting this amount of time without processing a task, excess threads will be terminated. This overrides any value set in the constructor. 
+<p>By default this is set to 60.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="max-pool-size.html">maxPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">maxPoolSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.config.TaskExecutorRegistration$maxPoolSize(kotlin.Int)/maxPoolSize">maxPoolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaskExecutorRegistration</span></code>
+<p>Set the max pool size of the ThreadPoolExecutor. 
+<p><strong>NOTE:</strong> When an unbounded <code><a href="queue-capacity.html">queueCapacity</a></code> is configured (the default), the max pool size is effectively ignored. See the "Unbounded queues" strategy in java.util.concurrent.ThreadPoolExecutor for more details. </p>
+<p>By default this is set to <code>Integer.MAX_VALUE</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="queue-capacity.html">queueCapacity</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">queueCapacity</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.simp.config.TaskExecutorRegistration$queueCapacity(kotlin.Int)/queueCapacity">queueCapacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaskExecutorRegistration</span></code>
+<p>Set the queue capacity for the ThreadPoolExecutor. 
+<p><strong>NOTE:</strong> when an unbounded <code>queueCapacity</code> is configured (the default), the core pool size is effectively the max pool size. This is essentially the "Unbounded queues" strategy as explained in java.util.concurrent.ThreadPoolExecutor. When this strategy is used, the <code><a href="max-pool-size.html">maxPoolSize</a></code> is ignored. </p>
+<p>By default this is set to <code>Integer.MAX_VALUE</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

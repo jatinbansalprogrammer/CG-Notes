@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.socket.server.standard - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.socket.server.standard</a><br/>
+<br/>
+<h2>Package org.springframework.web.socket.server.standard</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-standard-upgrade-strategy/index.html">AbstractStandardUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractStandardUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestUpgradeStrategy</span></code>
+<p>A base class for RequestUpgradeStrategy implementations that build on the standard WebSocket API for Java (JSR-356).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-tyrus-request-upgrade-strategy/index.html">AbstractTyrusRequestUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractTyrusRequestUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-standard-upgrade-strategy/index.html"><span class="identifier">AbstractStandardUpgradeStrategy</span></a></code>
+<p>A base class for <code>RequestUpgradeStrategy</code> implementations on top of JSR-356 based servers which include Tyrus as their WebSocket engine. 
+<p>Works with Tyrus 1.11 (WebLogic 12.2.1) and Tyrus 1.12 (GlassFish 4.1.1).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-glass-fish-request-upgrade-strategy/index.html">GlassFishRequestUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GlassFishRequestUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-tyrus-request-upgrade-strategy/index.html"><span class="identifier">AbstractTyrusRequestUpgradeStrategy</span></a></code>
+<p>A WebSocket <code>RequestUpgradeStrategy</code> for Oracle's GlassFish 4.1 and higher.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-server-endpoint-exporter/index.html">ServerEndpointExporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServerEndpointExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationObjectSupport</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><a href="../org.springframework.beans.factory/-smart-initializing-singleton/index.html"><span class="identifier">SmartInitializingSingleton</span></a></code>
+<p>Detects beans of type javax.websocket.server.ServerEndpointConfig and registers with the standard Java WebSocket runtime. Also detects beans annotated with ServerEndpoint and registers them as well. Although not required, it is likely annotated endpoints should have their <code>configurator</code> property set to SpringConfigurator. 
+<p>When this class is used, by declaring it in Spring configuration, it should be possible to turn off a Servlet container's scan for WebSocket endpoints. This can be done with the help of the <code>&lt;absolute-ordering&gt;</code> element in <code>web.xml</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-server-container-factory-bean/index.html">ServletServerContainerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletServerContainerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">WebSocketContainer</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A FactoryBean for configuring javax.websocket.server.ServerContainer. Since there is usually only one <code>ServerContainer</code> instance accessible under a well-known <code>javax.servlet.ServletContext</code> attribute, simply declaring this FactoryBean and using its setters allows for configuring the <code>ServerContainer</code> through Spring configuration. 
+<p>This is useful even if the <code>ServerContainer</code> is not injected into any other bean within the Spring application context. For example, an application can configure a org.springframework.web.socket.server.support.DefaultHandshakeHandler, a org.springframework.web.socket.sockjs.SockJsService, or ServerEndpointExporter, and separately declare this FactoryBean in order to customize the properties of the (one and only) <code>ServerContainer</code> instance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-configurator/index.html">SpringConfigurator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringConfigurator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Configurator</span></code>
+<p>A javax.websocket.server.ServerEndpointConfig.Configurator for initializing ServerEndpoint-annotated classes through Spring. 
+<p> </p>
+<pre><code> @ServerEndpoint(value = "/echo", configurator = SpringConfigurator.class) public class EchoEndpoint { // ... } </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-tomcat-request-upgrade-strategy/index.html">TomcatRequestUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TomcatRequestUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-standard-upgrade-strategy/index.html"><span class="identifier">AbstractStandardUpgradeStrategy</span></a></code>
+<p>A WebSocket <code>RequestUpgradeStrategy</code> for Apache Tomcat. Compatible with all versions of Tomcat that support JSR-356, i.e. Tomcat 7.0.47+ and higher. 
+<p>To modify properties of the underlying javax.websocket.server.ServerContainer you can use ServletServerContainerFactoryBean in XML configuration or, when using Java configuration, access the container instance through the "javax.websocket.server.ServerContainer" ServletContext attribute.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-undertow-request-upgrade-strategy/index.html">UndertowRequestUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UndertowRequestUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-standard-upgrade-strategy/index.html"><span class="identifier">AbstractStandardUpgradeStrategy</span></a></code>
+<p>A WebSocket <code>RequestUpgradeStrategy</code> for WildFly and its underlying Undertow web server. Also compatible with embedded Undertow usage. 
+<p>Requires Undertow 1.3.5+ as of Spring Framework 5.0.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-logic-request-upgrade-strategy/index.html">WebLogicRequestUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebLogicRequestUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-tyrus-request-upgrade-strategy/index.html"><span class="identifier">AbstractTyrusRequestUpgradeStrategy</span></a></code>
+<p>A WebSocket <code>RequestUpgradeStrategy</code> for Oracle's WebLogic. Supports 12.1.3 as well as 12.2.1, as of Spring Framework 4.2.3.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-sphere-request-upgrade-strategy/index.html">WebSphereRequestUpgradeStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSphereRequestUpgradeStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-standard-upgrade-strategy/index.html"><span class="identifier">AbstractStandardUpgradeStrategy</span></a></code>
+<p>WebSphere support for upgrading an HttpServletRequest during a WebSocket handshake. To modify properties of the underlying javax.websocket.server.ServerContainer you can use ServletServerContainerFactoryBean in XML configuration or, when using Java configuration, access the container instance through the "javax.websocket.server.ServerContainer" ServletContext attribute. 
+<p>Tested with WAS Liberty beta (August 2015) for the upcoming 8.5.5.7 release.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExposeBeanNameAdvisors - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.interceptor</a>&nbsp;/&nbsp;<a href=".">ExposeBeanNameAdvisors</a><br/>
+<br/>
+<h1>ExposeBeanNameAdvisors</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExposeBeanNameAdvisors</span></code>
+<p>Convenient methods for creating advisors that may be used when autoproxying beans created with the Spring IoC container, binding the bean name to the current invocation. May support a <code>bean()</code> pointcut designator with AspectJ. 
+<p>Typically used in Spring auto-proxying, where the bean name is known at proxy creation time.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.beans.factory.NamedBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ExposeBeanNameAdvisors</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient methods for creating advisors that may be used when autoproxying beans created with the Spring IoC container, binding the bean name to the current invocation. May support a <code>bean()</code> pointcut designator with AspectJ. 
+<p>Typically used in Spring auto-proxying, where the bean name is known at proxy creation time.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-advisor-introducing-named-bean.html">createAdvisorIntroducingNamedBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createAdvisorIntroducingNamedBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.ExposeBeanNameAdvisors$createAdvisorIntroducingNamedBean(kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Advisor</span></code>
+<p>Create a new advisor that will expose the given bean name, introducing the NamedBean interface to make the bean name accessible without forcing the target object to be aware of this Spring IoC concept.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-advisor-without-introduction.html">createAdvisorWithoutIntroduction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createAdvisorWithoutIntroduction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.ExposeBeanNameAdvisors$createAdvisorWithoutIntroduction(kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Advisor</span></code>
+<p>Create a new advisor that will expose the given bean name, with no introduction</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-bean-name.html">getBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getBeanName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Find the bean name for the current invocation. Assumes that an ExposeBeanNameAdvisor has been included in the interceptor chain, and that the invocation is exposed with ExposeInvocationInterceptor.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.ExposeBeanNameAdvisors$getBeanName(org.aopalliance.intercept.MethodInvocation)/mi">mi</span><span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Find the bean name for the given invocation. Assumes that an ExposeBeanNameAdvisor has been included in the interceptor chain.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

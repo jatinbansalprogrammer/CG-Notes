@@ -1,0 +1,185 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EmbeddedDatabaseFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource.embedded</a>&nbsp;/&nbsp;<a href=".">EmbeddedDatabaseFactoryBean</a><br/>
+<br/>
+<h1>EmbeddedDatabaseFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedDatabaseFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-embedded-database-factory/index.html"><span class="identifier">EmbeddedDatabaseFactory</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">DataSource</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A subclass of EmbeddedDatabaseFactory that implements FactoryBean for registration as a Spring bean. Returns the actual DataSource that provides connectivity to the embedded database to Spring. 
+<p>The target DataSource is returned instead of an EmbeddedDatabase proxy since the FactoryBean will manage the initialization and destruction lifecycle of the embedded database instance. </p>
+<p>Implements DisposableBean to shutdown the embedded database when the managing Spring container is being closed.</p>
+</p>
+<p><strong>Author</strong><br/>
+Keith Donald</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EmbeddedDatabaseFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A subclass of EmbeddedDatabaseFactory that implements FactoryBean for registration as a Spring bean. Returns the actual DataSource that provides connectivity to the embedded database to Spring. 
+<p>The target DataSource is returned instead of an EmbeddedDatabase proxy since the FactoryBean will manage the initialization and destruction lifecycle of the embedded database instance. </p>
+<p>Implements DisposableBean to shutdown the embedded database when the managing Spring container is being closed.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/-d-e-f-a-u-l-t_-d-a-t-a-b-a-s-e_-n-a-m-e.html">DEFAULT_DATABASE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_DATABASE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default name for an embedded database: {@value}</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataSource</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-database-cleaner.html">setDatabaseCleaner</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDatabaseCleaner</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactoryBean$setDatabaseCleaner(org.springframework.jdbc.datasource.init.DatabasePopulator)/databaseCleaner">databaseCleaner</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatabasePopulator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a script execution to be run in the bean destruction callback, cleaning up the database and leaving it in a known state for others.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/get-database.html">getDatabase</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDatabase</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-embedded-database/index.html"><span class="identifier">EmbeddedDatabase</span></a></code>
+<p>Factory method that returns the EmbeddedDatabase instance, which is also a DataSource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/set-data-source-factory.html">setDataSourceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDataSourceFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$setDataSourceFactory(org.springframework.jdbc.datasource.embedded.DataSourceFactory)/dataSourceFactory">dataSourceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSourceFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the factory to use to create the DataSource instance that connects to the embedded database. 
+<p>Defaults to SimpleDriverDataSourceFactory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/set-database-configurer.html">setDatabaseConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDatabaseConfigurer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$setDatabaseConfigurer(org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseConfigurer)/configurer">configurer</span><span class="symbol">:</span>&nbsp;<a href="../-embedded-database-configurer/index.html"><span class="identifier">EmbeddedDatabaseConfigurer</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the strategy that will be used to configure the embedded database instance. 
+<p>Call this when you wish to use an embedded database type not already supported.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/set-database-name.html">setDatabaseName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDatabaseName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$setDatabaseName(kotlin.String)/databaseName">databaseName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the database. 
+<p>Defaults to {@value #DEFAULT_DATABASE_NAME}. </p>
+<p>Will be overridden if the <code>generateUniqueDatabaseName</code> flag has been set to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/set-database-populator.html">setDatabasePopulator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDatabasePopulator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$setDatabasePopulator(org.springframework.jdbc.datasource.init.DatabasePopulator)/populator">populator</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatabasePopulator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the strategy that will be used to initialize or populate the embedded database. 
+<p>Defaults to <code>null</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/set-database-type.html">setDatabaseType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDatabaseType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$setDatabaseType(org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType)/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">EmbeddedDatabaseType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the type of embedded database to use. 
+<p>Call this when you wish to configure one of the pre-supported types. </p>
+<p>Defaults to HSQL.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-embedded-database-factory/set-generate-unique-database-name.html">setGenerateUniqueDatabaseName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setGenerateUniqueDatabaseName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseFactory$setGenerateUniqueDatabaseName(kotlin.Boolean)/generateUniqueDatabaseName">generateUniqueDatabaseName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the <code>generateUniqueDatabaseName</code> flag to enable or disable generation of a pseudo-random unique ID to be used as the database name. 
+<p>Setting this flag to <code>true</code> overrides any explicit name set via <code><a href="#">#setDatabaseName</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

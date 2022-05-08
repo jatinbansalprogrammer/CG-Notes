@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResourceBundleEditor.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.propertyeditors</a>&nbsp;/&nbsp;<a href="index.html">ResourceBundleEditor</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.propertyeditors.ResourceBundleEditor$&lt;init&gt;()"></a>
+<code><span class="identifier">ResourceBundleEditor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>java.beans.PropertyEditor implementation for standard JDK java.util.ResourceBundle. 
+<p>Only supports conversion <em>from</em> a String, but not <em>to</em> a String. Find below some examples of using this class in a (properly configured) Spring container using XML-based metadata: </p>
+<pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'messages' property is of type java.util.ResourceBundle. the 'DialogMessages.properties' file exists at the root of the CLASSPATH --&gt; &lt;property name="messages" value="DialogMessages"/&gt; &lt;/bean&gt;</code></pre> <pre><code> &lt;bean id="errorDialog" class="..."&gt; &lt;!-- the 'DialogMessages.properties' file exists in the 'com/messages' package --&gt; &lt;property name="messages" value="com/messages/DialogMessages"/&gt; &lt;/bean&gt;</code></pre> 
+<p>A 'properly configured' Spring org.springframework.context.ApplicationContext might contain a org.springframework.beans.factory.config.CustomEditorConfigurer definition such that the conversion can be effected transparently: </p>
+<pre><code> &lt;bean class="org.springframework.beans.factory.config.CustomEditorConfigurer"&gt; &lt;property name="customEditors"&gt; &lt;map&gt; &lt;entry key="java.util.ResourceBundle"&gt; &lt;bean class="org.springframework.beans.propertyeditors.ResourceBundleEditor"/&gt; &lt;/entry&gt; &lt;/map&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> 
+<p>Please note that this java.beans.PropertyEditor is <strong>not</strong> registered by default with any of the Spring infrastructure. </p>
+<p>Thanks to David Leal Valmana for the suggestion and initial prototype.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rick Evans</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+</BODY>
+</HTML>

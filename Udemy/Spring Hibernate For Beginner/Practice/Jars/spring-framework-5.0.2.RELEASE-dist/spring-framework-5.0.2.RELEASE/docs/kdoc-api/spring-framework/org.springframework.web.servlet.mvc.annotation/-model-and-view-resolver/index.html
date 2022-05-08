@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ModelAndViewResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.mvc.annotation</a>&nbsp;/&nbsp;<a href=".">ModelAndViewResolver</a><br/>
+<br/>
+<h1>ModelAndViewResolver</h1>
+<code><span class="keyword">interface </span><span class="identifier">ModelAndViewResolver</span></code>
+<p>SPI for resolving custom return values from a specific handler method. Typically implemented to detect special return types, resolving well-known result values for them. 
+<p>A typical implementation could look like as follows: </p>
+<pre><code> public class MyModelAndViewResolver implements ModelAndViewResolver { public ModelAndView resolveModelAndView(Method handlerMethod, Class handlerType, Object returnValue, ExtendedModelMap implicitModel, NativeWebRequest webRequest) { if (returnValue instanceof MySpecialRetVal.class)) { return new MySpecialRetVal(returnValue); } return UNRESOLVED; } }</code></pre></p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-u-n-r-e-s-o-l-v-e-d.html">UNRESOLVED</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">UNRESOLVED</span><span class="symbol">: </span><span class="identifier">ModelAndView</span></code>
+<p>Marker to be returned when the resolver does not know how to handle the given method parameter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="resolve-model-and-view.html">resolveModelAndView</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">resolveModelAndView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver$resolveModelAndView(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Any, org.springframework.ui.ExtendedModelMap, org.springframework.web.context.request.NativeWebRequest)/handlerMethod">handlerMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver$resolveModelAndView(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Any, org.springframework.ui.ExtendedModelMap, org.springframework.web.context.request.NativeWebRequest)/handlerType">handlerType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver$resolveModelAndView(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Any, org.springframework.ui.ExtendedModelMap, org.springframework.web.context.request.NativeWebRequest)/returnValue">returnValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver$resolveModelAndView(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Any, org.springframework.ui.ExtendedModelMap, org.springframework.web.context.request.NativeWebRequest)/implicitModel">implicitModel</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExtendedModelMap</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.annotation.ModelAndViewResolver$resolveModelAndView(java.lang.reflect.Method, java.lang.Class((kotlin.Any)), kotlin.Any, org.springframework.ui.ExtendedModelMap, org.springframework.web.context.request.NativeWebRequest)/webRequest">webRequest</span><span class="symbol">:</span>&nbsp;<span class="identifier">NativeWebRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ModelAndView</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

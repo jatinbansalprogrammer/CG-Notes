@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GroovyMarkupConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.groovy</a>&nbsp;/&nbsp;<a href=".">GroovyMarkupConfigurer</a><br/>
+<br/>
+<h1>GroovyMarkupConfigurer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyMarkupConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TemplateConfiguration</span><span class="symbol">, </span><a href="../-groovy-markup-config/index.html"><span class="identifier">GroovyMarkupConfig</span></a><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>An extension of Groovy's groovy.text.markup.TemplateConfiguration and an implementation of Spring MVC's GroovyMarkupConfig for creating a <code>MarkupTemplateEngine</code> for use in a web application. The most basic way to configure this class is to set the "resourceLoaderPath". For example: <pre><code> // Add the following to an @Configuration class @Bean public GroovyMarkupConfig groovyMarkupConfigurer() { GroovyMarkupConfigurer configurer = new GroovyMarkupConfigurer(); configurer.setResourceLoaderPath("classpath:/WEB-INF/groovymarkup/"); return configurer; } </code></pre> By default this bean will create a MarkupTemplateEngine with: <ul> <li>a parent ClassLoader for loading Groovy templates with their references </li>
+<li>the default configuration in the base class TemplateConfiguration </li>
+<li>a groovy.text.markup.TemplateResolver for resolving template files </li>
+</ul>
+ You can provide the MarkupTemplateEngine instance directly to this bean in which case all other properties will not be effectively ignored. 
+<p>This bean must be included in the application context of any application using the Spring MVC GroovyMarkupView for rendering. It exists purely for the purpose of configuring Groovy's Markup templates. It is not meant to be referenced by application components directly. It implements GroovyMarkupConfig to be found by GroovyMarkupView without depending on a bean name. Each DispatcherServlet can define its own GroovyMarkupConfigurer if desired. </p>
+<p>Note that resource caching is enabled by default in MarkupTemplateEngine. Use the <code><a href="#">#setCacheTemplates(boolean)</a></code> to configure that as necessary. </p>
+<p>Spring's Groovy Markup template support requires Groovy 2.3.1 or higher.</p>
+</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+GroovyMarkupView&lt;a href="http://groovy-lang.org/templating.html#_the_markuptemplateengine"&gt;</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GroovyMarkupConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An extension of Groovy's groovy.text.markup.TemplateConfiguration and an implementation of Spring MVC's GroovyMarkupConfig for creating a <code>MarkupTemplateEngine</code> for use in a web application. The most basic way to configure this class is to set the "resourceLoaderPath". For example: <pre><code> // Add the following to an @Configuration class @Bean public GroovyMarkupConfig groovyMarkupConfigurer() { GroovyMarkupConfigurer configurer = new GroovyMarkupConfigurer(); configurer.setResourceLoaderPath("classpath:/WEB-INF/groovymarkup/"); return configurer; } </code></pre> By default this bean will create a MarkupTemplateEngine with: <ul> <li>a parent ClassLoader for loading Groovy templates with their references </li>
+<li>the default configuration in the base class TemplateConfiguration </li>
+<li>a groovy.text.markup.TemplateResolver for resolving template files </li>
+</ul>
+ You can provide the MarkupTemplateEngine instance directly to this bean in which case all other properties will not be effectively ignored. 
+<p>This bean must be included in the application context of any application using the Spring MVC GroovyMarkupView for rendering. It exists purely for the purpose of configuring Groovy's Markup templates. It is not meant to be referenced by application components directly. It implements GroovyMarkupConfig to be found by GroovyMarkupView without depending on a bean name. Each DispatcherServlet can define its own GroovyMarkupConfigurer if desired. </p>
+<p>Note that resource caching is enabled by default in MarkupTemplateEngine. Use the <code><a href="#">#setCacheTemplates(boolean)</a></code> to configure that as necessary. </p>
+<p>Spring's Groovy Markup template support requires Groovy 2.3.1 or higher.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-loader-path.html">getResourceLoaderPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourceLoaderPath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-template-engine.html">getTemplateEngine</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTemplateEngine</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MarkupTemplateEngine</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-application-context.html">setApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.groovy.GroovyMarkupConfigurer$setApplicationContext(org.springframework.context.ApplicationContext)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale.html">setLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.groovy.GroovyMarkupConfigurer$setLocale(java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This method should not be used, since the considered Locale for resolving templates is the Locale for the current HTTP request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-resource-loader-path.html">setResourceLoaderPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceLoaderPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.groovy.GroovyMarkupConfigurer$setResourceLoaderPath(kotlin.String)/resourceLoaderPath">resourceLoaderPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Groovy Markup Template resource loader path(s) via a Spring resource location. Accepts multiple locations as a comma-separated list of paths. Standard URLs like "file:" and "classpath:" and pseudo URLs are supported as understood by Spring's org.springframework.core.io.ResourceLoader. Relative paths are allowed when running in an ApplicationContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-template-engine.html">setTemplateEngine</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTemplateEngine</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.groovy.GroovyMarkupConfigurer$setTemplateEngine(groovy.text.markup.MarkupTemplateEngine)/templateEngine">templateEngine</span><span class="symbol">:</span>&nbsp;<span class="identifier">MarkupTemplateEngine</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a pre-configured MarkupTemplateEngine to use for the Groovy Markup Template web configuration. 
+<p>Note that this engine instance has to be manually configured, since all other bean properties of this configurer will be ignored.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

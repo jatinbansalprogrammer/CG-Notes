@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UserCredentialsConnectionFactoryAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href=".">UserCredentialsConnectionFactoryAdapter</a><br/>
+<br/>
+<h1>UserCredentialsConnectionFactoryAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UserCredentialsConnectionFactoryAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier">TopicConnectionFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>An adapter for a target JMS javax.jms.ConnectionFactory, applying the given user credentials to every standard <code>createConnection()</code> call, that is, implicitly invoking <code>createConnection(username, password)</code> on the target. All other methods simply delegate to the corresponding methods of the target ConnectionFactory. 
+<p>Can be used to proxy a target JNDI ConnectionFactory that does not have user credentials configured. Client code can work with the ConnectionFactory without passing in username and password on every <code>createConnection()</code> call. </p>
+<p>In the following example, client code can simply transparently work with the preconfigured "myConnectionFactory", implicitly accessing "myTargetConnectionFactory" with the specified user credentials. </p>
+<pre><code> &lt;bean id="myTargetConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="java:comp/env/jms/mycf"/&gt; &lt;/bean&gt; &lt;bean id="myConnectionFactory" class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter"&gt; &lt;property name="targetConnectionFactory" ref="myTargetConnectionFactory"/&gt; &lt;property name="username" value="myusername"/&gt; &lt;property name="password" value="mypassword"/&gt; &lt;/bean&gt;</code></pre> 
+<p>If the "username" is empty, this proxy will simply delegate to the standard <code>createConnection()</code> method of the target ConnectionFactory. This can be used to keep a UserCredentialsConnectionFactoryAdapter bean definition just for the <em>option</em> of implicitly passing in user credentials if the particular target ConnectionFactory requires it.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="create-connection.html">#createConnection</a><a href="create-queue-connection.html">#createQueueConnection</a><a href="create-topic-connection.html">#createTopicConnection</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UserCredentialsConnectionFactoryAdapter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An adapter for a target JMS javax.jms.ConnectionFactory, applying the given user credentials to every standard <code>createConnection()</code> call, that is, implicitly invoking <code>createConnection(username, password)</code> on the target. All other methods simply delegate to the corresponding methods of the target ConnectionFactory. 
+<p>Can be used to proxy a target JNDI ConnectionFactory that does not have user credentials configured. Client code can work with the ConnectionFactory without passing in username and password on every <code>createConnection()</code> call. </p>
+<p>In the following example, client code can simply transparently work with the preconfigured "myConnectionFactory", implicitly accessing "myTargetConnectionFactory" with the specified user credentials. </p>
+<pre><code> &lt;bean id="myTargetConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="java:comp/env/jms/mycf"/&gt; &lt;/bean&gt; &lt;bean id="myConnectionFactory" class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter"&gt; &lt;property name="targetConnectionFactory" ref="myTargetConnectionFactory"/&gt; &lt;property name="username" value="myusername"/&gt; &lt;property name="password" value="mypassword"/&gt; &lt;/bean&gt;</code></pre> 
+<p>If the "username" is empty, this proxy will simply delegate to the standard <code>createConnection()</code> method of the target ConnectionFactory. This can be used to keep a UserCredentialsConnectionFactoryAdapter bean definition just for the <em>option</em> of implicitly passing in user credentials if the particular target ConnectionFactory requires it.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-connection.html">createConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">createConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code>
+<p>Determine whether there are currently thread-bound credentials, using them if available, falling back to the statically specified username and password (i.e. values of the bean properties) else.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code>
+<p>Delegate the call straight to the target ConnectionFactory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-context.html">createContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createContext(kotlin.String, kotlin.String)/userName">userName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createContext(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createContext(kotlin.String, kotlin.String, kotlin.Int)/userName">userName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createContext(kotlin.String, kotlin.String, kotlin.Int)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createContext(kotlin.String, kotlin.String, kotlin.Int)/sessionMode">sessionMode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createContext(kotlin.Int)/sessionMode">sessionMode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-queue-connection.html">createQueueConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">createQueueConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">QueueConnection</span></code>
+<p>Determine whether there are currently thread-bound credentials, using them if available, falling back to the statically specified username and password (i.e. values of the bean properties) else.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createQueueConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createQueueConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createQueueConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">QueueConnection</span></code>
+<p>Delegate the call straight to the target QueueConnectionFactory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-topic-connection.html">createTopicConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">createTopicConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TopicConnection</span></code>
+<p>Determine whether there are currently thread-bound credentials, using them if available, falling back to the statically specified username and password (i.e. values of the bean properties) else.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTopicConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createTopicConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$createTopicConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TopicConnection</span></code>
+<p>Delegate the call straight to the target TopicConnectionFactory.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-credentials-from-current-thread.html">removeCredentialsFromCurrentThread</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeCredentialsFromCurrentThread</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove any user credentials for this proxy from the current thread. Statically specified user credentials apply again afterwards.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-credentials-for-current-thread.html">setCredentialsForCurrentThread</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCredentialsForCurrentThread</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$setCredentialsForCurrentThread(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$setCredentialsForCurrentThread(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set user credententials for this proxy and the current thread. The given username and password will be applied to all subsequent <code>createConnection()</code> calls on this ConnectionFactory proxy. 
+<p>This will override any statically specified user credentials, that is, values of the "username" and "password" bean properties.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-password.html">setPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPassword</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$setPassword(kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the password that this adapter should use for retrieving Connections. Default is no specific password.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-connection-factory.html">setTargetConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$setTargetConnectionFactory(javax.jms.ConnectionFactory)/targetConnectionFactory">targetConnectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the target ConnectionFactory that this ConnectionFactory should delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-username.html">setUsername</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUsername</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter$setUsername(kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the username that this adapter should use for retrieving Connections. Default is no specific user.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

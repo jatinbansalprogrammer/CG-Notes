@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CompositeCacheManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.cache.support</a>&nbsp;/&nbsp;<a href=".">CompositeCacheManager</a><br/>
+<br/>
+<h1>CompositeCacheManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeCacheManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Composite CacheManager implementation that iterates over a given collection of delegate CacheManager instances. 
+<p>Allows NoOpCacheManager to be automatically added to the end of the list for handling cache declarations without a backing store. Otherwise, any custom CacheManager may play that role of the last delegate as well, lazily creating cache regions for any requested name. </p>
+<p>Note: Regular CacheManagers that this composite manager delegates to need to return <code>null</code> from <code><a href="#">#getCache(String)</a></code> if they are unaware of the specified cache name, allowing for iteration to the next delegate in line. However, most CacheManager implementations fall back to lazy creation of named caches once requested; check out the specific configuration details for a 'static' mode with fixed cache names, if available.</p>
+</p>
+<p><strong>Author</strong><br/>
+Costin Leau</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+<a href="set-fallback-to-no-op-cache.html">#setFallbackToNoOpCache</a><a href="#">org.springframework.cache.concurrent.ConcurrentMapCacheManager#setCacheNames</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CompositeCacheManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Construct an empty CompositeCacheManager, with delegate CacheManagers to be added via the <code><a href="#">"cacheManagers"</a></code> property.</p>
+<code><span class="identifier">CompositeCacheManager</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.cache.support.CompositeCacheManager$<init>(kotlin.Array((org.springframework.cache.CacheManager)))/cacheManagers">cacheManagers</span><span class="symbol">:</span>&nbsp;<span class="identifier">CacheManager</span><span class="symbol">)</span></code>
+<p>Construct a CompositeCacheManager from the given delegate CacheManagers.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cache.html">getCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCache</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.support.CompositeCacheManager$getCache(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Cache</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cache-names.html">getCacheNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCacheNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-managers.html">setCacheManagers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheManagers</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.support.CompositeCacheManager$setCacheManagers(kotlin.collections.MutableCollection((org.springframework.cache.CacheManager)))/cacheManagers">cacheManagers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><span class="identifier">CacheManager</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the CacheManagers to delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fallback-to-no-op-cache.html">setFallbackToNoOpCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFallbackToNoOpCache</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.support.CompositeCacheManager$setFallbackToNoOpCache(kotlin.Boolean)/fallbackToNoOpCache">fallbackToNoOpCache</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicate whether a NoOpCacheManager should be added at the end of the delegate list. In this case, any <code>getCache</code> requests not handled by the configured CacheManagers will be automatically handled by the NoOpCacheManager (and hence never return <code>null</code>).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

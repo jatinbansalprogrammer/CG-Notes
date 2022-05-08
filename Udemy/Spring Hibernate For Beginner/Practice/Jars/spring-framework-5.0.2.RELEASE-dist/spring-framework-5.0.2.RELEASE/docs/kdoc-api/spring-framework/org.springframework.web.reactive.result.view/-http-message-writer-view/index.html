@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpMessageWriterView - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.result.view</a>&nbsp;/&nbsp;<a href=".">HttpMessageWriterView</a><br/>
+<br/>
+<h1>HttpMessageWriterView</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpMessageWriterView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">View</span></code>
+<p><code>View</code> that writes model attribute(s) with an HttpMessageWriter.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpMessageWriterView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.HttpMessageWriterView$<init>(org.springframework.core.codec.Encoder((kotlin.Any)))/encoder">encoder</span><span class="symbol">:</span>&nbsp;<span class="identifier">Encoder</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Constructor with an <code>Encoder</code>.</p>
+<code><span class="identifier">HttpMessageWriterView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.HttpMessageWriterView$<init>(org.springframework.http.codec.HttpMessageWriter((kotlin.Any)))/writer">writer</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Constructor with a fully initialized HttpMessageWriter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-message-writer.html">getMessageWriter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMessageWriter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the configured message writer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-model-keys.html">getModelKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getModelKeys</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the configured model keys.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-supported-media-types.html">getSupportedMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSupportedMediaTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MediaType</span><span class="symbol">&gt;</span></code>
+<p>{@inheritDoc} 
+<p>The implementation of this method for HttpMessageWriterView delegates to <code><a href="#">HttpMessageWriter#getWritableMediaTypes()</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="render.html">render</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">render</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.HttpMessageWriterView$render(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)), org.springframework.http.MediaType, org.springframework.web.server.ServerWebExchange)/model">model</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.result.view.HttpMessageWriterView$render(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)), org.springframework.http.MediaType, org.springframework.web.server.ServerWebExchange)/contentType">contentType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.result.view.HttpMessageWriterView$render(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)), org.springframework.http.MediaType, org.springframework.web.server.ServerWebExchange)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-model-keys.html">setModelKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setModelKeys</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.HttpMessageWriterView$setModelKeys(kotlin.collections.MutableSet((kotlin.String)))/modelKeys">modelKeys</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the attributes in the model that should be rendered by this view. When set, all other model attributes will be ignored. The matching attributes are further narrowed with <code><a href="#">HttpMessageWriter#canWrite</a></code>. The matching attributes are processed as follows: <ul> <li>0: nothing is written to the response body. </li>
+<li>1: the matching attribute is passed to the writer. </li>
+<li>2..N: if the writer supports Map, write all matches; otherwise raise an IllegalStateException. </li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

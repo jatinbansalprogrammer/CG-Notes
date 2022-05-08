@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WorkManagerTaskExecutor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.commonj</a>&nbsp;/&nbsp;<a href=".">WorkManagerTaskExecutor</a><br/>
+<br/>
+<h1>WorkManagerTaskExecutor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WorkManagerTaskExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorSupport</span><span class="symbol">, </span><span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">, </span><span class="identifier">SchedulingTaskExecutor</span><span class="symbol">, </span><span class="identifier">WorkManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>TaskExecutor implementation that delegates to a CommonJ WorkManager, implementing the commonj.work.WorkManager interface, which either needs to be specified as reference or through the JNDI name. 
+<p><strong>This is the central convenience class for setting up a CommonJ WorkManager in a Spring context.</strong> </p>
+<p>Also implements the CommonJ WorkManager interface itself, delegating all calls to the target WorkManager. Hence, a caller can choose whether it wants to talk to this executor through the Spring TaskExecutor interface or the CommonJ WorkManager interface. </p>
+<p>The CommonJ WorkManager will usually be retrieved from the application server's JNDI environment, as defined in the server's management console. </p>
+<p>Note: On the upcoming EE 7 compliant versions of WebLogic and WebSphere, a org.springframework.scheduling.concurrent.DefaultManagedTaskExecutor should be preferred, following JSR-236 support in Java EE 7.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WorkManagerTaskExecutor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>TaskExecutor implementation that delegates to a CommonJ WorkManager, implementing the commonj.work.WorkManager interface, which either needs to be specified as reference or through the JNDI name. 
+<p><strong>This is the central convenience class for setting up a CommonJ WorkManager in a Spring context.</strong> </p>
+<p>Also implements the CommonJ WorkManager interface itself, delegating all calls to the target WorkManager. Hence, a caller can choose whether it wants to talk to this executor through the Spring TaskExecutor interface or the CommonJ WorkManager interface. </p>
+<p>The CommonJ WorkManager will usually be retrieved from the application server's JNDI environment, as defined in the server's management console. </p>
+<p>Note: On the upcoming EE 7 compliant versions of WebLogic and WebSphere, a org.springframework.scheduling.concurrent.DefaultManagedTaskExecutor should be preferred, following JSR-236 support in Java EE 7.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$execute(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$execute(java.lang.Runnable, kotlin.Long)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$execute(java.lang.Runnable, kotlin.Long)/startTimeout">startTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="prefers-short-lived-tasks.html">prefersShortLivedTasks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prefersShortLivedTasks</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This task executor prefers short-lived work units.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="schedule.html">schedule</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$schedule(commonj.work.Work)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WorkItem</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">schedule</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$schedule(commonj.work.Work, commonj.work.WorkListener)/work">work</span><span class="symbol">:</span>&nbsp;<span class="identifier">Work</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$schedule(commonj.work.Work, commonj.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WorkItem</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-decorator.html">setTaskDecorator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskDecorator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$setTaskDecorator(org.springframework.core.task.TaskDecorator)/taskDecorator">taskDecorator</span><span class="symbol">:</span>&nbsp;<span class="identifier">TaskDecorator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a custom TaskDecorator to be applied to any Runnable about to be executed. 
+<p>Note that such a decorator is not necessarily being applied to the user-supplied <code>Runnable</code>/<code>Callable</code> but rather to the actual execution callback (which may be a wrapper around the user-supplied task). </p>
+<p>The primary use case is to set some execution context around the task's invocation, or to provide some monitoring/statistics for task execution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-work-listener.html">setWorkListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWorkListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$setWorkListener(commonj.work.WorkListener)/workListener">workListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a CommonJ WorkListener to apply, if any. 
+<p>This shared WorkListener instance will be passed on to the WorkManager by all <code><a href="execute.html">#execute</a></code> calls on this TaskExecutor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-work-manager.html">setWorkManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWorkManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$setWorkManager(commonj.work.WorkManager)/workManager">workManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the CommonJ WorkManager to delegate to. 
+<p>Alternatively, you can also specify the JNDI name of the target WorkManager.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-work-manager-name.html">setWorkManagerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWorkManagerName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$setWorkManagerName(kotlin.String)/workManagerName">workManagerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI name of the CommonJ WorkManager. 
+<p>This can either be a fully qualified JNDI name, or the JNDI name relative to the current environment naming context if "resourceRef" is set to "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="submit.html">submit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$submit(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$submit(java.util.concurrent.Callable((org.springframework.scheduling.commonj.WorkManagerTaskExecutor.submit.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Future</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="submit-listenable.html">submitListenable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$submitListenable(java.lang.Runnable)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">submitListenable</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$submitListenable(java.util.concurrent.Callable((org.springframework.scheduling.commonj.WorkManagerTaskExecutor.submitListenable.T)))/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="wait-for-all.html">waitForAll</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">waitForAll</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$waitForAll(kotlin.collections.MutableCollection((kotlin.Any)), kotlin.Long)/workItems">workItems</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$waitForAll(kotlin.collections.MutableCollection((kotlin.Any)), kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="wait-for-any.html">waitForAny</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">waitForAny</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$waitForAny(kotlin.collections.MutableCollection((kotlin.Any)), kotlin.Long)/workItems">workItems</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.commonj.WorkManagerTaskExecutor$waitForAny(kotlin.collections.MutableCollection((kotlin.Any)), kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

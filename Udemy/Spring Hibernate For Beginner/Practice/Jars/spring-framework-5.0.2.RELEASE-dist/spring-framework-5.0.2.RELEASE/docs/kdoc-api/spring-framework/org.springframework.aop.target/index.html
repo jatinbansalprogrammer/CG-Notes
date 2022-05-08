@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.target - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.target</a><br/>
+<br/>
+<h2>Package org.springframework.aop.target</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-lazy-creation-target-source/index.html">AbstractLazyCreationTargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractLazyCreationTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TargetSource</span></code>
+<p>org.springframework.aop.TargetSource implementation that will lazily create a user-managed object. 
+<p>Creation of the lazy target object is controlled by the user by implementing the <code><a href="#">#createObject()</a></code> method. This <code>TargetSource</code> will invoke this method the first time the proxy is accessed. </p>
+<p>Useful when you need to pass a reference to some dependency to an object but you don't actually want the dependency to be created until it is first used. A typical scenario for this is a connection to a remote resource.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-commons-pool2-target-source/index.html">CommonsPool2TargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CommonsPool2TargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPoolingTargetSource</span><span class="symbol">, </span><span class="identifier">PooledObjectFactory</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>org.springframework.aop.TargetSource implementation that holds objects in a configurable Apache Commons2 Pool. 
+<p>By default, an instance of <code>GenericObjectPool</code> is created. Subclasses may change the type of <code>ObjectPool</code> used by overriding the <code>createObjectPool()</code> method. </p>
+<p>Provides many configuration properties mirroring those of the Commons Pool <code>GenericObjectPool</code> class; these properties are passed to the <code>GenericObjectPool</code> during construction. If creating a subclass of this class to change the <code>ObjectPool</code> implementation type, pass in the values of configuration properties that are relevant to your chosen implementation. </p>
+<p>The <code>testOnBorrow</code>, <code>testOnReturn</code> and <code>testWhileIdle</code> properties are explicitly not mirrored because the implementation of <code>PoolableObjectFactory</code> used by this class does not implement meaningful validation. All exposed Commons Pool properties use the corresponding Commons Pool defaults. </p>
+<p>Compatible with Apache Commons Pool 2.4, as of Spring 4.2.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-empty-target-source/index.html">EmptyTargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmptyTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TargetSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Canonical <code>TargetSource</code> when there is no target (or just the target class known), and behavior is supplied by interfaces and advisors only.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-hot-swappable-target-source/index.html">HotSwappableTargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HotSwappableTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TargetSource</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>org.springframework.aop.TargetSource implementation that caches a local target object, but allows the target to be swapped while the application is running. 
+<p>If configuring an object of this class in a Spring IoC container, use constructor injection. </p>
+<p>This TargetSource is serializable if the target is at the time of serialization.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-lazy-init-target-source/index.html">LazyInitTargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LazyInitTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractBeanFactoryBasedTargetSource</span></code>
+<p>org.springframework.aop.TargetSource that lazily accesses a singleton bean from a org.springframework.beans.factory.BeanFactory. 
+<p>Useful when a proxy reference is needed on initialization but the actual target object should not be initialized until first use. When the target bean is defined in an org.springframework.context.ApplicationContext (or a <code>BeanFactory</code> that is eagerly pre-instantiating singleton beans) it must be marked as "lazy-init" too, else it will be instantiated by said <code>ApplicationContext</code> (or <code>BeanFactory</code>) on startup. </p>
+<p>For example: </p>
+<pre><code> &lt;bean id="serviceTarget" class="example.MyService" lazy-init="true"&gt; ... &lt;/bean&gt; &lt;bean id="service" class="org.springframework.aop.framework.ProxyFactoryBean"&gt; &lt;property name="targetSource"&gt; &lt;bean class="org.springframework.aop.target.LazyInitTargetSource"&gt; &lt;property name="targetBeanName"&gt;&lt;idref local="serviceTarget"/&gt;&lt;/property&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> The "serviceTarget" bean will not get initialized until a method on the "service" proxy gets invoked. 
+<p>Subclasses can extend this class and override the <code><a href="#">#postProcessTargetObject(Object)</a></code> to perform some additional processing with the target object when it is first loaded.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-prototype-target-source/index.html">PrototypeTargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PrototypeTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPrototypeBasedTargetSource</span></code>
+<p>org.springframework.aop.TargetSource implementation that creates a new instance of the target bean for each request, destroying each instance on release (after each request). 
+<p>Obtains bean instances from its containing org.springframework.beans.factory.BeanFactory.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-thread-local-target-source/index.html">ThreadLocalTargetSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThreadLocalTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPrototypeBasedTargetSource</span><span class="symbol">, </span><a href="-thread-local-target-source-stats/index.html"><span class="identifier">ThreadLocalTargetSourceStats</span></a><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Alternative to an object pool. This org.springframework.aop.TargetSource uses a threading model in which every thread has its own copy of the target. There's no contention for targets. Target object creation is kept to a minimum on the running server. 
+<p>Application code is written as to a normal pool; callers can't assume they will be dealing with the same instance in invocations in different threads. However, state can be relied on during the operations of a single thread: for example, if one caller makes repeated calls on the AOP proxy. </p>
+<p>Cleanup of thread-bound objects is performed on BeanFactory destruction, calling their <code>DisposableBean.destroy()</code> method if available. Be aware that many thread-bound objects can be around until the application actually shuts down.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-thread-local-target-source-stats/index.html">ThreadLocalTargetSourceStats</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ThreadLocalTargetSourceStats</span></code>
+<p>Statistics for a ThreadLocal TargetSource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

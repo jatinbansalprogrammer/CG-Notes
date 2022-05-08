@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet.view.tiles3 - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet.view.tiles3</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet.view.tiles3</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-simple-spring-preparer-factory/index.html">SimpleSpringPreparerFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleSpringPreparerFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSpringPreparerFactory</span></code>
+<p>Tiles org.apache.tiles.preparer.PreparerFactory implementation that expects preparer class names and builds preparer instances for those, creating them through the Spring ApplicationContext in order to apply Spring container callbacks and configured Spring BeanPostProcessors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-bean-preparer-factory/index.html">SpringBeanPreparerFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringBeanPreparerFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractSpringPreparerFactory</span></code>
+<p>Tiles org.apache.tiles.preparer.PreparerFactory implementation that expects preparer bean names and obtains preparer beans from the Spring ApplicationContext. The full bean creation process will be in the control of the Spring application context in this case, allowing for the use of scoped beans etc.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-locale-resolver/index.html">SpringLocaleResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringLocaleResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultLocaleResolver</span></code>
+<p>Tiles LocaleResolver adapter that delegates to a Spring org.springframework.web.servlet.LocaleResolver, exposing the DispatcherServlet-managed locale. 
+<p>This adapter gets automatically registered by TilesConfigurer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-wildcard-servlet-tiles-application-context/index.html">SpringWildcardServletTilesApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringWildcardServletTilesApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletApplicationContext</span></code>
+<p>Spring-specific subclass of the Tiles ServletApplicationContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-tiles-configurer/index.html">TilesConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TilesConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Helper class to configure Tiles 3.x for the Spring Framework. See <a href="#">http://tiles.apache.org</a> for more information about Tiles, which basically is a templating mechanism for web applications using JSPs and other template engines. 
+<p>The TilesConfigurer simply configures a TilesContainer using a set of files containing definitions, to be accessed by TilesView instances. This is a Spring-based alternative (for usage in Spring configuration) to the Tiles-provided <code>ServletContextListener</code> (e.g. org.apache.tiles.extras.complete.CompleteAutoloadTilesListener for usage in <code>web.xml</code>. </p>
+<p>TilesViews can be managed by any org.springframework.web.servlet.ViewResolver. For simple convention-based view resolution, consider using TilesViewResolver. </p>
+<p>A typical TilesConfigurer bean definition looks as follows: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/general.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/widgets.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/administrator.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/customer.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/templates.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre> The values in the list are the actual Tiles XML files containing the definitions. If the list is not specified, the default is <code>"/WEB-INF/tiles.xml"</code>. 
+<p>Note that in Tiles 3 an underscore in the name of a file containing Tiles definitions is used to indicate locale information, for example: </p>
+<pre><code> &lt;bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer"&gt; &lt;property name="definitions"&gt; &lt;list&gt; &lt;value&gt;/WEB-INF/defs/tiles.xml&lt;/value&gt; &lt;value&gt;/WEB-INF/defs/tiles_fr_FR.xml&lt;/value&gt; &lt;/list&gt; &lt;/property&gt; &lt;/bean&gt; </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-tiles-view-resolver/index.html">TilesViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TilesViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlBasedViewResolver</span></code>
+<p>Convenience subclass of UrlBasedViewResolver that supports TilesView (i.e. Tiles definitions) and custom subclasses of it.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

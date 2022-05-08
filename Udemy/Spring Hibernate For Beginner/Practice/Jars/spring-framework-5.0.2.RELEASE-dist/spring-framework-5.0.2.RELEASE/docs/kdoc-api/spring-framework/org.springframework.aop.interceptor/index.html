@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.interceptor - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.interceptor</a><br/>
+<br/>
+<h2>Package org.springframework.aop.interceptor</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-trace-interceptor/index.html">AbstractTraceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractTraceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Base <code>MethodInterceptor</code> implementation for tracing. 
+<p>By default, log messages are written to the log for the interceptor class, not the class which is being intercepted. Setting the <code>useDynamicLogger</code> bean property to <code>true</code> causes all log messages to be written to the <code>Log</code> for the target class being intercepted. </p>
+<p>Subclasses must implement the <code>invokeUnderTrace</code> method, which is invoked by this class ONLY when a particular invocation SHOULD be traced. Subclasses should write to the <code>Log</code> instance provided.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-async-execution-aspect-support/index.html">AsyncExecutionAspectSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AsyncExecutionAspectSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAware</span></code>
+<p>Base class for asynchronous method execution aspects, such as <code>org.springframework.scheduling.annotation.AnnotationAsyncExecutionInterceptor</code> or <code>org.springframework.scheduling.aspectj.AnnotationAsyncExecutionAspect</code>. 
+<p>Provides support for <em>executor qualification</em> on a method-by-method basis. <code>AsyncExecutionAspectSupport</code> objects must be constructed with a default <code>Executor</code>, but each individual method may further qualify a specific <code>Executor</code> bean to be used when executing it, e.g. through an annotation attribute.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-async-execution-interceptor/index.html">AsyncExecutionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncExecutionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-async-execution-aspect-support/index.html"><span class="identifier">AsyncExecutionAspectSupport</span></a><span class="symbol">, </span><a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>AOP Alliance <code>MethodInterceptor</code> that processes method invocations asynchronously, using a given org.springframework.core.task.AsyncTaskExecutor. Typically used with the org.springframework.scheduling.annotation.Async annotation. 
+<p>In terms of target method signatures, any parameter types are supported. However, the return type is constrained to either <code>void</code> or <code>java.util.concurrent.Future</code>. In the latter case, the Future handle returned from the proxy will be an actual asynchronous Future that can be used to track the result of the asynchronous method execution. However, since the target method needs to implement the same signature, it will have to return a temporary Future handle that just passes the return value through (like Spring's org.springframework.scheduling.annotation.AsyncResult or EJB 3.1's <code>javax.ejb.AsyncResult</code>). </p>
+<p>When the return type is <code>java.util.concurrent.Future</code>, any exception thrown during the execution can be accessed and managed by the caller. With <code>void</code> return type however, such exceptions cannot be transmitted back. In that case an AsyncUncaughtExceptionHandler can be registered to process such exceptions. </p>
+<p>As of Spring 3.1.2 the <code>AnnotationAsyncExecutionInterceptor</code> subclass is preferred for use due to its support for executor qualification in conjunction with Spring's <code>@Async</code> annotation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-concurrency-throttle-interceptor/index.html">ConcurrencyThrottleInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConcurrencyThrottleInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConcurrencyThrottleSupport</span><span class="symbol">, </span><a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor that throttles concurrent access, blocking invocations if a specified concurrency limit is reached. 
+<p>Can be applied to methods of local services that involve heavy use of system resources, in a scenario where it is more efficient to throttle concurrency for a specific service rather than restricting the entire thread pool (e.g. the web container's thread pool). </p>
+<p>The default concurrency limit of this interceptor is 1. Specify the "concurrencyLimit" bean property to change this value.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-customizable-trace-interceptor/index.html">CustomizableTraceInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomizableTraceInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-trace-interceptor/index.html"><span class="identifier">AbstractTraceInterceptor</span></a></code>
+<p><code>MethodInterceptor</code> implementation that allows for highly customizable method-level tracing, using placeholders. 
+<p>Trace messages are written on method entry, and if the method invocation succeeds on method exit. If an invocation results in an exception, then an exception message is written. The contents of these trace messages is fully customizable and special placeholders are available to allow you to include runtime information in your log messages. The placeholders available are: </p>
+<ul> <li><code>$[methodName]</code> - replaced with the name of the method being invoked</li>
+ <li><code>$[targetClassName]</code> - replaced with the name of the class that is the target of the invocation</li>
+ <li><code>$[targetClassShortName]</code> - replaced with the short name of the class that is the target of the invocation</li>
+ <li><code>$[returnValue]</code> - replaced with the value returned by the invocation</li>
+ <li><code>$[argumentTypes]</code> - replaced with a comma-separated list of the short class names of the method arguments</li>
+ <li><code>$[arguments]</code> - replaced with a comma-separated list of the <code>String</code> representation of the method arguments</li>
+ <li><code>$[exception]</code> - replaced with the <code>String</code> representation of any <code>Throwable</code> raised during the invocation</li>
+ <li><code>$[invocationTime]</code> - replaced with the time, in milliseconds, taken by the method invocation</li>
+ </ul>
+ 
+<p>There are restrictions on which placeholders can be used in which messages: see the individual message properties for details on the valid placeholders.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-debug-interceptor/index.html">DebugInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DebugInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpleTraceInterceptor</span></code>
+<p>AOP Alliance <code>MethodInterceptor</code> that can be introduced in a chain to display verbose information about intercepted invocations to the logger. 
+<p>Logs full invocation details on method entry and method exit, including invocation arguments and invocation count. This is only intended for debugging purposes; use <code>SimpleTraceInterceptor</code> or <code>CustomizableTraceInterceptor</code> for pure tracing purposes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-expose-bean-name-advisors/index.html">ExposeBeanNameAdvisors</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExposeBeanNameAdvisors</span></code>
+<p>Convenient methods for creating advisors that may be used when autoproxying beans created with the Spring IoC container, binding the bean name to the current invocation. May support a <code>bean()</code> pointcut designator with AspectJ. 
+<p>Typically used in Spring auto-proxying, where the bean name is known at proxy creation time.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-expose-invocation-interceptor/index.html">ExposeInvocationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExposeInvocationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor that exposes the current org.aopalliance.intercept.MethodInvocation as a thread-local object. We occasionally need to do this; for example, when a pointcut (e.g. an AspectJ expression pointcut) needs to know the full invocation context. 
+<p>Don't use this interceptor unless this is really necessary. Target objects should not normally know about Spring AOP, as this creates a dependency on Spring API. Target objects should be plain POJOs as far as possible. </p>
+<p>If used, this interceptor will normally be the first in the interceptor chain.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jamon-performance-monitor-interceptor/index.html">JamonPerformanceMonitorInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JamonPerformanceMonitorInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMonitoringInterceptor</span></code>
+<p>Performance monitor interceptor that uses <strong>JAMon</strong> library to perform the performance measurement on the intercepted method and output the stats. In addition, it tracks/counts exceptions thrown by the intercepted method. The stack traces can be viewed in the JAMon web application. 
+<p>This code is inspired by Thierry Templier's blog.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-performance-monitor-interceptor/index.html">PerformanceMonitorInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PerformanceMonitorInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMonitoringInterceptor</span></code>
+<p>Simple AOP Alliance <code>MethodInterceptor</code> for performance monitoring. This interceptor has no effect on the intercepted method call. 
+<p>Uses a <code>StopWatch</code> for the actual performance measuring.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-async-uncaught-exception-handler/index.html">SimpleAsyncUncaughtExceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleAsyncUncaughtExceptionHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncUncaughtExceptionHandler</span></code>
+<p>A default AsyncUncaughtExceptionHandler that simply logs the exception.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

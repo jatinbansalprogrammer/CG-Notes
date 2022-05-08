@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.datasource.embedded - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.datasource.embedded</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.datasource.embedded</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-embedded-database/index.html">EmbeddedDatabase</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">EmbeddedDatabase</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span></code>
+<p><code>EmbeddedDatabase</code> serves as a handle to an embedded database instance. 
+<p>An <code>EmbeddedDatabase</code> is also a DataSource and adds a <code><a href="-embedded-database/shutdown.html">#shutdown</a></code> operation so that the embedded database instance can be shut down gracefully.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-embedded-database-builder/index.html">EmbeddedDatabaseBuilder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedDatabaseBuilder</span></code>
+<p>A builder that provides a convenient API for constructing an embedded database. Usage Example <pre><code> EmbeddedDatabase db = new EmbeddedDatabaseBuilder() .generateUniqueName(true) .setType(H2) .setScriptEncoding("UTF-8") .ignoreFailedDrops(true) .addScript("schema.sql") .addScripts("user_data.sql", "country_data.sql") .build(); // perform actions against the db (EmbeddedDatabase extends javax.sql.DataSource) db.shutdown(); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-embedded-database-configurer/index.html">EmbeddedDatabaseConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">EmbeddedDatabaseConfigurer</span></code>
+<p><code>EmbeddedDatabaseConfigurer</code> encapsulates the configuration required to create, connect to, and shut down a specific type of embedded database such as HSQL, H2, or Derby.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-embedded-database-factory/index.html">EmbeddedDatabaseFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedDatabaseFactory</span></code>
+<p>Factory for creating an EmbeddedDatabase instance. 
+<p>Callers are guaranteed that the returned database has been fully initialized and populated. </p>
+<p>The factory can be configured as follows: </p>
+<ul> <li>Call <code><a href="#">#generateUniqueDatabaseName</a></code> to set a unique, random name for the database. </li>
+<li>Call <code><a href="#">#setDatabaseName</a></code> to set an explicit name for the database. </li>
+<li>Call <code><a href="-embedded-database-factory/set-database-type.html">#setDatabaseType</a></code> to set the database type if you wish to use one of the supported types. </li>
+<li>Call <code><a href="-embedded-database-factory/set-database-configurer.html">#setDatabaseConfigurer</a></code> to configure support for a custom embedded database type. </li>
+<li>Call <code><a href="-embedded-database-factory/set-database-populator.html">#setDatabasePopulator</a></code> to change the algorithm used to populate the database. </li>
+<li>Call <code><a href="-embedded-database-factory/set-data-source-factory.html">#setDataSourceFactory</a></code> to change the type of DataSource used to connect to the database. </li>
+</ul>
+ 
+<p>After configuring the factory, call <code><a href="-embedded-database-factory/get-database.html">#getDatabase()</a></code> to obtain a reference to the EmbeddedDatabase instance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-embedded-database-factory-bean/index.html">EmbeddedDatabaseFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedDatabaseFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-embedded-database-factory/index.html"><span class="identifier">EmbeddedDatabaseFactory</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">DataSource</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A subclass of EmbeddedDatabaseFactory that implements FactoryBean for registration as a Spring bean. Returns the actual DataSource that provides connectivity to the embedded database to Spring. 
+<p>The target DataSource is returned instead of an EmbeddedDatabase proxy since the FactoryBean will manage the initialization and destruction lifecycle of the embedded database instance. </p>
+<p>Implements DisposableBean to shutdown the embedded database when the managing Spring container is being closed.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-output-stream-factory/index.html">OutputStreamFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OutputStreamFactory</span></code>
+<p>Internal helper for exposing dummy OutputStreams to embedded databases such as Derby, preventing the creation of a log file.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

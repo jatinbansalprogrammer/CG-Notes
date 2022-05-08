@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.util - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.util</a><br/>
+<br/>
+<h2>Package org.springframework.web.util</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-content-caching-request-wrapper/index.html">ContentCachingRequestWrapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentCachingRequestWrapper</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequestWrapper</span></code>
+<p>javax.servlet.http.HttpServletRequest wrapper that caches all content read from the <a href="-content-caching-request-wrapper/get-input-stream.html">input stream</a> and <a href="-content-caching-request-wrapper/get-reader.html">reader</a>, and allows this content to be retrieved via a <code><a href="-content-caching-request-wrapper/get-content-as-byte-array.html">byte array</a></code>. 
+<p>Used e.g. by org.springframework.web.filter.AbstractRequestLoggingFilter. Note: As of Spring Framework 5.0, this wrapper is built on the Servlet 3.1 API.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-content-caching-response-wrapper/index.html">ContentCachingResponseWrapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentCachingResponseWrapper</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponseWrapper</span></code>
+<p>javax.servlet.http.HttpServletResponse wrapper that caches all content written to the <a href="-content-caching-response-wrapper/get-output-stream.html">output stream</a> and <a href="-content-caching-response-wrapper/get-writer.html">writer</a>, and allows this content to be retrieved via a <code><a href="-content-caching-response-wrapper/get-content-as-byte-array.html">byte array</a></code>. 
+<p>Used e.g. by org.springframework.web.filter.ShallowEtagHeaderFilter. Note: As of Spring Framework 5.0, this wrapper is built on the Servlet 3.1 API.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cookie-generator/index.html">CookieGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CookieGenerator</span></code>
+<p>Helper class for cookie generation, carrying cookie descriptor settings as bean properties and being able to add and remove cookie to/from a given response. 
+<p>Can serve as base class for components that generate specific cookies, such as CookieLocaleResolver and CookieThemeResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-uri-builder-factory/index.html">DefaultUriBuilderFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultUriBuilderFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UriBuilderFactory</span></code>
+<p>Default implementation of UriBuilderFactory providing options to pre-configure all UriBuilder instances with common properties such as a base URI, encoding mode, and default URI variables. 
+<p>Uses UriComponentsBuilder for URI building.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-uri-template-handler/index.html">DefaultUriTemplateHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultUriTemplateHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractUriTemplateHandler</span></code>
+<p>Default implementation of UriTemplateHandler based on the use of UriComponentsBuilder for expanding and encoding variables. 
+<p>There are also several properties to customize how URI template handling is performed, including a <code><a href="#">baseUrl</a></code> to be used as a prefix for all URI templates and a couple of encoding related options — <code><a href="-default-uri-template-handler/set-parse-path.html">parsePath</a></code> and <code><a href="-default-uri-template-handler/set-strict-encoding.html">strictEncoding</a></code> respectively.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-html-utils/index.html">HtmlUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">HtmlUtils</span></code>
+<p>Utility class for HTML escaping. Escapes and unescapes based on the W3C HTML 4.01 recommendation, handling character entity references. 
+<p>Reference: <a href="#">http://www.w3.org/TR/html4/charset.html</a> </p>
+<p>For a comprehensive set of String escaping utilities, consider Apache Commons Lang and its StringEscapeUtils class. We are not using that class here to avoid a runtime dependency on Commons Lang just for HTML escaping. Furthermore, Spring's HTML escaping is more flexible and 100% HTML 4.0 compliant.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-http-session-mutex-listener/index.html">HttpSessionMutexListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpSessionMutexListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpSessionListener</span></code>
+<p>Servlet HttpSessionListener that automatically exposes the session mutex when an HttpSession gets created. To be registered as a listener in <code>web.xml</code>. 
+<p>The session mutex is guaranteed to be the same object during the entire lifetime of the session, available under the key defined by the <code>SESSION_MUTEX_ATTRIBUTE</code> constant. It serves as a safe reference to synchronize on for locking on the current session. </p>
+<p>In many cases, the HttpSession reference itself is a safe mutex as well, since it will always be the same object reference for the same active logical session. However, this is not guaranteed across different servlet containers; the only 100% safe way is a session mutex.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-introspector-cleanup-listener/index.html">IntrospectorCleanupListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IntrospectorCleanupListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextListener</span></code>
+<p>Listener that flushes the JDK's java.beans.Introspector cache on web app shutdown. Register this listener in your <code>web.xml</code> to guarantee proper release of the web application class loader and its loaded classes. 
+<p><strong>If the JavaBeans Introspector has been used to analyze application classes, the system-level Introspector cache will hold a hard reference to those classes. Consequently, those classes and the web application class loader will not be garbage-collected on web app shutdown!</strong> This listener performs proper cleanup, to allow for garbage collection to take effect. </p>
+<p>Unfortunately, the only way to clean up the Introspector is to flush the entire cache, as there is no way to specifically determine the application's classes referenced there. This will remove cached introspection results for all other applications in the server too. </p>
+<p>Note that this listener is <em>not</em> necessary when using Spring's beans infrastructure within the application, as Spring's own introspection results cache will immediately flush an analyzed class from the JavaBeans Introspector cache and only hold a cache within the application's own ClassLoader. <strong>Although Spring itself does not create JDK Introspector leaks, note that this listener should nevertheless be used in scenarios where the Spring framework classes themselves reside in a 'common' ClassLoader (such as the system ClassLoader).</strong> In such a scenario, this listener will properly clean up Spring's introspection cache. </p>
+<p>Application classes hardly ever need to use the JavaBeans Introspector directly, so are normally not the cause of Introspector resource leaks. Rather, many libraries and frameworks do not clean up the Introspector: e.g. Struts and Quartz. </p>
+<p>Note that a single such Introspector leak will cause the entire web app class loader to not get garbage collected! This has the consequence that you will see all the application's static class resources (like singletons) around after web app shutdown, which is not the fault of those classes! </p>
+<p><strong>This listener should be registered as the first one in <code>web.xml</code>, before any application listeners such as Spring's ContextLoaderListener.</strong> This allows the listener to take full effect at the right time of the lifecycle.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-java-script-utils/index.html">JavaScriptUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JavaScriptUtils</span></code>
+<p>Utility class for JavaScript escaping. Escapes based on the JavaScript 1.5 recommendation. 
+<p>Reference: <a href="#"> JavaScript Guide</a> on Mozilla Developer Network.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-context-property-utils/index.html">ServletContextPropertyUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ServletContextPropertyUtils</span></code>
+<p>Helper class for resolving placeholders in texts. Usually applied to file paths. 
+<p>A text may contain <code>${...}</code> placeholders, to be resolved as servlet context init parameters or system properties: e.g. <code>${user.dir}</code>. Default values can be supplied using the ":" separator between key and value.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-tag-utils/index.html">TagUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TagUtils</span></code>
+<p>Utility class for tag library related code, exposing functionality such as translating String to web scopes. 
+<p> </p>
+<ul> <li><code>page</code> will be transformed to <code><a href="#">PageContext.PAGE_SCOPE</a></code> </li>
+<li><code>request</code> will be transformed to <code><a href="#">PageContext.REQUEST_SCOPE</a></code> </li>
+<li><code>session</code> will be transformed to <code><a href="#">PageContext.SESSION_SCOPE</a></code> </li>
+<li><code>application</code> will be transformed to <code><a href="#">PageContext.APPLICATION_SCOPE</a></code> </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-uri-template/index.html">UriTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UriTemplate</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>Represents a URI template. A URI template is a URI-like String that contains variables enclosed by braces (<code>{}</code>) which can be expanded to produce an actual URI. 
+<p>See <code><a href="#">#expand(Map)</a></code>, <code><a href="#">#expand(Object[])</a></code>, and <code><a href="#">#match(String)</a></code> for example usages. </p>
+<p>This class is designed to be thread-safe and reusable, allowing for any number of expand or match calls.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-uri-utils/index.html">UriUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">UriUtils</span></code>
+<p>Utility class for URI encoding and decoding based on RFC 3986. Offers encoding methods for the various URI components. 
+<p>All <code>encode*(String, String)</code> methods in this class operate in a similar way: </p>
+<ul> <li>Valid characters for the specific URI component as defined in RFC 3986 stay the same.</li>
+ <li>All other characters are converted into one or more bytes in the given encoding scheme. Each of the resulting bytes is written as a hexadecimal string in the "<code>%<em>xy</em></code>" format.</li>
+ </ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-app-root-listener/index.html">WebAppRootListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebAppRootListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContextListener</span></code>
+<p>Listener that sets a system property to the web application root directory. The key of the system property can be defined with the "webAppRootKey" init parameter at the servlet context level (i.e. context-param in web.xml), the default key is "webapp.root". 
+<p>Can be used for toolkits that support substitution with system properties (i.e. System.getProperty values), like log4j's "${key}" syntax within log file locations. </p>
+<p>Note: This listener should be placed before ContextLoaderListener in <code>web.xml</code>, at least when used for log4j. Log4jConfigListener sets the system property implicitly, so there's no need for this listener in addition to it. </p>
+<p><strong>WARNING</strong>: Some containers, e.g. Tomcat, do NOT keep system properties separate per web app. You have to use unique "webAppRootKey" context-params per web app then, to avoid clashes. Other containers like Resin do isolate each web app's system properties: Here you can use the default key (i.e. no "webAppRootKey" context-param at all) without worrying. </p>
+<p><strong>WARNING</strong>: The WAR file containing the web application needs to be expanded to allow for setting the web app root system property. This is by default not the case when a WAR file gets deployed to WebLogic, for example. Do not use this listener in such an environment!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

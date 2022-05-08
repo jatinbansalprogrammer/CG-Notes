@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StandardWebSocketClient - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.client.standard</a>&nbsp;/&nbsp;<a href=".">StandardWebSocketClient</a><br/>
+<br/>
+<h1>StandardWebSocketClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StandardWebSocketClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractWebSocketClient</span></code>
+<p>A WebSocketClient based on standard Java WebSocket API.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">StandardWebSocketClient</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor that calls <code>ContainerProvider.getWebSocketContainer()</code> to obtain a (new) WebSocketContainer instance. Also see constructor accepting existing <code>WebSocketContainer</code> instance.</p>
+<code><span class="identifier">StandardWebSocketClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.client.standard.StandardWebSocketClient$<init>(javax.websocket.WebSocketContainer)/webSocketContainer">webSocketContainer</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketContainer</span><span class="symbol">)</span></code>
+<p>Constructor accepting an existing WebSocketContainer instance. 
+<p>For XML configuration, see WebSocketContainerFactoryBean. For Java configuration, use <code>ContainerProvider.getWebSocketContainer()</code> to obtain the <code>WebSocketContainer</code> instance.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-task-executor.html">getTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTaskExecutor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncListenableTaskExecutor</span></code>
+<p>Return the configured TaskExecutor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-user-properties.html">getUserProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUserProperties</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>The configured user properties.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-task-executor.html">setTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTaskExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.client.standard.StandardWebSocketClient$setTaskExecutor(org.springframework.core.task.AsyncListenableTaskExecutor)/taskExecutor">taskExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an AsyncListenableTaskExecutor to use when opening connections. If this property is set to <code>null</code>, calls to any of the <code>doHandshake</code> methods will block until the connection is established. 
+<p>By default, an instance of <code>SimpleAsyncTaskExecutor</code> is used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-user-properties.html">setUserProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUserProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.client.standard.StandardWebSocketClient$setUserProperties(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/userProperties">userProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The standard Java WebSocket API allows passing "user properties" to the server via <code><a href="#">userProperties</a></code>. Use this property to configure one or more properties to be passed on every handshake.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

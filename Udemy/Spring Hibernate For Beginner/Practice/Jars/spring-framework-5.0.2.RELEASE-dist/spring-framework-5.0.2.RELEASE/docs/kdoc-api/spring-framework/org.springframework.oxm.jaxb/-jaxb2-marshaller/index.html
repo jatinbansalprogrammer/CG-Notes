@@ -1,0 +1,355 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Jaxb2Marshaller - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.oxm.jaxb</a>&nbsp;/&nbsp;<a href=".">Jaxb2Marshaller</a><br/>
+<br/>
+<h1>Jaxb2Marshaller</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Jaxb2Marshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.oxm.mime/-mime-marshaller/index.html"><span class="identifier">MimeMarshaller</span></a><span class="symbol">, </span><a href="../../org.springframework.oxm.mime/-mime-unmarshaller/index.html"><span class="identifier">MimeUnmarshaller</span></a><span class="symbol">, </span><span class="identifier">GenericMarshaller</span><span class="symbol">, </span><a href="../../org.springframework.oxm/-generic-unmarshaller/index.html"><span class="identifier">GenericUnmarshaller</span></a><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of the <code>GenericMarshaller</code> interface for JAXB 2.2. 
+<p>The typical usage will be to set either the "contextPath" or the "classesToBeBound" property on this bean, possibly customize the marshaller and unmarshaller by setting properties, schemas, adapters, and listeners, and to refer to it.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setContextPath(String)</a><a href="#">#setClassesToBeBound(Class[])</a><a href="#">#setJaxbContextProperties(Map)</a><a href="#">#setMarshallerProperties(Map)</a><a href="#">#setUnmarshallerProperties(Map)</a><a href="set-schema.html">#setSchema(Resource)</a><a href="#">#setSchemas(Resource[])</a><a href="set-marshaller-listener.html">#setMarshallerListener(javax.xml.bind.Marshaller.Listener)</a><a href="set-unmarshaller-listener.html">#setUnmarshallerListener(javax.xml.bind.Unmarshaller.Listener)</a><a href="#">#setAdapters(XmlAdapter[])</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Jaxb2Marshaller</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of the <code>GenericMarshaller</code> interface for JAXB 2.2. 
+<p>The typical usage will be to set either the "contextPath" or the "classesToBeBound" property on this bean, possibly customize the marshaller and unmarshaller by setting properties, schemas, adapters, and listeners, and to refer to it.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-classes-to-be-bound.html">getClassesToBeBound</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClassesToBeBound</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Return the list of Java classes to be recognized by a newly created JAXBContext.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-context-path.html">getContextPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContextPath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the JAXB context path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-jaxb-context.html">getJaxbContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJaxbContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JAXBContext</span></code>
+<p>Return the JAXBContext used by this marshaller, lazily building it if necessary.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-packages-to-scan.html">getPackagesToScan</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPackagesToScan</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the packages to search for JAXB2 annotations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-process-external-entities.html">isProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isProcessExternalEntities</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns the configured value for whether XML external entities are allowed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-support-dtd.html">isSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSupportDtd</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether DTD parsing is supported.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="marshal.html">marshal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">marshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$marshal(kotlin.Any, javax.xml.transform.Result)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$marshal(kotlin.Any, javax.xml.transform.Result)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">Result</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">marshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$marshal(kotlin.Any, javax.xml.transform.Result, org.springframework.oxm.mime.MimeContainer)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$marshal(kotlin.Any, javax.xml.transform.Result, org.springframework.oxm.mime.MimeContainer)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">Result</span><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$marshal(kotlin.Any, javax.xml.transform.Result, org.springframework.oxm.mime.MimeContainer)/mimeContainer">mimeContainer</span><span class="symbol">:</span>&nbsp;<span class="identifier">MimeContainer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-adapters.html">setAdapters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAdapters</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setAdapters(kotlin.Array((javax.xml.bind.annotation.adapters.XmlAdapter((kotlin.Any, )))))/adapters">adapters</span><span class="symbol">:</span>&nbsp;<span class="identifier">XmlAdapter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the <code>XmlAdapter</code>s to be registered with the JAXB <code>Marshaller</code> and <code>Unmarshaller</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-check-for-xml-root-element.html">setCheckForXmlRootElement</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCheckForXmlRootElement</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setCheckForXmlRootElement(kotlin.Boolean)/checkForXmlRootElement">checkForXmlRootElement</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether the <code><a href="#">#supports(Class)</a></code> should check for XmlRootElement annotations. 
+<p>Default is <code>true</code>, meaning that <code>supports(Class)</code> will check for this annotation. However, some JAXB implementations (i.e. EclipseLink MOXy) allow for defining the bindings in an external definition file, thus keeping the classes annotations free. Setting this property to <code>false</code> supports these JAXB implementations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-classes-to-be-bound.html">setClassesToBeBound</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClassesToBeBound</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setClassesToBeBound(kotlin.Array((java.lang.Class((kotlin.Any)))))/classesToBeBound">classesToBeBound</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the list of Java classes to be recognized by a newly created JAXBContext. 
+<p>Setting either this property, <code><a href="#">"contextPath"</a></code> or <code><a href="#">"packagesToScan"</a></code> is required.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-context-path.html">setContextPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContextPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setContextPath(kotlin.String)/contextPath">contextPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a JAXB context path. 
+<p>Setting either this property, <code><a href="#">"classesToBeBound"</a></code> or <code><a href="#">"packagesToScan"</a></code> is required.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-context-paths.html">setContextPaths</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContextPaths</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setContextPaths(kotlin.Array((kotlin.String)))/contextPaths">contextPaths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set multiple JAXB context paths. The given array of context paths gets converted to a colon-delimited string, as supported by JAXB.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jaxb-context-properties.html">setJaxbContextProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJaxbContextProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setJaxbContextProperties(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/jaxbContextProperties">jaxbContextProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the <code>JAXBContext</code> properties. These implementation-specific properties will be set on the underlying <code>JAXBContext</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-lazy-init.html">setLazyInit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLazyInit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setLazyInit(kotlin.Boolean)/lazyInit">lazyInit</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to lazily initialize the JAXBContext for this marshaller. Default is <code>false</code> to initialize on startup; can be switched to <code>true</code>. 
+<p>Early initialization just applies if <code><a href="after-properties-set.html">#afterPropertiesSet()</a></code> is called.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapped-class.html">setMappedClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappedClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setMappedClass(java.lang.Class((kotlin.Any)))/mappedClass">mappedClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a JAXB mapped class for partial unmarshalling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-marshaller-listener.html">setMarshallerListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMarshallerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setMarshallerListener(javax.xml.bind.Marshaller.Listener)/marshallerListener">marshallerListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">Listener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the <code>Marshaller.Listener</code> to be registered with the JAXB <code>Marshaller</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-marshaller-properties.html">setMarshallerProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMarshallerProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setMarshallerProperties(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/properties">properties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JAXB <code>Marshaller</code> properties. These properties will be set on the underlying JAXB <code>Marshaller</code>, and allow for features such as indentation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mtom-enabled.html">setMtomEnabled</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMtomEnabled</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setMtomEnabled(kotlin.Boolean)/mtomEnabled">mtomEnabled</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether MTOM support should be enabled or not. Default is <code>false</code>: marshalling using XOP/MTOM not being enabled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-packages-to-scan.html">setPackagesToScan</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPackagesToScan</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setPackagesToScan(kotlin.Array((kotlin.String)))/packagesToScan">packagesToScan</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the packages to search for classes with JAXB2 annotations in the classpath. This is using a Spring-bases search and therefore analogous to Spring's component-scan feature (org.springframework.context.annotation.ClassPathBeanDefinitionScanner). 
+<p>Setting either this property, <code><a href="#">"contextPath"</a></code> or <code><a href="#">"classesToBeBound"</a></code> is required.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-process-external-entities.html">setProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProcessExternalEntities</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setProcessExternalEntities(kotlin.Boolean)/processExternalEntities">processExternalEntities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether external XML entities are processed when unmarshalling. 
+<p>Default is <code>false</code>, meaning that external entities are not resolved. Note that processing of external entities will only be enabled/disabled when the <code>Source</code> passed to <code><a href="unmarshal.html">#unmarshal(Source)</a></code> is a SAXSource or StreamSource. It has no effect for DOMSource or StAXSource instances. </p>
+<p><strong>Note:</strong> setting this option to <code>true</code> also automatically sets <code><a href="set-support-dtd.html">#setSupportDtd</a></code> to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-schema.html">setSchema</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchema</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setSchema(org.springframework.core.io.Resource)/schemaResource">schemaResource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the schema resource to use for validation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-schema-language.html">setSchemaLanguage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchemaLanguage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setSchemaLanguage(kotlin.String)/schemaLanguage">schemaLanguage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the schema language. Default is the W3C XML Schema: <code>http://www.w3.org/2001/XMLSchema"</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-schema-resource-resolver.html">setSchemaResourceResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchemaResourceResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setSchemaResourceResolver(org.w3c.dom.ls.LSResourceResolver)/schemaResourceResolver">schemaResourceResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">LSResourceResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the resource resolver, as used to load the schema resources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-schemas.html">setSchemas</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchemas</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setSchemas(kotlin.Array((org.springframework.core.io.Resource)))/schemaResources">schemaResources</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the schema resources to use for validation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-support-dtd.html">setSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportDtd</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setSupportDtd(kotlin.Boolean)/supportDtd">supportDtd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether DTD parsing should be supported. 
+<p>Default is <code>false</code> meaning that DTD is disabled.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-support-jaxb-element-class.html">setSupportJaxbElementClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportJaxbElementClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setSupportJaxbElementClass(kotlin.Boolean)/supportJaxbElementClass">supportJaxbElementClass</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether the <code><a href="#">#supports(Class)</a></code> returns <code>true</code> for the JAXBElement class. 
+<p>Default is <code>false</code>, meaning that <code>supports(Class)</code> always returns <code>false</code> for <code>JAXBElement</code> classes (though <code><a href="supports.html">#supports(Type)</a></code> can return <code>true</code>, since it can obtain the type parameters of <code>JAXBElement</code>). </p>
+<p>This property is typically enabled in combination with usage of classes like org.springframework.web.servlet.view.xml.MarshallingView, since the <code>ModelAndView</code> does not offer type parameter information at runtime.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-unmarshaller-listener.html">setUnmarshallerListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUnmarshallerListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setUnmarshallerListener(javax.xml.bind.Unmarshaller.Listener)/unmarshallerListener">unmarshallerListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">Listener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the <code>Unmarshaller.Listener</code> to be registered with the JAXB <code>Unmarshaller</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-unmarshaller-properties.html">setUnmarshallerProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUnmarshallerProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setUnmarshallerProperties(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/properties">properties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JAXB <code>Unmarshaller</code> properties. These properties will be set on the underlying JAXB <code>Unmarshaller</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validation-event-handler.html">setValidationEventHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidationEventHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$setValidationEventHandler(javax.xml.bind.ValidationEventHandler)/validationEventHandler">validationEventHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">ValidationEventHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JAXB validation event handler. This event handler will be called by JAXB if any validation errors are encountered during calls to any of the marshal APIs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports.html">supports</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supports</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$supports(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supports</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$supports(java.lang.reflect.Type)/genericType">genericType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Type</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unmarshal.html">unmarshal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unmarshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$unmarshal(javax.xml.transform.Source)/source">source</span><span class="symbol">:</span>&nbsp;<span class="identifier">Source</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unmarshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$unmarshal(javax.xml.transform.Source, org.springframework.oxm.mime.MimeContainer)/source">source</span><span class="symbol">:</span>&nbsp;<span class="identifier">Source</span><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.jaxb.Jaxb2Marshaller$unmarshal(javax.xml.transform.Source, org.springframework.oxm.mime.MimeContainer)/mimeContainer">mimeContainer</span><span class="symbol">:</span>&nbsp;<span class="identifier">MimeContainer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

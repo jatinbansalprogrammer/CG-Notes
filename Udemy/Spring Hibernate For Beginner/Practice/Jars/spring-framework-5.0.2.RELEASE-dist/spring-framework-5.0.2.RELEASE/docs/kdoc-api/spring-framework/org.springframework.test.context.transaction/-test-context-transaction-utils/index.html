@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestContextTransactionUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.transaction</a>&nbsp;/&nbsp;<a href=".">TestContextTransactionUtils</a><br/>
+<br/>
+<h1>TestContextTransactionUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TestContextTransactionUtils</span></code>
+<p>Utility methods for working with transactions and data access related beans within the <em>Spring TestContext Framework</em>. 
+<p>Mainly for internal use within the framework.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-d-a-t-a_-s-o-u-r-c-e_-n-a-m-e.html">DEFAULT_DATA_SOURCE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_DATA_SOURCE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default bean name for a DataSource: <code>"dataSource"</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-t-r-a-n-s-a-c-t-i-o-n_-m-a-n-a-g-e-r_-n-a-m-e.html">DEFAULT_TRANSACTION_MANAGER_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_TRANSACTION_MANAGER_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default bean name for a PlatformTransactionManager: <code>"transactionManager"</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-delegating-transaction-attribute.html">createDelegatingTransactionAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createDelegatingTransactionAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$createDelegatingTransactionAttribute(org.springframework.test.context.TestContext, org.springframework.transaction.interceptor.TransactionAttribute)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$createDelegatingTransactionAttribute(org.springframework.test.context.TestContext, org.springframework.transaction.interceptor.TransactionAttribute)/targetAttribute">targetAttribute</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionAttribute</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TransactionAttribute</span></code>
+<p>Create a delegating TransactionAttribute for the supplied target TransactionAttribute and TestContext, using the names of the test class and test method to build the name of the transaction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="retrieve-data-source.html">retrieveDataSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">retrieveDataSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$retrieveDataSource(org.springframework.test.context.TestContext, kotlin.String)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$retrieveDataSource(org.springframework.test.context.TestContext, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DataSource</span></code>
+<p>Retrieve the DataSource to use for the supplied TestContext. 
+<p>The following algorithm is used to retrieve the <code>DataSource</code> from the org.springframework.context.ApplicationContext of the supplied test context: </p>
+<ol> <li>Look up the <code>DataSource</code> by type and name, if the supplied <code>name</code> is non-empty, throwing a BeansException if the named <code>DataSource</code> does not exist. </li>
+<li>Attempt to look up the single <code>DataSource</code> by type. </li>
+<li>Attempt to look up the <em>primary</em> <code>DataSource</code> by type. </li>
+<li>Attempt to look up the <code>DataSource</code> by type and the <a href="-d-e-f-a-u-l-t_-d-a-t-a_-s-o-u-r-c-e_-n-a-m-e.html">default data source name</a>.</li>
+</ol>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="retrieve-transaction-manager.html">retrieveTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">retrieveTransactionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$retrieveTransactionManager(org.springframework.test.context.TestContext, kotlin.String)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$retrieveTransactionManager(org.springframework.test.context.TestContext, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PlatformTransactionManager</span></code>
+<p>Retrieve the PlatformTransactionManager to use for the supplied TestContext. 
+<p>The following algorithm is used to retrieve the transaction manager from the org.springframework.context.ApplicationContext of the supplied test context: </p>
+<ol> <li>Look up the transaction manager by type and explicit name, if the supplied <code>name</code> is non-empty, throwing a BeansException if the named transaction manager does not exist. </li>
+<li>Attempt to look up the single transaction manager by type. </li>
+<li>Attempt to look up the <em>primary</em> transaction manager by type. </li>
+<li>Attempt to look up the transaction manager via a TransactionManagementConfigurer, if present. </li>
+<li>Attempt to look up the transaction manager by type and the <a href="-d-e-f-a-u-l-t_-t-r-a-n-s-a-c-t-i-o-n_-m-a-n-a-g-e-r_-n-a-m-e.html">default transaction manager</a>.</li>
+</ol>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

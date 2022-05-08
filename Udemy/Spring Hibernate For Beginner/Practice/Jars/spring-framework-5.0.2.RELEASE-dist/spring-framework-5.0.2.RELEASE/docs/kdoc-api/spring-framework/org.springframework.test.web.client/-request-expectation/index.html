@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestExpectation - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.client</a>&nbsp;/&nbsp;<a href=".">RequestExpectation</a><br/>
+<br/>
+<h1>RequestExpectation</h1>
+<code><span class="keyword">interface </span><span class="identifier">RequestExpectation</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResponseActions</span><span class="symbol">, </span><span class="identifier">RequestMatcher</span><span class="symbol">, </span><a href="../-response-creator/index.html"><span class="identifier">ResponseCreator</span></a></code>
+<p>An extension of <code>ResponseActions</code> that also implements <code>RequestMatcher</code> and <code>ResponseCreator</code> 
+<p>While <code>ResponseActions</code> is the API for defining expectations this sub-interface is the internal SPI for matching these expectations to actual requests and for creating responses.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.3</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="has-remaining-count.html">hasRemainingCount</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">hasRemainingCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether there is a remaining count of invocations for this expectation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-satisfied.html">isSatisfied</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isSatisfied</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether the requirements for this request expectation have been met.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-response-creator/create-response.html">createResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createResponse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.ResponseCreator$createResponse(org.springframework.http.client.ClientHttpRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClientHttpResponse</span></code>
+<p>Create a response for the given request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-default-request-expectation/index.html">DefaultRequestExpectation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultRequestExpectation</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RequestExpectation</span></code>
+<p>Default implementation of <code>RequestExpectation</code> that simply delegates to the request matchers and the response creator it contains.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

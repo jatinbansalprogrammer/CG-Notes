@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HibernateTransactionManager.setDataSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5</a>&nbsp;/&nbsp;<a href="index.html">HibernateTransactionManager</a>&nbsp;/&nbsp;<a href=".">setDataSource</a><br/>
+<br/>
+<h1>setDataSource</h1>
+<a name="org.springframework.orm.hibernate5.HibernateTransactionManager$setDataSource(javax.sql.DataSource)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDataSource</span><span class="symbol">(</span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.orm.hibernate5.HibernateTransactionManager$setDataSource(javax.sql.DataSource)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JDBC DataSource that this instance should manage transactions for. The DataSource should match the one used by the Hibernate SessionFactory: for example, you could specify the same JNDI DataSource for both. 
+<p>If the SessionFactory was configured with LocalDataSourceConnectionProvider, i.e. by Spring's LocalSessionFactoryBean with a specified "dataSource", the DataSource will be auto-detected: You can still explicitly specify the DataSource, but you don't need to in this case. </p>
+<p>A transactional JDBC Connection for this DataSource will be provided to application code accessing this DataSource directly via DataSourceUtils or JdbcTemplate. The Connection will be taken from the Hibernate Session. </p>
+<p>The DataSource specified here should be the target DataSource to manage transactions for, not a TransactionAwareDataSourceProxy. Only data access code may work with TransactionAwareDataSourceProxy, while the transaction manager needs to work on the underlying target DataSource. If there's nevertheless a TransactionAwareDataSourceProxy passed in, it will be unwrapped to extract its target DataSource.</p>
+</p>
+<p><strong>See Also</strong><br/>
+<a href="set-autodetect-data-source.html">#setAutodetectDataSource</a>TransactionAwareDataSourceProxyDataSourceUtilsorg.springframework.jdbc.core.JdbcTemplate</p>
+</BODY>
+</HTML>

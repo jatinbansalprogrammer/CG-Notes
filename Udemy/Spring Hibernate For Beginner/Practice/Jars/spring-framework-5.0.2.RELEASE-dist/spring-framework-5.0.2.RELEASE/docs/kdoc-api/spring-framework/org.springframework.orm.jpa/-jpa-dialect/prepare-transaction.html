@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JpaDialect.prepareTransaction - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href="index.html">JpaDialect</a>&nbsp;/&nbsp;<a href=".">prepareTransaction</a><br/>
+<br/>
+<h1>prepareTransaction</h1>
+<a name="org.springframework.orm.jpa.JpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">prepareTransaction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.orm.jpa.JpaDialect$prepareTransaction(javax.persistence.EntityManager, kotlin.Boolean, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Prepare a JPA transaction, applying the specified semantics. Called by EntityManagerFactoryUtils when enlisting an EntityManager in a JTA transaction or a locally joined transaction (e.g. after upgrading an unsynchronized EntityManager to a synchronized one). 
+<p>An implementation can apply the read-only flag as flush mode. In that case, a transaction data object can be returned that holds the previous flush mode (and possibly other data), to be reset in <code>cleanupTransaction</code>. </p>
+<p>Implementations can also use the Spring transaction name to optimize for specific data access use cases (effectively using the current transaction name as use case identifier).</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="entityManager"></a>
+<code>entityManager</code> - the EntityManager to begin a JPA transaction on</p>
+<p><a name="readOnly"></a>
+<code>readOnly</code> - whether the transaction is supposed to be read-only</p>
+<p><a name="name"></a>
+<code>name</code> - the name of the transaction (if any)</p>
+<h3>Exceptions</h3>
+<p><a name="javax.persistence.PersistenceException"></a>
+<code>javax.persistence.PersistenceException</code> - if thrown by JPA methods</p>
+<p><strong>Return</strong><br/>
+an arbitrary object that holds transaction data, if any (to be passed into cleanupTransaction)</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#cleanupTransaction</a></p>
+</BODY>
+</HTML>

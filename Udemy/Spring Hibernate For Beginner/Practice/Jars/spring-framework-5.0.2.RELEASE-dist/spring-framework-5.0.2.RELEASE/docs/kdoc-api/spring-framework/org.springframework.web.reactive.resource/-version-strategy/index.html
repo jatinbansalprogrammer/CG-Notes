@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>VersionStrategy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.resource</a>&nbsp;/&nbsp;<a href=".">VersionStrategy</a><br/>
+<br/>
+<h1>VersionStrategy</h1>
+<code><span class="keyword">interface </span><span class="identifier">VersionStrategy</span></code>
+<p>A strategy to determine the version of a static resource and to apply and/or extract it from the URL path.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+VersionResourceResolver</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-version.html">addVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">addVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.resource.VersionStrategy$addVersion(kotlin.String, kotlin.String)/requestPath">requestPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.resource.VersionStrategy$addVersion(kotlin.String, kotlin.String)/version">version</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Add a version to the given request path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="extract-version.html">extractVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">extractVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.resource.VersionStrategy$extractVersion(kotlin.String)/requestPath">requestPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Extract the resource version from the request path.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-version.html">getResourceVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getResourceVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.resource.VersionStrategy$getResourceVersion(org.springframework.core.io.Resource)/resource">resource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Determine the version for the given resource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-version.html">removeVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">removeVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.resource.VersionStrategy$removeVersion(kotlin.String, kotlin.String)/requestPath">requestPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.resource.VersionStrategy$removeVersion(kotlin.String, kotlin.String)/version">version</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Remove the version from the request path. It is assumed that the given version was extracted via <code><a href="#">#extractVersion(String)</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-file-name-version-strategy/index.html">AbstractFileNameVersionStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractFileNameVersionStrategy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">VersionStrategy</span></code>
+<p>Abstract base class for filename suffix based VersionStrategy implementations, e.g. "static/myresource-version.js"</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

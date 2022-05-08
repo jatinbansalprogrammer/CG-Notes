@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringContextResourceAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.context</a>&nbsp;/&nbsp;<a href=".">SpringContextResourceAdapter</a><br/>
+<br/>
+<h1>SpringContextResourceAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringContextResourceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceAdapter</span></code>
+<p>JCA 1.7 javax.resource.spi.ResourceAdapter implementation that loads a Spring org.springframework.context.ApplicationContext, starting and stopping Spring-managed beans as part of the ResourceAdapter's lifecycle. 
+<p>Ideal for application contexts that do not need any HTTP entry points but rather just consist of message endpoints and scheduled jobs etc. Beans in such a context may use application server resources such as the JTA transaction manager and JNDI-bound JDBC DataSources and JMS ConnectionFactory instances, and may also register with the platform's JMX server - all through Spring's standard transaction management and JNDI and JMX support facilities. </p>
+<p>If the need for scheduling asynchronous work arises, consider using Spring's org.springframework.jca.work.WorkManagerTaskExecutor as a standard bean definition, to be injected into application beans through dependency injection. This WorkManagerTaskExecutor will automatically use the JCA WorkManager from the BootstrapContext that has been provided to this ResourceAdapter. </p>
+<p>The JCA javax.resource.spi.BootstrapContext may also be accessed directly, through application components that implement the BootstrapContextAware interface. When deployed using this ResourceAdapter, the BootstrapContext is guaranteed to be passed on to such components. </p>
+<p>This ResourceAdapter is to be defined in a "META-INF/ra.xml" file within a Java EE ".rar" deployment unit like as follows: </p>
+<pre><code> &lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;connector xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd" version="1.5"&gt; &lt;vendor-name&gt;Spring Framework&lt;/vendor-name&gt; &lt;eis-type&gt;Spring Connector&lt;/eis-type&gt; &lt;resourceadapter-version&gt;1.0&lt;/resourceadapter-version&gt; &lt;resourceadapter&gt; &lt;resourceadapter-class&gt;org.springframework.jca.context.SpringContextResourceAdapter&lt;/resourceadapter-class&gt; &lt;config-property&gt; &lt;config-property-name&gt;ContextConfigLocation&lt;/config-property-name&gt; &lt;config-property-type&gt;java.lang.String&lt;/config-property-type&gt; &lt;config-property-value&gt;META-INF/applicationContext.xml&lt;/config-property-value&gt; &lt;/config-property&gt; &lt;/resourceadapter&gt; &lt;/connector&gt;</code></pre> Note that "META-INF/applicationContext.xml" is the default context config location, so it doesn't have to specified unless you intend to specify different/additional config files. So in the default case, you may remove the entire <code>config-property</code> section above. 
+<p><strong>For simple deployment needs, all you need to do is the following:</strong> Package all application classes into a RAR file (which is just a standard JAR file with a different file extension), add all required library jars into the root of the RAR archive, add a "META-INF/ra.xml" deployment descriptor as shown above as well as the corresponding Spring XML bean definition file(s) (typically "META-INF/applicationContext.xml"), and drop the resulting RAR file into your application server's deployment directory!</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setContextConfigLocation</a><a href="#">#loadBeanDefinitions</a>ResourceAdapterApplicationContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringContextResourceAdapter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JCA 1.7 javax.resource.spi.ResourceAdapter implementation that loads a Spring org.springframework.context.ApplicationContext, starting and stopping Spring-managed beans as part of the ResourceAdapter's lifecycle. 
+<p>Ideal for application contexts that do not need any HTTP entry points but rather just consist of message endpoints and scheduled jobs etc. Beans in such a context may use application server resources such as the JTA transaction manager and JNDI-bound JDBC DataSources and JMS ConnectionFactory instances, and may also register with the platform's JMX server - all through Spring's standard transaction management and JNDI and JMX support facilities. </p>
+<p>If the need for scheduling asynchronous work arises, consider using Spring's org.springframework.jca.work.WorkManagerTaskExecutor as a standard bean definition, to be injected into application beans through dependency injection. This WorkManagerTaskExecutor will automatically use the JCA WorkManager from the BootstrapContext that has been provided to this ResourceAdapter. </p>
+<p>The JCA javax.resource.spi.BootstrapContext may also be accessed directly, through application components that implement the BootstrapContextAware interface. When deployed using this ResourceAdapter, the BootstrapContext is guaranteed to be passed on to such components. </p>
+<p>This ResourceAdapter is to be defined in a "META-INF/ra.xml" file within a Java EE ".rar" deployment unit like as follows: </p>
+<pre><code> &lt;?xml version="1.0" encoding="UTF-8"?&gt; &lt;connector xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/connector_1_5.xsd" version="1.5"&gt; &lt;vendor-name&gt;Spring Framework&lt;/vendor-name&gt; &lt;eis-type&gt;Spring Connector&lt;/eis-type&gt; &lt;resourceadapter-version&gt;1.0&lt;/resourceadapter-version&gt; &lt;resourceadapter&gt; &lt;resourceadapter-class&gt;org.springframework.jca.context.SpringContextResourceAdapter&lt;/resourceadapter-class&gt; &lt;config-property&gt; &lt;config-property-name&gt;ContextConfigLocation&lt;/config-property-name&gt; &lt;config-property-type&gt;java.lang.String&lt;/config-property-type&gt; &lt;config-property-value&gt;META-INF/applicationContext.xml&lt;/config-property-value&gt; &lt;/config-property&gt; &lt;/resourceadapter&gt; &lt;/connector&gt;</code></pre> Note that "META-INF/applicationContext.xml" is the default context config location, so it doesn't have to specified unless you intend to specify different/additional config files. So in the default case, you may remove the entire <code>config-property</code> section above. 
+<p><strong>For simple deployment needs, all you need to do is the following:</strong> Package all application classes into a RAR file (which is just a standard JAR file with a different file extension), add all required library jars into the root of the RAR archive, add a "META-INF/ra.xml" deployment descriptor as shown above as well as the corresponding Spring XML bean definition file(s) (typically "META-INF/applicationContext.xml"), and drop the resulting RAR file into your application server's deployment directory!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-c-o-n-f-i-g_-l-o-c-a-t-i-o-n_-d-e-l-i-m-i-t-e-r-s.html">CONFIG_LOCATION_DELIMITERS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONFIG_LOCATION_DELIMITERS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Any number of these characters are considered delimiters between multiple context config paths in a single String value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-n-t-e-x-t_-c-o-n-f-i-g_-l-o-c-a-t-i-o-n.html">DEFAULT_CONTEXT_CONFIG_LOCATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CONTEXT_CONFIG_LOCATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="endpoint-activation.html">endpointActivation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">endpointActivation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$endpointActivation(javax.resource.spi.endpoint.MessageEndpointFactory, javax.resource.spi.ActivationSpec)/messageEndpointFactory">messageEndpointFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageEndpointFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$endpointActivation(javax.resource.spi.endpoint.MessageEndpointFactory, javax.resource.spi.ActivationSpec)/activationSpec">activationSpec</span><span class="symbol">:</span>&nbsp;<span class="identifier">ActivationSpec</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation always throws a NotSupportedException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="endpoint-deactivation.html">endpointDeactivation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">endpointDeactivation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$endpointDeactivation(javax.resource.spi.endpoint.MessageEndpointFactory, javax.resource.spi.ActivationSpec)/messageEndpointFactory">messageEndpointFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageEndpointFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$endpointDeactivation(javax.resource.spi.endpoint.MessageEndpointFactory, javax.resource.spi.ActivationSpec)/activationSpec">activationSpec</span><span class="symbol">:</span>&nbsp;<span class="identifier">ActivationSpec</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation does nothing.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-x-a-resources.html">getXAResources</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getXAResources</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$getXAResources(kotlin.Array((javax.resource.spi.ActivationSpec)))/activationSpecs">activationSpecs</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">ActivationSpec</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">XAResource</span><span class="symbol">&gt;</span></code>
+<p>This implementation always returns <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-context-config-location.html">setContextConfigLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContextConfigLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$setContextConfigLocation(kotlin.String)/contextConfigLocation">contextConfigLocation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the location of the context configuration files, within the resource adapter's deployment unit. This can be a delimited String that consists of multiple resource location, separated by commas, semicolons, whitespace, or line breaks. 
+<p>This can be specified as "ContextConfigLocation" config property in the <code>ra.xml</code> deployment descriptor. </p>
+<p>The default is "classpath:META-INF/applicationContext.xml".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.context.SpringContextResourceAdapter$start(javax.resource.spi.BootstrapContext)/bootstrapContext">bootstrapContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">BootstrapContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation loads a Spring ApplicationContext through the <code><a href="#">#createApplicationContext</a></code> template method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation closes the Spring ApplicationContext.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AsyncHandlerInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet</a>&nbsp;/&nbsp;<a href=".">AsyncHandlerInterceptor</a><br/>
+<br/>
+<h1>AsyncHandlerInterceptor</h1>
+<code><span class="keyword">interface </span><span class="identifier">AsyncHandlerInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerInterceptor</span></code>
+<p>Extends <code>HandlerInterceptor</code> with a callback method invoked after the start of asynchronous request handling. 
+<p>When a handler starts an asynchronous request, the DispatcherServlet exits without invoking <code>postHandle</code> and <code>afterCompletion</code> as it normally does for a synchronous request, since the result of request handling (e.g. ModelAndView) is likely not yet ready and will be produced concurrently from another thread. In such scenarios, <code><a href="#">#afterConcurrentHandlingStarted</a></code> is invoked instead, allowing implementations to perform tasks such as cleaning up thread-bound attributes before releasing the thread to the Servlet container. </p>
+<p>When asynchronous handling completes, the request is dispatched to the container for further processing. At this stage the <code>DispatcherServlet</code> invokes <code>preHandle</code>, <code>postHandle</code>, and <code>afterCompletion</code>. To distinguish between the initial request and the subsequent dispatch after asynchronous handling completes, interceptors can check whether the <code>javax.servlet.DispatcherType</code> of javax.servlet.ServletRequest is <code>"REQUEST"</code> or <code>"ASYNC"</code>. </p>
+<p>Note that <code>HandlerInterceptor</code> implementations may need to do work when an async request times out or completes with a network error. For such cases the Servlet container does not dispatch and therefore the <code>postHandle</code> and <code>afterCompletion</code> methods will not be invoked. Instead, interceptors can register to track an asynchronous request through the <code>registerCallbackInterceptor</code> and <code>registerDeferredResultInterceptor</code> methods on org.springframework.web.context.request.async.WebAsyncManager. This can be done proactively on every request from <code>preHandle</code> regardless of whether async request processing will start.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.context.request.async.WebAsyncManagerorg.springframework.web.context.request.async.CallableProcessingInterceptororg.springframework.web.context.request.async.DeferredResultProcessingInterceptor</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-concurrent-handling-started.html">afterConcurrentHandlingStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterConcurrentHandlingStarted</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.AsyncHandlerInterceptor$afterConcurrentHandlingStarted(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.AsyncHandlerInterceptor$afterConcurrentHandlingStarted(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.AsyncHandlerInterceptor$afterConcurrentHandlingStarted(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any)/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Called instead of <code>postHandle</code> and <code>afterCompletion</code> when the handler is being executed concurrently. 
+<p>Implementations may use the provided request and response but should avoid modifying them in ways that would conflict with the concurrent execution of the handler. A typical use of this method would be to clean up thread-local variables.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.handler/-web-request-handler-interceptor-adapter/index.html">WebRequestHandlerInterceptorAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebRequestHandlerInterceptorAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncHandlerInterceptor</span></code>
+<p>Adapter that implements the Servlet HandlerInterceptor interface and wraps an underlying WebRequestInterceptor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TaskUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.support</a>&nbsp;/&nbsp;<a href=".">TaskUtils</a><br/>
+<br/>
+<h1>TaskUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TaskUtils</span></code>
+<p>Utility methods for decorating tasks with error handling. 
+<p><strong>NOTE:</strong> This class is intended for internal use by Spring's scheduler implementations. It is only public so that it may be accessed from impl classes within other packages. It is <em>not</em> intended for general use.</p>
+</p>
+<p><strong>Author</strong><br/>
+Mark Fisher</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TaskUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Utility methods for decorating tasks with error handling. 
+<p><strong>NOTE:</strong> This class is intended for internal use by Spring's scheduler implementations. It is only public so that it may be accessed from impl classes within other packages. It is <em>not</em> intended for general use.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-l-o-g_-a-n-d_-p-r-o-p-a-g-a-t-e_-e-r-r-o-r_-h-a-n-d-l-e-r.html">LOG_AND_PROPAGATE_ERROR_HANDLER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOG_AND_PROPAGATE_ERROR_HANDLER</span><span class="symbol">: </span><span class="identifier">ErrorHandler</span></code>
+<p>An ErrorHandler strategy that will log at error level and then re-throw the Exception. Note: this will typically prevent subsequent execution of a scheduled task.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-l-o-g_-a-n-d_-s-u-p-p-r-e-s-s_-e-r-r-o-r_-h-a-n-d-l-e-r.html">LOG_AND_SUPPRESS_ERROR_HANDLER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOG_AND_SUPPRESS_ERROR_HANDLER</span><span class="symbol">: </span><span class="identifier">ErrorHandler</span></code>
+<p>An ErrorHandler strategy that will log the Exception but perform no further handling. This will suppress the error so that subsequent executions of the task will not be prevented.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="decorate-task-with-error-handler.html">decorateTaskWithErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">decorateTaskWithErrorHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.TaskUtils$decorateTaskWithErrorHandler(java.lang.Runnable, org.springframework.util.ErrorHandler, kotlin.Boolean)/task">task</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.support.TaskUtils$decorateTaskWithErrorHandler(java.lang.Runnable, org.springframework.util.ErrorHandler, kotlin.Boolean)/errorHandler">errorHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">ErrorHandler</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.support.TaskUtils$decorateTaskWithErrorHandler(java.lang.Runnable, org.springframework.util.ErrorHandler, kotlin.Boolean)/isRepeatingTask">isRepeatingTask</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">DelegatingErrorHandlingRunnable</span></code>
+<p>Decorate the task for error handling. If the provided ErrorHandler is not <code>null</code>, it will be used. Otherwise, repeating tasks will have errors suppressed by default whereas one-shot tasks will have errors propagated by default since those errors may be expected through the returned Future. In both cases, the errors will be logged.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-error-handler.html">getDefaultErrorHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getDefaultErrorHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.support.TaskUtils$getDefaultErrorHandler(kotlin.Boolean)/isRepeatingTask">isRepeatingTask</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ErrorHandler</span></code>
+<p>Return the default ErrorHandler implementation based on the boolean value indicating whether the task will be repeating or not. For repeating tasks it will suppress errors, but for one-time tasks it will propagate. In both cases, the error will be logged.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

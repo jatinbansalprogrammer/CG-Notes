@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JpaDialect.releaseJdbcConnection - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href="index.html">JpaDialect</a>&nbsp;/&nbsp;<a href=".">releaseJdbcConnection</a><br/>
+<br/>
+<h1>releaseJdbcConnection</h1>
+<a name="org.springframework.orm.jpa.JpaDialect$releaseJdbcConnection(org.springframework.jdbc.datasource.ConnectionHandle, javax.persistence.EntityManager)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">releaseJdbcConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$releaseJdbcConnection(org.springframework.jdbc.datasource.ConnectionHandle, javax.persistence.EntityManager)/conHandle">conHandle</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionHandle</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$releaseJdbcConnection(org.springframework.jdbc.datasource.ConnectionHandle, javax.persistence.EntityManager)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Release the given JDBC Connection, which has originally been retrieved via <code>getJdbcConnection</code>. This should be invoked in any case, to allow for proper release of the retrieved Connection handle. 
+<p>An implementation might simply do nothing, if the Connection returned by <code>getJdbcConnection</code> will be implicitly closed when the JPA transaction completes or when the EntityManager is closed.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="conHandle"></a>
+<code>conHandle</code> - the JDBC Connection handle to release</p>
+<p><a name="entityManager"></a>
+<code>entityManager</code> - the current JPA EntityManager</p>
+<h3>Exceptions</h3>
+<p><a name="javax.persistence.PersistenceException"></a>
+<code>javax.persistence.PersistenceException</code> - if thrown by JPA methods</p>
+<p><a name="java.sql.SQLException"></a>
+<code>java.sql.SQLException</code> - if thrown by JDBC methods</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#getJdbcConnection</a></p>
+</BODY>
+</HTML>

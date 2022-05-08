@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReflectiveAspectJAdvisorFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.aspectj.annotation</a>&nbsp;/&nbsp;<a href=".">ReflectiveAspectJAdvisorFactory</a><br/>
+<br/>
+<h1>ReflectiveAspectJAdvisorFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectiveAspectJAdvisorFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-aspect-j-advisor-factory/index.html"><span class="identifier">AbstractAspectJAdvisorFactory</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Factory that can create Spring AOP Advisors given AspectJ classes from classes honoring the AspectJ 5 annotation syntax, using reflection to invoke the corresponding advice methods.</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Ramnivas Laddad</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ReflectiveAspectJAdvisorFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>ReflectiveAspectJAdvisorFactory</code>.</p>
+<code><span class="identifier">ReflectiveAspectJAdvisorFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$<init>(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span></code>
+<p>Create a new <code>ReflectiveAspectJAdvisorFactory</code>, propagating the given BeanFactory to the created AspectJExpressionPointcut instances, for bean pointcut handling as well as consistent ClassLoader resolution.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-advice.html">getAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAdvice</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvice(java.lang.reflect.Method, org.springframework.aop.aspectj.AspectJExpressionPointcut, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/candidateAdviceMethod">candidateAdviceMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvice(java.lang.reflect.Method, org.springframework.aop.aspectj.AspectJExpressionPointcut, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/expressionPointcut">expressionPointcut</span><span class="symbol">:</span>&nbsp;<a href="../../org.springframework.aop.aspectj/-aspect-j-expression-pointcut/index.html"><span class="identifier">AspectJExpressionPointcut</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvice(java.lang.reflect.Method, org.springframework.aop.aspectj.AspectJExpressionPointcut, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/aspectInstanceFactory">aspectInstanceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetadataAwareAspectInstanceFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvice(java.lang.reflect.Method, org.springframework.aop.aspectj.AspectJExpressionPointcut, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/declarationOrder">declarationOrder</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvice(java.lang.reflect.Method, org.springframework.aop.aspectj.AspectJExpressionPointcut, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/aspectName">aspectName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Advice</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-advisor.html">getAdvisor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAdvisor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvisor(java.lang.reflect.Method, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/candidateAdviceMethod">candidateAdviceMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvisor(java.lang.reflect.Method, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/aspectInstanceFactory">aspectInstanceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetadataAwareAspectInstanceFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvisor(java.lang.reflect.Method, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/declarationOrderInAspect">declarationOrderInAspect</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvisor(java.lang.reflect.Method, org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory, kotlin.Int, kotlin.String)/aspectName">aspectName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Advisor</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-advisors.html">getAdvisors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAdvisors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory$getAdvisors(org.springframework.aop.aspectj.annotation.MetadataAwareAspectInstanceFactory)/aspectInstanceFactory">aspectInstanceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetadataAwareAspectInstanceFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Advisor</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-aspect-j-advisor-factory/is-aspect.html">isAspect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAspect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.AbstractAspectJAdvisorFactory$isAspect(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>We consider something to be an AspectJ aspect suitable for use by the Spring AOP system if it has the @Aspect annotation, and was not compiled by ajc. The reason for this latter test is that aspects written in the code-style (AspectJ language) also have the annotation present when compiled by ajc with the -1.5 flag, yet they cannot be consumed by Spring AOP.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-aspect-j-advisor-factory/validate.html">validate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">validate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.AbstractAspectJAdvisorFactory$validate(java.lang.Class((kotlin.Any)))/aspectClass">aspectClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

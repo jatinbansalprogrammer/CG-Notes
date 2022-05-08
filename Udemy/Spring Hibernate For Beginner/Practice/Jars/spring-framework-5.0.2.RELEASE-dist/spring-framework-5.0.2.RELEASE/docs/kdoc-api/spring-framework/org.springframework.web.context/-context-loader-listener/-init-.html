@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ContextLoaderListener.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context</a>&nbsp;/&nbsp;<a href="index.html">ContextLoaderListener</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.context.ContextLoaderListener$&lt;init&gt;()"></a>
+<code><span class="identifier">ContextLoaderListener</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>ContextLoaderListener</code> that will create a web application context based on the "contextClass" and "contextConfigLocation" servlet context-params. See ContextLoader superclass documentation for details on default values for each. 
+<p>This constructor is typically used when declaring <code>ContextLoaderListener</code> as a <code>&lt;listener&gt;</code> within <code>web.xml</code>, where a no-arg constructor is required. </p>
+<p>The created application context will be registered into the ServletContext under the attribute name <code><a href="#">WebApplicationContext#ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE</a></code> and the Spring application context will be closed when the <code><a href="context-destroyed.html">#contextDestroyed</a></code> lifecycle method is invoked on this listener.</p>
+</p>
+<p><strong>See Also</strong><br/>
+ContextLoader<a href="#">#ContextLoaderListener(WebApplicationContext)</a><a href="context-initialized.html">#contextInitialized(ServletContextEvent)</a><a href="context-destroyed.html">#contextDestroyed(ServletContextEvent)</a></p>
+<a name="org.springframework.web.context.ContextLoaderListener$&lt;init&gt;(org.springframework.web.context.WebApplicationContext)"></a>
+<code><span class="identifier">ContextLoaderListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.ContextLoaderListener$<init>(org.springframework.web.context.WebApplicationContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationContext</span><span class="symbol">)</span></code>
+<p>Create a new <code>ContextLoaderListener</code> with the given application context. This constructor is useful in Servlet 3.0+ environments where instance-based registration of listeners is possible through the <code><a href="#">javax.servlet.ServletContext#addListener</a></code> API. 
+<p>The context may or may not yet be <a href="#"> </a>. If it (a) is an implementation of ConfigurableWebApplicationContext and (b) has <strong>not</strong> already been refreshed (the recommended approach), then the following will occur: </p>
+<ul> <li>If the given context has not already been assigned an <a href="#"> </a>, one will be assigned to it</li>
+ <li><code>ServletContext</code> and <code>ServletConfig</code> objects will be delegated to the application context</li>
+ <li><code><a href="#">#customizeContext</a></code> will be called</li>
+ <li>Any org.springframework.context.ApplicationContextInitializers specified through the "contextInitializerClasses" init-param will be applied.</li>
+ <li><code><a href="#">refresh()</a></code> will be called</li>
+ </ul>
+ If the context has already been refreshed or does not implement <code>ConfigurableWebApplicationContext</code>, none of the above will occur under the assumption that the user has performed these actions (or not) per his or her specific needs. 
+<p>See org.springframework.web.WebApplicationInitializer for usage examples. </p>
+<p>In any case, the given application context will be registered into the ServletContext under the attribute name <code><a href="#"> </a></code> and the Spring application context will be closed when the <code><a href="context-destroyed.html">#contextDestroyed</a></code> lifecycle method is invoked on this listener.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="context"></a>
+<code>context</code> - the application context to manage</p>
+<p><strong>See Also</strong><br/>
+<a href="context-initialized.html">#contextInitialized(ServletContextEvent)</a><a href="context-destroyed.html">#contextDestroyed(ServletContextEvent)</a></p>
+</BODY>
+</HTML>

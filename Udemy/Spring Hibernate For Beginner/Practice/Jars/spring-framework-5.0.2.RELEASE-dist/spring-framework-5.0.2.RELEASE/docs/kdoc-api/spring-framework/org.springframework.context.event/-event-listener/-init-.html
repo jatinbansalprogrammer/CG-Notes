@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EventListener.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.event</a>&nbsp;/&nbsp;<a href="index.html">EventListener</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.context.event.EventListener$&lt;init&gt;(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)"></a>
+<code><span class="identifier">EventListener</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.event.EventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.event.EventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/classes">classes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.context.event.EventListener$<init>(kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.Array((kotlin.reflect.KClass((kotlin.Any)))), kotlin.String)/condition">condition</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Annotation that marks a method as a listener for application events. 
+<p>If an annotated method supports a single event type, the method may declare a single parameter that reflects the event type to listen to. If an annotated method supports multiple event types, this annotation may refer to one or more supported event types using the <code>classes</code> attribute. See the <code><a href="#">#classes</a></code> javadoc for further details. </p>
+<p>Events can be ApplicationEvent instances as well as arbitrary objects. </p>
+<p>Processing of <code>@EventListener</code> annotations is performed via the internal EventListenerMethodProcessor bean which gets registered automatically when using Java config or manually via the <code>&lt;context:annotation-config/&gt;</code> or <code>&lt;context:component-scan/&gt;</code> element when using XML config. </p>
+<p>Annotated methods may have a non-<code>void</code> return type. When they do, the result of the method invocation is sent as a new event. If the return type is either an array or a collection, each element is sent as a new individual event. </p>
+<p>It is also possible to define the order in which listeners for a certain event are to be invoked. To do so, add Spring's common org.springframework.core.annotation.Order annotation alongside this event listener annotation. </p>
+<p>While it is possible for an event listener to declare that it throws arbitrary exception types, any checked exceptions thrown from an event listener will be wrapped in an java.lang.reflect.UndeclaredThrowableException since the event publisher can only handle runtime exceptions.</p>
+</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+EventListenerMethodProcessor</p>
+</BODY>
+</HTML>

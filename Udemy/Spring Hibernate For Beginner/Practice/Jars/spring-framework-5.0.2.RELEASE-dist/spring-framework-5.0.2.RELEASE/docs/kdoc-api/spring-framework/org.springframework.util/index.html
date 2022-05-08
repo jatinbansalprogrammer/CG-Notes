@@ -1,0 +1,277 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.util - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.util</a><br/>
+<br/>
+<h2>Package org.springframework.util</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-alternative-jdk-id-generator/index.html">AlternativeJdkIdGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AlternativeJdkIdGenerator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IdGenerator</span></code>
+<p>An IdGenerator that uses SecureRandom for the initial seed and Random thereafter, instead of calling <code><a href="#">UUID#randomUUID()</a></code> every time as org.springframework.util.JdkIdGenerator does. This provides a better balance between securely random ids and performance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-assert/index.html">Assert</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Assert</span></code>
+<p>Assertion utility class that assists in validating arguments. 
+<p>Useful for identifying programmer errors early and clearly at runtime. </p>
+<p>For example, if the contract of a public method states it does not allow <code>null</code> arguments, <code>Assert</code> can be used to validate that contract. Doing this clearly indicates a contract violation when it occurs and protects the class's invariants. </p>
+<p>Typically used to validate method arguments rather than configuration properties, to check for cases that are usually programmer errors rather than configuration errors. In contrast to configuration initialization code, there is usually no point in falling back to defaults in such methods. </p>
+<p>This class is similar to JUnit's assertion library. If an argument value is deemed invalid, an IllegalArgumentException is thrown (typically). For example: </p>
+<pre><code> Assert.notNull(clazz, "The class must not be null"); Assert.isTrue(i &gt; 0, "The value must be greater than zero");</code></pre> 
+<p>Mainly for internal use within the framework; consider <a href="#">Apache's Commons Lang</a> for a more comprehensive suite of <code>String</code> utilities.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-auto-populating-list/index.html">AutoPopulatingList</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AutoPopulatingList</span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Simple List wrapper class that allows for elements to be automatically populated as they are requested. This is particularly useful for data binding to List, allowing for elements to be created and added to the List in a "just in time" fashion. 
+<p>Note: This class is not thread-safe. To create a thread-safe version, use the <code><a href="#">java.util.Collections#synchronizedList</a></code> utility methods. </p>
+<p>Inspired by <code>LazyList</code> from Commons Collections.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-base64-utils/index.html">Base64Utils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">Base64Utils</span></code>
+<p>A simple utility class for Base64 encoding and decoding. 
+<p>Adapts to Java 8's java.util.Base64 in a convenience fashion.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-collection-utils/index.html">CollectionUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CollectionUtils</span></code>
+<p>Miscellaneous collection utility methods. Mainly for internal use within the framework.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-commons-log-writer/index.html">CommonsLogWriter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CommonsLogWriter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Writer</span></code>
+<p><code>java.io.Writer</code> adapter for a Commons Logging <code>Log</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-composite-iterator/index.html">CompositeIterator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeIterator</span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-iterator/index.html"><span class="identifier">MutableIterator</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Composite iterator that combines multiple other iterators, as registered via <code><a href="#">#add(Iterator)</a></code>. 
+<p>This implementation maintains a linked set of iterators which are invoked in sequence until all iterators are exhausted.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-digest-utils/index.html">DigestUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">DigestUtils</span></code>
+<p>Miscellaneous methods for calculating digests. 
+<p>Mainly for internal use within the framework; consider <a href="#">Apache Commons Codec</a> for a more comprehensive suite of digest utilities.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-exception-type-filter/index.html">ExceptionTypeFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExceptionTypeFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InstanceFilter</span><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>An InstanceFilter implementation that handles exception types. A type will match against a given candidate if it is assignable to that candidate.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-fast-byte-array-output-stream/index.html">FastByteArrayOutputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FastByteArrayOutputStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OutputStream</span></code>
+<p>A speedy alternative to java.io.ByteArrayOutputStream. Note that this variant does <em>not</em> extend <code>ByteArrayOutputStream</code>, unlike its sibling ResizableByteArrayOutputStream. 
+<p>Unlike java.io.ByteArrayOutputStream, this implementation is backed by a java.util.LinkedList of <code>byte[]</code> instead of 1 constantly resizing <code>byte[]</code>. It does not copy buffers when it gets expanded. </p>
+<p>The initial buffer is only created when the stream is first written. There is also no copying of the internal buffer if its contents is extracted with the <code><a href="-fast-byte-array-output-stream/write-to.html">#writeTo(OutputStream)</a></code> method.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-file-copy-utils/index.html">FileCopyUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">FileCopyUtils</span></code>
+<p>Simple utility methods for file and stream copying. All copy methods use a block size of 4096 bytes, and close all affected streams when done. A variation of the copy methods from this class that leave streams open can be found in StreamUtils. 
+<p>Mainly for use within the framework, but also useful for application code.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-file-system-utils/index.html">FileSystemUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">FileSystemUtils</span></code>
+<p>Utility methods for working with the file system.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdk-id-generator/index.html">JdkIdGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JdkIdGenerator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IdGenerator</span></code>
+<p>An IdGenerator that calls <code><a href="#">java.util.UUID#randomUUID()</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-linked-case-insensitive-map/index.html">LinkedCaseInsensitiveMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LinkedCaseInsensitiveMap</span><span class="symbol">&lt;</span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">Serializable</span><span class="symbol">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-cloneable/index.html"><span class="identifier">Cloneable</span></a></code>
+<p>LinkedHashMap variant that stores String keys in a case-insensitive manner, for example for key-based access in a results table. 
+<p>Preserves the original order as well as the original casing of keys, while allowing for contains, get and remove calls with any case of key. </p>
+<p>Does <em>not</em> support <code>null</code> keys.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pattern-match-utils/index.html">PatternMatchUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">PatternMatchUtils</span></code>
+<p>Utility methods for simple pattern matching, in particular for Spring's typical "xxx*", "*xxx" and "*xxx*" pattern styles.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reflection-utils/index.html">ReflectionUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ReflectionUtils</span></code>
+<p>Simple utility class for working with the reflection API and handling reflection exceptions. 
+<p>Only intended for internal use.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resizable-byte-array-output-stream/index.html">ResizableByteArrayOutputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResizableByteArrayOutputStream</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ByteArrayOutputStream</span></code>
+<p>An extension of java.io.ByteArrayOutputStream that: <ul> <li>has public <code><a href="-resizable-byte-array-output-stream/grow.html">org.springframework.util.ResizableByteArrayOutputStream#grow(int)</a></code> and <code><a href="-resizable-byte-array-output-stream/resize.html">org.springframework.util.ResizableByteArrayOutputStream#resize(int)</a></code> methods to get more control over the size of the internal buffer</li>
+ <li>has a higher initial capacity (256) by default</li>
+ </ul>
+ 
+<p>As of 4.2, this class has been superseded by FastByteArrayOutputStream for Spring's internal use where no assignability to ByteArrayOutputStream is needed (since FastByteArrayOutputStream is more efficient with buffer resize management but doesn't extend the standard ByteArrayOutputStream).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-serialization-utils/index.html">SerializationUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">SerializationUtils</span></code>
+<p>Static utilities for serialization and deserialization.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-id-generator/index.html">SimpleIdGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleIdGenerator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IdGenerator</span></code>
+<p>A simple IdGenerator that starts at 1 and increments by 1 with each call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-socket-utils/index.html">SocketUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SocketUtils</span></code>
+<p>Simple utility methods for working with network sockets — for example, for finding available ports on <code>localhost</code>. 
+<p>Within this class, a TCP port refers to a port for a ServerSocket; whereas, a UDP port refers to a port for a DatagramSocket.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-stop-watch/index.html">StopWatch</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StopWatch</span></code>
+<p>Simple stop watch, allowing for timing of a number of tasks, exposing total running time and running time for each named task. 
+<p>Conceals use of <code>System.currentTimeMillis()</code>, improving the readability of application code and reducing the likelihood of calculation errors. </p>
+<p>Note that this object is not designed to be thread-safe and does not use synchronization. </p>
+<p>This class is normally used to verify performance during proof-of-concepts and in development, rather than as part of production applications.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-system-property-utils/index.html">SystemPropertyUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">SystemPropertyUtils</span></code>
+<p>Helper class for resolving placeholders in texts. Usually applied to file paths. 
+<p>A text may contain <code>${...}</code> placeholders, to be resolved as system properties: e.g. <code>${user.dir}</code>. Default values can be supplied using the ":" separator between key and value.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-type-utils/index.html">TypeUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TypeUtils</span></code>
+<p>Utility to work with Java 5 generic type parameters. Mainly for internal use within the framework.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-invalid-mime-type-exception/index.html">InvalidMimeTypeException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidMimeTypeException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IllegalArgumentException</span></code>
+<p>Exception thrown from <code><a href="#">MimeTypeUtils#parseMimeType(String)</a></code> in case of encountering an invalid content type specification String.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

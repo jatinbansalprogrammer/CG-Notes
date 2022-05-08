@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.scheduling.concurrent - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.scheduling.concurrent</a><br/>
+<br/>
+<h2>Package org.springframework.scheduling.concurrent</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-concurrent-task-executor/index.html">ConcurrentTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConcurrentTaskExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">, </span><span class="identifier">SchedulingTaskExecutor</span></code>
+<p>Adapter that takes a <code>java.util.concurrent.Executor</code> and exposes a Spring org.springframework.core.task.TaskExecutor for it. Also detects an extended <code>java.util.concurrent.ExecutorService</code>, adapting the org.springframework.core.task.AsyncTaskExecutor interface accordingly. 
+<p>Autodetects a JSR-236 javax.enterprise.concurrent.ManagedExecutorService in order to expose javax.enterprise.concurrent.ManagedTask adapters for it, exposing a long-running hint based on SchedulingAwareRunnable and an identity name based on the given Runnable/Callable's <code>toString()</code>. For JSR-236 style lookup in a Java EE 7 environment, consider using DefaultManagedTaskExecutor. </p>
+<p>Note that there is a pre-built ThreadPoolTaskExecutor that allows for defining a java.util.concurrent.ThreadPoolExecutor in bean style, exposing it as a Spring org.springframework.core.task.TaskExecutor directly. This is a convenient alternative to a raw ThreadPoolExecutor definition with a separate definition of the present adapter class.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-managed-aware-thread-factory/index.html">DefaultManagedAwareThreadFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultManagedAwareThreadFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CustomizableThreadFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>JNDI-based variant of CustomizableThreadFactory, performing a default lookup for JSR-236's "java:comp/DefaultManagedThreadFactory" in a Java EE 7 environment, falling back to the local CustomizableThreadFactory setup if not found. 
+<p>This is a convenient way to use managed threads when running in a Java EE 7 environment, simply using regular local threads otherwise - without conditional setup (i.e. without profiles). </p>
+<p>Note: This class is not strictly JSR-236 based; it can work with any regular java.util.concurrent.ThreadFactory that can be found in JNDI. Therefore, the default JNDI name "java:comp/DefaultManagedThreadFactory" can be customized through the <code><a href="#">"jndiName"</a></code> bean property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-managed-task-executor/index.html">DefaultManagedTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultManagedTaskExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-concurrent-task-executor/index.html"><span class="identifier">ConcurrentTaskExecutor</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>JNDI-based variant of ConcurrentTaskExecutor, performing a default lookup for JSR-236's "java:comp/DefaultManagedExecutorService" in a Java EE 7 environment. 
+<p>Note: This class is not strictly JSR-236 based; it can work with any regular java.util.concurrent.Executor that can be found in JNDI. The actual adapting to javax.enterprise.concurrent.ManagedExecutorService happens in the base class ConcurrentTaskExecutor itself.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-managed-task-scheduler/index.html">DefaultManagedTaskScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultManagedTaskScheduler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConcurrentTaskScheduler</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>JNDI-based variant of ConcurrentTaskScheduler, performing a default lookup for JSR-236's "java:comp/DefaultManagedScheduledExecutorService" in a Java EE 7 environment. 
+<p>Note: This class is not strictly JSR-236 based; it can work with any regular java.util.concurrent.ScheduledExecutorService that can be found in JNDI. The actual adapting to javax.enterprise.concurrent.ManagedScheduledExecutorService happens in the base class ConcurrentTaskScheduler itself.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-fork-join-pool-factory-bean/index.html">ForkJoinPoolFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ForkJoinPoolFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ForkJoinPool</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>A Spring FactoryBean that builds and exposes a preconfigured ForkJoinPool. 
+<p>For details on the ForkJoinPool API and its use with RecursiveActions, see the <a href="#">JDK 7 javadoc</a>. </p>
+<p><code>jsr166.jar</code>, containing <code>java.util.concurrent</code> updates for Java 6, can be obtained from the <a href="#">concurrency interest website</a>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scheduled-executor-factory-bean/index.html">ScheduledExecutorFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledExecutorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExecutorConfigurationSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ScheduledExecutorService</span><span class="symbol">&gt;</span></code>
+<p>org.springframework.beans.factory.FactoryBean that sets up a java.util.concurrent.ScheduledExecutorService (by default: a java.util.concurrent.ScheduledThreadPoolExecutor) and exposes it for bean references. 
+<p>Allows for registration of ScheduledExecutorTask, automatically starting the ScheduledExecutorService on initialization and cancelling it on destruction of the context. In scenarios that only require static registration of tasks at startup, there is no need to access the ScheduledExecutorService instance itself in application code at all; <code>ScheduledExecutorFactoryBean</code> is then just being used for lifecycle integration. </p>
+<p>For an alternative, you may set up a ScheduledThreadPoolExecutor instance directly using constructor injection, or use a factory method definition that points to the java.util.concurrent.Executors class. <strong>This is strongly recommended in particular for common <code>@Bean</code> methods in configuration classes, where this <code>FactoryBean</code> variant would force you to return the <code>FactoryBean</code> type instead of <code>ScheduledExecutorService</code>.</strong> </p>
+<p>Note that java.util.concurrent.ScheduledExecutorService uses a Runnable instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution. </p>
+<p><strong>WARNING:</strong> Runnable submitted via a native java.util.concurrent.ScheduledExecutorService are removed from the execution schedule once they throw an exception. If you would prefer to continue execution after such an exception, switch this FactoryBean's <code><a href="-scheduled-executor-factory-bean/set-continue-scheduled-execution-after-exception.html">"continueScheduledExecutionAfterException"</a></code> property to "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scheduled-executor-task/index.html">ScheduledExecutorTask</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledExecutorTask</span></code>
+<p>JavaBean that describes a scheduled executor task, consisting of the Runnable and a delay plus period. The period needs to be specified; there is no point in a default for it. 
+<p>The java.util.concurrent.ScheduledExecutorService does not offer more sophisticated scheduling options such as cron expressions. Consider using ThreadPoolTaskScheduler for such needs. </p>
+<p>Note that the java.util.concurrent.ScheduledExecutorService mechanism uses a Runnable instance that is shared between repeated executions, in contrast to Quartz which creates a new Job instance for each execution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-thread-pool-executor-factory-bean/index.html">ThreadPoolExecutorFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThreadPoolExecutorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExecutorConfigurationSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ExecutorService</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>JavaBean that allows for configuring a java.util.concurrent.ThreadPoolExecutor in bean style (through its "corePoolSize", "maxPoolSize", "keepAliveSeconds", "queueCapacity" properties) and exposing it as a bean reference of its native java.util.concurrent.ExecutorService type. 
+<p>For an alternative, you may set up a ThreadPoolExecutor instance directly using constructor injection, or use a factory method definition that points to the java.util.concurrent.Executors class. <strong>This is strongly recommended in particular for common <code>@Bean</code> methods in configuration classes, where this <code>FactoryBean</code> variant would force you to return the <code>FactoryBean</code> type instead of the actual <code>Executor</code> type.</strong> </p>
+<p>If you need a timing-based java.util.concurrent.ScheduledExecutorService instead, consider ScheduledExecutorFactoryBean.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-thread-pool-task-scheduler/index.html">ThreadPoolTaskScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThreadPoolTaskScheduler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExecutorConfigurationSupport</span><span class="symbol">, </span><span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">, </span><span class="identifier">SchedulingTaskExecutor</span><span class="symbol">, </span><span class="identifier">TaskScheduler</span></code>
+<p>Implementation of Spring's TaskScheduler interface, wrapping a native java.util.concurrent.ScheduledThreadPoolExecutor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

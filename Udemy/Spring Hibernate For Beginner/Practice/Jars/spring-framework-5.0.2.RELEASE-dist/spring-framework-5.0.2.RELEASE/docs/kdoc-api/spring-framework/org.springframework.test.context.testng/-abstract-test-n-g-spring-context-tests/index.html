@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractTestNGSpringContextTests - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.testng</a>&nbsp;/&nbsp;<a href=".">AbstractTestNGSpringContextTests</a><br/>
+<br/>
+<h1>AbstractTestNGSpringContextTests</h1>
+<code><span class="identifier">@TestExecutionListeners</span><span class="symbol">(</span>[ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener]<span class="symbol">)</span> <span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractTestNGSpringContextTests</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IHookable</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span></code>
+<p>Abstract base test class which integrates the <em>Spring TestContext Framework</em> with explicit ApplicationContext testing support in a <strong>TestNG</strong> environment. 
+<p>Concrete subclasses: </p>
+<ul> <li>Typically declare a class-level ContextConfiguration annotation to configure the ApplicationContext <a href="#">resource locations</a> or <a href="#">annotated classes</a>. <em>If your test does not need to load an application context, you may choose to omit the <code>@ContextConfiguration</code> declaration and to configure the appropriate org.springframework.test.context.TestExecutionListener manually.</em></li>
+ <li>Must have constructors which either implicitly or explicitly delegate to <code>super();</code>.</li>
+ </ul>
+ 
+<p>The following org.springframework.test.context.TestExecutionListener are configured by default: </p>
+<ul> <li>org.springframework.test.context.web.ServletTestExecutionListener </li>
+<li>org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener </li>
+<li>org.springframework.test.context.support.DependencyInjectionTestExecutionListener </li>
+<li>org.springframework.test.context.support.DirtiesContextTestExecutionListener </li>
+</ul>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+ContextConfigurationTestContextTestContextManagerTestExecutionListenersServletTestExecutionListenerDirtiesContextBeforeModesTestExecutionListenerDependencyInjectionTestExecutionListenerDirtiesContextTestExecutionListenerAbstractTransactionalTestNGSpringContextTestsorg.springframework.test.context.junit4.AbstractJUnit4SpringContextTests</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractTestNGSpringContextTests</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Construct a new AbstractTestNGSpringContextTests instance and initialize the internal TestContextManager for the current test class.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="run.html">run</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.testng.AbstractTestNGSpringContextTests$run(org.testng.IHookCallBack, org.testng.ITestResult)/callBack">callBack</span><span class="symbol">:</span>&nbsp;<span class="identifier">IHookCallBack</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.testng.AbstractTestNGSpringContextTests$run(org.testng.IHookCallBack, org.testng.ITestResult)/testResult">testResult</span><span class="symbol">:</span>&nbsp;<span class="identifier">ITestResult</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delegates to the <a href="#">test</a> in the supplied <code>callback</code> to execute the actual test and then tracks the exception thrown during test execution, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-application-context.html">setApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.testng.AbstractTestNGSpringContextTests$setApplicationContext(org.springframework.context.ApplicationContext)/applicationContext">applicationContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ApplicationContext to be used by this test instance, provided via ApplicationContextAware semantics.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-transactional-test-n-g-spring-context-tests/index.html">AbstractTransactionalTestNGSpringContextTests</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractTransactionalTestNGSpringContextTests</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTestNGSpringContextTests</span></code>
+<p>Abstract Transactional extension of AbstractTestNGSpringContextTests which adds convenience functionality for JDBC access. Expects a DataSource bean and a PlatformTransactionManager bean to be defined in the Spring ApplicationContext. 
+<p>This class exposes a JdbcTemplate and provides an easy way to <a href="#">count the number of rows in a table</a> (potentially <a href="#">with a WHERE clause</a>), <a href="#">delete from tables</a>, <a href="#">drop tables</a>, and <a href="#">execute SQL scripts</a> within a transaction. </p>
+<p>Concrete subclasses must fulfill the same requirements outlined in AbstractTestNGSpringContextTests. </p>
+<p>The following org.springframework.test.context.TestExecutionListener are configured by default: </p>
+<ul> <li>org.springframework.test.context.web.ServletTestExecutionListener </li>
+<li>org.springframework.test.context.support.DependencyInjectionTestExecutionListener </li>
+<li>org.springframework.test.context.support.DirtiesContextTestExecutionListener </li>
+<li>org.springframework.test.context.transaction.TransactionalTestExecutionListener </li>
+<li>org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener </li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionOperations.execute - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.support</a>&nbsp;/&nbsp;<a href="index.html">TransactionOperations</a>&nbsp;/&nbsp;<a href=".">execute</a><br/>
+<br/>
+<h1>execute</h1>
+<a name="org.springframework.transaction.support.TransactionOperations$execute(org.springframework.transaction.support.TransactionCallback((org.springframework.transaction.support.TransactionOperations.execute.T)))"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.support.TransactionOperations$execute(org.springframework.transaction.support.TransactionCallback((org.springframework.transaction.support.TransactionOperations.execute.T)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Execute the action specified by the given callback object within a transaction. 
+<p>Allows for returning a result object created within the transaction, that is, a domain object or a collection of domain objects. A RuntimeException thrown by the callback is treated as a fatal exception that enforces a rollback. Such an exception gets propagated to the caller of the template.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="action"></a>
+<code>action</code> - the callback object that specifies the transactional action</p>
+<h3>Exceptions</h3>
+<p><a name="TransactionException"></a>
+<code>TransactionException</code> - in case of initialization, rollback, or system errors</p>
+<p><a name="RuntimeException"></a>
+<code>RuntimeException</code> - if thrown by the TransactionCallback</p>
+<p><strong>Return</strong><br/>
+a result object returned by the callback, or <code>null</code> if none</p>
+</BODY>
+</HTML>

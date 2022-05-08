@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JndiDestinationResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.support.destination</a>&nbsp;/&nbsp;<a href=".">JndiDestinationResolver</a><br/>
+<br/>
+<h1>JndiDestinationResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiDestinationResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorSupport</span><span class="symbol">, </span><a href="../-caching-destination-resolver/index.html"><span class="identifier">CachingDestinationResolver</span></a></code>
+<p>DestinationResolver implementation which interprets destination names as JNDI locations (with a configurable fallback strategy). 
+<p>Allows for customizing the JNDI environment if necessary, for example specifying appropriate JNDI environment properties. </p>
+<p>Dynamic queues and topics get cached by destination name. As a consequence, you need to use unique destination names across both queues and topics. Caching can be turned off through the <code><a href="set-cache.html">"cache"</a></code> flag. </p>
+<p>Note that the fallback to resolution of dynamic destinations is turned <em>off</em> by default. Switch the <code><a href="set-fallback-to-dynamic-destination.html">"fallbackToDynamicDestination"</a></code> flag on to enable this functionality.</p>
+</p>
+<p><strong>Author</strong><br/>
+Mark Pollack</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setJndiTemplate</a><a href="#">#setJndiEnvironment</a><a href="set-cache.html">#setCache</a><a href="set-fallback-to-dynamic-destination.html">#setFallbackToDynamicDestination</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JndiDestinationResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>DestinationResolver implementation which interprets destination names as JNDI locations (with a configurable fallback strategy). 
+<p>Allows for customizing the JNDI environment if necessary, for example specifying appropriate JNDI environment properties. </p>
+<p>Dynamic queues and topics get cached by destination name. As a consequence, you need to use unique destination names across both queues and topics. Caching can be turned off through the <code><a href="set-cache.html">"cache"</a></code> flag. </p>
+<p>Note that the fallback to resolution of dynamic destinations is turned <em>off</em> by default. Switch the <code><a href="set-fallback-to-dynamic-destination.html">"fallbackToDynamicDestination"</a></code> flag on to enable this functionality.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clear-cache.html">clearCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clearCache</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-from-cache.html">removeFromCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeFromCache</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.destination.JndiDestinationResolver$removeFromCache(kotlin.String)/destinationName">destinationName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-destination-name.html">resolveDestinationName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveDestinationName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.destination.JndiDestinationResolver$resolveDestinationName(javax.jms.Session, kotlin.String, kotlin.Boolean)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.support.destination.JndiDestinationResolver$resolveDestinationName(javax.jms.Session, kotlin.String, kotlin.Boolean)/destinationName">destinationName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.support.destination.JndiDestinationResolver$resolveDestinationName(javax.jms.Session, kotlin.String, kotlin.Boolean)/pubSubDomain">pubSubDomain</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Destination</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache.html">setCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCache</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.destination.JndiDestinationResolver$setCache(kotlin.Boolean)/cache">cache</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to cache resolved destinations. Default is "true". 
+<p>This flag can be turned off to re-lookup a destination for each operation, which allows for hot restarting of destinations. This is mainly useful during development. </p>
+<p>Note that dynamic queues and topics get cached by destination name. As a consequence, you need to use unique destination names across both queues and topics.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-dynamic-destination-resolver.html">setDynamicDestinationResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDynamicDestinationResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.destination.JndiDestinationResolver$setDynamicDestinationResolver(org.springframework.jms.support.destination.DestinationResolver)/dynamicDestinationResolver">dynamicDestinationResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">DestinationResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the DestinationResolver to use when falling back to dynamic destinations. 
+<p>The default is Spring's standard DynamicDestinationResolver.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-fallback-to-dynamic-destination.html">setFallbackToDynamicDestination</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFallbackToDynamicDestination</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.support.destination.JndiDestinationResolver$setFallbackToDynamicDestination(kotlin.Boolean)/fallbackToDynamicDestination">fallbackToDynamicDestination</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether this resolver is supposed to create dynamic destinations if the destination name is not found in JNDI. Default is "false". 
+<p>Turn this flag on to enable transparent fallback to dynamic destinations.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

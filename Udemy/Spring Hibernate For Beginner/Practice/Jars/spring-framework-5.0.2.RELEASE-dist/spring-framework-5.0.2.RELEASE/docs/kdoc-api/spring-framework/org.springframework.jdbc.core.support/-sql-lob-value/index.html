@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SqlLobValue - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core.support</a>&nbsp;/&nbsp;<a href=".">SqlLobValue</a><br/>
+<br/>
+<h1>SqlLobValue</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlLobValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DisposableSqlTypeValue</span></code>
+<p>Object to represent an SQL BLOB/CLOB value parameter. BLOBs can either be an InputStream or a byte array. CLOBs can be in the form of a Reader, InputStream or String. Each CLOB/BLOB value will be stored together with its length. The type is based on which constructor is used. Objects of this class are immutable except for the LobCreator reference. Use them and discard them. 
+<p>This class holds a reference to a LocCreator that must be closed after the update has completed. This is done via a call to the closeLobCreator method. All handling of the LobCreator is done by the framework classes that use it - no need to set or close the LobCreator for end users of this class. </p>
+<p>A usage example: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object LobHandler lobHandler = new DefaultLobHandler(); // reusable object jdbcTemplate.update( "INSERT INTO imagedb (image_name, content, description) VALUES (?, ?, ?)", new Object[] { name, new SqlLobValue(contentStream, contentLength, lobHandler), new SqlLobValue(description, lobHandler) }, new int[] {Types.VARCHAR, Types.BLOB, Types.CLOB}); </code></pre></p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+org.springframework.jdbc.support.lob.LobHandlerorg.springframework.jdbc.support.lob.LobCreator<a href="#">org.springframework.jdbc.core.JdbcTemplate#update(String, Object[], int[])</a><a href="#">org.springframework.jdbc.object.SqlUpdate#update(Object[])</a><a href="#">org.springframework.jdbc.object.StoredProcedure#execute(java.util.Map)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(kotlin.ByteArray)/bytes">bytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">)</span></code>
+<p>Create a new BLOB value with the given byte array, using a DefaultLobHandler.</p>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(kotlin.ByteArray, org.springframework.jdbc.support.lob.LobHandler)/bytes">bytes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(kotlin.ByteArray, org.springframework.jdbc.support.lob.LobHandler)/lobHandler">lobHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">LobHandler</span><span class="symbol">)</span></code>
+<p>Create a new BLOB value with the given byte array.</p>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(kotlin.String)/content">content</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new CLOB value with the given content string, using a DefaultLobHandler.</p>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(kotlin.String, org.springframework.jdbc.support.lob.LobHandler)/content">content</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(kotlin.String, org.springframework.jdbc.support.lob.LobHandler)/lobHandler">lobHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">LobHandler</span><span class="symbol">)</span></code>
+<p>Create a new CLOB value with the given content string.</p>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.InputStream, kotlin.Int)/stream">stream</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.InputStream, kotlin.Int)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new BLOB/CLOB value with the given stream, using a DefaultLobHandler.</p>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.InputStream, kotlin.Int, org.springframework.jdbc.support.lob.LobHandler)/stream">stream</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.InputStream, kotlin.Int, org.springframework.jdbc.support.lob.LobHandler)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.InputStream, kotlin.Int, org.springframework.jdbc.support.lob.LobHandler)/lobHandler">lobHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">LobHandler</span><span class="symbol">)</span></code>
+<p>Create a new BLOB/CLOB value with the given stream.</p>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.Reader, kotlin.Int)/reader">reader</span><span class="symbol">:</span>&nbsp;<span class="identifier">Reader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.Reader, kotlin.Int)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new CLOB value with the given character stream, using a DefaultLobHandler.</p>
+<code><span class="identifier">SqlLobValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.Reader, kotlin.Int, org.springframework.jdbc.support.lob.LobHandler)/reader">reader</span><span class="symbol">:</span>&nbsp;<span class="identifier">Reader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.Reader, kotlin.Int, org.springframework.jdbc.support.lob.LobHandler)/length">length</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$<init>(java.io.Reader, kotlin.Int, org.springframework.jdbc.support.lob.LobHandler)/lobHandler">lobHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">LobHandler</span><span class="symbol">)</span></code>
+<p>Create a new CLOB value with the given character stream.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="cleanup.html">cleanup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">cleanup</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the LobCreator, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-type-value.html">setTypeValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTypeValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/ps">ps</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedStatement</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/paramIndex">paramIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/sqlType">sqlType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.SqlLobValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/typeName">typeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the specified content via the LobCreator.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

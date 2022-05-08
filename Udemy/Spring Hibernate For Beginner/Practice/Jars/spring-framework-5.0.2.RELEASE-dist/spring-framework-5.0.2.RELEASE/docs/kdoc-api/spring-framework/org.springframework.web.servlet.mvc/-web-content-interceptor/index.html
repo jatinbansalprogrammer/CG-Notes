@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebContentInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.mvc</a>&nbsp;/&nbsp;<a href=".">WebContentInterceptor</a><br/>
+<br/>
+<h1>WebContentInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebContentInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebContentGenerator</span><span class="symbol">, </span><span class="identifier">HandlerInterceptor</span></code>
+<p>Handler interceptor that checks the request and prepares the response. Checks for supported methods and a required session, and applies the specified org.springframework.http.CacheControl builder. See superclass bean properties for configuration options. 
+<p>All the settings supported by this interceptor can also be set on AbstractController. This interceptor is mainly intended for applying checks and preparations to a set of controllers mapped by a HandlerMapping.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Since</strong><br/>
+27.11.2003</p>
+<p><strong>See Also</strong><br/>
+AbstractController</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebContentInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-cache-mapping.html">addCacheMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addCacheMapping</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$addCacheMapping(org.springframework.http.CacheControl, kotlin.Array((kotlin.String)))/cacheControl">cacheControl</span><span class="symbol">:</span>&nbsp;<span class="identifier">CacheControl</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$addCacheMapping(org.springframework.http.CacheControl, kotlin.Array((kotlin.String)))/paths">paths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Map specific URL paths to a specific org.springframework.http.CacheControl. 
+<p>Overrides the default cache seconds setting of this interceptor. Can specify a empty org.springframework.http.CacheControl instance to exclude a URL path from default caching. </p>
+<p>Supports direct matches, e.g. a registered "/test" matches "/test", and a various Ant-style pattern matches, e.g. a registered "/t*" matches both "/test" and "/team". For details, see the AntPathMatcher javadoc. </p>
+<p><strong>NOTE:</strong> Path patterns are not supposed to overlap. If a request matches several mappings, it is effectively undefined which one will apply (due to the lack of key ordering in the underlying <code>java.util.HashMap</code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-completion.html">afterCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$afterCompletion(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$afterCompletion(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$afterCompletion(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$afterCompletion(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, java.lang.Exception)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation is empty.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-handle.html">postHandle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postHandle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$postHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, org.springframework.web.servlet.ModelAndView)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$postHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, org.springframework.web.servlet.ModelAndView)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$postHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, org.springframework.web.servlet.ModelAndView)/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$postHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any, org.springframework.web.servlet.ModelAndView)/modelAndView">modelAndView</span><span class="symbol">:</span>&nbsp;<span class="identifier">ModelAndView</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation is empty.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="pre-handle.html">preHandle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">preHandle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$preHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$preHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$preHandle(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, kotlin.Any)/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-always-use-full-path.html">setAlwaysUseFullPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAlwaysUseFullPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$setAlwaysUseFullPath(kotlin.Boolean)/alwaysUseFullPath">alwaysUseFullPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut to same property on underlying <code><a href="set-url-path-helper.html">UrlPathHelper</a></code>. 
+<p>Only relevant for the "cacheMappings" setting.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-mappings.html">setCacheMappings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheMappings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$setCacheMappings(java.util.Properties)/cacheMappings">cacheMappings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Map specific URL paths to specific cache seconds. 
+<p>Overrides the default cache seconds setting of this interceptor. Can specify "-1" to exclude a URL path from default caching. </p>
+<p>Supports direct matches, e.g. a registered "/test" matches "/test", and a various Ant-style pattern matches, e.g. a registered "/t*" matches both "/test" and "/team". For details, see the AntPathMatcher javadoc. </p>
+<p><strong>NOTE:</strong> Path patterns are not supposed to overlap. If a request matches several mappings, it is effectively undefined which one will apply (due to the lack of key ordering in <code>java.util.Properties</code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-path-matcher.html">setPathMatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPathMatcher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$setPathMatcher(org.springframework.util.PathMatcher)/pathMatcher">pathMatcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">PathMatcher</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the PathMatcher implementation to use for matching URL paths against registered URL patterns, for determining cache mappings. Default is AntPathMatcher.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-url-decode.html">setUrlDecode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrlDecode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$setUrlDecode(kotlin.Boolean)/urlDecode">urlDecode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Shortcut to same property on underlying <code><a href="set-url-path-helper.html">UrlPathHelper</a></code>. 
+<p>Only relevant for the "cacheMappings" setting.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-url-path-helper.html">setUrlPathHelper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrlPathHelper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.WebContentInterceptor$setUrlPathHelper(org.springframework.web.util.UrlPathHelper)/urlPathHelper">urlPathHelper</span><span class="symbol">:</span>&nbsp;<span class="identifier">UrlPathHelper</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the UrlPathHelper to use for resolution of lookup paths. 
+<p>Use this to override the default UrlPathHelper with a custom subclass, or to share common UrlPathHelper settings across multiple HandlerMappings and MethodNameResolvers. </p>
+<p>Only relevant for the "cacheMappings" setting.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

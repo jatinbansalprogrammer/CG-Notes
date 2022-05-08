@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingWork - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.commonj</a>&nbsp;/&nbsp;<a href=".">DelegatingWork</a><br/>
+<br/>
+<h1>DelegatingWork</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingWork</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Work</span></code>
+<p>Simple Work adapter that delegates to a given Runnable.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+commonj.work.Workjava.lang.Runnable</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DelegatingWork</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.DelegatingWork$<init>(java.lang.Runnable)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span></code>
+<p>Create a new DelegatingWork.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-delegate.html">getDelegate</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getDelegate</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Runnable</span></code>
+<p>Return the wrapped Runnable implementation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-daemon.html">isDaemon</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isDaemon</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation delegates to <code><a href="../../org.springframework.scheduling/-scheduling-aware-runnable/is-long-lived.html">org.springframework.scheduling.SchedulingAwareRunnable#isLongLived()</a></code>, if available.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="release.html">release</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">release</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>This implementation is empty, since we expect the Runnable to terminate based on some specific shutdown signal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="run.html">run</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delegates execution to the underlying Runnable.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

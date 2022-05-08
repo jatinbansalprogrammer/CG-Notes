@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.factory.parsing - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.factory.parsing</a><br/>
+<br/>
+<h2>Package org.springframework.beans.factory.parsing</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-alias-definition/index.html">AliasDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AliasDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanMetadataElement</span></code>
+<p>Representation of an alias that has been registered during the parsing process.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-component-definition/index.html">BeanComponentDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanComponentDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionHolder</span><span class="symbol">, </span><span class="identifier">ComponentDefinition</span></code>
+<p>ComponentDefinition based on a standard BeanDefinition, exposing the given bean definition as well as inner bean definitions and bean references for the given bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-entry/index.html">BeanEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing a bean definition.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-constructor-argument-entry/index.html">ConstructorArgumentEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConstructorArgumentEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing a (possibly indexed) constructor argument.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-empty-reader-event-listener/index.html">EmptyReaderEventListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmptyReaderEventListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ReaderEventListener</span></code>
+<p>Empty implementation of the ReaderEventListener interface, providing no-op implementations of all callback methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-fail-fast-problem-reporter/index.html">FailFastProblemReporter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FailFastProblemReporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProblemReporter</span></code>
+<p>Simple ProblemReporter implementation that exhibits fail-fast behavior when errors are encountered. 
+<p>The first error encountered results in a BeanDefinitionParsingException being thrown. </p>
+<p>Warnings are written to <code><a href="-fail-fast-problem-reporter/set-logger.html">the log</a></code> for this class.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-import-definition/index.html">ImportDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ImportDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanMetadataElement</span></code>
+<p>Representation of an import that has been processed during the parsing process.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-location/index.html">Location</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Location</span></code>
+<p>Class that models an arbitrary location in a Resource. 
+<p>Typically used to track the location of problematic or erroneous metadata in XML configuration files. For example, a <code><a href="-location/get-source.html">source</a></code> location might be 'The bean defined on line 76 of beans.properties has an invalid Class'; another source might be the actual DOM Element from a parsed XML org.w3c.dom.Document; or the source object might simply be <code>null</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-null-source-extractor/index.html">NullSourceExtractor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NullSourceExtractor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SourceExtractor</span></code>
+<p>Simple implementation of SourceExtractor that returns <code>null</code> as the source metadata. 
+<p>This is the default implementation and prevents too much metadata from being held in memory during normal (non-tooled) runtime usage.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pass-through-source-extractor/index.html">PassThroughSourceExtractor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PassThroughSourceExtractor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SourceExtractor</span></code>
+<p>Simple SourceExtractor implementation that just passes the candidate source metadata object through for attachment. 
+<p>Using this implementation means that tools will get raw access to the underlying configuration source metadata provided by the tool. </p>
+<p>This implementation <strong>should not</strong> be used in a production application since it is likely to keep too much metadata in memory (unnecessarily).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-entry/index.html">PropertyEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing a JavaBean property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-qualifier-entry/index.html">QualifierEntry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">QualifierEntry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Entry</span></code>
+<p>ParseState entry representing an autowire candidate qualifier.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reader-context/index.html">ReaderContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReaderContext</span></code>
+<p>Context that gets passed along a bean definition reading process, encapsulating all relevant configuration as well as state.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-definition-parsing-exception/index.html">BeanDefinitionParsingException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanDefinitionParsingException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionStoreException</span></code>
+<p>Exception thrown when a bean definition reader encounters an error during the parsing process.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

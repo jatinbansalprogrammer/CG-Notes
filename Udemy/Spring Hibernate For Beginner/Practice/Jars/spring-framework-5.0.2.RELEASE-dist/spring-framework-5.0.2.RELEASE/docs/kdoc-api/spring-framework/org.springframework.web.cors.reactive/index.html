@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.cors.reactive - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.cors.reactive</a><br/>
+<br/>
+<h2>Package org.springframework.web.cors.reactive</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cors-utils/index.html">CorsUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CorsUtils</span></code>
+<p>Utility class for CORS reactive request handling based on the <a href="#">CORS W3C recommendation</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cors-web-filter/index.html">CorsWebFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CorsWebFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebFilter</span></code>
+<p>WebFilter that handles CORS preflight requests and intercepts CORS simple and actual requests thanks to a CorsProcessor implementation (DefaultCorsProcessor by default) in order to add the relevant CORS response headers (like <code>Access-Control-Allow-Origin</code>) using the provided CorsConfigurationSource (for example an UrlBasedCorsConfigurationSource instance. 
+<p>This is an alternative to Spring WebFlux Java config CORS configuration, mostly useful for applications using the functional API.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-cors-processor/index.html">DefaultCorsProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultCorsProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CorsProcessor</span></code>
+<p>The default implementation of CorsProcessor, as defined by the <a href="#">CORS W3C recommendation</a>. 
+<p>Note that when input CorsConfiguration is <code>null</code>, this implementation does not reject simple or actual requests outright but simply avoid adding CORS headers to the response. CORS processing is also skipped if the response already contains CORS headers, or if the request is detected as a same-origin one.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-url-based-cors-configuration-source/index.html">UrlBasedCorsConfigurationSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UrlBasedCorsConfigurationSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CorsConfigurationSource</span></code>
+<p>Provide a per reactive request CorsConfiguration instance based on a collection of CorsConfiguration mapped on path patterns. 
+<p>Exact path mapping URIs (such as <code>"/admin"</code>) are supported as well as Ant-style path patterns (such as <code>"/admin/**"</code>).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestContextTransactionUtils.retrieveTransactionManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.transaction</a>&nbsp;/&nbsp;<a href="index.html">TestContextTransactionUtils</a>&nbsp;/&nbsp;<a href=".">retrieveTransactionManager</a><br/>
+<br/>
+<h1>retrieveTransactionManager</h1>
+<a name="org.springframework.test.context.transaction.TestContextTransactionUtils$retrieveTransactionManager(org.springframework.test.context.TestContext, kotlin.String)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">retrieveTransactionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$retrieveTransactionManager(org.springframework.test.context.TestContext, kotlin.String)/testContext">testContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">TestContext</span><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.test.context.transaction.TestContextTransactionUtils$retrieveTransactionManager(org.springframework.test.context.TestContext, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PlatformTransactionManager</span></code>
+<p>Retrieve the PlatformTransactionManager to use for the supplied TestContext. 
+<p>The following algorithm is used to retrieve the transaction manager from the org.springframework.context.ApplicationContext of the supplied test context: </p>
+<ol> <li>Look up the transaction manager by type and explicit name, if the supplied <code>name</code> is non-empty, throwing a BeansException if the named transaction manager does not exist. </li>
+<li>Attempt to look up the single transaction manager by type. </li>
+<li>Attempt to look up the <em>primary</em> transaction manager by type. </li>
+<li>Attempt to look up the transaction manager via a TransactionManagementConfigurer, if present. </li>
+<li>Attempt to look up the transaction manager by type and the <a href="-d-e-f-a-u-l-t_-t-r-a-n-s-a-c-t-i-o-n_-m-a-n-a-g-e-r_-n-a-m-e.html">default transaction manager</a>.</li>
+</ol>
+</p>
+<h3>Parameters</h3>
+<p><a name="testContext"></a>
+<code>testContext</code> - the test context for which the transaction manager should be retrieved; never <code>null</code></p>
+<p><a name="name"></a>
+<code>name</code> - the name of the transaction manager to retrieve; may be <code>null</code> or <em>empty</em></p>
+<h3>Exceptions</h3>
+<p><a name="BeansException"></a>
+<code>BeansException</code> - if an error occurs while retrieving an explicitly named transaction manager</p>
+<p><a name="IllegalStateException"></a>
+<code>IllegalStateException</code> - if more than one TransactionManagementConfigurer exists in the ApplicationContext</p>
+<p><strong>Return</strong><br/>
+the transaction manager to use, or <code>null</code> if not found</p>
+</BODY>
+</HTML>

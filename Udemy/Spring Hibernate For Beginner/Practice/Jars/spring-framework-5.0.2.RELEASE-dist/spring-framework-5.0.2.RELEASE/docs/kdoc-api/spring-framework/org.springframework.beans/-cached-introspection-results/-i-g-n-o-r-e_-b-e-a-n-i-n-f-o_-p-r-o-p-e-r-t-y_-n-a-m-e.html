@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CachedIntrospectionResults.IGNORE_BEANINFO_PROPERTY_NAME - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href="index.html">CachedIntrospectionResults</a>&nbsp;/&nbsp;<a href=".">IGNORE_BEANINFO_PROPERTY_NAME</a><br/>
+<br/>
+<h1>IGNORE_BEANINFO_PROPERTY_NAME</h1>
+<a name="org.springframework.beans.CachedIntrospectionResults$IGNORE_BEANINFO_PROPERTY_NAME"></a>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IGNORE_BEANINFO_PROPERTY_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>System property that instructs Spring to use the <code><a href="#">Introspector#IGNORE_ALL_BEANINFO</a></code> mode when calling the JavaBeans Introspector: "spring.beaninfo.ignore", with a value of "true" skipping the search for <code>BeanInfo</code> classes (typically for scenarios where no such classes are being defined for beans in the application in the first place). 
+<p>The default is "false", considering all <code>BeanInfo</code> metadata classes, like for standard <code><a href="#">Introspector#getBeanInfo(Class)</a></code> calls. Consider switching this flag to "true" if you experience repeated ClassLoader access for non-existing <code>BeanInfo</code> classes, in case such access is expensive on startup or on lazy loading. </p>
+<p>Note that such an effect may also indicate a scenario where caching doesn't work effectively: Prefer an arrangement where the Spring jars live in the same ClassLoader as the application classes, which allows for clean caching along with the application's lifecycle in any case. For a web application, consider declaring a local org.springframework.web.util.IntrospectorCleanupListener in <code>web.xml</code> in case of a multi-ClassLoader layout, which will allow for effective caching as well.</p>
+</p>
+<p><strong>See Also</strong><br/>
+<a href="#">Introspector#getBeanInfo(Class, int)</a></p>
+</BODY>
+</HTML>

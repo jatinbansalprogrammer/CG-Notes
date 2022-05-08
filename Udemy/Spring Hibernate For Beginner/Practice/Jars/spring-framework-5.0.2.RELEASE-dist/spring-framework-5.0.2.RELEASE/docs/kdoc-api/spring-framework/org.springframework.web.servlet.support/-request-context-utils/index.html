@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestContextUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.support</a>&nbsp;/&nbsp;<a href=".">RequestContextUtils</a><br/>
+<br/>
+<h1>RequestContextUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">RequestContextUtils</span></code>
+<p>Utility class for easy access to request-specific state which has been set by the org.springframework.web.servlet.DispatcherServlet. 
+<p>Supports lookup of current WebApplicationContext, LocaleResolver, Locale, ThemeResolver, Theme, and MultipartResolver.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+03.03.2003</p>
+<p><strong>See Also</strong><br/>
+RequestContextorg.springframework.web.servlet.DispatcherServlet</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">RequestContextUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Utility class for easy access to request-specific state which has been set by the org.springframework.web.servlet.DispatcherServlet. 
+<p>Supports lookup of current WebApplicationContext, LocaleResolver, Locale, ThemeResolver, Theme, and MultipartResolver.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-r-e-q-u-e-s-t_-d-a-t-a_-v-a-l-u-e_-p-r-o-c-e-s-s-o-r_-b-e-a-n_-n-a-m-e.html">REQUEST_DATA_VALUE_PROCESSOR_BEAN_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">REQUEST_DATA_VALUE_PROCESSOR_BEAN_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The name of the bean to use to look up in an implementation of RequestDataValueProcessor has been configured.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="find-web-application-context.html">findWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest, javax.servlet.ServletContext)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest, javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Look for the WebApplicationContext associated with the DispatcherServlet that has initiated request processing, and for the global context if none was found associated with the current request. The global context will be found via the ServletContext or via ContextLoader's current context. 
+<p>NOTE: This variant remains compatible with Servlet 2.5, explicitly checking a given ServletContext instead of deriving it from the request.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Look for the WebApplicationContext associated with the DispatcherServlet that has initiated request processing, and for the global context if none was found associated with the current request. The global context will be found via the ServletContext or via ContextLoader's current context. 
+<p>NOTE: This variant requires Servlet 3.0+ and is generally recommended for forward-looking custom user code.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-flash-map-manager.html">getFlashMapManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getFlashMapManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getFlashMapManager(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FlashMapManager</span></code>
+<p>Return the <code>FlashMapManager</code> instance to save flash attributes. 
+<p>As of 5.0 the convenience method <code><a href="#">#saveOutputFlashMap</a></code> may be used to save the "output" FlashMap.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-input-flash-map.html">getInputFlashMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getInputFlashMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getInputFlashMap(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return read-only "input" flash attributes from request before redirect.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-locale.html">getLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getLocale(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Locale</span></code>
+<p>Retrieve the current locale from the given request, using the LocaleResolver bound to the request by the DispatcherServlet (if available), falling back to the request's accept-header Locale. 
+<p>This method serves as a straightforward alternative to the standard Servlet <code><a href="#">javax.servlet.http.HttpServletRequest#getLocale()</a></code> method, falling back to the latter if no more specific locale has been found. </p>
+<p>Consider using <code><a href="#">org.springframework.context.i18n.LocaleContextHolder#getLocale()</a></code> which will normally be populated with the same Locale.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-locale-resolver.html">getLocaleResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getLocaleResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getLocaleResolver(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocaleResolver</span></code>
+<p>Return the LocaleResolver that has been bound to the request by the DispatcherServlet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-output-flash-map.html">getOutputFlashMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getOutputFlashMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getOutputFlashMap(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FlashMap</span></code>
+<p>Return "output" FlashMap to save attributes for request after redirect.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-theme.html">getTheme</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTheme</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getTheme(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Theme</span></code>
+<p>Retrieves the current theme from the given request, using the ThemeResolver and ThemeSource bound to the request by the DispatcherServlet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-theme-resolver.html">getThemeResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getThemeResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getThemeResolver(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ThemeResolver</span></code>
+<p>Return the ThemeResolver that has been bound to the request by the DispatcherServlet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-theme-source.html">getThemeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getThemeSource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getThemeSource(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.springframework.ui.context/-theme-source/index.html"><span class="identifier">ThemeSource</span></a></code>
+<p>Return the ThemeSource that has been bound to the request by the DispatcherServlet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-time-zone.html">getTimeZone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getTimeZone</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$getTimeZone(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TimeZone</span></code>
+<p>Retrieve the current time zone from the given request, using the TimeZoneAwareLocaleResolver bound to the request by the DispatcherServlet (if available), falling back to the system's default time zone. 
+<p>Note: This method returns <code>null</code> if no specific time zone can be resolved for the given request. This is in contrast to <code><a href="get-locale.html">#getLocale</a></code> where there is always the request's accept-header locale to fall back to. </p>
+<p>Consider using <code><a href="#">org.springframework.context.i18n.LocaleContextHolder#getTimeZone()</a></code> which will normally be populated with the same TimeZone: That method only differs in terms of its fallback to the system time zone if the LocaleResolver hasn't provided a specific time zone (instead of this method's <code>null</code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="save-output-flash-map.html">saveOutputFlashMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">saveOutputFlashMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$saveOutputFlashMap(kotlin.String, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)/location">location</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$saveOutputFlashMap(kotlin.String, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$saveOutputFlashMap(kotlin.String, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Convenience method that retrieves the <code><a href="get-output-flash-map.html">"output"</a></code>, updates it with the path and query params of the target URL, and then saves it using the <code><a href="get-flash-map-manager.html">FlashMapManager</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

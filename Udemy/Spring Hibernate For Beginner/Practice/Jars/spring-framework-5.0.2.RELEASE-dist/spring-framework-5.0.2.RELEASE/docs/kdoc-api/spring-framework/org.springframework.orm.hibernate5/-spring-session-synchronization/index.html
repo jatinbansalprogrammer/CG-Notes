@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringSessionSynchronization - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5</a>&nbsp;/&nbsp;<a href=".">SpringSessionSynchronization</a><br/>
+<br/>
+<h1>SpringSessionSynchronization</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringSessionSynchronization</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronization</span><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>Callback for resource cleanup at the end of a Spring-managed transaction for a pre-bound Hibernate Session.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringSessionSynchronization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.SpringSessionSynchronization$<init>(org.springframework.orm.hibernate5.SessionHolder, org.hibernate.SessionFactory)/sessionHolder">sessionHolder</span><span class="symbol">:</span>&nbsp;<a href="../-session-holder/index.html"><span class="identifier">SessionHolder</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.SpringSessionSynchronization$<init>(org.springframework.orm.hibernate5.SessionHolder, org.hibernate.SessionFactory)/sessionFactory">sessionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionFactory</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">SpringSessionSynchronization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.SpringSessionSynchronization$<init>(org.springframework.orm.hibernate5.SessionHolder, org.hibernate.SessionFactory, kotlin.Boolean)/sessionHolder">sessionHolder</span><span class="symbol">:</span>&nbsp;<a href="../-session-holder/index.html"><span class="identifier">SessionHolder</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.SpringSessionSynchronization$<init>(org.springframework.orm.hibernate5.SessionHolder, org.hibernate.SessionFactory, kotlin.Boolean)/sessionFactory">sessionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.SpringSessionSynchronization$<init>(org.springframework.orm.hibernate5.SessionHolder, org.hibernate.SessionFactory, kotlin.Boolean)/newSession">newSession</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-commit.html">afterCommit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterCommit</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="after-completion.html">afterCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.SpringSessionSynchronization$afterCompletion(kotlin.Int)/status">status</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-commit.html">beforeCommit</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeCommit</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.SpringSessionSynchronization$beforeCommit(kotlin.Boolean)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-completion.html">beforeCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforeCompletion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="flush.html">flush</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">flush</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resume.html">resume</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resume</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="suspend.html">suspend</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">suspend</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

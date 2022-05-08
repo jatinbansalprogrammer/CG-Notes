@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WebSphereUowTransactionManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.jta</a>&nbsp;/&nbsp;<a href=".">WebSphereUowTransactionManager</a><br/>
+<br/>
+<h1>WebSphereUowTransactionManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSphereUowTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JtaTransactionManager</span><span class="symbol">, </span><a href="../../org.springframework.transaction.support/-callback-preferring-platform-transaction-manager/index.html"><span class="identifier">CallbackPreferringPlatformTransactionManager</span></a></code>
+<p>WebSphere-specific PlatformTransactionManager implementation that delegates to a com.ibm.wsspi.uow.UOWManager instance, obtained from WebSphere's JNDI environment. This allows Spring to leverage the full power of the WebSphere transaction coordinator, including transaction suspension, in a manner that is perfectly compliant with officially supported WebSphere API. 
+<p>The CallbackPreferringPlatformTransactionManager interface implemented by this class indicates that callers should preferably pass in a TransactionCallback through the <code><a href="#">#execute</a></code> method, which will be handled through the callback-based WebSphere UOWManager API instead of through standard JTA API (UserTransaction / TransactionManager). This avoids the use of the non-public <code>javax.transaction.TransactionManager</code> API on WebSphere, staying within supported WebSphere API boundaries. </p>
+<p>This transaction manager implementation derives from Spring's standard JtaTransactionManager, inheriting the capability to support programmatic transaction demarcation via <code>getTransaction</code> / <code>commit</code> / <code>rollback</code> calls through a JTA UserTransaction handle, for callers that do not use the TransactionCallback-based <code><a href="#">#execute</a></code> method. However, transaction suspension is <em>not</em> supported in this <code>getTransaction</code> style (unless you explicitly specify a <code><a href="#">#setTransactionManager</a></code> reference, despite the official WebSphere recommendations). Use the <code><a href="#">#execute</a></code> style for any code that might require transaction suspension. </p>
+<p>This transaction manager is compatible with WebSphere 6.1.0.9 and above. The default JNDI location for the UOWManager is "java:comp/websphere/UOWManager". If the location happens to differ according to your WebSphere documentation, simply specify the actual location through this transaction manager's "uowManagerName" bean property. </p>
+<p><strong>NOTE: This JtaTransactionManager is intended to refine specific transaction demarcation behavior on Spring's side. It will happily co-exist with independently configured WebSphere transaction strategies in your persistence provider, with no need to specifically connect those setups in any way.</strong></p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="set-uow-manager.html">#setUowManager</a><a href="#">#setUowManagerName</a>com.ibm.wsspi.uow.UOWManager</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">WebSphereUowTransactionManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new WebSphereUowTransactionManager.</p>
+<code><span class="identifier">WebSphereUowTransactionManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.WebSphereUowTransactionManager$<init>(com.ibm.wsspi.uow.UOWManager)/uowManager">uowManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">UOWManager</span><span class="symbol">)</span></code>
+<p>Create a new WebSphereUowTransactionManager for the given UOWManager.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-u-o-w_-m-a-n-a-g-e-r_-n-a-m-e.html">DEFAULT_UOW_MANAGER_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_UOW_MANAGER_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default JNDI location for the WebSphere UOWManager.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.WebSphereUowTransactionManager$execute(org.springframework.transaction.TransactionDefinition, org.springframework.transaction.support.TransactionCallback((org.springframework.transaction.jta.WebSphereUowTransactionManager.execute.T)))/definition">definition</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionDefinition</span><span class="symbol">, </span><span class="identifier" id="org.springframework.transaction.jta.WebSphereUowTransactionManager$execute(org.springframework.transaction.TransactionDefinition, org.springframework.transaction.support.TransactionCallback((org.springframework.transaction.jta.WebSphereUowTransactionManager.execute.T)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-uow-manager.html">setUowManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUowManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.WebSphereUowTransactionManager$setUowManager(com.ibm.wsspi.uow.UOWManager)/uowManager">uowManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">UOWManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the WebSphere UOWManager to use as direct reference. 
+<p>Typically just used for test setups; in a Java EE environment, the UOWManager will always be fetched from JNDI.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-uow-manager-name.html">setUowManagerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUowManagerName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.jta.WebSphereUowTransactionManager$setUowManagerName(kotlin.String)/uowManagerName">uowManagerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI name of the WebSphere UOWManager. The default "java:comp/websphere/UOWManager" is used if not set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-resource-adapter-managed-transactions.html">supportsResourceAdapterManagedTransactions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supportsResourceAdapterManagedTransactions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns <code>true</code> since WebSphere ResourceAdapters (as exposed in JNDI) implicitly perform transaction enlistment if the MessageEndpointFactory's <code>isDeliveryTransacted</code> method returns <code>true</code>. In that case we'll simply skip the <code><a href="#">#createTransaction</a></code> call.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

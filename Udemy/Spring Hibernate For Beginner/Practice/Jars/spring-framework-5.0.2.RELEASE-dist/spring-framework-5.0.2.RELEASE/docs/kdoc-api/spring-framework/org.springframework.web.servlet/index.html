@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.servlet - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.servlet</a><br/>
+<br/>
+<h2>Package org.springframework.web.servlet</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-async-handler-interceptor/index.html">AsyncHandlerInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">AsyncHandlerInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerInterceptor</span></code>
+<p>Extends <code>HandlerInterceptor</code> with a callback method invoked after the start of asynchronous request handling. 
+<p>When a handler starts an asynchronous request, the DispatcherServlet exits without invoking <code>postHandle</code> and <code>afterCompletion</code> as it normally does for a synchronous request, since the result of request handling (e.g. ModelAndView) is likely not yet ready and will be produced concurrently from another thread. In such scenarios, <code><a href="#">#afterConcurrentHandlingStarted</a></code> is invoked instead, allowing implementations to perform tasks such as cleaning up thread-bound attributes before releasing the thread to the Servlet container. </p>
+<p>When asynchronous handling completes, the request is dispatched to the container for further processing. At this stage the <code>DispatcherServlet</code> invokes <code>preHandle</code>, <code>postHandle</code>, and <code>afterCompletion</code>. To distinguish between the initial request and the subsequent dispatch after asynchronous handling completes, interceptors can check whether the <code>javax.servlet.DispatcherType</code> of javax.servlet.ServletRequest is <code>"REQUEST"</code> or <code>"ASYNC"</code>. </p>
+<p>Note that <code>HandlerInterceptor</code> implementations may need to do work when an async request times out or completes with a network error. For such cases the Servlet container does not dispatch and therefore the <code>postHandle</code> and <code>afterCompletion</code> methods will not be invoked. Instead, interceptors can register to track an asynchronous request through the <code>registerCallbackInterceptor</code> and <code>registerDeferredResultInterceptor</code> methods on org.springframework.web.context.request.async.WebAsyncManager. This can be done proactively on every request from <code>preHandle</code> regardless of whether async request processing will start.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-to-view-name-translator/index.html">RequestToViewNameTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RequestToViewNameTranslator</span></code>
+<p>Strategy interface for translating an incoming javax.servlet.http.HttpServletRequest into a logical view name when no view name is explicitly supplied.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-smart-view/index.html">SmartView</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SmartView</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">View</span></code>
+<p>Provides additional information about a View such as whether it performs redirects.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-model-and-view-defining-exception/index.html">ModelAndViewDefiningException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ModelAndViewDefiningException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletException</span></code>
+<p>Exception to be thrown on error conditions that should forward to a specific view with a specific model. 
+<p>Can be thrown at any time during handler processing. This includes any template methods of pre-built controllers. For example, a form controller might abort to a specific error page if certain parameters do not allow to proceed with the normal workflow.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.validation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.validation</a><br/>
+<br/>
+<h2>Package org.springframework.validation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-binding-result-utils/index.html">BindingResultUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BindingResultUtils</span></code>
+<p>Convenience methods for looking up BindingResults in a model Map.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-binding-error-processor/index.html">DefaultBindingErrorProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultBindingErrorProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BindingErrorProcessor</span></code>
+<p>Default BindingErrorProcessor implementation. 
+<p>Uses the "required" error code and the field name to resolve message codes for a missing field error. </p>
+<p>Creates a <code>FieldError</code> for each <code>PropertyAccessException</code> given, using the <code>PropertyAccessException</code>'s error code ("typeMismatch", "methodInvocation") for resolving message codes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-message-codes-resolver/index.html">DefaultMessageCodesResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultMessageCodesResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageCodesResolver</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the MessageCodesResolver interface. 
+<p>Will create two message codes for an object error, in the following order (when using the <code><a href="#">prefixed</a></code> <code><a href="-default-message-codes-resolver/set-message-code-formatter.html">formatter</a></code>): </p>
+<ul> <li>1.: code + "." + object name </li>
+<li>2.: code </li>
+</ul>
+ 
+<p>Will create four message codes for a field specification, in the following order: </p>
+<ul> <li>1.: code + "." + object name + "." + field </li>
+<li>2.: code + "." + field </li>
+<li>3.: code + "." + field type </li>
+<li>4.: code </li>
+</ul>
+ 
+<p>For example, in case of code "typeMismatch", object name "user", field "age": </p>
+<ul> <li>1. try "typeMismatch.user.age" </li>
+<li>2. try "typeMismatch.age" </li>
+<li>3. try "typeMismatch.int" </li>
+<li>4. try "typeMismatch" </li>
+</ul>
+ 
+<p>This resolution algorithm thus can be leveraged for example to show specific messages for binding errors like "required" and "typeMismatch": </p>
+<ul> <li>at the object + field level ("age" field, but only on "user"); </li>
+<li>at the field level (all "age" fields, no matter which object name); </li>
+<li>or at the general level (all fields, on any object). </li>
+</ul>
+ 
+<p>In case of array, List or java.util.Map properties, both codes for specific elements and for the whole collection are generated. Assuming a field "name" of an array "groups" in object "user": </p>
+<ul> <li>1. try "typeMismatch.user.groups[0].name" </li>
+<li>2. try "typeMismatch.user.groups.name" </li>
+<li>3. try "typeMismatch.groups[0].name" </li>
+<li>4. try "typeMismatch.groups.name" </li>
+<li>5. try "typeMismatch.name" </li>
+<li>6. try "typeMismatch.java.lang.String" </li>
+<li>7. try "typeMismatch" </li>
+</ul>
+ 
+<p>By default the <code>errorCode</code>s will be placed at the beginning of constructed message strings. The <code><a href="-default-message-codes-resolver/set-message-code-formatter.html"> messageCodeFormatter</a></code> property can be used to specify an alternative concatenation MessageCodeFormatter. </p>
+<p>In order to group all codes into a specific category within your resource bundles, e.g. "validation.typeMismatch.name" instead of the default "typeMismatch.name", consider specifying a <code><a href="#">prefix</a></code> to be applied.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-direct-field-binding-result/index.html">DirectFieldBindingResult</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DirectFieldBindingResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPropertyBindingResult</span></code>
+<p>Special implementation of the Errors and BindingResult interfaces, supporting registration and evaluation of binding errors on value objects. Performs direct field access instead of going through JavaBean getters. 
+<p>Since Spring 4.1 this implementation is able to traverse nested fields.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-map-binding-result/index.html">MapBindingResult</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MapBindingResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractBindingResult</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Map-based implementation of the BindingResult interface, supporting registration and evaluation of binding errors on Map attributes. 
+<p>Can be used as errors holder for custom binding onto a Map, for example when invoking a Validator for a Map object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-object-error/index.html">ObjectError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ObjectError</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.context.support/-default-message-source-resolvable/index.html"><span class="identifier">DefaultMessageSourceResolvable</span></a></code>
+<p>Encapsulates an object error, that is, a global reason for rejecting an object. 
+<p>See the DefaultMessageCodesResolver javadoc for details on how a message code list is built for an <code>ObjectError</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-validation-utils/index.html">ValidationUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ValidationUtils</span></code>
+<p>Utility class offering convenient methods for invoking a Validator and for rejecting empty fields. 
+<p>Checks for an empty field in <code>Validator</code> implementations can become one-liners when using <code><a href="#">#rejectIfEmpty</a></code> or <code><a href="#">#rejectIfEmptyOrWhitespace</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bind-exception/index.html">BindException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BindException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">, </span><span class="identifier">BindingResult</span></code>
+<p>Thrown when binding errors are considered fatal. Implements the BindingResult interface (and its super-interface Errors) to allow for the direct analysis of binding errors. 
+<p>As of Spring 2.0, this is a special-purpose class. Normally, application code will work with the BindingResult interface, or with a DataBinder that in turn exposes a BindingResult via <code><a href="#">org.springframework.validation.DataBinder#getBindingResult()</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

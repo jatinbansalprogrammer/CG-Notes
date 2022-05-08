@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OpMultiply - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.expression.spel.ast</a>&nbsp;/&nbsp;<a href=".">OpMultiply</a><br/>
+<br/>
+<h1>OpMultiply</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpMultiply</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Operator</span></code>
+<p>Implements the <code>multiply</code> operator. 
+<p>Conversions and promotions are handled as defined in <a href="#">Section 5.6.2 of the Java Language Specification</a>, with the addiction of <code>BigDecimal</code>/<code>BigInteger</code> management: </p>
+<p>If any of the operands is of a reference type, unboxing conversion (Section 5.1.8) is performed. Then: If either operand is of type <code>BigDecimal</code>, the other is converted to <code>BigDecimal</code>. If either operand is of type double, the other is converted to double. Otherwise, if either operand is of type float, the other is converted to float. If either operand is of type <code>BigInteger</code>, the other is converted to <code>BigInteger</code>. Otherwise, if either operand is of type long, the other is converted to long. Otherwise, both operands are converted to type int.</p>
+</p>
+<p><strong>Author</strong><br/>
+Andy Clement</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Giovanni Dall'Oglio Risso</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">OpMultiply</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.ast.OpMultiply$<init>(kotlin.Int, kotlin.Array((org.springframework.expression.spel.ast.SpelNodeImpl)))/pos">pos</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.expression.spel.ast.OpMultiply$<init>(kotlin.Int, kotlin.Array((org.springframework.expression.spel.ast.SpelNodeImpl)))/operands">operands</span><span class="symbol">:</span>&nbsp;<span class="identifier">SpelNodeImpl</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="generate-code.html">generateCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">generateCode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.ast.OpMultiply$generateCode(org.springframework.asm.MethodVisitor, org.springframework.expression.spel.CodeFlow)/mv">mv</span><span class="symbol">:</span>&nbsp;<span class="identifier">MethodVisitor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.expression.spel.ast.OpMultiply$generateCode(org.springframework.asm.MethodVisitor, org.springframework.expression.spel.CodeFlow)/cf">cf</span><span class="symbol">:</span>&nbsp;<span class="identifier">CodeFlow</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value-internal.html">getValueInternal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValueInternal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.expression.spel.ast.OpMultiply$getValueInternal(org.springframework.expression.spel.ExpressionState)/state">state</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExpressionState</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypedValue</span></code>
+<p>Implements the <code>multiply</code> operator directly here for certain types of supported operands and otherwise delegates to any registered overloader for types not supported here. 
+<p>Supported operand types: </p>
+<ul> <li>numbers </li>
+<li>String and int ('abc' * 2 == 'abcabc') </li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-compilable.html">isCompilable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isCompilable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ThemeSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.ui.context</a>&nbsp;/&nbsp;<a href=".">ThemeSource</a><br/>
+<br/>
+<h1>ThemeSource</h1>
+<code><span class="keyword">interface </span><span class="identifier">ThemeSource</span></code>
+<p>Interface to be implemented by objects that can resolve Theme. This enables parameterization and internationalization of messages for a given 'theme'.</p>
+<p><strong>Author</strong><br/>
+Jean-Pierre Pawlak</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+Theme</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-theme.html">getTheme</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getTheme</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.context.ThemeSource$getTheme(kotlin.String)/themeName">themeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Theme</span></code>
+<p>Return the Theme instance for the given theme name. 
+<p>The returned Theme will resolve theme-specific messages, codes, file paths, etc (e.g. CSS and image files in a web environment).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.context.support/-static-web-application-context/index.html">StaticWebApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StaticWebApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.context.support/-static-application-context/index.html"><span class="identifier">StaticApplicationContext</span></a><span class="symbol">, </span><span class="identifier">ConfigurableWebApplicationContext</span><span class="symbol">, </span><span class="identifier">ThemeSource</span></code>
+<p>Static org.springframework.web.context.WebApplicationContext implementation for testing. Not intended for use in production applications. 
+<p>Implements the org.springframework.web.context.ConfigurableWebApplicationContext interface to allow for direct replacement of an XmlWebApplicationContext, despite not actually supporting external configuration files. </p>
+<p>Interprets resource paths as servlet context resources, i.e. as paths beneath the web application root. Absolute paths, e.g. for files outside the web app root, can be accessed via "file:" URLs, as implemented by org.springframework.core.io.DefaultResourceLoader. </p>
+<p>In addition to the special beans detected by org.springframework.context.support.AbstractApplicationContext, this class detects a bean of type org.springframework.ui.context.ThemeSource in the context, under the special bean name "themeSource".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

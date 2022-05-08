@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JstlView - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view</a>&nbsp;/&nbsp;<a href=".">JstlView</a><br/>
+<br/>
+<h1>JstlView</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JstlView</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-internal-resource-view/index.html"><span class="identifier">InternalResourceView</span></a></code>
+<p>Specialization of InternalResourceView for JSTL pages, i.e. JSP pages that use the JSP Standard Tag Library. 
+<p>Exposes JSTL-specific request attributes specifying locale and resource bundle for JSTL's formatting and message tags, using Spring's locale and org.springframework.context.MessageSource. </p>
+<p>Typical usage with InternalResourceViewResolver would look as follows, from the perspective of the DispatcherServlet context definition: </p>
+<pre><code> &lt;bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt; &lt;property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/&gt; &lt;property name="prefix" value="/WEB-INF/jsp/"/&gt; &lt;property name="suffix" value=".jsp"/&gt; &lt;/bean&gt; &lt;bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"&gt; &lt;property name="basename" value="messages"/&gt; &lt;/bean&gt;</code></pre> Every view name returned from a handler will be translated to a JSP resource (for example: "myView" -&gt; "/WEB-INF/jsp/myView.jsp"), using this view class to enable explicit JSTL support. 
+<p>The specified MessageSource loads messages from "messages.properties" etc files in the class path. This will automatically be exposed to views as JSTL localization context, which the JSTL fmt tags (message etc) will use. Consider using Spring's ReloadableResourceBundleMessageSource instead of the standard ResourceBundleMessageSource for more sophistication. Of course, any other Spring components can share the same MessageSource. </p>
+<p>This is a separate class mainly to avoid JSTL dependencies in InternalResourceView itself. JSTL has not been part of standard J2EE up until J2EE 1.4, so we can't assume the JSTL API jar to be available on the class path. </p>
+<p>Hint: Set the <code><a href="#">#setExposeContextBeansAsAttributes</a></code> flag to "true" in order to make all Spring beans in the application context accessible within JSTL expressions (e.g. in a <code>c:out</code> value expression). This will also make all such beans accessible in plain <code>${...}</code> expressions in a JSP 2.0 page.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+27.02.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.web.servlet.support.JstlUtils#exposeLocalizationContext</a>InternalResourceViewResolverorg.springframework.context.support.ResourceBundleMessageSourceorg.springframework.context.support.ReloadableResourceBundleMessageSource</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JstlView</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor for use as a bean.</p>
+<code><span class="identifier">JstlView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.JstlView$<init>(kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">JstlView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.JstlView$<init>(kotlin.String, org.springframework.context.MessageSource)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.view.JstlView$<init>(kotlin.String, org.springframework.context.MessageSource)/messageSource">messageSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageSource</span><span class="symbol">)</span></code>
+<p>Create a new JstlView with the given URL.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-internal-resource-view/set-always-include.html">setAlwaysInclude</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAlwaysInclude</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.InternalResourceView$setAlwaysInclude(kotlin.Boolean)/alwaysInclude">alwaysInclude</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to always include the view rather than forward to it. 
+<p>Default is "false". Switch this flag on to enforce the use of a Servlet include, even if a forward would be possible.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-internal-resource-view/set-prevent-dispatch-loop.html">setPreventDispatchLoop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPreventDispatchLoop</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.InternalResourceView$setPreventDispatchLoop(kotlin.Boolean)/preventDispatchLoop">preventDispatchLoop</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to explicitly prevent dispatching back to the current handler path. 
+<p>Default is "false". Switch this to "true" for convention-based views where a dispatch back to the current handler path is a definitive error.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

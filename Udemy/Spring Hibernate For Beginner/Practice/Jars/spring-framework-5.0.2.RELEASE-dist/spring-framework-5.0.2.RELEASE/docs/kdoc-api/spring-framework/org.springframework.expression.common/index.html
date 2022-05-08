@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.expression.common - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.expression.common</a><br/>
+<br/>
+<h2>Package org.springframework.expression.common</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-composite-string-expression/index.html">CompositeStringExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeStringExpression</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Expression</span></code>
+<p>Represents a template expression broken into pieces. Each piece will be an Expression but pure text parts to the template will be represented as LiteralExpression objects. An example of a template expression might be: <pre><code> "Hello ${getName()}" </code></pre> which will be represented as a CompositeStringExpression of two parts. The first part being a LiteralExpression representing 'Hello ' and the second part being a real expression that will call <code>getName()</code> when invoked.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-expression-utils/index.html">ExpressionUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExpressionUtils</span></code>
+<p>Common utility functions that may be used by any Expression Language provider.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-literal-expression/index.html">LiteralExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LiteralExpression</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Expression</span></code>
+<p>A very simple hardcoded implementation of the Expression interface that represents a string literal. It is used with CompositeStringExpression when representing a template expression which is made up of pieces - some being real expressions to be handled by an EL implementation like SpEL, and some being just textual elements.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-template-aware-expression-parser/index.html">TemplateAwareExpressionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TemplateAwareExpressionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExpressionParser</span></code>
+<p>An expression parser that understands templates. It can be subclassed by expression parsers that do not offer first class support for templating.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-template-parser-context/index.html">TemplateParserContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TemplateParserContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ParserContext</span></code>
+<p>Configurable ParserContext implementation for template parsing. Expects the expression prefix and suffix as constructor arguments.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

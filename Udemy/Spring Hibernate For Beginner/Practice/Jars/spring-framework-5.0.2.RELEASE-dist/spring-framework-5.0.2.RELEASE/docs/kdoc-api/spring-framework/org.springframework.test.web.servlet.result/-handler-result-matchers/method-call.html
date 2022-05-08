@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HandlerResultMatchers.methodCall - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet.result</a>&nbsp;/&nbsp;<a href="index.html">HandlerResultMatchers</a>&nbsp;/&nbsp;<a href=".">methodCall</a><br/>
+<br/>
+<h1>methodCall</h1>
+<a name="org.springframework.test.web.servlet.result.HandlerResultMatchers$methodCall(kotlin.Any)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">methodCall</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.result.HandlerResultMatchers$methodCall(kotlin.Any)/obj">obj</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResultMatcher</span></code>
+<p>Assert the controller method used to process the request. 
+<p>The expected method is specified through a "mock" controller method invocation similar to <code><a href="#">MvcUriComponentsBuilder#fromMethodCall(Object)</a></code>. </p>
+<p>For example, given this controller: </p>
+<pre><code> @RestController public class SimpleController { @RequestMapping("/") public ResponseEntity handle() { return ResponseEntity.ok().build(); } } </code></pre> 
+<p>A test that has statically imported <code><a href="#">MvcUriComponentsBuilder#on</a></code> can be performed as follows: </p>
+<pre><code> mockMvc.perform(get("/")) .andExpect(handler().methodCall(on(SimpleController.class).handle())); </code></pre></p>
+<h3>Parameters</h3>
+<p><a name="obj"></a>
+<code>obj</code> - either the value returned from a "mock" controller invocation or the "mock" controller itself after an invocation</p>
+</BODY>
+</HTML>

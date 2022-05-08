@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.converter - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.converter</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.converter</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-message-converter/index.html">AbstractMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SmartMessageConverter</span></code>
+<p>Abstract base class for SmartMessageConverter implementations including support for common properties and a partial implementation of the conversion methods, mainly to check if the converter supports the conversion based on the payload class and MIME type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-content-type-resolver/index.html">DefaultContentTypeResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultContentTypeResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ContentTypeResolver</span></code>
+<p>A default ContentTypeResolver that checks the <code><a href="#">MessageHeaders#CONTENT_TYPE</a></code> header or falls back to a default value. 
+<p>The header value is expected to be a org.springframework.util.MimeType or a <code>String</code> that can be parsed into a <code>MimeType</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-message-converter/index.html">GenericMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpleMessageConverter</span></code>
+<p>An extension of the SimpleMessageConverter that uses a ConversionService to convert the payload of the message to the requested type. 
+<p>Return <code>null</code> if the conversion service cannot convert from the payload type to the requested type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-marshalling-message-converter/index.html">MarshallingMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MarshallingMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-message-converter/index.html"><span class="identifier">AbstractMessageConverter</span></a></code>
+<p>Implementation of MessageConverter that can read and write XML using Spring's Marshaller and Unmarshaller abstractions. 
+<p>This converter requires a <code>Marshaller</code> and <code>Unmarshaller</code> before it can be used. These can be injected by the <a href="#"> constructor</a> or <a href="-marshalling-message-converter/set-marshaller.html">bean properties</a>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-message-conversion-exception/index.html">MessageConversionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageConversionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessagingException</span></code>
+<p>An exception raised by MessageConverter implementations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

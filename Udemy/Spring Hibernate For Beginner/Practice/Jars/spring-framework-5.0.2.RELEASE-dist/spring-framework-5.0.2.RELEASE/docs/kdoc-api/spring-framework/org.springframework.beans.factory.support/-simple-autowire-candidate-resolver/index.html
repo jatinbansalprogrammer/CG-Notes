@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleAutowireCandidateResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.support</a>&nbsp;/&nbsp;<a href=".">SimpleAutowireCandidateResolver</a><br/>
+<br/>
+<h1>SimpleAutowireCandidateResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleAutowireCandidateResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-autowire-candidate-resolver/index.html"><span class="identifier">AutowireCandidateResolver</span></a></code>
+<p>AutowireCandidateResolver implementation to use when no annotation support is available. This implementation checks the bean definition only.</p>
+<p><strong>Author</strong><br/>
+Mark Fisher</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleAutowireCandidateResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>AutowireCandidateResolver implementation to use when no annotation support is available. This implementation checks the bean definition only.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-lazy-resolution-proxy-if-necessary.html">getLazyResolutionProxyIfNecessary</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLazyResolutionProxyIfNecessary</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.SimpleAutowireCandidateResolver$getLazyResolutionProxyIfNecessary(org.springframework.beans.factory.config.DependencyDescriptor, kotlin.String)/descriptor">descriptor</span><span class="symbol">:</span>&nbsp;<span class="identifier">DependencyDescriptor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.SimpleAutowireCandidateResolver$getLazyResolutionProxyIfNecessary(org.springframework.beans.factory.config.DependencyDescriptor, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-suggested-value.html">getSuggestedValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSuggestedValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.SimpleAutowireCandidateResolver$getSuggestedValue(org.springframework.beans.factory.config.DependencyDescriptor)/descriptor">descriptor</span><span class="symbol">:</span>&nbsp;<span class="identifier">DependencyDescriptor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-autowire-candidate.html">isAutowireCandidate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAutowireCandidate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.SimpleAutowireCandidateResolver$isAutowireCandidate(org.springframework.beans.factory.config.BeanDefinitionHolder, org.springframework.beans.factory.config.DependencyDescriptor)/bdHolder">bdHolder</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionHolder</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.factory.support.SimpleAutowireCandidateResolver$isAutowireCandidate(org.springframework.beans.factory.config.BeanDefinitionHolder, org.springframework.beans.factory.config.DependencyDescriptor)/descriptor">descriptor</span><span class="symbol">:</span>&nbsp;<span class="identifier">DependencyDescriptor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-required.html">isRequired</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRequired</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.support.SimpleAutowireCandidateResolver$isRequired(org.springframework.beans.factory.config.DependencyDescriptor)/descriptor">descriptor</span><span class="symbol">:</span>&nbsp;<span class="identifier">DependencyDescriptor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-generic-type-aware-autowire-candidate-resolver/index.html">GenericTypeAwareAutowireCandidateResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericTypeAwareAutowireCandidateResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpleAutowireCandidateResolver</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Basic AutowireCandidateResolver that performs a full generic type match with the candidate's type if the dependency is declared as a generic type (e.g. Repository&lt;Customer&gt;). 
+<p>This is the base class for org.springframework.beans.factory.annotation.QualifierAnnotationAutowireCandidateResolver, providing an implementation all non-annotation-based resolution steps at this level.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

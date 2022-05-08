@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionAwareCacheDecorator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.cache.transaction</a>&nbsp;/&nbsp;<a href=".">TransactionAwareCacheDecorator</a><br/>
+<br/>
+<h1>TransactionAwareCacheDecorator</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAwareCacheDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Cache</span></code>
+<p>Cache decorator which synchronizes its <code><a href="#">#put</a></code>, <code><a href="#">#evict</a></code> and <code><a href="clear.html">#clear</a></code> operations with Spring-managed transactions (through Spring's TransactionSynchronizationManager, performing the actual cache put/evict/clear operation only in the after-commit phase of a successful transaction. If no transaction is active, <code><a href="#">#put</a></code>, <code><a href="#">#evict</a></code> and <code><a href="clear.html">#clear</a></code> operations will be performed immediately, as usual. 
+<p>Use of more aggressive operations such as <code><a href="#">#putIfAbsent</a></code> cannot be deferred to the after-commit phase of a running transaction. Use these with care.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Stas Volsky</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<p><strong>See Also</strong><br/>
+TransactionAwareCacheManagerProxy</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TransactionAwareCacheDecorator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$<init>(org.springframework.cache.Cache)/targetCache">targetCache</span><span class="symbol">:</span>&nbsp;<span class="identifier">Cache</span><span class="symbol">)</span></code>
+<p>Create a new TransactionAwareCache for the given target Cache.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clear.html">clear</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clear</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="evict.html">evict</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">evict</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$evict(kotlin.Any)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$get(kotlin.Any)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ValueWrapper</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$get(kotlin.Any, java.lang.Class((org.springframework.cache.transaction.TransactionAwareCacheDecorator.get.T)))/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$get(kotlin.Any, java.lang.Class((org.springframework.cache.transaction.TransactionAwareCacheDecorator.get.T)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$get(kotlin.Any, java.util.concurrent.Callable((org.springframework.cache.transaction.TransactionAwareCacheDecorator.get.T)))/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$get(kotlin.Any, java.util.concurrent.Callable((org.springframework.cache.transaction.TransactionAwareCacheDecorator.get.T)))/valueLoader">valueLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">Callable</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-name.html">getName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-native-cache.html">getNativeCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNativeCache</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-cache.html">getTargetCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetCache</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Cache</span></code>
+<p>Return the target Cache that this Cache should delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put.html">put</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">put</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$put(kotlin.Any, kotlin.Any)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$put(kotlin.Any, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="put-if-absent.html">putIfAbsent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">putIfAbsent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$putIfAbsent(kotlin.Any, kotlin.Any)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.cache.transaction.TransactionAwareCacheDecorator$putIfAbsent(kotlin.Any, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ValueWrapper</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

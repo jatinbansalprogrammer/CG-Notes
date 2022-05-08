@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExtendedEntityManagerCreator - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href=".">ExtendedEntityManagerCreator</a><br/>
+<br/>
+<h1>ExtendedEntityManagerCreator</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExtendedEntityManagerCreator</span></code>
+<p>Delegate for creating a variety of javax.persistence.EntityManager proxies that follow the JPA spec's semantics for "extended" EntityManagers. 
+<p>Supports several different variants of "extended" EntityManagers: in particular, an "application-managed extended EntityManager", as defined by <code><a href="#">javax.persistence.EntityManagerFactory#createEntityManager()</a></code>, as well as a "container-managed extended EntityManager", as defined by <code><a href="#">javax.persistence.PersistenceContextType#EXTENDED</a></code>. </p>
+<p>The original difference between "application-managed" and "container-managed" was the need for explicit joining of an externally managed transaction through the <code><a href="#">EntityManager#joinTransaction()</a></code> method in the "application" case versus the automatic joining on each user-level EntityManager operation in the "container" case. As of JPA 2.1, both join modes are available with both kinds of EntityManagers, so the difference between "application-" and "container-managed" is now primarily in the join mode default and in the restricted lifecycle of a container-managed EntityManager (i.e. tied to the object that it is injected into).</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.persistence.EntityManagerFactory#createEntityManager()</a><a href="#">javax.persistence.PersistenceContextType#EXTENDED</a><a href="#">javax.persistence.EntityManager#joinTransaction()</a>SharedEntityManagerCreator</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ExtendedEntityManagerCreator</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Delegate for creating a variety of javax.persistence.EntityManager proxies that follow the JPA spec's semantics for "extended" EntityManagers. 
+<p>Supports several different variants of "extended" EntityManagers: in particular, an "application-managed extended EntityManager", as defined by <code><a href="#">javax.persistence.EntityManagerFactory#createEntityManager()</a></code>, as well as a "container-managed extended EntityManager", as defined by <code><a href="#">javax.persistence.PersistenceContextType#EXTENDED</a></code>. </p>
+<p>The original difference between "application-managed" and "container-managed" was the need for explicit joining of an externally managed transaction through the <code><a href="#">EntityManager#joinTransaction()</a></code> method in the "application" case versus the automatic joining on each user-level EntityManager operation in the "container" case. As of JPA 2.1, both join modes are available with both kinds of EntityManagers, so the difference between "application-" and "container-managed" is now primarily in the join mode default and in the restricted lifecycle of a container-managed EntityManager (i.e. tied to the object that it is injected into).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-application-managed-entity-manager.html">createApplicationManagedEntityManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createApplicationManagedEntityManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createApplicationManagedEntityManager(javax.persistence.EntityManager, org.springframework.orm.jpa.EntityManagerFactoryInfo)/rawEntityManager">rawEntityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createApplicationManagedEntityManager(javax.persistence.EntityManager, org.springframework.orm.jpa.EntityManagerFactoryInfo)/emfInfo">emfInfo</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManagerFactoryInfo</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EntityManager</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createApplicationManagedEntityManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createApplicationManagedEntityManager(javax.persistence.EntityManager, org.springframework.orm.jpa.EntityManagerFactoryInfo, kotlin.Boolean)/rawEntityManager">rawEntityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createApplicationManagedEntityManager(javax.persistence.EntityManager, org.springframework.orm.jpa.EntityManagerFactoryInfo, kotlin.Boolean)/emfInfo">emfInfo</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManagerFactoryInfo</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createApplicationManagedEntityManager(javax.persistence.EntityManager, org.springframework.orm.jpa.EntityManagerFactoryInfo, kotlin.Boolean)/synchronizedWithTransaction">synchronizedWithTransaction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EntityManager</span></code>
+<p>Create an application-managed extended EntityManager proxy.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-container-managed-entity-manager.html">createContainerManagedEntityManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createContainerManagedEntityManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManager, org.springframework.orm.jpa.EntityManagerFactoryInfo)/rawEntityManager">rawEntityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManager, org.springframework.orm.jpa.EntityManagerFactoryInfo)/emfInfo">emfInfo</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManagerFactoryInfo</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EntityManager</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createContainerManagedEntityManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManagerFactory)/emf">emf</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManagerFactory</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EntityManager</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createContainerManagedEntityManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManagerFactory, kotlin.collections.MutableMap((kotlin.Any, )))/emf">emf</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManagerFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManagerFactory, kotlin.collections.MutableMap((kotlin.Any, )))/properties">properties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EntityManager</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createContainerManagedEntityManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManagerFactory, kotlin.collections.MutableMap((kotlin.Any, )), kotlin.Boolean)/emf">emf</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManagerFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManagerFactory, kotlin.collections.MutableMap((kotlin.Any, )), kotlin.Boolean)/properties">properties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.ExtendedEntityManagerCreator$createContainerManagedEntityManager(javax.persistence.EntityManagerFactory, kotlin.collections.MutableMap((kotlin.Any, )), kotlin.Boolean)/synchronizedWithTransaction">synchronizedWithTransaction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EntityManager</span></code>
+<p>Create a container-managed extended EntityManager proxy.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

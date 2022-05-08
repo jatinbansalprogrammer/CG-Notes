@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>IsolationLevelDataSourceAdapter.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href="index.html">IsolationLevelDataSourceAdapter</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jdbc.datasource.IsolationLevelDataSourceAdapter$&lt;init&gt;()"></a>
+<code><span class="identifier">IsolationLevelDataSourceAdapter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An adapter for a target javax.sql.DataSource, applying the current Spring transaction's isolation level (and potentially specified user credentials) to every <code>getConnection</code> call. Also applies the read-only flag, if specified. 
+<p>Can be used to proxy a target JNDI DataSource that does not have the desired isolation level (and user credentials) configured. Client code can work with this DataSource as usual, not worrying about such settings. </p>
+<p>Inherits the capability to apply specific user credentials from its superclass UserCredentialsDataSourceAdapter; see the latter's javadoc for details on that functionality (e.g. <code><a href="#">#setCredentialsForCurrentThread</a></code>). </p>
+<p><strong>WARNING:</strong> This adapter simply calls <code><a href="#">java.sql.Connection#setTransactionIsolation</a></code> and/or <code><a href="#">java.sql.Connection#setReadOnly</a></code> for every Connection obtained from it. It does, however, <em>not</em> reset those settings; it rather expects the target DataSource to perform such resetting as part of its connection pool handling. <strong>Make sure that the target DataSource properly cleans up such transaction state.</strong></p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+<a href="set-isolation-level.html">#setIsolationLevel</a><a href="#">#setIsolationLevelName</a><a href="#">#setUsername</a><a href="#">#setPassword</a></p>
+</BODY>
+</HTML>

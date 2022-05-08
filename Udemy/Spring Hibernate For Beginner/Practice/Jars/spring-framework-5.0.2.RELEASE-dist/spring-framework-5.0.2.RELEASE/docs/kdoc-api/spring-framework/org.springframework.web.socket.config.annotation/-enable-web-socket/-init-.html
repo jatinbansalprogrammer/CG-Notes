@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableWebSocket.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.config.annotation</a>&nbsp;/&nbsp;<a href="index.html">EnableWebSocket</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.socket.config.annotation.EnableWebSocket$&lt;init&gt;()"></a>
+<code><span class="identifier">EnableWebSocket</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Add this annotation to an <code>@Configuration</code> class to configure processing WebSocket requests: <pre><code> @Configuration @EnableWebSocket public class MyWebSocketConfig { } </code></pre> 
+<p>Customize the imported configuration by implementing the WebSocketConfigurer interface: </p>
+<pre><code> @Configuration @EnableWebSocket public class MyConfiguration implements WebSocketConfigurer { @Override public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) { registry.addHandler(echoWebSocketHandler(), "/echo").withSockJS(); } @Bean public WebSocketHandler echoWebSocketHandler() { return new EchoWebSocketHandler(); } } </code></pre></p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+</BODY>
+</HTML>

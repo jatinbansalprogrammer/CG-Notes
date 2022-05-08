@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CollectionFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core</a>&nbsp;/&nbsp;<a href=".">CollectionFactory</a><br/>
+<br/>
+<h1>CollectionFactory</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CollectionFactory</span></code>
+<p>Factory for collections that is aware of Java 5, Java 6, and Spring collection types. 
+<p>Mainly for internal use within the framework.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Oliver Gierke</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+1.1.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CollectionFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Factory for collections that is aware of Java 5, Java 6, and Spring collection types. 
+<p>Mainly for internal use within the framework.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-approximate-collection.html">createApproximateCollection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createApproximateCollection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createApproximateCollection(kotlin.Any, kotlin.Int)/collection">collection</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createApproximateCollection(kotlin.Any, kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Create the most approximate collection for the given collection. 
+<p><strong>Warning</strong>: Since the parameterized type <code>E</code> is not bound to the type of elements contained in the supplied <code>collection</code>, type safety cannot be guaranteed if the supplied <code>collection</code> is an EnumSet. In such scenarios, the caller is responsible for ensuring that the element type for the supplied <code>collection</code> is an enum type matching type <code>E</code>. As an alternative, the caller may wish to treat the return value as a raw collection or collection of Object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-approximate-map.html">createApproximateMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createApproximateMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createApproximateMap(kotlin.Any, kotlin.Int)/map">map</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createApproximateMap(kotlin.Any, kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Create the most approximate map for the given map. 
+<p><strong>Warning</strong>: Since the parameterized type <code>K</code> is not bound to the type of keys contained in the supplied <code>map</code>, type safety cannot be guaranteed if the supplied <code>map</code> is an EnumMap. In such scenarios, the caller is responsible for ensuring that the key type in the supplied <code>map</code> is an enum type matching type <code>K</code>. As an alternative, the caller may wish to treat the return value as a raw map or map keyed by Object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-collection.html">createCollection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createCollection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), kotlin.Int)/collectionType">collectionType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Create the most appropriate collection for the given collection type. 
+<p>Delegates to <code><a href="#">#createCollection(Class, Class, int)</a></code> with a <code>null</code> element type.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createCollection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/collectionType">collectionType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Create the most appropriate collection for the given collection type. 
+<p><strong>Warning</strong>: Since the parameterized type <code>E</code> is not bound to the supplied <code>elementType</code>, type safety cannot be guaranteed if the desired <code>collectionType</code> is EnumSet. In such scenarios, the caller is responsible for ensuring that the supplied <code>elementType</code> is an enum type matching type <code>E</code>. As an alternative, the caller may wish to treat the return value as a raw collection or collection of Object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-map.html">createMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createMap(java.lang.Class((kotlin.Any)), kotlin.Int)/mapType">mapType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createMap(java.lang.Class((kotlin.Any)), kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Create the most appropriate map for the given map type. 
+<p>Delegates to <code><a href="#">#createMap(Class, Class, int)</a></code> with a <code>null</code> key type.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier">V</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createMap(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/mapType">mapType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createMap(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/keyType">keyType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createMap(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">K</span><span class="symbol">,</span>&nbsp;<span class="identifier">V</span><span class="symbol">&gt;</span></code>
+<p>Create the most appropriate map for the given map type. 
+<p><strong>Warning</strong>: Since the parameterized type <code>K</code> is not bound to the supplied <code>keyType</code>, type safety cannot be guaranteed if the desired <code>mapType</code> is EnumMap. In such scenarios, the caller is responsible for ensuring that the <code>keyType</code> is an enum type matching type <code>K</code>. As an alternative, the caller may wish to treat the return value as a raw map or map keyed by Object. Similarly, type safety cannot be enforced if the desired <code>mapType</code> is MultiValueMap.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-string-adapting-properties.html">createStringAdaptingProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createStringAdaptingProperties</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Properties</span></code>
+<p>Create a variant of <code>java.util.Properties</code> that automatically adapts non-String values to String representations on <code><a href="#">Properties#getProperty</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-approximable-collection-type.html">isApproximableCollectionType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isApproximableCollectionType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$isApproximableCollectionType(java.lang.Class((kotlin.Any)))/collectionType">collectionType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given collection type is an <em>approximable</em> type, i.e. a type that <code><a href="#">#createApproximateCollection</a></code> can approximate.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-approximable-map-type.html">isApproximableMapType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isApproximableMapType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$isApproximableMapType(java.lang.Class((kotlin.Any)))/mapType">mapType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given map type is an <em>approximable</em> type, i.e. a type that <code><a href="#">#createApproximateMap</a></code> can approximate.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

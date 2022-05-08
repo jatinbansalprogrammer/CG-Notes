@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Lazy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">Lazy</a><br/>
+<br/>
+<h1>Lazy</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER, AnnotationTarget.CONSTRUCTOR, AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">Lazy</span></code>
+<p>Indicates whether a bean is to be lazily initialized. 
+<p>May be used on any class directly or indirectly annotated with or on methods annotated with Bean. </p>
+<p>If this annotation is not present on a <code>@Component</code> or <code>@Bean</code> definition, eager initialization will occur. If present and set to <code>true</code>, the <code>@Bean</code> or <code>@Component</code> will not be initialized until referenced by another bean or explicitly retrieved from the enclosing org.springframework.beans.factory.BeanFactory. If present and set to <code>false</code>, the bean will be instantiated on startup by bean factories that perform eager initialization of singletons. </p>
+<p>If Lazy is present on a Configuration class, this indicates that all <code>@Bean</code> methods within that <code>@Configuration</code> should be lazily initialized. If <code>@Lazy</code> is present and false on a <code>@Bean</code> method within a <code>@Lazy</code>-annotated <code>@Configuration</code> class, this indicates overriding the 'default lazy' behavior and that the bean should be eagerly initialized. </p>
+<p>In addition to its role for component initialization, this annotation may also be placed on injection points marked with org.springframework.beans.factory.annotation.Autowired or javax.inject.Inject: In that context, it leads to the creation of a lazy-resolution proxy for all affected dependencies, as an alternative to using org.springframework.beans.factory.ObjectFactory or javax.inject.Provider.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+PrimaryBeanConfigurationorg.springframework.stereotype.Component</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Lazy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation.Lazy$<init>(kotlin.Boolean)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Indicates whether a bean is to be lazily initialized. 
+<p>May be used on any class directly or indirectly annotated with or on methods annotated with Bean. </p>
+<p>If this annotation is not present on a <code>@Component</code> or <code>@Bean</code> definition, eager initialization will occur. If present and set to <code>true</code>, the <code>@Bean</code> or <code>@Component</code> will not be initialized until referenced by another bean or explicitly retrieved from the enclosing org.springframework.beans.factory.BeanFactory. If present and set to <code>false</code>, the bean will be instantiated on startup by bean factories that perform eager initialization of singletons. </p>
+<p>If Lazy is present on a Configuration class, this indicates that all <code>@Bean</code> methods within that <code>@Configuration</code> should be lazily initialized. If <code>@Lazy</code> is present and false on a <code>@Bean</code> method within a <code>@Lazy</code>-annotated <code>@Configuration</code> class, this indicates overriding the 'default lazy' behavior and that the bean should be eagerly initialized. </p>
+<p>In addition to its role for component initialization, this annotation may also be placed on injection points marked with org.springframework.beans.factory.annotation.Autowired or javax.inject.Inject: In that context, it leads to the creation of a lazy-resolution proxy for all affected dependencies, as an alternative to using org.springframework.beans.factory.ObjectFactory or javax.inject.Provider.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether lazy initialization should occur.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

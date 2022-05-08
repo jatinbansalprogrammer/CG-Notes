@@ -1,0 +1,391 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TypeReference - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.asm</a>&nbsp;/&nbsp;<a href=".">TypeReference</a><br/>
+<br/>
+<h1>TypeReference</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypeReference</span></code>
+<p>A reference to a type appearing in a class, field or method declaration, or on an instruction. Such a reference designates the part of the class where the referenced type is appearing (e.g. an 'extends', 'implements' or 'throws' clause, a 'new' instruction, a 'catch' clause, a type cast, a local variable declaration, etc).</p>
+<p><strong>Author</strong><br/>
+Eric Bruneton</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TypeReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$<init>(kotlin.Int)/typeRef">typeRef</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Creates a new TypeReference.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-c-a-s-t.html">CAST</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CAST</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type declared in an explicit or implicit cast instruction. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-l-a-s-s_-e-x-t-e-n-d-s.html">CLASS_EXTENDS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CLASS_EXTENDS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the super class of a class or one of the interfaces it implements. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-l-a-s-s_-t-y-p-e_-p-a-r-a-m-e-t-e-r.html">CLASS_TYPE_PARAMETER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CLASS_TYPE_PARAMETER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a type parameter of a generic class. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-l-a-s-s_-t-y-p-e_-p-a-r-a-m-e-t-e-r_-b-o-u-n-d.html">CLASS_TYPE_PARAMETER_BOUND</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CLASS_TYPE_PARAMETER_BOUND</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a bound of a type parameter of a generic class. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-s-t-r-u-c-t-o-r_-i-n-v-o-c-a-t-i-o-n_-t-y-p-e_-a-r-g-u-m-e-n-t.html">CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a type parameter of a generic constructor in a constructor call. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-s-t-r-u-c-t-o-r_-r-e-f-e-r-e-n-c-e.html">CONSTRUCTOR_REFERENCE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONSTRUCTOR_REFERENCE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the receiver type of a constructor reference. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-c-o-n-s-t-r-u-c-t-o-r_-r-e-f-e-r-e-n-c-e_-t-y-p-e_-a-r-g-u-m-e-n-t.html">CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a type parameter of a generic constructor in a constructor reference. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-e-x-c-e-p-t-i-o-n_-p-a-r-a-m-e-t-e-r.html">EXCEPTION_PARAMETER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">EXCEPTION_PARAMETER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type of the exception of a 'catch' clause in a method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-f-i-e-l-d.html">FIELD</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">FIELD</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type of a field. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-i-n-s-t-a-n-c-e-o-f.html">INSTANCEOF</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">INSTANCEOF</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type declared in an 'instanceof' instruction. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-l-o-c-a-l_-v-a-r-i-a-b-l-e.html">LOCAL_VARIABLE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOCAL_VARIABLE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type of a local variable in a method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-f-o-r-m-a-l_-p-a-r-a-m-e-t-e-r.html">METHOD_FORMAL_PARAMETER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_FORMAL_PARAMETER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type of a formal parameter of a method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-i-n-v-o-c-a-t-i-o-n_-t-y-p-e_-a-r-g-u-m-e-n-t.html">METHOD_INVOCATION_TYPE_ARGUMENT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_INVOCATION_TYPE_ARGUMENT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a type parameter of a generic method in a method call. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-r-e-c-e-i-v-e-r.html">METHOD_RECEIVER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_RECEIVER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the receiver type of a method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-r-e-f-e-r-e-n-c-e.html">METHOD_REFERENCE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_REFERENCE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the receiver type of a method reference. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-r-e-f-e-r-e-n-c-e_-t-y-p-e_-a-r-g-u-m-e-n-t.html">METHOD_REFERENCE_TYPE_ARGUMENT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_REFERENCE_TYPE_ARGUMENT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a type parameter of a generic method in a method reference. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-r-e-t-u-r-n.html">METHOD_RETURN</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_RETURN</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the return type of a method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-t-y-p-e_-p-a-r-a-m-e-t-e-r.html">METHOD_TYPE_PARAMETER</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_TYPE_PARAMETER</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a type parameter of a generic method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-e-t-h-o-d_-t-y-p-e_-p-a-r-a-m-e-t-e-r_-b-o-u-n-d.html">METHOD_TYPE_PARAMETER_BOUND</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">METHOD_TYPE_PARAMETER_BOUND</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target a bound of a type parameter of a generic method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-n-e-w.html">NEW</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">NEW</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type of the object created by a 'new' instruction. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-r-e-s-o-u-r-c-e_-v-a-r-i-a-b-l-e.html">RESOURCE_VARIABLE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">RESOURCE_VARIABLE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type of a resource variable in a method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-h-r-o-w-s.html">THROWS</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">THROWS</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The sort of type references that target the type of an exception declared in the throws clause of a method. See <code><a href="get-sort.html">getSort</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-exception-index.html">getExceptionIndex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getExceptionIndex</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the index of the exception, in a 'throws' clause of a method, whose type is referenced by this type reference. This method must only be used for type references whose sort is <code><a href="-t-h-r-o-w-s.html">THROWS</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-formal-parameter-index.html">getFormalParameterIndex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFormalParameterIndex</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the index of the formal parameter whose type is referenced by this type reference. This method must only be used for type references whose sort is <code><a href="-m-e-t-h-o-d_-f-o-r-m-a-l_-p-a-r-a-m-e-t-e-r.html">METHOD_FORMAL_PARAMETER</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-sort.html">getSort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the sort of this type reference.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-super-type-index.html">getSuperTypeIndex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSuperTypeIndex</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the index of the "super type" of a class that is referenced by this type reference. This method must only be used for type references whose sort is <code><a href="-c-l-a-s-s_-e-x-t-e-n-d-s.html">CLASS_EXTENDS</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-try-catch-block-index.html">getTryCatchBlockIndex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTryCatchBlockIndex</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the index of the try catch block (using the order in which they are visited with visitTryCatchBlock), whose 'catch' type is referenced by this type reference. This method must only be used for type references whose sort is <code><a href="-e-x-c-e-p-t-i-o-n_-p-a-r-a-m-e-t-e-r.html">EXCEPTION_PARAMETER</a></code> .</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-type-argument-index.html">getTypeArgumentIndex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTypeArgumentIndex</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the index of the type argument referenced by this type reference. This method must only be used for type references whose sort is <code><a href="-c-a-s-t.html">CAST</a></code>, <code><a href="-c-o-n-s-t-r-u-c-t-o-r_-i-n-v-o-c-a-t-i-o-n_-t-y-p-e_-a-r-g-u-m-e-n-t.html"> CONSTRUCTOR_INVOCATION_TYPE_ARGUMENT</a></code>, <code><a href="-m-e-t-h-o-d_-i-n-v-o-c-a-t-i-o-n_-t-y-p-e_-a-r-g-u-m-e-n-t.html">METHOD_INVOCATION_TYPE_ARGUMENT</a></code>, <code><a href="-c-o-n-s-t-r-u-c-t-o-r_-r-e-f-e-r-e-n-c-e_-t-y-p-e_-a-r-g-u-m-e-n-t.html"> CONSTRUCTOR_REFERENCE_TYPE_ARGUMENT</a></code>, or <code><a href="-m-e-t-h-o-d_-r-e-f-e-r-e-n-c-e_-t-y-p-e_-a-r-g-u-m-e-n-t.html">METHOD_REFERENCE_TYPE_ARGUMENT</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-type-parameter-bound-index.html">getTypeParameterBoundIndex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTypeParameterBoundIndex</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the index of the type parameter bound, within the type parameter <code><a href="get-type-parameter-index.html">#getTypeParameterIndex</a></code>, referenced by this type reference. This method must only be used for type references whose sort is <code><a href="-c-l-a-s-s_-t-y-p-e_-p-a-r-a-m-e-t-e-r_-b-o-u-n-d.html">CLASS_TYPE_PARAMETER_BOUND</a></code> or <code><a href="-m-e-t-h-o-d_-t-y-p-e_-p-a-r-a-m-e-t-e-r_-b-o-u-n-d.html">METHOD_TYPE_PARAMETER_BOUND</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-type-parameter-index.html">getTypeParameterIndex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTypeParameterIndex</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the index of the type parameter referenced by this type reference. This method must only be used for type references whose sort is <code><a href="-c-l-a-s-s_-t-y-p-e_-p-a-r-a-m-e-t-e-r.html">CLASS_TYPE_PARAMETER</a></code>, <code><a href="-m-e-t-h-o-d_-t-y-p-e_-p-a-r-a-m-e-t-e-r.html">METHOD_TYPE_PARAMETER</a></code>, <code><a href="-c-l-a-s-s_-t-y-p-e_-p-a-r-a-m-e-t-e-r_-b-o-u-n-d.html">CLASS_TYPE_PARAMETER_BOUND</a></code> or <code><a href="-m-e-t-h-o-d_-t-y-p-e_-p-a-r-a-m-e-t-e-r_-b-o-u-n-d.html">METHOD_TYPE_PARAMETER_BOUND</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value.html">getValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Returns the int encoded value of this type reference, suitable for use in visit methods related to type annotations, like visitTypeAnnotation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-exception-reference.html">newExceptionReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newExceptionReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newExceptionReference(kotlin.Int)/exceptionIndex">exceptionIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a reference to the type of an exception, in a 'throws' clause of a method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-formal-parameter-reference.html">newFormalParameterReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newFormalParameterReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newFormalParameterReference(kotlin.Int)/paramIndex">paramIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a reference to the type of a formal parameter of a method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-super-type-reference.html">newSuperTypeReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newSuperTypeReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newSuperTypeReference(kotlin.Int)/itfIndex">itfIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a reference to the super class or to an interface of the 'implements' clause of a class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-try-catch-reference.html">newTryCatchReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newTryCatchReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newTryCatchReference(kotlin.Int)/tryCatchBlockIndex">tryCatchBlockIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a reference to the type of the exception declared in a 'catch' clause of a method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-type-argument-reference.html">newTypeArgumentReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newTypeArgumentReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeArgumentReference(kotlin.Int, kotlin.Int)/sort">sort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeArgumentReference(kotlin.Int, kotlin.Int)/argIndex">argIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a reference to the type of a type argument in a constructor or method call or reference.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-type-parameter-bound-reference.html">newTypeParameterBoundReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newTypeParameterBoundReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeParameterBoundReference(kotlin.Int, kotlin.Int, kotlin.Int)/sort">sort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeParameterBoundReference(kotlin.Int, kotlin.Int, kotlin.Int)/paramIndex">paramIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeParameterBoundReference(kotlin.Int, kotlin.Int, kotlin.Int)/boundIndex">boundIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a reference to a type parameter bound of a generic class or method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-type-parameter-reference.html">newTypeParameterReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newTypeParameterReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeParameterReference(kotlin.Int, kotlin.Int)/sort">sort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeParameterReference(kotlin.Int, kotlin.Int)/paramIndex">paramIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a reference to a type parameter of a generic class or method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-type-reference.html">newTypeReference</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">newTypeReference</span><span class="symbol">(</span><span class="identifier" id="org.springframework.asm.TypeReference$newTypeReference(kotlin.Int)/sort">sort</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeReference</span></code>
+<p>Returns a type reference of the given sort.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

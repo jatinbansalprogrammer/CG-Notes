@@ -1,0 +1,26 @@
+logging:
+  level:
+    org.springframework.security: DEBUG
+server:
+  port: 8443
+  ssl:
+    key-store-password: tomcat
+    key-store: classpath:mykeystore.p12
+    key-store-type: PKCS12
+    key-alias: tomcat
+
+
+spring:
+  security:
+    user:
+      name: siva
+      password: secret
+      
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: update

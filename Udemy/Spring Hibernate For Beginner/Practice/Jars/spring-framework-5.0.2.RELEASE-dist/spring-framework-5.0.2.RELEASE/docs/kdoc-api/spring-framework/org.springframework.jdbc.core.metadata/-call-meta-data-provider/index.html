@@ -1,0 +1,205 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CallMetaDataProvider - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core.metadata</a>&nbsp;/&nbsp;<a href=".">CallMetaDataProvider</a><br/>
+<br/>
+<h1>CallMetaDataProvider</h1>
+<code><span class="keyword">interface </span><span class="identifier">CallMetaDataProvider</span></code>
+<p>Interface specifying the API to be implemented by a class providing call metadata. 
+<p>This is intended for internal use by Spring's org.springframework.jdbc.core.simple.SimpleJdbcCall.</p>
+</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="by-pass-return-parameter.html">byPassReturnParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">byPassReturnParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$byPassReturnParameter(kotlin.String)/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Should we bypass the return parameter with the specified name. This allows the database specific implementation to skip the processing for specific results returned by the database call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="catalog-name-to-use.html">catalogNameToUse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">catalogNameToUse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$catalogNameToUse(kotlin.String)/catalogName">catalogName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Provide any modification of the catalog name passed in to match the meta data currently used. This could include altering the case.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-default-in-out-parameter.html">createDefaultInOutParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createDefaultInOutParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$createDefaultInOutParameter(kotlin.String, org.springframework.jdbc.core.metadata.CallParameterMetaData)/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$createDefaultInOutParameter(kotlin.String, org.springframework.jdbc.core.metadata.CallParameterMetaData)/meta">meta</span><span class="symbol">:</span>&nbsp;<span class="identifier">CallParameterMetaData</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SqlParameter</span></code>
+<p>Create a default inout parameter based on the provided meta data. This is used when no explicit parameter declaration has been made.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-default-in-parameter.html">createDefaultInParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createDefaultInParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$createDefaultInParameter(kotlin.String, org.springframework.jdbc.core.metadata.CallParameterMetaData)/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$createDefaultInParameter(kotlin.String, org.springframework.jdbc.core.metadata.CallParameterMetaData)/meta">meta</span><span class="symbol">:</span>&nbsp;<span class="identifier">CallParameterMetaData</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SqlParameter</span></code>
+<p>Create a default in parameter based on the provided meta data. This is used when no explicit parameter declaration has been made.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-default-out-parameter.html">createDefaultOutParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">createDefaultOutParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$createDefaultOutParameter(kotlin.String, org.springframework.jdbc.core.metadata.CallParameterMetaData)/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$createDefaultOutParameter(kotlin.String, org.springframework.jdbc.core.metadata.CallParameterMetaData)/meta">meta</span><span class="symbol">:</span>&nbsp;<span class="identifier">CallParameterMetaData</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SqlParameter</span></code>
+<p>Create a default out parameter based on the provided meta data. This is used when no explicit parameter declaration has been made.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-call-parameter-meta-data.html">getCallParameterMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getCallParameterMetaData</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">CallParameterMetaData</span><span class="symbol">&gt;</span></code>
+<p>Get the call parameter metadata that is currently used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-ref-cursor-sql-type.html">getRefCursorSqlType</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getRefCursorSqlType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the java.sql.Types type for columns that return ResultSets as ref cursors if this feature is supported.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-user-name.html">getUserName</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getUserName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the current user. Useful for meta data lookups etc.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="initialize-with-meta-data.html">initializeWithMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">initializeWithMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$initializeWithMetaData(java.sql.DatabaseMetaData)/databaseMetaData">databaseMetaData</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatabaseMetaData</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize using the provided DatabaseMetData.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="initialize-with-procedure-column-meta-data.html">initializeWithProcedureColumnMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">initializeWithProcedureColumnMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$initializeWithProcedureColumnMetaData(java.sql.DatabaseMetaData, kotlin.String, kotlin.String, kotlin.String)/databaseMetaData">databaseMetaData</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatabaseMetaData</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$initializeWithProcedureColumnMetaData(java.sql.DatabaseMetaData, kotlin.String, kotlin.String, kotlin.String)/catalogName">catalogName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$initializeWithProcedureColumnMetaData(java.sql.DatabaseMetaData, kotlin.String, kotlin.String, kotlin.String)/schemaName">schemaName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$initializeWithProcedureColumnMetaData(java.sql.DatabaseMetaData, kotlin.String, kotlin.String, kotlin.String)/procedureName">procedureName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize the database specific management of procedure column meta data. This is only called for databases that are supported. This initialization can be turned off by specifying that column meta data should not be used.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-procedure-column-meta-data-used.html">isProcedureColumnMetaDataUsed</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isProcedureColumnMetaDataUsed</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Are we using the meta data for the procedure columns?</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-ref-cursor-supported.html">isRefCursorSupported</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isRefCursorSupported</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Does this database support returning ResultSets as ref cursors to be retrieved with <code><a href="#">java.sql.CallableStatement#getObject(int)</a></code> for the specified column.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-return-result-set-supported.html">isReturnResultSetSupported</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isReturnResultSetSupported</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Does this database support returning ResultSets that should be retrieved with the JDBC call. <code><a href="#">java.sql.Statement#getResultSet()</a></code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-supports-catalogs-in-procedure-calls.html">isSupportsCatalogsInProcedureCalls</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isSupportsCatalogsInProcedureCalls</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Does the database support the use of catalog name in procedure calls</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-supports-schemas-in-procedure-calls.html">isSupportsSchemasInProcedureCalls</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">isSupportsSchemasInProcedureCalls</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Does the database support the use of schema name in procedure calls</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="meta-data-catalog-name-to-use.html">metaDataCatalogNameToUse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">metaDataCatalogNameToUse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$metaDataCatalogNameToUse(kotlin.String)/catalogName">catalogName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Provide any modification of the catalog name passed in to match the meta data currently used. The returned value will be used for meta data lookups. This could include altering the case used or providing a base catalog if none is provided.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="meta-data-schema-name-to-use.html">metaDataSchemaNameToUse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">metaDataSchemaNameToUse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$metaDataSchemaNameToUse(kotlin.String)/schemaName">schemaName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Provide any modification of the schema name passed in to match the meta data currently used. The returned value will be used for meta data lookups. This could include altering the case used or providing a base schema if none is provided.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="parameter-name-to-use.html">parameterNameToUse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">parameterNameToUse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$parameterNameToUse(kotlin.String)/parameterName">parameterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Provide any modification of the column name passed in to match the meta data currently used. This could include altering the case.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="procedure-name-to-use.html">procedureNameToUse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">procedureNameToUse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$procedureNameToUse(kotlin.String)/procedureName">procedureName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Provide any modification of the procedure name passed in to match the meta data currently used. This could include altering the case.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="schema-name-to-use.html">schemaNameToUse</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">schemaNameToUse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.metadata.CallMetaDataProvider$schemaNameToUse(kotlin.String)/schemaName">schemaName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Provide any modification of the schema name passed in to match the meta data currently used. This could include altering the case.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,236 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JibxMarshaller - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.oxm.jibx</a>&nbsp;/&nbsp;<a href=".">JibxMarshaller</a><br/>
+<br/>
+<h1>JibxMarshaller</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JibxMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.oxm.support/-abstract-marshaller/index.html"><span class="identifier">AbstractMarshaller</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of the <code>Marshaller</code> and <code>Unmarshaller</code> interfaces for JiBX. 
+<p>The typical usage will be to set the <code>targetClass</code> and optionally the <code>bindingName</code> property on this bean.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+org.jibx.runtime.IMarshallingContextorg.jibx.runtime.IUnmarshallingContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JibxMarshaller</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of the <code>Marshaller</code> and <code>Unmarshaller</code> interfaces for JiBX. 
+<p>The typical usage will be to set the <code>targetClass</code> and optionally the <code>bindingName</code> property on this bean.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="convert-jibx-exception.html">convertJibxException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">convertJibxException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$convertJibxException(org.jibx.runtime.JiBXException, kotlin.Boolean)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">JiBXException</span><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$convertJibxException(org.jibx.runtime.JiBXException, kotlin.Boolean)/marshalling">marshalling</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XmlMappingException</span></code>
+<p>Convert the given <code>JiBXException</code> to an appropriate exception from the <code>org.springframework.oxm</code> hierarchy. 
+<p>A boolean flag is used to indicate whether this exception occurs during marshalling or unmarshalling, since JiBX itself does not make this distinction in its exception hierarchy.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-binding-name.html">setBindingName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBindingName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setBindingName(kotlin.String)/bindingName">bindingName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the optional binding name for this instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-doc-type-internal-subset.html">setDocTypeInternalSubset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDocTypeInternalSubset</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setDocTypeInternalSubset(kotlin.String)/docTypeInternalSubset">docTypeInternalSubset</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the internal subset Id for the DTD declaration written when marshalling. By default, this is <code>null</code>. Only used when the root element also has been set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-doc-type-public-id.html">setDocTypePublicId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDocTypePublicId</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setDocTypePublicId(kotlin.String)/docTypePublicId">docTypePublicId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the public id for the DTD declaration written when marshalling. By default, this is <code>null</code>. Only used when the root element also has been set. 
+<p>Set either this property or <code>docTypeSystemId</code>, not both.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-doc-type-root-element-name.html">setDocTypeRootElementName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDocTypeRootElementName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setDocTypeRootElementName(kotlin.String)/docTypeRootElementName">docTypeRootElementName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the root element name for the DTD declaration written when marshalling. By default, this is <code>null</code> (i.e. no DTD declaration is written). 
+<p>If set to a value, the system ID or public ID also need to be set.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-doc-type-system-id.html">setDocTypeSystemId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDocTypeSystemId</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setDocTypeSystemId(kotlin.String)/docTypeSystemId">docTypeSystemId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the system id for the DTD declaration written when marshalling. By default, this is <code>null</code>. Only used when the root element also has been set. 
+<p>Set either this property or <code>docTypePublicId</code>, not both.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding.html">setEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setEncoding(kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the document encoding using for marshalling. Default is UTF-8.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-indent.html">setIndent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIndent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setIndent(kotlin.Int)/indent">indent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the number of nesting indent spaces. Default is <code>-1</code>, i.e. no indentation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-standalone.html">setStandalone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStandalone</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setStandalone(kotlin.Boolean)/standalone">standalone</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the document standalone flag for marshalling. By default, this flag is not present.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-class.html">setTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setTargetClass(java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the target class for this instance. Setting either this property or the <code><a href="#">targetPackage</a></code> property is required. 
+<p>If this property is set, <code><a href="#">targetPackage</a></code> is ignored.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-package.html">setTargetPackage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetPackage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$setTargetPackage(kotlin.String)/targetPackage">targetPackage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the target package for this instance. Setting either this property or the <code><a href="#">targetClass</a></code> property is required. 
+<p>If <code><a href="#">targetClass</a></code> is set, this property is ignored.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports.html">supports</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supports</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.jibx.JibxMarshaller$supports(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/is-process-external-entities.html">isProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isProcessExternalEntities</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns the configured value for whether XML external entities are allowed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/is-support-dtd.html">isSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSupportDtd</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether DTD parsing is supported.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/marshal.html">marshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">marshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">Result</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Marshals the object graph with the given root into the provided <code>javax.xml.transform.Result</code>. 
+<p>This implementation inspects the given result, and calls <code>marshalDomResult</code>, <code>marshalSaxResult</code>, or <code>marshalStreamResult</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-process-external-entities.html">setProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProcessExternalEntities</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setProcessExternalEntities(kotlin.Boolean)/processExternalEntities">processExternalEntities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether external XML entities are processed when unmarshalling. 
+<p>Default is <code>false</code>, meaning that external entities are not resolved. Note that processing of external entities will only be enabled/disabled when the <code>Source</code> passed to <code><a href="../../org.springframework.oxm.support/-abstract-marshaller/unmarshal.html">#unmarshal(Source)</a></code> is a SAXSource or StreamSource. It has no effect for DOMSource or StAXSource instances. </p>
+<p><strong>Note:</strong> setting this option to <code>true</code> also automatically sets <code><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-support-dtd.html">#setSupportDtd</a></code> to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-support-dtd.html">setSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportDtd</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setSupportDtd(kotlin.Boolean)/supportDtd">supportDtd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether DTD parsing should be supported. 
+<p>Default is <code>false</code> meaning that DTD is disabled.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/unmarshal.html">unmarshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">unmarshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$unmarshal(javax.xml.transform.Source)/source">source</span><span class="symbol">:</span>&nbsp;<span class="identifier">Source</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Unmarshals the given provided <code>javax.xml.transform.Source</code> into an object graph. 
+<p>This implementation inspects the given result, and calls <code>unmarshalDomSource</code>, <code>unmarshalSaxSource</code>, or <code>unmarshalStreamSource</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

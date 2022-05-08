@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.orm.jpa.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.orm.jpa.support</a><br/>
+<br/>
+<h2>Package org.springframework.orm.jpa.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-open-entity-manager-in-view-filter/index.html">OpenEntityManagerInViewFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenEntityManagerInViewFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Servlet Filter that binds a JPA EntityManager to the thread for the entire processing of the request. Intended for the "Open EntityManager in View" pattern, i.e. to allow for lazy loading in web views despite the original transactions already being completed. 
+<p>This filter makes JPA EntityManagers available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.jpa.JpaTransactionManager or org.springframework.transaction.jta.JtaTransactionManager as well as for non-transactional read-only execution. </p>
+<p>Looks up the EntityManagerFactory in Spring's root web application context. Supports an "entityManagerFactoryBeanName" filter init-param in <code>web.xml</code>; the default bean name is "entityManagerFactory". As an alternative, the "persistenceUnitName" init-param allows for retrieval by logical unit name (as specified in <code>persistence.xml</code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-open-entity-manager-in-view-interceptor/index.html">OpenEntityManagerInViewInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenEntityManagerInViewInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.orm.jpa/-entity-manager-factory-accessor/index.html"><span class="identifier">EntityManagerFactoryAccessor</span></a><span class="symbol">, </span><span class="identifier">AsyncWebRequestInterceptor</span></code>
+<p>Spring web request interceptor that binds a JPA EntityManager to the thread for the entire processing of the request. Intended for the "Open EntityManager in View" pattern, i.e. to allow for lazy loading in web views despite the original transactions already being completed. 
+<p>This interceptor makes JPA EntityManagers available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.jpa.JpaTransactionManager or org.springframework.transaction.jta.JtaTransactionManager as well as for non-transactional read-only execution. </p>
+<p>In contrast to OpenEntityManagerInViewFilter, this interceptor is set up in a Spring application context and can thus take advantage of bean wiring.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-persistence-annotation-bean-post-processor/index.html">PersistenceAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PersistenceAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InstantiationAwareBeanPostProcessor</span><span class="symbol">, </span><a href="../org.springframework.beans.factory.config/-destruction-aware-bean-post-processor/index.html"><span class="identifier">DestructionAwareBeanPostProcessor</span></a><span class="symbol">, </span><a href="../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>BeanPostProcessor that processes javax.persistence.PersistenceUnit and javax.persistence.PersistenceContext annotations, for injection of the corresponding JPA resources javax.persistence.EntityManagerFactory and javax.persistence.EntityManager. Any such annotated fields or methods in any Spring-managed object will automatically be injected. 
+<p>This post-processor will inject sub-interfaces of <code>EntityManagerFactory</code> and <code>EntityManager</code> if the annotated fields or methods are declared as such. The actual type will be verified early, with the exception of a shared ("transactional") <code>EntityManager</code> reference, where type mismatches might be detected as late as on the first actual invocation. </p>
+<p>Note: In the present implementation, PersistenceAnnotationBeanPostProcessor only supports <code>@PersistenceUnit</code> and <code>@PersistenceContext</code> with the "unitName" attribute, or no attribute at all (for the default unit). If those annotations are present with the "name" attribute at the class level, they will simply be ignored, since those only serve as deployment hint (as per the Java EE specification). </p>
+<p>This post-processor can either obtain EntityManagerFactory beans defined in the Spring application context (the default), or obtain EntityManagerFactory references from JNDI ("persistence unit references"). In the bean case, the persistence unit name will be matched against the actual deployed unit, with the bean name used as fallback unit name if no deployed name found. Typically, Spring's org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean will be used for setting up such EntityManagerFactory beans. Alternatively, such beans may also be obtained from JNDI, e.g. using the <code>jee:jndi-lookup</code> XML configuration element (with the bean name matching the requested unit name). In both cases, the post-processor definition will look as simple as this: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/&gt;</code></pre> In the JNDI case, specify the corresponding JNDI names in this post-processor's <code><a href="#">"persistenceUnits" map</a></code>, typically with matching <code>persistence-unit-ref</code> entries in the Java EE deployment descriptor. By default, those names are considered as resource references (according to the Java EE resource-ref convention), located underneath the "java:comp/env/" namespace. For example: <pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceUnits"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/unit1"/&gt; &lt;entry key="unit2" value="persistence/unit2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> In this case, the specified persistence units will always be resolved in JNDI rather than as Spring-defined beans. The entire persistence unit deployment, including the weaving of persistent classes, is then up to the Java EE server. Persistence contexts (i.e. EntityManager references) will be built based on those server-provided EntityManagerFactory references, using Spring's own transaction synchronization facilities for transactional EntityManager handling (typically with Spring's <code>@Transactional</code> annotation for demarcation and org.springframework.transaction.jta.JtaTransactionManager as backend). 
+<p>If you prefer the Java EE server's own EntityManager handling, specify entries in this post-processor's <code><a href="#">"persistenceContexts" map</a></code> (or <code><a href="#">"extendedPersistenceContexts" map</a></code>, typically with matching <code>persistence-context-ref</code> entries in the Java EE deployment descriptor. For example: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceContexts"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/context1"/&gt; &lt;entry key="unit2" value="persistence/context2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> If the application only obtains EntityManager references in the first place, this is all you need to specify. If you need EntityManagerFactory references as well, specify entries for both "persistenceUnits" and "persistenceContexts", pointing to matching JNDI locations. 
+<p><strong>NOTE: In general, do not inject EXTENDED EntityManagers into STATELESS beans, i.e. do not use <code>@PersistenceContext</code> with type <code>EXTENDED</code> in Spring beans defined with scope 'singleton' (Spring's default scope).</strong> Extended EntityManagers are <em>not</em> thread-safe, hence they must not be used in concurrently accessed beans (which Spring-managed singletons usually are). </p>
+<p>Note: A default PersistenceAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom PersistenceAnnotationBeanPostProcessor bean definition.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shared-entity-manager-bean/index.html">SharedEntityManagerBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SharedEntityManagerBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.orm.jpa/-entity-manager-factory-accessor/index.html"><span class="identifier">EntityManagerFactoryAccessor</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">EntityManager</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>FactoryBean that exposes a shared JPA javax.persistence.EntityManager reference for a given EntityManagerFactory. Typically used for an EntityManagerFactory created by org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean, as direct alternative to a JNDI lookup for a Java EE server's EntityManager reference. 
+<p>The shared EntityManager will behave just like an EntityManager fetched from an application server's JNDI environment, as defined by the JPA specification. It will delegate all calls to the current transactional EntityManager, if any; otherwise, it will fall back to a newly created EntityManager per operation. </p>
+<p>Can be passed to DAOs that expect a shared EntityManager reference rather than an EntityManagerFactory. Note that Spring's org.springframework.orm.jpa.JpaTransactionManager always needs an EntityManagerFactory in order to create new transactional EntityManager instances.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

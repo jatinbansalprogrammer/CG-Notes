@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.object - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.object</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.object</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-batch-sql-update/index.html">BatchSqlUpdate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BatchSqlUpdate</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlUpdate</span></code>
+<p>SqlUpdate subclass that performs batch update operations. Encapsulates queuing up records to be updated, and adds them as a single batch once <code>flush</code> is called or the given batch size has been met. 
+<p>Note that this class is a <strong>non-thread-safe object</strong>, in contrast to all other JDBC operations objects in this package. You need to create a new instance of it for each use, or call <code>reset</code> before reuse within the same thread.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-sql-query/index.html">GenericSqlQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericSqlQuery</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlQuery</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>A concrete variant of SqlQuery which can be configured with a RowMapper.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-stored-procedure/index.html">GenericStoredProcedure</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericStoredProcedure</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StoredProcedure</span></code>
+<p>Concrete implementation making it possible to define the RDBMS stored procedures in an application context without writing a custom Java implementation class. 
+<p> This implementation does not provide a typed method for invocation so executions must use one of the generic <code><a href="#">StoredProcedure#execute(java.util.Map)</a></code> or <code><a href="#">StoredProcedure#execute(org.springframework.jdbc.core.ParameterMapper)</a></code> methods.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mapping-sql-query/index.html">MappingSqlQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">MappingSqlQuery</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MappingSqlQueryWithParameters</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Reusable query in which concrete subclasses must implement the abstract mapRow(ResultSet, int) method to convert each row of the JDBC ResultSet into an object. 
+<p>Simplifies MappingSqlQueryWithParameters API by dropping parameters and context. Most subclasses won't care about parameters. If you don't use contextual information, subclass this instead of MappingSqlQueryWithParameters.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-function/index.html">SqlFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlFunction</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-mapping-sql-query/index.html"><span class="identifier">MappingSqlQuery</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>SQL "function" wrapper for a query that returns a single row of results. The default behavior is to return an int, but that can be overridden by using the constructor with an extra return type parameter. 
+<p>Intended to use to call SQL functions that return a single result using a query like "select user()" or "select sysdate from dual". It is not intended for calling more complex stored functions or for using a CallableStatement to invoke a stored procedure or stored function. Use StoredProcedure or SqlCall for this type of processing. </p>
+<p>This is a concrete class, which there is often no need to subclass. Code using this package can create an object of this type, declaring SQL and parameters, and then invoke the appropriate <code>run</code> method repeatedly to execute the function. Subclasses are only supposed to add specialized <code>run</code> methods for specific parameter and return types. </p>
+<p>Like all RdbmsOperation objects, SqlFunction objects are thread-safe.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-updatable-sql-query/index.html">UpdatableSqlQuery</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">UpdatableSqlQuery</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlQuery</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Reusable RDBMS query in which concrete subclasses must implement the abstract updateRow(ResultSet, int, context) method to update each row of the JDBC ResultSet and optionally map contents into an object. 
+<p>Subclasses can be constructed providing SQL, parameter types and a DataSource. SQL will often vary between subclasses.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

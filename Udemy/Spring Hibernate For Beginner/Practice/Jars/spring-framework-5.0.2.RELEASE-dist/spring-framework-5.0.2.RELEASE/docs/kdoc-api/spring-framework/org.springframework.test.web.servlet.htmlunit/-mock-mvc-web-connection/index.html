@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MockMvcWebConnection - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.servlet.htmlunit</a>&nbsp;/&nbsp;<a href=".">MockMvcWebConnection</a><br/>
+<br/>
+<h1>MockMvcWebConnection</h1>
+<code><span class="keyword">class </span><span class="identifier">MockMvcWebConnection</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebConnection</span></code>
+<p><code>MockMvcWebConnection</code> enables MockMvc to transform a WebRequest into a WebResponse. 
+<p>This is the core integration with <a href="#">HtmlUnit</a>. </p>
+<p>Example usage can be seen below. </p>
+<pre><code> WebClient webClient = new WebClient(); MockMvc mockMvc = ... MockMvcWebConnection webConnection = new MockMvcWebConnection(mockMvc, webClient); webClient.setWebConnection(webConnection); // Use webClient as normal ... </code></pre></p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+org.springframework.test.web.servlet.htmlunit.webdriver.WebConnectionHtmlUnitDriver</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MockMvcWebConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnection$<init>(org.springframework.test.web.servlet.MockMvc, com.gargoylesoftware.htmlunit.WebClient)/mockMvc">mockMvc</span><span class="symbol">:</span>&nbsp;<span class="identifier">MockMvc</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnection$<init>(org.springframework.test.web.servlet.MockMvc, com.gargoylesoftware.htmlunit.WebClient)/webClient">webClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebClient</span><span class="symbol">)</span></code>
+<p>Create a new instance that assumes the context path of the application is <code>""</code> (i.e., the root context). 
+<p>For example, the URL <code>http://localhost/test/this</code> would use <code>""</code> as the context path.</p>
+</p>
+<code><span class="identifier">MockMvcWebConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnection$<init>(org.springframework.test.web.servlet.MockMvc, com.gargoylesoftware.htmlunit.WebClient, kotlin.String)/mockMvc">mockMvc</span><span class="symbol">:</span>&nbsp;<span class="identifier">MockMvc</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnection$<init>(org.springframework.test.web.servlet.MockMvc, com.gargoylesoftware.htmlunit.WebClient, kotlin.String)/webClient">webClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebClient</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnection$<init>(org.springframework.test.web.servlet.MockMvc, com.gargoylesoftware.htmlunit.WebClient, kotlin.String)/contextPath">contextPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new instance with the specified context path. 
+<p>The path may be <code>null</code> in which case the first path segment of the URL is turned into the contextPath. Otherwise it must conform to <code><a href="#">javax.servlet.http.HttpServletRequest#getContextPath()</a></code> which states that it can be an empty string and otherwise must start with a "/" character and not end with a "/" character.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close.html">close</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">close</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-response.html">getResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getResponse</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnection$getResponse(com.gargoylesoftware.htmlunit.WebRequest)/webRequest">webRequest</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebResponse</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-web-client.html">setWebClient</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setWebClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.servlet.htmlunit.MockMvcWebConnection$setWebClient(com.gargoylesoftware.htmlunit.WebClient)/webClient">webClient</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebClient</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

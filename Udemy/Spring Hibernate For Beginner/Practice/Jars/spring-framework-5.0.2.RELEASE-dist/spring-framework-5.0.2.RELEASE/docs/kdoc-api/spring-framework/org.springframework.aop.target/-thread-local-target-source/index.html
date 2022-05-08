@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ThreadLocalTargetSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.target</a>&nbsp;/&nbsp;<a href=".">ThreadLocalTargetSource</a><br/>
+<br/>
+<h1>ThreadLocalTargetSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ThreadLocalTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPrototypeBasedTargetSource</span><span class="symbol">, </span><a href="../-thread-local-target-source-stats/index.html"><span class="identifier">ThreadLocalTargetSourceStats</span></a><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Alternative to an object pool. This org.springframework.aop.TargetSource uses a threading model in which every thread has its own copy of the target. There's no contention for targets. Target object creation is kept to a minimum on the running server. 
+<p>Application code is written as to a normal pool; callers can't assume they will be dealing with the same instance in invocations in different threads. However, state can be relied on during the operations of a single thread: for example, if one caller makes repeated calls on the AOP proxy. </p>
+<p>Cleanup of thread-bound objects is performed on BeanFactory destruction, calling their <code>DisposableBean.destroy()</code> method if available. Be aware that many thread-bound objects can be around until the application actually shuts down.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>See Also</strong><br/>
+ThreadLocalTargetSourceStats<a href="#">org.springframework.beans.factory.DisposableBean#destroy()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ThreadLocalTargetSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Alternative to an object pool. This org.springframework.aop.TargetSource uses a threading model in which every thread has its own copy of the target. There's no contention for targets. Target object creation is kept to a minimum on the running server. 
+<p>Application code is written as to a normal pool; callers can't assume they will be dealing with the same instance in invocations in different threads. However, state can be relied on during the operations of a single thread: for example, if one caller makes repeated calls on the AOP proxy. </p>
+<p>Cleanup of thread-bound objects is performed on BeanFactory destruction, calling their <code>DisposableBean.destroy()</code> method if available. Be aware that many thread-bound objects can be around until the application actually shuts down.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Dispose of targets if necessary; clear ThreadLocal.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-hit-count.html">getHitCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHitCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-invocation-count.html">getInvocationCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInvocationCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-count.html">getObjectCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-stats-mixin.html">getStatsMixin</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getStatsMixin</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">IntroductionAdvisor</span></code>
+<p>Return an introduction advisor mixin that allows the AOP proxy to be cast to ThreadLocalInvokerStats.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target.html">getTarget</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTarget</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Implementation of abstract getTarget() method. We look for a target held in a ThreadLocal. If we don't find one, we create one and bind it to the thread. No synchronization is required.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HtmlUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.util</a>&nbsp;/&nbsp;<a href=".">HtmlUtils</a><br/>
+<br/>
+<h1>HtmlUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">HtmlUtils</span></code>
+<p>Utility class for HTML escaping. Escapes and unescapes based on the W3C HTML 4.01 recommendation, handling character entity references. 
+<p>Reference: <a href="#">http://www.w3.org/TR/html4/charset.html</a> </p>
+<p>For a comprehensive set of String escaping utilities, consider Apache Commons Lang and its StringEscapeUtils class. We are not using that class here to avoid a runtime dependency on Commons Lang just for HTML escaping. Furthermore, Spring's HTML escaping is more flexible and 100% HTML 4.0 compliant.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Martin Kersten</p>
+<p><strong>Author</strong><br/>
+Craig Andrews</p>
+<p><strong>Since</strong><br/>
+01.03.2003</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HtmlUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Utility class for HTML escaping. Escapes and unescapes based on the W3C HTML 4.01 recommendation, handling character entity references. 
+<p>Reference: <a href="#">http://www.w3.org/TR/html4/charset.html</a> </p>
+<p>For a comprehensive set of String escaping utilities, consider Apache Commons Lang and its StringEscapeUtils class. We are not using that class here to avoid a runtime dependency on Commons Lang just for HTML escaping. Furthermore, Spring's HTML escaping is more flexible and 100% HTML 4.0 compliant.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="html-escape.html">htmlEscape</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">htmlEscape</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscape(kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Turn special characters into HTML character references. Handles complete character set defined in HTML 4.01 recommendation. 
+<p>Escapes all special characters to their corresponding entity reference (e.g. <code>&amp;lt;</code>). </p>
+<p>Reference: <a href="#"> http://www.w3.org/TR/html4/sgml/entities.html </a></p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">htmlEscape</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscape(kotlin.String, kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscape(kotlin.String, kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Turn special characters into HTML character references. Handles complete character set defined in HTML 4.01 recommendation. 
+<p>Escapes all special characters to their corresponding entity reference (e.g. <code>&amp;lt;</code>) at least as required by the specified encoding. In other words, if a special character does not have to be escaped for the given encoding, it may not be. </p>
+<p>Reference: <a href="#"> http://www.w3.org/TR/html4/sgml/entities.html </a></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="html-escape-decimal.html">htmlEscapeDecimal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">htmlEscapeDecimal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscapeDecimal(kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Turn special characters into HTML character references. Handles complete character set defined in HTML 4.01 recommendation. 
+<p>Escapes all special characters to their corresponding numeric reference in decimal format (&amp;#<em>Decimal</em>;). </p>
+<p>Reference: <a href="#"> http://www.w3.org/TR/html4/sgml/entities.html </a></p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">htmlEscapeDecimal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscapeDecimal(kotlin.String, kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscapeDecimal(kotlin.String, kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Turn special characters into HTML character references. Handles complete character set defined in HTML 4.01 recommendation. 
+<p>Escapes all special characters to their corresponding numeric reference in decimal format (&amp;#<em>Decimal</em>;) at least as required by the specified encoding. In other words, if a special character does not have to be escaped for the given encoding, it may not be. </p>
+<p>Reference: <a href="#"> http://www.w3.org/TR/html4/sgml/entities.html </a></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="html-escape-hex.html">htmlEscapeHex</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">htmlEscapeHex</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscapeHex(kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Turn special characters into HTML character references. Handles complete character set defined in HTML 4.01 recommendation. 
+<p>Escapes all special characters to their corresponding numeric reference in hex format (&amp;#x<em>Hex</em>;). </p>
+<p>Reference: <a href="#"> http://www.w3.org/TR/html4/sgml/entities.html </a></p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">htmlEscapeHex</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscapeHex(kotlin.String, kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlEscapeHex(kotlin.String, kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Turn special characters into HTML character references. Handles complete character set defined in HTML 4.01 recommendation. 
+<p>Escapes all special characters to their corresponding numeric reference in hex format (&amp;#x<em>Hex</em>;) at least as required by the specified encoding. In other words, if a special character does not have to be escaped for the given encoding, it may not be. </p>
+<p>Reference: <a href="#"> http://www.w3.org/TR/html4/sgml/entities.html </a></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="html-unescape.html">htmlUnescape</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">htmlUnescape</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.HtmlUtils$htmlUnescape(kotlin.String)/input">input</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Turn HTML character references into their plain text UNICODE equivalent. 
+<p>Handles complete character set defined in HTML 4.01 recommendation and all reference types (decimal, hex, and entity). </p>
+<p>Correctly converts the following formats: </p>
+ &amp;#<em>Entity</em>; - <em>(Example: &amp;amp;) case sensitive</em> &amp;#<em>Decimal</em>; - <em>(Example: &amp;#68;)</em> &amp;#x<em>Hex</em>; - <em>(Example: &amp;#xE5;) case insensitive</em>  Gracefully handles malformed character references by copying original characters as is when encountered.
+<p> </p>
+<p>Reference: <a href="#"> http://www.w3.org/TR/html4/sgml/entities.html </a></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

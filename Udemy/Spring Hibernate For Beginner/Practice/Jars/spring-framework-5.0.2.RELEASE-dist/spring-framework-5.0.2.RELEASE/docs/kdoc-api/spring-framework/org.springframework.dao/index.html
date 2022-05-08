@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.dao - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.dao</a><br/>
+<br/>
+<h2>Package org.springframework.dao</h2>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cannot-acquire-lock-exception/index.html">CannotAcquireLockException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CannotAcquireLockException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PessimisticLockingFailureException</span></code>
+<p>Exception thrown on failure to aquire a lock during an update, for example during a "select for update" statement.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cannot-serialize-transaction-exception/index.html">CannotSerializeTransactionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CannotSerializeTransactionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PessimisticLockingFailureException</span></code>
+<p>Exception thrown on failure to complete a transaction in serialized mode due to update conflicts.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cleanup-failure-data-access-exception/index.html">CleanupFailureDataAccessException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CleanupFailureDataAccessException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NonTransientDataAccessException</span></code>
+<p>Exception thrown when we couldn't cleanup after a data access operation, but the actual operation went OK. 
+<p>For example, this exception or a subclass might be thrown if a JDBC Connection couldn't be closed after it had been used successfully. </p>
+<p>Note that data access code might perform resources cleanup in a finally block and therefore log cleanup failure rather than rethrow it, to keep the original data access exception, if any.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-duplicate-key-exception/index.html">DuplicateKeyException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DuplicateKeyException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataIntegrityViolationException</span></code>
+<p>Exception thrown when an attempt to insert or update data results in violation of an primary key or unique constraint. Note that this is not necessarily a purely relational concept; unique primary keys are required by most database types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-empty-result-data-access-exception/index.html">EmptyResultDataAccessException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmptyResultDataAccessException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IncorrectResultSizeDataAccessException</span></code>
+<p>Data access exception thrown when a result was expected to have at least one row (or element) but zero rows (or elements) were actually returned.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-query-timeout-exception/index.html">QueryTimeoutException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">QueryTimeoutException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransientDataAccessException</span></code>
+<p>Exception to be thrown on a query timeout. This could have different causes depending on the database API in use but most likely thrown after the database interrupts or stops the processing of a query before it has completed. 
+<p>This exception can be thrown by user code trapping the native database exception or by exception translation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transient-data-access-resource-exception/index.html">TransientDataAccessResourceException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransientDataAccessResourceException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransientDataAccessException</span></code>
+<p>Data access exception thrown when a resource fails temporarily and the operation can be retried.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-type-mismatch-data-access-exception/index.html">TypeMismatchDataAccessException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TypeMismatchDataAccessException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvalidDataAccessResourceUsageException</span></code>
+<p>Exception thrown on mismatch between Java type and database type: for example on an attempt to set an object of the wrong type in an RDBMS column.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

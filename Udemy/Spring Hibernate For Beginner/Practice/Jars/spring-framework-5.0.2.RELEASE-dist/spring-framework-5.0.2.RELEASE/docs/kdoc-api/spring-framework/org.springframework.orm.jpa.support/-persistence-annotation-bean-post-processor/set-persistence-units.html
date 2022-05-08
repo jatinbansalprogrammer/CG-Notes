@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PersistenceAnnotationBeanPostProcessor.setPersistenceUnits - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa.support</a>&nbsp;/&nbsp;<a href="index.html">PersistenceAnnotationBeanPostProcessor</a>&nbsp;/&nbsp;<a href=".">setPersistenceUnits</a><br/>
+<br/>
+<h1>setPersistenceUnits</h1>
+<a name="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setPersistenceUnits(kotlin.collections.MutableMap((kotlin.String, )))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPersistenceUnits</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setPersistenceUnits(kotlin.collections.MutableMap((kotlin.String, )))/persistenceUnits">persistenceUnits</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the persistence units for EntityManagerFactory lookups, as a Map from persistence unit name to persistence unit JNDI name (which needs to resolve to an EntityManagerFactory instance). 
+<p>JNDI names specified here should refer to <code>persistence-unit-ref</code> entries in the Java EE deployment descriptor, matching the target persistence unit. </p>
+<p>In case of no unit name specified in the annotation, the specified value for the <code><a href="#">default persistence unit</a></code> will be taken (by default, the value mapped to the empty String), or simply the single persistence unit if there is only one. </p>
+<p>This is mainly intended for use in a Java EE environment, with all lookup driven by the standard JPA annotations, and all EntityManagerFactory references obtained from JNDI. No separate EntityManagerFactory bean definitions are necessary in such a scenario. </p>
+<p>If no corresponding "persistenceContexts"/"extendedPersistenceContexts" are specified, <code>@PersistenceContext</code> will be resolved to EntityManagers built on top of the EntityManagerFactory defined here. Note that those will be Spring-managed EntityManagers, which implement transaction synchronization based on Spring's facilities. If you prefer the Java EE server's own EntityManager handling, specify corresponding "persistenceContexts"/"extendedPersistenceContexts".</p>
+</p>
+</BODY>
+</HTML>

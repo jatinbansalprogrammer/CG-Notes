@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MultipartHttpMessageWriter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.codec.multipart</a>&nbsp;/&nbsp;<a href=".">MultipartHttpMessageWriter</a><br/>
+<br/>
+<h1>MultipartHttpMessageWriter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MultipartHttpMessageWriter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>HttpMessageWriter for writing a <code>MultiValueMap&lt;String, ?&gt;</code> as multipart form data, i.e. <code>"multipart/form-data"</code>, to the body of a request. 
+<p>The serialization of individual parts is delegated to other writers. By default only String and Resource parts are supported but you can configure others through a constructor argument. </p>
+<p>This writer can be configured with a FormHttpMessageWriter to delegate to. It is the preferred way of supporting both form data and multipart data (as opposed to registering each writer separately) so that when the MediaType is not specified and generics are not present on the target element type, we can inspect the values in the actual map and decide whether to write plain form data (String values only) or otherwise.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+FormHttpMessageWriter</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MultipartHttpMessageWriter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor with a default list of part writers (String and Resource).</p>
+<code><span class="identifier">MultipartHttpMessageWriter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$<init>(kotlin.collections.MutableList((org.springframework.http.codec.HttpMessageWriter((kotlin.Any)))))/partWriters">partWriters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Constructor with explicit list of writers for serializing parts.</p>
+<code><span class="identifier">MultipartHttpMessageWriter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$<init>(kotlin.collections.MutableList((org.springframework.http.codec.HttpMessageWriter((kotlin.Any)))), org.springframework.http.codec.HttpMessageWriter((org.springframework.util.MultiValueMap((kotlin.String, )))))/partWriters">partWriters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$<init>(kotlin.collections.MutableList((org.springframework.http.codec.HttpMessageWriter((kotlin.Any)))), org.springframework.http.codec.HttpMessageWriter((org.springframework.util.MultiValueMap((kotlin.String, )))))/formWriter">formWriter</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMessageWriter</span><span class="symbol">&lt;</span><span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Constructor with explicit list of writers for serializing parts and a writer for plain form data to fall back when no media type is specified and the actual map consists of String values only.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-h-a-r-s-e-t.html">DEFAULT_CHARSET</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CHARSET</span><span class="symbol">: </span><span class="identifier">Charset</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="can-write.html">canWrite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">canWrite</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$canWrite(org.springframework.core.ResolvableType, org.springframework.http.MediaType)/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$canWrite(org.springframework.core.ResolvableType, org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-charset.html">getCharset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCharset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Charset</span></code>
+<p>Return the configured charset for part headers.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-writable-media-types.html">getWritableMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWritableMediaTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MediaType</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-charset.html">setCharset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCharset</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$setCharset(java.nio.charset.Charset)/charset">charset</span><span class="symbol">:</span>&nbsp;<span class="identifier">Charset</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the character set to use for part headers such as "Content-Disposition" (and its filename parameter). 
+<p>By default this is set to "UTF-8".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="write.html">write</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">write</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$write(org.reactivestreams.Publisher((org.springframework.util.MultiValueMap((kotlin.String, kotlin.Any)))), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/inputStream">inputStream</span><span class="symbol">:</span>&nbsp;<a href="http://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html"><span class="identifier">Publisher</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">MultiValueMap</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$write(org.reactivestreams.Publisher((org.springframework.util.MultiValueMap((kotlin.String, kotlin.Any)))), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$write(org.reactivestreams.Publisher((org.springframework.util.MultiValueMap((kotlin.String, kotlin.Any)))), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$write(org.reactivestreams.Publisher((org.springframework.util.MultiValueMap((kotlin.String, kotlin.Any)))), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/outputMessage">outputMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReactiveHttpOutputMessage</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.multipart.MultipartHttpMessageWriter$write(org.reactivestreams.Publisher((org.springframework.util.MultiValueMap((kotlin.String, kotlin.Any)))), org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.ReactiveHttpOutputMessage, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/hints">hints</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

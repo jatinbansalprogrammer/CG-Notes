@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyOverrideConfigurer.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">PropertyOverrideConfigurer</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.config.PropertyOverrideConfigurer$&lt;init&gt;()"></a>
+<code><span class="identifier">PropertyOverrideConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Property resource configurer that overrides bean property values in an application context definition. It <em>pushes</em> values from a properties file into bean definitions. 
+<p>Configuration lines are expected to be of the following form: </p>
+<pre><code>beanName.property=value</code></pre> Example properties file: <pre><code>dataSource.driverClassName=com.mysql.jdbc.Driver dataSource.url=jdbc:mysql:mydb</code></pre> In contrast to PropertyPlaceholderConfigurer, the original definition can have default values or no values at all for such bean properties. If an overriding properties file does not have an entry for a certain bean property, the default context definition is used. 
+<p>Note that the context definition <em>is not</em> aware of being overridden; so this is not immediately obvious when looking at the XML definition file. Furthermore, note that specified override values are always <em>literal</em> values; they are not translated into bean references. This also applies when the original value in the XML bean definition specifies a bean reference. </p>
+<p>In case of multiple PropertyOverrideConfigurers that define different values for the same bean property, the <em>last</em> one will win (due to the overriding mechanism). </p>
+<p>Property values can be converted after reading them in, through overriding the <code>convertPropertyValue</code> method. For example, encrypted values can be detected and decrypted accordingly before processing them.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+12.03.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#convertPropertyValue</a>PropertyPlaceholderConfigurer</p>
+</BODY>
+</HTML>

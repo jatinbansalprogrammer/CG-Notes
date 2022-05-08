@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc</h2>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bad-sql-grammar-exception/index.html">BadSqlGrammarException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BadSqlGrammarException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvalidDataAccessResourceUsageException</span></code>
+<p>Exception thrown when SQL specified is invalid. Such exceptions always have a <code>java.sql.SQLException</code> root cause. 
+<p>It would be possible to have subclasses for no such table, no such column etc. A custom SQLExceptionTranslator could create such more specific exceptions, without affecting code using this class.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cannot-get-jdbc-connection-exception/index.html">CannotGetJdbcConnectionException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CannotGetJdbcConnectionException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataAccessResourceFailureException</span></code>
+<p>Fatal exception thrown when we can't connect to an RDBMS using JDBC.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-incorrect-result-set-column-count-exception/index.html">IncorrectResultSetColumnCountException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IncorrectResultSetColumnCountException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataRetrievalFailureException</span></code>
+<p>Data access exception thrown when a result set did not have the correct column count, for example when expecting a single column but getting 0 or more than 1 columns.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-invalid-result-set-access-exception/index.html">InvalidResultSetAccessException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InvalidResultSetAccessException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InvalidDataAccessResourceUsageException</span></code>
+<p>Exception thrown when a ResultSet has been accessed in an invalid fashion. Such exceptions always have a <code>java.sql.SQLException</code> root cause. 
+<p>This typically happens when an invalid ResultSet column index or name has been specified. Also thrown by disconnected SqlRowSets.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdbc-update-affected-incorrect-number-of-rows-exception/index.html">JdbcUpdateAffectedIncorrectNumberOfRowsException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JdbcUpdateAffectedIncorrectNumberOfRowsException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IncorrectUpdateSemanticsDataAccessException</span></code>
+<p>Exception thrown when a JDBC update affects an unexpected number of rows. Typically we expect an update to affect a single row, meaning it's an error if it affects multiple rows.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-lob-retrieval-failure-exception/index.html">LobRetrievalFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LobRetrievalFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataRetrievalFailureException</span></code>
+<p>Exception to be thrown when a LOB could not be retrieved.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-q-l-warning-exception/index.html">SQLWarningException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SQLWarningException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UncategorizedDataAccessException</span></code>
+<p>Exception thrown when we're not ignoring java.sql.SQLWarning. 
+<p>If a SQLWarning is reported, the operation completed, so we will need to explicitly roll it back if we're not happy when looking at the warning. We might choose to ignore (and log) the warning, or to wrap and throw it in the shape of this SQLWarningException instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-uncategorized-s-q-l-exception/index.html">UncategorizedSQLException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UncategorizedSQLException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UncategorizedDataAccessException</span></code>
+<p>Exception thrown when we can't classify a SQLException into one of our generic data access exceptions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

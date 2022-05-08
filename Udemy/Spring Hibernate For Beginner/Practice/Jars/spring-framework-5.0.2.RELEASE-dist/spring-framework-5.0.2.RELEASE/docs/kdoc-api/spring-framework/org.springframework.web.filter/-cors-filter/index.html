@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CorsFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href=".">CorsFilter</a><br/>
+<br/>
+<h1>CorsFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CorsFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that handles CORS preflight requests and intercepts CORS simple and actual requests thanks to a CorsProcessor implementation (DefaultCorsProcessor by default) in order to add the relevant CORS response headers (like <code>Access-Control-Allow-Origin</code>) using the provided CorsConfigurationSource (for example an UrlBasedCorsConfigurationSource instance. 
+<p>This is an alternative to Spring MVC Java config and XML namespace CORS configuration, useful for applications depending only on spring-web (not on spring-webmvc) or for security constraints requiring CORS checks to be performed at javax.servlet.Filter level. </p>
+<p>This filter could be used in conjunction with DelegatingFilterProxy in order to help with its initialization.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+&lt;a href="http://www.w3.org/TR/cors/"&gt;CORS W3C recommendation&lt;/a&gt;</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CorsFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CorsFilter$<init>(org.springframework.web.cors.CorsConfigurationSource)/configSource">configSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">CorsConfigurationSource</span><span class="symbol">)</span></code>
+<p>Constructor accepting a CorsConfigurationSource used by the filter to find the CorsConfiguration to use for each incoming request.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-cors-processor.html">setCorsProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCorsProcessor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CorsFilter$setCorsProcessor(org.springframework.web.cors.CorsProcessor)/processor">processor</span><span class="symbol">:</span>&nbsp;<span class="identifier">CorsProcessor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure a custom CorsProcessor to use to apply the matched CorsConfiguration for a request. 
+<p>By default DefaultCorsProcessor is used.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

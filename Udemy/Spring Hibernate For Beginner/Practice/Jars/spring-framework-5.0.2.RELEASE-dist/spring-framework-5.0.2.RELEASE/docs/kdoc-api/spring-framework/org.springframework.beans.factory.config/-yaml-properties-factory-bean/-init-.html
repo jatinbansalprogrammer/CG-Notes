@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>YamlPropertiesFactoryBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">YamlPropertiesFactoryBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.config.YamlPropertiesFactoryBean$&lt;init&gt;()"></a>
+<code><span class="identifier">YamlPropertiesFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Factory for java.util.Properties that reads from a YAML source, exposing a flat structure of String property values. 
+<p>YAML is a nice human-readable format for configuration, and it has some useful hierarchical properties. It's more or less a superset of JSON, so it has a lot of similar features. </p>
+<p><strong>Note: All exposed values are of type <code>String</code></strong> for access through the common <code><a href="#">Properties#getProperty</a></code> method (e.g. in configuration property resolution through <code><a href="#">PropertyResourceConfigurer#setProperties(Properties)</a></code>). If this is not desirable, use YamlMapFactoryBean instead. </p>
+<p>The Properties created by this factory have nested paths for hierarchical objects, so for instance this YAML </p>
+<pre><code> environments: dev: url: http://dev.bar.com name: Developer Setup prod: url: http://foo.bar.com name: My Cool App </code></pre> is transformed into these properties: <pre><code> environments.dev.url=http://dev.bar.com environments.dev.name=Developer Setup environments.prod.url=http://foo.bar.com environments.prod.name=My Cool App </code></pre> Lists are split as property keys with <code>[]</code> dereferencers, for example this YAML: <pre><code> servers: - dev.bar.com - foo.bar.com </code></pre> becomes properties like this: <pre><code> servers[0]=dev.bar.com servers[1]=foo.bar.com </code></pre></p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+</BODY>
+</HTML>

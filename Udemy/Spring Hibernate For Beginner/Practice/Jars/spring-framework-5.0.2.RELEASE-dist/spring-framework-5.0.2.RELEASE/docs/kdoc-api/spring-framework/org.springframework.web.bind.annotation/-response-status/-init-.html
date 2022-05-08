@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ResponseStatus.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind.annotation</a>&nbsp;/&nbsp;<a href="index.html">ResponseStatus</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.bind.annotation.ResponseStatus$&lt;init&gt;(org.springframework.http.HttpStatus, org.springframework.http.HttpStatus, kotlin.String)"></a>
+<code><span class="identifier">ResponseStatus</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.annotation.ResponseStatus$<init>(org.springframework.http.HttpStatus, org.springframework.http.HttpStatus, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpStatus</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.ResponseStatus$<init>(org.springframework.http.HttpStatus, org.springframework.http.HttpStatus, kotlin.String)/code">code</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpStatus</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.annotation.ResponseStatus$<init>(org.springframework.http.HttpStatus, org.springframework.http.HttpStatus, kotlin.String)/reason">reason</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Marks a method or exception class with the status <code><a href="#">#code</a></code> and <code><a href="#">#reason</a></code> that should be returned. 
+<p>The status code is applied to the HTTP response when the handler method is invoked and overrides status information set by other means, like <code>ResponseEntity</code> or <code>"redirect:"</code>. </p>
+<p><strong>Warning</strong>: when using this annotation on an exception class, or when setting the <code>reason</code> attribute of this annotation, the <code>HttpServletResponse.sendError</code> method will be used. </p>
+<p>With <code>HttpServletResponse.sendError</code>, the response is considered complete and should not be written to any further. Furthermore, the Servlet container will typically write an HTML error page therefore making the use of a <code>reason</code> unsuitable for REST APIs. For such cases it is preferable to use a org.springframework.http.ResponseEntity as a return type and avoid the use of <code>@ResponseStatus</code> altogether. </p>
+<p>Note that a controller class may also be annotated with <code>@ResponseStatus</code> and is then inherited by all <code>@RequestMapping</code> methods.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver<a href="#">javax.servlet.http.HttpServletResponse#sendError(int, String)</a></p>
+</BODY>
+</HTML>

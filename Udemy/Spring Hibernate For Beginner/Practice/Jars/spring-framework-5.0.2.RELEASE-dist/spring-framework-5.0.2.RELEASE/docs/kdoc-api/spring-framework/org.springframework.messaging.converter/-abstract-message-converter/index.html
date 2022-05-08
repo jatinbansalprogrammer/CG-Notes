@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractMessageConverter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.messaging.converter</a>&nbsp;/&nbsp;<a href=".">AbstractMessageConverter</a><br/>
+<br/>
+<h1>AbstractMessageConverter</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SmartMessageConverter</span></code>
+<p>Abstract base class for SmartMessageConverter implementations including support for common properties and a partial implementation of the conversion methods, mainly to check if the converter supports the conversion based on the payload class and MIME type.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="from-message.html">fromMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">fromMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$fromMessage(org.springframework.messaging.Message((kotlin.Any)), java.lang.Class((kotlin.Any)))/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$fromMessage(org.springframework.messaging.Message((kotlin.Any)), java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">fromMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$fromMessage(org.springframework.messaging.Message((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Any)/message">message</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$fromMessage(org.springframework.messaging.Message((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Any)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$fromMessage(org.springframework.messaging.Message((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Any)/conversionHint">conversionHint</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-content-type-resolver.html">getContentTypeResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContentTypeResolver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ContentTypeResolver</span></code>
+<p>Return the configured ContentTypeResolver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-serialized-payload-class.html">getSerializedPayloadClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSerializedPayloadClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the configured preferred serialization payload class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-supported-mime-types.html">getSupportedMimeTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSupportedMimeTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MimeType</span><span class="symbol">&gt;</span></code>
+<p>Return the supported MIME types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-strict-content-type-match.html">isStrictContentTypeMatch</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isStrictContentTypeMatch</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether content type resolution must produce a value that matches one of the supported MIME types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-content-type-resolver.html">setContentTypeResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContentTypeResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$setContentTypeResolver(org.springframework.messaging.converter.ContentTypeResolver)/resolver">resolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">ContentTypeResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the ContentTypeResolver to use to resolve the content type of an input message. 
+<p>Note that if no resolver is configured, then <code><a href="set-strict-content-type-match.html">strictContentTypeMatch</a></code> should be left as <code>false</code> (the default) or otherwise this converter will ignore all messages. </p>
+<p>By default, a <code>DefaultContentTypeResolver</code> instance is used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-serialized-payload-class.html">setSerializedPayloadClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSerializedPayloadClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$setSerializedPayloadClass(java.lang.Class((kotlin.Any)))/payloadClass">payloadClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the preferred serialization class to use (byte[] or String) when converting an Object payload to a Message. 
+<p>The default value is byte[].</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-strict-content-type-match.html">setStrictContentTypeMatch</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStrictContentTypeMatch</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$setStrictContentTypeMatch(kotlin.Boolean)/strictContentTypeMatch">strictContentTypeMatch</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Whether this converter should convert messages for which no content type could be resolved through the configured org.springframework.messaging.converter.ContentTypeResolver. 
+<p>A converter can configured to be strict only when a <code><a href="set-content-type-resolver.html">contentTypeResolver</a></code> is configured and the list of <code><a href="get-supported-mime-types.html">supportedMimeTypes</a></code> is not be empty. </p>
+<p>When this flag is set to <code>true</code>, <code><a href="#">#supportsMimeType(MessageHeaders)</a></code> will return <code>false</code> if the <code><a href="set-content-type-resolver.html">contentTypeResolver</a></code> is not defined or if no content-type header is present.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-message.html">toMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">toMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$toMessage(kotlin.Any, org.springframework.messaging.MessageHeaders)/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$toMessage(kotlin.Any, org.springframework.messaging.MessageHeaders)/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaders</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">fun </span><span class="identifier">toMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$toMessage(kotlin.Any, org.springframework.messaging.MessageHeaders, kotlin.Any)/payload">payload</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$toMessage(kotlin.Any, org.springframework.messaging.MessageHeaders, kotlin.Any)/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.messaging.converter.AbstractMessageConverter$toMessage(kotlin.Any, org.springframework.messaging.MessageHeaders, kotlin.Any)/conversionHint">conversionHint</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-marshalling-message-converter/index.html">MarshallingMessageConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MarshallingMessageConverter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractMessageConverter</span></code>
+<p>Implementation of MessageConverter that can read and write XML using Spring's Marshaller and Unmarshaller abstractions. 
+<p>This converter requires a <code>Marshaller</code> and <code>Unmarshaller</code> before it can be used. These can be injected by the <a href="#"> constructor</a> or <a href="../-marshalling-message-converter/set-marshaller.html">bean properties</a>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

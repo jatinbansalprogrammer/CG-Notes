@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServletRequestDataBinder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind</a>&nbsp;/&nbsp;<a href=".">ServletRequestDataBinder</a><br/>
+<br/>
+<h1>ServletRequestDataBinder</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletRequestDataBinder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebDataBinder</span></code>
+<p>Special org.springframework.validation.DataBinder to perform data binding from servlet request parameters to JavaBeans, including support for multipart files. 
+<p>See the DataBinder/WebDataBinder superclasses for customization options, which include specifying allowed/required fields, and registering custom property editors. </p>
+<p>Can also be used for manual data binding in custom web controllers: for example, in a plain Controller implementation or in a MultiActionController handler method. Simply instantiate a ServletRequestDataBinder for each binding process, and invoke <code>bind</code> with the current ServletRequest as argument: </p>
+<pre><code> MyBean myBean = new MyBean(); // apply binder to custom target object ServletRequestDataBinder binder = new ServletRequestDataBinder(myBean); // register custom editors, if desired binder.registerCustomEditor(...); // trigger actual binding of request parameters binder.bind(request); // optionally evaluate binding errors Errors errors = binder.getErrors(); ...</code></pre></p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="bind.html">#bind(javax.servlet.ServletRequest)</a><a href="#">#registerCustomEditor</a><a href="#">#setAllowedFields</a><a href="#">#setRequiredFields</a><a href="#">#setFieldMarkerPrefix</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServletRequestDataBinder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestDataBinder$<init>(kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span></code>
+<p>Create a new ServletRequestDataBinder instance, with default object name.</p>
+<code><span class="identifier">ServletRequestDataBinder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestDataBinder$<init>(kotlin.Any, kotlin.String)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.bind.ServletRequestDataBinder$<init>(kotlin.Any, kotlin.String)/objectName">objectName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new ServletRequestDataBinder instance.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="bind.html">bind</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">bind</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.ServletRequestDataBinder$bind(javax.servlet.ServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Bind the parameters of the given request to this binder's target, also binding multipart files in case of a multipart request. 
+<p>This call can create field errors, representing basic binding errors like a required field (code "required"), or type mismatch between value and bean property (code "typeMismatch"). </p>
+<p>Multipart files are bound via their parameter name, just like normal HTTP parameters: i.e. "uploadedFile" to an "uploadedFile" bean property, invoking a "setUploadedFile" setter method. </p>
+<p>The type of the target property for a multipart file can be MultipartFile, byte[], or String. The latter two receive the contents of the uploaded file; all metadata like original file name, content type, etc are lost in those cases.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-no-catch.html">closeNoCatch</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">closeNoCatch</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Treats errors as fatal. 
+<p>Use this method only if it's an error if the input isn't valid. This might be appropriate if all input is from dropdowns, for example.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.servlet.mvc.method.annotation/-extended-servlet-request-data-binder/index.html">ExtendedServletRequestDataBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExtendedServletRequestDataBinder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletRequestDataBinder</span></code>
+<p>Subclass of ServletRequestDataBinder that adds URI template variables to the values used for data binding.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

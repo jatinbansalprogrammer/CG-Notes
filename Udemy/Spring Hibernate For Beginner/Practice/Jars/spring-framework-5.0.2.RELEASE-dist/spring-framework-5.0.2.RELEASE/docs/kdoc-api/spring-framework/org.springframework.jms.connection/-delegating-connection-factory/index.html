@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingConnectionFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href=".">DelegatingConnectionFactory</a><br/>
+<br/>
+<h1>DelegatingConnectionFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-smart-connection-factory/index.html"><span class="identifier">SmartConnectionFactory</span></a><span class="symbol">, </span><span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier">TopicConnectionFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>javax.jms.ConnectionFactory implementation that delegates all calls to a given target javax.jms.ConnectionFactory, adapting specific <code>create(Queue/Topic)Connection</code> calls to the target ConnectionFactory if necessary (e.g. when running JMS 1.0.2 API based code against a generic JMS 1.1 ConnectionFactory, such as ActiveMQ's PooledConnectionFactory). 
+<p>This class allows for being subclassed, with subclasses overriding only those methods (such as <code><a href="create-connection.html">#createConnection()</a></code>) that should not simply delegate to the target ConnectionFactory. </p>
+<p>Can also be defined as-is, wrapping a specific target ConnectionFactory, using the "shouldStopConnections" flag to indicate whether Connections obtained from the target factory are supposed to be stopped before closed. The latter may be necessary for some connection pools that simply return released connections to the pool, not stopping them while they sit in the pool.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.2</p>
+<p><strong>See Also</strong><br/>
+<a href="create-connection.html">#createConnection()</a><a href="set-should-stop-connections.html">#setShouldStopConnections</a><a href="#">ConnectionFactoryUtils#releaseConnection</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DelegatingConnectionFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>javax.jms.ConnectionFactory implementation that delegates all calls to a given target javax.jms.ConnectionFactory, adapting specific <code>create(Queue/Topic)Connection</code> calls to the target ConnectionFactory if necessary (e.g. when running JMS 1.0.2 API based code against a generic JMS 1.1 ConnectionFactory, such as ActiveMQ's PooledConnectionFactory). 
+<p>This class allows for being subclassed, with subclasses overriding only those methods (such as <code><a href="create-connection.html">#createConnection()</a></code>) that should not simply delegate to the target ConnectionFactory. </p>
+<p>Can also be defined as-is, wrapping a specific target ConnectionFactory, using the "shouldStopConnections" flag to indicate whether Connections obtained from the target factory are supposed to be stopped before closed. The latter may be necessary for some connection pools that simply return released connections to the pool, not stopping them while they sit in the pool.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-connection.html">createConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Connection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-context.html">createContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createContext(kotlin.String, kotlin.String)/userName">userName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createContext(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createContext(kotlin.String, kotlin.String, kotlin.Int)/userName">userName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createContext(kotlin.String, kotlin.String, kotlin.Int)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createContext(kotlin.String, kotlin.String, kotlin.Int)/sessionMode">sessionMode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createContext(kotlin.Int)/sessionMode">sessionMode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JMSContext</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-queue-connection.html">createQueueConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createQueueConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">QueueConnection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createQueueConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createQueueConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createQueueConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">QueueConnection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-topic-connection.html">createTopicConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTopicConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TopicConnection</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTopicConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createTopicConnection(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$createTopicConnection(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TopicConnection</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-connection-factory.html">getTargetConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetConnectionFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConnectionFactory</span></code>
+<p>Return the target ConnectionFactory that this ConnectionFactory delegates to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-should-stop-connections.html">setShouldStopConnections</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setShouldStopConnections</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$setShouldStopConnections(kotlin.Boolean)/shouldStopConnections">shouldStopConnections</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicate whether Connections obtained from the target factory are supposed to be stopped before closed ("true") or simply closed ("false"). An extra stop call may be necessary for some connection pools that simply return released connections to the pool, not stopping them while they sit in the pool. 
+<p>Default is "false", simply closing Connections.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-connection-factory.html">setTargetConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetConnectionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$setTargetConnectionFactory(javax.jms.ConnectionFactory)/targetConnectionFactory">targetConnectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the target ConnectionFactory that this ConnectionFactory should delegate to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="should-stop.html">shouldStop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shouldStop</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.DelegatingConnectionFactory$shouldStop(javax.jms.Connection)/con">con</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

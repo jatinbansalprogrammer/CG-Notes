@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableAsync - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.annotation</a>&nbsp;/&nbsp;<a href=".">EnableAsync</a><br/>
+<br/>
+<h1>EnableAsync</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE]<span class="symbol">)</span> <span class="identifier">@Import</span><span class="symbol">(</span>AsyncConfigurationSelector<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">EnableAsync</span></code>
+<p>Enables Spring's asynchronous method execution capability, similar to functionality found in Spring's <code>&lt;task:*&gt;</code> XML namespace. 
+<p>To be used together with @Configuration classes as follows, enabling annotation-driven async processing for an entire Spring application context: </p>
+<pre><code> @Configuration @EnableAsync public class AppConfig { }</code></pre> <code>MyAsyncBean</code> is a user-defined type with one or more methods annotated with either Spring's <code>@Async</code> annotation, the EJB 3.1 <code>@javax.ejb.Asynchronous</code> annotation, or any custom annotation specified via the <code><a href="#">#annotation</a></code> attribute. The aspect is added transparently for any registered bean, for instance via this configuration: <pre><code> @Configuration public class AnotherAppConfig { @Bean public MyAsyncBean asyncBean() { return new MyAsyncBean(); } }</code></pre> 
+<p>By default, Spring will be searching for an associated thread pool definition: either a unique org.springframework.core.task.TaskExecutor bean in the context, or an java.util.concurrent.Executor bean named "taskExecutor" otherwise. If neither of the two is resolvable, a org.springframework.core.task.SimpleAsyncTaskExecutor will be used to process async method invocations. Besides, annotated methods having a <code>void</code> return type cannot transmit any exception back to the caller. By default, such uncaught exceptions are only logged. </p>
+<p>To customize all this, implement AsyncConfigurer and provide: </p>
+<ul> <li>your own java.util.concurrent.Executor through the <code><a href="#">getAsyncExecutor()</a></code> method, and</li>
+ <li>your own org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler through the <code><a href="#"> getAsyncUncaughtExceptionHandler()</a></code> method.</li>
+ </ul>
+ <pre><code> @Configuration @EnableAsync public class AppConfig implements AsyncConfigurer { @Override public Executor getAsyncExecutor() { ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor(); executor.setCorePoolSize(7); executor.setMaxPoolSize(42); executor.setQueueCapacity(11); executor.setThreadNamePrefix("MyExecutor-"); executor.initialize(); return executor; } @Override public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() { return MyAsyncUncaughtExceptionHandler(); } }</code></pre> 
+<p>If only one item needs to be customized, <code>null</code> can be returned to keep the default settings. Consider also extending from AsyncConfigurerSupport when possible. </p>
+<p>Note: In the above example the <code>ThreadPoolTaskExecutor</code> is not a fully managed Spring bean. Add the <code>@Bean</code> annotation to the <code>getAsyncExecutor()</code> method if you want a fully managed bean. In such circumstances it is no longer necessary to manually call the <code>executor.initialize()</code> method as this will be invoked automatically when the bean is initialized. </p>
+<p>For reference, the example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;task:annotation-driven executor="myExecutor" exception-handler="exceptionHandler"/&gt; &lt;task:executor id="myExecutor" pool-size="7-42" queue-capacity="11"/&gt; &lt;bean id="asyncBean" class="com.foo.MyAsyncBean"/&gt; &lt;bean id="exceptionHandler" class="com.foo.MyAsyncUncaughtExceptionHandler"/&gt; &lt;/beans&gt; </code></code></pre> The above XML-based and JavaConfig-based examples are equivalent except for the setting of the <em>thread name prefix</em> of the <code>Executor</code>; this is because the <code>&lt;task:executor&gt;</code> element does not expose such an attribute. This demonstrates how the JavaConfig-based approach allows for maximum configurability through direct access to actual componentry. 
+<p>The <code><a href="#">#mode</a></code> attribute controls how advice is applied: If the mode is <code><a href="#">AdviceMode#PROXY</a></code> (the default), then the other attributes control the behavior of the proxying. Please note that proxy mode allows for interception of calls through the proxy only; local calls within the same class cannot get intercepted that way. </p>
+<p>Note that if the <a href="#">#mode</a> is set to <code><a href="#">AdviceMode#ASPECTJ</a></code>, then the value of the <code><a href="#">#proxyTargetClass</a></code> attribute will be ignored. Note also that in this case the <code>spring-aspects</code> module JAR must be present on the classpath, with compile-time weaving or load-time weaving applying the aspect to the affected classes. There is no proxy involved in such a scenario; local calls will be intercepted as well.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+AsyncAsyncConfigurerAsyncConfigurationSelector</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EnableAsync</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.annotation.EnableAsync$<init>(kotlin.reflect.KClass((kotlin.Annotation)), kotlin.Boolean, org.springframework.context.annotation.AdviceMode, kotlin.Int)/annotation">annotation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.annotation.EnableAsync$<init>(kotlin.reflect.KClass((kotlin.Annotation)), kotlin.Boolean, org.springframework.context.annotation.AdviceMode, kotlin.Int)/proxyTargetClass">proxyTargetClass</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.annotation.EnableAsync$<init>(kotlin.reflect.KClass((kotlin.Annotation)), kotlin.Boolean, org.springframework.context.annotation.AdviceMode, kotlin.Int)/mode">mode</span><span class="symbol">:</span>&nbsp;<span class="identifier">AdviceMode</span><span class="symbol">, </span><span class="identifier" id="org.springframework.scheduling.annotation.EnableAsync$<init>(kotlin.reflect.KClass((kotlin.Annotation)), kotlin.Boolean, org.springframework.context.annotation.AdviceMode, kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Enables Spring's asynchronous method execution capability, similar to functionality found in Spring's <code>&lt;task:*&gt;</code> XML namespace. 
+<p>To be used together with @Configuration classes as follows, enabling annotation-driven async processing for an entire Spring application context: </p>
+<pre><code> @Configuration @EnableAsync public class AppConfig { }</code></pre> <code>MyAsyncBean</code> is a user-defined type with one or more methods annotated with either Spring's <code>@Async</code> annotation, the EJB 3.1 <code>@javax.ejb.Asynchronous</code> annotation, or any custom annotation specified via the <code><a href="#">#annotation</a></code> attribute. The aspect is added transparently for any registered bean, for instance via this configuration: <pre><code> @Configuration public class AnotherAppConfig { @Bean public MyAsyncBean asyncBean() { return new MyAsyncBean(); } }</code></pre> 
+<p>By default, Spring will be searching for an associated thread pool definition: either a unique org.springframework.core.task.TaskExecutor bean in the context, or an java.util.concurrent.Executor bean named "taskExecutor" otherwise. If neither of the two is resolvable, a org.springframework.core.task.SimpleAsyncTaskExecutor will be used to process async method invocations. Besides, annotated methods having a <code>void</code> return type cannot transmit any exception back to the caller. By default, such uncaught exceptions are only logged. </p>
+<p>To customize all this, implement AsyncConfigurer and provide: </p>
+<ul> <li>your own java.util.concurrent.Executor through the <code><a href="#">getAsyncExecutor()</a></code> method, and</li>
+ <li>your own org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler through the <code><a href="#"> getAsyncUncaughtExceptionHandler()</a></code> method.</li>
+ </ul>
+ <pre><code> @Configuration @EnableAsync public class AppConfig implements AsyncConfigurer { @Override public Executor getAsyncExecutor() { ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor(); executor.setCorePoolSize(7); executor.setMaxPoolSize(42); executor.setQueueCapacity(11); executor.setThreadNamePrefix("MyExecutor-"); executor.initialize(); return executor; } @Override public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() { return MyAsyncUncaughtExceptionHandler(); } }</code></pre> 
+<p>If only one item needs to be customized, <code>null</code> can be returned to keep the default settings. Consider also extending from AsyncConfigurerSupport when possible. </p>
+<p>Note: In the above example the <code>ThreadPoolTaskExecutor</code> is not a fully managed Spring bean. Add the <code>@Bean</code> annotation to the <code>getAsyncExecutor()</code> method if you want a fully managed bean. In such circumstances it is no longer necessary to manually call the <code>executor.initialize()</code> method as this will be invoked automatically when the bean is initialized. </p>
+<p>For reference, the example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;task:annotation-driven executor="myExecutor" exception-handler="exceptionHandler"/&gt; &lt;task:executor id="myExecutor" pool-size="7-42" queue-capacity="11"/&gt; &lt;bean id="asyncBean" class="com.foo.MyAsyncBean"/&gt; &lt;bean id="exceptionHandler" class="com.foo.MyAsyncUncaughtExceptionHandler"/&gt; &lt;/beans&gt; </code></code></pre> The above XML-based and JavaConfig-based examples are equivalent except for the setting of the <em>thread name prefix</em> of the <code>Executor</code>; this is because the <code>&lt;task:executor&gt;</code> element does not expose such an attribute. This demonstrates how the JavaConfig-based approach allows for maximum configurability through direct access to actual componentry. 
+<p>The <code><a href="#">#mode</a></code> attribute controls how advice is applied: If the mode is <code><a href="#">AdviceMode#PROXY</a></code> (the default), then the other attributes control the behavior of the proxying. Please note that proxy mode allows for interception of calls through the proxy only; local calls within the same class cannot get intercepted that way. </p>
+<p>Note that if the <a href="#">#mode</a> is set to <code><a href="#">AdviceMode#ASPECTJ</a></code>, then the value of the <code><a href="#">#proxyTargetClass</a></code> attribute will be ignored. Note also that in this case the <code>spring-aspects</code> module JAR must be present on the classpath, with compile-time weaving or load-time weaving applying the aspect to the affected classes. There is no proxy involved in such a scenario; local calls will be intercepted as well.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="annotation.html">annotation</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">annotation</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span></code>
+<p>Indicate the 'async' annotation type to be detected at either class or method level. 
+<p>By default, both Spring's @Async annotation and the EJB 3.1 <code>@javax.ejb.Asynchronous</code> annotation will be detected. </p>
+<p>This attribute exists so that developers can provide their own custom annotation type to indicate that a method (or all methods of a given class) should be invoked asynchronously.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="mode.html">mode</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">mode</span><span class="symbol">: </span><span class="identifier">AdviceMode</span></code>
+<p>Indicate how async advice should be applied. 
+<p><strong>The default is <code><a href="#">AdviceMode#PROXY</a></code>.</strong> Please note that proxy mode allows for interception of calls through the proxy only. Local calls within the same class cannot get intercepted that way; an Async annotation on such a method within a local call will be ignored since Spring's interceptor does not even kick in for such a runtime scenario. For a more advanced mode of interception, consider switching this to <code><a href="#">AdviceMode#ASPECTJ</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="order.html">order</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">order</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Indicate the order in which the AsyncAnnotationBeanPostProcessor should be applied. 
+<p>The default is <code><a href="#">Ordered#LOWEST_PRECEDENCE</a></code> in order to run after all other post-processors, so that it can add an advisor to existing proxies rather than double-proxy.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="proxy-target-class.html">proxyTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">proxyTargetClass</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Indicate whether subclass-based (CGLIB) proxies are to be created as opposed to standard Java interface-based proxies. 
+<p><strong>Applicable only if the <code><a href="#">#mode</a></code> is set to <code><a href="#">AdviceMode#PROXY</a></code></strong>. </p>
+<p>The default is <code>false</code>. </p>
+<p>Note that setting this attribute to <code>true</code> will affect <em>all</em> Spring-managed beans requiring proxying, not just those marked with <code>@Async</code>. For example, other beans marked with Spring's <code>@Transactional</code> annotation will be upgraded to subclass proxying at the same time. This approach has no negative impact in practice unless one is explicitly expecting one type of proxy vs. another — for example, in tests.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

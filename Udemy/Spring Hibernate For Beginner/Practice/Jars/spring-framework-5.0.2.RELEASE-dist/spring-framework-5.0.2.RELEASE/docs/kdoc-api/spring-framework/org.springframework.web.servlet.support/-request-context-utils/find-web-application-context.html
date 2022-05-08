@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RequestContextUtils.findWebApplicationContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.support</a>&nbsp;/&nbsp;<a href="index.html">RequestContextUtils</a>&nbsp;/&nbsp;<a href=".">findWebApplicationContext</a><br/>
+<br/>
+<h1>findWebApplicationContext</h1>
+<a name="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest, javax.servlet.ServletContext)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest, javax.servlet.ServletContext)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest, javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Look for the WebApplicationContext associated with the DispatcherServlet that has initiated request processing, and for the global context if none was found associated with the current request. The global context will be found via the ServletContext or via ContextLoader's current context. 
+<p>NOTE: This variant remains compatible with Servlet 2.5, explicitly checking a given ServletContext instead of deriving it from the request.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="request"></a>
+<code>request</code> - current HTTP request</p>
+<p><a name="servletContext"></a>
+<code>servletContext</code> - current servlet context</p>
+<p><strong>Return</strong><br/>
+the request-specific WebApplicationContext, or the global one if no request-specific context has been found, or <code>null</code> if none</p>
+<p><strong>Since</strong><br/>
+4.2.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">DispatcherServlet#WEB_APPLICATION_CONTEXT_ATTRIBUTE</a><a href="../../org.springframework.web.context.support/-web-application-context-utils/get-web-application-context.html">WebApplicationContextUtils#getWebApplicationContext(ServletContext)</a><a href="#">ContextLoader#getCurrentWebApplicationContext()</a></p>
+<a name="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findWebApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.support.RequestContextUtils$findWebApplicationContext(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WebApplicationContext</span></code>
+<p>Look for the WebApplicationContext associated with the DispatcherServlet that has initiated request processing, and for the global context if none was found associated with the current request. The global context will be found via the ServletContext or via ContextLoader's current context. 
+<p>NOTE: This variant requires Servlet 3.0+ and is generally recommended for forward-looking custom user code.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="request"></a>
+<code>request</code> - current HTTP request</p>
+<p><strong>Return</strong><br/>
+the request-specific WebApplicationContext, or the global one if no request-specific context has been found, or <code>null</code> if none</p>
+<p><strong>Since</strong><br/>
+4.2.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#findWebApplicationContext(HttpServletRequest, ServletContext)</a><a href="#">ServletRequest#getServletContext()</a><a href="#">ContextLoader#getCurrentWebApplicationContext()</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JmsListenerEndpointRegistrar - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.config</a>&nbsp;/&nbsp;<a href=".">JmsListenerEndpointRegistrar</a><br/>
+<br/>
+<h1>JmsListenerEndpointRegistrar</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsListenerEndpointRegistrar</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Helper bean for registering JmsListenerEndpoint with a JmsListenerEndpointRegistry.</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+org.springframework.jms.annotation.JmsListenerConfigurer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JmsListenerEndpointRegistrar</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Helper bean for registering JmsListenerEndpoint with a JmsListenerEndpointRegistry.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-endpoint-registry.html">getEndpointRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEndpointRegistry</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JmsListenerEndpointRegistry</span></code>
+<p>Return the JmsListenerEndpointRegistry instance for this registrar, may be <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-message-handler-method-factory.html">getMessageHandlerMethodFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMessageHandlerMethodFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageHandlerMethodFactory</span></code>
+<p>Return the custom MessageHandlerMethodFactory to use, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="register-endpoint.html">registerEndpoint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerEndpoint</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$registerEndpoint(org.springframework.jms.config.JmsListenerEndpoint, org.springframework.jms.config.JmsListenerContainerFactory((org.springframework.jms.listener.MessageListenerContainer)))/endpoint">endpoint</span><span class="symbol">:</span>&nbsp;<span class="identifier">JmsListenerEndpoint</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$registerEndpoint(org.springframework.jms.config.JmsListenerEndpoint, org.springframework.jms.config.JmsListenerContainerFactory((org.springframework.jms.listener.MessageListenerContainer)))/factory">factory</span><span class="symbol">:</span>&nbsp;<span class="identifier">JmsListenerContainerFactory</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a new JmsListenerEndpoint alongside the JmsListenerContainerFactory to use to create the underlying container. 
+<p>The <code>factory</code> may be <code>null</code> if the default factory has to be used for that endpoint.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerEndpoint</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$registerEndpoint(org.springframework.jms.config.JmsListenerEndpoint)/endpoint">endpoint</span><span class="symbol">:</span>&nbsp;<span class="identifier">JmsListenerEndpoint</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a new JmsListenerEndpoint using the default JmsListenerContainerFactory to create the underlying container.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>A BeanFactory only needs to be available in conjunction with <code><a href="#">#setContainerFactoryBeanName</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-container-factory.html">setContainerFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContainerFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$setContainerFactory(org.springframework.jms.config.JmsListenerContainerFactory((org.springframework.jms.listener.MessageListenerContainer)))/containerFactory">containerFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">JmsListenerContainerFactory</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JmsListenerContainerFactory to use in case a JmsListenerEndpoint is registered with a <code>null</code> container factory. 
+<p>Alternatively, the bean name of the JmsListenerContainerFactory to use can be specified for a lazy lookup, see <code><a href="#">#setContainerFactoryBeanName</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-container-factory-bean-name.html">setContainerFactoryBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContainerFactoryBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$setContainerFactoryBeanName(kotlin.String)/containerFactoryBeanName">containerFactoryBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the bean name of the JmsListenerContainerFactory to use in case a JmsListenerEndpoint is registered with a <code>null</code> container factory. Alternatively, the container factory instance can be registered directly: see <code><a href="#">#setContainerFactory(JmsListenerContainerFactory)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-endpoint-registry.html">setEndpointRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEndpointRegistry</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$setEndpointRegistry(org.springframework.jms.config.JmsListenerEndpointRegistry)/endpointRegistry">endpointRegistry</span><span class="symbol">:</span>&nbsp;<span class="identifier">JmsListenerEndpointRegistry</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JmsListenerEndpointRegistry instance to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-handler-method-factory.html">setMessageHandlerMethodFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageHandlerMethodFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.config.JmsListenerEndpointRegistrar$setMessageHandlerMethodFactory(org.springframework.messaging.handler.annotation.support.MessageHandlerMethodFactory)/messageHandlerMethodFactory">messageHandlerMethodFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageHandlerMethodFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the MessageHandlerMethodFactory to use to configure the message listener responsible to serve an endpoint detected by this processor. 
+<p>By default, DefaultMessageHandlerMethodFactory is used and it can be configured further to support additional method arguments or to customize conversion and validation support. See DefaultMessageHandlerMethodFactory javadoc for more details.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AopContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.framework</a>&nbsp;/&nbsp;<a href=".">AopContext</a><br/>
+<br/>
+<h1>AopContext</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AopContext</span></code>
+<p>Class containing static methods used to obtain information about the current AOP invocation. 
+<p>The <code>currentProxy()</code> method is usable if the AOP framework is configured to expose the current proxy (not the default). It returns the AOP proxy in use. Target objects or advice can use this to make advised calls, in the same way as <code>getEJBObject()</code> can be used in EJBs. They can also use it to find advice configuration. </p>
+<p>Spring's AOP framework does not expose proxies by default, as there is a performance cost in doing so. </p>
+<p>The functionality in this class might be used by a target object that needed access to resources on the invocation. However, this approach should not be used when there is a reasonable alternative, as it makes application code dependent on usage under AOP and the Spring AOP framework in particular.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+13.03.2003</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AopContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Class containing static methods used to obtain information about the current AOP invocation. 
+<p>The <code>currentProxy()</code> method is usable if the AOP framework is configured to expose the current proxy (not the default). It returns the AOP proxy in use. Target objects or advice can use this to make advised calls, in the same way as <code>getEJBObject()</code> can be used in EJBs. They can also use it to find advice configuration. </p>
+<p>Spring's AOP framework does not expose proxies by default, as there is a performance cost in doing so. </p>
+<p>The functionality in this class might be used by a target object that needed access to resources on the invocation. However, this approach should not be used when there is a reasonable alternative, as it makes application code dependent on usage under AOP and the Spring AOP framework in particular.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="current-proxy.html">currentProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">currentProxy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Try to return the current AOP proxy. This method is usable only if the calling method has been invoked via AOP, and the AOP framework has been set to expose proxies. Otherwise, this method will throw an IllegalStateException.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

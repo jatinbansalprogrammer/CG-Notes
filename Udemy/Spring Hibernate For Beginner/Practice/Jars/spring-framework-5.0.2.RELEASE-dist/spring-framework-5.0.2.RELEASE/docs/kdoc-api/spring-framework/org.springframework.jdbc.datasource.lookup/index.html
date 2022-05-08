@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.datasource.lookup - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.datasource.lookup</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.datasource.lookup</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-factory-data-source-lookup/index.html">BeanFactoryDataSourceLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanFactoryDataSourceLookup</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataSourceLookup</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>DataSourceLookup implementation based on a Spring BeanFactory. 
+<p>Will lookup Spring managed beans identified by bean name, expecting them to be of type <code>javax.sql.DataSource</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-isolation-level-data-source-router/index.html">IsolationLevelDataSourceRouter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IsolationLevelDataSourceRouter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRoutingDataSource</span></code>
+<p>DataSource that routes to one of various target DataSources based on the current transaction isolation level. The target DataSources need to be configured with the isolation level name as key, as defined on the org.springframework.transaction.TransactionDefinition. 
+<p>This is particularly useful in combination with JTA transaction management (typically through Spring's org.springframework.transaction.jta.JtaTransactionManager). Standard JTA does not support transaction-specific isolation levels. Some JTA providers support isolation levels as a vendor-specific extension (e.g. WebLogic), which is the preferred way of addressing this. As alternative (e.g. on WebSphere), the target database can be represented through multiple JNDI DataSources, each configured with a different isolation level (for the entire DataSource). The present DataSource router allows to transparently switch to the appropriate DataSource based on the current transaction's isolation level. </p>
+<p>The configuration can for example look like this, assuming that the target DataSources are defined as individual Spring beans with names "myRepeatableReadDataSource", "mySerializableDataSource" and "myDefaultDataSource": </p>
+<pre><code> &lt;bean id="dataSourceRouter" class="org.springframework.jdbc.datasource.lookup.IsolationLevelDataSourceRouter"&gt; &lt;property name="targetDataSources"&gt; &lt;map&gt; &lt;entry key="ISOLATION_REPEATABLE_READ" value-ref="myRepeatableReadDataSource"/&gt; &lt;entry key="ISOLATION_SERIALIZABLE" value-ref="mySerializableDataSource"/&gt; &lt;/map&gt; &lt;/property&gt; &lt;property name="defaultTargetDataSource" ref="myDefaultDataSource"/&gt; &lt;/bean&gt;</code></pre> Alternatively, the keyed values can also be data source names, to be resolved through a <code><a href="#">DataSourceLookup</a></code>: by default, JNDI names for a standard JNDI lookup. This allows for a single concise definition without the need for separate DataSource bean definitions. <pre><code> &lt;bean id="dataSourceRouter" class="org.springframework.jdbc.datasource.lookup.IsolationLevelDataSourceRouter"&gt; &lt;property name="targetDataSources"&gt; &lt;map&gt; &lt;entry key="ISOLATION_REPEATABLE_READ" value="java:comp/env/jdbc/myrrds"/&gt; &lt;entry key="ISOLATION_SERIALIZABLE" value="java:comp/env/jdbc/myserds"/&gt; &lt;/map&gt; &lt;/property&gt; &lt;property name="defaultTargetDataSource" value="java:comp/env/jdbc/mydefds"/&gt; &lt;/bean&gt;</code></pre> Note: If you are using this router in combination with Spring's org.springframework.transaction.jta.JtaTransactionManager, don't forget to switch the "allowCustomIsolationLevels" flag to "true". (By default, JtaTransactionManager will only accept a default isolation level because of the lack of isolation level support in standard JTA itself.) <pre><code> &lt;bean id="transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager"&gt; &lt;property name="allowCustomIsolationLevels" value="true"/&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jndi-data-source-lookup/index.html">JndiDataSourceLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiDataSourceLookup</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorSupport</span><span class="symbol">, </span><span class="identifier">DataSourceLookup</span></code>
+<p>JNDI-based DataSourceLookup implementation. 
+<p>For specific JNDI configuration, it is recommended to configure the "jndiEnvironment"/"jndiTemplate" properties.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-map-data-source-lookup/index.html">MapDataSourceLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MapDataSourceLookup</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataSourceLookup</span></code>
+<p>Simple DataSourceLookup implementation that relies on a map for doing lookups. 
+<p>Useful for testing environments or applications that need to match arbitrary String names to target DataSource objects.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-single-data-source-lookup/index.html">SingleDataSourceLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingleDataSourceLookup</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DataSourceLookup</span></code>
+<p>An implementation of the DataSourceLookup that simply wraps a single given DataSource, returned for any data source name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-data-source-lookup-failure-exception/index.html">DataSourceLookupFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DataSourceLookupFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NonTransientDataAccessException</span></code>
+<p>Exception to be thrown by a DataSourceLookup implementation, indicating that the specified DataSource could not be obtained.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

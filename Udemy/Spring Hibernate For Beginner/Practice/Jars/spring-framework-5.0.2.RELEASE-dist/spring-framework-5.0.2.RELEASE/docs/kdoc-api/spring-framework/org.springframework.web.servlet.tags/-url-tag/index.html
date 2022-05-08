@@ -1,0 +1,131 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UrlTag - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.tags</a>&nbsp;/&nbsp;<a href=".">UrlTag</a><br/>
+<br/>
+<h1>UrlTag</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UrlTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HtmlEscapingAwareTag</span><span class="symbol">, </span><span class="identifier">ParamAware</span></code>
+<p>The <code>&lt;url&gt;</code> tag creates URLs. Modeled after the JSTL c:url tag with backwards compatibility in mind. 
+<p>Enhancements to the JSTL functionality include: </p>
+<ul> <li>URL encoded template URI variables</li>
+ <li>HTML/XML escaping of URLs</li>
+ <li>JavaScript escaping of URLs</li>
+ </ul>
+ 
+<p>Template URI variables are indicated in the <code><a href="#">'value'</a></code> attribute and marked by braces '{variableName}'. The braces and attribute name are replaced by the URL encoded value of a parameter defined with the spring:param tag in the body of the url tag. If no parameter is available the literal value is passed through. Params matched to template variables will not be added to the query string. </p>
+<p>Use of the spring:param tag for URI template variables is strongly recommended over direct EL substitution as the values are URL encoded. Failure to properly encode URL can leave an application vulnerable to XSS and other injection attacks. </p>
+<p>URLs can be HTML/XML escaped by setting the <code><a href="#"> 'htmlEscape'</a></code> attribute to 'true'. Detects an HTML escaping setting, either on this tag instance, the page level, or the <code>web.xml</code> level. The default is 'false'. When setting the URL value into a variable, escaping is not recommended. </p>
+<p>Example usage: </p>
+<pre><code>&lt;spring:url value="/url/path/{variableName}"&gt; &lt;spring:param name="variableName" value="more than JSTL c:url" /&gt; &lt;/spring:url&gt;</code></pre> 
+<p>The above results in: <code>/currentApplicationContext/url/path/more%20than%20JSTL%20c%3Aurl</code> </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     value true true The URL to build. This value can include template {placeholders} that are replaced with the URL encoded value of the named parameter. Parameters must be defined using the param tag inside the body of this tag.   context false true Specifies a remote application context path. The default is the current application context path.   var false true The name of the variable to export the URL value to. If not specified the URL is written as output.   scope false true The scope for the var. 'application', 'session', 'request' and 'page' scopes are supported. Defaults to page scope. This attribute has no effect unless the var attribute is also defined.   htmlEscape false true Set HTML escaping for this tag, as a boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as a boolean value. Default is false.   </p>
+<p><strong>Author</strong><br/>
+Scott Andrews</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+ParamTag</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UrlTag</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>The <code>&lt;url&gt;</code> tag creates URLs. Modeled after the JSTL c:url tag with backwards compatibility in mind. 
+<p>Enhancements to the JSTL functionality include: </p>
+<ul> <li>URL encoded template URI variables</li>
+ <li>HTML/XML escaping of URLs</li>
+ <li>JavaScript escaping of URLs</li>
+ </ul>
+ 
+<p>Template URI variables are indicated in the <code><a href="#">'value'</a></code> attribute and marked by braces '{variableName}'. The braces and attribute name are replaced by the URL encoded value of a parameter defined with the spring:param tag in the body of the url tag. If no parameter is available the literal value is passed through. Params matched to template variables will not be added to the query string. </p>
+<p>Use of the spring:param tag for URI template variables is strongly recommended over direct EL substitution as the values are URL encoded. Failure to properly encode URL can leave an application vulnerable to XSS and other injection attacks. </p>
+<p>URLs can be HTML/XML escaped by setting the <code><a href="#"> 'htmlEscape'</a></code> attribute to 'true'. Detects an HTML escaping setting, either on this tag instance, the page level, or the <code>web.xml</code> level. The default is 'false'. When setting the URL value into a variable, escaping is not recommended. </p>
+<p>Example usage: </p>
+<pre><code>&lt;spring:url value="/url/path/{variableName}"&gt; &lt;spring:param name="variableName" value="more than JSTL c:url" /&gt; &lt;/spring:url&gt;</code></pre> 
+<p>The above results in: <code>/currentApplicationContext/url/path/more%20than%20JSTL%20c%3Aurl</code> </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     value true true The URL to build. This value can include template {placeholders} that are replaced with the URL encoded value of the named parameter. Parameters must be defined using the param tag inside the body of this tag.   context false true Specifies a remote application context path. The default is the current application context path.   var false true The name of the variable to export the URL value to. If not specified the URL is written as output.   scope false true The scope for the var. 'application', 'session', 'request' and 'page' scopes are supported. Defaults to page scope. This attribute has no effect unless the var attribute is also defined.   htmlEscape false true Set HTML escaping for this tag, as a boolean value. Overrides the default HTML escaping setting for the current page.   javaScriptEscape false true Set JavaScript escaping for this tag, as a boolean value. Default is false.   </p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-param.html">addParam</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addParam</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.UrlTag$addParam(org.springframework.web.servlet.tags.Param)/param">param</span><span class="symbol">:</span>&nbsp;<span class="identifier">Param</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="do-end-tag.html">doEndTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doEndTag</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="do-start-tag-internal.html">doStartTagInternal</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doStartTagInternal</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-context.html">setContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.UrlTag$setContext(kotlin.String)/context">context</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the context path for the URL. Defaults to the current context</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-java-script-escape.html">setJavaScriptEscape</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJavaScriptEscape</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.UrlTag$setJavaScriptEscape(kotlin.Boolean)/javaScriptEscape">javaScriptEscape</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set JavaScript escaping for this tag, as boolean value. Default is "false".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scope.html">setScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setScope</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.UrlTag$setScope(kotlin.String)/scope">scope</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the scope to export the URL variable to. This attribute has no meaning unless var is also defined.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-value.html">setValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.UrlTag$setValue(kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the value of the URL</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-var.html">setVar</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setVar</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.UrlTag$setVar(kotlin.String)/var">var</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the variable name to expose the URL under. Defaults to rendering the URL to the current JspWriter</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

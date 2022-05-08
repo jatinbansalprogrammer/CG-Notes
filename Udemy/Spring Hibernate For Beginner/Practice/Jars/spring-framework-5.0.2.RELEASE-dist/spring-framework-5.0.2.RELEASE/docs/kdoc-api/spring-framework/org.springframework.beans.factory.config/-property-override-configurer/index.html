@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyOverrideConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">PropertyOverrideConfigurer</a><br/>
+<br/>
+<h1>PropertyOverrideConfigurer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertyOverrideConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyResourceConfigurer</span></code>
+<p>Property resource configurer that overrides bean property values in an application context definition. It <em>pushes</em> values from a properties file into bean definitions. 
+<p>Configuration lines are expected to be of the following form: </p>
+<pre><code>beanName.property=value</code></pre> Example properties file: <pre><code>dataSource.driverClassName=com.mysql.jdbc.Driver dataSource.url=jdbc:mysql:mydb</code></pre> In contrast to PropertyPlaceholderConfigurer, the original definition can have default values or no values at all for such bean properties. If an overriding properties file does not have an entry for a certain bean property, the default context definition is used. 
+<p>Note that the context definition <em>is not</em> aware of being overridden; so this is not immediately obvious when looking at the XML definition file. Furthermore, note that specified override values are always <em>literal</em> values; they are not translated into bean references. This also applies when the original value in the XML bean definition specifies a bean reference. </p>
+<p>In case of multiple PropertyOverrideConfigurers that define different values for the same bean property, the <em>last</em> one will win (due to the overriding mechanism). </p>
+<p>Property values can be converted after reading them in, through overriding the <code>convertPropertyValue</code> method. For example, encrypted values can be detected and decrypted accordingly before processing them.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+12.03.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#convertPropertyValue</a>PropertyPlaceholderConfigurer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PropertyOverrideConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Property resource configurer that overrides bean property values in an application context definition. It <em>pushes</em> values from a properties file into bean definitions. 
+<p>Configuration lines are expected to be of the following form: </p>
+<pre><code>beanName.property=value</code></pre> Example properties file: <pre><code>dataSource.driverClassName=com.mysql.jdbc.Driver dataSource.url=jdbc:mysql:mydb</code></pre> In contrast to PropertyPlaceholderConfigurer, the original definition can have default values or no values at all for such bean properties. If an overriding properties file does not have an entry for a certain bean property, the default context definition is used. 
+<p>Note that the context definition <em>is not</em> aware of being overridden; so this is not immediately obvious when looking at the XML definition file. Furthermore, note that specified override values are always <em>literal</em> values; they are not translated into bean references. This also applies when the original value in the XML bean definition specifies a bean reference. </p>
+<p>In case of multiple PropertyOverrideConfigurers that define different values for the same bean property, the <em>last</em> one will win (due to the overriding mechanism). </p>
+<p>Property values can be converted after reading them in, through overriding the <code>convertPropertyValue</code> method. For example, encrypted values can be detected and decrypted accordingly before processing them.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-b-e-a-n_-n-a-m-e_-s-e-p-a-r-a-t-o-r.html">DEFAULT_BEAN_NAME_SEPARATOR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_BEAN_NAME_SEPARATOR</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="has-property-overrides-for.html">hasPropertyOverridesFor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hasPropertyOverridesFor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.PropertyOverrideConfigurer$hasPropertyOverridesFor(kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Were there overrides for this bean? Only valid after processing has occurred at least once.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-name-separator.html">setBeanNameSeparator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanNameSeparator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.PropertyOverrideConfigurer$setBeanNameSeparator(kotlin.String)/beanNameSeparator">beanNameSeparator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the separator to expect between bean name and property path. Default is a dot (".").</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ignore-invalid-keys.html">setIgnoreInvalidKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIgnoreInvalidKeys</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.PropertyOverrideConfigurer$setIgnoreInvalidKeys(kotlin.Boolean)/ignoreInvalidKeys">ignoreInvalidKeys</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to ignore invalid keys. Default is "false". 
+<p>If you ignore invalid keys, keys that do not follow the 'beanName.property' format (or refer to invalid bean names or properties) will just be logged at debug level. This allows one to have arbitrary other keys in a properties file.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

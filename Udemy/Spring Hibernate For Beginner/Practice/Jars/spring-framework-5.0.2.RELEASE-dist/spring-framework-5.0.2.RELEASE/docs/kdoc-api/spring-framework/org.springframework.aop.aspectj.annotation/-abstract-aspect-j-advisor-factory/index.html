@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractAspectJAdvisorFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.aspectj.annotation</a>&nbsp;/&nbsp;<a href=".">AbstractAspectJAdvisorFactory</a><br/>
+<br/>
+<h1>AbstractAspectJAdvisorFactory</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractAspectJAdvisorFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AspectJAdvisorFactory</span></code>
+<p>Abstract base class for factories that can create Spring AOP Advisors given AspectJ classes from classes honoring the AspectJ 5 annotation syntax. 
+<p>This class handles annotation parsing and validation functionality. It does not actually generate Spring AOP Advisors, which is deferred to subclasses.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractAspectJAdvisorFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Abstract base class for factories that can create Spring AOP Advisors given AspectJ classes from classes honoring the AspectJ 5 annotation syntax. 
+<p>This class handles annotation parsing and validation functionality. It does not actually generate Spring AOP Advisors, which is deferred to subclasses.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="is-aspect.html">isAspect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAspect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.AbstractAspectJAdvisorFactory$isAspect(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>We consider something to be an AspectJ aspect suitable for use by the Spring AOP system if it has the @Aspect annotation, and was not compiled by ajc. The reason for this latter test is that aspects written in the code-style (AspectJ language) also have the annotation present when compiled by ajc with the -1.5 flag, yet they cannot be consumed by Spring AOP.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="validate.html">validate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">validate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.aspectj.annotation.AbstractAspectJAdvisorFactory$validate(java.lang.Class((kotlin.Any)))/aspectClass">aspectClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-reflective-aspect-j-advisor-factory/index.html">ReflectiveAspectJAdvisorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectiveAspectJAdvisorFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAspectJAdvisorFactory</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Factory that can create Spring AOP Advisors given AspectJ classes from classes honoring the AspectJ 5 annotation syntax, using reflection to invoke the corresponding advice methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

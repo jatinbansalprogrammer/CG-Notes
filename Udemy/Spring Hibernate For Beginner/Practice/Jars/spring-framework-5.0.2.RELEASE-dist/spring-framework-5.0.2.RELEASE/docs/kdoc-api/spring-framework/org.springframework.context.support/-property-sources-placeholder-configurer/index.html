@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertySourcesPlaceholderConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">PropertySourcesPlaceholderConfigurer</a><br/>
+<br/>
+<h1>PropertySourcesPlaceholderConfigurer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PropertySourcesPlaceholderConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PlaceholderConfigurerSupport</span><span class="symbol">, </span><span class="identifier">EnvironmentAware</span></code>
+<p>Specialization of PlaceholderConfigurerSupport that resolves ${...} placeholders within bean definition property values and <code>@Value</code> annotations against the current Spring Environment and its set of PropertySources. 
+<p>This class is designed as a general replacement for <code>PropertyPlaceholderConfigurer</code> in Spring 3.1 applications. It is used by default to support the <code>property-placeholder</code> element in working against the spring-context-3.1 XSD, whereas spring-context versions &lt;= 3.0 default to <code>PropertyPlaceholderConfigurer</code> to ensure backward compatibility. See the spring-context XSD documentation for complete details. </p>
+<p>Any local properties (e.g. those added via <code><a href="#">#setProperties</a></code>, <code><a href="#">#setLocations</a></code> et al.) are added as a <code>PropertySource</code>. Search precedence of local properties is based on the value of the <code><a href="#">localOverride</a></code> property, which is by default <code>false</code> meaning that local properties are to be searched last, after all environment property sources. </p>
+<p>See org.springframework.core.env.ConfigurableEnvironment and related javadocs for details on manipulating environment property sources.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+org.springframework.core.env.ConfigurableEnvironmentorg.springframework.beans.factory.config.PlaceholderConfigurerSupportorg.springframework.beans.factory.config.PropertyPlaceholderConfigurer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PropertySourcesPlaceholderConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Specialization of PlaceholderConfigurerSupport that resolves ${...} placeholders within bean definition property values and <code>@Value</code> annotations against the current Spring Environment and its set of PropertySources. 
+<p>This class is designed as a general replacement for <code>PropertyPlaceholderConfigurer</code> in Spring 3.1 applications. It is used by default to support the <code>property-placeholder</code> element in working against the spring-context-3.1 XSD, whereas spring-context versions &lt;= 3.0 default to <code>PropertyPlaceholderConfigurer</code> to ensure backward compatibility. See the spring-context XSD documentation for complete details. </p>
+<p>Any local properties (e.g. those added via <code><a href="#">#setProperties</a></code>, <code><a href="#">#setLocations</a></code> et al.) are added as a <code>PropertySource</code>. Search precedence of local properties is based on the value of the <code><a href="#">localOverride</a></code> property, which is by default <code>false</code> meaning that local properties are to be searched last, after all environment property sources. </p>
+<p>See org.springframework.core.env.ConfigurableEnvironment and related javadocs for details on manipulating environment property sources.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-e-n-v-i-r-o-n-m-e-n-t_-p-r-o-p-e-r-t-i-e-s_-p-r-o-p-e-r-t-y_-s-o-u-r-c-e_-n-a-m-e.html">ENVIRONMENT_PROPERTIES_PROPERTY_SOURCE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ENVIRONMENT_PROPERTIES_PROPERTY_SOURCE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>{@value} is the name given to the PropertySource that wraps the <a href="set-environment.html">environment</a> supplied to this configurer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-l-o-c-a-l_-p-r-o-p-e-r-t-i-e-s_-p-r-o-p-e-r-t-y_-s-o-u-r-c-e_-n-a-m-e.html">LOCAL_PROPERTIES_PROPERTY_SOURCE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOCAL_PROPERTIES_PROPERTY_SOURCE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>{@value} is the name given to the PropertySource for the set of <a href="#">merged properties</a> supplied to this configurer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-applied-property-sources.html">getAppliedPropertySources</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAppliedPropertySources</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertySources</span></code>
+<p>Returns the property sources that were actually applied during <code><a href="post-process-bean-factory.html">post-processing</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-bean-factory.html">postProcessBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.PropertySourcesPlaceholderConfigurer$postProcessBeanFactory(org.springframework.beans.factory.config.ConfigurableListableBeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConfigurableListableBeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc} 
+<p>Processing occurs by replacing ${...} placeholders in bean definitions by resolving each against this configurer's set of PropertySources, which includes: </p>
+<ul> <li>all <a href="#"> environment property sources</a>, if an <code>Environment</code> <a href="set-environment.html">is present</a> </li>
+<li><a href="#">merged local properties</a>, if <a href="#">any</a> <a href="#">have</a> <a href="#">been</a> <a href="#">specified</a> </li>
+<li>any property sources set by calling <code><a href="set-property-sources.html">#setPropertySources</a></code> </li>
+</ul>
+ 
+<p>If <code><a href="set-property-sources.html">#setPropertySources</a></code> is called, <strong>environment and local properties will be ignored</strong>. This method is designed to give the user fine-grained control over property sources, and once set, the configurer makes no assumptions about adding additional sources.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-environment.html">setEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.PropertySourcesPlaceholderConfigurer$setEnvironment(org.springframework.core.env.Environment)/environment">environment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Environment</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc} 
+<p><code>PropertySources</code> from this environment will be searched when replacing ${...} placeholders.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property-sources.html">setPropertySources</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPropertySources</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.PropertySourcesPlaceholderConfigurer$setPropertySources(org.springframework.core.env.PropertySources)/propertySources">propertySources</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertySources</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Customize the set of PropertySources to be used by this configurer. Setting this property indicates that environment property sources and local properties should be ignored.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

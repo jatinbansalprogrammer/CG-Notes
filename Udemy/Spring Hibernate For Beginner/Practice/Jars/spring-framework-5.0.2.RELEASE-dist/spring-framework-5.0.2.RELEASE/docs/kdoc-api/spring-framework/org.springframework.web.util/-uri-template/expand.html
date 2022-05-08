@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UriTemplate.expand - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.util</a>&nbsp;/&nbsp;<a href="index.html">UriTemplate</a>&nbsp;/&nbsp;<a href=".">expand</a><br/>
+<br/>
+<h1>expand</h1>
+<a name="org.springframework.web.util.UriTemplate$expand(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expand</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.util.UriTemplate$expand(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/uriVariables">uriVariables</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URI</span></code>
+<p>Given the Map of variables, expands this template into a URI. The Map keys represent variable names, the Map values variable values. The order of variables is not significant. 
+<p>Example: </p>
+<pre><code> UriTemplate template = new UriTemplate("http://example.com/hotels/{hotel}/bookings/{booking}"); Map&lt;String, String&gt; uriVariables = new HashMap&lt;String, String&gt;(); uriVariables.put("booking", "42"); uriVariables.put("hotel", "Rest &amp; Relax"); System.out.println(template.expand(uriVariables)); </code></pre> will print: <code>http://example.com/hotels/Rest%20%26%20Relax/bookings/42</code></p>
+<h3>Parameters</h3>
+<p><a name="uriVariables"></a>
+<code>uriVariables</code> - the map of URI variables</p>
+<h3>Exceptions</h3>
+<p><a name="IllegalArgumentException"></a>
+<code>IllegalArgumentException</code> - if <code>uriVariables</code> is <code>null</code>; or if it does not contain values for all the variable names</p>
+<p><strong>Return</strong><br/>
+the expanded URI</p>
+<a name="org.springframework.web.util.UriTemplate$expand(kotlin.Array((kotlin.Any)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expand</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.util.UriTemplate$expand(kotlin.Array((kotlin.Any)))/uriVariableValues">uriVariableValues</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URI</span></code>
+<p>Given an array of variables, expand this template into a full URI. The array represent variable values. The order of variables is significant. 
+<p>Example: </p>
+<pre><code> UriTemplate template = new UriTemplate("http://example.com/hotels/{hotel}/bookings/{booking}"); System.out.println(template.expand("Rest &amp; Relax", 42)); </code></pre> will print: <code>http://example.com/hotels/Rest%20%26%20Relax/bookings/42</code></p>
+<h3>Parameters</h3>
+<p><a name="uriVariableValues"></a>
+<code>uriVariableValues</code> - the array of URI variables</p>
+<h3>Exceptions</h3>
+<p><a name="IllegalArgumentException"></a>
+<code>IllegalArgumentException</code> - if <code>uriVariables</code> is <code>null</code> or if it does not contain sufficient variables</p>
+<p><strong>Return</strong><br/>
+the expanded URI</p>
+</BODY>
+</HTML>

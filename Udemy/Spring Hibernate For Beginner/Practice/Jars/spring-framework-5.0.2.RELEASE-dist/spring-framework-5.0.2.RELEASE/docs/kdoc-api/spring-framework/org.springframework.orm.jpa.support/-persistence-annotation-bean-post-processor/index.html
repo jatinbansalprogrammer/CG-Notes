@@ -1,0 +1,215 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PersistenceAnnotationBeanPostProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa.support</a>&nbsp;/&nbsp;<a href=".">PersistenceAnnotationBeanPostProcessor</a><br/>
+<br/>
+<h1>PersistenceAnnotationBeanPostProcessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PersistenceAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InstantiationAwareBeanPostProcessor</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory.config/-destruction-aware-bean-post-processor/index.html"><span class="identifier">DestructionAwareBeanPostProcessor</span></a><span class="symbol">, </span><a href="../../org.springframework.beans.factory.support/-merged-bean-definition-post-processor/index.html"><span class="identifier">MergedBeanDefinitionPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>BeanPostProcessor that processes javax.persistence.PersistenceUnit and javax.persistence.PersistenceContext annotations, for injection of the corresponding JPA resources javax.persistence.EntityManagerFactory and javax.persistence.EntityManager. Any such annotated fields or methods in any Spring-managed object will automatically be injected. 
+<p>This post-processor will inject sub-interfaces of <code>EntityManagerFactory</code> and <code>EntityManager</code> if the annotated fields or methods are declared as such. The actual type will be verified early, with the exception of a shared ("transactional") <code>EntityManager</code> reference, where type mismatches might be detected as late as on the first actual invocation. </p>
+<p>Note: In the present implementation, PersistenceAnnotationBeanPostProcessor only supports <code>@PersistenceUnit</code> and <code>@PersistenceContext</code> with the "unitName" attribute, or no attribute at all (for the default unit). If those annotations are present with the "name" attribute at the class level, they will simply be ignored, since those only serve as deployment hint (as per the Java EE specification). </p>
+<p>This post-processor can either obtain EntityManagerFactory beans defined in the Spring application context (the default), or obtain EntityManagerFactory references from JNDI ("persistence unit references"). In the bean case, the persistence unit name will be matched against the actual deployed unit, with the bean name used as fallback unit name if no deployed name found. Typically, Spring's org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean will be used for setting up such EntityManagerFactory beans. Alternatively, such beans may also be obtained from JNDI, e.g. using the <code>jee:jndi-lookup</code> XML configuration element (with the bean name matching the requested unit name). In both cases, the post-processor definition will look as simple as this: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/&gt;</code></pre> In the JNDI case, specify the corresponding JNDI names in this post-processor's <code><a href="#">"persistenceUnits" map</a></code>, typically with matching <code>persistence-unit-ref</code> entries in the Java EE deployment descriptor. By default, those names are considered as resource references (according to the Java EE resource-ref convention), located underneath the "java:comp/env/" namespace. For example: <pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceUnits"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/unit1"/&gt; &lt;entry key="unit2" value="persistence/unit2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> In this case, the specified persistence units will always be resolved in JNDI rather than as Spring-defined beans. The entire persistence unit deployment, including the weaving of persistent classes, is then up to the Java EE server. Persistence contexts (i.e. EntityManager references) will be built based on those server-provided EntityManagerFactory references, using Spring's own transaction synchronization facilities for transactional EntityManager handling (typically with Spring's <code>@Transactional</code> annotation for demarcation and org.springframework.transaction.jta.JtaTransactionManager as backend). 
+<p>If you prefer the Java EE server's own EntityManager handling, specify entries in this post-processor's <code><a href="#">"persistenceContexts" map</a></code> (or <code><a href="#">"extendedPersistenceContexts" map</a></code>, typically with matching <code>persistence-context-ref</code> entries in the Java EE deployment descriptor. For example: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceContexts"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/context1"/&gt; &lt;entry key="unit2" value="persistence/context2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> If the application only obtains EntityManager references in the first place, this is all you need to specify. If you need EntityManagerFactory references as well, specify entries for both "persistenceUnits" and "persistenceContexts", pointing to matching JNDI locations. 
+<p><strong>NOTE: In general, do not inject EXTENDED EntityManagers into STATELESS beans, i.e. do not use <code>@PersistenceContext</code> with type <code>EXTENDED</code> in Spring beans defined with scope 'singleton' (Spring's default scope).</strong> Extended EntityManagers are <em>not</em> thread-safe, hence they must not be used in concurrently accessed beans (which Spring-managed singletons usually are). </p>
+<p>Note: A default PersistenceAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom PersistenceAnnotationBeanPostProcessor bean definition.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+javax.persistence.PersistenceUnitjavax.persistence.PersistenceContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PersistenceAnnotationBeanPostProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>BeanPostProcessor that processes javax.persistence.PersistenceUnit and javax.persistence.PersistenceContext annotations, for injection of the corresponding JPA resources javax.persistence.EntityManagerFactory and javax.persistence.EntityManager. Any such annotated fields or methods in any Spring-managed object will automatically be injected. 
+<p>This post-processor will inject sub-interfaces of <code>EntityManagerFactory</code> and <code>EntityManager</code> if the annotated fields or methods are declared as such. The actual type will be verified early, with the exception of a shared ("transactional") <code>EntityManager</code> reference, where type mismatches might be detected as late as on the first actual invocation. </p>
+<p>Note: In the present implementation, PersistenceAnnotationBeanPostProcessor only supports <code>@PersistenceUnit</code> and <code>@PersistenceContext</code> with the "unitName" attribute, or no attribute at all (for the default unit). If those annotations are present with the "name" attribute at the class level, they will simply be ignored, since those only serve as deployment hint (as per the Java EE specification). </p>
+<p>This post-processor can either obtain EntityManagerFactory beans defined in the Spring application context (the default), or obtain EntityManagerFactory references from JNDI ("persistence unit references"). In the bean case, the persistence unit name will be matched against the actual deployed unit, with the bean name used as fallback unit name if no deployed name found. Typically, Spring's org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean will be used for setting up such EntityManagerFactory beans. Alternatively, such beans may also be obtained from JNDI, e.g. using the <code>jee:jndi-lookup</code> XML configuration element (with the bean name matching the requested unit name). In both cases, the post-processor definition will look as simple as this: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/&gt;</code></pre> In the JNDI case, specify the corresponding JNDI names in this post-processor's <code><a href="#">"persistenceUnits" map</a></code>, typically with matching <code>persistence-unit-ref</code> entries in the Java EE deployment descriptor. By default, those names are considered as resource references (according to the Java EE resource-ref convention), located underneath the "java:comp/env/" namespace. For example: <pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceUnits"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/unit1"/&gt; &lt;entry key="unit2" value="persistence/unit2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> In this case, the specified persistence units will always be resolved in JNDI rather than as Spring-defined beans. The entire persistence unit deployment, including the weaving of persistent classes, is then up to the Java EE server. Persistence contexts (i.e. EntityManager references) will be built based on those server-provided EntityManagerFactory references, using Spring's own transaction synchronization facilities for transactional EntityManager handling (typically with Spring's <code>@Transactional</code> annotation for demarcation and org.springframework.transaction.jta.JtaTransactionManager as backend). 
+<p>If you prefer the Java EE server's own EntityManager handling, specify entries in this post-processor's <code><a href="#">"persistenceContexts" map</a></code> (or <code><a href="#">"extendedPersistenceContexts" map</a></code>, typically with matching <code>persistence-context-ref</code> entries in the Java EE deployment descriptor. For example: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceContexts"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/context1"/&gt; &lt;entry key="unit2" value="persistence/context2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> If the application only obtains EntityManager references in the first place, this is all you need to specify. If you need EntityManagerFactory references as well, specify entries for both "persistenceUnits" and "persistenceContexts", pointing to matching JNDI locations. 
+<p><strong>NOTE: In general, do not inject EXTENDED EntityManagers into STATELESS beans, i.e. do not use <code>@PersistenceContext</code> with type <code>EXTENDED</code> in Spring beans defined with scope 'singleton' (Spring's default scope).</strong> Extended EntityManagers are <em>not</em> thread-safe, hence they must not be used in concurrently accessed beans (which Spring-managed singletons usually are). </p>
+<p>Note: A default PersistenceAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom PersistenceAnnotationBeanPostProcessor bean definition.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-after-initialization.html">postProcessAfterInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-after-instantiation.html">postProcessAfterInstantiation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInstantiation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessAfterInstantiation(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessAfterInstantiation(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-destruction.html">postProcessBeforeDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessBeforeDestruction(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-initialization.html">postProcessBeforeInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-instantiation.html">postProcessBeforeInstantiation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInstantiation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessBeforeInstantiation(java.lang.Class((kotlin.Any)), kotlin.String)/beanClass">beanClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessBeforeInstantiation(java.lang.Class((kotlin.Any)), kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-merged-bean-definition.html">postProcessMergedBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessMergedBeanDefinition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanDefinition">beanDefinition</span><span class="symbol">:</span>&nbsp;<span class="identifier">RootBeanDefinition</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanType">beanType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessMergedBeanDefinition(org.springframework.beans.factory.support.RootBeanDefinition, java.lang.Class((kotlin.Any)), kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-property-values.html">postProcessPropertyValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessPropertyValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/pvs">pvs</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyValues</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/pds">pds</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">PropertyDescriptor</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$postProcessPropertyValues(org.springframework.beans.PropertyValues, kotlin.Array((java.beans.PropertyDescriptor)), kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyValues</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="requires-destruction.html">requiresDestruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresDestruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$requiresDestruction(kotlin.Any)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-persistence-unit-name.html">setDefaultPersistenceUnitName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultPersistenceUnitName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setDefaultPersistenceUnitName(kotlin.String)/unitName">unitName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the default persistence unit name, to be used in case of no unit name specified in an <code>@PersistenceUnit</code> / <code>@PersistenceContext</code> annotation. 
+<p>This is mainly intended for lookups in the application context, indicating the target persistence unit name (typically matching the bean name), but also applies to lookups in the <code><a href="#">"persistenceUnits"</a></code> / <code><a href="#">"persistenceContexts"</a></code> / <code><a href="#">"extendedPersistenceContexts"</a></code> map, avoiding the need for duplicated mappings for the empty String there. </p>
+<p>Default is to check for a single EntityManagerFactory bean in the Spring application context, if any. If there are multiple such factories, either specify this default persistence unit name or explicitly refer to named persistence units in your annotations.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-extended-persistence-contexts.html">setExtendedPersistenceContexts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExtendedPersistenceContexts</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setExtendedPersistenceContexts(kotlin.collections.MutableMap((kotlin.String, )))/extendedPersistenceContexts">extendedPersistenceContexts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the <em>extended</em> persistence contexts for EntityManager lookups, as a Map from persistence unit name to persistence context JNDI name (which needs to resolve to an EntityManager instance). 
+<p>JNDI names specified here should refer to <code>persistence-context-ref</code> entries in the Java EE deployment descriptors, matching the target persistence unit and being set up with persistence context type <code>Extended</code>. </p>
+<p>In case of no unit name specified in the annotation, the specified value for the <code><a href="#">default persistence unit</a></code> will be taken (by default, the value mapped to the empty String), or simply the single persistence unit if there is only one. </p>
+<p>This is mainly intended for use in a Java EE environment, with all lookup driven by the standard JPA annotations, and all EntityManager references obtained from JNDI. No separate EntityManagerFactory bean definitions are necessary in such a scenario, and all EntityManager handling is done by the Java EE server itself.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-environment.html">setJndiEnvironment</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiEnvironment</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setJndiEnvironment(java.util.Properties)/jndiEnvironment">jndiEnvironment</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI environment to use for JNDI lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jndi-template.html">setJndiTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJndiTemplate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setJndiTemplate(kotlin.Any)/jndiTemplate">jndiTemplate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JNDI template to use for JNDI lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-order.html">setOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setOrder(kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-persistence-contexts.html">setPersistenceContexts</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPersistenceContexts</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setPersistenceContexts(kotlin.collections.MutableMap((kotlin.String, )))/persistenceContexts">persistenceContexts</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the <em>transactional</em> persistence contexts for EntityManager lookups, as a Map from persistence unit name to persistence context JNDI name (which needs to resolve to an EntityManager instance). 
+<p>JNDI names specified here should refer to <code>persistence-context-ref</code> entries in the Java EE deployment descriptors, matching the target persistence unit and being set up with persistence context type <code>Transaction</code>. </p>
+<p>In case of no unit name specified in the annotation, the specified value for the <code><a href="#">default persistence unit</a></code> will be taken (by default, the value mapped to the empty String), or simply the single persistence unit if there is only one. </p>
+<p>This is mainly intended for use in a Java EE environment, with all lookup driven by the standard JPA annotations, and all EntityManager references obtained from JNDI. No separate EntityManagerFactory bean definitions are necessary in such a scenario, and all EntityManager handling is done by the Java EE server itself.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-persistence-units.html">setPersistenceUnits</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPersistenceUnits</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setPersistenceUnits(kotlin.collections.MutableMap((kotlin.String, )))/persistenceUnits">persistenceUnits</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the persistence units for EntityManagerFactory lookups, as a Map from persistence unit name to persistence unit JNDI name (which needs to resolve to an EntityManagerFactory instance). 
+<p>JNDI names specified here should refer to <code>persistence-unit-ref</code> entries in the Java EE deployment descriptor, matching the target persistence unit. </p>
+<p>In case of no unit name specified in the annotation, the specified value for the <code><a href="#">default persistence unit</a></code> will be taken (by default, the value mapped to the empty String), or simply the single persistence unit if there is only one. </p>
+<p>This is mainly intended for use in a Java EE environment, with all lookup driven by the standard JPA annotations, and all EntityManagerFactory references obtained from JNDI. No separate EntityManagerFactory bean definitions are necessary in such a scenario. </p>
+<p>If no corresponding "persistenceContexts"/"extendedPersistenceContexts" are specified, <code>@PersistenceContext</code> will be resolved to EntityManagers built on top of the EntityManagerFactory defined here. Note that those will be Spring-managed EntityManagers, which implement transaction synchronization based on Spring's facilities. If you prefer the Java EE server's own EntityManager handling, specify corresponding "persistenceContexts"/"extendedPersistenceContexts".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-resource-ref.html">setResourceRef</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceRef</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$setResourceRef(kotlin.Boolean)/resourceRef">resourceRef</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the lookup occurs in a Java EE container, i.e. if the prefix "java:comp/env/" needs to be added if the JNDI name doesn't already contain it. PersistenceAnnotationBeanPostProcessor's default is "true".</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

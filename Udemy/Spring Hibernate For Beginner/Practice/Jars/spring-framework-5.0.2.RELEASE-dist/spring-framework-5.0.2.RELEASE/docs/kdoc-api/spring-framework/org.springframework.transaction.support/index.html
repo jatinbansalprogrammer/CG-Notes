@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.transaction.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.transaction.support</a><br/>
+<br/>
+<h2>Package org.springframework.transaction.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-callback-preferring-platform-transaction-manager/index.html">CallbackPreferringPlatformTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">CallbackPreferringPlatformTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PlatformTransactionManager</span></code>
+<p>Extension of the org.springframework.transaction.PlatformTransactionManager interface, exposing a method for executing a given callback within a transaction. 
+<p>Implementors of this interface automatically express a preference for callbacks over programmatic <code>getTransaction</code>, <code>commit</code> and <code>rollback</code> calls. Calling code may check whether a given transaction manager implements this interface to choose to prepare a callback instead of explicit transaction demarcation control. </p>
+<p>Spring's TransactionTemplate and org.springframework.transaction.interceptor.TransactionInterceptor detect and use this PlatformTransactionManager variant automatically.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-transaction-definition/index.html">DefaultTransactionDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultTransactionDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionDefinition</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the TransactionDefinition interface, offering bean-style configuration and sensible default values (PROPAGATION_REQUIRED, ISOLATION_DEFAULT, TIMEOUT_DEFAULT, readOnly=false). 
+<p>Base class for both TransactionTemplate and org.springframework.transaction.interceptor.DefaultTransactionAttribute.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-transaction-definition/index.html">DelegatingTransactionDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">DelegatingTransactionDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionDefinition</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>TransactionDefinition implementation that delegates all calls to a given target TransactionDefinition instance. Abstract because it is meant to be subclassed, with subclasses overriding specific methods that are not supposed to simply delegate to the target instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-holder-synchronization/index.html">ResourceHolderSynchronization</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ResourceHolderSynchronization</span><span class="symbol">&lt;</span><span class="identifier">H</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceHolder</span><span class="symbol">, </span><span class="identifier">K</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronization</span></code>
+<p>TransactionSynchronization implementation that manages a ResourceHolder bound through TransactionSynchronizationManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-transaction-scope/index.html">SimpleTransactionScope</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleTransactionScope</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Scope</span></code>
+<p>A simple transaction-backed Scope implementation, delegating to TransactionSynchronizationManager's resource binding mechanism. 
+<p><strong>NOTE:</strong> Like org.springframework.context.support.SimpleThreadScope, this transaction scope is not registered by default in common contexts. Instead, you need to explicitly assign it to a scope key in your setup, either through <code><a href="#">org.springframework.beans.factory.config.ConfigurableBeanFactory#registerScope</a></code> or through a org.springframework.beans.factory.config.CustomScopeConfigurer bean.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-transaction-status/index.html">SimpleTransactionStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleTransactionStatus</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTransactionStatus</span></code>
+<p>A simple org.springframework.transaction.TransactionStatus implementation. 
+<p>Derives from AbstractTransactionStatus and adds an explicit <code><a href="-simple-transaction-status/is-new-transaction.html">"newTransaction"</a></code> flag. </p>
+<p>This class is not used by any of Spring's pre-built org.springframework.transaction.PlatformTransactionManager implementations. It is mainly provided as a start for custom transaction manager implementations and as a static mock for testing transactional code (either as part of a mock <code>PlatformTransactionManager</code> or as argument passed into a TransactionCallback to be tested).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-callback-without-result/index.html">TransactionCallbackWithoutResult</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TransactionCallbackWithoutResult</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TransactionCallback</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Simple convenience class for TransactionCallback implementation. Allows for implementing a doInTransaction version without result, i.e. without the need for a return statement.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-operations/index.html">TransactionOperations</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">TransactionOperations</span></code>
+<p>Interface specifying basic transaction execution operations. Implemented by TransactionTemplate. Not often used directly, but a useful option to enhance testability, as it can easily be mocked or stubbed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-synchronization-utils/index.html">TransactionSynchronizationUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TransactionSynchronizationUtils</span></code>
+<p>Utility methods for triggering specific TransactionSynchronization callback methods on all currently registered synchronizations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-template/index.html">TransactionTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionTemplate</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-default-transaction-definition/index.html"><span class="identifier">DefaultTransactionDefinition</span></a><span class="symbol">, </span><a href="-transaction-operations/index.html"><span class="identifier">TransactionOperations</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Template class that simplifies programmatic transaction demarcation and transaction exception handling. 
+<p>The central method is <code><a href="#">#execute</a></code>, supporting transactional code that implements the TransactionCallback interface. This template handles the transaction lifecycle and possible exceptions such that neither the TransactionCallback implementation nor the calling code needs to explicitly handle transactions. </p>
+<p>Typical usage: Allows for writing low-level data access objects that use resources such as JDBC DataSources but are not transaction-aware themselves. Instead, they can implicitly participate in transactions handled by higher-level application services utilizing this class, making calls to the low-level services via an inner-class callback object. </p>
+<p>Can be used within a service implementation via direct instantiation with a transaction manager reference, or get prepared in an application context and passed to services as bean reference. Note: The transaction manager should always be configured as bean in the application context: in the first case given to the service directly, in the second case given to the prepared template. </p>
+<p>Supports setting the propagation behavior and the isolation level by name, for convenient configuration in context definitions.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServletContextScope - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.support</a>&nbsp;/&nbsp;<a href=".">ServletContextScope</a><br/>
+<br/>
+<h1>ServletContextScope</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextScope</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Scope</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Scope wrapper for a ServletContext, i.e. for global web application attributes. 
+<p>This differs from traditional Spring singletons in that it exposes attributes in the ServletContext. Those attributes will get destroyed whenever the entire application shuts down, which might be earlier or later than the shutdown of the containing Spring ApplicationContext. </p>
+<p>The associated destruction mechanism relies on a org.springframework.web.context.ContextCleanupListener being registered in <code>web.xml</code>. Note that org.springframework.web.context.ContextLoaderListener includes ContextCleanupListener's functionality. </p>
+<p>This scope is registered as default scope with key <code><a href="#">"application"</a></code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.context.ContextCleanupListener</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServletContextScope</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextScope$<init>(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span></code>
+<p>Create a new Scope wrapper for the given ServletContext.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoke all registered destruction callbacks. To be called on ServletContext shutdown.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextScope$get(kotlin.String, org.springframework.beans.factory.ObjectFactory((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.ServletContextScope$get(kotlin.String, org.springframework.beans.factory.ObjectFactory((kotlin.Any)))/objectFactory">objectFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ObjectFactory</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-conversation-id.html">getConversationId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConversationId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="register-destruction-callback.html">registerDestructionCallback</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerDestructionCallback</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextScope$registerDestructionCallback(kotlin.String, java.lang.Runnable)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.ServletContextScope$registerDestructionCallback(kotlin.String, java.lang.Runnable)/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="remove.html">remove</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">remove</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextScope$remove(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-contextual-object.html">resolveContextualObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveContextualObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextScope$resolveContextualObject(kotlin.String)/key">key</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

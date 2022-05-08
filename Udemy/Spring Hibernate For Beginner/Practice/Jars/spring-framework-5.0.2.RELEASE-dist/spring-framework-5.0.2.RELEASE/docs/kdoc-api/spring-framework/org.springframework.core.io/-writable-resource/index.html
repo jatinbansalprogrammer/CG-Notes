@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>WritableResource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core.io</a>&nbsp;/&nbsp;<a href=".">WritableResource</a><br/>
+<br/>
+<h1>WritableResource</h1>
+<code><span class="keyword">interface </span><span class="identifier">WritableResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span></code>
+<p>Extended interface for a resource that supports writing to it. Provides an <code><a href="get-output-stream.html">OutputStream accessor</a></code>.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+java.io.OutputStream</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-output-stream.html">getOutputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getOutputStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">OutputStream</span></code>
+<p>Return an OutputStream for the underlying resource, allowing to (over-)write its content.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-writable.html">isWritable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isWritable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Indicate whether the contents of this resource can be written via <code><a href="get-output-stream.html">#getOutputStream()</a></code>. 
+<p>Will be <code>true</code> for typical resource descriptors; note that actual content writing may still fail when attempted. However, a value of <code>false</code> is a definitive indication that the resource content cannot be modified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="writable-channel.html">writableChannel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">writableChannel</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WritableByteChannel</span></code>
+<p>Return a WritableByteChannel. 
+<p>It is expected that each call creates a <em>fresh</em> channel. </p>
+<p>The default implementation returns <code><a href="#">Channels#newChannel(OutputStream)</a></code> with the result of <code><a href="get-output-stream.html">#getOutputStream()</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-file-url-resource/index.html">FileUrlResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileUrlResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlResource</span><span class="symbol">, </span><span class="identifier">WritableResource</span></code>
+<p>Subclass of UrlResource which assumes file resolution, to the degree of implementing the WritableResource interface for it. 
+<p>This is the class resolved by DefaultResourceLoader for a "file:..." URL location, allowing a downcast to WritableResource for it. </p>
+<p>Alternatively, for direct construction from a java.io.File handle, consider using FileSystemResource. For an NIO java.nio.file.Path, consider using PathResource instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-path-resource/index.html">PathResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResource</span><span class="symbol">, </span><span class="identifier">WritableResource</span></code>
+<p>Resource implementation for <code>java.nio.file.Path</code> handles. Supports resolution as File, and also as URL. Implements the extended WritableResource interface.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

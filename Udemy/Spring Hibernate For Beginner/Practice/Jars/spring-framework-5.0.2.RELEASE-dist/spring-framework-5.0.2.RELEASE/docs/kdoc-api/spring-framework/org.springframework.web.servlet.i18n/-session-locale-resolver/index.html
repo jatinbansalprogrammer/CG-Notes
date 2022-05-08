@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SessionLocaleResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.i18n</a>&nbsp;/&nbsp;<a href=".">SessionLocaleResolver</a><br/>
+<br/>
+<h1>SessionLocaleResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SessionLocaleResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-locale-context-resolver/index.html"><span class="identifier">AbstractLocaleContextResolver</span></a></code>
+<p>org.springframework.web.servlet.LocaleResolver implementation that uses a locale attribute in the user's session in case of a custom setting, with a fallback to the specified default locale or the request's accept-header locale. 
+<p>This is most appropriate if the application needs user sessions anyway, i.e. when the <code>HttpSession</code> does not have to be created just for storing the user's locale. The session may optionally contain an associated time zone attribute as well; alternatively, you may specify a default time zone. </p>
+<p>Custom controllers can override the user's locale and time zone by calling <code>#setLocale(Context)</code> on the resolver, e.g. responding to a locale change request. As a more convenient alternative, consider using <code><a href="#">org.springframework.web.servlet.support.RequestContext#changeLocale</a></code>. </p>
+<p>In contrast to CookieLocaleResolver, this strategy stores locally chosen locale settings in the Servlet container's <code>HttpSession</code>. As a consequence, those settings are just temporary for each session and therefore lost when each session terminates. </p>
+<p>Note that there is no direct relationship with external session management mechanisms such as the "Spring Session" project. This <code>LocaleResolver</code> will simply evaluate and modify corresponding <code>HttpSession</code> attributes against the current <code>HttpServletRequest</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+27.02.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="../-abstract-locale-resolver/set-default-locale.html">#setDefaultLocale</a><a href="../-abstract-locale-context-resolver/set-default-time-zone.html">#setDefaultTimeZone</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SessionLocaleResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.web.servlet.LocaleResolver implementation that uses a locale attribute in the user's session in case of a custom setting, with a fallback to the specified default locale or the request's accept-header locale. 
+<p>This is most appropriate if the application needs user sessions anyway, i.e. when the <code>HttpSession</code> does not have to be created just for storing the user's locale. The session may optionally contain an associated time zone attribute as well; alternatively, you may specify a default time zone. </p>
+<p>Custom controllers can override the user's locale and time zone by calling <code>#setLocale(Context)</code> on the resolver, e.g. responding to a locale change request. As a more convenient alternative, consider using <code><a href="#">org.springframework.web.servlet.support.RequestContext#changeLocale</a></code>. </p>
+<p>In contrast to CookieLocaleResolver, this strategy stores locally chosen locale settings in the Servlet container's <code>HttpSession</code>. As a consequence, those settings are just temporary for each session and therefore lost when each session terminates. </p>
+<p>Note that there is no direct relationship with external session management mechanisms such as the "Spring Session" project. This <code>LocaleResolver</code> will simply evaluate and modify corresponding <code>HttpSession</code> attributes against the current <code>HttpServletRequest</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-l-o-c-a-l-e_-s-e-s-s-i-o-n_-a-t-t-r-i-b-u-t-e_-n-a-m-e.html">LOCALE_SESSION_ATTRIBUTE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">LOCALE_SESSION_ATTRIBUTE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Name of the session attribute that holds the Locale. Only used internally by this implementation. 
+<p>Use <code>RequestContext(Utils).getLocale()</code> to retrieve the current locale in controllers or views.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-t-i-m-e_-z-o-n-e_-s-e-s-s-i-o-n_-a-t-t-r-i-b-u-t-e_-n-a-m-e.html">TIME_ZONE_SESSION_ATTRIBUTE_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TIME_ZONE_SESSION_ATTRIBUTE_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Name of the session attribute that holds the TimeZone. Only used internally by this implementation. 
+<p>Use <code>RequestContext(Utils).getTimeZone()</code> to retrieve the current time zone in controllers or views.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="resolve-locale.html">resolveLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.SessionLocaleResolver$resolveLocale(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Locale</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-locale-context.html">resolveLocaleContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveLocaleContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.SessionLocaleResolver$resolveLocaleContext(javax.servlet.http.HttpServletRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">LocaleContext</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale-attribute-name.html">setLocaleAttributeName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocaleAttributeName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.SessionLocaleResolver$setLocaleAttributeName(kotlin.String)/localeAttributeName">localeAttributeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name of the corresponding attribute in the <code>HttpSession</code>, holding the current Locale value. 
+<p>The default is an internal <code><a href="-l-o-c-a-l-e_-s-e-s-s-i-o-n_-a-t-t-r-i-b-u-t-e_-n-a-m-e.html">#LOCALE_SESSION_ATTRIBUTE_NAME</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-locale-context.html">setLocaleContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocaleContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.SessionLocaleResolver$setLocaleContext(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.context.i18n.LocaleContext)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.SessionLocaleResolver$setLocaleContext(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.context.i18n.LocaleContext)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.SessionLocaleResolver$setLocaleContext(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, org.springframework.context.i18n.LocaleContext)/localeContext">localeContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">LocaleContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-time-zone-attribute-name.html">setTimeZoneAttributeName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimeZoneAttributeName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.SessionLocaleResolver$setTimeZoneAttributeName(kotlin.String)/timeZoneAttributeName">timeZoneAttributeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the name of the corresponding attribute in the <code>HttpSession</code>, holding the current TimeZone value. 
+<p>The default is an internal <code><a href="-t-i-m-e_-z-o-n-e_-s-e-s-s-i-o-n_-a-t-t-r-i-b-u-t-e_-n-a-m-e.html">#TIME_ZONE_SESSION_ATTRIBUTE_NAME</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-locale-context-resolver/get-default-time-zone.html">getDefaultTimeZone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultTimeZone</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TimeZone</span></code>
+<p>Return the default TimeZone that this resolver is supposed to fall back to, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-locale-context-resolver/set-default-time-zone.html">setDefaultTimeZone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultTimeZone</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.AbstractLocaleContextResolver$setDefaultTimeZone(java.util.TimeZone)/defaultTimeZone">defaultTimeZone</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeZone</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a default TimeZone that this resolver will return if no other time zone found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-locale-context-resolver/set-locale.html">setLocale</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLocale</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.i18n.AbstractLocaleContextResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.AbstractLocaleContextResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpServletResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.i18n.AbstractLocaleContextResolver$setLocale(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

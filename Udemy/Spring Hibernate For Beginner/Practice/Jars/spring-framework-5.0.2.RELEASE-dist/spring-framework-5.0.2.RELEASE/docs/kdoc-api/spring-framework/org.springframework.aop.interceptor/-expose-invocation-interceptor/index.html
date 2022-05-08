@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExposeInvocationInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.interceptor</a>&nbsp;/&nbsp;<a href=".">ExposeInvocationInterceptor</a><br/>
+<br/>
+<h1>ExposeInvocationInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExposeInvocationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Interceptor that exposes the current org.aopalliance.intercept.MethodInvocation as a thread-local object. We occasionally need to do this; for example, when a pointcut (e.g. an AspectJ expression pointcut) needs to know the full invocation context. 
+<p>Don't use this interceptor unless this is really necessary. Target objects should not normally know about Spring AOP, as this creates a dependency on Spring API. Target objects should be plain POJOs as far as possible. </p>
+<p>If used, this interceptor will normally be the first in the interceptor chain.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-a-d-v-i-s-o-r.html">ADVISOR</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">ADVISOR</span><span class="symbol">: </span><span class="identifier">Advisor</span></code>
+<p>Singleton advisor for this class. Use in preference to INSTANCE when using Spring AOP, as it prevents the need to create a new Advisor to wrap the instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-i-n-s-t-a-n-c-e.html">INSTANCE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">INSTANCE</span><span class="symbol">: </span><span class="identifier">ExposeInvocationInterceptor</span></code>
+<p>Singleton instance of this class</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="current-invocation.html">currentInvocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">currentInvocation</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a></code>
+<p>Return the AOP Alliance MethodInvocation object associated with the current invocation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke.html">invoke</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.ExposeInvocationInterceptor$invoke(org.aopalliance.intercept.MethodInvocation)/mi">mi</span><span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JmxAttributeSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jmx.export.metadata</a>&nbsp;/&nbsp;<a href=".">JmxAttributeSource</a><br/>
+<br/>
+<h1>JmxAttributeSource</h1>
+<code><span class="keyword">interface </span><span class="identifier">JmxAttributeSource</span></code>
+<p>Interface used by the <code>MetadataMBeanInfoAssembler</code> to read source-level metadata from a managed resource's class.</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Jennifer Hickey</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler#setAttributeSource</a><a href="#">org.springframework.jmx.export.MBeanExporter#setAssembler</a></p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-managed-attribute.html">getManagedAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getManagedAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.metadata.JmxAttributeSource$getManagedAttribute(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-managed-attribute/index.html"><span class="identifier">ManagedAttribute</span></a></code>
+<p>Implementations should return an instance of <code>ManagedAttribute</code> if the supplied <code>Method</code> has the corresponding metadata. Otherwise should return <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-managed-metric.html">getManagedMetric</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getManagedMetric</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.metadata.JmxAttributeSource$getManagedMetric(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-managed-metric/index.html"><span class="identifier">ManagedMetric</span></a></code>
+<p>Implementations should return an instance of <code>ManagedMetric</code> if the supplied <code>Method</code> has the corresponding metadata. Otherwise should return <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-managed-notifications.html">getManagedNotifications</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getManagedNotifications</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.metadata.JmxAttributeSource$getManagedNotifications(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">ManagedNotification</span><span class="symbol">&gt;</span></code>
+<p>Implementations should return an array of ManagedNotification if the supplied the <code>Class</code> has the corresponding metadata. Otherwise should return an empty array.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-managed-operation.html">getManagedOperation</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getManagedOperation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.metadata.JmxAttributeSource$getManagedOperation(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="../-managed-operation/index.html"><span class="identifier">ManagedOperation</span></a></code>
+<p>Implementations should return an instance of <code>ManagedOperation</code> if the supplied <code>Method</code> has the corresponding metadata. Otherwise should return <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-managed-operation-parameters.html">getManagedOperationParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getManagedOperationParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.metadata.JmxAttributeSource$getManagedOperationParameters(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">ManagedOperationParameter</span><span class="symbol">&gt;</span></code>
+<p>Implementations should return an array of <code>ManagedOperationParameter</code> if the supplied <code>Method</code> has the corresponding metadata. Otherwise should return an empty array if no metadata is found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-managed-resource.html">getManagedResource</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getManagedResource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.export.metadata.JmxAttributeSource$getManagedResource(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ManagedResource</span></code>
+<p>Implementations should return an instance of <code>ManagedResource</code> if the supplied <code>Class</code> has the appropriate metadata. Otherwise should return <code>null</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.jmx.export.annotation/-annotation-jmx-attribute-source/index.html">AnnotationJmxAttributeSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationJmxAttributeSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmxAttributeSource</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Implementation of the <code>JmxAttributeSource</code> interface that reads annotations and exposes the corresponding attributes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

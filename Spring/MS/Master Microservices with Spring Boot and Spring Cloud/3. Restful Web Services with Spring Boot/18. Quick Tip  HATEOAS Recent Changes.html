@@ -1,0 +1,4 @@
+<p><em>There are a few modifications of HATEOAS in the latest release of Spring HATEOAS:</em></p><p>If you have compilation errors using ControllerLinkBuilder or Resource, Use the imports below:</p><pre class="prettyprint linenums">import org.springframework.hateoas.EntityModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;</pre><pre class="prettyprint linenums">EntityModel&lt;User&gt; model = new EntityModel&lt;&gt;(user.get());
+WebMvcLinkBuilder linkTo = linkTo(methodOn(this.getClass()).retrieveAllUsers());
+model.add(linkTo.withRel("all-users"));</pre>

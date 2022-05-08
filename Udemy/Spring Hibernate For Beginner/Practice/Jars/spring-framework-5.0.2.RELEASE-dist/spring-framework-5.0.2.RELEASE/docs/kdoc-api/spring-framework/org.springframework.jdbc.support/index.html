@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jdbc.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jdbc.support</a><br/>
+<br/>
+<h2>Package org.springframework.jdbc.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-custom-s-q-l-error-codes-translation/index.html">CustomSQLErrorCodesTranslation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomSQLErrorCodesTranslation</span></code>
+<p>JavaBean for holding custom JDBC error codes translation for a particular database. The "exceptionClass" property defines which exception will be thrown for the list of error codes specified in the errorCodes property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-s-q-l-exception-translator-registrar/index.html">CustomSQLExceptionTranslatorRegistrar</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomSQLExceptionTranslatorRegistrar</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InitializingBean</span></code>
+<p>Registry for registering custom org.springframework.jdbc.support.SQLExceptionTranslator instances for specific databases.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-s-q-l-exception-translator-registry/index.html">CustomSQLExceptionTranslatorRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomSQLExceptionTranslatorRegistry</span></code>
+<p>Registry for custom org.springframework.jdbc.support.SQLExceptionTranslator instances associated with specific databases allowing for overriding translation based on values contained in the configuration file named "sql-error-codes.xml".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-database-startup-validator/index.html">DatabaseStartupValidator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DatabaseStartupValidator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InitializingBean</span></code>
+<p>Bean that checks if a database has already started up. To be referenced via "depends-on" from beans that depend on database startup, like a Hibernate SessionFactory or custom data access objects that access a DataSource directly. 
+<p>Useful to defer application initialization until a database has started up. Particularly appropriate for waiting on a slowly starting Oracle database.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generated-key-holder/index.html">GeneratedKeyHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GeneratedKeyHolder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">KeyHolder</span></code>
+<p>Default implementation of the KeyHolder interface, to be used for holding auto-generated keys (as potentially returned by JDBC insert statements). 
+<p>Create an instance of this class for each insert operation, and pass it to the corresponding org.springframework.jdbc.core.JdbcTemplate or {org.springframework.jdbc.object.SqlUpdate} methods.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdbc-accessor/index.html">JdbcAccessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JdbcAccessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">InitializingBean</span></code>
+<p>Base class for org.springframework.jdbc.core.JdbcTemplate and other JDBC-accessing DAO helpers, defining common properties such as DataSource and exception translator. 
+<p>Not intended to be used directly. See org.springframework.jdbc.core.JdbcTemplate.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jdbc-utils/index.html">JdbcUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JdbcUtils</span></code>
+<p>Generic utility methods for working with JDBC. Mainly for internal use within the framework, but also useful for custom JDBC access code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-q-l-error-code-s-q-l-exception-translator/index.html">SQLErrorCodeSQLExceptionTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SQLErrorCodeSQLExceptionTranslator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFallbackSQLExceptionTranslator</span></code>
+<p>Implementation of SQLExceptionTranslator that analyzes vendor-specific error codes. More precise than an implementation based on SQL state, but heavily vendor-specific. 
+<p>This class applies the following matching rules: </p>
+<ul> <li>Try custom translation implemented by any subclass. Note that this class is concrete and is typically used itself, in which case this rule doesn't apply. </li>
+<li>Apply error code matching. Error codes are obtained from the SQLErrorCodesFactory by default. This factory loads a "sql-error-codes.xml" file from the class path, defining error code mappings for database names from database metadata. </li>
+<li>Fallback to a fallback translator. SQLStateSQLExceptionTranslator is the default fallback translator, analyzing the exception's SQL state only. On Java 6 which introduces its own <code>SQLException</code> subclass hierarchy, we will use SQLExceptionSubclassTranslator by default, which in turns falls back to Spring's own SQL state translation when not encountering specific subclasses. </li>
+</ul>
+ 
+<p>The configuration file named "sql-error-codes.xml" is by default read from this package. It can be overridden through a file of the same name in the root of the class path (e.g. in the "/WEB-INF/classes" directory), as long as the Spring JDBC package is loaded from the same ClassLoader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-q-l-exception-subclass-translator/index.html">SQLExceptionSubclassTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SQLExceptionSubclassTranslator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFallbackSQLExceptionTranslator</span></code>
+<p>SQLExceptionTranslator implementation which analyzes the specific java.sql.SQLException subclass thrown by the JDBC driver. 
+<p>Falls back to a standard SQLStateSQLExceptionTranslator if the JDBC driver does not actually expose JDBC 4 compliant <code>SQLException</code> subclasses.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-q-l-exception-translator/index.html">SQLExceptionTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SQLExceptionTranslator</span></code>
+<p>Strategy interface for translating between SQLException and Spring's data access strategy-agnostic DataAccessException hierarchy. 
+<p>Implementations can be generic (for example, using <code><a href="#">SQLState</a></code> codes for JDBC) or wholly proprietary (for example, using Oracle error codes) for greater precision.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-s-q-l-state-s-q-l-exception-translator/index.html">SQLStateSQLExceptionTranslator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SQLStateSQLExceptionTranslator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFallbackSQLExceptionTranslator</span></code>
+<p>SQLExceptionTranslator implementation that analyzes the SQL state in the SQLException based on the first two digits (the SQL state "class"). Detects standard SQL state values and well-known vendor-specific SQL states. 
+<p>Not able to diagnose all problems, but is portable between databases and does not require special initialization (no database vendor detection, etc.). For more precise translation, consider SQLErrorCodeSQLExceptionTranslator.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sql-value/index.html">SqlValue</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SqlValue</span></code>
+<p>Simple interface for complex types to be set as statement parameters. 
+<p>Implementations perform the actual work of setting the actual values. They must implement the callback method <code>setValue</code> which can throw SQLExceptions that will be caught and translated by the calling code. This callback method has access to the underlying Connection via the given PreparedStatement object, if that should be needed to create any database-specific objects.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-meta-data-access-exception/index.html">MetaDataAccessException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MetaDataAccessException</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.core/-nested-checked-exception/index.html"><span class="identifier">NestedCheckedException</span></a></code>
+<p>Exception indicating that something went wrong during JDBC metadata lookup. 
+<p>This is a checked exception since we want it to be caught, logged and handled rather than cause the application to fail. Failure to read JDBC metadata is usually not a fatal problem.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

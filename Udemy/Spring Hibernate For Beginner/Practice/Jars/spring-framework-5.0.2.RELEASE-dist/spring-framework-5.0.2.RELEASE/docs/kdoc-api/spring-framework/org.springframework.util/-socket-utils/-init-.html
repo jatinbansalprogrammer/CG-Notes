@@ -1,0 +1,17 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SocketUtils.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.util</a>&nbsp;/&nbsp;<a href="index.html">SocketUtils</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.util.SocketUtils$&lt;init&gt;()"></a>
+<code><span class="identifier">SocketUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Although <code>SocketUtils</code> consists solely of static utility methods, this constructor is intentionally <code>public</code>. Rationale 
+<p>Static methods from this class may be invoked from within XML configuration files using the Spring Expression Language (SpEL) and the following syntax. </p>
+<pre><code><code>&lt;bean id="bean1" ... p:port="#{T(org.springframework.util.SocketUtils).findAvailableTcpPort(12000)}" /&gt;</code></code></pre> If this constructor were <code>private</code>, you would be required to supply the fully qualified class name to SpEL's <code>T()</code> function for each usage. Thus, the fact that this constructor is <code>public</code> allows you to reduce boilerplate configuration with SpEL as can be seen in the following example. <pre><code><code>&lt;bean id="socketUtils" class="org.springframework.util.SocketUtils" /&gt; &lt;bean id="bean1" ... p:port="#{socketUtils.findAvailableTcpPort(12000)}" /&gt; &lt;bean id="bean2" ... p:port="#{socketUtils.findAvailableTcpPort(30000)}" /&gt;</code></code></pre></p>
+</BODY>
+</HTML>

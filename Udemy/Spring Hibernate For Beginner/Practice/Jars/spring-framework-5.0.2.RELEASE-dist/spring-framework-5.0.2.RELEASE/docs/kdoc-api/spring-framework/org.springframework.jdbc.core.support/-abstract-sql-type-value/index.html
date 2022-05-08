@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractSqlTypeValue - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core.support</a>&nbsp;/&nbsp;<a href=".">AbstractSqlTypeValue</a><br/>
+<br/>
+<h1>AbstractSqlTypeValue</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSqlTypeValue</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SqlTypeValue</span></code>
+<p>Abstract implementation of the SqlTypeValue interface, for convenient creation of type values that are supposed to be passed into the <code>PreparedStatement.setObject</code> method. The <code>createTypeValue</code> callback method has access to the underlying Connection, if that should be needed to create any database-specific objects. 
+<p>A usage example from a StoredProcedure (compare this to the plain SqlTypeValue version in the superclass javadoc): </p>
+<pre><code>proc.declareParameter(new SqlParameter("myarray", Types.ARRAY, "NUMBERS")); ... Map&lt;String, Object&gt; in = new HashMap&lt;String, Object&gt;(); in.put("myarray", new AbstractSqlTypeValue() { public Object createTypeValue(Connection con, int sqlType, String typeName) throws SQLException { oracle.sql.ArrayDescriptor desc = new oracle.sql.ArrayDescriptor(typeName, con); return new oracle.sql.ARRAY(desc, con, seats); } }); Map out = execute(in); </code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">java.sql.PreparedStatement#setObject(int, Object, int)</a>org.springframework.jdbc.object.StoredProcedure</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractSqlTypeValue</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Abstract implementation of the SqlTypeValue interface, for convenient creation of type values that are supposed to be passed into the <code>PreparedStatement.setObject</code> method. The <code>createTypeValue</code> callback method has access to the underlying Connection, if that should be needed to create any database-specific objects. 
+<p>A usage example from a StoredProcedure (compare this to the plain SqlTypeValue version in the superclass javadoc): </p>
+<pre><code>proc.declareParameter(new SqlParameter("myarray", Types.ARRAY, "NUMBERS")); ... Map&lt;String, Object&gt; in = new HashMap&lt;String, Object&gt;(); in.put("myarray", new AbstractSqlTypeValue() { public Object createTypeValue(Connection con, int sqlType, String typeName) throws SQLException { oracle.sql.ArrayDescriptor desc = new oracle.sql.ArrayDescriptor(typeName, con); return new oracle.sql.ARRAY(desc, con, seats); } }); Map out = execute(in); </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-type-value.html">setTypeValue</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setTypeValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.support.AbstractSqlTypeValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/ps">ps</span><span class="symbol">:</span>&nbsp;<span class="identifier">PreparedStatement</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.AbstractSqlTypeValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/paramIndex">paramIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.AbstractSqlTypeValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/sqlType">sqlType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.support.AbstractSqlTypeValue$setTypeValue(java.sql.PreparedStatement, kotlin.Int, kotlin.Int, kotlin.String)/typeName">typeName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingPhaseListenerMulticaster - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.jsf</a>&nbsp;/&nbsp;<a href=".">DelegatingPhaseListenerMulticaster</a><br/>
+<br/>
+<h1>DelegatingPhaseListenerMulticaster</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingPhaseListenerMulticaster</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PhaseListener</span></code>
+<p>JSF PhaseListener implementation that delegates to one or more Spring-managed PhaseListener beans coming from the Spring root WebApplicationContext. 
+<p>Configure this listener multicaster in your <code>faces-config.xml</code> file as follows: </p>
+<pre><code> &lt;application&gt; ... &lt;phase-listener&gt; org.springframework.web.jsf.DelegatingPhaseListenerMulticaster &lt;/phase-listener&gt; ... &lt;/application&gt;</code></pre> The multicaster will delegate all <code>beforePhase</code> and <code>afterPhase</code> events to all target PhaseListener beans. By default, those will simply be obtained by type: All beans in the Spring root WebApplicationContext that implement the PhaseListener interface will be fetched and invoked. 
+<p>Note: This multicaster's <code>getPhaseId()</code> method will always return <code>ANY_PHASE</code>. <strong>The phase id exposed by the target listener beans will be ignored; all events will be propagated to all listeners.</strong> </p>
+<p>This multicaster may be subclassed to change the strategy used to obtain the listener beans, or to change the strategy used to access the ApplicationContext (normally obtained via <code><a href="#">FacesContextUtils#getWebApplicationContext(FacesContext)</a></code>).</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Colin Sampaleanu</p>
+<p><strong>Since</strong><br/>
+1.2.7</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DelegatingPhaseListenerMulticaster</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JSF PhaseListener implementation that delegates to one or more Spring-managed PhaseListener beans coming from the Spring root WebApplicationContext. 
+<p>Configure this listener multicaster in your <code>faces-config.xml</code> file as follows: </p>
+<pre><code> &lt;application&gt; ... &lt;phase-listener&gt; org.springframework.web.jsf.DelegatingPhaseListenerMulticaster &lt;/phase-listener&gt; ... &lt;/application&gt;</code></pre> The multicaster will delegate all <code>beforePhase</code> and <code>afterPhase</code> events to all target PhaseListener beans. By default, those will simply be obtained by type: All beans in the Spring root WebApplicationContext that implement the PhaseListener interface will be fetched and invoked. 
+<p>Note: This multicaster's <code>getPhaseId()</code> method will always return <code>ANY_PHASE</code>. <strong>The phase id exposed by the target listener beans will be ignored; all events will be propagated to all listeners.</strong> </p>
+<p>This multicaster may be subclassed to change the strategy used to obtain the listener beans, or to change the strategy used to access the ApplicationContext (normally obtained via <code><a href="#">FacesContextUtils#getWebApplicationContext(FacesContext)</a></code>).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-phase.html">afterPhase</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPhase</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.DelegatingPhaseListenerMulticaster$afterPhase(javax.faces.event.PhaseEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">PhaseEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="before-phase.html">beforePhase</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">beforePhase</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.jsf.DelegatingPhaseListenerMulticaster$beforePhase(javax.faces.event.PhaseEvent)/event">event</span><span class="symbol">:</span>&nbsp;<span class="identifier">PhaseEvent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-phase-id.html">getPhaseId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPhaseId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PhaseId</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

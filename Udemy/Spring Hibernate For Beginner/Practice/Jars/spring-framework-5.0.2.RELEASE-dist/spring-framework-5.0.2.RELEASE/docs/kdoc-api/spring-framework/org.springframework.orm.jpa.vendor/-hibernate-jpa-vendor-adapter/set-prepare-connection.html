@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HibernateJpaVendorAdapter.setPrepareConnection - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa.vendor</a>&nbsp;/&nbsp;<a href="index.html">HibernateJpaVendorAdapter</a>&nbsp;/&nbsp;<a href=".">setPrepareConnection</a><br/>
+<br/>
+<h1>setPrepareConnection</h1>
+<a name="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter$setPrepareConnection(kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPrepareConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter$setPrepareConnection(kotlin.Boolean)/prepareConnection">prepareConnection</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to prepare the underlying JDBC Connection of a transactional Hibernate Session, that is, whether to apply a transaction-specific isolation level and/or the transaction's read-only flag to the underlying JDBC Connection. 
+<p>See <code><a href="../-hibernate-jpa-dialect/set-prepare-connection.html">HibernateJpaDialect#setPrepareConnection(boolean)</a></code> for details. This is just a convenience flag passed through to <code>HibernateJpaDialect</code>. </p>
+<p>On Hibernate 5.1/5.2, this flag remains <code>true</code> by default like against previous Hibernate versions. The vendor adapter manually enforces Hibernate's new connection handling mode <code>DELAYED_ACQUISITION_AND_HOLD</code> in that case unless a user-specified connection handling mode property indicates otherwise; switch this flag to <code>false</code> to avoid that interference. </p>
+<p><strong>NOTE: For a persistence unit with transaction type JTA e.g. on WebLogic, the connection release mode will never be altered from its provider default, i.e. not be forced to <code>DELAYED_ACQUISITION_AND_HOLD</code> by this flag.</strong> Alternatively, set Hibernate 5.2's "hibernate.connection.handling_mode" property to "DELAYED_ACQUISITION_AND_RELEASE_AFTER_TRANSACTION" or even "DELAYED_ACQUISITION_AND_RELEASE_AFTER_STATEMENT" in such a scenario.</p>
+</p>
+<p><strong>Since</strong><br/>
+4.3.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">PersistenceUnitInfo#getTransactionType()</a><a href="get-jpa-property-map.html">#getJpaPropertyMap(PersistenceUnitInfo)</a><a href="#">HibernateJpaDialect#beginTransaction</a></p>
+</BODY>
+</HTML>

@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HsqlMaxValueIncrementer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support.incrementer</a>&nbsp;/&nbsp;<a href=".">HsqlMaxValueIncrementer</a><br/>
+<br/>
+<h1>HsqlMaxValueIncrementer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HsqlMaxValueIncrementer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-identity-column-max-value-incrementer/index.html"><span class="identifier">AbstractIdentityColumnMaxValueIncrementer</span></a></code>
+<p>DataFieldMaxValueIncrementer that increments the maximum value of a given HSQL table with the equivalent of an auto-increment column. Note: If you use this class, your HSQL key column should <em>NOT</em> be auto-increment, as the sequence table does the job. 
+<p>The sequence is kept in a table. There should be one sequence table per table that needs an auto-generated key. </p>
+<p>Example: </p>
+<pre><code>create table tab (id int not null primary key, text varchar(100)); create table tab_sequence (value identity); insert into tab_sequence values(0);</code></pre> If "cacheSize" is set, the intermediate values are served without querying the database. If the server or your application is stopped or crashes or a transaction is rolled back, the unused values will never be served. The maximum hole size in numbering is consequently the value of cacheSize. 
+<p><strong>NOTE:</strong> HSQL now supports sequences and you should consider using them instead: HsqlSequenceMaxValueIncrementer</p>
+</p>
+<p><strong>Author</strong><br/>
+Jean-Pierre Pawlak</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+HsqlSequenceMaxValueIncrementer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HsqlMaxValueIncrementer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default constructor for bean property style usage.</p>
+<code><span class="identifier">HsqlMaxValueIncrementer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.incrementer.HsqlMaxValueIncrementer$<init>(javax.sql.DataSource, kotlin.String, kotlin.String)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.incrementer.HsqlMaxValueIncrementer$<init>(javax.sql.DataSource, kotlin.String, kotlin.String)/incrementerName">incrementerName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.incrementer.HsqlMaxValueIncrementer$<init>(javax.sql.DataSource, kotlin.String, kotlin.String)/columnName">columnName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Convenience constructor.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-identity-column-max-value-incrementer/is-delete-specific-values.html">isDeleteSpecificValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isDeleteSpecificValues</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to delete the entire range below the current maximum key value (<code>false</code> - the default), or the specifically generated values (<code>true</code>).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-identity-column-max-value-incrementer/set-delete-specific-values.html">setDeleteSpecificValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDeleteSpecificValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.incrementer.AbstractIdentityColumnMaxValueIncrementer$setDeleteSpecificValues(kotlin.Boolean)/deleteSpecificValues">deleteSpecificValues</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to delete the entire range below the current maximum key value (<code>false</code> - the default), or the specifically generated values (<code>true</code>). The former mode will use a where range clause whereas the latter will use an in clause starting with the lowest value minus 1, just preserving the maximum value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

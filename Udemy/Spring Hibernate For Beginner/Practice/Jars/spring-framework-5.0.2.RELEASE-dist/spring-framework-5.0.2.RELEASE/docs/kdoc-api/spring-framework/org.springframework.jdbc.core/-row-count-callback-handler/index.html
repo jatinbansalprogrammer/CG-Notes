@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RowCountCallbackHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core</a>&nbsp;/&nbsp;<a href=".">RowCountCallbackHandler</a><br/>
+<br/>
+<h1>RowCountCallbackHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RowCountCallbackHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">RowCallbackHandler</span></code>
+<p>Implementation of RowCallbackHandler. Convenient superclass for callback handlers. An instance can only be used once. 
+<p>We can either use this on its own (for example, in a test case, to ensure that our result sets have valid dimensions), or use it as a superclass for callback handlers that actually do something, and will benefit from the dimension information it provides. </p>
+<p>A usage example with JdbcTemplate: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object RowCountCallbackHandler countCallback = new RowCountCallbackHandler(); // not reusable jdbcTemplate.query("select * from user", countCallback); int rowCount = countCallback.getRowCount();</code></pre></p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+May 3, 2001</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">RowCountCallbackHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of RowCallbackHandler. Convenient superclass for callback handlers. An instance can only be used once. 
+<p>We can either use this on its own (for example, in a test case, to ensure that our result sets have valid dimensions), or use it as a superclass for callback handlers that actually do something, and will benefit from the dimension information it provides. </p>
+<p>A usage example with JdbcTemplate: </p>
+<pre><code>JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource); // reusable object RowCountCallbackHandler countCallback = new RowCountCallbackHandler(); // not reusable jdbcTemplate.query("select * from user", countCallback); int rowCount = countCallback.getRowCount();</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-column-count.html">getColumnCount</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getColumnCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the number of columns in this result set. Valid once we've seen the first row, so subclasses can use it during processing</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-column-names.html">getColumnNames</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getColumnNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Return the names of the columns. Valid after processRow is invoked the first time.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-column-types.html">getColumnTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getColumnTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a></code>
+<p>Return the types of the columns as java.sql.Types constants Valid after processRow is invoked the first time.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-row-count.html">getRowCount</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getRowCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the row count of this ResultSet Only valid after processing is complete</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="process-row.html">processRow</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">processRow</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.RowCountCallbackHandler$processRow(java.sql.ResultSet)/rs">rs</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Implementation of ResultSetCallbackHandler. Work out column size if this is the first row, otherwise just count rows. 
+<p>Subclasses can perform custom extraction or processing by overriding the <code>processRow(ResultSet, int)</code> method.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CustomBooleanEditor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.propertyeditors</a>&nbsp;/&nbsp;<a href=".">CustomBooleanEditor</a><br/>
+<br/>
+<h1>CustomBooleanEditor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomBooleanEditor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorSupport</span></code>
+<p>Property editor for Boolean/boolean properties. 
+<p>This is not meant to be used as system PropertyEditor but rather as locale-specific Boolean editor within custom controller code, to parse UI-caused boolean strings into boolean properties of beans and check them in the UI form. </p>
+<p>In web MVC code, this editor will typically be registered with <code>binder.registerCustomEditor</code> calls.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+10.06.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.validation.DataBinder#registerCustomEditor</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CustomBooleanEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomBooleanEditor$<init>(kotlin.Boolean)/allowEmpty">allowEmpty</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new CustomBooleanEditor instance, with "true"/"on"/"yes" and "false"/"off"/"no" as recognized String values. 
+<p>The "allowEmpty" parameter states if an empty String should be allowed for parsing, i.e. get interpreted as null value. Else, an IllegalArgumentException gets thrown in that case.</p>
+</p>
+<code><span class="identifier">CustomBooleanEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomBooleanEditor$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/trueString">trueString</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomBooleanEditor$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/falseString">falseString</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomBooleanEditor$<init>(kotlin.String, kotlin.String, kotlin.Boolean)/allowEmpty">allowEmpty</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a new CustomBooleanEditor instance, with configurable String values for true and false. 
+<p>The "allowEmpty" parameter states if an empty String should be allowed for parsing, i.e. get interpreted as null value. Else, an IllegalArgumentException gets thrown in that case.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_0.html">VALUE_0</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_0</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_1.html">VALUE_1</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_1</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_-f-a-l-s-e.html">VALUE_FALSE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_FALSE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_-n-o.html">VALUE_NO</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_NO</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_-o-f-f.html">VALUE_OFF</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_OFF</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_-o-n.html">VALUE_ON</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_ON</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_-t-r-u-e.html">VALUE_TRUE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_TRUE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-v-a-l-u-e_-y-e-s.html">VALUE_YES</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">VALUE_YES</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-as-text.html">getAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAsText</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-as-text.html">setAsText</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAsText</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.propertyeditors.CustomBooleanEditor$setAsText(kotlin.String)/text">text</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

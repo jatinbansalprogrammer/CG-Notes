@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableScheduling.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.annotation</a>&nbsp;/&nbsp;<a href="index.html">EnableScheduling</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.scheduling.annotation.EnableScheduling$&lt;init&gt;()"></a>
+<code><span class="identifier">EnableScheduling</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Enables Spring's scheduled task execution capability, similar to functionality found in Spring's <code>&lt;task:*&gt;</code> XML namespace. To be used on @Configuration classes as follows: <pre><code> @Configuration @EnableScheduling public class AppConfig { // various @Bean definitions }</code></pre> This enables detection of @Scheduled annotations on any Spring-managed bean in the container. For example, given a class <code>MyTask</code> <pre><code> package com.myco.tasks; public class MyTask { @Scheduled(fixedRate=1000) public void work() { // task execution logic } }</code></pre> the following configuration would ensure that <code>MyTask.work()</code> is called once every 1000 ms: <pre><code> @Configuration @EnableScheduling public class AppConfig { @Bean public MyTask task() { return new MyTask(); } }</code></pre> Alternatively, if <code>MyTask</code> were annotated with <code>@Component</code>, the following configuration would ensure that its <code>@Scheduled</code> method is invoked at the desired interval: <pre><code> @Configuration @EnableScheduling @ComponentScan(basePackages="com.myco.tasks") public class AppConfig { }</code></pre> Methods annotated with <code>@Scheduled</code> may even be declared directly within <code>@Configuration</code> classes: <pre><code> @Configuration @EnableScheduling public class AppConfig { @Scheduled(fixedRate=1000) public void work() { // task execution logic } }</code></pre> 
+<p>By default, will be searching for an associated scheduler definition: either a unique org.springframework.scheduling.TaskScheduler bean in the context, or a <code>TaskScheduler</code> bean named "taskScheduler" otherwise; the same lookup will also be performed for a java.util.concurrent.ScheduledExecutorService bean. If neither of the two is resolvable, a local single-threaded default scheduler will be created and used within the registrar. </p>
+<p>When more control is desired, a <code>@Configuration</code> class may implement SchedulingConfigurer. This allows access to the underlying ScheduledTaskRegistrar instance. For example, the following example demonstrates how to customize the Executor used to execute scheduled tasks: </p>
+<pre><code> @Configuration @EnableScheduling public class AppConfig implements SchedulingConfigurer { @Override public void configureTasks(ScheduledTaskRegistrar taskRegistrar) { taskRegistrar.setScheduler(taskExecutor()); } @Bean(destroyMethod="shutdown") public Executor taskExecutor() { return Executors.newScheduledThreadPool(100); } }</code></pre> 
+<p>Note in the example above the use of <code>@Bean(destroyMethod="shutdown")</code>. This ensures that the task executor is properly shut down when the Spring application context itself is closed. </p>
+<p>Implementing <code>SchedulingConfigurer</code> also allows for fine-grained control over task registration via the <code>ScheduledTaskRegistrar</code>. For example, the following configures the execution of a particular bean method per a custom <code>Trigger</code> implementation: </p>
+<pre><code> @Configuration @EnableScheduling public class AppConfig implements SchedulingConfigurer { @Override public void configureTasks(ScheduledTaskRegistrar taskRegistrar) { taskRegistrar.setScheduler(taskScheduler()); taskRegistrar.addTriggerTask( new Runnable() { public void run() { myTask().work(); } }, new CustomTrigger() ); } @Bean(destroyMethod="shutdown") public Executor taskScheduler() { return Executors.newScheduledThreadPool(42); } @Bean public MyTask myTask() { return new MyTask(); } }</code></pre> 
+<p>For reference, the example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;task:annotation-driven scheduler="taskScheduler"/&gt; &lt;task:scheduler id="taskScheduler" pool-size="42"/&gt; &lt;task:scheduled-tasks scheduler="taskScheduler"&gt; &lt;task:scheduled ref="myTask" method="work" fixed-rate="1000"/&gt; &lt;/task:scheduled-tasks&gt; &lt;bean id="myTask" class="com.foo.MyTask"/&gt; &lt;/beans&gt; </code></code></pre> The examples are equivalent save that in XML a <em>fixed-rate</em> period is used instead of a custom <em><code>Trigger</code></em> implementation; this is because the <code>task:</code> namespace <code>scheduled</code> cannot easily expose such support. This is but one demonstration how the code-based approach allows for maximum configurability through direct access to actual componentry.</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+ScheduledSchedulingConfigurationSchedulingConfigurerScheduledTaskRegistrarTriggerScheduledAnnotationBeanPostProcessor</p>
+</BODY>
+</HTML>

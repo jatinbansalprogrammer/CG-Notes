@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PersistenceAnnotationBeanPostProcessor.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa.support</a>&nbsp;/&nbsp;<a href="index.html">PersistenceAnnotationBeanPostProcessor</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor$&lt;init&gt;()"></a>
+<code><span class="identifier">PersistenceAnnotationBeanPostProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>BeanPostProcessor that processes javax.persistence.PersistenceUnit and javax.persistence.PersistenceContext annotations, for injection of the corresponding JPA resources javax.persistence.EntityManagerFactory and javax.persistence.EntityManager. Any such annotated fields or methods in any Spring-managed object will automatically be injected. 
+<p>This post-processor will inject sub-interfaces of <code>EntityManagerFactory</code> and <code>EntityManager</code> if the annotated fields or methods are declared as such. The actual type will be verified early, with the exception of a shared ("transactional") <code>EntityManager</code> reference, where type mismatches might be detected as late as on the first actual invocation. </p>
+<p>Note: In the present implementation, PersistenceAnnotationBeanPostProcessor only supports <code>@PersistenceUnit</code> and <code>@PersistenceContext</code> with the "unitName" attribute, or no attribute at all (for the default unit). If those annotations are present with the "name" attribute at the class level, they will simply be ignored, since those only serve as deployment hint (as per the Java EE specification). </p>
+<p>This post-processor can either obtain EntityManagerFactory beans defined in the Spring application context (the default), or obtain EntityManagerFactory references from JNDI ("persistence unit references"). In the bean case, the persistence unit name will be matched against the actual deployed unit, with the bean name used as fallback unit name if no deployed name found. Typically, Spring's org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean will be used for setting up such EntityManagerFactory beans. Alternatively, such beans may also be obtained from JNDI, e.g. using the <code>jee:jndi-lookup</code> XML configuration element (with the bean name matching the requested unit name). In both cases, the post-processor definition will look as simple as this: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/&gt;</code></pre> In the JNDI case, specify the corresponding JNDI names in this post-processor's <code><a href="#">"persistenceUnits" map</a></code>, typically with matching <code>persistence-unit-ref</code> entries in the Java EE deployment descriptor. By default, those names are considered as resource references (according to the Java EE resource-ref convention), located underneath the "java:comp/env/" namespace. For example: <pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceUnits"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/unit1"/&gt; &lt;entry key="unit2" value="persistence/unit2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> In this case, the specified persistence units will always be resolved in JNDI rather than as Spring-defined beans. The entire persistence unit deployment, including the weaving of persistent classes, is then up to the Java EE server. Persistence contexts (i.e. EntityManager references) will be built based on those server-provided EntityManagerFactory references, using Spring's own transaction synchronization facilities for transactional EntityManager handling (typically with Spring's <code>@Transactional</code> annotation for demarcation and org.springframework.transaction.jta.JtaTransactionManager as backend). 
+<p>If you prefer the Java EE server's own EntityManager handling, specify entries in this post-processor's <code><a href="#">"persistenceContexts" map</a></code> (or <code><a href="#">"extendedPersistenceContexts" map</a></code>, typically with matching <code>persistence-context-ref</code> entries in the Java EE deployment descriptor. For example: </p>
+<pre><code> &lt;bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"&gt; &lt;property name="persistenceContexts"&gt; &lt;map/gt; &lt;entry key="unit1" value="persistence/context1"/&gt; &lt;entry key="unit2" value="persistence/context2"/&gt; &lt;/map/gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> If the application only obtains EntityManager references in the first place, this is all you need to specify. If you need EntityManagerFactory references as well, specify entries for both "persistenceUnits" and "persistenceContexts", pointing to matching JNDI locations. 
+<p><strong>NOTE: In general, do not inject EXTENDED EntityManagers into STATELESS beans, i.e. do not use <code>@PersistenceContext</code> with type <code>EXTENDED</code> in Spring beans defined with scope 'singleton' (Spring's default scope).</strong> Extended EntityManagers are <em>not</em> thread-safe, hence they must not be used in concurrently accessed beans (which Spring-managed singletons usually are). </p>
+<p>Note: A default PersistenceAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom PersistenceAnnotationBeanPostProcessor bean definition.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+javax.persistence.PersistenceUnitjavax.persistence.PersistenceContext</p>
+</BODY>
+</HTML>

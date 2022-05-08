@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleTaskWorkManager.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.work</a>&nbsp;/&nbsp;<a href="index.html">SimpleTaskWorkManager</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.jca.work.SimpleTaskWorkManager$&lt;init&gt;()"></a>
+<code><span class="identifier">SimpleTaskWorkManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple JCA 1.7 javax.resource.spi.work.WorkManager implementation that delegates to a Spring org.springframework.core.task.TaskExecutor. Provides simple task execution including start timeouts, but without support for a JCA ExecutionContext (i.e. without support for imported transactions). 
+<p>Uses a org.springframework.core.task.SyncTaskExecutor for <code><a href="do-work.html">#doWork</a></code> calls and a org.springframework.core.task.SimpleAsyncTaskExecutor for <code><a href="start-work.html">#startWork</a></code> and <code><a href="schedule-work.html">#scheduleWork</a></code> calls, by default. These default task executors can be overridden through configuration. </p>
+<p><strong>NOTE: This WorkManager does not provide thread pooling by default!</strong> Specify a org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor (or any other thread-pooling TaskExecutor) as "asyncTaskExecutor" in order to achieve actual thread pooling. </p>
+<p>This WorkManager automatically detects a specified org.springframework.core.task.AsyncTaskExecutor implementation and uses its extended timeout functionality where appropriate. JCA WorkListeners are fully supported in any case.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+<a href="set-sync-task-executor.html">#setSyncTaskExecutor</a><a href="set-async-task-executor.html">#setAsyncTaskExecutor</a></p>
+</BODY>
+</HTML>

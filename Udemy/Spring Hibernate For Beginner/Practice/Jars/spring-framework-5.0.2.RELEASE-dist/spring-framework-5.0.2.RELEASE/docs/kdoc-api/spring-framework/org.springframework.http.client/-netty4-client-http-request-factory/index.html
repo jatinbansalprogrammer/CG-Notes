@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Netty4ClientHttpRequestFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.client</a>&nbsp;/&nbsp;<a href=".">Netty4ClientHttpRequestFactory</a><br/>
+<br/>
+<h1>Netty4ClientHttpRequestFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Netty4ClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">AsyncClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>org.springframework.http.client.ClientHttpRequestFactory implementation that uses <a href="#">Netty 4</a> to create requests. 
+<p>Allows to use a pre-configured EventLoopGroup instance: useful for sharing across multiple clients. </p>
+<p>Note that this implementation consistently closes the HTTP connection on each request.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Brian Clozel</p>
+<p><strong>Author</strong><br/>
+Mark Paluch</p>
+<p><strong>Since</strong><br/>
+4.1.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Netty4ClientHttpRequestFactory</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>Netty4ClientHttpRequestFactory</code> with a default NioEventLoopGroup.</p>
+<code><span class="identifier">Netty4ClientHttpRequestFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$<init>(io.netty.channel.EventLoopGroup)/eventLoopGroup">eventLoopGroup</span><span class="symbol">:</span>&nbsp;<span class="identifier">EventLoopGroup</span><span class="symbol">)</span></code>
+<p>Create a new <code>Netty4ClientHttpRequestFactory</code> with the given EventLoopGroup. 
+<p><strong>NOTE:</strong> the given group will <strong>not</strong> be <a href="#">shutdown</a> by this factory; doing so becomes the responsibility of the caller.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-a-x_-r-e-s-p-o-n-s-e_-s-i-z-e.html">DEFAULT_MAX_RESPONSE_SIZE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_MAX_RESPONSE_SIZE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default maximum response size.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-async-request.html">createAsyncRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createAsyncRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$createAsyncRequest(java.net.URI, org.springframework.http.HttpMethod)/uri">uri</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$createAsyncRequest(java.net.URI, org.springframework.http.HttpMethod)/httpMethod">httpMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AsyncClientHttpRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-request.html">createRequest</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createRequest</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$createRequest(java.net.URI, org.springframework.http.HttpMethod)/uri">uri</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$createRequest(java.net.URI, org.springframework.http.HttpMethod)/httpMethod">httpMethod</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpMethod</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClientHttpRequest</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-connect-timeout.html">setConnectTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConnectTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$setConnectTimeout(kotlin.Int)/connectTimeout">connectTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the underlying connect timeout (in milliseconds). A timeout value of 0 specifies an infinite timeout.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-max-response-size.html">setMaxResponseSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMaxResponseSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$setMaxResponseSize(kotlin.Int)/maxResponseSize">maxResponseSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default maximum response size. 
+<p>By default this is set to <code><a href="-d-e-f-a-u-l-t_-m-a-x_-r-e-s-p-o-n-s-e_-s-i-z-e.html">#DEFAULT_MAX_RESPONSE_SIZE</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-read-timeout.html">setReadTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReadTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$setReadTimeout(kotlin.Int)/readTimeout">readTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the underlying URLConnection's read timeout (in milliseconds). A timeout value of 0 specifies an infinite timeout.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ssl-context.html">setSslContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSslContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.Netty4ClientHttpRequestFactory$setSslContext(io.netty.handler.ssl.SslContext)/sslContext">sslContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">SslContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the SSL context. When configured it is used to create and insert an io.netty.handler.ssl.SslHandler in the channel pipeline. 
+<p>A default client SslContext is configured if none has been provided.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

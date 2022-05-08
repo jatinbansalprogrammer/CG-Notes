@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.web.client - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.web.client</a><br/>
+<br/>
+<h2>Package org.springframework.test.web.client</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-default-request-expectation/index.html">DefaultRequestExpectation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultRequestExpectation</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-request-expectation/index.html"><span class="identifier">RequestExpectation</span></a></code>
+<p>Default implementation of <code>RequestExpectation</code> that simply delegates to the request matchers and the response creator it contains.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-mvc-client-http-request-factory/index.html">MockMvcClientHttpRequestFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockMvcClientHttpRequestFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestFactory</span><span class="symbol">, </span><span class="identifier">AsyncClientHttpRequestFactory</span></code>
+<p>A ClientHttpRequestFactory for requests executed via MockMvc. 
+<p>As of 5.0 this class also implements org.springframework.http.client.AsyncClientHttpRequestFactory. However note that org.springframework.web.client.AsyncRestTemplate and related classes have been deprecated at the same time.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mock-rest-service-server/index.html">MockRestServiceServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockRestServiceServer</span></code>
+<p><strong>Main entry point for client-side REST testing</strong>. Used for tests that involve direct or indirect use of the RestTemplate. Provides a way to set up expected requests that will be performed through the <code>RestTemplate</code> as well as mock responses to send back thus removing the need for an actual server. 
+<p>Below is an example that assumes static imports from <code>MockRestRequestMatchers</code>, <code>MockRestResponseCreators</code>, and <code>ExpectedCount</code>: </p>
+<pre><code> RestTemplate restTemplate = new RestTemplate() MockRestServiceServer server = MockRestServiceServer.bindTo(restTemplate).build(); server.expect(manyTimes(), requestTo("/hotels/42")).andExpect(method(HttpMethod.GET)) .andRespond(withSuccess("{ \"id\" : \"42\", \"name\" : \"Holiday Inn\"}", MediaType.APPLICATION_JSON)); Hotel hotel = restTemplate.getForObject("/hotels/{id}", Hotel.class, 42); // Use the hotel instance... // Verify all expectations met server.verify(); </code></pre> 
+<p>Note that as an alternative to the above you can also set the MockMvcClientHttpRequestFactory on a <code>RestTemplate</code> which allows executing requests against an instance of org.springframework.test.web.servlet.MockMvc.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-expectation/index.html">RequestExpectation</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">RequestExpectation</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResponseActions</span><span class="symbol">, </span><span class="identifier">RequestMatcher</span><span class="symbol">, </span><a href="-response-creator/index.html"><span class="identifier">ResponseCreator</span></a></code>
+<p>An extension of <code>ResponseActions</code> that also implements <code>RequestMatcher</code> and <code>ResponseCreator</code> 
+<p>While <code>ResponseActions</code> is the API for defining expectations this sub-interface is the internal SPI for matching these expectations to actual requests and for creating responses.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-creator/index.html">ResponseCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ResponseCreator</span></code>
+<p>A contract for creating a ClientHttpResponse. Implementations can be obtained via MockRestResponseCreators.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-request-expectation-manager/index.html">SimpleRequestExpectationManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleRequestExpectationManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRequestExpectationManager</span></code>
+<p>Simple <code>RequestExpectationManager</code> that matches requests to expectations sequentially, i.e. in the order of declaration of expectations. 
+<p>When request expectations have an expected count greater than one, only the first execution is expected to match the order of declaration. Subsequent request executions may be inserted anywhere thereafter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-unordered-request-expectation-manager/index.html">UnorderedRequestExpectationManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UnorderedRequestExpectationManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRequestExpectationManager</span></code>
+<p><code>RequestExpectationManager</code> that matches requests to expectations regardless of the order of declaration of expected requests.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EnableWebMvc - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.config.annotation</a>&nbsp;/&nbsp;<a href=".">EnableWebMvc</a><br/>
+<br/>
+<h1>EnableWebMvc</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE]<span class="symbol">)</span> <span class="identifier">@Import</span><span class="symbol">(</span>DelegatingWebMvcConfiguration<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">EnableWebMvc</span></code>
+<p>Adding this annotation to an <code>@Configuration</code> class imports the Spring MVC configuration from WebMvcConfigurationSupport, e.g.: <pre><code> @Configuration @EnableWebMvc @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration { } </code></pre> 
+<p>To customize the imported configuration, implement the interface WebMvcConfigurer and override individual methods, e.g.: </p>
+<pre><code> @Configuration @EnableWebMvc @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration implements WebMvcConfigurer { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Override public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) { converters.add(new MyHttpMessageConverter()); } } </code></pre> 
+<p><strong>Note:</strong> only one <code>@Configuration</code> class may have the <code>@EnableWebMvc</code> annotation to import the Spring Web MVC configuration. There can however be multiple <code>@Configuration</code> classes implementing <code>WebMvcConfigurer</code> in order to customize the provided configuration. </p>
+<p>If WebMvcConfigurer does not expose some more advanced setting that needs to be configured consider removing the <code>@EnableWebMvc</code> annotation and extending directly from WebMvcConfigurationSupport or DelegatingWebMvcConfiguration, e.g.: </p>
+<pre><code> @Configuration @ComponentScan(basePackageClasses = { MyConfiguration.class }) public class MyConfiguration extends WebMvcConfigurationSupport { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Bean public RequestMappingHandlerAdapter requestMappingHandlerAdapter() { // Create or delegate to "super" to create and // customize properties of RequestMappingHandlerAdapter } } </code></pre></p>
+<p><strong>Author</strong><br/>
+Dave Syer</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+org.springframework.web.servlet.config.annotation.WebMvcConfigurerorg.springframework.web.servlet.config.annotation.WebMvcConfigurationSupportorg.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">EnableWebMvc</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Adding this annotation to an <code>@Configuration</code> class imports the Spring MVC configuration from WebMvcConfigurationSupport, e.g.: <pre><code> @Configuration @EnableWebMvc @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration { } </code></pre> 
+<p>To customize the imported configuration, implement the interface WebMvcConfigurer and override individual methods, e.g.: </p>
+<pre><code> @Configuration @EnableWebMvc @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration implements WebMvcConfigurer { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Override public void configureMessageConverters(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters) { converters.add(new MyHttpMessageConverter()); } } </code></pre> 
+<p><strong>Note:</strong> only one <code>@Configuration</code> class may have the <code>@EnableWebMvc</code> annotation to import the Spring Web MVC configuration. There can however be multiple <code>@Configuration</code> classes implementing <code>WebMvcConfigurer</code> in order to customize the provided configuration. </p>
+<p>If WebMvcConfigurer does not expose some more advanced setting that needs to be configured consider removing the <code>@EnableWebMvc</code> annotation and extending directly from WebMvcConfigurationSupport or DelegatingWebMvcConfiguration, e.g.: </p>
+<pre><code> @Configuration @ComponentScan(basePackageClasses = { MyConfiguration.class }) public class MyConfiguration extends WebMvcConfigurationSupport { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Bean public RequestMappingHandlerAdapter requestMappingHandlerAdapter() { // Create or delegate to "super" to create and // customize properties of RequestMappingHandlerAdapter } } </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

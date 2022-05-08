@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpMessageEncoder - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.codec</a>&nbsp;/&nbsp;<a href=".">HttpMessageEncoder</a><br/>
+<br/>
+<h1>HttpMessageEncoder</h1>
+<code><span class="keyword">interface </span><span class="identifier">HttpMessageEncoder</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Encoder</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Extension of <code>Encoder</code> exposing extra methods relevant in the context of HTTP request or response body encoding.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-encode-hints.html">getEncodeHints</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEncodeHints</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.codec.HttpMessageEncoder$getEncodeHints(org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse)/actualType">actualType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.HttpMessageEncoder$getEncodeHints(org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse)/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResolvableType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.HttpMessageEncoder$getEncodeHints(org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.HttpMessageEncoder$getEncodeHints(org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.codec.HttpMessageEncoder$getEncodeHints(org.springframework.core.ResolvableType, org.springframework.core.ResolvableType, org.springframework.http.MediaType, org.springframework.http.server.reactive.ServerHttpRequest, org.springframework.http.server.reactive.ServerHttpResponse)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerHttpResponse</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Get decoding hints based on the server request or annotations on the target controller method parameter.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-streaming-media-types.html">getStreamingMediaTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getStreamingMediaTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">MediaType</span><span class="symbol">&gt;</span></code>
+<p>Return "streaming" media types for which flushing should be performed automatically vs at the end of the input stream.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.http.codec.json/-abstract-jackson2-encoder/index.html">AbstractJackson2Encoder</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractJackson2Encoder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Jackson2CodecSupport</span><span class="symbol">, </span><span class="identifier">HttpMessageEncoder</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Base class providing support methods for Jackson 2.9 encoding.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HandlerAdapter.handle - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive</a>&nbsp;/&nbsp;<a href="index.html">HandlerAdapter</a>&nbsp;/&nbsp;<a href=".">handle</a><br/>
+<br/>
+<h1>handle</h1>
+<a name="org.springframework.web.reactive.HandlerAdapter$handle(org.springframework.web.server.ServerWebExchange, kotlin.Any)"></a>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.HandlerAdapter$handle(org.springframework.web.server.ServerWebExchange, kotlin.Any)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.HandlerAdapter$handle(org.springframework.web.server.ServerWebExchange, kotlin.Any)/handler">handler</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">HandlerResult</span><span class="symbol">&gt;</span></code>
+<p>Handle the request with the given handler. 
+<p>Implementations are encouraged to handle exceptions resulting from the invocation of a handler in order and if necessary to return an alternate result that represents an error response. </p>
+<p>Furthermore since an async <code>HandlerResult</code> may produce an error later during result handling implementations are also encouraged to <code><a href="#">set an exception</a></code> on the <code>HandlerResult</code> so that may also be applied later after result handling.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="exchange"></a>
+<code>exchange</code> - current server exchange</p>
+<p><a name="handler"></a>
+<code>handler</code> - the selected handler which must have been previously checked via <code><a href="#">#supports(Object)</a></code></p>
+<p><strong>Return</strong><br/>
+Mono that emits a single <code>HandlerResult</code> or none if the request has been fully handled and doesn't require further handling.</p>
+</BODY>
+</HTML>

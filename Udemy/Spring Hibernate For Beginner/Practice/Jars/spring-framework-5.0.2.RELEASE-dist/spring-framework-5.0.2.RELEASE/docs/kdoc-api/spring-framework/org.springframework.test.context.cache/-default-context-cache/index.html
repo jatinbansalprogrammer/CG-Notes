@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultContextCache - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.cache</a>&nbsp;/&nbsp;<a href=".">DefaultContextCache</a><br/>
+<br/>
+<h1>DefaultContextCache</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultContextCache</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ContextCache</span></code>
+<p>Default implementation of the ContextCache API. 
+<p>Uses a synchronized Map configured with a maximum size and a <em>least recently used</em> (LRU) eviction policy to cache ApplicationContext instances. </p>
+<p>The maximum size may be supplied as a <a href="#"> constructor argument</a> or set via a system property or Spring property named <code>spring.test.context.cache.maxSize</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="../-context-cache-utils/retrieve-max-cache-size.html">ContextCacheUtils#retrieveMaxCacheSize()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DefaultContextCache</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>DefaultContextCache</code> using the maximum cache size obtained via <code><a href="../-context-cache-utils/retrieve-max-cache-size.html">ContextCacheUtils#retrieveMaxCacheSize()</a></code>.</p>
+<code><span class="identifier">DefaultContextCache</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.cache.DefaultContextCache$<init>(kotlin.Int)/maxSize">maxSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>DefaultContextCache</code> using the supplied maximum cache size.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clear.html">clear</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clear</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="clear-statistics.html">clearStatistics</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clearStatistics</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="contains.html">contains</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">contains</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.cache.DefaultContextCache$contains(org.springframework.test.context.MergedContextConfiguration)/key">key</span><span class="symbol">:</span>&nbsp;<span class="identifier">MergedContextConfiguration</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get.html">get</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">get</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.cache.DefaultContextCache$get(org.springframework.test.context.MergedContextConfiguration)/key">key</span><span class="symbol">:</span>&nbsp;<span class="identifier">MergedContextConfiguration</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ApplicationContext</span></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-hit-count.html">getHitCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHitCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-max-size.html">getMaxSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMaxSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Get the maximum size of this cache.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-miss-count.html">getMissCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMissCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-parent-context-count.html">getParentContextCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getParentContextCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="log-statistics.html">logStatistics</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">logStatistics</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="put.html">put</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">put</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.cache.DefaultContextCache$put(org.springframework.test.context.MergedContextConfiguration, org.springframework.context.ApplicationContext)/key">key</span><span class="symbol">:</span>&nbsp;<span class="identifier">MergedContextConfiguration</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.cache.DefaultContextCache$put(org.springframework.test.context.MergedContextConfiguration, org.springframework.context.ApplicationContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove.html">remove</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">remove</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.cache.DefaultContextCache$remove(org.springframework.test.context.MergedContextConfiguration, org.springframework.test.annotation.DirtiesContext.HierarchyMode)/key">key</span><span class="symbol">:</span>&nbsp;<span class="identifier">MergedContextConfiguration</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.context.cache.DefaultContextCache$remove(org.springframework.test.context.MergedContextConfiguration, org.springframework.test.annotation.DirtiesContext.HierarchyMode)/hierarchyMode">hierarchyMode</span><span class="symbol">:</span>&nbsp;<span class="identifier">HierarchyMode</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="size.html">size</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">size</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>{@inheritDoc}</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Generate a text string containing the implementation type of this cache and its statistics. 
+<p>The string returned by this method contains all information required for compliance with the contract for <code><a href="log-statistics.html">#logStatistics()</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ProviderCreatingFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">ProviderCreatingFactoryBean</a><br/>
+<br/>
+<h1>ProviderCreatingFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ProviderCreatingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Provider</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>A org.springframework.beans.factory.FactoryBean implementation that returns a value which is a JSR-330 javax.inject.Provider that in turn returns a bean sourced from a org.springframework.beans.factory.BeanFactory. 
+<p>This is basically a JSR-330 compliant variant of Spring's good old ObjectFactoryCreatingFactoryBean. It can be used for traditional external dependency injection configuration that targets a property or constructor argument of type <code>javax.inject.Provider</code>, as an alternative to JSR-330's <code>@Inject</code> annotation-driven approach.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0.2</p>
+<p><strong>See Also</strong><br/>
+javax.inject.ProviderObjectFactoryCreatingFactoryBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ProviderCreatingFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A org.springframework.beans.factory.FactoryBean implementation that returns a value which is a JSR-330 javax.inject.Provider that in turn returns a bean sourced from a org.springframework.beans.factory.BeanFactory. 
+<p>This is basically a JSR-330 compliant variant of Spring's good old ObjectFactoryCreatingFactoryBean. It can be used for traditional external dependency injection configuration that targets a property or constructor argument of type <code>javax.inject.Provider</code>, as an alternative to JSR-330's <code>@Inject</code> annotation-driven approach.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-bean-name.html">setTargetBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.ProviderCreatingFactoryBean$setTargetBeanName(kotlin.String)/targetBeanName">targetBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the target bean. 
+<p>The target does not <em>have</em> to be a non-singleton bean, but realistically always will be (because if the target bean were a singleton, then said singleton bean could simply be injected straight into the dependent object, thus obviating the need for the extra level of indirection afforded by this factory approach).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

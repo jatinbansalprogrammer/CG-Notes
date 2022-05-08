@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FreeMarkerView - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.result.view.freemarker</a>&nbsp;/&nbsp;<a href=".">FreeMarkerView</a><br/>
+<br/>
+<h1>FreeMarkerView</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FreeMarkerView</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.reactive.result.view/-abstract-url-based-view/index.html"><span class="identifier">AbstractUrlBasedView</span></a></code>
+<p>A <code>View</code> implementation that uses the FreeMarker template engine. 
+<p>Depends on a single FreeMarkerConfig object such as FreeMarkerConfigurer being accessible in the application context. Alternatively set the FreeMarker configuration can be set directly on this class via <code><a href="set-configuration.html">#setConfiguration</a></code>. </p>
+<p>The <code><a href="#">url</a></code> property is the location of the FreeMarker template relative to the FreeMarkerConfigurer's <code><a href="#">templateLoaderPath</a></code>. </p>
+<p>Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FreeMarkerView</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A <code>View</code> implementation that uses the FreeMarker template engine. 
+<p>Depends on a single FreeMarkerConfig object such as FreeMarkerConfigurer being accessible in the application context. Alternatively set the FreeMarker configuration can be set directly on this class via <code><a href="set-configuration.html">#setConfiguration</a></code>. </p>
+<p>The <code><a href="#">url</a></code> property is the location of the FreeMarker template relative to the FreeMarkerConfigurer's <code><a href="#">templateLoaderPath</a></code>. </p>
+<p>Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="check-resource-exists.html">checkResourceExists</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">checkResourceExists</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.freemarker.FreeMarkerView$checkResourceExists(java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check that the FreeMarker template used for this view exists and is valid. 
+<p>Can be overridden to customize the behavior, for example in case of multiple templates to be rendered into a single view.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-configuration.html">setConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConfiguration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.freemarker.FreeMarkerView$setConfiguration(freemarker.template.Configuration)/configuration">configuration</span><span class="symbol">:</span>&nbsp;<span class="identifier">Configuration</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the FreeMarker Configuration to be used by this view. 
+<p>Typically this property is not set directly. Instead a single FreeMarkerConfig is expected in the Spring application context which is used to obtain the FreeMarker configuration.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding.html">setEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.freemarker.FreeMarkerView$setEncoding(kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the encoding of the FreeMarker template file. 
+<p>By default FreeMarkerConfigurer sets the default encoding in the FreeMarker configuration to "UTF-8". It's recommended to specify the encoding in the FreeMarker Configuration rather than per template if all your templates share a common encoding.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.reactive.result.view/-abstract-url-based-view/get-url.html">getUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUrl</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the URL of the resource that this view wraps.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.reactive.result.view/-abstract-url-based-view/set-url.html">setUrl</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUrl</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.view.AbstractUrlBasedView$setUrl(kotlin.String)/url">url</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the URL of the resource that this view wraps. The URL must be appropriate for the concrete View implementation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.web.reactive.result.view/-abstract-url-based-view/to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

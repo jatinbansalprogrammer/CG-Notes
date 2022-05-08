@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Lookup - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.annotation</a>&nbsp;/&nbsp;<a href=".">Lookup</a><br/>
+<br/>
+<h1>Lookup</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">Lookup</span></code>
+<p>An annotation that indicates 'lookup' methods, to be overridden by the container to redirect them back to the org.springframework.beans.factory.BeanFactory for a <code>getBean</code> call. This is essentially an annotation-based version of the XML <code>lookup-method</code> attribute, resulting in the same runtime arrangement. 
+<p>The resolution of the target bean can either be based on the return type (<code>getBean(Class)</code>) or on a suggested bean name (<code>getBean(String)</code>), in both cases passing the method's arguments to the <code>getBean</code> call for applying them as target factory method arguments or constructor arguments. </p>
+<p>Such lookup methods can have default (stub) implementations that will simply get replaced by the container, or they can be declared as abstract - for the container to fill them in at runtime. In both cases, the container will generate runtime subclasses of the method's containing class via CGLIB, which is why such lookup methods can only work on beans that the container instantiates through regular constructors: i.e. lookup methods cannot get replaced on beans returned from factory methods where we cannot dynamically provide a subclass for them. </p>
+<p><strong>Concrete limitations in typical Spring configuration scenarios:</strong> When used with component scanning or any other mechanism that filters out abstract beans, provide stub implementations of your lookup methods to be able to declare them as concrete classes. And please remember that lookup methods won't work on beans returned from <code>@Bean</code> methods in configuration classes; you'll have to resort to <code>@Inject Provider&amp;lt;TargetBean&amp;gt;</code> or the like instead.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.beans.factory.BeanFactory#getBean(Class, Object...)</a><a href="#">org.springframework.beans.factory.BeanFactory#getBean(String, Object...)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Lookup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.annotation.Lookup$<init>(kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>An annotation that indicates 'lookup' methods, to be overridden by the container to redirect them back to the org.springframework.beans.factory.BeanFactory for a <code>getBean</code> call. This is essentially an annotation-based version of the XML <code>lookup-method</code> attribute, resulting in the same runtime arrangement. 
+<p>The resolution of the target bean can either be based on the return type (<code>getBean(Class)</code>) or on a suggested bean name (<code>getBean(String)</code>), in both cases passing the method's arguments to the <code>getBean</code> call for applying them as target factory method arguments or constructor arguments. </p>
+<p>Such lookup methods can have default (stub) implementations that will simply get replaced by the container, or they can be declared as abstract - for the container to fill them in at runtime. In both cases, the container will generate runtime subclasses of the method's containing class via CGLIB, which is why such lookup methods can only work on beans that the container instantiates through regular constructors: i.e. lookup methods cannot get replaced on beans returned from factory methods where we cannot dynamically provide a subclass for them. </p>
+<p><strong>Concrete limitations in typical Spring configuration scenarios:</strong> When used with component scanning or any other mechanism that filters out abstract beans, provide stub implementations of your lookup methods to be able to declare them as concrete classes. And please remember that lookup methods won't work on beans returned from <code>@Bean</code> methods in configuration classes; you'll have to resort to <code>@Inject Provider&amp;lt;TargetBean&amp;gt;</code> or the like instead.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>This annotation attribute may suggest a target bean name to look up. If not specified, the target bean will be resolved based on the annotated method's return type declaration.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

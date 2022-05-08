@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HiddenHttpMethodFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href=".">HiddenHttpMethodFilter</a><br/>
+<br/>
+<h1>HiddenHttpMethodFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HiddenHttpMethodFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that converts posted method parameters into HTTP methods, retrievable via <code><a href="#">HttpServletRequest#getMethod()</a></code>. Since browsers currently only support GET and POST, a common technique - used by the Prototype library, for instance - is to use a normal POST with an additional hidden form field (<code>_method</code>) to pass the "real" HTTP method along. This filter reads that parameter and changes the <code><a href="#">HttpServletRequestWrapper#getMethod()</a></code> return value accordingly. 
+<p>The name of the request parameter defaults to <code>_method</code>, but can be adapted via the <code><a href="#">methodParam</a></code> property. </p>
+<p><strong>NOTE: This filter needs to run after multipart processing in case of a multipart POST request, due to its inherent need for checking a POST body parameter.</strong> So typically, put a Spring org.springframework.web.multipart.support.MultipartFilter <em>before</em> this HiddenHttpMethodFilter in your <code>web.xml</code> filter chain.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HiddenHttpMethodFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>javax.servlet.Filter that converts posted method parameters into HTTP methods, retrievable via <code><a href="#">HttpServletRequest#getMethod()</a></code>. Since browsers currently only support GET and POST, a common technique - used by the Prototype library, for instance - is to use a normal POST with an additional hidden form field (<code>_method</code>) to pass the "real" HTTP method along. This filter reads that parameter and changes the <code><a href="#">HttpServletRequestWrapper#getMethod()</a></code> return value accordingly. 
+<p>The name of the request parameter defaults to <code>_method</code>, but can be adapted via the <code><a href="#">methodParam</a></code> property. </p>
+<p><strong>NOTE: This filter needs to run after multipart processing in case of a multipart POST request, due to its inherent need for checking a POST body parameter.</strong> So typically, put a Spring org.springframework.web.multipart.support.MultipartFilter <em>before</em> this HiddenHttpMethodFilter in your <code>web.xml</code> filter chain.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-e-t-h-o-d_-p-a-r-a-m.html">DEFAULT_METHOD_PARAM</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_METHOD_PARAM</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default method parameter: <code>_method</code></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-method-param.html">setMethodParam</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMethodParam</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.HiddenHttpMethodFilter$setMethodParam(kotlin.String)/methodParam">methodParam</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the parameter name to look for HTTP methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

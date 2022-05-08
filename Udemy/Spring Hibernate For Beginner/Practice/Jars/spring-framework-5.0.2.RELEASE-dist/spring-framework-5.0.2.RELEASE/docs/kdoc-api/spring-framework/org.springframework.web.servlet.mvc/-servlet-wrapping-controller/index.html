@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServletWrappingController - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.mvc</a>&nbsp;/&nbsp;<a href=".">ServletWrappingController</a><br/>
+<br/>
+<h1>ServletWrappingController</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletWrappingController</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractController</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Spring Controller implementation that wraps a servlet instance which it manages internally. Such a wrapped servlet is not known outside of this controller; its entire lifecycle is covered here (in contrast to ServletForwardingController). 
+<p>Useful to invoke an existing servlet via Spring's dispatching infrastructure, for example to apply Spring HandlerInterceptors to its requests. </p>
+<p>Note that Struts has a special requirement in that it parses <code>web.xml</code> to find its servlet mapping. Therefore, you need to specify the DispatcherServlet's servlet name as "servletName" on this controller, so that Struts finds the DispatcherServlet's mapping (thinking that it refers to the ActionServlet). </p>
+<p><strong>Example:</strong> a DispatcherServlet XML context, forwarding "*.do" to the Struts ActionServlet wrapped by a ServletWrappingController. All such requests will go through the configured HandlerInterceptor chain (e.g. an OpenSessionInViewInterceptor). From the Struts point of view, everything will work as usual. </p>
+<pre><code> &lt;bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"&gt; &lt;property name="interceptors"&gt; &lt;list&gt; &lt;ref bean="openSessionInViewInterceptor"/&gt; &lt;/list&gt; &lt;/property&gt; &lt;property name="mappings"&gt; &lt;props&gt; &lt;prop key="*.do"&gt;strutsWrappingController&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt; &lt;bean id="strutsWrappingController" class="org.springframework.web.servlet.mvc.ServletWrappingController"&gt; &lt;property name="servletClass"&gt; &lt;value&gt;org.apache.struts.action.ActionServlet&lt;/value&gt; &lt;/property&gt; &lt;property name="servletName"&gt; &lt;value&gt;action&lt;/value&gt; &lt;/property&gt; &lt;property name="initParameters"&gt; &lt;props&gt; &lt;prop key="config"&gt;/WEB-INF/struts-config.xml&lt;/prop&gt; &lt;/props&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1.1</p>
+<p><strong>See Also</strong><br/>
+ServletForwardingController</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServletWrappingController</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize the wrapped Servlet instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Destroy the wrapped Servlet instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-name.html">setBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.ServletWrappingController$setBeanName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-init-parameters.html">setInitParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInitParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.ServletWrappingController$setInitParameters(java.util.Properties)/initParameters">initParameters</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify init parameters for the servlet to wrap, as name-value pairs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-class.html">setServletClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.ServletWrappingController$setServletClass(java.lang.Class((javax.servlet.Servlet)))/servletClass">servletClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Servlet</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the class of the servlet to wrap. Needs to implement <code>javax.servlet.Servlet</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-name.html">setServletName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.ServletWrappingController$setServletName(kotlin.String)/servletName">servletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the servlet to wrap. Default is the bean name of this controller.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>GroovyWebApplicationContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.support</a>&nbsp;/&nbsp;<a href=".">GroovyWebApplicationContext</a><br/>
+<br/>
+<h1>GroovyWebApplicationContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GroovyWebApplicationContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRefreshableWebApplicationContext</span><span class="symbol">, </span><span class="identifier">GroovyObject</span></code>
+<p>org.springframework.web.context.WebApplicationContext implementation which takes its configuration from Groovy bean definition scripts and/or XML files, as understood by an org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader. This is essentially the equivalent of org.springframework.context.support.GenericGroovyApplicationContext for a web environment. 
+<p>By default, the configuration will be taken from "/WEB-INF/applicationContext.groovy" for the root context, and "/WEB-INF/test-servlet.groovy" for a context with the namespace "test-servlet" (like for a DispatcherServlet instance with the servlet-name "test"). </p>
+<p>The config location defaults can be overridden via the "contextConfigLocation" context-param of org.springframework.web.context.ContextLoader and servlet init-param of org.springframework.web.servlet.FrameworkServlet. Config locations can either denote concrete files like "/WEB-INF/context.groovy" or Ant-style patterns like "/WEB-INF/*-context.groovy" (see org.springframework.util.PathMatcher javadoc for pattern details). Note that ".xml" files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts. </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra Groovy script. </p>
+<p><strong>For a WebApplicationContext that reads in a different bean definition format, create an analogous subclass of AbstractRefreshableWebApplicationContext.</strong> Such a context implementation can be specified as "contextClass" context-param for ContextLoader or "contextClass" init-param for FrameworkServlet.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setNamespace</a><a href="#">#setConfigLocations</a>org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader<a href="#">org.springframework.web.context.ContextLoader#initWebApplicationContext</a><a href="#">org.springframework.web.servlet.FrameworkServlet#initWebApplicationContext</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">GroovyWebApplicationContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.web.context.WebApplicationContext implementation which takes its configuration from Groovy bean definition scripts and/or XML files, as understood by an org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader. This is essentially the equivalent of org.springframework.context.support.GenericGroovyApplicationContext for a web environment. 
+<p>By default, the configuration will be taken from "/WEB-INF/applicationContext.groovy" for the root context, and "/WEB-INF/test-servlet.groovy" for a context with the namespace "test-servlet" (like for a DispatcherServlet instance with the servlet-name "test"). </p>
+<p>The config location defaults can be overridden via the "contextConfigLocation" context-param of org.springframework.web.context.ContextLoader and servlet init-param of org.springframework.web.servlet.FrameworkServlet. Config locations can either denote concrete files like "/WEB-INF/context.groovy" or Ant-style patterns like "/WEB-INF/*-context.groovy" (see org.springframework.util.PathMatcher javadoc for pattern details). Note that ".xml" files will be parsed as XML content; all other kinds of resources will be parsed as Groovy scripts. </p>
+<p>Note: In case of multiple config locations, later bean definitions will override ones defined in earlier loaded files. This can be leveraged to deliberately override certain bean definitions via an extra Groovy script. </p>
+<p><strong>For a WebApplicationContext that reads in a different bean definition format, create an analogous subclass of AbstractRefreshableWebApplicationContext.</strong> Such a context implementation can be specified as "contextClass" context-param for ContextLoader or "contextClass" init-param for FrameworkServlet.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-n-f-i-g_-l-o-c-a-t-i-o-n.html">DEFAULT_CONFIG_LOCATION</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CONFIG_LOCATION</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default config location for the root context</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-n-f-i-g_-l-o-c-a-t-i-o-n_-p-r-e-f-i-x.html">DEFAULT_CONFIG_LOCATION_PREFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CONFIG_LOCATION_PREFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default prefix for building a config location for a namespace</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-c-o-n-f-i-g_-l-o-c-a-t-i-o-n_-s-u-f-f-i-x.html">DEFAULT_CONFIG_LOCATION_SUFFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_CONFIG_LOCATION_SUFFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default suffix for building a config location for a namespace</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-meta-class.html">getMetaClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMetaClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MetaClass</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property.html">getProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.GroovyWebApplicationContext$getProperty(kotlin.String)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-method.html">invokeMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invokeMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.GroovyWebApplicationContext$invokeMethod(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.GroovyWebApplicationContext$invokeMethod(kotlin.String, kotlin.Any)/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-meta-class.html">setMetaClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMetaClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.GroovyWebApplicationContext$setMetaClass(groovy.lang.MetaClass)/metaClass">metaClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">MetaClass</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property.html">setProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.GroovyWebApplicationContext$setProperty(kotlin.String, kotlin.Any)/property">property</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.GroovyWebApplicationContext$setProperty(kotlin.String, kotlin.Any)/newValue">newValue</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

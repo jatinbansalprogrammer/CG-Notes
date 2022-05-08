@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingIntroductionInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.support</a>&nbsp;/&nbsp;<a href=".">DelegatingIntroductionInterceptor</a><br/>
+<br/>
+<h1>DelegatingIntroductionInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingIntroductionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IntroductionInfoSupport</span><span class="symbol">, </span><span class="identifier">IntroductionInterceptor</span></code>
+<p>Convenient implementation of the org.springframework.aop.IntroductionInterceptor interface. 
+<p>Subclasses merely need to extend this class and implement the interfaces to be introduced themselves. In this case the delegate is the subclass instance itself. Alternatively a separate delegate may implement the interface, and be set via the delegate bean property. </p>
+<p>Delegates or subclasses may implement any number of interfaces. All interfaces except IntroductionInterceptor are picked up from the subclass or delegate by default. </p>
+<p>The <code>suppressInterface</code> method can be used to suppress interfaces implemented by the delegate but which should not be introduced to the owning AOP proxy. </p>
+<p>An instance of this class is serializable if the delegate is.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+16.11.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#suppressInterface</a>DelegatePerTargetObjectIntroductionInterceptor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">DelegatingIntroductionInterceptor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.DelegatingIntroductionInterceptor$<init>(kotlin.Any)/delegate">delegate</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span></code>
+<p>Construct a new DelegatingIntroductionInterceptor, providing a delegate that implements the interfaces to be introduced.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="invoke.html">invoke</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.DelegatingIntroductionInterceptor$invoke(org.aopalliance.intercept.MethodInvocation)/mi">mi</span><span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Subclasses may need to override this if they want to perform custom behaviour in around advice. However, subclasses should invoke this method, which handles introduced interfaces and forwarding to the target.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

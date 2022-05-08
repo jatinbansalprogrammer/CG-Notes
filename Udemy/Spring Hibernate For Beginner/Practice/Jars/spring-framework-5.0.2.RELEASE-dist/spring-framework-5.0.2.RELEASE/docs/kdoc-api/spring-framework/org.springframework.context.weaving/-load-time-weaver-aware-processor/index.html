@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LoadTimeWeaverAwareProcessor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.weaving</a>&nbsp;/&nbsp;<a href=".">LoadTimeWeaverAwareProcessor</a><br/>
+<br/>
+<h1>LoadTimeWeaverAwareProcessor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LoadTimeWeaverAwareProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that passes the context's default LoadTimeWeaver to beans that implement the LoadTimeWeaverAware interface. 
+<p>org.springframework.context.ApplicationContext will automatically register this with their underlying BeanFactory, provided that a default <code>LoadTimeWeaver</code> is actually available. </p>
+<p>Applications should not use this class directly.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+LoadTimeWeaverAware<a href="#">org.springframework.context.ConfigurableApplicationContext#LOAD_TIME_WEAVER_BEAN_NAME</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LoadTimeWeaverAwareProcessor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>LoadTimeWeaverAwareProcessor</code> that will auto-retrieve the LoadTimeWeaver from the containing BeanFactory, expecting a bean named <code><a href="#">"loadTimeWeaver"</a></code>.</p>
+<code><span class="identifier">LoadTimeWeaverAwareProcessor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.LoadTimeWeaverAwareProcessor$<init>(org.springframework.instrument.classloading.LoadTimeWeaver)/loadTimeWeaver">loadTimeWeaver</span><span class="symbol">:</span>&nbsp;<span class="identifier">LoadTimeWeaver</span><span class="symbol">)</span></code>
+<p>Create a new <code>LoadTimeWeaverAwareProcessor</code> for the given LoadTimeWeaver. 
+<p>If the given <code>loadTimeWeaver</code> is <code>null</code>, then a <code>LoadTimeWeaver</code> will be auto-retrieved from the containing BeanFactory, expecting a bean named <code><a href="#">"loadTimeWeaver"</a></code>.</p>
+</p>
+<code><span class="identifier">LoadTimeWeaverAwareProcessor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.LoadTimeWeaverAwareProcessor$<init>(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span></code>
+<p>Create a new <code>LoadTimeWeaverAwareProcessor</code>. 
+<p>The <code>LoadTimeWeaver</code> will be auto-retrieved from the given BeanFactory, expecting a bean named <code><a href="#">"loadTimeWeaver"</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="post-process-after-initialization.html">postProcessAfterInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessAfterInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.LoadTimeWeaverAwareProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.weaving.LoadTimeWeaverAwareProcessor$postProcessAfterInitialization(kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="post-process-before-initialization.html">postProcessBeforeInitialization</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postProcessBeforeInitialization</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.LoadTimeWeaverAwareProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/bean">bean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.context.weaving.LoadTimeWeaverAwareProcessor$postProcessBeforeInitialization(kotlin.Any, kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.weaving.LoadTimeWeaverAwareProcessor$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,200 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MethodInvokingJobDetailFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href=".">MethodInvokingJobDetailFactoryBean</a><br/>
+<br/>
+<h1>MethodInvokingJobDetailFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvokingJobDetailFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.support/-argument-converting-method-invoker/index.html"><span class="identifier">ArgumentConvertingMethodInvoker</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">JobDetail</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.beans.factory.FactoryBean that exposes a org.quartz.JobDetail object which delegates job execution to a specified (static or non-static) method. Avoids the need for implementing a one-line Quartz Job that just invokes an existing service method on a Spring-managed target bean. 
+<p>Inherits common configuration properties from the MethodInvoker base class, such as <code><a href="#">"targetObject"</a></code> and <code><a href="#">"targetMethod"</a></code>, adding support for lookup of the target bean by name through the <code><a href="#">"targetBeanName"</a></code> property (as alternative to specifying a "targetObject" directly, allowing for non-singleton target objects). </p>
+<p>Supports both concurrently running jobs and non-currently running jobs through the "concurrent" property. Jobs created by this MethodInvokingJobDetailFactoryBean are by default volatile and durable (according to Quartz terminology). </p>
+<p><strong>NOTE: JobDetails created via this FactoryBean are <em>not</em> serializable and thus not suitable for persistent job stores.</strong> You need to implement your own Quartz Job as a thin wrapper for each case where you want a persistent job to delegate to a specific service method. </p>
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Alef Arendsen</p>
+<p><strong>Since</strong><br/>
+18.02.2004</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setTargetBeanName</a><a href="#">#setTargetObject</a><a href="#">#setTargetMethod</a><a href="set-concurrent.html">#setConcurrent</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MethodInvokingJobDetailFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean that exposes a org.quartz.JobDetail object which delegates job execution to a specified (static or non-static) method. Avoids the need for implementing a one-line Quartz Job that just invokes an existing service method on a Spring-managed target bean. 
+<p>Inherits common configuration properties from the MethodInvoker base class, such as <code><a href="#">"targetObject"</a></code> and <code><a href="#">"targetMethod"</a></code>, adding support for lookup of the target bean by name through the <code><a href="#">"targetBeanName"</a></code> property (as alternative to specifying a "targetObject" directly, allowing for non-singleton target objects). </p>
+<p>Supports both concurrently running jobs and non-currently running jobs through the "concurrent" property. Jobs created by this MethodInvokingJobDetailFactoryBean are by default volatile and durable (according to Quartz terminology). </p>
+<p><strong>NOTE: JobDetails created via this FactoryBean are <em>not</em> serializable and thus not suitable for persistent job stores.</strong> You need to implement your own Quartz Job as a thin wrapper for each case where you want a persistent job to delegate to a specific service method. </p>
+<p>Compatible with Quartz 2.1.4 and higher, as of Spring 4.1.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JobDetail</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">JobDetail</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-class.html">getTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Overridden to support the <code><a href="#">"targetBeanName"</a></code> feature.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-object.html">getTargetObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Overridden to support the <code><a href="#">"targetBeanName"</a></code> feature.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-name.html">setBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$setBeanName(kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-concurrent.html">setConcurrent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConcurrent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$setConcurrent(kotlin.Boolean)/concurrent">concurrent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether or not multiple jobs should be run in a concurrent fashion. The behavior when one does not want concurrent jobs to be executed is realized through adding the <code>@PersistJobDataAfterExecution</code> and <code>@DisallowConcurrentExecution</code> markers. More information on stateful versus stateless jobs can be found <a href="#">here</a>. 
+<p>The default setting is to run jobs concurrently.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-group.html">setGroup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setGroup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$setGroup(kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the group of the job. 
+<p>Default is the default group of the Scheduler.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-name.html">setName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$setName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the job. 
+<p>Default is the bean name of this FactoryBean.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-bean-name.html">setTargetBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$setTargetBeanName(kotlin.String)/targetBeanName">targetBeanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the target bean in the Spring BeanFactory. 
+<p>This is an alternative to specifying <code><a href="#">"targetObject"</a></code>, allowing for non-singleton beans to be invoked. Note that specified "targetObject" and <code><a href="#">"targetClass"</a></code> values will override the corresponding effect of this "targetBeanName" setting (i.e. statically pre-define the bean type or even the bean object).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.support/-argument-converting-method-invoker/get-type-converter.html">getTypeConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTypeConverter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeConverter</span></code>
+<p>Return the TypeConverter used for argument type conversion. 
+<p>Can be cast to org.springframework.beans.PropertyEditorRegistry if direct access to the underlying PropertyEditors is desired (provided that the present TypeConverter actually implements the PropertyEditorRegistry interface).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.support/-argument-converting-method-invoker/register-custom-editor.html">registerCustomEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerCustomEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.ArgumentConvertingMethodInvoker$registerCustomEditor(java.lang.Class((kotlin.Any)), java.beans.PropertyEditor)/requiredType">requiredType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.support.ArgumentConvertingMethodInvoker$registerCustomEditor(java.lang.Class((kotlin.Any)), java.beans.PropertyEditor)/propertyEditor">propertyEditor</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register the given custom property editor for all properties of the given type. 
+<p>Typically used in conjunction with the default org.springframework.beans.SimpleTypeConverter; will work with any TypeConverter that implements the PropertyEditorRegistry interface as well.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.support/-argument-converting-method-invoker/set-type-converter.html">setTypeConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTypeConverter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.ArgumentConvertingMethodInvoker$setTypeConverter(org.springframework.beans.TypeConverter)/typeConverter">typeConverter</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeConverter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a TypeConverter to use for argument type conversion. 
+<p>Default is a org.springframework.beans.SimpleTypeConverter. Can be overridden with any TypeConverter implementation, typically a pre-configured SimpleTypeConverter or a BeanWrapperImpl instance.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

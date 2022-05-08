@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CaffeineCacheManager - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.cache.caffeine</a>&nbsp;/&nbsp;<a href=".">CaffeineCacheManager</a><br/>
+<br/>
+<h1>CaffeineCacheManager</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CaffeineCacheManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheManager</span></code>
+<p>CacheManager implementation that lazily builds CaffeineCache instances for each <code><a href="#">#getCache</a></code> request. Also supports a 'static' mode where the set of cache names is pre-defined through <code><a href="#">#setCacheNames</a></code>, with no dynamic creation of further cache regions at runtime. 
+<p>The configuration of the underlying cache can be fine-tuned through a Caffeine builder or CaffeineSpec, passed into this CacheManager through <code><a href="#">#setCaffeine</a></code>/<code><a href="set-caffeine-spec.html">#setCaffeineSpec</a></code>. A CaffeineSpec-compliant expression value can also be applied via the <code><a href="#">"cacheSpecification"</a></code> bean property. </p>
+<p>Requires Caffeine 2.1 or higher.</p>
+</p>
+<p><strong>Author</strong><br/>
+Ben Manes</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+4.3</p>
+<p><strong>See Also</strong><br/>
+CaffeineCache</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CaffeineCacheManager</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Construct a dynamic CaffeineCacheManager, lazily creating cache instances as they are being requested.</p>
+<code><span class="identifier">CaffeineCacheManager</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$<init>(kotlin.Array((kotlin.String)))/cacheNames">cacheNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Construct a static CaffeineCacheManager, managing caches for the specified cache names only.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-cache.html">getCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCache</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$getCache(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Cache</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cache-names.html">getCacheNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCacheNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-allow-null-values.html">isAllowNullValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAllowNullValues</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether this cache manager accepts and converts <code>null</code> values for all of its caches.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-allow-null-values.html">setAllowNullValues</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAllowNullValues</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$setAllowNullValues(kotlin.Boolean)/allowNullValues">allowNullValues</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to accept and convert <code>null</code> values for all caches in this cache manager. 
+<p>Default is "true", despite Caffeine itself not supporting <code>null</code> values. An internal holder object will be used to store user-level <code>null</code>s.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-loader.html">setCacheLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$setCacheLoader(com.github.benmanes.caffeine.cache.CacheLoader((kotlin.Any, )))/cacheLoader">cacheLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">CacheLoader</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Caffeine CacheLoader to use for building each individual CaffeineCache instance, turning it into a LoadingCache.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-names.html">setCacheNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheNames</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$setCacheNames(kotlin.collections.MutableCollection((kotlin.String)))/cacheNames">cacheNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the set of cache names for this CacheManager's 'static' mode. 
+<p>The number of caches and their names will be fixed after a call to this method, with no creation of further cache regions at runtime. </p>
+<p>Calling this with a <code>null</code> collection argument resets the mode to 'dynamic', allowing for further creation of caches again.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-specification.html">setCacheSpecification</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheSpecification</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$setCacheSpecification(kotlin.String)/cacheSpecification">cacheSpecification</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Caffeine cache specification String to use for building each individual CaffeineCache instance. The given value needs to comply with Caffeine's CaffeineSpec (see its javadoc).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-caffeine.html">setCaffeine</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCaffeine</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$setCaffeine(com.github.benmanes.caffeine.cache.Caffeine((kotlin.Any, )))/caffeine">caffeine</span><span class="symbol">:</span>&nbsp;<span class="identifier">Caffeine</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Caffeine to use for building each individual CaffeineCache instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-caffeine-spec.html">setCaffeineSpec</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCaffeineSpec</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.caffeine.CaffeineCacheManager$setCaffeineSpec(com.github.benmanes.caffeine.cache.CaffeineSpec)/caffeineSpec">caffeineSpec</span><span class="symbol">:</span>&nbsp;<span class="identifier">CaffeineSpec</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the CaffeineSpec to use for building each individual CaffeineCache instance.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

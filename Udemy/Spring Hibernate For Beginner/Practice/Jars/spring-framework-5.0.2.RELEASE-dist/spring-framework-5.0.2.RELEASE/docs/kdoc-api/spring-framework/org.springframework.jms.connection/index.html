@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jms.connection - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jms.connection</a><br/>
+<br/>
+<h2>Package org.springframework.jms.connection</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-caching-connection-factory/index.html">CachingConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachingConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SingleConnectionFactory</span></code>
+<p>SingleConnectionFactory subclass that adds javax.jms.Session caching as well javax.jms.MessageProducer caching. This ConnectionFactory also switches the <code><a href="#">"reconnectOnException" property</a></code> to "true" by default, allowing for automatic recovery of the underlying Connection. 
+<p>By default, only one single Session will be cached, with further requested Sessions being created and disposed on demand. Consider raising the <code><a href="-caching-connection-factory/set-session-cache-size.html">"sessionCacheSize" value</a></code> in case of a high-concurrency environment. </p>
+<p>When using the JMS 1.0.2 API, this ConnectionFactory will switch into queue/topic mode according to the JMS API methods used at runtime: <code>createQueueConnection</code> and <code>createTopicConnection</code> will lead to queue/topic mode, respectively; generic <code>createConnection</code> calls will lead to a JMS 1.1 connection which is able to serve both modes. </p>
+<p><strong>NOTE: This ConnectionFactory requires explicit closing of all Sessions obtained from its shared Connection.</strong> This is the usual recommendation for native JMS access code anyway. However, with this ConnectionFactory, its use is mandatory in order to actually allow for Session reuse. </p>
+<p>Note also that MessageConsumers obtained from a cached Session won't get closed until the Session will eventually be removed from the pool. This may lead to semantic side effects in some cases. For a durable subscriber, the logical <code>Session.close()</code> call will also close the subscription. Re-registering a durable consumer for the same subscription on the same Session handle is not supported; close and reobtain a cached Session first.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-chained-exception-listener/index.html">ChainedExceptionListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ChainedExceptionListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExceptionListener</span></code>
+<p>Implementation of the JMS ExceptionListener interface that supports chaining, allowing the addition of multiple ExceptionListener instances in order.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-connection-factory-utils/index.html">ConnectionFactoryUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ConnectionFactoryUtils</span></code>
+<p>Helper class for managing a JMS javax.jms.ConnectionFactory, in particular for obtaining transactional JMS resources for a given ConnectionFactory. 
+<p>Mainly for internal use within the framework. Used by org.springframework.jms.core.JmsTemplate as well as org.springframework.jms.listener.DefaultMessageListenerContainer.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-connection-factory/index.html">DelegatingConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-smart-connection-factory/index.html"><span class="identifier">SmartConnectionFactory</span></a><span class="symbol">, </span><span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier">TopicConnectionFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>javax.jms.ConnectionFactory implementation that delegates all calls to a given target javax.jms.ConnectionFactory, adapting specific <code>create(Queue/Topic)Connection</code> calls to the target ConnectionFactory if necessary (e.g. when running JMS 1.0.2 API based code against a generic JMS 1.1 ConnectionFactory, such as ActiveMQ's PooledConnectionFactory). 
+<p>This class allows for being subclassed, with subclasses overriding only those methods (such as <code><a href="-delegating-connection-factory/create-connection.html">#createConnection()</a></code>) that should not simply delegate to the target ConnectionFactory. </p>
+<p>Can also be defined as-is, wrapping a specific target ConnectionFactory, using the "shouldStopConnections" flag to indicate whether Connections obtained from the target factory are supposed to be stopped before closed. The latter may be necessary for some connection pools that simply return released connections to the pool, not stopping them while they sit in the pool.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jms-resource-holder/index.html">JmsResourceHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsResourceHolder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceHolderSupport</span></code>
+<p>JMS resource holder, wrapping a JMS Connection and a JMS Session. JmsTransactionManager binds instances of this class to the thread, for a given JMS ConnectionFactory. 
+<p>Note: This is an SPI class, not intended to be used by applications.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jms-transaction-manager/index.html">JmsTransactionManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsTransactionManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractPlatformTransactionManager</span><span class="symbol">, </span><span class="identifier">ResourceTransactionManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>org.springframework.transaction.PlatformTransactionManager implementation for a single JMS javax.jms.ConnectionFactory. Binds a JMS Connection/Session pair from the specified ConnectionFactory to the thread, potentially allowing for one thread-bound Session per ConnectionFactory. 
+<p>This local strategy is an alternative to executing JMS operations within JTA transactions. Its advantage is that it is able to work in any environment, for example a standalone application or a test suite, with any message broker as target. However, this strategy is <em>not</em> able to provide XA transactions, for example in order to share transactions between messaging and database access. A full JTA/XA setup is required for XA transactions, typically using Spring's org.springframework.transaction.jta.JtaTransactionManager as strategy. </p>
+<p>Application code is required to retrieve the transactional JMS Session via <code><a href="#">ConnectionFactoryUtils#getTransactionalSession</a></code> instead of a standard Java EE-style <code><a href="#">ConnectionFactory#createConnection()</a></code> call with subsequent Session creation. Spring's org.springframework.jms.core.JmsTemplate will autodetect a thread-bound Session and automatically participate in it. </p>
+<p>Alternatively, you can allow application code to work with the standard Java EE-style lookup pattern on a ConnectionFactory, for example for legacy code that is not aware of Spring at all. In that case, define a TransactionAwareConnectionFactoryProxy for your target ConnectionFactory, which will automatically participate in Spring-managed transactions. </p>
+<p><strong>The use of CachingConnectionFactory as a target for this transaction manager is strongly recommended.</strong> CachingConnectionFactory uses a single JMS Connection for all JMS access in order to avoid the overhead of repeated Connection creation, as well as maintaining a cache of Sessions. Each transaction will then share the same JMS Connection, while still using its own individual JMS Session. </p>
+<p>The use of a <em>raw</em> target ConnectionFactory would not only be inefficient because of the lack of resource reuse. It might also lead to strange effects when your JMS driver doesn't accept <code>MessageProducer.close()</code> calls and/or <code>MessageConsumer.close()</code> calls before <code>Session.commit()</code>, with the latter supposed to commit all the messages that have been sent through the producer handle and received through the consumer handle. As a safe general solution, always pass in a CachingConnectionFactory into this transaction manager's <code><a href="-jms-transaction-manager/set-connection-factory.html">"connectionFactory"</a></code> property. </p>
+<p>Transaction synchronization is turned off by default, as this manager might be used alongside a datastore-based Spring transaction manager such as the JDBC org.springframework.jdbc.datasource.DataSourceTransactionManager, which has stronger needs for synchronization.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-smart-connection-factory/index.html">SmartConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">SmartConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span></code>
+<p>Extension of the <code>javax.jms.ConnectionFactory</code> interface, indicating how to release Connections obtained from it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-transaction-aware-connection-factory-proxy/index.html">TransactionAwareConnectionFactoryProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionAwareConnectionFactoryProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier">TopicConnectionFactory</span></code>
+<p>Proxy for a target JMS javax.jms.ConnectionFactory, adding awareness of Spring-managed transactions. Similar to a transactional JNDI ConnectionFactory as provided by a Java EE application server. 
+<p>Messaging code which should remain unaware of Spring's JMS support can work with this proxy to seamlessly participate in Spring-managed transactions. Note that the transaction manager, for example JmsTransactionManager, still needs to work with the underlying ConnectionFactory, <em>not</em> with this proxy. </p>
+<p><strong>Make sure that TransactionAwareConnectionFactoryProxy is the outermost ConnectionFactory of a chain of ConnectionFactory proxies/adapters.</strong> TransactionAwareConnectionFactoryProxy can delegate either directly to the target factory or to some intermediary adapter like UserCredentialsConnectionFactoryAdapter. </p>
+<p>Delegates to ConnectionFactoryUtils for automatically participating in thread-bound transactions, for example managed by JmsTransactionManager. <code>createSession</code> calls and <code>close</code> calls on returned Sessions will behave properly within a transaction, that is, always work on the transactional Session. If not within a transaction, normal ConnectionFactory behavior applies. </p>
+<p>Note that transactional JMS Sessions will be registered on a per-Connection basis. To share the same JMS Session across a transaction, make sure that you operate on the same JMS Connection handle - either through reusing the handle or through configuring a SingleConnectionFactory underneath. </p>
+<p>Returned transactional Session proxies will implement the SessionProxy interface to allow for access to the underlying target Session. This is only intended for accessing vendor-specific Session API or for testing purposes (e.g. to perform manual transaction control). For typical application purposes, simply use the standard JMS Session interface.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-user-credentials-connection-factory-adapter/index.html">UserCredentialsConnectionFactoryAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UserCredentialsConnectionFactoryAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier">TopicConnectionFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>An adapter for a target JMS javax.jms.ConnectionFactory, applying the given user credentials to every standard <code>createConnection()</code> call, that is, implicitly invoking <code>createConnection(username, password)</code> on the target. All other methods simply delegate to the corresponding methods of the target ConnectionFactory. 
+<p>Can be used to proxy a target JNDI ConnectionFactory that does not have user credentials configured. Client code can work with the ConnectionFactory without passing in username and password on every <code>createConnection()</code> call. </p>
+<p>In the following example, client code can simply transparently work with the preconfigured "myConnectionFactory", implicitly accessing "myTargetConnectionFactory" with the specified user credentials. </p>
+<pre><code> &lt;bean id="myTargetConnectionFactory" class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="java:comp/env/jms/mycf"/&gt; &lt;/bean&gt; &lt;bean id="myConnectionFactory" class="org.springframework.jms.connection.UserCredentialsConnectionFactoryAdapter"&gt; &lt;property name="targetConnectionFactory" ref="myTargetConnectionFactory"/&gt; &lt;property name="username" value="myusername"/&gt; &lt;property name="password" value="mypassword"/&gt; &lt;/bean&gt;</code></pre> 
+<p>If the "username" is empty, this proxy will simply delegate to the standard <code>createConnection()</code> method of the target ConnectionFactory. This can be used to keep a UserCredentialsConnectionFactoryAdapter bean definition just for the <em>option</em> of implicitly passing in user credentials if the particular target ConnectionFactory requires it.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-synched-local-transaction-failed-exception/index.html">SynchedLocalTransactionFailedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SynchedLocalTransactionFailedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmsException</span></code>
+<p>Exception thrown when a synchronized local transaction failed to complete (after the main transaction has already completed).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

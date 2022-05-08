@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TimerManagerAccessor.setShared - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.commonj</a>&nbsp;/&nbsp;<a href="index.html">TimerManagerAccessor</a>&nbsp;/&nbsp;<a href=".">setShared</a><br/>
+<br/>
+<h1>setShared</h1>
+<a name="org.springframework.scheduling.commonj.TimerManagerAccessor$setShared(kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setShared</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.commonj.TimerManagerAccessor$setShared(kotlin.Boolean)/shared">shared</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether the TimerManager obtained by this FactoryBean is a shared instance ("true") or an independent instance ("false"). The lifecycle of the former is supposed to be managed by the application server, while the lifecycle of the latter is up to the application. 
+<p>Default is "false", i.e. managing an independent TimerManager instance. This is what the CommonJ specification suggests that application servers are supposed to offer via JNDI lookups, typically declared as a <code>resource-ref</code> of type <code>commonj.timers.TimerManager</code> in <code>web.xml</code>, with <code>res-sharing-scope</code> set to 'Unshareable'. </p>
+<p>Switch this flag to "true" if you are obtaining a shared TimerManager, typically through specifying the JNDI location of a TimerManager that has been explicitly declared as 'Shareable'. Note that WebLogic's cluster-aware Job Scheduler is a shared TimerManager too. </p>
+<p>The sole difference between this FactoryBean being in shared or non-shared mode is that it will only attempt to suspend / resume / stop the underlying TimerManager in case of an independent (non-shared) instance. This only affects the org.springframework.context.Lifecycle support as well as application context shutdown.</p>
+</p>
+<p><strong>See Also</strong><br/>
+<a href="stop.html">#stop()</a><a href="start.html">#start()</a><a href="destroy.html">#destroy()</a>commonj.timers.TimerManager</p>
+</BODY>
+</HTML>

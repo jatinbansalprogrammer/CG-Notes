@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DefaultMessageCodesResolver.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.validation</a>&nbsp;/&nbsp;<a href="index.html">DefaultMessageCodesResolver</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.validation.DefaultMessageCodesResolver$&lt;init&gt;()"></a>
+<code><span class="identifier">DefaultMessageCodesResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Default implementation of the MessageCodesResolver interface. 
+<p>Will create two message codes for an object error, in the following order (when using the <code><a href="#">prefixed</a></code> <code><a href="set-message-code-formatter.html">formatter</a></code>): </p>
+<ul> <li>1.: code + "." + object name </li>
+<li>2.: code </li>
+</ul>
+ 
+<p>Will create four message codes for a field specification, in the following order: </p>
+<ul> <li>1.: code + "." + object name + "." + field </li>
+<li>2.: code + "." + field </li>
+<li>3.: code + "." + field type </li>
+<li>4.: code </li>
+</ul>
+ 
+<p>For example, in case of code "typeMismatch", object name "user", field "age": </p>
+<ul> <li>1. try "typeMismatch.user.age" </li>
+<li>2. try "typeMismatch.age" </li>
+<li>3. try "typeMismatch.int" </li>
+<li>4. try "typeMismatch" </li>
+</ul>
+ 
+<p>This resolution algorithm thus can be leveraged for example to show specific messages for binding errors like "required" and "typeMismatch": </p>
+<ul> <li>at the object + field level ("age" field, but only on "user"); </li>
+<li>at the field level (all "age" fields, no matter which object name); </li>
+<li>or at the general level (all fields, on any object). </li>
+</ul>
+ 
+<p>In case of array, List or java.util.Map properties, both codes for specific elements and for the whole collection are generated. Assuming a field "name" of an array "groups" in object "user": </p>
+<ul> <li>1. try "typeMismatch.user.groups[0].name" </li>
+<li>2. try "typeMismatch.user.groups.name" </li>
+<li>3. try "typeMismatch.groups[0].name" </li>
+<li>4. try "typeMismatch.groups.name" </li>
+<li>5. try "typeMismatch.name" </li>
+<li>6. try "typeMismatch.java.lang.String" </li>
+<li>7. try "typeMismatch" </li>
+</ul>
+ 
+<p>By default the <code>errorCode</code>s will be placed at the beginning of constructed message strings. The <code><a href="set-message-code-formatter.html"> messageCodeFormatter</a></code> property can be used to specify an alternative concatenation MessageCodeFormatter. </p>
+<p>In order to group all codes into a specific category within your resource bundles, e.g. "validation.typeMismatch.name" instead of the default "typeMismatch.name", consider specifying a <code><a href="#">prefix</a></code> to be applied.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+1.0.1</p>
+</BODY>
+</HTML>

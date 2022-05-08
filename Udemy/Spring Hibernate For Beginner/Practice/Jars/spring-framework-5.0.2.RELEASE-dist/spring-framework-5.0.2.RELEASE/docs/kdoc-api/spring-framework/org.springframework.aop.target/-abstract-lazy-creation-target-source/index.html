@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractLazyCreationTargetSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.target</a>&nbsp;/&nbsp;<a href=".">AbstractLazyCreationTargetSource</a><br/>
+<br/>
+<h1>AbstractLazyCreationTargetSource</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractLazyCreationTargetSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TargetSource</span></code>
+<p>org.springframework.aop.TargetSource implementation that will lazily create a user-managed object. 
+<p>Creation of the lazy target object is controlled by the user by implementing the <code><a href="#">#createObject()</a></code> method. This <code>TargetSource</code> will invoke this method the first time the proxy is accessed. </p>
+<p>Useful when you need to pass a reference to some dependency to an object but you don't actually want the dependency to be created until it is first used. A typical scenario for this is a connection to a remote resource.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2.4</p>
+<p><strong>See Also</strong><br/>
+<a href="is-initialized.html">#isInitialized()</a><a href="#">#createObject()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractLazyCreationTargetSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.aop.TargetSource implementation that will lazily create a user-managed object. 
+<p>Creation of the lazy target object is controlled by the user by implementing the <code><a href="#">#createObject()</a></code> method. This <code>TargetSource</code> will invoke this method the first time the proxy is accessed. </p>
+<p>Useful when you need to pass a reference to some dependency to an object but you don't actually want the dependency to be created until it is first used. A typical scenario for this is a connection to a remote resource.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-target.html">getTarget</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTarget</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Returns the lazy-initialized target object, creating it on-the-fly if it doesn't exist already.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-target-class.html">getTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTargetClass</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>This default implementation returns <code>null</code> if the target is <code>null</code> (it is hasn't yet been initialized), or the target class if the target has already been initialized. 
+<p>Subclasses may wish to override this method in order to provide a meaningful value when the target is still <code>null</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-initialized.html">isInitialized</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isInitialized</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the lazy target object of this TargetSource has already been fetched.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-static.html">isStatic</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isStatic</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="release-target.html">releaseTarget</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">releaseTarget</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.target.AbstractLazyCreationTargetSource$releaseTarget(kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

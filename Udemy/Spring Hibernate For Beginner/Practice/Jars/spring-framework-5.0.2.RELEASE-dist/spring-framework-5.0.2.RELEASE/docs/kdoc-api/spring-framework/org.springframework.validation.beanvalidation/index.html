@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.validation.beanvalidation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.validation.beanvalidation</a><br/>
+<br/>
+<h2>Package org.springframework.validation.beanvalidation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-bean-validation-post-processor/index.html">BeanValidationPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanValidationPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanPostProcessor</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Simple BeanPostProcessor that checks JSR-303 constraint annotations in Spring-managed beans, throwing an initialization exception in case of constraint violations right before calling the bean's init method (if any).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-custom-validator-bean/index.html">CustomValidatorBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CustomValidatorBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpringValidatorAdapter</span><span class="symbol">, </span><span class="identifier">Validator</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Configurable bean class that exposes a specific JSR-303 Validator through its original interface as well as through the Spring org.springframework.validation.Validator interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-validator-factory-bean/index.html">LocalValidatorFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalValidatorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpringValidatorAdapter</span><span class="symbol">, </span><span class="identifier">ValidatorFactory</span><span class="symbol">, </span><span class="identifier">ApplicationContextAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>This is the central class for <code>javax.validation</code> (JSR-303) setup in a Spring application context: It bootstraps a <code>javax.validation.ValidationFactory</code> and exposes it through the Spring org.springframework.validation.Validator interface as well as through the JSR-303 javax.validation.Validator interface and the javax.validation.ValidatorFactory interface itself. 
+<p>When talking to an instance of this bean through the Spring or JSR-303 Validator interfaces, you'll be talking to the default Validator of the underlying ValidatorFactory. This is very convenient in that you don't have to perform yet another call on the factory, assuming that you will almost always use the default Validator anyway. This can also be injected directly into any target dependency of type org.springframework.validation.Validator! </p>
+<p><strong>As of Spring 5.0, this class requires Bean Validation 1.1+, with special support for Hibernate Validator 5.x</strong> (see <code><a href="-local-validator-factory-bean/set-validation-message-source.html">#setValidationMessageSource</a></code>). This class is also runtime-compatible with Bean Validation 2.0 and Hibernate Validator 6.0, with one special note: If you'd like to call BV 2.0's <code>getClockProvider()</code> method, obtain the native <code>ValidatorFactory</code> through <code>#unwrap(ValidatorFactory.class)</code> and call the <code>getClockProvider()</code> method on the returned native reference there. </p>
+<p>This class is also being used by Spring's MVC configuration namespace, in case of the <code>javax.validation</code> API being present but no explicit Validator having been configured.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-locale-context-message-interpolator/index.html">LocaleContextMessageInterpolator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocaleContextMessageInterpolator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageInterpolator</span></code>
+<p>Delegates to a target MessageInterpolator implementation but enforces Spring's managed Locale. Typically used to wrap the validation provider's default interpolator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-source-resource-bundle-locator/index.html">MessageSourceResourceBundleLocator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageSourceResourceBundleLocator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceBundleLocator</span></code>
+<p>Implementation of Hibernate Validator 4.3/5.x's ResourceBundleLocator interface, exposing a Spring MessageSource as localized MessageSourceResourceBundle.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-validation-interceptor/index.html">MethodValidationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodValidationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a></code>
+<p>An AOP Alliance MethodInterceptor implementation that delegates to a JSR-303 provider for performing method-level validation on annotated methods. 
+<p>Applicable methods have JSR-303 constraint annotations on their parameters and/or on their return value (in the latter case specified at the method level, typically as inline annotation). </p>
+<p>E.g.: <code>public @NotNull Object myValidMethod(@NotNull String arg1, @Max(10) int arg2)</code> </p>
+<p>Validation groups can be specified through Spring's Validated annotation at the type level of the containing target class, applying to all public service methods of that class. By default, JSR-303 will validate against its default group only. </p>
+<p>As of Spring 5.0, this functionality requires a Bean Validation 1.1 provider.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-method-validation-post-processor/index.html">MethodValidationPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodValidationPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.aop.framework.autoproxy/-abstract-bean-factory-aware-advising-post-processor/index.html"><span class="identifier">AbstractBeanFactoryAwareAdvisingPostProcessor</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A convenient BeanPostProcessor implementation that delegates to a JSR-303 provider for performing method-level validation on annotated methods. 
+<p>Applicable methods have JSR-303 constraint annotations on their parameters and/or on their return value (in the latter case specified at the method level, typically as inline annotation), e.g.: </p>
+<pre><code> public @NotNull Object myValidMethod(@NotNull String arg1, @Max(10) int arg2) </code></pre> 
+<p>Target classes with such annotated methods need to be annotated with Spring's Validated annotation at the type level, for their methods to be searched for inline constraint annotations. Validation groups can be specified through <code>@Validated</code> as well. By default, JSR-303 will validate against its default group only. </p>
+<p>As of Spring 5.0, this functionality requires a Bean Validation 1.1 provider.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-optional-validator-factory-bean/index.html">OptionalValidatorFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OptionalValidatorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-local-validator-factory-bean/index.html"><span class="identifier">LocalValidatorFactoryBean</span></a></code>
+<p>LocalValidatorFactoryBean subclass that simply turns org.springframework.validation.Validator calls into no-ops in case of no Bean Validation provider being available. 
+<p>This is the actual class used by Spring's MVC configuration namespace, in case of the <code>javax.validation</code> API being present but no explicit Validator having been configured.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-constraint-validator-factory/index.html">SpringConstraintValidatorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringConstraintValidatorFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConstraintValidatorFactory</span></code>
+<p>JSR-303 ConstraintValidatorFactory implementation that delegates to a Spring BeanFactory for creating autowired ConstraintValidator instances. 
+<p>Note that this class is meant for programmatic use, not for declarative use in a standard <code>validation.xml</code> file. Consider org.springframework.web.bind.support.SpringWebConstraintValidatorFactory for declarative use in a web application, e.g. with JAX-RS or JAX-WS.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

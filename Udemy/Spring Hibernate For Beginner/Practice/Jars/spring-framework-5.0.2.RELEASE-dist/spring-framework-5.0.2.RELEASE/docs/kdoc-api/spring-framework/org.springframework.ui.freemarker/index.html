@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.ui.freemarker - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.ui.freemarker</a><br/>
+<br/>
+<h2>Package org.springframework.ui.freemarker</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-free-marker-configuration-factory/index.html">FreeMarkerConfigurationFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FreeMarkerConfigurationFactory</span></code>
+<p>Factory that configures a FreeMarker Configuration. Can be used standalone, but typically you will either use FreeMarkerConfigurationFactoryBean for preparing a Configuration as bean reference, or FreeMarkerConfigurer for web views. 
+<p>The optional "configLocation" property sets the location of a FreeMarker properties file, within the current application. FreeMarker properties can be overridden via "freemarkerSettings". All of these properties will be set by calling FreeMarker's <code>Configuration.setSettings()</code> method and are subject to constraints set by FreeMarker. </p>
+<p>The "freemarkerVariables" property can be used to specify a Map of shared variables that will be applied to the Configuration via the <code>setAllSharedVariables()</code> method. Like <code>setSettings()</code>, these entries are subject to FreeMarker constraints. </p>
+<p>The simplest way to use this class is to specify a "templateLoaderPath"; FreeMarker does not need any further configuration then. </p>
+<p>Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-free-marker-configuration-factory-bean/index.html">FreeMarkerConfigurationFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FreeMarkerConfigurationFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-free-marker-configuration-factory/index.html"><span class="identifier">FreeMarkerConfigurationFactory</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Configuration</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">ResourceLoaderAware</span></code>
+<p>Factory bean that creates a FreeMarker Configuration and provides it as bean reference. This bean is intended for any kind of usage of FreeMarker in application code, e.g. for generating email content. For web views, FreeMarkerConfigurer is used to set up a FreeMarkerConfigurationFactory. The simplest way to use this class is to specify just a "templateLoaderPath"; you do not need any further configuration then. For example, in a web application context: <pre><code> &lt;bean id="freemarkerConfiguration" class="org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean"&gt; &lt;property name="templateLoaderPath" value="/WEB-INF/freemarker/"/&gt; &lt;/bean&gt;</code></pre> See the base class FreeMarkerConfigurationFactory for configuration details. 
+<p>Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-template-loader/index.html">SpringTemplateLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringTemplateLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TemplateLoader</span></code>
+<p>FreeMarker TemplateLoader adapter that loads via a Spring ResourceLoader. Used by FreeMarkerConfigurationFactory for any resource loader path that cannot be resolved to a java.io.File.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

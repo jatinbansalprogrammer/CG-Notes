@@ -1,0 +1,455 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CastorMarshaller - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.oxm.castor</a>&nbsp;/&nbsp;<a href=".">CastorMarshaller</a><br/>
+<br/>
+<h1>CastorMarshaller</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CastorMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.oxm.support/-abstract-marshaller/index.html"><span class="identifier">AbstractMarshaller</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>Implementation of the <code>Marshaller</code> interface for Castor. By default, Castor does not require any further configuration, though setting target classes, target packages or providing a mapping file can be used to have more control over the behavior of Castor. 
+<p>If a target class is specified using <code>setTargetClass</code>, the <code>CastorMarshaller</code> can only be used to unmarshal XML that represents that specific class. If you want to unmarshal multiple classes, you have to provide a mapping file using <code>setMappingLocations</code>. </p>
+<p>Due to limitations of Castor's API, it is required to set the encoding used for writing to output streams. It defaults to <code>UTF-8</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Jakub Narloch</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setEncoding(String)</a><a href="#">#setTargetClass(Class)</a><a href="#">#setTargetPackages(String[])</a><a href="set-mapping-location.html">#setMappingLocation(Resource)</a><a href="#">#setMappingLocations(Resource[])</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CastorMarshaller</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of the <code>Marshaller</code> interface for Castor. By default, Castor does not require any further configuration, though setting target classes, target packages or providing a mapping file can be used to have more control over the behavior of Castor. 
+<p>If a target class is specified using <code>setTargetClass</code>, the <code>CastorMarshaller</code> can only be used to unmarshal XML that represents that specific class. If you want to unmarshal multiple classes, you have to provide a mapping file using <code>setMappingLocations</code>. </p>
+<p>Due to limitations of Castor's API, it is required to set the encoding used for writing to output streams. It defaults to <code>UTF-8</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-n-c-o-d-i-n-g.html">DEFAULT_ENCODING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ENCODING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default encoding used for stream access: UTF-8.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-castor-properties.html">setCastorProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCastorProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setCastorProperties(kotlin.collections.MutableMap((kotlin.String, )))/castorProperties">castorProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set Castor-specific properties for marshalling and unmarshalling. Each entry key is considered the property name and each value the property value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-class-descriptor-resolver.html">setClassDescriptorResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClassDescriptorResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setClassDescriptorResolver(org.exolab.castor.xml.XMLClassDescriptorResolver)/classDescriptorResolver">classDescriptorResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">XMLClassDescriptorResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the XMLClassDescriptorResolver to be used during unmarshalling. This resolver will used to resolve class descriptors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-clear-collections.html">setClearCollections</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setClearCollections</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setClearCollections(kotlin.Boolean)/clearCollections">clearCollections</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets whether this unmarshaller should clear collections upon the first use. 
+<p>The default is <code>false</code> which means that marshaller won't clear collections.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-doctypes.html">setDoctypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDoctypes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setDoctypes(kotlin.collections.MutableMap((kotlin.String, )))/doctypes">doctypes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the map containing document type definition for the marshaller. Each entry has system id as key and public id as value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding.html">setEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setEncoding(kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the encoding to be used for stream access.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-entity-resolver.html">setEntityResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEntityResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setEntityResolver(org.xml.sax.EntityResolver)/entityResolver">entityResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the EntityResolver to be used during unmarshalling. This resolver will used to resolve system and public ids.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-id-resolver.html">setIdResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIdResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setIdResolver(org.exolab.castor.xml.IDResolver)/idResolver">idResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">IDResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Castor IDResolver to be used during unmarshalling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ignore-extra-attributes.html">setIgnoreExtraAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIgnoreExtraAttributes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setIgnoreExtraAttributes(kotlin.Boolean)/ignoreExtraAttributes">ignoreExtraAttributes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the Castor Unmarshaller should ignore attributes that do not match a specific field. 
+<p>Default is <code>true</code>: Extra attributes are ignored.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-ignore-extra-elements.html">setIgnoreExtraElements</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIgnoreExtraElements</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setIgnoreExtraElements(kotlin.Boolean)/ignoreExtraElements">ignoreExtraElements</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the Castor Unmarshaller should ignore elements that do not match a specific field. 
+<p>Default is <code>false</code>: Extra elements are flagged as an error.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapping-location.html">setMappingLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappingLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setMappingLocation(org.springframework.core.io.Resource)/mappingLocation">mappingLocation</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the locations of the Castor XML mapping files.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapping-locations.html">setMappingLocations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappingLocations</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setMappingLocations(kotlin.Array((org.springframework.core.io.Resource)))/mappingLocations">mappingLocations</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the locations of the Castor XML mapping files.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-marshal-as-document.html">setMarshalAsDocument</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMarshalAsDocument</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setMarshalAsDocument(kotlin.Boolean)/marshalAsDocument">marshalAsDocument</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether this marshaller should output the xml declaration. 
+<p>The default is <code>true</code>, the XML declaration will be written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-marshal-extended-type.html">setMarshalExtendedType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMarshalExtendedType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setMarshalExtendedType(kotlin.Boolean)/marshalExtendedType">marshalExtendedType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether this marshaller should output for given type the <code>xsi:type</code> attribute. 
+<p>The default is <code>true</code>, the <code>xsi:type</code> attribute will be written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-namespace-mappings.html">setNamespaceMappings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNamespaceMappings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setNamespaceMappings(kotlin.collections.MutableMap((kotlin.String, )))/namespaceMappings">namespaceMappings</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the namespace mappings. Property names are interpreted as namespace prefixes; values are namespace URIs.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-namespace-to-package-mapping.html">setNamespaceToPackageMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNamespaceToPackageMapping</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setNamespaceToPackageMapping(kotlin.collections.MutableMap((kotlin.String, )))/namespaceToPackageMapping">namespaceToPackageMapping</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the namespace to package mappings. Property names are represents the namespaces URI, values are packages.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-no-namespace-schema-location.html">setNoNamespaceSchemaLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNoNamespaceSchemaLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setNoNamespaceSchemaLocation(kotlin.String)/noNamespaceSchemaLocation">noNamespaceSchemaLocation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the value of <code>xsi:noNamespaceSchemaLocation</code> attribute. When set, the <code>xsi:noNamespaceSchemaLocation</code> attribute will be written for the root element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-object-factory.html">setObjectFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setObjectFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setObjectFactory(org.exolab.castor.util.ObjectFactory)/objectFactory">objectFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ObjectFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Castor ObjectFactory to be used during unmarshalling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-processing-instructions.html">setProcessingInstructions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProcessingInstructions</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setProcessingInstructions(kotlin.collections.MutableMap((kotlin.String, )))/processingInstructions">processingInstructions</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the processing instructions that will be used by during marshalling. Keys are the processing targets and values contain the processing data.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-reuse-objects.html">setReuseObjects</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReuseObjects</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setReuseObjects(kotlin.Boolean)/reuseObjects">reuseObjects</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether this unmarshaller should re-use objects. This will be only used when unmarshalling to an existing object. 
+<p>The default is <code>false</code>, which means that the objects won't be re-used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-root-element.html">setRootElement</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRootElement</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setRootElement(kotlin.String)/rootElement">rootElement</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the root element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-root-object.html">setRootObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRootObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setRootObject(kotlin.Any)/root">root</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the expected root object for the unmarshaller, into which the source will be unmarshalled.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-schema-location.html">setSchemaLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSchemaLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setSchemaLocation(kotlin.String)/schemaLocation">schemaLocation</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the value of <code>xsi:schemaLocation</code> attribute. When set, the <code>xsi:schemaLocation</code> attribute will be written for the root element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-suppress-namespaces.html">setSuppressNamespaces</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSuppressNamespaces</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setSuppressNamespaces(kotlin.Boolean)/suppressNamespaces">suppressNamespaces</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets whether this marshaller should output namespaces. 
+<p>The default is <code>false</code>, i.e. namespaces are written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-suppress-xsi-type.html">setSuppressXsiType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSuppressXsiType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setSuppressXsiType(kotlin.Boolean)/suppressXsiType">suppressXsiType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether this marshaller should output the <code>xsi:type</code> attribute. 
+<p>The default is <code>false</code>, i.e. the <code>xsi:type</code> is written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-class.html">setTargetClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setTargetClass(java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Castor target class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-classes.html">setTargetClasses</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetClasses</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setTargetClasses(kotlin.Array((java.lang.Class((kotlin.Any)))))/targetClasses">targetClasses</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Castor target classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-package.html">setTargetPackage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetPackage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setTargetPackage(kotlin.String)/targetPackage">targetPackage</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of a package with the Castor descriptor classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-target-packages.html">setTargetPackages</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTargetPackages</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setTargetPackages(kotlin.Array((kotlin.String)))/targetPackages">targetPackages</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the names of packages with the Castor descriptor classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-x-s-i-type-at-root.html">setUseXSITypeAtRoot</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseXSITypeAtRoot</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setUseXSITypeAtRoot(kotlin.Boolean)/useXSITypeAtRoot">useXSITypeAtRoot</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets whether this marshaller should output the <code>xsi:type</code> attribute for the root element. This can be useful when the type of the element can not be simply determined from the element name. 
+<p>The default is <code>false</code>: The <code>xsi:type</code> attribute for the root element won't be written.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validating.html">setValidating</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValidating</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setValidating(kotlin.Boolean)/validating">validating</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether this marshaller should validate in- and outgoing documents. 
+<p>Default is <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-whitespace-preserve.html">setWhitespacePreserve</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setWhitespacePreserve</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$setWhitespacePreserve(kotlin.Boolean)/whitespacePreserve">whitespacePreserve</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the Castor Unmarshaller should preserve "ignorable" whitespace. 
+<p>Default is <code>false</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports.html">supports</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supports</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.castor.CastorMarshaller$supports(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns <code>true</code> for all classes, i.e. Castor supports arbitrary classes.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/is-process-external-entities.html">isProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isProcessExternalEntities</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns the configured value for whether XML external entities are allowed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/is-support-dtd.html">isSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSupportDtd</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether DTD parsing is supported.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/marshal.html">marshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">marshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">Result</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Marshals the object graph with the given root into the provided <code>javax.xml.transform.Result</code>. 
+<p>This implementation inspects the given result, and calls <code>marshalDomResult</code>, <code>marshalSaxResult</code>, or <code>marshalStreamResult</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-process-external-entities.html">setProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProcessExternalEntities</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setProcessExternalEntities(kotlin.Boolean)/processExternalEntities">processExternalEntities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether external XML entities are processed when unmarshalling. 
+<p>Default is <code>false</code>, meaning that external entities are not resolved. Note that processing of external entities will only be enabled/disabled when the <code>Source</code> passed to <code><a href="../../org.springframework.oxm.support/-abstract-marshaller/unmarshal.html">#unmarshal(Source)</a></code> is a SAXSource or StreamSource. It has no effect for DOMSource or StAXSource instances. </p>
+<p><strong>Note:</strong> setting this option to <code>true</code> also automatically sets <code><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-support-dtd.html">#setSupportDtd</a></code> to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-support-dtd.html">setSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportDtd</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setSupportDtd(kotlin.Boolean)/supportDtd">supportDtd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether DTD parsing should be supported. 
+<p>Default is <code>false</code> meaning that DTD is disabled.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/unmarshal.html">unmarshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">unmarshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$unmarshal(javax.xml.transform.Source)/source">source</span><span class="symbol">:</span>&nbsp;<span class="identifier">Source</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Unmarshals the given provided <code>javax.xml.transform.Source</code> into an object graph. 
+<p>This implementation inspects the given result, and calls <code>unmarshalDomSource</code>, <code>unmarshalSaxSource</code>, or <code>unmarshalStreamSource</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

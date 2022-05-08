@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.orm.hibernate5.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.orm.hibernate5.support</a><br/>
+<br/>
+<h2>Package org.springframework.orm.hibernate5.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-hibernate-dao-support/index.html">HibernateDaoSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">HibernateDaoSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DaoSupport</span></code>
+<p>Convenient super class for Hibernate-based data access objects. 
+<p>Requires a SessionFactory to be set, providing a org.springframework.orm.hibernate5.HibernateTemplate based on it to subclasses through the <code><a href="-hibernate-dao-support/get-hibernate-template.html">#getHibernateTemplate()</a></code> method. Can alternatively be initialized directly with a HibernateTemplate, in order to reuse the latter's settings such as the SessionFactory, exception translator, flush mode, etc. </p>
+<p>This class will create its own HibernateTemplate instance if a SessionFactory is passed in. The "allowCreate" flag on that HibernateTemplate will be "true" by default. A custom HibernateTemplate instance can be used through overriding <code><a href="#">#createHibernateTemplate</a></code>. </p>
+<p><strong>NOTE: Hibernate access code can also be coded in plain Hibernate style. Hence, for newly started projects, consider adopting the standard Hibernate style of coding data access objects instead, based on <code><a href="#">SessionFactory#getCurrentSession()</a></code>. This HibernateTemplate primarily exists as a migration helper for Hibernate 3 based data access code, to benefit from bug fixes in Hibernate 5.x.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-open-session-in-view-filter/index.html">OpenSessionInViewFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenSessionInViewFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Servlet Filter that binds a Hibernate Session to the thread for the entire processing of the request. Intended for the "Open Session in View" pattern, i.e. to allow for lazy loading in web views despite the original transactions already being completed. 
+<p>This filter makes Hibernate Sessions available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.hibernate5.HibernateTransactionManager as well as for non-transactional execution (if configured appropriately). </p>
+<p><strong>NOTE</strong>: This filter will by default <em>not</em> flush the Hibernate Session, with the flush mode set to <code>FlushMode.NEVER</code>. It assumes to be used in combination with service layer transactions that care for the flushing: The active transaction manager will temporarily change the flush mode to <code>FlushMode.AUTO</code> during a read-write transaction, with the flush mode reset to <code>FlushMode.NEVER</code> at the end of each transaction. </p>
+<p><strong>WARNING:</strong> Applying this filter to existing logic can cause issues that have not appeared before, through the use of a single Hibernate Session for the processing of an entire request. In particular, the reassociation of persistent objects with a Hibernate Session has to occur at the very beginning of request processing, to avoid clashes with already loaded instances of the same objects. </p>
+<p>Looks up the SessionFactory in Spring's root web application context. Supports a "sessionFactoryBeanName" filter init-param in <code>web.xml</code>; the default bean name is "sessionFactory".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-open-session-in-view-interceptor/index.html">OpenSessionInViewInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenSessionInViewInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncWebRequestInterceptor</span></code>
+<p>Spring web request interceptor that binds a Hibernate <code>Session</code> to the thread for the entire processing of the request. 
+<p>This class is a concrete expression of the "Open Session in View" pattern, which is a pattern that allows for the lazy loading of associations in web views despite the original transactions already being completed. </p>
+<p>This interceptor makes Hibernate Sessions available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.hibernate5.HibernateTransactionManager as well as for non-transactional execution (if configured appropriately). </p>
+<p>In contrast to OpenSessionInViewFilter, this interceptor is configured in a Spring application context and can thus take advantage of bean wiring. </p>
+<p><strong>WARNING:</strong> Applying this interceptor to existing logic can cause issues that have not appeared before, through the use of a single Hibernate <code>Session</code> for the processing of an entire request. In particular, the reassociation of persistent objects with a Hibernate <code>Session</code> has to occur at the very beginning of request processing, to avoid clashes with already loaded instances of the same objects.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-open-session-interceptor/index.html">OpenSessionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenSessionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Simple AOP Alliance MethodInterceptor implementation that binds a new Hibernate Session for each method invocation, if none bound before. 
+<p>This is a simple Hibernate Session scoping interceptor along the lines of OpenSessionInViewInterceptor, just for use with AOP setup instead of MVC setup. It opens a new Session with flush mode "MANUAL" since the Session is only meant for reading, except when participating in a transaction.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

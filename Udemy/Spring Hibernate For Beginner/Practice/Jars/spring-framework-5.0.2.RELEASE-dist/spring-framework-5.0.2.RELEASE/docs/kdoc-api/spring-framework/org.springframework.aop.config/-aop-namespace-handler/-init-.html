@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AopNamespaceHandler.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.config</a>&nbsp;/&nbsp;<a href="index.html">AopNamespaceHandler</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.aop.config.AopNamespaceHandler$&lt;init&gt;()"></a>
+<code><span class="identifier">AopNamespaceHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p><code>NamespaceHandler</code> for the <code>aop</code> namespace. 
+<p>Provides a org.springframework.beans.factory.xml.BeanDefinitionParser for the <code>&lt;aop:config&gt;</code> tag. A <code>config</code> tag can include nested <code>pointcut</code>, <code>advisor</code> and <code>aspect</code> tags. </p>
+<p>The <code>pointcut</code> tag allows for creation of named AspectJExpressionPointcut beans using a simple syntax: </p>
+<pre><code> &lt;aop:pointcut id="getNameCalls" expression="execution(* *..ITestBean.getName(..))"/&gt; </code></pre> 
+<p>Using the <code>advisor</code> tag you can configure an org.springframework.aop.Advisor and have it applied to all relevant beans in you org.springframework.beans.factory.BeanFactory automatically. The <code>advisor</code> tag supports both in-line and referenced org.springframework.aop.Pointcut: </p>
+<pre><code> &lt;aop:advisor id="getAgeAdvisor" pointcut="execution(* *..ITestBean.getAge(..))" advice-ref="getAgeCounter"/&gt; &lt;aop:advisor id="getNameAdvisor" pointcut-ref="getNameCalls" advice-ref="getNameCounter"/&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+</BODY>
+</HTML>

@@ -1,0 +1,282 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JavaMailSenderImpl - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.mail.javamail</a>&nbsp;/&nbsp;<a href=".">JavaMailSenderImpl</a><br/>
+<br/>
+<h1>JavaMailSenderImpl</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JavaMailSenderImpl</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JavaMailSender</span></code>
+<p>Production implementation of the JavaMailSender interface, supporting both JavaMail MimeMessage and Spring SimpleMailMessage. Can also be used as a plain org.springframework.mail.MailSender implementation. 
+<p>Allows for defining all settings locally as bean properties. Alternatively, a pre-configured JavaMail javax.mail.Session can be specified, possibly pulled from an application server's JNDI environment. </p>
+<p>Non-default properties in this object will always override the settings in the JavaMail <code>Session</code>. Note that if overriding all values locally, there is no added value in setting a pre-configured <code>Session</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Dmitriy Kopylenko</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+10.09.2003</p>
+<p><strong>See Also</strong><br/>
+javax.mail.internet.MimeMessagejavax.mail.Session<a href="set-session.html">#setSession</a><a href="set-java-mail-properties.html">#setJavaMailProperties</a><a href="#">#setHost</a><a href="set-port.html">#setPort</a><a href="#">#setUsername</a><a href="#">#setPassword</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JavaMailSenderImpl</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new instance of the <code>JavaMailSenderImpl</code> class. 
+<p>Initializes the <code><a href="set-default-file-type-map.html">"defaultFileTypeMap"</a></code> property with a default ConfigurableMimeFileTypeMap.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-p-o-r-t.html">DEFAULT_PORT</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_PORT</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>The default port: -1</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-p-r-o-t-o-c-o-l.html">DEFAULT_PROTOCOL</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_PROTOCOL</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default protocol: 'smtp'</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-mime-message.html">createMimeMessage</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createMimeMessage</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MimeMessage</span></code>
+<p>This implementation creates a SmartMimeMessage, holding the specified default encoding and default FileTypeMap. This special defaults-carrying message will be autodetected by MimeMessageHelper, which will use the carried encoding and FileTypeMap unless explicitly overridden.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createMimeMessage</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$createMimeMessage(java.io.InputStream)/contentStream">contentStream</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MimeMessage</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-encoding.html">getDefaultEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the default encoding for MimeMessage, or <code>null</code> if none.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-file-type-map.html">getDefaultFileTypeMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultFileTypeMap</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FileTypeMap</span></code>
+<p>Return the default Java Activation FileTypeMap for MimeMessage, or <code>null</code> if none.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-host.html">getHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getHost</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the mail server host.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-java-mail-properties.html">getJavaMailProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJavaMailProperties</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Properties</span></code>
+<p>Allow Map access to the JavaMail properties of this sender, with the option to add or override specific entries. 
+<p>Useful for specifying entries directly, for example via "javaMailProperties[mail.smtp.auth]".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-password.html">getPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPassword</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the password for the account at the mail host.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-port.html">getPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPort</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the mail server port.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-protocol.html">getProtocol</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getProtocol</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the mail protocol.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-session.html">getSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSession</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code>
+<p>Return the JavaMail <code>Session</code>, lazily initializing it if hasn't been specified explicitly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-username.html">getUsername</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getUsername</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the username for the account at the mail host.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="send.html">send</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$send(org.springframework.mail.SimpleMailMessage)/simpleMessage">simpleMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">SimpleMailMessage</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$send(kotlin.Array((org.springframework.mail.SimpleMailMessage)))/simpleMessages">simpleMessages</span><span class="symbol">:</span>&nbsp;<span class="identifier">SimpleMailMessage</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$send(javax.mail.internet.MimeMessage)/mimeMessage">mimeMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">MimeMessage</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$send(kotlin.Array((javax.mail.internet.MimeMessage)))/mimeMessages">mimeMessages</span><span class="symbol">:</span>&nbsp;<span class="identifier">MimeMessage</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$send(org.springframework.mail.javamail.MimeMessagePreparator)/mimeMessagePreparator">mimeMessagePreparator</span><span class="symbol">:</span>&nbsp;<span class="identifier">MimeMessagePreparator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$send(kotlin.Array((org.springframework.mail.javamail.MimeMessagePreparator)))/mimeMessagePreparators">mimeMessagePreparators</span><span class="symbol">:</span>&nbsp;<span class="identifier">MimeMessagePreparator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-encoding.html">setDefaultEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setDefaultEncoding(kotlin.String)/defaultEncoding">defaultEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default encoding to use for MimeMessage created by this instance. 
+<p>Such an encoding will be auto-detected by MimeMessageHelper.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-file-type-map.html">setDefaultFileTypeMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultFileTypeMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setDefaultFileTypeMap(javax.activation.FileTypeMap)/defaultFileTypeMap">defaultFileTypeMap</span><span class="symbol">:</span>&nbsp;<span class="identifier">FileTypeMap</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default Java Activation FileTypeMap to use for MimeMessage created by this instance. 
+<p>A <code>FileTypeMap</code> specified here will be autodetected by MimeMessageHelper, avoiding the need to specify the <code>FileTypeMap</code> for each <code>MimeMessageHelper</code> instance. </p>
+<p>For example, you can specify a custom instance of Spring's ConfigurableMimeFileTypeMap here. If not explicitly specified, a default <code>ConfigurableMimeFileTypeMap</code> will be used, containing an extended set of MIME type mappings (as defined by the <code>mime.types</code> file contained in the Spring jar).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-host.html">setHost</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setHost</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setHost(kotlin.String)/host">host</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the mail server host, typically an SMTP host. 
+<p>Default is the default host of the underlying JavaMail Session.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-java-mail-properties.html">setJavaMailProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJavaMailProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setJavaMailProperties(java.util.Properties)/javaMailProperties">javaMailProperties</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set JavaMail properties for the <code>Session</code>. 
+<p>A new <code>Session</code> will be created with those properties. Use either this method or <code><a href="set-session.html">#setSession</a></code>, but not both. </p>
+<p>Non-default properties in this instance will override given JavaMail properties.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-password.html">setPassword</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPassword</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setPassword(kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the password for the account at the mail host, if any. 
+<p>Note that the underlying JavaMail <code>Session</code> has to be configured with the property <code>"mail.smtp.auth"</code> set to <code>true</code>, else the specified password will not be sent to the mail server by the JavaMail runtime. If you are not explicitly passing in a <code>Session</code> to use, simply specify this setting via <code><a href="set-java-mail-properties.html">#setJavaMailProperties</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-port.html">setPort</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPort</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setPort(kotlin.Int)/port">port</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the mail server port. 
+<p>Default is <code><a href="-d-e-f-a-u-l-t_-p-o-r-t.html">#DEFAULT_PORT</a></code>, letting JavaMail use the default SMTP port (25).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-protocol.html">setProtocol</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProtocol</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setProtocol(kotlin.String)/protocol">protocol</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the mail protocol. Default is "smtp".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session.html">setSession</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setSession(javax.mail.Session)/session">session</span><span class="symbol">:</span>&nbsp;<span class="identifier">Session</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JavaMail <code>Session</code>, possibly pulled from JNDI. 
+<p>Default is a new <code>Session</code> without defaults, that is completely configured via this instance's properties. </p>
+<p>If using a pre-configured <code>Session</code>, non-default properties in this instance will override the settings in the <code>Session</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-username.html">setUsername</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUsername</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.JavaMailSenderImpl$setUsername(kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the username for the account at the mail host, if any. 
+<p>Note that the underlying JavaMail <code>Session</code> has to be configured with the property <code>"mail.smtp.auth"</code> set to <code>true</code>, else the specified username will not be sent to the mail server by the JavaMail runtime. If you are not explicitly passing in a <code>Session</code> to use, simply specify this setting via <code><a href="set-java-mail-properties.html">#setJavaMailProperties</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="test-connection.html">testConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">testConnection</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Validate that this instance can connect to the server that it is configured for. Throws a MessagingException if the connection attempt failed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

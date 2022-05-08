@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.aspectj.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.aspectj.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.aop.aspectj.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-aspect-j-advisor-factory/index.html">AbstractAspectJAdvisorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractAspectJAdvisorFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AspectJAdvisorFactory</span></code>
+<p>Abstract base class for factories that can create Spring AOP Advisors given AspectJ classes from classes honoring the AspectJ 5 annotation syntax. 
+<p>This class handles annotation parsing and validation functionality. It does not actually generate Spring AOP Advisors, which is deferred to subclasses.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-aware-aspect-j-auto-proxy-creator/index.html">AnnotationAwareAspectJAutoProxyCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationAwareAspectJAutoProxyCreator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AspectJAwareAdvisorAutoProxyCreator</span></code>
+<p>AspectJAwareAdvisorAutoProxyCreator subclass that processes all AspectJ annotation aspects in the current application context, as well as Spring Advisors. 
+<p>Any AspectJ annotated classes will automatically be recognized, and their advice applied if Spring AOP's proxy-based model is capable of applying it. This covers method execution joinpoints. </p>
+<p>If the &lt;aop:include&gt; element is used, only @AspectJ beans with names matched by an include pattern will be considered as defining aspects to use for Spring auto-proxying. </p>
+<p>Processing of Spring Advisors follows the rules established in org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aspect-j-proxy-factory/index.html">AspectJProxyFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectJProxyFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyCreatorSupport</span></code>
+<p>AspectJ-based proxy factory, allowing for programmatic building of proxies which include AspectJ aspects (code style as well Java 5 annotation style).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aspect-metadata/index.html">AspectMetadata</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AspectMetadata</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Serializable</span></code>
+<p>Metadata for an AspectJ aspect class, with an additional Spring AOP pointcut for the per clause. 
+<p>Uses AspectJ 5 AJType reflection API, enabling us to work with different AspectJ instantiation models such as "singleton", "pertarget" and "perthis".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-lazy-singleton-aspect-instance-factory-decorator/index.html">LazySingletonAspectInstanceFactoryDecorator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LazySingletonAspectInstanceFactoryDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MetadataAwareAspectInstanceFactory</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Decorator to cause a MetadataAwareAspectInstanceFactory to instantiate only once.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-prototype-aspect-instance-factory/index.html">PrototypeAspectInstanceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PrototypeAspectInstanceFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAspectInstanceFactory</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>org.springframework.aop.aspectj.AspectInstanceFactory backed by a BeanFactory-provided prototype, enforcing prototype semantics. 
+<p>Note that this may instantiate multiple times, which probably won't give the semantics you expect. Use a LazySingletonAspectInstanceFactoryDecorator to wrap this to ensure only one new aspect comes back.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reflective-aspect-j-advisor-factory/index.html">ReflectiveAspectJAdvisorFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectiveAspectJAdvisorFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-aspect-j-advisor-factory/index.html"><span class="identifier">AbstractAspectJAdvisorFactory</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Factory that can create Spring AOP Advisors given AspectJ classes from classes honoring the AspectJ 5 annotation syntax, using reflection to invoke the corresponding advice methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-metadata-aware-aspect-instance-factory/index.html">SimpleMetadataAwareAspectInstanceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleMetadataAwareAspectInstanceFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpleAspectInstanceFactory</span><span class="symbol">, </span><span class="identifier">MetadataAwareAspectInstanceFactory</span></code>
+<p>Implementation of MetadataAwareAspectInstanceFactory that creates a new instance of the specified aspect class for every <code><a href="#">#getAspectInstance()</a></code> call.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-singleton-metadata-aware-aspect-instance-factory/index.html">SingletonMetadataAwareAspectInstanceFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SingletonMetadataAwareAspectInstanceFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SingletonAspectInstanceFactory</span><span class="symbol">, </span><span class="identifier">MetadataAwareAspectInstanceFactory</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Implementation of MetadataAwareAspectInstanceFactory that is backed by a specified singleton object, returning the same instance for every <code><a href="#">#getAspectInstance()</a></code> call.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-not-an-at-aspect-exception/index.html">NotAnAtAspectException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">NotAnAtAspectException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AopConfigException</span></code>
+<p>Extension of AopConfigException thrown when trying to perform an advisor generation operation on a class that is not an AspectJ annotation-style aspect.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

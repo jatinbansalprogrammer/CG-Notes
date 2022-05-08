@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.socket.config.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.socket.config.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.web.socket.config.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-web-socket-handler-registration/index.html">AbstractWebSocketHandlerRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractWebSocketHandlerRegistration</span><span class="symbol">&lt;</span><span class="identifier">M</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-web-socket-handler-registration/index.html"><span class="identifier">WebSocketHandlerRegistration</span></a></code>
+<p>Base class for WebSocketHandlerRegistrations that gathers all the configuration options but allows sub-classes to put together the actual HTTP request mappings.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-web-socket-message-broker-configurer/index.html">AbstractWebSocketMessageBrokerConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractWebSocketMessageBrokerConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketMessageBrokerConfigurer</span></code>
+<p>A convenient abstract base class for WebSocketMessageBrokerConfigurer implementations providing empty method implementations for optional methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-web-socket-configuration/index.html">DelegatingWebSocketConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingWebSocketConfiguration</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketConfigurationSupport</span></code>
+<p>A variation of WebSocketConfigurationSupport that detects implementations of WebSocketConfigurer in Spring configuration and invokes them in order to configure WebSocket request handling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-web-socket-message-broker-configuration/index.html">DelegatingWebSocketMessageBrokerConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingWebSocketMessageBrokerConfiguration</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-web-socket-message-broker-configuration-support/index.html"><span class="identifier">WebSocketMessageBrokerConfigurationSupport</span></a></code>
+<p>A WebSocketMessageBrokerConfigurationSupport extension that detects beans of type WebSocketMessageBrokerConfigurer and delegates to all of them allowing callback style customization of the configuration provided in WebSocketMessageBrokerConfigurationSupport. 
+<p>This class is typically imported via EnableWebSocketMessageBroker.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-servlet-web-socket-handler-registry/index.html">ServletWebSocketHandlerRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletWebSocketHandlerRegistry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandlerRegistry</span></code>
+<p>A WebSocketHandlerRegistry that maps WebSocketHandlers to URLs for use in a Servlet container.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-sock-js-service-registration/index.html">SockJsServiceRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SockJsServiceRegistration</span></code>
+<p>A helper class for configuring SockJS fallback options for use with an org.springframework.web.socket.config.annotation.EnableWebSocket and WebSocketConfigurer setup.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-mvc-stomp-endpoint-registry/index.html">WebMvcStompEndpointRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebMvcStompEndpointRegistry</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">StompEndpointRegistry</span></code>
+<p>A registry for STOMP over WebSocket endpoints that maps the endpoints with a org.springframework.web.servlet.HandlerMapping for use in Spring MVC.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-configurer/index.html">WebSocketConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WebSocketConfigurer</span></code>
+<p>Defines callback methods to configure the WebSocket request handling via org.springframework.web.socket.config.annotation.EnableWebSocket.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-handler-registration/index.html">WebSocketHandlerRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WebSocketHandlerRegistration</span></code>
+<p>Provides methods for configuring a WebSocket handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-socket-message-broker-configuration-support/index.html">WebSocketMessageBrokerConfigurationSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">WebSocketMessageBrokerConfigurationSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.simp.config/-abstract-message-broker-configuration/index.html"><span class="identifier">AbstractMessageBrokerConfiguration</span></a></code>
+<p>Extends AbstractMessageBrokerConfiguration and adds configuration for receiving and responding to STOMP messages from WebSocket clients. 
+<p>Typically used in conjunction with EnableWebSocketMessageBroker but can also be extended directly.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-enable-web-socket/index.html">EnableWebSocket</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableWebSocket</span></code>
+<p>Add this annotation to an <code>@Configuration</code> class to configure processing WebSocket requests: <pre><code> @Configuration @EnableWebSocket public class MyWebSocketConfig { } </code></pre> 
+<p>Customize the imported configuration by implementing the WebSocketConfigurer interface: </p>
+<pre><code> @Configuration @EnableWebSocket public class MyConfiguration implements WebSocketConfigurer { @Override public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) { registry.addHandler(echoWebSocketHandler(), "/echo").withSockJS(); } @Bean public WebSocketHandler echoWebSocketHandler() { return new EchoWebSocketHandler(); } } </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-enable-web-socket-message-broker/index.html">EnableWebSocketMessageBroker</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableWebSocketMessageBroker</span></code>
+<p>Add this annotation to an <code>@Configuration</code> class to enable broker-backed messaging over WebSocket using a higher-level messaging sub-protocol. <pre><code> @Configuration @EnableWebSocketMessageBroker public class MyWebSocketConfig { } </code></pre> 
+<p>Customize the imported configuration by implementing the WebSocketMessageBrokerConfigurer interface or more likely extend the convenient base class AbstractWebSocketMessageBrokerConfigurer: </p>
+<pre><code> @Configuration @EnableWebSocketMessageBroker public class MyConfiguration extends AbstractWebSocketMessageBrokerConfigurer { @Override public void registerStompEndpoints(StompEndpointRegistry registry) { registry.addEndpoint("/portfolio").withSockJS(); } @Bean public void configureMessageBroker(MessageBrokerRegistry registry) { registry.enableStompBrokerRelay("/queue/", "/topic/"); registry.setApplicationDestinationPrefixes("/app/"); } } </code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

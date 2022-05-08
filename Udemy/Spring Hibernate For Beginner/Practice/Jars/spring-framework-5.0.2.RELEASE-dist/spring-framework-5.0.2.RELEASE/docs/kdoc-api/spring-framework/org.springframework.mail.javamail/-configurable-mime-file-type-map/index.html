@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConfigurableMimeFileTypeMap - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.mail.javamail</a>&nbsp;/&nbsp;<a href=".">ConfigurableMimeFileTypeMap</a><br/>
+<br/>
+<h1>ConfigurableMimeFileTypeMap</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConfigurableMimeFileTypeMap</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FileTypeMap</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Spring-configurable <code>FileTypeMap</code> implementation that will read MIME type to file extension mappings from a standard JavaMail MIME type mapping file, using a standard <code>MimetypesFileTypeMap</code> underneath. 
+<p>The mapping file should be in the following format, as specified by the Java Activation Framework: </p>
+<pre><code> # map text/html to .htm and .html files text/html html htm HTML HTM</code></pre> Lines starting with <code>#</code> are treated as comments and are ignored. All other lines are treated as mappings. Each mapping line should contain the MIME type as the first entry and then each file extension to map to that MIME type as subsequent entries. Each entry is separated by spaces or tabs. 
+<p>By default, the mappings in the <code>mime.types</code> file located in the same package as this class are used, which cover many common file extensions (in contrast to the out-of-the-box mappings in <code>activation.jar</code>). This can be overridden using the <code>mappingLocation</code> property. </p>
+<p>Additional mappings can be added via the <code>mappings</code> bean property, as lines that follow the <code>mime.types</code> file format.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="set-mapping-location.html">#setMappingLocation</a><a href="#">#setMappings</a>javax.activation.MimetypesFileTypeMap</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConfigurableMimeFileTypeMap</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Spring-configurable <code>FileTypeMap</code> implementation that will read MIME type to file extension mappings from a standard JavaMail MIME type mapping file, using a standard <code>MimetypesFileTypeMap</code> underneath. 
+<p>The mapping file should be in the following format, as specified by the Java Activation Framework: </p>
+<pre><code> # map text/html to .htm and .html files text/html html htm HTML HTM</code></pre> Lines starting with <code>#</code> are treated as comments and are ignored. All other lines are treated as mappings. Each mapping line should contain the MIME type as the first entry and then each file extension to map to that MIME type as subsequent entries. Each entry is separated by spaces or tabs. 
+<p>By default, the mappings in the <code>mime.types</code> file located in the same package as this class are used, which cover many common file extensions (in contrast to the out-of-the-box mappings in <code>activation.jar</code>). This can be overridden using the <code>mappingLocation</code> property. </p>
+<p>Additional mappings can be added via the <code>mappings</code> bean property, as lines that follow the <code>mime.types</code> file format.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Creates the final merged mapping set.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-content-type.html">getContentType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContentType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.ConfigurableMimeFileTypeMap$getContentType(java.io.File)/file">file</span><span class="symbol">:</span>&nbsp;<span class="identifier">File</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContentType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.ConfigurableMimeFileTypeMap$getContentType(kotlin.String)/fileName">fileName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Delegates to the underlying FileTypeMap.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapping-location.html">setMappingLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappingLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mail.javamail.ConfigurableMimeFileTypeMap$setMappingLocation(org.springframework.core.io.Resource)/mappingLocation">mappingLocation</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the <code>Resource</code> from which mappings are loaded. 
+<p>Needs to follow the <code>mime.types</code> file format, as specified by the Java Activation Framework, containing lines such as: <code>text/html html htm HTML HTM</code></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mappings.html">setMappings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMappings</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.mail.javamail.ConfigurableMimeFileTypeMap$setMappings(kotlin.Array((kotlin.String)))/mappings">mappings</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify additional MIME type mappings as lines that follow the <code>mime.types</code> file format, as specified by the Java Activation Framework, for example: <code>text/html html htm HTML HTM</code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

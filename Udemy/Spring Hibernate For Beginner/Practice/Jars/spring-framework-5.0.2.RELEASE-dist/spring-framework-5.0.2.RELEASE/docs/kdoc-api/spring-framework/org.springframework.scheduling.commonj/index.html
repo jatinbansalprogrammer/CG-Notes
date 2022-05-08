@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.scheduling.commonj - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.scheduling.commonj</a><br/>
+<br/>
+<h2>Package org.springframework.scheduling.commonj</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-delegating-timer-listener/index.html">DelegatingTimerListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingTimerListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">TimerListener</span></code>
+<p>Simple TimerListener adapter that delegates to a given Runnable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delegating-work/index.html">DelegatingWork</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingWork</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Work</span></code>
+<p>Simple Work adapter that delegates to a given Runnable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scheduled-timer-listener/index.html">ScheduledTimerListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledTimerListener</span></code>
+<p>JavaBean that describes a scheduled TimerListener, consisting of the TimerListener itself (or a Runnable to create a TimerListener for) and a delay plus period. Period needs to be specified; there is no point in a default for it. 
+<p>The CommonJ TimerManager does not offer more sophisticated scheduling options such as cron expressions. Consider using Quartz for such advanced needs. </p>
+<p>Note that the TimerManager uses a TimerListener instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timer-manager-accessor/index.html">TimerManagerAccessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TimerManagerAccessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorSupport</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>Base class for classes that are accessing a CommonJ commonj.timers.TimerManager Defines common configuration settings and common lifecycle handling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timer-manager-factory-bean/index.html">TimerManagerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimerManagerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-timer-manager-accessor/index.html"><span class="identifier">TimerManagerAccessor</span></a><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">TimerManager</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>org.springframework.beans.factory.FactoryBean that retrieves a CommonJ commonj.timers.TimerManager and exposes it for bean references. 
+<p><strong>This is the central convenience class for setting up a CommonJ TimerManager in a Spring context.</strong> </p>
+<p>Allows for registration of ScheduledTimerListeners. This is the main purpose of this class; the TimerManager itself could also be fetched from JNDI via org.springframework.jndi.JndiObjectFactoryBean. In scenarios that just require static registration of tasks at startup, there is no need to access the TimerManager itself in application code. </p>
+<p>Note that the TimerManager uses a TimerListener instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-timer-manager-task-scheduler/index.html">TimerManagerTaskScheduler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TimerManagerTaskScheduler</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-timer-manager-accessor/index.html"><span class="identifier">TimerManagerAccessor</span></a><span class="symbol">, </span><span class="identifier">TaskScheduler</span></code>
+<p>Implementation of Spring's TaskScheduler interface, wrapping a CommonJ commonj.timers.TimerManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-work-manager-task-executor/index.html">WorkManagerTaskExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WorkManagerTaskExecutor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiLocatorSupport</span><span class="symbol">, </span><span class="identifier">AsyncListenableTaskExecutor</span><span class="symbol">, </span><span class="identifier">SchedulingTaskExecutor</span><span class="symbol">, </span><span class="identifier">WorkManager</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>TaskExecutor implementation that delegates to a CommonJ WorkManager, implementing the commonj.work.WorkManager interface, which either needs to be specified as reference or through the JNDI name. 
+<p><strong>This is the central convenience class for setting up a CommonJ WorkManager in a Spring context.</strong> </p>
+<p>Also implements the CommonJ WorkManager interface itself, delegating all calls to the target WorkManager. Hence, a caller can choose whether it wants to talk to this executor through the Spring TaskExecutor interface or the CommonJ WorkManager interface. </p>
+<p>The CommonJ WorkManager will usually be retrieved from the application server's JNDI environment, as defined in the server's management console. </p>
+<p>Note: On the upcoming EE 7 compliant versions of WebLogic and WebSphere, a org.springframework.scheduling.concurrent.DefaultManagedTaskExecutor should be preferred, following JSR-236 support in Java EE 7.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

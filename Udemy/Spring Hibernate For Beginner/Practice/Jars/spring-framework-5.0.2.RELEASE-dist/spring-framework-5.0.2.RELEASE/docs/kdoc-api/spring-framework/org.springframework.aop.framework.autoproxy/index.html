@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.framework.autoproxy - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.framework.autoproxy</a><br/>
+<br/>
+<h2>Package org.springframework.aop.framework.autoproxy</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-bean-factory-aware-advising-post-processor/index.html">AbstractBeanFactoryAwareAdvisingPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractBeanFactoryAwareAdvisingPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.aop.framework/-abstract-advising-bean-post-processor/index.html"><span class="identifier">AbstractAdvisingBeanPostProcessor</span></a><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>Extension of AbstractAutoProxyCreator which implements BeanFactoryAware, adds exposure of the original target class for each proxied bean (<code><a href="#">AutoProxyUtils#ORIGINAL_TARGET_CLASS_ATTRIBUTE</a></code>), and participates in an externally enforced target-class mode for any given bean (<code><a href="#">AutoProxyUtils#PRESERVE_TARGET_CLASS_ATTRIBUTE</a></code>). This post-processor is therefore aligned with AbstractAutoProxyCreator.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-name-auto-proxy-creator/index.html">BeanNameAutoProxyCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeanNameAutoProxyCreator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAutoProxyCreator</span></code>
+<p>Auto proxy creator that identifies beans to proxy via a list of names. Checks for direct, "xxx*", and "*xxx" matches. 
+<p>For configuration details, see the javadoc of the parent class AbstractAutoProxyCreator. Typically, you will specify a list of interceptor names to apply to all identified beans, via the "interceptorNames" property.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-advisor-auto-proxy-creator/index.html">DefaultAdvisorAutoProxyCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultAdvisorAutoProxyCreator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAdvisorAutoProxyCreator</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span></code>
+<p><code>BeanPostProcessor</code> implementation that creates AOP proxies based on all candidate <code>Advisor</code>s in the current <code>BeanFactory</code>. This class is completely generic; it contains no special code to handle any particular aspects, such as pooling aspects. 
+<p>It's possible to filter out advisors - for example, to use multiple post processors of this type in the same factory - by setting the <code>usePrefix</code> property to true, in which case only advisors beginning with the DefaultAdvisorAutoProxyCreator's bean name followed by a dot (like "aapc.") will be used. This default prefix can be changed from the bean name by setting the <code>advisorBeanNamePrefix</code> property. The separator (.) will also be used in this case.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-infrastructure-advisor-auto-proxy-creator/index.html">InfrastructureAdvisorAutoProxyCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InfrastructureAdvisorAutoProxyCreator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractAdvisorAutoProxyCreator</span></code>
+<p>Auto-proxy creator that considers infrastructure Advisor beans only, ignoring any application-defined Advisors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-proxy-creation-context/index.html">ProxyCreationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ProxyCreationContext</span></code>
+<p>Holder for the current proxy creation context, as exposed by auto-proxy creators such as AbstractAdvisorAutoProxyCreator.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

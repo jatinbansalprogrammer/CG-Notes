@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.orm.jpa - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.orm.jpa</a><br/>
+<br/>
+<h2>Package org.springframework.orm.jpa</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-default-jpa-dialect/index.html">DefaultJpaDialect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultJpaDialect</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-jpa-dialect/index.html"><span class="identifier">JpaDialect</span></a><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default implementation of the JpaDialect interface. Used as default dialect by JpaTransactionManager. 
+<p>Simply begins a standard JPA transaction in <code><a href="#">#beginTransaction</a></code> and performs standard exception translation through EntityManagerFactoryUtils. </p>
+<p><strong>NOTE: Spring's JPA support requires JPA 2.1 or higher, as of Spring 5.0.</strong></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-entity-manager-factory-accessor/index.html">EntityManagerFactoryAccessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">EntityManagerFactoryAccessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactoryAware</span></code>
+<p>Base class for any class that needs to access a JPA EntityManagerFactory, usually in order to obtain a JPA EntityManager. Defines common properties.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-entity-manager-holder/index.html">EntityManagerHolder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EntityManagerHolder</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ResourceHolderSupport</span></code>
+<p>Holder wrapping a JPA EntityManager. JpaTransactionManager binds instances of this class to the thread, for a given EntityManagerFactory. 
+<p>Note: This is an SPI class, not intended to be used by applications.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-entity-manager-proxy/index.html">EntityManagerProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">EntityManagerProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span></code>
+<p>Subinterface of javax.persistence.EntityManager to be implemented by EntityManager proxies. Allows access to the underlying target EntityManager. 
+<p>This interface is mainly intended for framework usage. Application code should prefer the use of the <code><a href="#">javax.persistence.EntityManager#getDelegate()</a></code> method to access native functionality of the underlying resource.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-extended-entity-manager-creator/index.html">ExtendedEntityManagerCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExtendedEntityManagerCreator</span></code>
+<p>Delegate for creating a variety of javax.persistence.EntityManager proxies that follow the JPA spec's semantics for "extended" EntityManagers. 
+<p>Supports several different variants of "extended" EntityManagers: in particular, an "application-managed extended EntityManager", as defined by <code><a href="#">javax.persistence.EntityManagerFactory#createEntityManager()</a></code>, as well as a "container-managed extended EntityManager", as defined by <code><a href="#">javax.persistence.PersistenceContextType#EXTENDED</a></code>. </p>
+<p>The original difference between "application-managed" and "container-managed" was the need for explicit joining of an externally managed transaction through the <code><a href="#">EntityManager#joinTransaction()</a></code> method in the "application" case versus the automatic joining on each user-level EntityManager operation in the "container" case. As of JPA 2.1, both join modes are available with both kinds of EntityManagers, so the difference between "application-" and "container-managed" is now primarily in the join mode default and in the restricted lifecycle of a container-managed EntityManager (i.e. tied to the object that it is injected into).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jpa-dialect/index.html">JpaDialect</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">JpaDialect</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">PersistenceExceptionTranslator</span></code>
+<p>SPI strategy that encapsulates certain functionality that standard JPA 2.1 does not offer, such as access to the underlying JDBC Connection. This strategy is mainly intended for standalone usage of a JPA provider; most of its functionality is not relevant when running with JTA transactions. 
+<p>In general, it is recommended to derive from DefaultJpaDialect instead of implementing this interface directly. This allows for inheriting common behavior (present and future) from DefaultJpaDialect, only overriding specific hooks to plug in concrete vendor-specific behavior.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-local-entity-manager-factory-bean/index.html">LocalEntityManagerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalEntityManagerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractEntityManagerFactoryBean</span></code>
+<p>org.springframework.beans.factory.FactoryBean that creates a JPA javax.persistence.EntityManagerFactory according to JPA's standard <em>standalone</em> bootstrap contract. This is the simplest way to set up a shared JPA EntityManagerFactory in a Spring application context; the EntityManagerFactory can then be passed to JPA-based DAOs via dependency injection. Note that switching to a JNDI lookup or to a LocalContainerEntityManagerFactoryBean definition is just a matter of configuration! 
+<p>Configuration settings are usually read from a <code>META-INF/persistence.xml</code> config file, residing in the class path, according to the JPA standalone bootstrap contract. Additionally, most JPA providers will require a special VM agent (specified on JVM startup) that allows them to instrument application classes. See the Java Persistence API specification and your provider documentation for setup details. </p>
+<p>This EntityManagerFactory bootstrap is appropriate for standalone applications which solely use JPA for data access. If you want to set up your persistence provider for an external DataSource and/or for global transactions which span multiple resources, you will need to either deploy it into a full Java EE application server and access the deployed EntityManagerFactory via JNDI, or use Spring's LocalContainerEntityManagerFactoryBean with appropriate configuration for local setup according to JPA's container contract. </p>
+<p><strong>Note:</strong> This FactoryBean has limited configuration power in terms of what configuration it is able to pass to the JPA provider. If you need more flexible configuration, for example passing a Spring-managed JDBC DataSource to the JPA provider, consider using Spring's more powerful LocalContainerEntityManagerFactoryBean instead. </p>
+<p><strong>NOTE: Spring's JPA support requires JPA 2.1 or higher, as of Spring 5.0.</strong> JPA 1.0/2.0 based applications are still supported; however, a JPA 2.1 compliant persistence provider is needed at runtime.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shared-entity-manager-creator/index.html">SharedEntityManagerCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">SharedEntityManagerCreator</span></code>
+<p>Delegate for creating a shareable JPA javax.persistence.EntityManager reference for a given javax.persistence.EntityManagerFactory. 
+<p>A shared EntityManager will behave just like an EntityManager fetched from an application server's JNDI environment, as defined by the JPA specification. It will delegate all calls to the current transactional EntityManager, if any; otherwise it will fall back to a newly created EntityManager per operation. </p>
+<p>For a behavioral definition of such a shared transactional EntityManager, see <code><a href="#">javax.persistence.PersistenceContextType#TRANSACTION</a></code> and its discussion in the JPA spec document. This is also the default being used for the annotation-based <code><a href="#">javax.persistence.PersistenceContext#type()</a></code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-jpa-object-retrieval-failure-exception/index.html">JpaObjectRetrievalFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JpaObjectRetrievalFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectRetrievalFailureException</span></code>
+<p>JPA-specific subclass of ObjectRetrievalFailureException. Converts JPA's EntityNotFoundException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jpa-optimistic-locking-failure-exception/index.html">JpaOptimisticLockingFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JpaOptimisticLockingFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ObjectOptimisticLockingFailureException</span></code>
+<p>JPA-specific subclass of ObjectOptimisticLockingFailureException. Converts JPA's OptimisticLockException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jpa-system-exception/index.html">JpaSystemException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JpaSystemException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UncategorizedDataAccessException</span></code>
+<p>JPA-specific subclass of UncategorizedDataAccessException, for JPA system errors that do not match any concrete <code>org.springframework.dao</code> exceptions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

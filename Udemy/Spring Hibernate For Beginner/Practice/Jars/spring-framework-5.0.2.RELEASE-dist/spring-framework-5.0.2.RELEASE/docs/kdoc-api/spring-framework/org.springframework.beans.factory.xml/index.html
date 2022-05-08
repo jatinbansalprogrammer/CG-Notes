@@ -1,0 +1,217 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.beans.factory.xml - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.beans.factory.xml</a><br/>
+<br/>
+<h2>Package org.springframework.beans.factory.xml</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-bean-definition-parser/index.html">AbstractBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionParser</span></code>
+<p>Abstract BeanDefinitionParser implementation providing a number of convenience methods and a <code><a href="#">template method</a></code> that subclasses must override to provide the actual parsing logic. 
+<p>Use this BeanDefinitionParser implementation when you want to parse some arbitrarily complex XML into one or more BeanDefinition. If you just want to parse some XML into a single <code>BeanDefinition</code>, you may wish to consider the simpler convenience extensions of this class, namely AbstractSingleBeanDefinitionParser and AbstractSimpleBeanDefinitionParser.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-simple-bean-definition-parser/index.html">AbstractSimpleBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSimpleBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-single-bean-definition-parser/index.html"><span class="identifier">AbstractSingleBeanDefinitionParser</span></a></code>
+<p>Convenient base class for when there exists a one-to-one mapping between attribute names on the element that is to be parsed and the property names on the Class being configured. 
+<p>Extend this parser class when you want to create a single bean definition from a relatively simple custom XML element. The resulting <code>BeanDefinition</code> will be automatically registered with the relevant org.springframework.beans.factory.support.BeanDefinitionRegistry. </p>
+<p>An example will hopefully make the use of this particular parser class immediately clear. Consider the following class definition: </p>
+<pre><code>public class SimpleCache implements Cache { public void setName(String name) {...} public void setTimeout(int timeout) {...} public void setEvictionPolicy(EvictionPolicy policy) {...} // remaining class definition elided for clarity... }</code></pre> 
+<p>Then let us assume the following XML tag has been defined to permit the easy configuration of instances of the above class; </p>
+<pre><code>&lt;caching:cache name="..." timeout="..." eviction-policy="..."/&gt;</code></pre> 
+<p>All that is required of the Java developer tasked with writing the parser to parse the above XML tag into an actual <code>SimpleCache</code> bean definition is the following: </p>
+<pre><code>public class SimpleCacheBeanDefinitionParser extends AbstractSimpleBeanDefinitionParser { protected Class getBeanClass(Element element) { return SimpleCache.class; } }</code></pre> 
+<p>Please note that the <code>AbstractSimpleBeanDefinitionParser</code> is limited to populating the created bean definition with property values. if you want to parse constructor arguments and nested elements from the supplied XML element, then you will have to implement the <code><a href="#">#postProcess(org.springframework.beans.factory.support.BeanDefinitionBuilder, org.w3c.dom.Element)</a></code> method and do such parsing yourself, or (more likely) subclass the AbstractSingleBeanDefinitionParser or AbstractBeanDefinitionParser classes directly. </p>
+<p>The process of actually registering the <code>SimpleCacheBeanDefinitionParser</code> with the Spring XML parsing infrastructure is described in the Spring Framework reference documentation (in one of the appendices). </p>
+<p>For an example of this parser in action (so to speak), do look at the source code for the org.springframework.beans.factory.xml.UtilNamespaceHandler.PropertiesBeanDefinitionParser; the observant (and even not so observant) reader will immediately notice that there is next to no code in the implementation. The <code>PropertiesBeanDefinitionParser</code> populates a org.springframework.beans.factory.config.PropertiesFactoryBean from an XML element that looks like this: </p>
+<pre><code>&lt;util:properties location="jdbc.properties"/&gt;</code></pre> 
+<p>The observant reader will notice that the sole attribute on the <code>&lt;util:properties/&gt;</code> element matches the <code><a href="#">org.springframework.beans.factory.config.PropertiesFactoryBean#setLocation(org.springframework.core.io.Resource)</a></code> method name on the <code>PropertiesFactoryBean</code> (the general usage thus illustrated holds true for any number of attributes). All that the <code>PropertiesBeanDefinitionParser</code> needs actually do is supply an implementation of the <code><a href="#">#getBeanClass(org.w3c.dom.Element)</a></code> method to return the <code>PropertiesFactoryBean</code> type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-single-bean-definition-parser/index.html">AbstractSingleBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSingleBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-bean-definition-parser/index.html"><span class="identifier">AbstractBeanDefinitionParser</span></a></code>
+<p>Base class for those BeanDefinitionParser implementations that need to parse and define just a <em>single</em> <code>BeanDefinition</code>. 
+<p>Extend this parser class when you want to create a single bean definition from an arbitrarily complex XML element. You may wish to consider extending the AbstractSimpleBeanDefinitionParser when you want to create a single bean definition from a relatively simple custom XML element. </p>
+<p>The resulting <code>BeanDefinition</code> will be automatically registered with the org.springframework.beans.factory.support.BeanDefinitionRegistry. Your job simply is to <code><a href="#">parse</a></code> the custom XML Element into a single <code>BeanDefinition</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-bean-definition-document-reader/index.html">BeanDefinitionDocumentReader</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">BeanDefinitionDocumentReader</span></code>
+<p>SPI for parsing an XML document that contains Spring bean definitions. Used by XmlBeanDefinitionReader for actually parsing a DOM document. 
+<p>Instantiated per document to parse: implementations can hold state in instance variables during the execution of the <code>registerBeanDefinitions</code> method — for example, global settings that are defined for all bean definitions in the document.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-beans-dtd-resolver/index.html">BeansDtdResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BeansDtdResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EntityResolver</span></code>
+<p>EntityResolver implementation for the Spring beans DTD, to load the DTD from the Spring class path (or JAR file). 
+<p>Fetches "spring-beans.dtd" from the class path resource "/org/springframework/beans/factory/xml/spring-beans.dtd", no matter whether specified as some local URL that includes "spring-beans" in the DTD name or as "http://www.springframework.org/dtd/spring-beans-2.0.dtd".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-bean-definition-document-reader/index.html">DefaultBeanDefinitionDocumentReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultBeanDefinitionDocumentReader</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-bean-definition-document-reader/index.html"><span class="identifier">BeanDefinitionDocumentReader</span></a></code>
+<p>Default implementation of the BeanDefinitionDocumentReader interface that reads bean definitions according to the "spring-beans" DTD and XSD format (Spring's default XML bean definition format). 
+<p>The structure, elements, and attribute names of the required XML document are hard-coded in this class. (Of course a transform could be run if necessary to produce this format). <code>&lt;beans&gt;</code> does not need to be the root element of the XML document: this class will parse all bean definition elements in the XML file, regardless of the actual root element.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-document-loader/index.html">DefaultDocumentLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultDocumentLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DocumentLoader</span></code>
+<p>Spring's default DocumentLoader implementation. 
+<p>Simply loads Document using the standard JAXP-configured XML parser. If you want to change the DocumentBuilder that is used to load documents, then one strategy is to define a corresponding Java system property when starting your JVM. For example, to use the Oracle DocumentBuilder, you might start your application like as follows: </p>
+<pre><code>java -Djavax.xml.parsers.DocumentBuilderFactory=oracle.xml.jaxp.JXDocumentBuilderFactory MyMainClass</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-namespace-handler-resolver/index.html">DefaultNamespaceHandlerResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultNamespaceHandlerResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandlerResolver</span></code>
+<p>Default implementation of the NamespaceHandlerResolver interface. Resolves namespace URIs to implementation classes based on the mappings contained in mapping file. 
+<p>By default, this implementation looks for the mapping file at <code>META-INF/spring.handlers</code>, but this can be changed using the <code><a href="#">#DefaultNamespaceHandlerResolver(ClassLoader, String)</a></code> constructor.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-document-defaults-definition/index.html">DocumentDefaultsDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DocumentDefaultsDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultsDefinition</span></code>
+<p>Simple JavaBean that holds the defaults specified at the <code>&lt;beans&gt;</code> level in a standard Spring XML bean definition document: <code>default-lazy-init</code>, <code>default-autowire</code>, etc.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-pluggable-schema-resolver/index.html">PluggableSchemaResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PluggableSchemaResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EntityResolver</span></code>
+<p>EntityResolver implementation that attempts to resolve schema URLs into local ClassPathResource using a set of mappings files. 
+<p>By default, this class will look for mapping files in the classpath using the pattern: <code>META-INF/spring.schemas</code> allowing for multiple files to exist on the classpath at any one time. The format of <code>META-INF/spring.schemas</code> is a properties file where each line should be of the form <code>systemId=schema-location</code> where <code>schema-location</code> should also be a schema file in the classpath. Since systemId is commonly a URL, one must be careful to escape any ':' characters which are treated as delimiters in properties files. </p>
+<p>The pattern for the mapping files can be overidden using the <code><a href="#">#PluggableSchemaResolver(ClassLoader, String)</a></code> constructor</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-entity-resolver/index.html">ResourceEntityResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceEntityResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DelegatingEntityResolver</span></code>
+<p>EntityResolver implementation that tries to resolve entity references through a org.springframework.core.io.ResourceLoader (usually, relative to the resource base of an ApplicationContext), if applicable. Extends DelegatingEntityResolver to also provide DTD and XSD lookup. 
+<p>Allows to use standard XML entities to include XML snippets into an application context definition, for example to split a large XML file into various modules. The include paths can be relative to the application context's resource base as usual, instead of relative to the JVM working directory (the XML parser's default). </p>
+<p>Note: In addition to relative paths, every URL that specifies a file in the current system root, i.e. the JVM working directory, will be interpreted relative to the application context too.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-constructor-namespace-handler/index.html">SimpleConstructorNamespaceHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleConstructorNamespaceHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandler</span></code>
+<p>Simple <code>NamespaceHandler</code> implementation that maps custom attributes directly through to bean properties. An important point to note is that this <code>NamespaceHandler</code> does not have a corresponding schema since there is no way to know in advance all possible attribute names. 
+<p>An example of the usage of this <code>NamespaceHandler</code> is shown below: </p>
+<pre><code> &lt;bean id="author" class="..TestBean" c:name="Enescu" c:work-ref="compositions"/&gt; </code></pre> Here the '<code>c:name</code>' corresponds directly to the '<code>name</code> ' argument declared on the constructor of class '<code>TestBean</code>'. The '<code>c:work-ref</code>' attributes corresponds to the '<code>work</code>' argument and, rather than being the concrete value, it contains the name of the bean that will be considered as a parameter. <strong>Note</strong>: This implementation supports only named parameters - there is no support for indexes or types. Further more, the names are used as hints by the container which, by default, does type introspection.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-property-namespace-handler/index.html">SimplePropertyNamespaceHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimplePropertyNamespaceHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandler</span></code>
+<p>Simple <code>NamespaceHandler</code> implementation that maps custom attributes directly through to bean properties. An important point to note is that this <code>NamespaceHandler</code> does not have a corresponding schema since there is no way to know in advance all possible attribute names. 
+<p>An example of the usage of this <code>NamespaceHandler</code> is shown below: </p>
+<pre><code> &lt;bean id="rob" class="..TestBean" p:name="Rob Harrop" p:spouse-ref="sally"/&gt;</code></pre> Here the '<code>p:name</code>' corresponds directly to the '<code>name</code>' property on class '<code>TestBean</code>'. The '<code>p:spouse-ref</code>' attributes corresponds to the '<code>spouse</code>' property and, rather than being the concrete value, it contains the name of the bean that will be injected into that property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-util-namespace-handler/index.html">UtilNamespaceHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UtilNamespaceHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandlerSupport</span></code>
+<p>NamespaceHandler for the <code>util</code> namespace.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xml-bean-factory/index.html">XmlBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XmlBeanFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultListableBeanFactory</span></code>
+<p>Convenience extension of DefaultListableBeanFactory that reads bean definitions from an XML document. Delegates to XmlBeanDefinitionReader underneath; effectively equivalent to using an XmlBeanDefinitionReader with a DefaultListableBeanFactory. 
+<p>The structure, element and attribute names of the required XML document are hard-coded in this class. (Of course a transform could be run if necessary to produce this format). "beans" doesn't need to be the root element of the XML document: This class will parse all bean definition elements in the XML file. </p>
+<p>This class registers each bean definition with the DefaultListableBeanFactory superclass, and relies on the latter's implementation of the BeanFactory interface. It supports singletons, prototypes, and references to either of these kinds of bean. See <code>"spring-beans-3.x.xsd"</code> (or historically, <code>"spring-beans-2.0.dtd"</code>) for details on options and configuration style. </p>
+<p><strong>For advanced needs, consider using a DefaultListableBeanFactory with an XmlBeanDefinitionReader.</strong> The latter allows for reading from multiple XML resources and is highly configurable in its actual XML parsing behavior.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-xml-reader-context/index.html">XmlReaderContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XmlReaderContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.parsing/-reader-context/index.html"><span class="identifier">ReaderContext</span></a></code>
+<p>Extension of org.springframework.beans.factory.parsing.ReaderContext, specific to use with an XmlBeanDefinitionReader. Provides access to the NamespaceHandlerResolver configured in the XmlBeanDefinitionReader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-xml-bean-definition-store-exception/index.html">XmlBeanDefinitionStoreException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XmlBeanDefinitionStoreException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionStoreException</span></code>
+<p>XML-specific BeanDefinitionStoreException subclass that wraps a org.xml.sax.SAXException, typically a org.xml.sax.SAXParseException which contains information about the error location.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

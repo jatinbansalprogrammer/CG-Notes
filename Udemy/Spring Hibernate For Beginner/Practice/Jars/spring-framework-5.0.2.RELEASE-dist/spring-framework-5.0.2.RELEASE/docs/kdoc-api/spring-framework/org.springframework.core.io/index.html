@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.core.io - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.core.io</a><br/>
+<br/>
+<h2>Package org.springframework.core.io</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-byte-array-resource/index.html">ByteArrayResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ByteArrayResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResource</span></code>
+<p>Resource implementation for a given byte array. 
+<p>Creates a ByteArrayInputStream for the given byte array. </p>
+<p>Useful for loading content from any given byte array, without having to resort to a single-use InputStreamResource. Particularly useful for creating mail attachments from local content, where JavaMail needs to be able to read the stream multiple times.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-class-relative-resource-loader/index.html">ClassRelativeResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ClassRelativeResourceLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultResourceLoader</span></code>
+<p>ResourceLoader implementation that interprets plain resource paths as relative to a given <code>java.lang.Class</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-resource/index.html">ContextResource</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ContextResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span></code>
+<p>Extended interface for a resource that is loaded from an enclosing 'context', e.g. from a javax.servlet.ServletContext but also from plain classpath paths or relative file system paths (specified without an explicit prefix, hence applying relative to the local ResourceLoader's context).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-file-system-resource-loader/index.html">FileSystemResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileSystemResourceLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultResourceLoader</span></code>
+<p>ResourceLoader implementation that resolves plain paths as file system resources rather than as class path resources (the latter is DefaultResourceLoader's default strategy). 
+<p><strong>NOTE:</strong> Plain paths will always be interpreted as relative to the current VM working directory, even if they start with a slash. (This is consistent with the semantics in a Servlet container.) <strong>Use an explicit "file:" prefix to enforce an absolute file path.</strong> </p>
+<p>org.springframework.context.support.FileSystemXmlApplicationContext is a full-fledged ApplicationContext implementation that provides the same resource path resolution strategy.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-file-url-resource/index.html">FileUrlResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FileUrlResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlResource</span><span class="symbol">, </span><a href="-writable-resource/index.html"><span class="identifier">WritableResource</span></a></code>
+<p>Subclass of UrlResource which assumes file resolution, to the degree of implementing the WritableResource interface for it. 
+<p>This is the class resolved by DefaultResourceLoader for a "file:..." URL location, allowing a downcast to WritableResource for it. </p>
+<p>Alternatively, for direct construction from a java.io.File handle, consider using FileSystemResource. For an NIO java.nio.file.Path, consider using PathResource instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-input-stream-resource/index.html">InputStreamResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InputStreamResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResource</span></code>
+<p>Resource implementation for a given InputStream. 
+<p>Should only be used if no other specific <code>Resource</code> implementation is applicable. In particular, prefer ByteArrayResource or any of the file-based <code>Resource</code> implementations where possible. </p>
+<p>In contrast to other <code>Resource</code> implementations, this is a descriptor for an <em>already opened</em> resource - therefore returning <code>true</code> from <code><a href="-input-stream-resource/is-open.html">#isOpen()</a></code>. Do not use an <code>InputStreamResource</code> if you need to keep the resource descriptor somewhere, or if you need to read from a stream multiple times.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-resource/index.html">PathResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PathResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResource</span><span class="symbol">, </span><a href="-writable-resource/index.html"><span class="identifier">WritableResource</span></a></code>
+<p>Resource implementation for <code>java.nio.file.Path</code> handles. Supports resolution as File, and also as URL. Implements the extended WritableResource interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-vfs-utils/index.html">VfsUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">VfsUtils</span></code>
+<p>Utility for detecting and accessing JBoss VFS in the classpath. 
+<p>As of Spring 4.0, this class supports VFS 3.x on JBoss AS 6+ (package <code>org.jboss.vfs</code>) and is in particular compatible with JBoss AS 7 and WildFly 8. </p>
+<p>Thanks go to Marius Bogoevici for the initial patch. <strong>Note:</strong> This is an internal class and should not be used outside the framework.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-writable-resource/index.html">WritableResource</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">WritableResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span></code>
+<p>Extended interface for a resource that supports writing to it. Provides an <code><a href="-writable-resource/get-output-stream.html">OutputStream accessor</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

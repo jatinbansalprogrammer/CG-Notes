@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JdbcUtils.extractDatabaseMetaData - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support</a>&nbsp;/&nbsp;<a href="index.html">JdbcUtils</a>&nbsp;/&nbsp;<a href=".">extractDatabaseMetaData</a><br/>
+<br/>
+<h1>extractDatabaseMetaData</h1>
+<a name="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, org.springframework.jdbc.support.DatabaseMetaDataCallback)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">extractDatabaseMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, org.springframework.jdbc.support.DatabaseMetaDataCallback)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, org.springframework.jdbc.support.DatabaseMetaDataCallback)/action">action</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatabaseMetaDataCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Extract database meta data via the given DatabaseMetaDataCallback. 
+<p>This method will open a connection to the database and retrieve the database metadata. Since this method is called before the exception translation feature is configured for a datasource, this method can not rely on the SQLException translation functionality. </p>
+<p>Any exceptions will be wrapped in a MetaDataAccessException. This is a checked exception and any calling code should catch and handle this exception. You can just log the error and hope for the best, but there is probably a more serious error that will reappear when you try to access the database again.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="dataSource"></a>
+<code>dataSource</code> - the DataSource to extract metadata for</p>
+<p><a name="action"></a>
+<code>action</code> - callback that will do the actual work</p>
+<h3>Exceptions</h3>
+<p><a name="MetaDataAccessException"></a>
+<code>MetaDataAccessException</code> - if meta data access failed</p>
+<p><strong>Return</strong><br/>
+object containing the extracted information, as returned by the DatabaseMetaDataCallback's <code>processMetaData</code> method</p>
+<a name="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">extractDatabaseMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, kotlin.String)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, kotlin.String)/metaDataMethodName">metaDataMethodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Call the specified method on DatabaseMetaData for the given DataSource, and extract the invocation result.</p>
+<h3>Parameters</h3>
+<p><a name="dataSource"></a>
+<code>dataSource</code> - the DataSource to extract meta data for</p>
+<p><a name="metaDataMethodName"></a>
+<code>metaDataMethodName</code> - the name of the DatabaseMetaData method to call</p>
+<h3>Exceptions</h3>
+<p><a name="MetaDataAccessException"></a>
+<code>MetaDataAccessException</code> - if we couldn't access the DatabaseMetaData or failed to invoke the specified method</p>
+<p><strong>Return</strong><br/>
+the object returned by the specified DatabaseMetaData method</p>
+<p><strong>See Also</strong><br/>
+java.sql.DatabaseMetaData</p>
+</BODY>
+</HTML>

@@ -1,0 +1,452 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AbstractHtmlElementBodyTag - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.tags.form</a>&nbsp;/&nbsp;<a href=".">AbstractHtmlElementBodyTag</a><br/>
+<br/>
+<h1>AbstractHtmlElementBodyTag</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractHtmlElementBodyTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHtmlElementTag</span><span class="symbol">, </span><span class="identifier">BodyTag</span></code>
+<p>Convenient super class for many html tags that render content using the databinding features of the AbstractHtmlElementTag. The only thing sub-tags need to do is override <code><a href="#">#renderDefaultContent(TagWriter)</a></code>.</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AbstractHtmlElementBodyTag</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient super class for many html tags that render content using the databinding features of the AbstractHtmlElementTag. The only thing sub-tags need to do is override <code><a href="#">#renderDefaultContent(TagWriter)</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="do-end-tag.html">doEndTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doEndTag</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>If <code><a href="#">rendering</a></code>, flush any buffered BodyContent or, if no BodyContent is supplied, <code><a href="#">render the default content</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-finally.html">doFinally</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doFinally</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Clean up any attributes and stored resources.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="do-init-body.html">doInitBody</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">doInitBody</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-body-content.html">setBodyContent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBodyContent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.tags.form.AbstractHtmlElementBodyTag$setBodyContent(javax.servlet.jsp.tagext.BodyContent)/bodyContent">bodyContent</span><span class="symbol">:</span>&nbsp;<span class="identifier">BodyContent</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-errors-tag/index.html">ErrorsTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ErrorsTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHtmlElementBodyTag</span><span class="symbol">, </span><span class="identifier">BodyTag</span></code>
+<p>The <code>&lt;errors&gt;</code> tag renders field errors in an HTML 'span' tag. Displays errors for either an object or a particular field. 
+<p>This tag supports three main usage patterns: </p>
+<ol> <li>Field only - set '<code>path</code>' to the field name (or path)</li>
+ <li>Object errors only - omit '<code>path</code>'</li>
+ <li>All errors - set '<code>path</code>' to '<code>*</code>'</li>
+ </ol>
+ 
+<p> </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     
+<p>cssClass</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute</p>
+   
+<p>cssStyle</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute</p>
+   
+<p>delimiter</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>Delimiter for displaying multiple error messages. Defaults to the br tag.</p>
+   
+<p>dir</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>element</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>Specifies the HTML element that is used to render the enclosing errors.</p>
+   
+<p>htmlEscape</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>Enable/disable HTML escaping of rendered values.</p>
+   
+<p>id</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>lang</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>onclick</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>ondblclick</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onkeydown</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onkeypress</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onkeyup</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmousedown</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmousemove</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmouseout</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmouseover</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmouseup</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>path</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>Path to errors object for data binding</p>
+   
+<p>tabindex</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>title</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   </p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-option-tag/index.html">OptionTag</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OptionTag</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractHtmlElementBodyTag</span><span class="symbol">, </span><span class="identifier">BodyTag</span></code>
+<p>The <code>&lt;option&gt;</code> tag renders a single HTML 'option'. Sets 'selected' as appropriate based on bound value. 
+<p><strong>Must be used nested inside a SelectTag.</strong> </p>
+<p>Provides full support for databinding by marking an '<code>option</code>' as 'selected' if the <code><a href="#">value</a></code> matches the value bound to the out SelectTag. </p>
+<p>The <code><a href="#">value</a></code> property is required and corresponds to the '<code>value</code>' attribute of the rendered '<code>option</code>'. </p>
+<p>An optional <code><a href="#">label</a></code> property can be specified, the value of which corresponds to inner text of the rendered '<code>option</code>' tag. If no <code><a href="#">label</a></code> is specified then the <code><a href="#">value</a></code> property will be used when rendering the inner text. </p>
+<p> </p>
+ Attribute Summary   Attribute Required? Runtime Expression? Description     
+<p>cssClass</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute</p>
+   
+<p>cssErrorClass</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute. Used when the bound field has errors.</p>
+   
+<p>cssStyle</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute</p>
+   
+<p>dir</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>disabled</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute. Setting the value of this attribute to 'true' will disable the HTML element.</p>
+   
+<p>htmlEscape</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>Enable/disable HTML escaping of rendered values.</p>
+   
+<p>id</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>label</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute</p>
+   
+<p>lang</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>onclick</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>ondblclick</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onkeydown</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onkeypress</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onkeyup</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmousedown</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmousemove</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmouseout</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmouseover</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>onmouseup</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Event Attribute</p>
+   
+<p>tabindex</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>title</p>
+ 
+<p>false</p>
+ 
+<p>true</p>
+ 
+<p>HTML Standard Attribute</p>
+   
+<p>value</p>
+ 
+<p>true</p>
+ 
+<p>true</p>
+ 
+<p>HTML Optional Attribute</p>
+   </p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

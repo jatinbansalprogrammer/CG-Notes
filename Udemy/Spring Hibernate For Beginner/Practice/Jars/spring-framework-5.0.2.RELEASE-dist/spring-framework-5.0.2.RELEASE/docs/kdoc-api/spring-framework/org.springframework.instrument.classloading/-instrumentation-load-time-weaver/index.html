@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>InstrumentationLoadTimeWeaver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.instrument.classloading</a>&nbsp;/&nbsp;<a href=".">InstrumentationLoadTimeWeaver</a><br/>
+<br/>
+<h1>InstrumentationLoadTimeWeaver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InstrumentationLoadTimeWeaver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LoadTimeWeaver</span></code>
+<p>LoadTimeWeaver relying on VM Instrumentation. 
+<p>Start the JVM specifying the Java agent to be used, like as follows: </p>
+<p><code>-javaagent:path/to/org.springframework.instrument.jar</code> </p>
+<p>where <code>org.springframework.instrument.jar</code> is a JAR file containing the InstrumentationSavingAgent class, as shipped with Spring. </p>
+<p>In Eclipse, for example, set the "Run configuration"'s JVM args to be of the form: </p>
+<p><code>-javaagent:${project_loc}/lib/org.springframework.instrument.jar</code></p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+InstrumentationSavingAgent</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">InstrumentationLoadTimeWeaver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new InstrumentationLoadTimeWeaver for the default ClassLoader.</p>
+<code><span class="identifier">InstrumentationLoadTimeWeaver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver$<init>(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span></code>
+<p>Create a new InstrumentationLoadTimeWeaver for the given ClassLoader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-transformer.html">addTransformer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addTransformer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver$addTransformer(java.lang.instrument.ClassFileTransformer)/transformer">transformer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassFileTransformer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-instrumentable-class-loader.html">getInstrumentableClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInstrumentableClassLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClassLoader</span></code>
+<p>We have the ability to weave the current class loader when starting the JVM in this way, so the instrumentable class loader will always be the current loader.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-throwaway-class-loader.html">getThrowawayClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getThrowawayClassLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClassLoader</span></code>
+<p>This implementation always returns a SimpleThrowawayClassLoader.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-instrumentation-available.html">isInstrumentationAvailable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isInstrumentationAvailable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether an Instrumentation instance is available for the current VM.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-transformers.html">removeTransformers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeTransformers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove all registered transformers, in inverse order of registration.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

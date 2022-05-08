@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExtractingResponseErrorHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.client</a>&nbsp;/&nbsp;<a href=".">ExtractingResponseErrorHandler</a><br/>
+<br/>
+<h1>ExtractingResponseErrorHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ExtractingResponseErrorHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DefaultResponseErrorHandler</span></code>
+<p>Implementation of ResponseErrorHandler that uses HttpMessageConverters to convert HTTP error responses to RestClientException. 
+<p>To use this error handler, you must specify a <a href="#">status mapping</a> and/or a <a href="#">series mapping</a>. If either of these mappings has a match for the <a href="#">status code</a> of a given <code>ClientHttpResponse</code>, <code><a href="#">#hasError(ClientHttpResponse)</a></code> will return <code>true</code> and <code><a href="#">#handleError(ClientHttpResponse)</a></code> will attempt to use the <a href="#">configured message converters</a> to convert the response into the mapped subclass of RestClientException. Note that the <a href="#">status mapping</a> takes precedence over <a href="#">series mapping</a>. </p>
+<p>If there is no match, this error handler will default to the behavior of DefaultResponseErrorHandler. Note that you can override this default behavior by specifying a <a href="#">series mapping</a> from <code><a href="#">HttpStatus.Series#CLIENT_ERROR</a></code> and/or <code><a href="#">HttpStatus.Series#SERVER_ERROR</a></code> to <code>null</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Simon Galperin</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">RestTemplate#setErrorHandler(ResponseErrorHandler)</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ExtractingResponseErrorHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new, empty <code>ExtractingResponseErrorHandler</code>. 
+<p>Note that <code><a href="#">#setMessageConverters(List)</a></code> must be called when using this constructor.</p>
+</p>
+<code><span class="identifier">ExtractingResponseErrorHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.client.ExtractingResponseErrorHandler$<init>(kotlin.collections.MutableList((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/messageConverters">messageConverters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new <code>ExtractingResponseErrorHandler</code> with the given HttpMessageConverter instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="handle-error.html">handleError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">handleError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.client.ExtractingResponseErrorHandler$handleError(org.springframework.http.client.ClientHttpResponse, org.springframework.http.HttpStatus)/response">response</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpResponse</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.client.ExtractingResponseErrorHandler$handleError(org.springframework.http.client.ClientHttpResponse, org.springframework.http.HttpStatus)/statusCode">statusCode</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpStatus</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-converters.html">setMessageConverters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMessageConverters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.client.ExtractingResponseErrorHandler$setMessageConverters(kotlin.collections.MutableList((org.springframework.http.converter.HttpMessageConverter((kotlin.Any)))))/messageConverters">messageConverters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">HttpMessageConverter</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the message converters to use by this extractor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-series-mapping.html">setSeriesMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSeriesMapping</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.client.ExtractingResponseErrorHandler$setSeriesMapping(kotlin.collections.MutableMap((org.springframework.http.HttpStatus.Series, java.lang.Class((org.springframework.web.client.RestClientException)))))/seriesMapping">seriesMapping</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">Series</span><span class="symbol">,</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">RestClientException</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the mapping from HTTP status series to <code>RestClientException</code> subclass. If this mapping has a match for the <a href="#">status code</a> of a given <code>ClientHttpResponse</code>, <code><a href="#">#hasError(ClientHttpResponse)</a></code> will return <code>true</code> and <code><a href="#">#handleError(ClientHttpResponse)</a></code> will attempt to use the <a href="#">configured message converters</a> to convert the response into the mapped subclass of RestClientException.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-status-mapping.html">setStatusMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStatusMapping</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.client.ExtractingResponseErrorHandler$setStatusMapping(kotlin.collections.MutableMap((org.springframework.http.HttpStatus, java.lang.Class((org.springframework.web.client.RestClientException)))))/statusMapping">statusMapping</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">HttpStatus</span><span class="symbol">,</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">RestClientException</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the mapping from HTTP status code to <code>RestClientException</code> subclass. If this mapping has a match for the <a href="#">status code</a> of a given <code>ClientHttpResponse</code>, <code><a href="#">#hasError(ClientHttpResponse)</a></code> will return <code>true</code> and <code><a href="#">#handleError(ClientHttpResponse)</a></code> will attempt to use the <a href="#">configured message converters</a> to convert the response into the mapped subclass of RestClientException.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

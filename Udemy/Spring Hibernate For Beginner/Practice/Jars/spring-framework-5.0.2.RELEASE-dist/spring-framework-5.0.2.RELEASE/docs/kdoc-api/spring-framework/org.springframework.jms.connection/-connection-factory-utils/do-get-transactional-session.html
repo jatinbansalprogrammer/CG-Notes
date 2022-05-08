@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConnectionFactoryUtils.doGetTransactionalSession - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href="index.html">ConnectionFactoryUtils</a>&nbsp;/&nbsp;<a href=".">doGetTransactionalSession</a><br/>
+<br/>
+<h1>doGetTransactionalSession</h1>
+<a name="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doGetTransactionalSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory)/connectionFactory">connectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory)/resourceFactory">resourceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceFactory</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code>
+<p>Obtain a JMS Session that is synchronized with the current transaction, if any. 
+<p>This <code>doGetTransactionalSession</code> variant always starts the underlying JMS Connection, assuming that the Session will be used for receiving messages.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="connectionFactory"></a>
+<code>connectionFactory</code> - the JMS ConnectionFactory to bind for (used as TransactionSynchronizationManager key)</p>
+<p><a name="resourceFactory"></a>
+<code>resourceFactory</code> - the ResourceFactory to use for extracting or creating JMS resources</p>
+<h3>Exceptions</h3>
+<p><a name="JMSException"></a>
+<code>JMSException</code> - in case of JMS failure</p>
+<p><strong>Return</strong><br/>
+the transactional Session, or <code>null</code> if none found</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#doGetTransactionalSession(javax.jms.ConnectionFactory, ResourceFactory, boolean)</a></p>
+<a name="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory, kotlin.Boolean)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">doGetTransactionalSession</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory, kotlin.Boolean)/connectionFactory">connectionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory, kotlin.Boolean)/resourceFactory">resourceFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceFactory</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jms.connection.ConnectionFactoryUtils$doGetTransactionalSession(javax.jms.ConnectionFactory, org.springframework.jms.connection.ConnectionFactoryUtils.ResourceFactory, kotlin.Boolean)/startConnection">startConnection</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Session</span></code>
+<p>Obtain a JMS Session that is synchronized with the current transaction, if any.</p>
+<h3>Parameters</h3>
+<p><a name="connectionFactory"></a>
+<code>connectionFactory</code> - the JMS ConnectionFactory to bind for (used as TransactionSynchronizationManager key)</p>
+<p><a name="resourceFactory"></a>
+<code>resourceFactory</code> - the ResourceFactory to use for extracting or creating JMS resources</p>
+<p><a name="startConnection"></a>
+<code>startConnection</code> - whether the underlying JMS Connection approach should be started in order to allow for receiving messages. Note that a reused Connection may already have been started before, even if this flag is <code>false</code>.</p>
+<h3>Exceptions</h3>
+<p><a name="JMSException"></a>
+<code>JMSException</code> - in case of JMS failure</p>
+<p><strong>Return</strong><br/>
+the transactional Session, or <code>null</code> if none found</p>
+</BODY>
+</HTML>

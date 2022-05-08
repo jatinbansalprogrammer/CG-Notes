@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SpringServletContainerInitializer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web</a>&nbsp;/&nbsp;<a href=".">SpringServletContainerInitializer</a><br/>
+<br/>
+<h1>SpringServletContainerInitializer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SpringServletContainerInitializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContainerInitializer</span></code>
+<p>Servlet 3.0 ServletContainerInitializer designed to support code-based configuration of the servlet container using Spring's WebApplicationInitializer SPI as opposed to (or possibly in combination with) the traditional <code>web.xml</code>-based approach. Mechanism of Operation This class will be loaded and instantiated and have its <code><a href="#">#onStartup</a></code> method invoked by any Servlet 3.0-compliant container during container startup assuming that the <code>spring-web</code> module JAR is present on the classpath. This occurs through the JAR Services API <code><a href="#">ServiceLoader#load(Class)</a></code> method detecting the <code>spring-web</code> module's <code>META-INF/services/javax.servlet.ServletContainerInitializer</code> service provider configuration file. See the <a href="#"> JAR Services API documentation</a> as well as section <em>8.2.4</em> of the Servlet 3.0 Final Draft specification for complete details. In combination with <code>web.xml</code> A web application can choose to limit the amount of classpath scanning the Servlet container does at startup either through the <code>metadata-complete</code> attribute in <code>web.xml</code>, which controls scanning for Servlet annotations or through an <code>&lt;absolute-ordering&gt;</code> element also in <code>web.xml</code>, which controls which web fragments (i.e. jars) are allowed to perform a <code>ServletContainerInitializer</code> scan. When using this feature, the SpringServletContainerInitializer can be enabled by adding "spring_web" to the list of named web fragments in <code>web.xml</code> as follows: <pre><code><code>&lt;absolute-ordering&gt; &lt;name&gt;some_web_fragment&lt;/name&gt; &lt;name&gt;spring_web&lt;/name&gt; &lt;/absolute-ordering&gt; </code></code></pre> Relationship to Spring's <code>WebApplicationInitializer</code> Spring's <code>WebApplicationInitializer</code> SPI consists of just one method: <code><a href="../-web-application-initializer/on-startup.html">WebApplicationInitializer#onStartup(ServletContext)</a></code>. The signature is intentionally quite similar to <code><a href="#">ServletContainerInitializer#onStartup(Set, ServletContext)</a></code>: simply put, <code>SpringServletContainerInitializer</code> is responsible for instantiating and delegating the <code>ServletContext</code> to any user-defined <code>WebApplicationInitializer</code> implementations. It is then the responsibility of each <code>WebApplicationInitializer</code> to do the actual work of initializing the <code>ServletContext</code>. The exact process of delegation is described in detail in the <code><a href="#">onStartup</a></code> documentation below. General Notes In general, this class should be viewed as <em>supporting infrastructure</em> for the more important and user-facing <code>WebApplicationInitializer</code> SPI. Taking advantage of this container initializer is also completely <em>optional</em>: while it is true that this initializer will be loaded and invoked under all Servlet 3.0+ runtimes, it remains the user's choice whether to make any <code>WebApplicationInitializer</code> implementations available on the classpath. If no <code>WebApplicationInitializer</code> types are detected, this container initializer will have no effect. 
+<p>Note that use of this container initializer and of <code>WebApplicationInitializer</code> is not in any way "tied" to Spring MVC other than the fact that the types are shipped in the <code>spring-web</code> module JAR. Rather, they can be considered general-purpose in their ability to facilitate convenient code-based configuration of the <code>ServletContext</code>. In other words, any servlet, listener, or filter may be registered within a <code>WebApplicationInitializer</code>, not just Spring MVC-specific components. </p>
+<p>This class is neither designed for extension nor intended to be extended. It should be considered an internal type, with <code>WebApplicationInitializer</code> being the public-facing SPI. </p>
+See Also See WebApplicationInitializer Javadoc for examples and detailed usage recommendations.</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#onStartup(Set, ServletContext)</a>WebApplicationInitializer</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SpringServletContainerInitializer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Servlet 3.0 ServletContainerInitializer designed to support code-based configuration of the servlet container using Spring's WebApplicationInitializer SPI as opposed to (or possibly in combination with) the traditional <code>web.xml</code>-based approach. Mechanism of Operation This class will be loaded and instantiated and have its <code><a href="#">#onStartup</a></code> method invoked by any Servlet 3.0-compliant container during container startup assuming that the <code>spring-web</code> module JAR is present on the classpath. This occurs through the JAR Services API <code><a href="#">ServiceLoader#load(Class)</a></code> method detecting the <code>spring-web</code> module's <code>META-INF/services/javax.servlet.ServletContainerInitializer</code> service provider configuration file. See the <a href="#"> JAR Services API documentation</a> as well as section <em>8.2.4</em> of the Servlet 3.0 Final Draft specification for complete details. In combination with <code>web.xml</code> A web application can choose to limit the amount of classpath scanning the Servlet container does at startup either through the <code>metadata-complete</code> attribute in <code>web.xml</code>, which controls scanning for Servlet annotations or through an <code>&lt;absolute-ordering&gt;</code> element also in <code>web.xml</code>, which controls which web fragments (i.e. jars) are allowed to perform a <code>ServletContainerInitializer</code> scan. When using this feature, the SpringServletContainerInitializer can be enabled by adding "spring_web" to the list of named web fragments in <code>web.xml</code> as follows: <pre><code><code>&lt;absolute-ordering&gt; &lt;name&gt;some_web_fragment&lt;/name&gt; &lt;name&gt;spring_web&lt;/name&gt; &lt;/absolute-ordering&gt; </code></code></pre> Relationship to Spring's <code>WebApplicationInitializer</code> Spring's <code>WebApplicationInitializer</code> SPI consists of just one method: <code><a href="../-web-application-initializer/on-startup.html">WebApplicationInitializer#onStartup(ServletContext)</a></code>. The signature is intentionally quite similar to <code><a href="#">ServletContainerInitializer#onStartup(Set, ServletContext)</a></code>: simply put, <code>SpringServletContainerInitializer</code> is responsible for instantiating and delegating the <code>ServletContext</code> to any user-defined <code>WebApplicationInitializer</code> implementations. It is then the responsibility of each <code>WebApplicationInitializer</code> to do the actual work of initializing the <code>ServletContext</code>. The exact process of delegation is described in detail in the <code><a href="#">onStartup</a></code> documentation below. General Notes In general, this class should be viewed as <em>supporting infrastructure</em> for the more important and user-facing <code>WebApplicationInitializer</code> SPI. Taking advantage of this container initializer is also completely <em>optional</em>: while it is true that this initializer will be loaded and invoked under all Servlet 3.0+ runtimes, it remains the user's choice whether to make any <code>WebApplicationInitializer</code> implementations available on the classpath. If no <code>WebApplicationInitializer</code> types are detected, this container initializer will have no effect. 
+<p>Note that use of this container initializer and of <code>WebApplicationInitializer</code> is not in any way "tied" to Spring MVC other than the fact that the types are shipped in the <code>spring-web</code> module JAR. Rather, they can be considered general-purpose in their ability to facilitate convenient code-based configuration of the <code>ServletContext</code>. In other words, any servlet, listener, or filter may be registered within a <code>WebApplicationInitializer</code>, not just Spring MVC-specific components. </p>
+<p>This class is neither designed for extension nor intended to be extended. It should be considered an internal type, with <code>WebApplicationInitializer</code> being the public-facing SPI. </p>
+See Also See WebApplicationInitializer Javadoc for examples and detailed usage recommendations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="on-startup.html">onStartup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onStartup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.SpringServletContainerInitializer$onStartup(kotlin.collections.MutableSet((java.lang.Class((kotlin.Any)))), javax.servlet.ServletContext)/webAppInitializerClasses">webAppInitializerClasses</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.SpringServletContainerInitializer$onStartup(kotlin.collections.MutableSet((java.lang.Class((kotlin.Any)))), javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Delegate the <code>ServletContext</code> to any WebApplicationInitializer implementations present on the application classpath. 
+<p>Because this class declares @<code>HandlesTypes(WebApplicationInitializer.class)</code>, Servlet 3.0+ containers will automatically scan the classpath for implementations of Spring's <code>WebApplicationInitializer</code> interface and provide the set of all such types to the <code>webAppInitializerClasses</code> parameter of this method. </p>
+<p>If no <code>WebApplicationInitializer</code> implementations are found on the classpath, this method is effectively a no-op. An INFO-level log message will be issued notifying the user that the <code>ServletContainerInitializer</code> has indeed been invoked but that no <code>WebApplicationInitializer</code> implementations were found. </p>
+<p>Assuming that one or more <code>WebApplicationInitializer</code> types are detected, they will be instantiated (and <em>sorted</em> if the @ annotation is present or the org.springframework.core.Ordered interface has been implemented). Then the <code><a href="../-web-application-initializer/on-startup.html">WebApplicationInitializer#onStartup(ServletContext)</a></code> method will be invoked on each instance, delegating the <code>ServletContext</code> such that each instance may register and configure servlets such as Spring's <code>DispatcherServlet</code>, listeners such as Spring's <code>ContextLoaderListener</code>, or any other Servlet API componentry such as filters.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

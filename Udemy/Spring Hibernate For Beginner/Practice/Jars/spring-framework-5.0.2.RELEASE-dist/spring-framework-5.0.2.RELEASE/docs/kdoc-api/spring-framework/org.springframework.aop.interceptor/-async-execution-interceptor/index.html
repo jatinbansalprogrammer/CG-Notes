@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AsyncExecutionInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.interceptor</a>&nbsp;/&nbsp;<a href=".">AsyncExecutionInterceptor</a><br/>
+<br/>
+<h1>AsyncExecutionInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AsyncExecutionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-async-execution-aspect-support/index.html"><span class="identifier">AsyncExecutionAspectSupport</span></a><span class="symbol">, </span><a href="../../org.aopalliance.intercept/-method-interceptor/index.html"><span class="identifier">MethodInterceptor</span></a><span class="symbol">, </span><span class="identifier">Ordered</span></code>
+<p>AOP Alliance <code>MethodInterceptor</code> that processes method invocations asynchronously, using a given org.springframework.core.task.AsyncTaskExecutor. Typically used with the org.springframework.scheduling.annotation.Async annotation. 
+<p>In terms of target method signatures, any parameter types are supported. However, the return type is constrained to either <code>void</code> or <code>java.util.concurrent.Future</code>. In the latter case, the Future handle returned from the proxy will be an actual asynchronous Future that can be used to track the result of the asynchronous method execution. However, since the target method needs to implement the same signature, it will have to return a temporary Future handle that just passes the return value through (like Spring's org.springframework.scheduling.annotation.AsyncResult or EJB 3.1's <code>javax.ejb.AsyncResult</code>). </p>
+<p>When the return type is <code>java.util.concurrent.Future</code>, any exception thrown during the execution can be accessed and managed by the caller. With <code>void</code> return type however, such exceptions cannot be transmitted back. In that case an AsyncUncaughtExceptionHandler can be registered to process such exceptions. </p>
+<p>As of Spring 3.1.2 the <code>AnnotationAsyncExecutionInterceptor</code> subclass is preferred for use due to its support for executor qualification in conjunction with Spring's <code>@Async</code> annotation.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+org.springframework.scheduling.annotation.Asyncorg.springframework.scheduling.annotation.AsyncAnnotationAdvisororg.springframework.scheduling.annotation.AnnotationAsyncExecutionInterceptor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AsyncExecutionInterceptor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AsyncExecutionInterceptor$<init>(java.util.concurrent.Executor)/defaultExecutor">defaultExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">)</span></code>
+<p>Create a new instance with a default AsyncUncaughtExceptionHandler.</p>
+<code><span class="identifier">AsyncExecutionInterceptor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AsyncExecutionInterceptor$<init>(java.util.concurrent.Executor, org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler)/defaultExecutor">defaultExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.interceptor.AsyncExecutionInterceptor$<init>(java.util.concurrent.Executor, org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler)/exceptionHandler">exceptionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncUncaughtExceptionHandler</span><span class="symbol">)</span></code>
+<p>Create a new <code>AsyncExecutionInterceptor</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-async-execution-aspect-support/-d-e-f-a-u-l-t_-t-a-s-k_-e-x-e-c-u-t-o-r_-b-e-a-n_-n-a-m-e.html">DEFAULT_TASK_EXECUTOR_BEAN_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_TASK_EXECUTOR_BEAN_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default name of the TaskExecutor bean to pick up: "taskExecutor". 
+<p>Note that the initial lookup happens by type; this is just the fallback in case of multiple executor beans found in the context.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke.html">invoke</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">invoke</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AsyncExecutionInterceptor$invoke(org.aopalliance.intercept.MethodInvocation)/invocation">invocation</span><span class="symbol">:</span>&nbsp;<a href="../../org.aopalliance.intercept/-method-invocation/index.html"><span class="identifier">MethodInvocation</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Intercept the given method invocation, submit the actual calling of the method to the correct task executor and return immediately to the caller.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-async-execution-aspect-support/set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AsyncExecutionAspectSupport$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the BeanFactory to be used when looking up executors by qualifier or when relying on the default executor lookup algorithm.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-async-execution-aspect-support/set-exception-handler.html">setExceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExceptionHandler</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AsyncExecutionAspectSupport$setExceptionHandler(org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler)/exceptionHandler">exceptionHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncUncaughtExceptionHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Supply the AsyncUncaughtExceptionHandler to use to handle exceptions thrown by invoking asynchronous methods with a <code>void</code> return type.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-async-execution-aspect-support/set-executor.html">setExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.interceptor.AsyncExecutionAspectSupport$setExecutor(java.util.concurrent.Executor)/defaultExecutor">defaultExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Executor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Supply the executor to be used when executing async methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.scheduling.annotation/-annotation-async-execution-interceptor/index.html">AnnotationAsyncExecutionInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationAsyncExecutionInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncExecutionInterceptor</span></code>
+<p>Specialization of AsyncExecutionInterceptor that delegates method execution to an <code>Executor</code> based on the Async annotation. Specifically designed to support use of <code><a href="#">Async#value()</a></code> executor qualification mechanism introduced in Spring 3.1.2. Supports detecting qualifier metadata via <code>@Async</code> at the method or declaring class level. See <code><a href="#">#getExecutorQualifier(Method)</a></code> for details.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

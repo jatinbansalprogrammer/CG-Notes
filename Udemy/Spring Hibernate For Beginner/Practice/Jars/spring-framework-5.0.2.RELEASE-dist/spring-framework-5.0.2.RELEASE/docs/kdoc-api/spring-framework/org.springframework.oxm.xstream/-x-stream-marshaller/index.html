@@ -1,0 +1,396 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>XStreamMarshaller - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.oxm.xstream</a>&nbsp;/&nbsp;<a href=".">XStreamMarshaller</a><br/>
+<br/>
+<h1>XStreamMarshaller</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XStreamMarshaller</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.oxm.support/-abstract-marshaller/index.html"><span class="identifier">AbstractMarshaller</span></a><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of the <code>Marshaller</code> interface for XStream. 
+<p>By default, XStream does not require any further configuration and can (un)marshal any class on the classpath. As such, it is <strong>not recommended to use the <code>XStreamMarshaller</code> to unmarshal XML from external sources</strong> (i.e. the Web), as this can result in <strong>security vulnerabilities</strong>. If you do use the <code>XStreamMarshaller</code> to unmarshal external XML, set the <code><a href="#">supportedClasses</a></code> and <code><a href="#">converters</a></code> properties (possibly using a CatchAllConverter) or override the <code><a href="#">#customizeXStream(XStream)</a></code> method to make sure it only accepts the classes you want it to support. </p>
+<p>Due to XStream's API, it is required to set the encoding used for writing to OutputStreams. It defaults to <code>UTF-8</code>. </p>
+<p><strong>NOTE:</strong> XStream is an XML serialization library, not a data binding library. Therefore, it has limited namespace support. As such, it is rather unsuitable for usage within Web Services. </p>
+<p>This marshaller requires XStream 1.4.5 or higher, as of Spring 4.3. Note that XStream construction has been reworked in 4.0, with the stream driver and the class loader getting passed into XStream itself now.</p>
+</p>
+<p><strong>Author</strong><br/>
+Peter Meijer</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">XStreamMarshaller</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of the <code>Marshaller</code> interface for XStream. 
+<p>By default, XStream does not require any further configuration and can (un)marshal any class on the classpath. As such, it is <strong>not recommended to use the <code>XStreamMarshaller</code> to unmarshal XML from external sources</strong> (i.e. the Web), as this can result in <strong>security vulnerabilities</strong>. If you do use the <code>XStreamMarshaller</code> to unmarshal external XML, set the <code><a href="#">supportedClasses</a></code> and <code><a href="#">converters</a></code> properties (possibly using a CatchAllConverter) or override the <code><a href="#">#customizeXStream(XStream)</a></code> method to make sure it only accepts the classes you want it to support. </p>
+<p>Due to XStream's API, it is required to set the encoding used for writing to OutputStreams. It defaults to <code>UTF-8</code>. </p>
+<p><strong>NOTE:</strong> XStream is an XML serialization library, not a data binding library. Therefore, it has limited namespace support. As such, it is rather unsuitable for usage within Web Services. </p>
+<p>This marshaller requires XStream 1.4.5 or higher, as of Spring 4.3. Note that XStream construction has been reworked in 4.0, with the stream driver and the class loader getting passed into XStream itself now.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-e-n-c-o-d-i-n-g.html">DEFAULT_ENCODING</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_ENCODING</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The default encoding used for stream access: UTF-8.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-x-stream.html">getXStream</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getXStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XStream</span></code>
+<p>Return the native XStream delegate used by this marshaller. 
+<p><strong>NOTE: This method has been marked as final as of Spring 4.0.</strong> It can be used to access the fully configured XStream for marshalling but not configuration purposes anymore.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="marshal-output-stream.html">marshalOutputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">marshalOutputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalOutputStream(kotlin.Any, java.io.OutputStream)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalOutputStream(kotlin.Any, java.io.OutputStream)/outputStream">outputStream</span><span class="symbol">:</span>&nbsp;<span class="identifier">OutputStream</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">marshalOutputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalOutputStream(kotlin.Any, java.io.OutputStream, com.thoughtworks.xstream.converters.DataHolder)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalOutputStream(kotlin.Any, java.io.OutputStream, com.thoughtworks.xstream.converters.DataHolder)/outputStream">outputStream</span><span class="symbol">:</span>&nbsp;<span class="identifier">OutputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalOutputStream(kotlin.Any, java.io.OutputStream, com.thoughtworks.xstream.converters.DataHolder)/dataHolder">dataHolder</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataHolder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="marshal-writer.html">marshalWriter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">marshalWriter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalWriter(kotlin.Any, java.io.Writer)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalWriter(kotlin.Any, java.io.Writer)/writer">writer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Writer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">marshalWriter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalWriter(kotlin.Any, java.io.Writer, com.thoughtworks.xstream.converters.DataHolder)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalWriter(kotlin.Any, java.io.Writer, com.thoughtworks.xstream.converters.DataHolder)/writer">writer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Writer</span><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$marshalWriter(kotlin.Any, java.io.Writer, com.thoughtworks.xstream.converters.DataHolder)/dataHolder">dataHolder</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataHolder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-aliases.html">setAliases</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAliases</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setAliases(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/aliases">aliases</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the alias/type map, consisting of string aliases mapped to classes. 
+<p>Keys are aliases; values are either <code>Class</code> instances, or String class names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-aliases-by-type.html">setAliasesByType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAliasesByType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setAliasesByType(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/aliasesByType">aliasesByType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the <em>aliases by type</em> map, consisting of string aliases mapped to classes. 
+<p>Any class that is assignable to this type will be aliased to the same name. Keys are aliases; values are either <code>Class</code> instances, or String class names.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-annotated-classes.html">setAnnotatedClasses</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAnnotatedClasses</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setAnnotatedClasses(kotlin.Array((java.lang.Class((kotlin.Any)))))/annotatedClasses">annotatedClasses</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set annotated classes for which aliases will be read from class-level annotation metadata.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-autodetect-annotations.html">setAutodetectAnnotations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutodetectAnnotations</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setAutodetectAnnotations(kotlin.Boolean)/autodetectAnnotations">autodetectAnnotations</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Activate XStream's autodetection mode. 
+<p><strong>Note</strong>: Autodetection implies that the XStream instance is being configured while it is processing the XML streams, and thus introduces a potential concurrency problem.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-converter-lookup.html">setConverterLookup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConverterLookup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setConverterLookup(com.thoughtworks.xstream.converters.ConverterLookup)/converterLookup">converterLookup</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConverterLookup</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom XStream ConverterLookup to use. Also used as ConverterRegistry if the given reference implements it as well.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-converter-registry.html">setConverterRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConverterRegistry</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setConverterRegistry(com.thoughtworks.xstream.converters.ConverterRegistry)/converterRegistry">converterRegistry</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConverterRegistry</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom XStream ConverterRegistry to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-converters.html">setConverters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConverters</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setConverters(kotlin.Array((com.thoughtworks.xstream.converters.ConverterMatcher)))/converters">converters</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConverterMatcher</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the <code>Converters</code> or <code>SingleValueConverters</code> to be registered with the <code>XStream</code> instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding.html">setEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setEncoding(kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the encoding to be used for stream access.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-field-aliases.html">setFieldAliases</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFieldAliases</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setFieldAliases(kotlin.collections.MutableMap((kotlin.String, )))/fieldAliases">fieldAliases</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the field alias/type map, consisting of field names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-implicit-collections.html">setImplicitCollections</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setImplicitCollections</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setImplicitCollections(kotlin.collections.MutableMap((java.lang.Class((kotlin.Any)), kotlin.String)))/implicitCollections">implicitCollections</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify implicit collection fields, as a Map consisting of <code>Class</code> instances mapped to comma separated collection field names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapper.html">setMapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMapper</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setMapper(com.thoughtworks.xstream.mapper.Mapper)/mapper">mapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">Mapper</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom XStream Mapper to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mapper-wrappers.html">setMapperWrappers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMapperWrappers</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setMapperWrappers(kotlin.Array((java.lang.Class((com.thoughtworks.xstream.mapper.MapperWrapper)))))/mapperWrappers">mapperWrappers</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">MapperWrapper</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set one or more custom XStream MapperWrapper classes. Each of those classes needs to have a constructor with a single argument of type Mapper or MapperWrapper.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-marshalling-strategy.html">setMarshallingStrategy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMarshallingStrategy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setMarshallingStrategy(com.thoughtworks.xstream.MarshallingStrategy)/marshallingStrategy">marshallingStrategy</span><span class="symbol">:</span>&nbsp;<span class="identifier">MarshallingStrategy</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom XStream MarshallingStrategy to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-mode.html">setMode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setMode(kotlin.Int)/mode">mode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the XStream mode to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-name-coder.html">setNameCoder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setNameCoder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setNameCoder(com.thoughtworks.xstream.io.naming.NameCoder)/nameCoder">nameCoder</span><span class="symbol">:</span>&nbsp;<span class="identifier">NameCoder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom XStream NameCoder to use. The default is an XmlFriendlyNameCoder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-omitted-fields.html">setOmittedFields</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOmittedFields</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setOmittedFields(kotlin.collections.MutableMap((java.lang.Class((kotlin.Any)), kotlin.String)))/omittedFields">omittedFields</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify omitted fields, as a Map consisting of <code>Class</code> instances mapped to comma separated field names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-reflection-provider.html">setReflectionProvider</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReflectionProvider</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setReflectionProvider(com.thoughtworks.xstream.converters.reflection.ReflectionProvider)/reflectionProvider">reflectionProvider</span><span class="symbol">:</span>&nbsp;<span class="identifier">ReflectionProvider</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a custom XStream ReflectionProvider to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-stream-driver.html">setStreamDriver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStreamDriver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setStreamDriver(com.thoughtworks.xstream.io.HierarchicalStreamDriver)/streamDriver">streamDriver</span><span class="symbol">:</span>&nbsp;<span class="identifier">HierarchicalStreamDriver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a XStream HierarchicalStreamDriver to be used for readers and writers. 
+<p>As of Spring 4.0, this stream driver will also be passed to the XStream constructor and therefore used by streaming-related native API methods themselves.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-supported-classes.html">setSupportedClasses</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportedClasses</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setSupportedClasses(kotlin.Array((java.lang.Class((kotlin.Any)))))/supportedClasses">supportedClasses</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the classes supported by this marshaller. 
+<p>If this property is empty (the default), all classes are supported.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-attribute-for.html">setUseAttributeFor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseAttributeFor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setUseAttributeFor(kotlin.collections.MutableMap((kotlin.Any, )))/useAttributeFor">useAttributeFor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the types to use XML attributes for. The given map can contain either <code>&lt;String, Class&gt;</code> pairs, in which case <code><a href="#">XStream#useAttributeFor(String, Class)</a></code> is called. Alternatively, the map can contain <code>&lt;Class, String&gt;</code> or <code>&lt;Class, List&lt;String&gt;&gt;</code> pairs, which results in <code><a href="#">XStream#useAttributeFor(Class, String)</a></code> calls.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-attribute-for-types.html">setUseAttributeForTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseAttributeForTypes</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$setUseAttributeForTypes(kotlin.Array((java.lang.Class((kotlin.Any)))))/useAttributeForTypes">useAttributeForTypes</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set types to use XML attributes for.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports.html">supports</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">supports</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$supports(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unmarshal-input-stream.html">unmarshalInputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unmarshalInputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$unmarshalInputStream(java.io.InputStream)/inputStream">inputStream</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unmarshalInputStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$unmarshalInputStream(java.io.InputStream, com.thoughtworks.xstream.converters.DataHolder)/inputStream">inputStream</span><span class="symbol">:</span>&nbsp;<span class="identifier">InputStream</span><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$unmarshalInputStream(java.io.InputStream, com.thoughtworks.xstream.converters.DataHolder)/dataHolder">dataHolder</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataHolder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unmarshal-reader.html">unmarshalReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unmarshalReader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$unmarshalReader(java.io.Reader)/reader">reader</span><span class="symbol">:</span>&nbsp;<span class="identifier">Reader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unmarshalReader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$unmarshalReader(java.io.Reader, com.thoughtworks.xstream.converters.DataHolder)/reader">reader</span><span class="symbol">:</span>&nbsp;<span class="identifier">Reader</span><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.xstream.XStreamMarshaller$unmarshalReader(java.io.Reader, com.thoughtworks.xstream.converters.DataHolder)/dataHolder">dataHolder</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataHolder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/is-process-external-entities.html">isProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isProcessExternalEntities</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Returns the configured value for whether XML external entities are allowed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/is-support-dtd.html">isSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSupportDtd</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether DTD parsing is supported.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/marshal.html">marshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">marshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/graph">graph</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$marshal(kotlin.Any, javax.xml.transform.Result)/result">result</span><span class="symbol">:</span>&nbsp;<span class="identifier">Result</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Marshals the object graph with the given root into the provided <code>javax.xml.transform.Result</code>. 
+<p>This implementation inspects the given result, and calls <code>marshalDomResult</code>, <code>marshalSaxResult</code>, or <code>marshalStreamResult</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-process-external-entities.html">setProcessExternalEntities</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProcessExternalEntities</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setProcessExternalEntities(kotlin.Boolean)/processExternalEntities">processExternalEntities</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether external XML entities are processed when unmarshalling. 
+<p>Default is <code>false</code>, meaning that external entities are not resolved. Note that processing of external entities will only be enabled/disabled when the <code>Source</code> passed to <code><a href="../../org.springframework.oxm.support/-abstract-marshaller/unmarshal.html">#unmarshal(Source)</a></code> is a SAXSource or StreamSource. It has no effect for DOMSource or StAXSource instances. </p>
+<p><strong>Note:</strong> setting this option to <code>true</code> also automatically sets <code><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-support-dtd.html">#setSupportDtd</a></code> to <code>true</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/set-support-dtd.html">setSupportDtd</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSupportDtd</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$setSupportDtd(kotlin.Boolean)/supportDtd">supportDtd</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicates whether DTD parsing should be supported. 
+<p>Default is <code>false</code> meaning that DTD is disabled.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.oxm.support/-abstract-marshaller/unmarshal.html">unmarshal</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">unmarshal</span><span class="symbol">(</span><span class="identifier" id="org.springframework.oxm.support.AbstractMarshaller$unmarshal(javax.xml.transform.Source)/source">source</span><span class="symbol">:</span>&nbsp;<span class="identifier">Source</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Unmarshals the given provided <code>javax.xml.transform.Source</code> into an object graph. 
+<p>This implementation inspects the given result, and calls <code>unmarshalDomSource</code>, <code>unmarshalSaxSource</code>, or <code>unmarshalStreamSource</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.reactive.config - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.reactive.config</a><br/>
+<br/>
+<h2>Package org.springframework.web.reactive.config</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-cors-registration/index.html">CorsRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CorsRegistration</span></code>
+<p>Assists with the creation of a CorsConfiguration instance mapped to a path pattern. By default all origins, headers, and credentials for <code>GET</code>, <code>HEAD</code>, and <code>POST</code> requests are allowed while the max age is set to 30 minutes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-handler-registration/index.html">ResourceHandlerRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceHandlerRegistration</span></code>
+<p>Assist with creating and configuring a static resources handler.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-url-based-view-resolver-registration/index.html">UrlBasedViewResolverRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UrlBasedViewResolverRegistration</span></code>
+<p>Assist with configuring properties of a UrlBasedViewResolver.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-flux-configuration-support/index.html">WebFluxConfigurationSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebFluxConfigurationSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextAware</span></code>
+<p>The main class for Spring WebFlux configuration. 
+<p>Import directly or extend and override protected methods to customize.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-flux-configurer-composite/index.html">WebFluxConfigurerComposite</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebFluxConfigurerComposite</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebFluxConfigurer</span></code>
+<p>A WebFluxConfigurer that delegates to one or more others.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-enable-web-flux/index.html">EnableWebFlux</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableWebFlux</span></code>
+<p>Adding this annotation to an <code>@Configuration</code> class imports the Spring Web Reactive configuration from WebFluxConfigurationSupport, e.g.: <pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration { } </code></pre> 
+<p>To customize the imported configuration implement WebFluxConfigurer and override individual methods as shown below: </p>
+<pre><code> @Configuration @EnableWebFlux @ComponentScan(basePackageClasses = MyConfiguration.class) public class MyConfiguration implements WebFluxConfigurer { @Override public void addFormatters(FormatterRegistry formatterRegistry) { formatterRegistry.addConverter(new MyConverter()); } @Override public void configureMessageWriters(List&lt;HttpMessageWriter&lt;?&gt;&gt; messageWriters) { messageWriters.add(new MyHttpMessageWriter()); } } </code></pre> 
+<p><strong>Note:</strong> only one <code>@Configuration</code> class may have the <code>@EnableWebFlux</code> annotation to import the Spring WebFlux configuration. There can however be multiple <code>@Configuration</code> classes implementing <code>WebFluxConfigurer</code> in order to customize the provided configuration. </p>
+<p>If WebFluxConfigurer does not expose some more advanced setting that needs to be configured consider removing the <code>@EnableWebFlux</code> annotation and extending directly from WebFluxConfigurationSupport or DelegatingWebFluxConfiguration if you still want to allow WebFluxConfigurer instances to customize the configuration.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

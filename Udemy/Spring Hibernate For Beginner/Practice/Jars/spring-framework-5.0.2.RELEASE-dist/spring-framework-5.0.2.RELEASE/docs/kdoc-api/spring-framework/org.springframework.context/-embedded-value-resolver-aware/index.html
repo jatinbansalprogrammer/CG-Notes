@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EmbeddedValueResolverAware - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context</a>&nbsp;/&nbsp;<a href=".">EmbeddedValueResolverAware</a><br/>
+<br/>
+<h1>EmbeddedValueResolverAware</h1>
+<code><span class="keyword">interface </span><span class="identifier">EmbeddedValueResolverAware</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Aware</span></code>
+<p>Interface to be implemented by any object that wishes to be notified of a <strong>StringValueResolver</strong> for the <strong> resolution of embedded definition values. 
+<p>This is an alternative to a full ConfigurableBeanFactory dependency via the ApplicationContextAware/BeanFactoryAware interfaces.</p>
+</strong></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Since</strong><br/>
+3.0.3</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.springframework.beans.factory.config.ConfigurableBeanFactory#resolveEmbeddedValue(String)</a><a href="#">org.springframework.beans.factory.config.ConfigurableBeanFactory#getBeanExpressionResolver()</a>org.springframework.beans.factory.config.EmbeddedValueResolver</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-embedded-value-resolver.html">setEmbeddedValueResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">setEmbeddedValueResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.EmbeddedValueResolverAware$setEmbeddedValueResolver(org.springframework.util.StringValueResolver)/resolver">resolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">StringValueResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the StringValueResolver to use for resolving embedded definition values.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.support/-embedded-value-resolution-support/index.html">EmbeddedValueResolutionSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EmbeddedValueResolutionSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EmbeddedValueResolverAware</span></code>
+<p>Convenient base class for components with a need for embedded value resolution (i.e. org.springframework.context.EmbeddedValueResolverAware consumers).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.format.support/-formatting-conversion-service/index.html">FormattingConversionService</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FormattingConversionService</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericConversionService</span><span class="symbol">, </span><span class="identifier">FormatterRegistry</span><span class="symbol">, </span><span class="identifier">EmbeddedValueResolverAware</span></code>
+<p>A org.springframework.core.convert.ConversionService implementation designed to be configured as a FormatterRegistry.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.format.support/-formatting-conversion-service-factory-bean/index.html">FormattingConversionServiceFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FormattingConversionServiceFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="../../org.springframework.format.support/-formatting-conversion-service/index.html"><span class="identifier">FormattingConversionService</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">EmbeddedValueResolverAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A factory providing convenient access to a <code>FormattingConversionService</code> configured with converters and formatters for common types such as numbers and datetimes. 
+<p>Additional converters and formatters can be registered declaratively through <code><a href="#">#setConverters(Set)</a></code> and <code><a href="#">#setFormatters(Set)</a></code>. Another option is to register converters and formatters in code by implementing the FormatterRegistrar interface. You can then configure provide the set of registrars to use through <code><a href="#">#setFormatterRegistrars(Set)</a></code>. </p>
+<p>A good example for registering converters and formatters in code is <code>JodaTimeFormatterRegistrar</code>, which registers a number of date-related formatters and converters. For a more detailed list of cases see <code><a href="#">#setFormatterRegistrars(Set)</a></code> </p>
+<p>Like all <code>FactoryBean</code> implementations, this class is suitable for use when configuring a Spring application context using Spring <code>&lt;beans&gt;</code> XML. When configuring the container with org.springframework.context.annotation.Configuration classes, simply instantiate, configure and return the appropriate <code>FormattingConversionService</code> object from a org.springframework.context.annotation.Bean method.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

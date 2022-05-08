@@ -1,0 +1,221 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CronTriggerFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href=".">CronTriggerFactoryBean</a><br/>
+<br/>
+<h1>CronTriggerFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CronTriggerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">CronTrigger</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>A Spring FactoryBean for creating a Quartz org.quartz.CronTrigger instance, supporting bean-style usage for trigger configuration. 
+<p><code>CronTrigger(Impl)</code> itself is already a JavaBean but lacks sensible defaults. This class uses the Spring bean name as job name, the Quartz default group ("DEFAULT") as job group, the current time as start time, and indefinite repetition, if not specified. </p>
+<p>This class will also register the trigger with the job name and group of a given org.quartz.JobDetail. This allows SchedulerFactoryBean to automatically register a trigger for the corresponding JobDetail, instead of registering the JobDetail separately.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setName</a><a href="#">#setGroup</a><a href="set-start-delay.html">#setStartDelay</a><a href="set-job-detail.html">#setJobDetail</a><a href="#">SchedulerFactoryBean#setTriggers</a><a href="#">SchedulerFactoryBean#setJobDetails</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CronTriggerFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>A Spring FactoryBean for creating a Quartz org.quartz.CronTrigger instance, supporting bean-style usage for trigger configuration. 
+<p><code>CronTrigger(Impl)</code> itself is already a JavaBean but lacks sensible defaults. This class uses the Spring bean name as job name, the Quartz default group ("DEFAULT") as job group, the current time as start time, and indefinite repetition, if not specified. </p>
+<p>This class will also register the trigger with the job name and group of a given org.quartz.JobDetail. This allows SchedulerFactoryBean to automatically register a trigger for the corresponding JobDetail, instead of registering the JobDetail separately.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-job-data-map.html">getJobDataMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJobDataMap</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JobDataMap</span></code>
+<p>Return the trigger's JobDataMap.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CronTrigger</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-name.html">setBeanName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setBeanName(kotlin.String)/beanName">beanName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-calendar-name.html">setCalendarName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCalendarName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setCalendarName(kotlin.String)/calendarName">calendarName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Associate a specific calendar with this cron trigger.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cron-expression.html">setCronExpression</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCronExpression</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setCronExpression(kotlin.String)/cronExpression">cronExpression</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the cron expression for this trigger.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-description.html">setDescription</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDescription</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setDescription(kotlin.String)/description">description</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Associate a textual description with this trigger.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-group.html">setGroup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setGroup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setGroup(kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the trigger's group.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-job-data-as-map.html">setJobDataAsMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJobDataAsMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setJobDataAsMap(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/jobDataAsMap">jobDataAsMap</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register objects in the JobDataMap via a given Map. 
+<p>These objects will be available to this Trigger only, in contrast to objects in the JobDetail's data map.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-job-data-map.html">setJobDataMap</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJobDataMap</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setJobDataMap(org.quartz.JobDataMap)/jobDataMap">jobDataMap</span><span class="symbol">:</span>&nbsp;<span class="identifier">JobDataMap</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the trigger's JobDataMap.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-job-detail.html">setJobDetail</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJobDetail</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setJobDetail(org.quartz.JobDetail)/jobDetail">jobDetail</span><span class="symbol">:</span>&nbsp;<span class="identifier">JobDetail</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JobDetail that this trigger should be associated with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-misfire-instruction.html">setMisfireInstruction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMisfireInstruction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setMisfireInstruction(kotlin.Int)/misfireInstruction">misfireInstruction</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a misfire instruction for this trigger.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-misfire-instruction-name.html">setMisfireInstructionName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMisfireInstructionName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setMisfireInstructionName(kotlin.String)/constantName">constantName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the misfire instruction via the name of the corresponding constant in the org.quartz.CronTrigger class. Default is <code>MISFIRE_INSTRUCTION_SMART_POLICY</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-name.html">setName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the trigger's name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-priority.html">setPriority</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPriority</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setPriority(kotlin.Int)/priority">priority</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the priority of this trigger.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-start-delay.html">setStartDelay</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStartDelay</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setStartDelay(kotlin.Long)/startDelay">startDelay</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the start delay in milliseconds. 
+<p>The start delay is added to the current system time (when the bean starts) to control the start time of the trigger.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-start-time.html">setStartTime</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setStartTime</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setStartTime(java.util.Date)/startTime">startTime</span><span class="symbol">:</span>&nbsp;<span class="identifier">Date</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a specific start time for the trigger. 
+<p>Note that a dynamically computed <code><a href="set-start-delay.html">#setStartDelay</a></code> specification overrides a static timestamp set here.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-time-zone.html">setTimeZone</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTimeZone</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.quartz.CronTriggerFactoryBean$setTimeZone(java.util.TimeZone)/timeZone">timeZone</span><span class="symbol">:</span>&nbsp;<span class="identifier">TimeZone</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the time zone for this trigger's cron expression.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

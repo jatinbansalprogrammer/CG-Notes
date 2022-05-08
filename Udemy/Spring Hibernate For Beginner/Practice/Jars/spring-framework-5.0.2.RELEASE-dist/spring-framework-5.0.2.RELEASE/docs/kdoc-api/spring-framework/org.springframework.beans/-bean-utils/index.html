@@ -1,0 +1,243 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BeanUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href=".">BeanUtils</a><br/>
+<br/>
+<h1>BeanUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">BeanUtils</span></code>
+<p>Static convenience methods for JavaBeans: for instantiating beans, checking bean property types, copying bean properties, etc. 
+<p>Mainly for use within the framework, but to some degree also useful for application classes.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Sebastien Deleuze</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BeanUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Static convenience methods for JavaBeans: for instantiating beans, checking bean property types, copying bean properties, etc. 
+<p>Mainly for use within the framework, but to some degree also useful for application classes.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="copy-properties.html">copyProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">copyProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Copy the property values of the given source bean into the target bean. 
+<p>Note: The source and target classes do not have to match or even be derived from each other, as long as the properties match. Any bean properties that the source bean exposes but the target bean does not will silently be ignored. </p>
+<p>This is just a convenience method. For more complex transfer needs, consider using a full BeanWrapper.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">copyProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any, java.lang.Class((kotlin.Any)))/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any, java.lang.Class((kotlin.Any)))/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any, java.lang.Class((kotlin.Any)))/editable">editable</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Copy the property values of the given source bean into the given target bean, only setting properties defined in the given "editable" class (or interface). 
+<p>Note: The source and target classes do not have to match or even be derived from each other, as long as the properties match. Any bean properties that the source bean exposes but the target bean does not will silently be ignored. </p>
+<p>This is just a convenience method. For more complex transfer needs, consider using a full BeanWrapper.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">copyProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any, kotlin.Array((kotlin.String)))/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any, kotlin.Array((kotlin.String)))/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.BeanUtils$copyProperties(kotlin.Any, kotlin.Any, kotlin.Array((kotlin.String)))/ignoreProperties">ignoreProperties</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Copy the property values of the given source bean into the given target bean, ignoring the given "ignoreProperties". 
+<p>Note: The source and target classes do not have to match or even be derived from each other, as long as the properties match. Any bean properties that the source bean exposes but the target bean does not will silently be ignored. </p>
+<p>This is just a convenience method. For more complex transfer needs, consider using a full BeanWrapper.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-declared-method.html">findDeclaredMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findDeclaredMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findDeclaredMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$findDeclaredMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/methodName">methodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.BeanUtils$findDeclaredMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/paramTypes">paramTypes</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Find a method with the given method name and the given parameter types, declared on the given class or one of its superclasses. Will return a public, protected, package access, or private method. 
+<p>Checks <code>Class.getDeclaredMethod</code>, cascading upwards to all superclasses.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-declared-method-with-minimal-parameters.html">findDeclaredMethodWithMinimalParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findDeclaredMethodWithMinimalParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findDeclaredMethodWithMinimalParameters(java.lang.Class((kotlin.Any)), kotlin.String)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$findDeclaredMethodWithMinimalParameters(java.lang.Class((kotlin.Any)), kotlin.String)/methodName">methodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Find a method with the given method name and minimal parameters (best case: none), declared on the given class or one of its superclasses. Will return a public, protected, package access, or private method. 
+<p>Checks <code>Class.getDeclaredMethods</code>, cascading upwards to all superclasses.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-editor-by-convention.html">findEditorByConvention</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findEditorByConvention</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findEditorByConvention(java.lang.Class((kotlin.Any)))/targetType">targetType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyEditor</span></code>
+<p>Find a JavaBeans PropertyEditor following the 'Editor' suffix convention (e.g. "mypackage.MyDomainClass" -&gt; "mypackage.MyDomainClassEditor"). 
+<p>Compatible to the standard JavaBeans convention as implemented by java.beans.PropertyEditorManager but isolated from the latter's registered default editors for primitive types.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-method.html">findMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/methodName">methodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.BeanUtils$findMethod(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/paramTypes">paramTypes</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Find a method with the given method name and the given parameter types, declared on the given class or one of its superclasses. Prefers public methods, but will return a protected, package access, or private method too. 
+<p>Checks <code>Class.getMethod</code> first, falling back to <code>findDeclaredMethod</code>. This allows to find public methods without issues even in environments with restricted Java security settings.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-method-with-minimal-parameters.html">findMethodWithMinimalParameters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findMethodWithMinimalParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findMethodWithMinimalParameters(java.lang.Class((kotlin.Any)), kotlin.String)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$findMethodWithMinimalParameters(java.lang.Class((kotlin.Any)), kotlin.String)/methodName">methodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Find a method with the given method name and minimal parameters (best case: none), declared on the given class or one of its superclasses. Prefers public methods, but will return a protected, package access, or private method too. 
+<p>Checks <code>Class.getMethods</code> first, falling back to <code>findDeclaredMethodWithMinimalParameters</code>. This allows for finding public methods without issues even in environments with restricted Java security settings.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findMethodWithMinimalParameters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findMethodWithMinimalParameters(kotlin.Array((java.lang.reflect.Method)), kotlin.String)/methods">methods</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Method</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$findMethodWithMinimalParameters(kotlin.Array((java.lang.reflect.Method)), kotlin.String)/methodName">methodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Find a method with the given method name and minimal parameters (best case: none) in the given list of methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-primary-constructor.html">findPrimaryConstructor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">findPrimaryConstructor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findPrimaryConstructor(java.lang.Class((org.springframework.beans.BeanUtils.findPrimaryConstructor.T)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Constructor</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>Return the primary constructor of the provided class. For Kotlin classes, this returns the Java constructor corresponding to the Kotlin primary constructor (as defined in the Kotlin specification). Otherwise, in particular for non-Kotlin classes, this simply returns <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-property-for-method.html">findPropertyForMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findPropertyForMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findPropertyForMethod(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyDescriptor</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findPropertyForMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findPropertyForMethod(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$findPropertyForMethod(java.lang.reflect.Method, java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyDescriptor</span></code>
+<p>Find a JavaBeans <code>PropertyDescriptor</code> for the given method, with the method either being the read method or the write method for that bean property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="find-property-type.html">findPropertyType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">findPropertyType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$findPropertyType(kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.BeanUtils$findPropertyType(kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/beanClasses">beanClasses</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Determine the bean property type for the given property from the given classes/interfaces, if possible.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-descriptor.html">getPropertyDescriptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getPropertyDescriptor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$getPropertyDescriptor(java.lang.Class((kotlin.Any)), kotlin.String)/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$getPropertyDescriptor(java.lang.Class((kotlin.Any)), kotlin.String)/propertyName">propertyName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PropertyDescriptor</span></code>
+<p>Retrieve the JavaBeans <code>PropertyDescriptors</code> for the given property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-descriptors.html">getPropertyDescriptors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getPropertyDescriptors</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$getPropertyDescriptors(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">PropertyDescriptor</span><span class="symbol">&gt;</span></code>
+<p>Retrieve the JavaBeans <code>PropertyDescriptor</code>s of a given class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-write-method-parameter.html">getWriteMethodParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getWriteMethodParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$getWriteMethodParameter(java.beans.PropertyDescriptor)/pd">pd</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyDescriptor</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MethodParameter</span></code>
+<p>Obtain a new MethodParameter object for the write method of the specified property.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="instantiate.html">instantiate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">instantiate</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$instantiate(java.lang.Class((org.springframework.beans.BeanUtils.instantiate.T)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Convenience method to instantiate a class using its no-arg constructor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="instantiate-class.html">instantiateClass</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">instantiateClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$instantiateClass(java.lang.Class((org.springframework.beans.BeanUtils.instantiateClass.T)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Instantiate a class using its no-arg constructor. 
+<p>Note that this method tries to set the constructor accessible if given a non-accessible (that is, non-public) constructor.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">instantiateClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$instantiateClass(java.lang.Class((kotlin.Any)), java.lang.Class((org.springframework.beans.BeanUtils.instantiateClass.T)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$instantiateClass(java.lang.Class((kotlin.Any)), java.lang.Class((org.springframework.beans.BeanUtils.instantiateClass.T)))/assignableTo">assignableTo</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Instantiate a class using its no-arg constructor and return the new instance as the specified assignable type. 
+<p>Useful in cases where the type of the class to instantiate (clazz) is not available, but the type desired (assignableTo) is known. </p>
+<p>Note that this method tries to set the constructor accessible if given a non-accessible (that is, non-public) constructor.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">instantiateClass</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$instantiateClass(java.lang.reflect.Constructor((org.springframework.beans.BeanUtils.instantiateClass.T)), kotlin.Array((kotlin.Any)))/ctor">ctor</span><span class="symbol">:</span>&nbsp;<span class="identifier">Constructor</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.beans.BeanUtils$instantiateClass(java.lang.reflect.Constructor((org.springframework.beans.BeanUtils.instantiateClass.T)), kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Convenience method to instantiate a class using the given constructor. 
+<p>Note that this method tries to set the constructor accessible if given a non-accessible (that is, non-public) constructor, and supports Kotlin classes with optional parameters and default values.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-simple-property.html">isSimpleProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isSimpleProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$isSimpleProperty(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check if the given type represents a "simple" property: a primitive, a String or other CharSequence, a Number, a Date, a URI, a URL, a Locale, a Class, or a corresponding array. 
+<p>Used to determine properties to check for a "simple" dependency-check.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-simple-value-type.html">isSimpleValueType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isSimpleValueType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$isSimpleValueType(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check if the given type represents a "simple" value type: a primitive, a String or other CharSequence, a Number, a Date, a URI, a URL, a Locale or a Class.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-signature.html">resolveSignature</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">resolveSignature</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.BeanUtils$resolveSignature(kotlin.String, java.lang.Class((kotlin.Any)))/signature">signature</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.BeanUtils$resolveSignature(kotlin.String, java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Method</span></code>
+<p>Parse a method signature in the form <code>methodName[([arg_list])]</code>, where <code>arg_list</code> is an optional, comma-separated list of fully-qualified type names, and attempts to resolve that signature against the supplied <code>Class</code>. 
+<p>When not supplying an argument list (<code>methodName</code>) the method whose name matches and has the least number of parameters will be returned. When supplying an argument type list, only the method whose name and argument types match will be returned. </p>
+<p>Note then that <code>methodName</code> and <code>methodName()</code> are <strong>not</strong> resolved in the same way. The signature <code>methodName</code> means the method called <code>methodName</code> with the least number of arguments, whereas <code>methodName()</code> means the method called <code>methodName</code> with exactly 0 arguments. </p>
+<p>If no method can be found, then <code>null</code> is returned.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

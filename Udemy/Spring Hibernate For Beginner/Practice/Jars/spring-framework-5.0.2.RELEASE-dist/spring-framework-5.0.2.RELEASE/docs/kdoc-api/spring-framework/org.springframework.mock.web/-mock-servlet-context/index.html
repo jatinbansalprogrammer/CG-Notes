@@ -1,0 +1,540 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MockServletContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.mock.web</a>&nbsp;/&nbsp;<a href=".">MockServletContext</a><br/>
+<br/>
+<h1>MockServletContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockServletContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span></code>
+<p>Mock implementation of the javax.servlet.ServletContext interface. 
+<p>As of Spring 5.0, this set of mocks is designed on a Servlet 4.0 baseline. </p>
+<p>Compatible with Servlet 3.1 but can be configured to expose a specific version through <code><a href="set-major-version.html">#setMajorVersion</a></code>/<code><a href="set-minor-version.html">#setMinorVersion</a></code>; default is 3.1. Note that Servlet 3.1 support is limited: servlet, filter and listener registration methods are not supported; neither is JSP configuration. We generally do not recommend to unit test your ServletContainerInitializers and WebApplicationInitializers which is where those registration methods would be used. </p>
+<p>For setting up a full <code>WebApplicationContext</code> in a test environment, you can use <code>AnnotationConfigWebApplicationContext</code>, <code>XmlWebApplicationContext</code>, or <code>GenericWebApplicationContext</code>, passing in a corresponding <code>MockServletContext</code> instance. Consider configuring your <code>MockServletContext</code> with a <code>FileSystemResourceLoader</code> in order to interpret resource paths as relative filesystem locations.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+1.0.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#MockServletContext(org.springframework.core.io.ResourceLoader)</a>org.springframework.web.context.support.AnnotationConfigWebApplicationContextorg.springframework.web.context.support.XmlWebApplicationContextorg.springframework.web.context.support.GenericWebApplicationContext</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MockServletContext</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new <code>MockServletContext</code>, using no base path and a DefaultResourceLoader (i.e. the classpath root as WAR root).</p>
+<code><span class="identifier">MockServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$<init>(kotlin.String)/resourceBasePath">resourceBasePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new <code>MockServletContext</code>, using a DefaultResourceLoader.</p>
+<code><span class="identifier">MockServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$<init>(org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span></code>
+<p>Create a new <code>MockServletContext</code>, using the specified ResourceLoader and no base path.</p>
+<code><span class="identifier">MockServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$<init>(kotlin.String, org.springframework.core.io.ResourceLoader)/resourceBasePath">resourceBasePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$<init>(kotlin.String, org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span></code>
+<p>Create a new <code>MockServletContext</code> using the supplied resource base path and resource loader. 
+<p>Registers a MockRequestDispatcher for the Servlet named 'default'.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-filter.html">addFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addFilter(kotlin.String, kotlin.String)/filterName">filterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addFilter(kotlin.String, kotlin.String)/className">className</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Dynamic</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addFilter(kotlin.String, javax.servlet.Filter)/filterName">filterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addFilter(kotlin.String, javax.servlet.Filter)/filter">filter</span><span class="symbol">:</span>&nbsp;<span class="identifier">Filter</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Dynamic</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addFilter(kotlin.String, java.lang.Class((javax.servlet.Filter)))/filterName">filterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addFilter(kotlin.String, java.lang.Class((javax.servlet.Filter)))/filterClass">filterClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Filter</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Dynamic</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="add-init-parameter.html">addInitParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addInitParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addInitParameter(kotlin.String, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addInitParameter(kotlin.String, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="add-jsp-file.html">addJspFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addJspFile</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addJspFile(kotlin.String, kotlin.String)/servletName">servletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addJspFile(kotlin.String, kotlin.String)/jspFile">jspFile</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Dynamic</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="add-listener.html">addListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addListener(java.lang.Class((java.util.EventListener)))/listenerClass">listenerClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">EventListener</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addListener(kotlin.String)/className">className</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EventListener</span><span class="symbol">&gt;</span> <span class="identifier">addListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addListener(org.springframework.mock.web.MockServletContext.addListener.T)/t">t</span><span class="symbol">:</span>&nbsp;<span class="identifier">T</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="add-mime-type.html">addMimeType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addMimeType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addMimeType(kotlin.String, org.springframework.http.MediaType)/fileExtension">fileExtension</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addMimeType(kotlin.String, org.springframework.http.MediaType)/mimeType">mimeType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Adds a mime type mapping for use by <code><a href="#">#getMimeType(String)</a></code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="add-servlet.html">addServlet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addServlet</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addServlet(kotlin.String, kotlin.String)/servletName">servletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addServlet(kotlin.String, kotlin.String)/className">className</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Dynamic</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addServlet</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addServlet(kotlin.String, javax.servlet.Servlet)/servletName">servletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addServlet(kotlin.String, javax.servlet.Servlet)/servlet">servlet</span><span class="symbol">:</span>&nbsp;<span class="identifier">Servlet</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Dynamic</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addServlet</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addServlet(kotlin.String, java.lang.Class((javax.servlet.Servlet)))/servletName">servletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$addServlet(kotlin.String, java.lang.Class((javax.servlet.Servlet)))/servletClass">servletClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Servlet</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Dynamic</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-filter.html">createFilter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Filter</span><span class="symbol">&gt;</span> <span class="identifier">createFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$createFilter(java.lang.Class((org.springframework.mock.web.MockServletContext.createFilter.T)))/c">c</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-listener.html">createListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EventListener</span><span class="symbol">&gt;</span> <span class="identifier">createListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$createListener(java.lang.Class((org.springframework.mock.web.MockServletContext.createListener.T)))/c">c</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="create-servlet.html">createServlet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Servlet</span><span class="symbol">&gt;</span> <span class="identifier">createServlet</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$createServlet(java.lang.Class((org.springframework.mock.web.MockServletContext.createServlet.T)))/c">c</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="declare-roles.html">declareRoles</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">declareRoles</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.mock.web.MockServletContext$declareRoles(kotlin.Array((kotlin.String)))/roleNames">roleNames</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-attribute.html">getAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getAttribute(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-attribute-names.html">getAttributeNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getAttributeNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Enumeration</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-class-loader.html">getClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getClassLoader</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClassLoader</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-context.html">getContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getContext(kotlin.String)/contextPath">contextPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletContext</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-context-path.html">getContextPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContextPath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-declared-roles.html">getDeclaredRoles</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDeclaredRoles</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-servlet-name.html">getDefaultServletName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultServletName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Get the name of the <em>default</em> <code>Servlet</code>. 
+<p>Defaults to 'default'.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-session-tracking-modes.html">getDefaultSessionTrackingModes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultSessionTrackingModes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><span class="identifier">SessionTrackingMode</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-effective-major-version.html">getEffectiveMajorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEffectiveMajorVersion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-effective-minor-version.html">getEffectiveMinorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEffectiveMinorVersion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-effective-session-tracking-modes.html">getEffectiveSessionTrackingModes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEffectiveSessionTrackingModes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><span class="identifier">SessionTrackingMode</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-filter-registration.html">getFilterRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFilterRegistration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getFilterRegistration(kotlin.String)/filterName">filterName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FilterRegistration</span></code>
+<p>This method always returns <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-filter-registrations.html">getFilterRegistrations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFilterRegistrations</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="keyword">out</span>&nbsp;<span class="identifier">FilterRegistration</span><span class="symbol">&gt;</span></code>
+<p>This method always returns an <a href="#">empty map</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-init-parameter.html">getInitParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInitParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getInitParameter(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-init-parameter-names.html">getInitParameterNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInitParameterNames</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Enumeration</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-jsp-config-descriptor.html">getJspConfigDescriptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJspConfigDescriptor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">JspConfigDescriptor</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-major-version.html">getMajorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMajorVersion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-mime-type.html">getMimeType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMimeType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getMimeType(kotlin.String)/filePath">filePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-minor-version.html">getMinorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMinorVersion</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-named-dispatcher.html">getNamedDispatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getNamedDispatcher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getNamedDispatcher(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestDispatcher</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-real-path.html">getRealPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRealPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getRealPath(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-request-character-encoding.html">getRequestCharacterEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRequestCharacterEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-request-dispatcher.html">getRequestDispatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getRequestDispatcher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getRequestDispatcher(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">RequestDispatcher</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource.html">getResource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getResource(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URL</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-as-stream.html">getResourceAsStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourceAsStream</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getResourceAsStream(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InputStream</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-resource-paths.html">getResourcePaths</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResourcePaths</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getResourcePaths(kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-response-character-encoding.html">getResponseCharacterEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getResponseCharacterEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-server-info.html">getServerInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getServerInfo</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet.html">getServlet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><s><span class="identifier">getServlet</span></s><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getServlet(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Servlet</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet-context-name.html">getServletContextName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getServletContextName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet-names.html">getServletNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><s><span class="identifier">getServletNames</span></s><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Enumeration</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet-registration.html">getServletRegistration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getServletRegistration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$getServletRegistration(kotlin.String)/servletName">servletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletRegistration</span></code>
+<p>This method always returns <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet-registrations.html">getServletRegistrations</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getServletRegistrations</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="keyword">out</span>&nbsp;<span class="identifier">ServletRegistration</span><span class="symbol">&gt;</span></code>
+<p>This method always returns an <a href="#">empty map</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlets.html">getServlets</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><s><span class="identifier">getServlets</span></s><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Enumeration</span><span class="symbol">&lt;</span><span class="identifier">Servlet</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-session-cookie-config.html">getSessionCookieConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSessionCookieConfig</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SessionCookieConfig</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-session-timeout.html">getSessionTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSessionTimeout</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-virtual-server-name.html">getVirtualServerName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getVirtualServerName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="log.html">log</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">log</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$log(kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><s><span class="identifier">log</span></s><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$log(java.lang.Exception, kotlin.String)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$log(java.lang.Exception, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">log</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$log(kotlin.String, kotlin.Throwable)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$log(kotlin.String, kotlin.Throwable)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="register-context.html">registerContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$registerContext(kotlin.String, javax.servlet.ServletContext)/contextPath">contextPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$registerContext(kotlin.String, javax.servlet.ServletContext)/context">context</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="register-named-dispatcher.html">registerNamedDispatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerNamedDispatcher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$registerNamedDispatcher(kotlin.String, javax.servlet.RequestDispatcher)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$registerNamedDispatcher(kotlin.String, javax.servlet.RequestDispatcher)/requestDispatcher">requestDispatcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">RequestDispatcher</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a RequestDispatcher (typically a MockRequestDispatcher) that acts as a wrapper for the named Servlet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="remove-attribute.html">removeAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">removeAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$removeAttribute(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-attribute.html">setAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAttribute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setAttribute(kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setAttribute(kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-context-path.html">setContextPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContextPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setContextPath(kotlin.String)/contextPath">contextPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-servlet-name.html">setDefaultServletName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultServletName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setDefaultServletName(kotlin.String)/defaultServletName">defaultServletName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the <em>default</em> <code>Servlet</code>. 
+<p>Also <code><a href="#">unregisters</a></code> the current default RequestDispatcher and <code><a href="#">replaces</a></code> it with a MockRequestDispatcher for the provided <code>defaultServletName</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-effective-major-version.html">setEffectiveMajorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEffectiveMajorVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setEffectiveMajorVersion(kotlin.Int)/effectiveMajorVersion">effectiveMajorVersion</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-effective-minor-version.html">setEffectiveMinorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEffectiveMinorVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setEffectiveMinorVersion(kotlin.Int)/effectiveMinorVersion">effectiveMinorVersion</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-init-parameter.html">setInitParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setInitParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setInitParameter(kotlin.String, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setInitParameter(kotlin.String, kotlin.String)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-major-version.html">setMajorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMajorVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setMajorVersion(kotlin.Int)/majorVersion">majorVersion</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-minor-version.html">setMinorVersion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMinorVersion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setMinorVersion(kotlin.Int)/minorVersion">minorVersion</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-request-character-encoding.html">setRequestCharacterEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRequestCharacterEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setRequestCharacterEncoding(kotlin.String)/requestCharacterEncoding">requestCharacterEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-response-character-encoding.html">setResponseCharacterEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResponseCharacterEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setResponseCharacterEncoding(kotlin.String)/responseCharacterEncoding">responseCharacterEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context-name.html">setServletContextName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContextName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setServletContextName(kotlin.String)/servletContextName">servletContextName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-timeout.html">setSessionTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setSessionTimeout(kotlin.Int)/sessionTimeout">sessionTimeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-tracking-modes.html">setSessionTrackingModes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionTrackingModes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$setSessionTrackingModes(kotlin.collections.MutableSet((javax.servlet.SessionTrackingMode)))/sessionTrackingModes">sessionTrackingModes</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-set/index.html"><span class="identifier">MutableSet</span></a><span class="symbol">&lt;</span><span class="identifier">SessionTrackingMode</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="unregister-named-dispatcher.html">unregisterNamedDispatcher</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">unregisterNamedDispatcher</span><span class="symbol">(</span><span class="identifier" id="org.springframework.mock.web.MockServletContext$unregisterNamedDispatcher(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Unregister the RequestDispatcher with the given name.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

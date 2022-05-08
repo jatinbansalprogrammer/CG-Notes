@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServerEndpointExporter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.server.standard</a>&nbsp;/&nbsp;<a href=".">ServerEndpointExporter</a><br/>
+<br/>
+<h1>ServerEndpointExporter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServerEndpointExporter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationObjectSupport</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory/-smart-initializing-singleton/index.html"><span class="identifier">SmartInitializingSingleton</span></a></code>
+<p>Detects beans of type javax.websocket.server.ServerEndpointConfig and registers with the standard Java WebSocket runtime. Also detects beans annotated with ServerEndpoint and registers them as well. Although not required, it is likely annotated endpoints should have their <code>configurator</code> property set to SpringConfigurator. 
+<p>When this class is used, by declaring it in Spring configuration, it should be possible to turn off a Servlet container's scan for WebSocket endpoints. This can be done with the help of the <code>&lt;absolute-ordering&gt;</code> element in <code>web.xml</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<p><strong>See Also</strong><br/>
+ServerEndpointRegistrationSpringConfiguratorServletServerContainerFactoryBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServerEndpointExporter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Detects beans of type javax.websocket.server.ServerEndpointConfig and registers with the standard Java WebSocket runtime. Also detects beans annotated with ServerEndpoint and registers them as well. Although not required, it is likely annotated endpoints should have their <code>configurator</code> property set to SpringConfigurator. 
+<p>When this class is used, by declaring it in Spring configuration, it should be possible to turn off a Servlet container's scan for WebSocket endpoints. This can be done with the help of the <code>&lt;absolute-ordering&gt;</code> element in <code>web.xml</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="after-singletons-instantiated.html">afterSingletonsInstantiated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterSingletonsInstantiated</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-annotated-endpoint-classes.html">setAnnotatedEndpointClasses</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAnnotatedEndpointClasses</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.socket.server.standard.ServerEndpointExporter$setAnnotatedEndpointClasses(kotlin.Array((java.lang.Class((kotlin.Any)))))/annotatedEndpointClasses">annotatedEndpointClasses</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Explicitly list annotated endpoint types that should be registered on startup. This can be done if you wish to turn off a Servlet container's scan for endpoints, which goes through all 3rd party jars in the, and rely on Spring configuration instead.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-server-container.html">setServerContainer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServerContainer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.server.standard.ServerEndpointExporter$setServerContainer(javax.websocket.server.ServerContainer)/serverContainer">serverContainer</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerContainer</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the JSR-356 ServerContainer to use for endpoint registration. If not set, the container is going to be retrieved via the <code>ServletContext</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

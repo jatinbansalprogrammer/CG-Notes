@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CharacterEncodingFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href=".">CharacterEncodingFilter</a><br/>
+<br/>
+<h1>CharacterEncodingFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CharacterEncodingFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>Servlet Filter that allows one to specify a character encoding for requests. This is useful because current browsers typically do not set a character encoding even if specified in the HTML page or form. 
+<p>This filter can either apply its encoding if the request does not already specify an encoding, or enforce this filter's encoding in any case ("forceEncoding"="true"). In the latter case, the encoding will also be applied as default response encoding (although this will usually be overridden by a full content type set in the view).</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+15.03.2004</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setEncoding</a><a href="set-force-encoding.html">#setForceEncoding</a><a href="#">javax.servlet.http.HttpServletRequest#setCharacterEncoding</a><a href="#">javax.servlet.http.HttpServletResponse#setCharacterEncoding</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CharacterEncodingFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a default <code>CharacterEncodingFilter</code>, with the encoding to be set via <code><a href="#">#setEncoding</a></code>.</p>
+<code><span class="identifier">CharacterEncodingFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$<init>(kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">CharacterEncodingFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$<init>(kotlin.String, kotlin.Boolean)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$<init>(kotlin.String, kotlin.Boolean)/forceEncoding">forceEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code><br/>
+<code><span class="identifier">CharacterEncodingFilter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$<init>(kotlin.String, kotlin.Boolean, kotlin.Boolean)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$<init>(kotlin.String, kotlin.Boolean, kotlin.Boolean)/forceRequestEncoding">forceRequestEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$<init>(kotlin.String, kotlin.Boolean, kotlin.Boolean)/forceResponseEncoding">forceResponseEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span></code>
+<p>Create a <code>CharacterEncodingFilter</code> for the given encoding.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-encoding.html">getEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the configured encoding for requests and/or responses.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-force-request-encoding.html">isForceRequestEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isForceRequestEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the encoding should be forced on requests</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-force-response-encoding.html">isForceResponseEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isForceResponseEncoding</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the encoding should be forced on responses.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-encoding.html">setEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$setEncoding(kotlin.String)/encoding">encoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the encoding to use for requests. This encoding will be passed into a <code><a href="#">javax.servlet.http.HttpServletRequest#setCharacterEncoding</a></code> call. 
+<p>Whether this encoding will override existing request encodings (and whether it will be applied as default response encoding as well) depends on the <code><a href="set-force-encoding.html">"forceEncoding"</a></code> flag.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-force-encoding.html">setForceEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setForceEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$setForceEncoding(kotlin.Boolean)/forceEncoding">forceEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the configured <code><a href="#">encoding</a></code> of this filter is supposed to override existing request and response encodings. 
+<p>Default is "false", i.e. do not modify the encoding if <code><a href="#">javax.servlet.http.HttpServletRequest#getCharacterEncoding()</a></code> returns a non-null value. Switch this to "true" to enforce the specified encoding in any case, applying it as default response encoding as well. </p>
+<p>This is the equivalent to setting both <code><a href="set-force-request-encoding.html">#setForceRequestEncoding(boolean)</a></code> and <code><a href="set-force-response-encoding.html">#setForceResponseEncoding(boolean)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-force-request-encoding.html">setForceRequestEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setForceRequestEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$setForceRequestEncoding(kotlin.Boolean)/forceRequestEncoding">forceRequestEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the configured <code><a href="#">encoding</a></code> of this filter is supposed to override existing request encodings. 
+<p>Default is "false", i.e. do not modify the encoding if <code><a href="#">javax.servlet.http.HttpServletRequest#getCharacterEncoding()</a></code> returns a non-null value. Switch this to "true" to enforce the specified encoding in any case.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-force-response-encoding.html">setForceResponseEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setForceResponseEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.CharacterEncodingFilter$setForceResponseEncoding(kotlin.Boolean)/forceResponseEncoding">forceResponseEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the configured <code><a href="#">encoding</a></code> of this filter is supposed to override existing response encodings. 
+<p>Default is "false", i.e. do not modify the encoding. Switch this to "true" to enforce the specified encoding for responses in any case.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

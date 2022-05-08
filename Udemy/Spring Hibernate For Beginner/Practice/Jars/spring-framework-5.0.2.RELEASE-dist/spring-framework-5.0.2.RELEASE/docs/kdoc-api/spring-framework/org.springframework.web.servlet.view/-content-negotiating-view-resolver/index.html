@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ContentNegotiatingViewResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view</a>&nbsp;/&nbsp;<a href=".">ContentNegotiatingViewResolver</a><br/>
+<br/>
+<h1>ContentNegotiatingViewResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContentNegotiatingViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebApplicationObjectSupport</span><span class="symbol">, </span><span class="identifier">ViewResolver</span><span class="symbol">, </span><span class="identifier">Ordered</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Implementation of ViewResolver that resolves a view based on the request file name or <code>Accept</code> header. 
+<p>The <code>ContentNegotiatingViewResolver</code> does not resolve views itself, but delegates to other ViewResolvers. By default, these other view resolvers are picked up automatically from the application context, though they can also be set explicitly by using the <code><a href="#">viewResolvers</a></code> property. <strong>Note</strong> that in order for this view resolver to work properly, the <code><a href="set-order.html">order</a></code> property needs to be set to a higher precedence than the others (the default is <code><a href="#">Ordered#HIGHEST_PRECEDENCE</a></code>). </p>
+<p>This view resolver uses the requested MediaType to select a suitable View for a request. The requested media type is determined through the configured ContentNegotiationManager. Once the requested media type has been determined, this resolver queries each delegate view resolver for a View and determines if the requested media type is <a href="#">compatible</a> with the view's <a href="#">content type</a>). The most compatible view is returned. </p>
+<p>Additionally, this view resolver exposes the <code><a href="#">defaultViews</a></code> property, allowing you to override the views provided by the view resolvers. Note that these default views are offered as candidates, and still need have the content type requested (via file extension, parameter, or <code>Accept</code> header, described above). </p>
+<p>For example, if the request path is <code>/view.html</code>, this view resolver will look for a view that has the <code>text/html</code> content type (based on the <code>html</code> file extension). A request for <code>/view</code> with a <code>text/html</code> request <code>Accept</code> header has the same result.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.0</p>
+<p><strong>See Also</strong><br/>
+ViewResolverInternalResourceViewResolverBeanNameViewResolver</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ContentNegotiatingViewResolver</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementation of ViewResolver that resolves a view based on the request file name or <code>Accept</code> header. 
+<p>The <code>ContentNegotiatingViewResolver</code> does not resolve views itself, but delegates to other ViewResolvers. By default, these other view resolvers are picked up automatically from the application context, though they can also be set explicitly by using the <code><a href="#">viewResolvers</a></code> property. <strong>Note</strong> that in order for this view resolver to work properly, the <code><a href="set-order.html">order</a></code> property needs to be set to a higher precedence than the others (the default is <code><a href="#">Ordered#HIGHEST_PRECEDENCE</a></code>). </p>
+<p>This view resolver uses the requested MediaType to select a suitable View for a request. The requested media type is determined through the configured ContentNegotiationManager. Once the requested media type has been determined, this resolver queries each delegate view resolver for a View and determines if the requested media type is <a href="#">compatible</a> with the view's <a href="#">content type</a>). The most compatible view is returned. </p>
+<p>Additionally, this view resolver exposes the <code><a href="#">defaultViews</a></code> property, allowing you to override the views provided by the view resolvers. Note that these default views are offered as candidates, and still need have the content type requested (via file extension, parameter, or <code>Accept</code> header, described above). </p>
+<p>For example, if the request path is <code>/view.html</code>, this view resolver will look for a view that has the <code>text/html</code> content type (based on the <code>html</code> file extension). A request for <code>/view</code> with a <code>text/html</code> request <code>Accept</code> header has the same result.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-content-negotiation-manager.html">getContentNegotiationManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getContentNegotiationManager</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="../../org.springframework.web.accept/-content-negotiation-manager/index.html"><span class="identifier">ContentNegotiationManager</span></a></code>
+<p>Return the ContentNegotiationManager to use to determine requested media types.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-default-views.html">getDefaultViews</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDefaultViews</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">View</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-order.html">getOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getOrder</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-view-resolvers.html">getViewResolvers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getViewResolvers</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">ViewResolver</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-use-not-acceptable-status-code.html">isUseNotAcceptableStatusCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isUseNotAcceptableStatusCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether to return HTTP Status 406 if no suitable is found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="resolve-view-name.html">resolveViewName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">resolveViewName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ContentNegotiatingViewResolver$resolveViewName(kotlin.String, java.util.Locale)/viewName">viewName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.view.ContentNegotiatingViewResolver$resolveViewName(kotlin.String, java.util.Locale)/locale">locale</span><span class="symbol">:</span>&nbsp;<span class="identifier">Locale</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">View</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-content-negotiation-manager.html">setContentNegotiationManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContentNegotiationManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ContentNegotiatingViewResolver$setContentNegotiationManager(org.springframework.web.accept.ContentNegotiationManager)/contentNegotiationManager">contentNegotiationManager</span><span class="symbol">:</span>&nbsp;<a href="../../org.springframework.web.accept/-content-negotiation-manager/index.html"><span class="identifier">ContentNegotiationManager</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ContentNegotiationManager to use to determine requested media types. 
+<p>If not set, ContentNegotiationManager's default constructor will be used, applying a org.springframework.web.accept.HeaderContentNegotiationStrategy.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-views.html">setDefaultViews</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultViews</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ContentNegotiatingViewResolver$setDefaultViews(kotlin.collections.MutableList((org.springframework.web.servlet.View)))/defaultViews">defaultViews</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">View</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default views to use when a more specific view can not be obtained from the ViewResolver chain.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-order.html">setOrder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOrder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ContentNegotiatingViewResolver$setOrder(kotlin.Int)/order">order</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-use-not-acceptable-status-code.html">setUseNotAcceptableStatusCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUseNotAcceptableStatusCode</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ContentNegotiatingViewResolver$setUseNotAcceptableStatusCode(kotlin.Boolean)/useNotAcceptableStatusCode">useNotAcceptableStatusCode</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Indicate whether a <code><a href="#">406 Not Acceptable</a></code> status code should be returned if no suitable view can be found. 
+<p>Default is <code>false</code>, meaning that this view resolver returns <code>null</code> for <code><a href="#">#resolveViewName(String, Locale)</a></code> when an acceptable view cannot be found. This will allow for view resolvers chaining. When this property is set to <code>true</code>, <code><a href="#">#resolveViewName(String, Locale)</a></code> will respond with a view that sets the response status to <code>406 Not Acceptable</code> instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-view-resolvers.html">setViewResolvers</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setViewResolvers</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.ContentNegotiatingViewResolver$setViewResolvers(kotlin.collections.MutableList((org.springframework.web.servlet.ViewResolver)))/viewResolvers">viewResolvers</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">ViewResolver</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Sets the view resolvers to be wrapped by this view resolver. 
+<p>If this property is not set, view resolvers will be detected automatically.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

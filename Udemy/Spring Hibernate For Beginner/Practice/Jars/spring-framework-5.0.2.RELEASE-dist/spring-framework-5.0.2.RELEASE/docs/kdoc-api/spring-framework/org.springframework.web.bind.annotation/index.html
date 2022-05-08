@@ -1,0 +1,324 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.bind.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.bind.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.web.bind.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-value-constants/index.html">ValueConstants</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ValueConstants</span></code>
+<p>Common value constants shared between bind annotations.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-controller-advice/index.html">ControllerAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ControllerAdvice</span></code>
+<p>Specialization of Component for classes that declare ExceptionHandler, InitBinder, or ModelAttribute methods to be shared across multiple <code>@Controller</code> classes. 
+<p>Classes with <code>@ControllerAdvice</code> can be declared explicitly as Spring beans or auto-detected via classpath scanning. All such beans are sorted via org.springframework.core.annotation.AnnotationAwareOrderComparator, i.e. based on org.springframework.core.annotation.Order and org.springframework.core.Ordered, and applied in that order at runtime. For handling exceptions, an <code>@ExceptionHandler</code> will be picked on the first advice with a matching exception handler method. For model attributes and <code>InitBinder</code> initialization, <code>@ModelAttribute</code> and <code>@InitBinder</code> methods will also follow <code>@ControllerAdvice</code> order. </p>
+<p>Note: For <code>@ExceptionHandler</code> methods, a root exception match will be preferred to just matching a cause of the current exception, among the handler methods of a particular advice bean. However, a cause match on a higher-priority advice will still be preferred to a any match (whether root or cause level) on a lower-priority advice bean. As a consequence, please declare your primary root exception mappings on a prioritized advice bean with a corresponding order! </p>
+<p>By default the methods in an <code>@ControllerAdvice</code> apply globally to all Controllers. Use selectors <code><a href="#">#annotations()</a></code>, <code><a href="#">#basePackageClasses()</a></code>, and <code><a href="#">#basePackages()</a></code> (or its alias <code><a href="#">#value()</a></code>) to define a more narrow subset of targeted Controllers. If multiple selectors are declared, OR logic is applied, meaning selected Controllers should match at least one selector. Note that selector checks are performed at runtime and so adding many selectors may negatively impact performance and add complexity.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-cross-origin/index.html">CrossOrigin</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">CrossOrigin</span></code>
+<p>Marks the annotated method or type as permitting cross origin requests. 
+<p>By default all origins and headers are permitted, credentials are not allowed, and the maximum age is set to 1800 seconds (30 minutes). The list of HTTP methods is set to the methods on the <code>@RequestMapping</code> if not explicitly set on <code>@CrossOrigin</code>. </p>
+<p><strong>NOTE:</strong> <code>@CrossOrigin</code> is processed if an appropriate <code>HandlerMapping</code>-<code>HandlerAdapter</code> pair is configured such as the <code>RequestMappingHandlerMapping</code>-<code>RequestMappingHandlerAdapter</code> pair which are the default in the MVC Java config and the MVC namespace.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-delete-mapping/index.html">DeleteMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">DeleteMapping</span></code>
+<p>Annotation for mapping HTTP <code>DELETE</code> requests onto specific handler methods. 
+<p>Specifically, <code>@DeleteMapping</code> is a <em>composed annotation</em> that acts as a shortcut for <code>@RequestMapping(method = RequestMethod.DELETE)</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-exception-handler/index.html">ExceptionHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ExceptionHandler</span></code>
+<p>Annotation for handling exceptions in specific handler classes and/or handler methods. 
+<p>Handler methods which are annotated with this annotation are allowed to have very flexible signatures. They may have parameters of the following types, in arbitrary order: </p>
+<ul> <li>An exception argument: declared as a general Exception or as a more specific exception. This also serves as a mapping hint if the annotation itself does not narrow the exception types through its <code><a href="#">#value()</a></code>. </li>
+<li>Request and/or response objects (typically from the Servlet API). You may choose any specific request/response type, e.g. javax.servlet.ServletRequest / javax.servlet.http.HttpServletRequest. </li>
+<li>Session object: typically javax.servlet.http.HttpSession. An argument of this type will enforce the presence of a corresponding session. As a consequence, such an argument will never be <code>null</code>. <em>Note that session access may not be thread-safe, in particular in a Servlet environment: Consider switching the <code><a href="#"> "synchronizeOnSession"</a></code> flag to "true" if multiple requests are allowed to access a session concurrently.</em> </li>
+<li>org.springframework.web.context.request.WebRequest or org.springframework.web.context.request.NativeWebRequest. Allows for generic request parameter access as well as request/session attribute access, without ties to the native Servlet API. </li>
+<li>java.util.Locale for the current request locale (determined by the most specific locale resolver available, i.e. the configured org.springframework.web.servlet.LocaleResolver in a Servlet environment). </li>
+<li>java.io.InputStream / java.io.Reader for access to the request's content. This will be the raw InputStream/Reader as exposed by the Servlet API. </li>
+<li>java.io.OutputStream / java.io.Writer for generating the response's content. This will be the raw OutputStream/Writer as exposed by the Servlet API. </li>
+<li>org.springframework.ui.Model as an alternative to returning a model map from the handler method. Note that the provided model is not pre-populated with regular model attributes and therefore always empty, as a convenience for preparing the model for an exception-specific view. </li>
+</ul>
+ 
+<p>The following return types are supported for handler methods: </p>
+<ul> <li>A <code>ModelAndView</code> object (from Servlet MVC). </li>
+<li>A org.springframework.ui.Model object, with the view name implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator. </li>
+<li>A java.util.Map object for exposing a model, with the view name implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator. </li>
+<li>A org.springframework.web.servlet.View object. </li>
+<li>A String value which is interpreted as view name. </li>
+<li>ResponseBody annotated methods (Servlet-only) to set the response content. The return value will be converted to the response stream using org.springframework.http.converter.HttpMessageConverter. </li>
+<li>An org.springframework.http.HttpEntity or org.springframework.http.ResponseEntity object (Servlet-only) to set response headers and content. The ResponseEntity body will be converted and written to the response stream using org.springframework.http.converter.HttpMessageConverter. </li>
+<li><code>void</code> if the method handles the response itself (by writing the response content directly, declaring an argument of type javax.servlet.ServletResponse / javax.servlet.http.HttpServletResponse for that purpose) or if the view name is supposed to be implicitly determined through a org.springframework.web.servlet.RequestToViewNameTranslator (not declaring a response argument in the handler method signature). </li>
+</ul>
+ 
+<p>In Servlet environments, you can combine the <code>ExceptionHandler</code> annotation with ResponseStatus, to define the response status for the HTTP response.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-get-mapping/index.html">GetMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GetMapping</span></code>
+<p>Annotation for mapping HTTP <code>GET</code> requests onto specific handler methods. 
+<p>Specifically, <code>@GetMapping</code> is a <em>composed annotation</em> that acts as a shortcut for <code>@RequestMapping(method = RequestMethod.GET)</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-init-binder/index.html">InitBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">InitBinder</span></code>
+<p>Annotation that identifies methods which initialize the org.springframework.web.bind.WebDataBinder which will be used for populating command and form object arguments of annotated handler methods. 
+<p>Such init-binder methods support all arguments that RequestMapping supports, except for command/form objects and corresponding validation result objects. Init-binder methods must not have a return value; they are usually declared as <code>void</code>. </p>
+<p>Typical arguments are org.springframework.web.bind.WebDataBinder in combination with org.springframework.web.context.request.WebRequest or java.util.Locale, allowing to register context-specific editors.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-mapping/index.html">Mapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Mapping</span></code>
+<p>Meta annotation that indicates a web mapping annotation.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-matrix-variable/index.html">MatrixVariable</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MatrixVariable</span></code>
+<p>Annotation which indicates that a method parameter should be bound to a name-value pair within a path segment. Supported for RequestMapping annotated handler methods in Servlet environments. 
+<p>If the method parameter type is java.util.Map and a matrix variable name is specified, then the matrix variable value is converted to a java.util.Map assuming an appropriate conversion strategy is available. </p>
+<p>If the method parameter is java.util.Map or org.springframework.util.MultiValueMap and a variable name is not specified, then the map is populated with all matrix variable names and values.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-model-attribute/index.html">ModelAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ModelAttribute</span></code>
+<p>Annotation that binds a method parameter or method return value to a named model attribute, exposed to a web view. Supported for controller classes with RequestMapping methods. 
+<p>Can be used to expose command objects to a web view, using specific attribute names, through annotating corresponding parameters of an RequestMapping method. </p>
+<p>Can also be used to expose reference data to a web view through annotating accessor methods in a controller class with RequestMapping methods. Such accessor methods are allowed to have any arguments that RequestMapping methods support, returning the model attribute value to expose. </p>
+<p>Note however that reference data and all other model content is not available to web views when request processing results in an <code>Exception</code> since the exception could be raised at any time making the content of the model unreliable. For this reason ExceptionHandler methods do not provide access to a Model argument.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-patch-mapping/index.html">PatchMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">PatchMapping</span></code>
+<p>Annotation for mapping HTTP <code>PATCH</code> requests onto specific handler methods. 
+<p>Specifically, <code>@PatchMapping</code> is a <em>composed annotation</em> that acts as a shortcut for <code>@RequestMapping(method = RequestMethod.PATCH)</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-path-variable/index.html">PathVariable</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">PathVariable</span></code>
+<p>Annotation which indicates that a method parameter should be bound to a URI template variable. Supported for RequestMapping annotated handler methods in Servlet environments. 
+<p>If the method parameter is java.util.Map or org.springframework.util.MultiValueMap then the map is populated with all path variable names and values.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-post-mapping/index.html">PostMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">PostMapping</span></code>
+<p>Annotation for mapping HTTP <code>POST</code> requests onto specific handler methods. 
+<p>Specifically, <code>@PostMapping</code> is a <em>composed annotation</em> that acts as a shortcut for <code>@RequestMapping(method = RequestMethod.POST)</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-put-mapping/index.html">PutMapping</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">PutMapping</span></code>
+<p>Annotation for mapping HTTP <code>PUT</code> requests onto specific handler methods. 
+<p>Specifically, <code>@PutMapping</code> is a <em>composed annotation</em> that acts as a shortcut for <code>@RequestMapping(method = RequestMethod.PUT)</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-attribute/index.html">RequestAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">RequestAttribute</span></code>
+<p>Annotation to bind a method parameter to a request attribute. 
+<p>The main motivation is to provide convenient access to request attributes from a controller method with an optional/required check and a cast to the target method parameter type.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-body/index.html">RequestBody</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">RequestBody</span></code>
+<p>Annotation indicating a method parameter should be bound to the body of the web request. The body of the request is passed through an HttpMessageConverter to resolve the method argument depending on the content type of the request. Optionally, automatic validation can be applied by annotating the argument with <code>@Valid</code>. 
+<p>Supported for annotated handler methods in Servlet environments.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-param/index.html">RequestParam</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">RequestParam</span></code>
+<p>Annotation which indicates that a method parameter should be bound to a web request parameter. 
+<p>Supported for annotated handler methods in Servlet and Portlet environments. </p>
+<p>If the method parameter type is Map and a request parameter name is specified, then the request parameter value is converted to a Map assuming an appropriate conversion strategy is available. </p>
+<p>If the method parameter is java.util.Map or org.springframework.util.MultiValueMap and a parameter name is not specified, then the map parameter is populated with all request parameter names and values.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-request-part/index.html">RequestPart</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">RequestPart</span></code>
+<p>Annotation that can be used to associate the part of a "multipart/form-data" request with a method argument. 
+<p>Supported method argument types include MultipartFile in conjunction with Spring's MultipartResolver abstraction, <code>javax.servlet.http.Part</code> in conjunction with Servlet 3.0 multipart requests, or otherwise for any other method argument, the content of the part is passed through an HttpMessageConverter taking into consideration the 'Content-Type' header of the request part. This is analogous to what @RequestBody does to resolve an argument based on the content of a non-multipart regular request. </p>
+<p>Note that @RequestParam annotation can also be used to associate the part of a "multipart/form-data" request with a method argument supporting the same method argument types. The main difference is that when the method argument is not a String, @RequestParam relies on type conversion via a registered Converter or PropertyEditor while @RequestPart relies on HttpMessageConverters taking into consideration the 'Content-Type' header of the request part. @RequestParam is likely to be used with name-value form fields while @RequestPart is likely to be used with parts containing more complex content (e.g. JSON, XML).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-body/index.html">ResponseBody</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ResponseBody</span></code>
+<p>Annotation that indicates a method return value should be bound to the web response body. Supported for annotated handler methods in Servlet environments. 
+<p>As of version 4.0 this annotation can also be added on the type level in which case it is inherited and does not need to be added on the method level.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-response-status/index.html">ResponseStatus</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ResponseStatus</span></code>
+<p>Marks a method or exception class with the status <code><a href="#">#code</a></code> and <code><a href="#">#reason</a></code> that should be returned. 
+<p>The status code is applied to the HTTP response when the handler method is invoked and overrides status information set by other means, like <code>ResponseEntity</code> or <code>"redirect:"</code>. </p>
+<p><strong>Warning</strong>: when using this annotation on an exception class, or when setting the <code>reason</code> attribute of this annotation, the <code>HttpServletResponse.sendError</code> method will be used. </p>
+<p>With <code>HttpServletResponse.sendError</code>, the response is considered complete and should not be written to any further. Furthermore, the Servlet container will typically write an HTML error page therefore making the use of a <code>reason</code> unsuitable for REST APIs. For such cases it is preferable to use a org.springframework.http.ResponseEntity as a return type and avoid the use of <code>@ResponseStatus</code> altogether. </p>
+<p>Note that a controller class may also be annotated with <code>@ResponseStatus</code> and is then inherited by all <code>@RequestMapping</code> methods.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rest-controller/index.html">RestController</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">RestController</span></code>
+<p>A convenience annotation that is itself annotated with Controller and ResponseBody. 
+<p> Types that carry this annotation are treated as controllers where RequestMapping methods assume ResponseBody semantics by default. </p>
+<p><strong>NOTE:</strong> <code>@RestController</code> is processed if an appropriate <code>HandlerMapping</code>-<code>HandlerAdapter</code> pair is configured such as the <code>RequestMappingHandlerMapping</code>-<code>RequestMappingHandlerAdapter</code> pair which are the default in the MVC Java config and the MVC namespace.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-rest-controller-advice/index.html">RestControllerAdvice</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">RestControllerAdvice</span></code>
+<p>A convenience annotation that is itself annotated with ControllerAdvice and ResponseBody. 
+<p>Types that carry this annotation are treated as controller advice where ExceptionHandler methods assume ResponseBody semantics by default. </p>
+<p><strong>NOTE:</strong> <code>@RestControllerAdvice</code> is processed if an appropriate <code>HandlerMapping</code>-<code>HandlerAdapter</code> pair is configured such as the <code>RequestMappingHandlerMapping</code>-<code>RequestMappingHandlerAdapter</code> pair which are the default in the MVC Java config and the MVC namespace.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-attribute/index.html">SessionAttribute</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SessionAttribute</span></code>
+<p>Annotation to bind a method parameter to a session attribute. 
+<p>The main motivation is to provide convenient access to existing, permanent session attributes (e.g. user authentication object) with an optional/required check and a cast to the target method parameter type. </p>
+<p>For use cases that require adding or removing session attributes consider injecting <code>org.springframework.web.context.request.WebRequest</code> or <code>javax.servlet.http.HttpSession</code> into the controller method. </p>
+<p>For temporary storage of model attributes in the session as part of the workflow for a controller, consider using SessionAttributes instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-session-attributes/index.html">SessionAttributes</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SessionAttributes</span></code>
+<p>Annotation that indicates the session attributes that a specific handler uses. 
+<p>This will typically list the names of model attributes which should be transparently stored in the session or some conversational storage, serving as form-backing beans. <strong>Declared at the type level</strong>, applying to the model attributes that the annotated handler class operates on. </p>
+<p><strong>NOTE:</strong> Session attributes as indicated using this annotation correspond to a specific handler's model attributes, getting transparently stored in a conversational session. Those attributes will be removed once the handler indicates completion of its conversational session. Therefore, use this facility for such conversational attributes which are supposed to be stored in the session <em>temporarily</em> during the course of a specific handler's conversation. </p>
+<p>For permanent session attributes, e.g. a user authentication object, use the traditional <code>session.setAttribute</code> method instead. Alternatively, consider using the attribute management capabilities of the generic org.springframework.web.context.request.WebRequest interface. </p>
+<p><strong>NOTE:</strong> When using controller interfaces (e.g. for AOP proxying), make sure to consistently put <em>all</em> your mapping annotations — such as <code>@RequestMapping</code> and <code>@SessionAttributes</code> — on the controller <em>interface</em> rather than on the implementation class.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

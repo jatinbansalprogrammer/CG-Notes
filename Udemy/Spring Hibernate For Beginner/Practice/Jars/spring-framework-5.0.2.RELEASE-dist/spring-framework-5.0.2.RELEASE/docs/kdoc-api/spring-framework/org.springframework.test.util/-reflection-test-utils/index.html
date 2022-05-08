@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReflectionTestUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.util</a>&nbsp;/&nbsp;<a href=".">ReflectionTestUtils</a><br/>
+<br/>
+<h1>ReflectionTestUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ReflectionTestUtils</span></code>
+<p><code>ReflectionTestUtils</code> is a collection of reflection-based utility methods for use in unit and integration testing scenarios. 
+<p>There are often times when it would be beneficial to be able to set a non-<code>public</code> field, invoke a non-<code>public</code> setter method, or invoke a non-<code>public</code> <em>configuration</em> or <em>lifecycle</em> callback method when testing code involving, for example: </p>
+<ul> <li>ORM frameworks such as JPA and Hibernate which condone the usage of <code>private</code> or <code>protected</code> field access as opposed to <code>public</code> setter methods for properties in a domain entity.</li>
+ <li>Spring's support for annotations such as org.springframework.beans.factory.annotation.Autowired, javax.inject.Inject, and javax.annotation.Resource which provides dependency injection for <code>private</code> or <code>protected</code> fields, setter methods, and configuration methods.</li>
+ <li>Use of annotations such as javax.annotation.PostConstruct and javax.annotation.PreDestroy for lifecycle callback methods.</li>
+ </ul>
+ 
+<p>In addition, several methods in this class provide support for <code>static</code> fields — for example, <code><a href="#">#setField(Class, String, Object)</a></code>, <code><a href="#">#getField(Class, String)</a></code>, etc.</p>
+</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+ReflectionUtilsAopTestUtils</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ReflectionTestUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p><code>ReflectionTestUtils</code> is a collection of reflection-based utility methods for use in unit and integration testing scenarios. 
+<p>There are often times when it would be beneficial to be able to set a non-<code>public</code> field, invoke a non-<code>public</code> setter method, or invoke a non-<code>public</code> <em>configuration</em> or <em>lifecycle</em> callback method when testing code involving, for example: </p>
+<ul> <li>ORM frameworks such as JPA and Hibernate which condone the usage of <code>private</code> or <code>protected</code> field access as opposed to <code>public</code> setter methods for properties in a domain entity.</li>
+ <li>Spring's support for annotations such as org.springframework.beans.factory.annotation.Autowired, javax.inject.Inject, and javax.annotation.Resource which provides dependency injection for <code>private</code> or <code>protected</code> fields, setter methods, and configuration methods.</li>
+ <li>Use of annotations such as javax.annotation.PostConstruct and javax.annotation.PreDestroy for lifecycle callback methods.</li>
+ </ul>
+ 
+<p>In addition, several methods in this class provide support for <code>static</code> fields — for example, <code><a href="#">#setField(Class, String, Object)</a></code>, <code><a href="#">#getField(Class, String)</a></code>, etc.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-field.html">getField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, kotlin.String)/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the value of the Field with the given <code>name</code> from the provided <code>targetObject</code>. 
+<p>This method delegates to <code><a href="#">#getField(Object, Class, String)</a></code>, supplying <code>null</code> for the <code>targetClass</code> argument.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(java.lang.Class((kotlin.Any)), kotlin.String)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(java.lang.Class((kotlin.Any)), kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the value of the static Field with the given <code>name</code> from the provided <code>targetClass</code>. 
+<p>This method delegates to <code><a href="#">#getField(Object, Class, String)</a></code>, supplying <code>null</code> for the <code>targetObject</code> argument.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String)/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$getField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Get the value of the Field with the given <code>name</code> from the provided <code>targetObject</code>/<code>targetClass</code>. 
+<p>If the supplied <code>targetObject</code> is a <em>proxy</em>, it will be <a href="#">unwrapped</a> allowing the field to be retrieved from the ultimate target of the proxy. </p>
+<p>This method traverses the class hierarchy in search of the desired field. In addition, an attempt will be made to make non-<code>public</code> fields <em>accessible</em>, thus allowing one to get <code>protected</code>, <code>private</code>, and <em>package-private</em> fields.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-getter-method.html">invokeGetterMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeGetterMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeGetterMethod(kotlin.Any, kotlin.String)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeGetterMethod(kotlin.Any, kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Invoke the getter method with the given <code>name</code> on the supplied target object with the supplied <code>value</code>. 
+<p>This method traverses the class hierarchy in search of the desired method. In addition, an attempt will be made to make non-<code>public</code> methods <em>accessible</em>, thus allowing one to invoke <code>protected</code>, <code>private</code>, and <em>package-private</em> getter methods. </p>
+<p>In addition, this method supports JavaBean-style <em>property</em> names. For example, if you wish to get the <code>name</code> property on the target object, you may pass either "name" or "getName" as the method name.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-method.html">invokeMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">invokeMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeMethod(kotlin.Any, kotlin.String, kotlin.Array((kotlin.Any)))/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeMethod(kotlin.Any, kotlin.String, kotlin.Array((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeMethod(kotlin.Any, kotlin.String, kotlin.Array((kotlin.Any)))/args">args</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Invoke the method with the given <code>name</code> on the supplied target object with the supplied arguments. 
+<p>This method traverses the class hierarchy in search of the desired method. In addition, an attempt will be made to make non-<code>public</code> methods <em>accessible</em>, thus allowing one to invoke <code>protected</code>, <code>private</code>, and <em>package-private</em> methods.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="invoke-setter-method.html">invokeSetterMethod</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeSetterMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeSetterMethod(kotlin.Any, kotlin.String, kotlin.Any)/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeSetterMethod(kotlin.Any, kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeSetterMethod(kotlin.Any, kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">invokeSetterMethod</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeSetterMethod(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/target">target</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeSetterMethod(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeSetterMethod(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$invokeSetterMethod(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Invoke the setter method with the given <code>name</code> on the supplied target object with the supplied <code>value</code>. 
+<p>This method traverses the class hierarchy in search of the desired method. In addition, an attempt will be made to make non-<code>public</code> methods <em>accessible</em>, thus allowing one to invoke <code>protected</code>, <code>private</code>, and <em>package-private</em> setter methods. </p>
+<p>In addition, this method supports JavaBean-style <em>property</em> names. For example, if you wish to set the <code>name</code> property on the target object, you may pass either "name" or "setName" as the method name.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-field.html">setField</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, kotlin.String, kotlin.Any)/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Field with the given <code>name</code> on the provided <code>targetObject</code> to the supplied <code>value</code>. 
+<p>This method delegates to <code><a href="#">#setField(Object, String, Object, Class)</a></code>, supplying <code>null</code> for the <code>type</code> argument.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Field with the given <code>name</code>/<code>type</code> on the provided <code>targetObject</code> to the supplied <code>value</code>. 
+<p>This method delegates to <code><a href="#">#setField(Object, Class, String, Object, Class)</a></code>, supplying <code>null</code> for the <code>targetClass</code> argument.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any)/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the static Field with the given <code>name</code> on the provided <code>targetClass</code> to the supplied <code>value</code>. 
+<p>This method delegates to <code><a href="#">#setField(Object, Class, String, Object, Class)</a></code>, supplying <code>null</code> for the <code>targetObject</code> and <code>type</code> arguments.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the static Field with the given <code>name</code>/<code>type</code> on the provided <code>targetClass</code> to the supplied <code>value</code>. 
+<p>This method delegates to <code><a href="#">#setField(Object, Class, String, Object, Class)</a></code>, supplying <code>null</code> for the <code>targetObject</code> argument.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">setField</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/targetObject">targetObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/targetClass">targetClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.test.util.ReflectionTestUtils$setField(kotlin.Any, java.lang.Class((kotlin.Any)), kotlin.String, kotlin.Any, java.lang.Class((kotlin.Any)))/type">type</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Field with the given <code>name</code>/<code>type</code> on the provided <code>targetObject</code>/<code>targetClass</code> to the supplied <code>value</code>. 
+<p>If the supplied <code>targetObject</code> is a <em>proxy</em>, it will be <a href="#">unwrapped</a> allowing the field to be set on the ultimate target of the proxy. </p>
+<p>This method traverses the class hierarchy in search of the desired field. In addition, an attempt will be made to make non-<code>public</code> fields <em>accessible</em>, thus allowing one to set <code>protected</code>, <code>private</code>, and <em>package-private</em> fields.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

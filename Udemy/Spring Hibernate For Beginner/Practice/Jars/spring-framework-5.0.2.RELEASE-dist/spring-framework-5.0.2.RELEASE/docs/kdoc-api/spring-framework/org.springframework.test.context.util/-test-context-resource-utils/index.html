@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TestContextResourceUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.context.util</a>&nbsp;/&nbsp;<a href=".">TestContextResourceUtils</a><br/>
+<br/>
+<h1>TestContextResourceUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">TestContextResourceUtils</span></code>
+<p>Utility methods for working with resources within the <em>Spring TestContext Framework</em>. Mainly for internal use within the framework.</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Tadaya Tsuyukubo</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+org.springframework.util.ResourceUtilsorg.springframework.core.io.Resourceorg.springframework.core.io.ClassPathResourceorg.springframework.core.io.FileSystemResourceorg.springframework.core.io.UrlResourceorg.springframework.core.io.ResourceLoader</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">TestContextResourceUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Utility methods for working with resources within the <em>Spring TestContext Framework</em>. Mainly for internal use within the framework.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="convert-to-classpath-resource-paths.html">convertToClasspathResourcePaths</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertToClasspathResourcePaths</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.util.TestContextResourceUtils$convertToClasspathResourcePaths(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.context.util.TestContextResourceUtils$convertToClasspathResourcePaths(java.lang.Class((kotlin.Any)), kotlin.Array((kotlin.String)))/paths">paths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Convert the supplied paths to classpath resource paths. 
+<p>For each of the supplied paths: </p>
+<ul> <li>A plain path — for example, <code>"context.xml"</code> — will be treated as a classpath resource that is relative to the package in which the specified class is defined. </li>
+<li>A path starting with a slash will be treated as an absolute path within the classpath, for example: <code>"/org/example/schema.sql"</code>. </li>
+<li>A path which is prefixed with a URL protocol (e.g., <code><a href="#">classpath:</a></code>, <code><a href="#">file:</a></code>, <code>http:</code>, etc.) will be <code><a href="#">cleaned</a></code> but otherwise unmodified.</li>
+</ul>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="convert-to-resource-list.html">convertToResourceList</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertToResourceList</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.util.TestContextResourceUtils$convertToResourceList(org.springframework.core.io.ResourceLoader, kotlin.Array((kotlin.String)))/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.context.util.TestContextResourceUtils$convertToResourceList(org.springframework.core.io.ResourceLoader, kotlin.Array((kotlin.String)))/paths">paths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">Resource</span><span class="symbol">&gt;</span></code>
+<p>Convert the supplied paths to a list of Resource handles using the given ResourceLoader.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="convert-to-resources.html">convertToResources</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertToResources</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.context.util.TestContextResourceUtils$convertToResources(org.springframework.core.io.ResourceLoader, kotlin.Array((kotlin.String)))/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.test.context.util.TestContextResourceUtils$convertToResources(org.springframework.core.io.ResourceLoader, kotlin.Array((kotlin.String)))/paths">paths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Resource</span><span class="symbol">&gt;</span></code>
+<p>Convert the supplied paths to an array of Resource handles using the given ResourceLoader.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

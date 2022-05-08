@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BshScriptFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scripting.bsh</a>&nbsp;/&nbsp;<a href=".">BshScriptFactory</a><br/>
+<br/>
+<h1>BshScriptFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BshScriptFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ScriptFactory</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>org.springframework.scripting.ScriptFactory implementation for a BeanShell script. 
+<p>Typically used in combination with a org.springframework.scripting.support.ScriptFactoryPostProcessor; see the latter's javadoc for a configuration example.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+BshScriptUtilsorg.springframework.scripting.support.ScriptFactoryPostProcessor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">BshScriptFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$<init>(kotlin.String)/scriptSourceLocator">scriptSourceLocator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new BshScriptFactory for the given script source. 
+<p>With this <code>BshScriptFactory</code> variant, the script needs to declare a full class or return an actual instance of the scripted object.</p>
+</p>
+<code><span class="identifier">BshScriptFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$<init>(kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/scriptSourceLocator">scriptSourceLocator</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$<init>(kotlin.String, kotlin.Array((java.lang.Class((kotlin.Any)))))/scriptInterfaces">scriptInterfaces</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new BshScriptFactory for the given script source. 
+<p>The script may either be a simple script that needs a corresponding proxy generated (implementing the specified interfaces), or declare a full class or return an actual instance of the scripted object (in which case the specified interfaces, if any, need to be implemented by that class/instance).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-script-interfaces.html">getScriptInterfaces</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptInterfaces</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-script-source-locator.html">getScriptSourceLocator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptSourceLocator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scripted-object.html">getScriptedObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptedObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$getScriptedObject(org.springframework.scripting.ScriptSource, kotlin.Array((java.lang.Class((kotlin.Any)))))/scriptSource">scriptSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScriptSource</span><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$getScriptedObject(org.springframework.scripting.ScriptSource, kotlin.Array((java.lang.Class((kotlin.Any)))))/actualInterfaces">actualInterfaces</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Load and parse the BeanShell script via BshScriptUtils.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-scripted-object-type.html">getScriptedObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getScriptedObjectType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$getScriptedObjectType(org.springframework.scripting.ScriptSource)/scriptSource">scriptSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScriptSource</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="requires-config-interface.html">requiresConfigInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresConfigInterface</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>BeanShell scripts do require a config interface.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="requires-scripted-object-refresh.html">requiresScriptedObjectRefresh</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">requiresScriptedObjectRefresh</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$requiresScriptedObjectRefresh(org.springframework.scripting.ScriptSource)/scriptSource">scriptSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">ScriptSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scripting.bsh.BshScriptFactory$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

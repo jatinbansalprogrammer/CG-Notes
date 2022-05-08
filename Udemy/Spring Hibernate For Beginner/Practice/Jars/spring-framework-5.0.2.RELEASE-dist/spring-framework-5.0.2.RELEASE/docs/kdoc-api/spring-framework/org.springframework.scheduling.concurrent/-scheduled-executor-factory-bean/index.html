@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ScheduledExecutorFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.concurrent</a>&nbsp;/&nbsp;<a href=".">ScheduledExecutorFactoryBean</a><br/>
+<br/>
+<h1>ScheduledExecutorFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScheduledExecutorFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ExecutorConfigurationSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">ScheduledExecutorService</span><span class="symbol">&gt;</span></code>
+<p>org.springframework.beans.factory.FactoryBean that sets up a java.util.concurrent.ScheduledExecutorService (by default: a java.util.concurrent.ScheduledThreadPoolExecutor) and exposes it for bean references. 
+<p>Allows for registration of ScheduledExecutorTask, automatically starting the ScheduledExecutorService on initialization and cancelling it on destruction of the context. In scenarios that only require static registration of tasks at startup, there is no need to access the ScheduledExecutorService instance itself in application code at all; <code>ScheduledExecutorFactoryBean</code> is then just being used for lifecycle integration. </p>
+<p>For an alternative, you may set up a ScheduledThreadPoolExecutor instance directly using constructor injection, or use a factory method definition that points to the java.util.concurrent.Executors class. <strong>This is strongly recommended in particular for common <code>@Bean</code> methods in configuration classes, where this <code>FactoryBean</code> variant would force you to return the <code>FactoryBean</code> type instead of <code>ScheduledExecutorService</code>.</strong> </p>
+<p>Note that java.util.concurrent.ScheduledExecutorService uses a Runnable instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution. </p>
+<p><strong>WARNING:</strong> Runnable submitted via a native java.util.concurrent.ScheduledExecutorService are removed from the execution schedule once they throw an exception. If you would prefer to continue execution after such an exception, switch this FactoryBean's <code><a href="set-continue-scheduled-execution-after-exception.html">"continueScheduledExecutionAfterException"</a></code> property to "true".</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="set-pool-size.html">#setPoolSize</a><a href="set-remove-on-cancel-policy.html">#setRemoveOnCancelPolicy</a><a href="#">#setThreadFactory</a>ScheduledExecutorTaskjava.util.concurrent.ScheduledExecutorServicejava.util.concurrent.ScheduledThreadPoolExecutor</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ScheduledExecutorFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean that sets up a java.util.concurrent.ScheduledExecutorService (by default: a java.util.concurrent.ScheduledThreadPoolExecutor) and exposes it for bean references. 
+<p>Allows for registration of ScheduledExecutorTask, automatically starting the ScheduledExecutorService on initialization and cancelling it on destruction of the context. In scenarios that only require static registration of tasks at startup, there is no need to access the ScheduledExecutorService instance itself in application code at all; <code>ScheduledExecutorFactoryBean</code> is then just being used for lifecycle integration. </p>
+<p>For an alternative, you may set up a ScheduledThreadPoolExecutor instance directly using constructor injection, or use a factory method definition that points to the java.util.concurrent.Executors class. <strong>This is strongly recommended in particular for common <code>@Bean</code> methods in configuration classes, where this <code>FactoryBean</code> variant would force you to return the <code>FactoryBean</code> type instead of <code>ScheduledExecutorService</code>.</strong> </p>
+<p>Note that java.util.concurrent.ScheduledExecutorService uses a Runnable instance that is shared between repeated executions, in contrast to Quartz which instantiates a new Job for each execution. </p>
+<p><strong>WARNING:</strong> Runnable submitted via a native java.util.concurrent.ScheduledExecutorService are removed from the execution schedule once they throw an exception. If you would prefer to continue execution after such an exception, switch this FactoryBean's <code><a href="set-continue-scheduled-execution-after-exception.html">"continueScheduledExecutionAfterException"</a></code> property to "true".</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ScheduledExecutorService</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">ScheduledExecutorService</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-continue-scheduled-execution-after-exception.html">setContinueScheduledExecutionAfterException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setContinueScheduledExecutionAfterException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean$setContinueScheduledExecutionAfterException(kotlin.Boolean)/continueScheduledExecutionAfterException">continueScheduledExecutionAfterException</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to continue the execution of a scheduled task after it threw an exception. 
+<p>Default is "false", matching the native behavior of a java.util.concurrent.ScheduledExecutorService. Switch this flag to "true" for exception-proof execution of each task, continuing scheduled execution as in the case of successful execution.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-expose-unconfigurable-executor.html">setExposeUnconfigurableExecutor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExposeUnconfigurableExecutor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean$setExposeUnconfigurableExecutor(kotlin.Boolean)/exposeUnconfigurableExecutor">exposeUnconfigurableExecutor</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether this FactoryBean should expose an unconfigurable decorator for the created executor. 
+<p>Default is "false", exposing the raw executor as bean reference. Switch this flag to "true" to strictly prevent clients from modifying the executor's configuration.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-pool-size.html">setPoolSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPoolSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean$setPoolSize(kotlin.Int)/poolSize">poolSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ScheduledExecutorService's pool size. Default is 1.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-remove-on-cancel-policy.html">setRemoveOnCancelPolicy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setRemoveOnCancelPolicy</span><span class="symbol">(</span><span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean$setRemoveOnCancelPolicy(kotlin.Boolean)/removeOnCancelPolicy">removeOnCancelPolicy</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the remove-on-cancel mode on ScheduledThreadPoolExecutor (JDK 7+). 
+<p>Default is <code>false</code>. If set to <code>true</code>, the target executor will be switched into remove-on-cancel mode (if possible, with a soft fallback otherwise).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-scheduled-executor-tasks.html">setScheduledExecutorTasks</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setScheduledExecutorTasks</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean$setScheduledExecutorTasks(kotlin.Array((org.springframework.scheduling.concurrent.ScheduledExecutorTask)))/scheduledExecutorTasks">scheduledExecutorTasks</span><span class="symbol">:</span>&nbsp;<a href="../-scheduled-executor-task/index.html"><span class="identifier">ScheduledExecutorTask</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register a list of ScheduledExecutorTask objects with the ScheduledExecutorService that this FactoryBean creates. Depending on each ScheduledExecutorTask's settings, it will be registered via one of ScheduledExecutorService's schedule methods.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

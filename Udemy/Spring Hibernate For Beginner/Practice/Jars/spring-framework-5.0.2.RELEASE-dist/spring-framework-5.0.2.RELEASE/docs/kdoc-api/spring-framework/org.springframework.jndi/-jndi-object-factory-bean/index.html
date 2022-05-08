@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JndiObjectFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jndi</a>&nbsp;/&nbsp;<a href=".">JndiObjectFactoryBean</a><br/>
+<br/>
+<h1>JndiObjectFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JndiObjectFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JndiObjectLocator</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>org.springframework.beans.factory.FactoryBean that looks up a JNDI object. Exposes the object found in JNDI for bean references, e.g. for data access object's "dataSource" property in case of a javax.sql.DataSource. 
+<p>The typical usage will be to register this as singleton factory (e.g. for a certain JNDI-bound DataSource) in an application context, and give bean references to application services that need it. </p>
+<p>The default behavior is to look up the JNDI object on startup and cache it. This can be customized through the "lookupOnStartup" and "cache" properties, using a JndiObjectTargetSource underneath. Note that you need to specify a "proxyInterface" in such a scenario, since the actual JNDI object type is not known in advance. </p>
+<p>Of course, bean classes in a Spring environment may lookup e.g. a DataSource from JNDI themselves. This class simply enables central configuration of the JNDI name, and easy switching to non-JNDI alternatives. The latter is particularly convenient for test setups, reuse in standalone clients, etc. </p>
+<p>Note that switching to e.g. DriverManagerDataSource is just a matter of configuration: Simply replace the definition of this FactoryBean with a org.springframework.jdbc.datasource.DriverManagerDataSource definition!</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+22.05.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setProxyInterface</a><a href="set-lookup-on-startup.html">#setLookupOnStartup</a><a href="set-cache.html">#setCache</a>JndiObjectTargetSource</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JndiObjectFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean that looks up a JNDI object. Exposes the object found in JNDI for bean references, e.g. for data access object's "dataSource" property in case of a javax.sql.DataSource. 
+<p>The typical usage will be to register this as singleton factory (e.g. for a certain JNDI-bound DataSource) in an application context, and give bean references to application services that need it. </p>
+<p>The default behavior is to look up the JNDI object on startup and cache it. This can be customized through the "lookupOnStartup" and "cache" properties, using a JndiObjectTargetSource underneath. Note that you need to specify a "proxyInterface" in such a scenario, since the actual JNDI object type is not known in advance. </p>
+<p>Of course, bean classes in a Spring environment may lookup e.g. a DataSource from JNDI themselves. This class simply enables central configuration of the JNDI name, and easy switching to non-JNDI alternatives. The latter is particularly convenient for test setups, reuse in standalone clients, etc. </p>
+<p>Note that switching to e.g. DriverManagerDataSource is just a matter of configuration: Simply replace the definition of this FactoryBean with a org.springframework.jdbc.datasource.DriverManagerDataSource definition!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Look up the JNDI object and store it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object.html">getObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObject</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the singleton JNDI object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-object-type.html">getObjectType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getObjectType</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-singleton.html">isSingleton</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isSingleton</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache.html">setCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCache</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setCache(kotlin.Boolean)/cache">cache</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to cache the JNDI object once it has been located. Default is "true". 
+<p>Can be turned off to allow for hot redeployment of JNDI objects. In this case, the JNDI object will be fetched for each invocation. </p>
+<p>For hot redeployment, a proxy interface needs to be specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-default-object.html">setDefaultObject</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultObject</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setDefaultObject(kotlin.Any)/defaultObject">defaultObject</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a default object to fall back to if the JNDI lookup fails. Default is none. 
+<p>This can be an arbitrary bean reference or literal value. It is typically used for literal values in scenarios where the JNDI environment might define specific config settings but those are not required to be present. </p>
+<p>Note: This is only supported for lookup on startup. If specified together with <code><a href="#">#setExpectedType</a></code>, the specified value needs to be either of that type or convertible to it.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-expose-access-context.html">setExposeAccessContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setExposeAccessContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setExposeAccessContext(kotlin.Boolean)/exposeAccessContext">exposeAccessContext</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to expose the JNDI environment context for all access to the target object, i.e. for all method invocations on the exposed object reference. 
+<p>Default is "false", i.e. to only expose the JNDI context for object lookup. Switch this flag to "true" in order to expose the JNDI environment (including the authorization context) for each method invocation, as needed by WebLogic for JNDI-obtained factories (e.g. JDBC DataSource, JMS ConnectionFactory) with authorization requirements.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-lookup-on-startup.html">setLookupOnStartup</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setLookupOnStartup</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setLookupOnStartup(kotlin.Boolean)/lookupOnStartup">lookupOnStartup</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to look up the JNDI object on startup. Default is "true". 
+<p>Can be turned off to allow for late availability of the JNDI object. In this case, the JNDI object will be fetched on first access. </p>
+<p>For a lazy lookup, a proxy interface needs to be specified.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-proxy-interface.html">setProxyInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProxyInterface</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setProxyInterface(java.lang.Class((kotlin.Any)))/proxyInterface">proxyInterface</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the proxy interface to use for the JNDI object. 
+<p>Typically used in conjunction with "lookupOnStartup"=false and/or "cache"=false. Needs to be specified because the actual JNDI object type is not known in advance in case of a lazy lookup.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-proxy-interfaces.html">setProxyInterfaces</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setProxyInterfaces</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jndi.JndiObjectFactoryBean$setProxyInterfaces(kotlin.Array((java.lang.Class((kotlin.Any)))))/proxyInterfaces">proxyInterfaces</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify multiple proxy interfaces to use for the JNDI object. 
+<p>Typically used in conjunction with "lookupOnStartup"=false and/or "cache"=false. Note that proxy interfaces will be autodetected from a specified "expectedType", if necessary.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

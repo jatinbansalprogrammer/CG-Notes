@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HttpPutFormContentFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter</a>&nbsp;/&nbsp;<a href=".">HttpPutFormContentFilter</a><br/>
+<br/>
+<h1>HttpPutFormContentFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HttpPutFormContentFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">OncePerRequestFilter</span></code>
+<p>javax.servlet.Filter that makes form encoded data available through the <code>ServletRequest.getParameter*()</code> family of methods during HTTP PUT or PATCH requests. 
+<p>The Servlet spec requires form data to be available for HTTP POST but not for HTTP PUT or PATCH requests. This filter intercepts HTTP PUT and PATCH requests where content type is <code>'application/x-www-form-urlencoded'</code>, reads form encoded content from the body of the request, and wraps the ServletRequest in order to make the form data available as request parameters just like it is for HTTP POST requests.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HttpPutFormContentFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>javax.servlet.Filter that makes form encoded data available through the <code>ServletRequest.getParameter*()</code> family of methods during HTTP PUT or PATCH requests. 
+<p>The Servlet spec requires form data to be available for HTTP POST but not for HTTP PUT or PATCH requests. This filter intercepts HTTP PUT and PATCH requests where content type is <code>'application/x-www-form-urlencoded'</code>, reads form encoded content from the body of the request, and wraps the ServletRequest in order to make the form data available as request parameters just like it is for HTTP POST requests.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-form-converter.html">getFormConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFormConverter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FormHttpMessageConverter</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-charset.html">setCharset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCharset</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.HttpPutFormContentFilter$setCharset(java.nio.charset.Charset)/charset">charset</span><span class="symbol">:</span>&nbsp;<span class="identifier">Charset</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>The default character set to use for reading form data. This is a shortcut for: <code>getFormConverter.setCharset(charset)</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-form-converter.html">setFormConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFormConverter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.HttpPutFormContentFilter$setFormConverter(org.springframework.http.converter.FormHttpMessageConverter)/converter">converter</span><span class="symbol">:</span>&nbsp;<span class="identifier">FormHttpMessageConverter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the converter to use for parsing form content. 
+<p>By default this is an instnace of AllEncompassingFormHttpMessageConverter.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

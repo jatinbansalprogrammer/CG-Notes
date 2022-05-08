@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.messaging.simp.annotation.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.messaging.simp.annotation.support</a><br/>
+<br/>
+<h2>Package org.springframework.messaging.simp.annotation.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-principal-method-argument-resolver/index.html">PrincipalMethodArgumentResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PrincipalMethodArgumentResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.messaging.handler.invocation/-handler-method-argument-resolver/index.html"><span class="identifier">HandlerMethodArgumentResolver</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="-send-to-method-return-value-handler/index.html">SendToMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SendToMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p>A HandlerMethodReturnValueHandler for sending to destinations specified in a SendTo or SendToUser method-level annotations. 
+<p>The value returned from the method is converted, and turned to a Message and sent through the provided MessageChannel. The message is then enriched with the session id of the input message as well as the destination from the annotation(s). If multiple destinations are specified, a copy of the message is sent to each destination.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-subscription-method-return-value-handler/index.html">SubscriptionMethodReturnValueHandler</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SubscriptionMethodReturnValueHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">HandlerMethodReturnValueHandler</span></code>
+<p><code>HandlerMethodReturnValueHandler</code> for replying directly to a subscription. It is supported on methods annotated with org.springframework.messaging.simp.annotation.SubscribeMapping such that the return value is treated as a response to be sent directly back on the session. This allows a client to implement a request-response pattern and use it for example to obtain some data upon initialization. 
+<p>The value returned from the method is converted and turned into a Message that is then enriched with the sessionId, subscriptionId, and destination of the input message. </p>
+<p><strong>Note:</strong> this default behavior for interpreting the return value from an <code>@SubscribeMapping</code> method can be overridden through use of the SendTo or SendToUser annotations in which case a message is prepared and sent to the broker instead.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-missing-session-user-exception/index.html">MissingSessionUserException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MissingSessionUserException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessagingException</span></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>HiddenHttpMethodFilter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.filter.reactive</a>&nbsp;/&nbsp;<a href=".">HiddenHttpMethodFilter</a><br/>
+<br/>
+<h1>HiddenHttpMethodFilter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">HiddenHttpMethodFilter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebFilter</span></code>
+<p>Reactive WebFilter that converts posted method parameters into HTTP methods, retrievable via <code><a href="#">ServerHttpRequest#getMethod()</a></code>. Since browsers currently only support GET and POST, a common technique is to use a normal POST with an additional hidden form field (<code>_method</code>) to pass the "real" HTTP method along. This filter reads that parameter and changes the <code><a href="#">ServerHttpRequest#getMethod()</a></code> return value using <code><a href="#">ServerWebExchange#mutate()</a></code>. 
+<p>The name of the request parameter defaults to <code>_method</code>, but can be adapted via the <code><a href="#">methodParamName</a></code> property.</p>
+</p>
+<p><strong>Author</strong><br/>
+Greg Turnquist</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">HiddenHttpMethodFilter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Reactive WebFilter that converts posted method parameters into HTTP methods, retrievable via <code><a href="#">ServerHttpRequest#getMethod()</a></code>. Since browsers currently only support GET and POST, a common technique is to use a normal POST with an additional hidden form field (<code>_method</code>) to pass the "real" HTTP method along. This filter reads that parameter and changes the <code><a href="#">ServerHttpRequest#getMethod()</a></code> return value using <code><a href="#">ServerWebExchange#mutate()</a></code>. 
+<p>The name of the request parameter defaults to <code>_method</code>, but can be adapted via the <code><a href="#">methodParamName</a></code> property.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-d-e-f-a-u-l-t_-m-e-t-h-o-d_-p-a-r-a-m-e-t-e-r_-n-a-m-e.html">DEFAULT_METHOD_PARAMETER_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">DEFAULT_METHOD_PARAMETER_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Default name of the form parameter with the HTTP method to use</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="filter.html">filter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">filter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.reactive.HiddenHttpMethodFilter$filter(org.springframework.web.server.ServerWebExchange, org.springframework.web.server.WebFilterChain)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.filter.reactive.HiddenHttpMethodFilter$filter(org.springframework.web.server.ServerWebExchange, org.springframework.web.server.WebFilterChain)/chain">chain</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebFilterChain</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code>
+<p>Transform an HTTP POST into another method based on <code>methodParamName</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-method-param-name.html">setMethodParamName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setMethodParamName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.filter.reactive.HiddenHttpMethodFilter$setMethodParamName(kotlin.String)/methodParamName">methodParamName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the form parameter with the HTTP method to use. 
+<p>By default this is set to <code>"_method"</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

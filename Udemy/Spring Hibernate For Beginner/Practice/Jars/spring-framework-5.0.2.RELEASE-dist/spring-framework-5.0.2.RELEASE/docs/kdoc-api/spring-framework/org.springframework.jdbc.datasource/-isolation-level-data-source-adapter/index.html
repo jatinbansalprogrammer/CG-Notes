@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>IsolationLevelDataSourceAdapter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href=".">IsolationLevelDataSourceAdapter</a><br/>
+<br/>
+<h1>IsolationLevelDataSourceAdapter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">IsolationLevelDataSourceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UserCredentialsDataSourceAdapter</span></code>
+<p>An adapter for a target javax.sql.DataSource, applying the current Spring transaction's isolation level (and potentially specified user credentials) to every <code>getConnection</code> call. Also applies the read-only flag, if specified. 
+<p>Can be used to proxy a target JNDI DataSource that does not have the desired isolation level (and user credentials) configured. Client code can work with this DataSource as usual, not worrying about such settings. </p>
+<p>Inherits the capability to apply specific user credentials from its superclass UserCredentialsDataSourceAdapter; see the latter's javadoc for details on that functionality (e.g. <code><a href="#">#setCredentialsForCurrentThread</a></code>). </p>
+<p><strong>WARNING:</strong> This adapter simply calls <code><a href="#">java.sql.Connection#setTransactionIsolation</a></code> and/or <code><a href="#">java.sql.Connection#setReadOnly</a></code> for every Connection obtained from it. It does, however, <em>not</em> reset those settings; it rather expects the target DataSource to perform such resetting as part of its connection pool handling. <strong>Make sure that the target DataSource properly cleans up such transaction state.</strong></p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+<a href="set-isolation-level.html">#setIsolationLevel</a><a href="#">#setIsolationLevelName</a><a href="#">#setUsername</a><a href="#">#setPassword</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">IsolationLevelDataSourceAdapter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>An adapter for a target javax.sql.DataSource, applying the current Spring transaction's isolation level (and potentially specified user credentials) to every <code>getConnection</code> call. Also applies the read-only flag, if specified. 
+<p>Can be used to proxy a target JNDI DataSource that does not have the desired isolation level (and user credentials) configured. Client code can work with this DataSource as usual, not worrying about such settings. </p>
+<p>Inherits the capability to apply specific user credentials from its superclass UserCredentialsDataSourceAdapter; see the latter's javadoc for details on that functionality (e.g. <code><a href="#">#setCredentialsForCurrentThread</a></code>). </p>
+<p><strong>WARNING:</strong> This adapter simply calls <code><a href="#">java.sql.Connection#setTransactionIsolation</a></code> and/or <code><a href="#">java.sql.Connection#setReadOnly</a></code> for every Connection obtained from it. It does, however, <em>not</em> reset those settings; it rather expects the target DataSource to perform such resetting as part of its connection pool handling. <strong>Make sure that the target DataSource properly cleans up such transaction state.</strong></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-isolation-level.html">setIsolationLevel</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIsolationLevel</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.IsolationLevelDataSourceAdapter$setIsolationLevel(kotlin.Int)/isolationLevel">isolationLevel</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the default isolation level to use for Connection retrieval, according to the JDBC java.sql.Connection constants (equivalent to the corresponding Spring org.springframework.transaction.TransactionDefinition constants). 
+<p>If not specified, the target DataSource's default will be used. Note that a transaction-specific isolation value will always override any isolation setting specified at the DataSource level.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-isolation-level-name.html">setIsolationLevelName</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setIsolationLevelName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.IsolationLevelDataSourceAdapter$setIsolationLevelName(kotlin.String)/constantName">constantName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default isolation level by the name of the corresponding constant in org.springframework.transaction.TransactionDefinition, e.g. "ISOLATION_SERIALIZABLE". 
+<p>If not specified, the target DataSource's default will be used. Note that a transaction-specific isolation value will always override any isolation setting specified at the DataSource level.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-web-sphere-data-source-adapter/index.html">WebSphereDataSourceAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSphereDataSourceAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">IsolationLevelDataSourceAdapter</span></code>
+<p>DataSource implementation that delegates all calls to a WebSphere target DataSource, typically obtained from JNDI, applying a current isolation level and/or current user credentials to every Connection obtained from it. 
+<p>Uses IBM-specific API to get a JDBC Connection with a specific isolation level (and read-only flag) from a WebSphere DataSource (<a href="#">IBM code example</a>). Supports the transaction-specific isolation level exposed by <code><a href="#">org.springframework.transaction.support.TransactionSynchronizationManager#getCurrentTransactionIsolationLevel()</a></code>. It's also possible to specify a default isolation level, to be applied when the current Spring-managed transaction does not define a specific isolation level. </p>
+<p>Usage example, defining the target DataSource as an inner-bean JNDI lookup (of course, you can link to any WebSphere DataSource through a bean reference): </p>
+<pre><code> &lt;bean id="myDataSource" class="org.springframework.jdbc.datasource.WebSphereDataSourceAdapter"&gt; &lt;property name="targetDataSource"&gt; &lt;bean class="org.springframework.jndi.JndiObjectFactoryBean"&gt; &lt;property name="jndiName" value="jdbc/myds"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt;</code></pre> Thanks to Ricardo Olivieri for submitting the original implementation of this approach!</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

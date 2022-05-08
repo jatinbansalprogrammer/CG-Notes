@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ClientHttpRequestInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.client</a>&nbsp;/&nbsp;<a href=".">ClientHttpRequestInterceptor</a><br/>
+<br/>
+<h1>ClientHttpRequestInterceptor</h1>
+<code><span class="identifier">@FunctionalInterface</span> <span class="keyword">interface </span><span class="identifier">ClientHttpRequestInterceptor</span></code>
+<p>Intercepts client-side HTTP requests. Implementations of this interface can be <a href="#"> registered</a> with the org.springframework.web.client.RestTemplate, as to modify the outgoing ClientHttpRequest and/or the incoming ClientHttpResponse. 
+<p>The main entry point for interceptors is <code><a href="#">#intercept(HttpRequest, byte[], ClientHttpRequestExecution)</a></code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="intercept.html">intercept</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">intercept</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.client.ClientHttpRequestInterceptor$intercept(org.springframework.http.HttpRequest, kotlin.ByteArray, org.springframework.http.client.ClientHttpRequestExecution)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.ClientHttpRequestInterceptor$intercept(org.springframework.http.HttpRequest, kotlin.ByteArray, org.springframework.http.client.ClientHttpRequestExecution)/body">body</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-byte-array/index.html"><span class="identifier">ByteArray</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.http.client.ClientHttpRequestInterceptor$intercept(org.springframework.http.HttpRequest, kotlin.ByteArray, org.springframework.http.client.ClientHttpRequestExecution)/execution">execution</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestExecution</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ClientHttpResponse</span></code>
+<p>Intercept the given request, and return a response. The given ClientHttpRequestExecution allows the interceptor to pass on the request and response to the next entity in the chain. 
+<p>A typical implementation of this method would follow the following pattern: </p>
+<ol> <li>Examine the HttpRequest and body</li>
+ <li>Optionally org.springframework.http.client.support.HttpRequestWrapper the request to filter HTTP attributes.</li>
+ <li>Optionally modify the body of the request.</li>
+ <li><strong>Either</strong> <ul> <li>execute the request using <code><a href="#">ClientHttpRequestExecution#execute(org.springframework.http.HttpRequest, byte[])</a></code>,</li>
+ <strong>or</strong> <li>do not execute the request to block the execution altogether.</li>
+ </ul>
+ </li>
+<li>Optionally wrap the response to filter HTTP attributes.</li>
+ </ol>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.http.client.support/-basic-authorization-interceptor/index.html">BasicAuthorizationInterceptor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">BasicAuthorizationInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClientHttpRequestInterceptor</span></code>
+<p>ClientHttpRequestInterceptor to apply a BASIC authorization header.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

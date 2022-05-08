@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>EntityManagerProxy - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href=".">EntityManagerProxy</a><br/>
+<br/>
+<h1>EntityManagerProxy</h1>
+<code><span class="keyword">interface </span><span class="identifier">EntityManagerProxy</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span></code>
+<p>Subinterface of javax.persistence.EntityManager to be implemented by EntityManager proxies. Allows access to the underlying target EntityManager. 
+<p>This interface is mainly intended for framework usage. Application code should prefer the use of the <code><a href="#">javax.persistence.EntityManager#getDelegate()</a></code> method to access native functionality of the underlying resource.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-target-entity-manager.html">getTargetEntityManager</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getTargetEntityManager</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">EntityManager</span></code>
+<p>Return the underlying EntityManager that this proxy will delegate to. 
+<p>In case of an extended EntityManager, this will be the associated raw EntityManager. </p>
+<p>In case of a shared ("transactional") EntityManager, this will be the raw EntityManager that is currently associated with the transaction. Outside of a transaction, an IllegalStateException will be thrown.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

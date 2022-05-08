@@ -1,0 +1,165 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ServletContextResource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.context.support</a>&nbsp;/&nbsp;<a href=".">ServletContextResource</a><br/>
+<br/>
+<h1>ServletContextResource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ServletContextResource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractFileResolvingResource</span><span class="symbol">, </span><a href="../../org.springframework.core.io/-context-resource/index.html"><span class="identifier">ContextResource</span></a></code>
+<p>org.springframework.core.io.Resource implementation for javax.servlet.ServletContext resources, interpreting relative paths within the web application root directory. 
+<p>Always supports stream access and URL access, but only allows <code>java.io.File</code> access when the web application archive is expanded.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+28.12.2003</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.servlet.ServletContext#getResourceAsStream</a><a href="#">javax.servlet.ServletContext#getResource</a><a href="#">javax.servlet.ServletContext#getRealPath</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ServletContextResource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextResource$<init>(javax.servlet.ServletContext, kotlin.String)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.context.support.ServletContextResource$<init>(javax.servlet.ServletContext, kotlin.String)/path">path</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new ServletContextResource. 
+<p>The Servlet spec requires that resource paths start with a slash, even if many containers accept paths without leading slash too. Consequently, the given path will be prepended with a slash if it doesn't already start with one.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-relative.html">createRelative</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createRelative</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextResource$createRelative(kotlin.String)/relativePath">relativePath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Resource</span></code>
+<p>This implementation creates a ServletContextResource, applying the given path relative to the path of the underlying file of this resource descriptor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.context.support.ServletContextResource$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation compares the underlying ServletContext resource locations.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="exists.html">exists</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">exists</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation checks <code>ServletContext.getResource</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-description.html">getDescription</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getDescription</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>This implementation returns a description that includes the ServletContext resource location.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-file.html">getFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFile</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">File</span></code>
+<p>This implementation resolves "file:" URLs or alternatively delegates to <code>ServletContext.getRealPath</code>, throwing a FileNotFoundException if not found or not resolvable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-filename.html">getFilename</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFilename</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>This implementation returns the name of the file that this ServletContext resource refers to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-input-stream.html">getInputStream</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getInputStream</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">InputStream</span></code>
+<p>This implementation delegates to <code>ServletContext.getResourceAsStream</code>, but throws a FileNotFoundException if no resource found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-path.html">getPath</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getPath</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the path for this resource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-path-within-context.html">getPathWithinContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPathWithinContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-servlet-context.html">getServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getServletContext</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ServletContext</span></code>
+<p>Return the ServletContext for this resource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-u-r-l.html">getURL</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getURL</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">URL</span></code>
+<p>This implementation delegates to <code>ServletContext.getResource</code>, but throws a FileNotFoundException if no resource found.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>This implementation returns the hash code of the underlying ServletContext resource location.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-file.html">isFile</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isFile</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-readable.html">isReadable</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isReadable</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>This implementation delegates to <code>ServletContext.getResourceAsStream</code>, which returns <code>null</code> in case of a non-readable resource (e.g. a directory).</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

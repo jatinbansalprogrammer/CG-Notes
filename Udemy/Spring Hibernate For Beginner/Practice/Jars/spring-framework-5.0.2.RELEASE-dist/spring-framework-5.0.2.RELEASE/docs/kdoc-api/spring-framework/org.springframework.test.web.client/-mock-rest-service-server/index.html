@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MockRestServiceServer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.test.web.client</a>&nbsp;/&nbsp;<a href=".">MockRestServiceServer</a><br/>
+<br/>
+<h1>MockRestServiceServer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MockRestServiceServer</span></code>
+<p><strong>Main entry point for client-side REST testing</strong>. Used for tests that involve direct or indirect use of the RestTemplate. Provides a way to set up expected requests that will be performed through the <code>RestTemplate</code> as well as mock responses to send back thus removing the need for an actual server. 
+<p>Below is an example that assumes static imports from <code>MockRestRequestMatchers</code>, <code>MockRestResponseCreators</code>, and <code>ExpectedCount</code>: </p>
+<pre><code> RestTemplate restTemplate = new RestTemplate() MockRestServiceServer server = MockRestServiceServer.bindTo(restTemplate).build(); server.expect(manyTimes(), requestTo("/hotels/42")).andExpect(method(HttpMethod.GET)) .andRespond(withSuccess("{ \"id\" : \"42\", \"name\" : \"Holiday Inn\"}", MediaType.APPLICATION_JSON)); Hotel hotel = restTemplate.getForObject("/hotels/{id}", Hotel.class, 42); // Use the hotel instance... // Verify all expectations met server.verify(); </code></pre> 
+<p>Note that as an alternative to the above you can also set the MockMvcClientHttpRequestFactory on a <code>RestTemplate</code> which allows executing requests against an instance of org.springframework.test.web.servlet.MockMvc.</p>
+</p>
+<p><strong>Author</strong><br/>
+Craig Walls</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+3.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="bind-to.html">bindTo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">bindTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$bindTo(org.springframework.web.client.RestTemplate)/restTemplate">restTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">RestTemplate</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockRestServiceServerBuilder</span></code>
+<p>Return a builder for a <code>MockRestServiceServer</code> that should be used to reply to the given <code>RestTemplate</code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">bindTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$bindTo(org.springframework.web.client.AsyncRestTemplate)/asyncRestTemplate">asyncRestTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncRestTemplate</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockRestServiceServerBuilder</span></code>
+<p>Return a builder for a <code>MockRestServiceServer</code> that should be used to reply to the given <code>AsyncRestTemplate</code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">bindTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$bindTo(org.springframework.web.client.support.RestGatewaySupport)/restGateway">restGateway</span><span class="symbol">:</span>&nbsp;<span class="identifier">RestGatewaySupport</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockRestServiceServerBuilder</span></code>
+<p>Return a builder for a <code>MockRestServiceServer</code> that should be used to reply to the given <code>RestGatewaySupport</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="create-server.html">createServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createServer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$createServer(org.springframework.web.client.RestTemplate)/restTemplate">restTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">RestTemplate</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockRestServiceServer</span></code>
+<p>A shortcut for <code>bindTo(restTemplate).build()</code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createServer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$createServer(org.springframework.web.client.AsyncRestTemplate)/asyncRestTemplate">asyncRestTemplate</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncRestTemplate</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockRestServiceServer</span></code>
+<p>A shortcut for <code>bindTo(asyncRestTemplate).build()</code>.</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">createServer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$createServer(org.springframework.web.client.support.RestGatewaySupport)/restGateway">restGateway</span><span class="symbol">:</span>&nbsp;<span class="identifier">RestGatewaySupport</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MockRestServiceServer</span></code>
+<p>A shortcut for <code>bindTo(restGateway).build()</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="expect.html">expect</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$expect(org.springframework.test.web.client.RequestMatcher)/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">RequestMatcher</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResponseActions</span></code>
+<p>Set up an expectation for a single HTTP request. The returned ResponseActions can be used to set up further expectations as well as to define the response. 
+<p>This method may be invoked any number times before starting to make request through the underlying <code>RestTemplate</code> in order to set up all expected requests.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">expect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$expect(org.springframework.test.web.client.ExpectedCount, org.springframework.test.web.client.RequestMatcher)/count">count</span><span class="symbol">:</span>&nbsp;<span class="identifier">ExpectedCount</span><span class="symbol">, </span><span class="identifier" id="org.springframework.test.web.client.MockRestServiceServer$expect(org.springframework.test.web.client.ExpectedCount, org.springframework.test.web.client.RequestMatcher)/matcher">matcher</span><span class="symbol">:</span>&nbsp;<span class="identifier">RequestMatcher</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ResponseActions</span></code>
+<p>An alternative to <code><a href="expect.html">#expect(RequestMatcher)</a></code> with an indication how many times the request is expected to be executed. 
+<p>When request expectations have an expected count greater than one, only the first execution is expected to match the order of declaration. Subsequent request executions may be inserted anywhere thereafter.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="reset.html">reset</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">reset</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Reset the internal state removing all expectations and recorded requests.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="verify.html">verify</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">verify</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Verify that all expected requests set up via <code><a href="expect.html">#expect(RequestMatcher)</a></code> were indeed performed.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

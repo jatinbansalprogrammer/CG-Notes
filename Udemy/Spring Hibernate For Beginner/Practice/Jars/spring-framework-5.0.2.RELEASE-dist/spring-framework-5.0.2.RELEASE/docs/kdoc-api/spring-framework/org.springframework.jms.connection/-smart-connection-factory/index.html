@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SmartConnectionFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jms.connection</a>&nbsp;/&nbsp;<a href=".">SmartConnectionFactory</a><br/>
+<br/>
+<h1>SmartConnectionFactory</h1>
+<code><span class="keyword">interface </span><span class="identifier">SmartConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ConnectionFactory</span></code>
+<p>Extension of the <code>javax.jms.ConnectionFactory</code> interface, indicating how to release Connections obtained from it.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="should-stop.html">shouldStop</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">shouldStop</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jms.connection.SmartConnectionFactory$shouldStop(javax.jms.Connection)/con">con</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Should we stop the Connection, obtained from this ConnectionFactory?</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-delegating-connection-factory/index.html">DelegatingConnectionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DelegatingConnectionFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SmartConnectionFactory</span><span class="symbol">, </span><span class="identifier">QueueConnectionFactory</span><span class="symbol">, </span><span class="identifier">TopicConnectionFactory</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>javax.jms.ConnectionFactory implementation that delegates all calls to a given target javax.jms.ConnectionFactory, adapting specific <code>create(Queue/Topic)Connection</code> calls to the target ConnectionFactory if necessary (e.g. when running JMS 1.0.2 API based code against a generic JMS 1.1 ConnectionFactory, such as ActiveMQ's PooledConnectionFactory). 
+<p>This class allows for being subclassed, with subclasses overriding only those methods (such as <code><a href="../-delegating-connection-factory/create-connection.html">#createConnection()</a></code>) that should not simply delegate to the target ConnectionFactory. </p>
+<p>Can also be defined as-is, wrapping a specific target ConnectionFactory, using the "shouldStopConnections" flag to indicate whether Connections obtained from the target factory are supposed to be stopped before closed. The latter may be necessary for some connection pools that simply return released connections to the pool, not stopping them while they sit in the pool.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JpaDialect.getJdbcConnection - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href="index.html">JpaDialect</a>&nbsp;/&nbsp;<a href=".">getJdbcConnection</a><br/>
+<br/>
+<h1>getJdbcConnection</h1>
+<a name="org.springframework.orm.jpa.JpaDialect$getJdbcConnection(javax.persistence.EntityManager, kotlin.Boolean)"></a>
+<code><span class="identifier">@Nullable</span> <span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getJdbcConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$getJdbcConnection(javax.persistence.EntityManager, kotlin.Boolean)/entityManager">entityManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">EntityManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.jpa.JpaDialect$getJdbcConnection(javax.persistence.EntityManager, kotlin.Boolean)/readOnly">readOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConnectionHandle</span></code>
+<p>Retrieve the JDBC Connection that the given JPA EntityManager uses underneath, if accessing a relational database. This method will just get invoked if actually needing access to the underlying JDBC Connection, usually within an active JPA transaction (for example, by JpaTransactionManager). The returned handle will be passed into the <code>releaseJdbcConnection</code> method when not needed anymore. 
+<p>This strategy is necessary as JPA does not provide a standard way to retrieve the underlying JDBC Connection (due to the fact that a JPA implementation might not work with a relational database at all). </p>
+<p>Implementations are encouraged to return an unwrapped Connection object, i.e. the Connection as they got it from the connection pool. This makes it easier for application code to get at the underlying native JDBC Connection, like an OracleConnection, which is sometimes necessary for LOB handling etc. We assume that calling code knows how to properly handle the returned Connection object. </p>
+<p>In a simple case where the returned Connection will be auto-closed with the EntityManager or can be released via the Connection object itself, an implementation can return a SimpleConnectionHandle that just contains the Connection. If some other object is needed in <code>releaseJdbcConnection</code>, an implementation should use a special handle that references that other object.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="entityManager"></a>
+<code>entityManager</code> - the current JPA EntityManager</p>
+<p><a name="readOnly"></a>
+<code>readOnly</code> - whether the Connection is only needed for read-only purposes</p>
+<h3>Exceptions</h3>
+<p><a name="javax.persistence.PersistenceException"></a>
+<code>javax.persistence.PersistenceException</code> - if thrown by JPA methods</p>
+<p><a name="java.sql.SQLException"></a>
+<code>java.sql.SQLException</code> - if thrown by JDBC methods</p>
+<p><strong>Return</strong><br/>
+a handle for the Connection, to be passed into <code>releaseJdbcConnection</code>, or <code>null</code> if no JDBC Connection can be retrieved</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#releaseJdbcConnection</a><a href="#">org.springframework.jdbc.datasource.ConnectionHandle#getConnection</a>org.springframework.jdbc.datasource.SimpleConnectionHandle<a href="#">JpaTransactionManager#setDataSource</a></p>
+</BODY>
+</HTML>

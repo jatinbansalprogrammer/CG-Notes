@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JdbcUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.support</a>&nbsp;/&nbsp;<a href=".">JdbcUtils</a><br/>
+<br/>
+<h1>JdbcUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JdbcUtils</span></code>
+<p>Generic utility methods for working with JDBC. Mainly for internal use within the framework, but also useful for custom JDBC access code.</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JdbcUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Generic utility methods for working with JDBC. Mainly for internal use within the framework, but also useful for custom JDBC access code.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-t-y-p-e_-u-n-k-n-o-w-n.html">TYPE_UNKNOWN</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">TYPE_UNKNOWN</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Constant that indicates an unknown (or unspecified) SQL type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="close-connection.html">closeConnection</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">closeConnection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$closeConnection(java.sql.Connection)/con">con</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the given JDBC Connection and ignore any thrown exception. This is useful for typical finally blocks in manual JDBC code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-result-set.html">closeResultSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">closeResultSet</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$closeResultSet(java.sql.ResultSet)/rs">rs</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the given JDBC ResultSet and ignore any thrown exception. This is useful for typical finally blocks in manual JDBC code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="close-statement.html">closeStatement</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">closeStatement</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$closeStatement(java.sql.Statement)/stmt">stmt</span><span class="symbol">:</span>&nbsp;<span class="identifier">Statement</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Close the given JDBC Statement and ignore any thrown exception. This is useful for typical finally blocks in manual JDBC code.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="common-database-name.html">commonDatabaseName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">commonDatabaseName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$commonDatabaseName(kotlin.String)/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Extract a common name for the database in use even if various drivers/platforms provide varying names.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="convert-underscore-name-to-property-name.html">convertUnderscoreNameToPropertyName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertUnderscoreNameToPropertyName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$convertUnderscoreNameToPropertyName(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Convert a column name with underscores to the corresponding property name using "camel case". A name like "customer_number" would match a "customerNumber" property name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="extract-database-meta-data.html">extractDatabaseMetaData</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">extractDatabaseMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, org.springframework.jdbc.support.DatabaseMetaDataCallback)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, org.springframework.jdbc.support.DatabaseMetaDataCallback)/action">action</span><span class="symbol">:</span>&nbsp;<span class="identifier">DatabaseMetaDataCallback</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Extract database meta data via the given DatabaseMetaDataCallback. 
+<p>This method will open a connection to the database and retrieve the database metadata. Since this method is called before the exception translation feature is configured for a datasource, this method can not rely on the SQLException translation functionality. </p>
+<p>Any exceptions will be wrapped in a MetaDataAccessException. This is a checked exception and any calling code should catch and handle this exception. You can just log the error and hope for the best, but there is probably a more serious error that will reappear when you try to access the database again.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">extractDatabaseMetaData</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, kotlin.String)/dataSource">dataSource</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$extractDatabaseMetaData(javax.sql.DataSource, kotlin.String)/metaDataMethodName">metaDataMethodName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Call the specified method on DatabaseMetaData for the given DataSource, and extract the invocation result.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-result-set-value.html">getResultSetValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getResultSetValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int, java.lang.Class((kotlin.Any)))/rs">rs</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int, java.lang.Class((kotlin.Any)))/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int, java.lang.Class((kotlin.Any)))/requiredType">requiredType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Retrieve a JDBC column value from a ResultSet, using the specified value type. 
+<p>Uses the specifically typed ResultSet accessor methods, falling back to <code><a href="#">#getResultSetValue(java.sql.ResultSet, int)</a></code> for unknown types. </p>
+<p>Note that the returned value may not be assignable to the specified required type, in case of an unknown type. Calling code needs to deal with this case appropriately, e.g. throwing a corresponding exception.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getResultSetValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int)/rs">rs</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSet</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$getResultSetValue(java.sql.ResultSet, kotlin.Int)/index">index</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Retrieve a JDBC column value from a ResultSet, using the most appropriate value type. The returned value should be a detached value object, not having any ties to the active ResultSet: in particular, it should not be a Blob or Clob object but rather a byte array or String representation, respectively. 
+<p>Uses the <code>getObject(index)</code> method, but includes additional "hacks" to get around Oracle 10g returning a non-standard object for its TIMESTAMP datatype and a <code>java.sql.Date</code> for DATE columns leaving out the time portion: These columns will explicitly be extracted as standard <code>java.sql.Timestamp</code> object.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-numeric.html">isNumeric</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isNumeric</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$isNumeric(kotlin.Int)/sqlType">sqlType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Check whether the given SQL type is numeric.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="lookup-column-name.html">lookupColumnName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">lookupColumnName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$lookupColumnName(java.sql.ResultSetMetaData, kotlin.Int)/resultSetMetaData">resultSetMetaData</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResultSetMetaData</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$lookupColumnName(java.sql.ResultSetMetaData, kotlin.Int)/columnIndex">columnIndex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Determine the column name to use. The column name is determined based on a lookup using ResultSetMetaData. 
+<p>This method implementation takes into account recent clarifications expressed in the JDBC 4.0 specification: </p>
+<p><em>columnLabel - the label for the column specified with the SQL AS clause. If the SQL AS clause was not specified, then the label is the name of the column</em>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="supports-batch-updates.html">supportsBatchUpdates</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">supportsBatchUpdates</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.support.JdbcUtils$supportsBatchUpdates(java.sql.Connection)/con">con</span><span class="symbol">:</span>&nbsp;<span class="identifier">Connection</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the given JDBC driver supports JDBC 2.0 batch updates. 
+<p>Typically invoked right before execution of a given set of statements: to decide whether the set of SQL statements should be executed through the JDBC 2.0 batch mechanism or simply in a traditional one-by-one fashion. </p>
+<p>Logs a warning if the "supportsBatchUpdates" methods throws an exception and simply returns <code>false</code> in that case.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

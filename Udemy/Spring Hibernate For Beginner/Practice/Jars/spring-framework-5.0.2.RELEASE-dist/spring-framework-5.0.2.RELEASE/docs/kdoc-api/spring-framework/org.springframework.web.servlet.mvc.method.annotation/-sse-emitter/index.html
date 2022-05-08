@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SseEmitter - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.mvc.method.annotation</a>&nbsp;/&nbsp;<a href=".">SseEmitter</a><br/>
+<br/>
+<h1>SseEmitter</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SseEmitter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-response-body-emitter/index.html"><span class="identifier">ResponseBodyEmitter</span></a></code>
+<p>A specialization of ResponseBodyEmitter for sending <a href="#">Server-Sent Events</a>.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SseEmitter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create a new SseEmitter instance.</p>
+<code><span class="identifier">SseEmitter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.SseEmitter$<init>(kotlin.Long)/timeout">timeout</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a><span class="symbol">)</span></code>
+<p>Create a SseEmitter with a custom timeout value. 
+<p>By default not set in which case the default configured in the MVC Java Config or the MVC namespace is used, or if that's not set, then the timeout depends on the default of the underlying server.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="event.html">event</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">event</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SseEventBuilder</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="send.html">send</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.SseEmitter$send(kotlin.Any)/object">object</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Send the object formatted as a single SSE "data" line. It's equivalent to: <pre><code> // static import of SseEmitter.* SseEmitter emitter = new SseEmitter(); emitter.send(event().data(myObject)); </code></pre></p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.SseEmitter$send(kotlin.Any, org.springframework.http.MediaType)/object">object</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.SseEmitter$send(kotlin.Any, org.springframework.http.MediaType)/mediaType">mediaType</span><span class="symbol">:</span>&nbsp;<span class="identifier">MediaType</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Send the object formatted as a single SSE "data" line. It's equivalent to: <pre><code> // static import of SseEmitter.* SseEmitter emitter = new SseEmitter(); emitter.send(event().data(myObject, MediaType.APPLICATION_JSON)); </code></pre></p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">send</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.SseEmitter$send(org.springframework.web.servlet.mvc.method.annotation.SseEmitter.SseEventBuilder)/builder">builder</span><span class="symbol">:</span>&nbsp;<span class="identifier">SseEventBuilder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Send an SSE event prepared with the given builder. For example: <pre><code> // static import of SseEmitter SseEmitter emitter = new SseEmitter(); emitter.send(event().name("update").id("1").data(myObject)); </code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-response-body-emitter/complete.html">complete</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">complete</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Complete request processing. 
+<p>A dispatch is made into the app server where Spring MVC completes asynchronous request processing.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-response-body-emitter/complete-with-error.html">completeWithError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">completeWithError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter$completeWithError(kotlin.Throwable)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Complete request processing with an error. 
+<p>A dispatch is made into the app server where Spring MVC will pass the exception through its exception handling mechanism.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-response-body-emitter/get-timeout.html">getTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTimeout</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the configured timeout value, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-response-body-emitter/on-completion.html">onCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter$onCompletion(java.lang.Runnable)/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register code to invoke when the async request completes. This method is called from a container thread when an async request completed for any reason including timeout and network error. This method is useful for detecting that a <code>ResponseBodyEmitter</code> instance is no longer usable.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-response-body-emitter/on-error.html">onError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter$onError(java.util.function.Consumer((kotlin.Throwable)))/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Consumer</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register code to invoke for an error during async request processing. This method is called from a container thread when an error occurred while processing an async request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../-response-body-emitter/on-timeout.html">onTimeout</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">onTimeout</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter$onTimeout(java.lang.Runnable)/callback">callback</span><span class="symbol">:</span>&nbsp;<span class="identifier">Runnable</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register code to invoke when the async request times out. This method is called from a container thread when an async request times out.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

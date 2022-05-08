@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SqlFunction - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.object</a>&nbsp;/&nbsp;<a href=".">SqlFunction</a><br/>
+<br/>
+<h1>SqlFunction</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SqlFunction</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-mapping-sql-query/index.html"><span class="identifier">MappingSqlQuery</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span></code>
+<p>SQL "function" wrapper for a query that returns a single row of results. The default behavior is to return an int, but that can be overridden by using the constructor with an extra return type parameter. 
+<p>Intended to use to call SQL functions that return a single result using a query like "select user()" or "select sysdate from dual". It is not intended for calling more complex stored functions or for using a CallableStatement to invoke a stored procedure or stored function. Use StoredProcedure or SqlCall for this type of processing. </p>
+<p>This is a concrete class, which there is often no need to subclass. Code using this package can create an object of this type, declaring SQL and parameters, and then invoke the appropriate <code>run</code> method repeatedly to execute the function. Subclasses are only supposed to add specialized <code>run</code> methods for specific parameter and return types. </p>
+<p>Like all RdbmsOperation objects, SqlFunction objects are thread-safe.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Jean-Pierre Pawlak</p>
+<p><strong>See Also</strong><br/>
+StoredProcedure</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SqlFunction</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Constructor to allow use as a JavaBean. A DataSource, SQL and any parameters must be supplied before invoking the <code>compile</code> method and using this object.</p>
+<code><span class="identifier">SqlFunction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String)/ds">ds</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new SqlFunction object with SQL, but without parameters. Must add parameters or settle with none.</p>
+<code><span class="identifier">SqlFunction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray)/ds">ds</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray)/types">types</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a><span class="symbol">)</span></code>
+<p>Create a new SqlFunction object with SQL and parameters.</p>
+<code><span class="identifier">SqlFunction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, java.lang.Class((org.springframework.jdbc.object.SqlFunction.T)))/ds">ds</span><span class="symbol">:</span>&nbsp;<span class="identifier">DataSource</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, java.lang.Class((org.springframework.jdbc.object.SqlFunction.T)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, java.lang.Class((org.springframework.jdbc.object.SqlFunction.T)))/types">types</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int-array/index.html"><span class="identifier">IntArray</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$<init>(javax.sql.DataSource, kotlin.String, kotlin.IntArray, java.lang.Class((org.springframework.jdbc.object.SqlFunction.T)))/resultType">resultType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new SqlFunction object with SQL, parameters and a result type.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="run.html">run</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Convenient method to run the function without arguments.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$run(kotlin.Int)/parameter">parameter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Convenient method to run the function with a single int argument.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">run</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.object.SqlFunction$run(kotlin.Array((kotlin.Any)))/parameters">parameters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Analogous to the SqlQuery.execute([]) method. This is a generic method to execute a query, taken a number of arguments.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="run-generic.html">runGeneric</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">runGeneric</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Convenient method to run the function without arguments, returning the value as an object.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">runGeneric</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$runGeneric(kotlin.Int)/parameter">parameter</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Convenient method to run the function with a single int argument.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">runGeneric</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$runGeneric(kotlin.Array((kotlin.Any)))/parameters">parameters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Analogous to the <code>SqlQuery.findObject(Object[])</code> method. This is a generic method to execute a query, taken a number of arguments.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-result-type.html">setResultType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResultType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.object.SqlFunction$setResultType(java.lang.Class((org.springframework.jdbc.object.SqlFunction.T)))/resultType">resultType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify the type that the result object is required to match. 
+<p>If not specified, the result value will be exposed as returned by the JDBC driver.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalSessionFactoryBuilder.buildSessionFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5</a>&nbsp;/&nbsp;<a href="index.html">LocalSessionFactoryBuilder</a>&nbsp;/&nbsp;<a href=".">buildSessionFactory</a><br/>
+<br/>
+<h1>buildSessionFactory</h1>
+<a name="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$buildSessionFactory(org.springframework.core.task.AsyncTaskExecutor)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">buildSessionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.LocalSessionFactoryBuilder$buildSessionFactory(org.springframework.core.task.AsyncTaskExecutor)/bootstrapExecutor">bootstrapExecutor</span><span class="symbol">:</span>&nbsp;<span class="identifier">AsyncTaskExecutor</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SessionFactory</span></code>
+<p>Build the Hibernate <code>SessionFactory</code> through background bootstrapping, using the given executor for a parallel initialization phase (e.g. a org.springframework.core.task.SimpleAsyncTaskExecutor). 
+<p><code>SessionFactory</code> initialization will then switch into background bootstrap mode, with a <code>SessionFactory</code> proxy immediately returned for injection purposes instead of waiting for Hibernate's bootstrapping to complete. However, note that the first actual call to a <code>SessionFactory</code> method will then block until Hibernate's bootstrapping completed, if not ready by then. For maximum benefit, make sure to avoid early <code>SessionFactory</code> calls in init methods of related beans, even for metadata introspection purposes.</p>
+</p>
+<p><strong>Since</strong><br/>
+4.3</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#buildSessionFactory()</a></p>
+</BODY>
+</HTML>

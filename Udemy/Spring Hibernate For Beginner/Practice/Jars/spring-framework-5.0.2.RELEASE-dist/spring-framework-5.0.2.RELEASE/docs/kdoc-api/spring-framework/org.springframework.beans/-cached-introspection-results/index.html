@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CachedIntrospectionResults - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans</a>&nbsp;/&nbsp;<a href=".">CachedIntrospectionResults</a><br/>
+<br/>
+<h1>CachedIntrospectionResults</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CachedIntrospectionResults</span></code>
+<p>Internal class that caches JavaBeans java.beans.PropertyDescriptor information for a Java class. Not intended for direct use by application code. 
+<p>Necessary for own caching of descriptors within the application's ClassLoader, rather than rely on the JDK's system-wide BeanInfo cache (in order to avoid leaks on ClassLoader shutdown). </p>
+<p>Information is cached statically, so we don't need to create new objects of this class for every JavaBean we manipulate. Hence, this class implements the factory design pattern, using a private constructor and a static <code><a href="#">#forClass(Class)</a></code> factory method to obtain instances. </p>
+<p>Note that for caching to work effectively, some preconditions need to be met: Prefer an arrangement where the Spring jars live in the same ClassLoader as the application classes, which allows for clean caching along with the application's lifecycle in any case. For a web application, consider declaring a local org.springframework.web.util.IntrospectorCleanupListener in <code>web.xml</code> in case of a multi-ClassLoader layout, which will allow for effective caching as well. </p>
+<p>In case of a non-clean ClassLoader arrangement without a cleanup listener having been set up, this class will fall back to a weak-reference-based caching model that recreates much-requested entries every time the garbage collector removed them. In such a scenario, consider the <code><a href="-i-g-n-o-r-e_-b-e-a-n-i-n-f-o_-p-r-o-p-e-r-t-y_-n-a-m-e.html">#IGNORE_BEANINFO_PROPERTY_NAME</a></code> system property.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+05 May 2001</p>
+<p><strong>See Also</strong><br/>
+<a href="accept-class-loader.html">#acceptClassLoader(ClassLoader)</a><a href="clear-class-loader.html">#clearClassLoader(ClassLoader)</a><a href="#">#forClass(Class)</a></p>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-i-g-n-o-r-e_-b-e-a-n-i-n-f-o_-p-r-o-p-e-r-t-y_-n-a-m-e.html">IGNORE_BEANINFO_PROPERTY_NAME</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IGNORE_BEANINFO_PROPERTY_NAME</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>System property that instructs Spring to use the <code><a href="#">Introspector#IGNORE_ALL_BEANINFO</a></code> mode when calling the JavaBeans Introspector: "spring.beaninfo.ignore", with a value of "true" skipping the search for <code>BeanInfo</code> classes (typically for scenarios where no such classes are being defined for beans in the application in the first place). 
+<p>The default is "false", considering all <code>BeanInfo</code> metadata classes, like for standard <code><a href="#">Introspector#getBeanInfo(Class)</a></code> calls. Consider switching this flag to "true" if you experience repeated ClassLoader access for non-existing <code>BeanInfo</code> classes, in case such access is expensive on startup or on lazy loading. </p>
+<p>Note that such an effect may also indicate a scenario where caching doesn't work effectively: Prefer an arrangement where the Spring jars live in the same ClassLoader as the application classes, which allows for clean caching along with the application's lifecycle in any case. For a web application, consider declaring a local org.springframework.web.util.IntrospectorCleanupListener in <code>web.xml</code> in case of a multi-ClassLoader layout, which will allow for effective caching as well.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="accept-class-loader.html">acceptClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">acceptClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.CachedIntrospectionResults$acceptClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Accept the given ClassLoader as cache-safe, even if its classes would not qualify as cache-safe in this CachedIntrospectionResults class. 
+<p>This configuration method is only relevant in scenarios where the Spring classes reside in a 'common' ClassLoader (e.g. the system ClassLoader) whose lifecycle is not coupled to the application. In such a scenario, CachedIntrospectionResults would by default not cache any of the application's classes, since they would create a leak in the common ClassLoader. </p>
+<p>Any <code>acceptClassLoader</code> call at application startup should be paired with a <code><a href="clear-class-loader.html">#clearClassLoader</a></code> call at application shutdown.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="clear-class-loader.html">clearClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">clearClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.CachedIntrospectionResults$clearClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Clear the introspection cache for the given ClassLoader, removing the introspection results for all classes underneath that ClassLoader, and removing the ClassLoader (and its children) from the acceptance list.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

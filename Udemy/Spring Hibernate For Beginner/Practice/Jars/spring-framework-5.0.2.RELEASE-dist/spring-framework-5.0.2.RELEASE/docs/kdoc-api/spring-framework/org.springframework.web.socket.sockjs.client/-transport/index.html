@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Transport - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.sockjs.client</a>&nbsp;/&nbsp;<a href=".">Transport</a><br/>
+<br/>
+<h1>Transport</h1>
+<code><span class="keyword">interface </span><span class="identifier">Transport</span></code>
+<p>A client-side implementation for a SockJS transport.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="connect.html">connect</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">connect</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.sockjs.client.Transport$connect(org.springframework.web.socket.sockjs.client.TransportRequest, org.springframework.web.socket.WebSocketHandler)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransportRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.sockjs.client.Transport$connect(org.springframework.web.socket.sockjs.client.TransportRequest, org.springframework.web.socket.WebSocketHandler)/webSocketHandler">webSocketHandler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ListenableFuture</span><span class="symbol">&lt;</span><span class="identifier">WebSocketSession</span><span class="symbol">&gt;</span></code>
+<p>Connect the transport.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-transport-types.html">getTransportTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getTransportTypes</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">TransportType</span><span class="symbol">&gt;</span></code>
+<p>Return the SockJS transport types that this transport can be used for. In particular since from a client perspective there is no difference between XHR and XHR streaming, an <code>XhrTransport</code> could do both.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-web-socket-transport/index.html">WebSocketTransport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebSocketTransport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Transport</span><span class="symbol">, </span><span class="identifier">Lifecycle</span></code>
+<p>A SockJS Transport that uses a org.springframework.web.socket.client.WebSocketClient.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

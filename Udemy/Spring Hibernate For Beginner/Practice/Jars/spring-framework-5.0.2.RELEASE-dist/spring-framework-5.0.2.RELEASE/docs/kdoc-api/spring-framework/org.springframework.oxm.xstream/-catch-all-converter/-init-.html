@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CatchAllConverter.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.oxm.xstream</a>&nbsp;/&nbsp;<a href="index.html">CatchAllConverter</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.oxm.xstream.CatchAllConverter$&lt;init&gt;()"></a>
+<code><span class="identifier">CatchAllConverter</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>XStream Converter that supports all classes, but throws exceptions for (un)marshalling. 
+<p>The main purpose of this class is to <a href="#">register</a> this converter as a catch-all last converter with a <a href="#">normal</a> or higher priority, in addition to converters that explicitly handle the domain classes that should be supported. As a result, default XStream converters with lower priorities and possible security vulnerabilities do not get invoked. </p>
+<p>For instance: </p>
+<pre><code> XStreamMarshaller unmarshaller = new XStreamMarshaller(); unmarshaller.getXStream().registerConverter(new MyDomainClassConverter(), XStream.PRIORITY_VERY_HIGH); unmarshaller.getXStream().registerConverter(new CatchAllConverter(), XStream.PRIORITY_NORMAL); MyDomainClass myObject = unmarshaller.unmarshal(source); </code></pre></p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+3.2.5</p>
+</BODY>
+</HTML>

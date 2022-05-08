@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalEntityManagerFactoryBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.jpa</a>&nbsp;/&nbsp;<a href=".">LocalEntityManagerFactoryBean</a><br/>
+<br/>
+<h1>LocalEntityManagerFactoryBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">LocalEntityManagerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractEntityManagerFactoryBean</span></code>
+<p>org.springframework.beans.factory.FactoryBean that creates a JPA javax.persistence.EntityManagerFactory according to JPA's standard <em>standalone</em> bootstrap contract. This is the simplest way to set up a shared JPA EntityManagerFactory in a Spring application context; the EntityManagerFactory can then be passed to JPA-based DAOs via dependency injection. Note that switching to a JNDI lookup or to a LocalContainerEntityManagerFactoryBean definition is just a matter of configuration! 
+<p>Configuration settings are usually read from a <code>META-INF/persistence.xml</code> config file, residing in the class path, according to the JPA standalone bootstrap contract. Additionally, most JPA providers will require a special VM agent (specified on JVM startup) that allows them to instrument application classes. See the Java Persistence API specification and your provider documentation for setup details. </p>
+<p>This EntityManagerFactory bootstrap is appropriate for standalone applications which solely use JPA for data access. If you want to set up your persistence provider for an external DataSource and/or for global transactions which span multiple resources, you will need to either deploy it into a full Java EE application server and access the deployed EntityManagerFactory via JNDI, or use Spring's LocalContainerEntityManagerFactoryBean with appropriate configuration for local setup according to JPA's container contract. </p>
+<p><strong>Note:</strong> This FactoryBean has limited configuration power in terms of what configuration it is able to pass to the JPA provider. If you need more flexible configuration, for example passing a Spring-managed JDBC DataSource to the JPA provider, consider using Spring's more powerful LocalContainerEntityManagerFactoryBean instead. </p>
+<p><strong>NOTE: Spring's JPA support requires JPA 2.1 or higher, as of Spring 5.0.</strong> JPA 1.0/2.0 based applications are still supported; however, a JPA 2.1 compliant persistence provider is needed at runtime.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setJpaProperties</a><a href="#">#setJpaVendorAdapter</a><a href="#">JpaTransactionManager#setEntityManagerFactory</a>LocalContainerEntityManagerFactoryBeanorg.springframework.jndi.JndiObjectFactoryBeanorg.springframework.orm.jpa.support.SharedEntityManagerBean<a href="#">javax.persistence.Persistence#createEntityManagerFactory</a><a href="#">javax.persistence.spi.PersistenceProvider#createEntityManagerFactory</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">LocalEntityManagerFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>org.springframework.beans.factory.FactoryBean that creates a JPA javax.persistence.EntityManagerFactory according to JPA's standard <em>standalone</em> bootstrap contract. This is the simplest way to set up a shared JPA EntityManagerFactory in a Spring application context; the EntityManagerFactory can then be passed to JPA-based DAOs via dependency injection. Note that switching to a JNDI lookup or to a LocalContainerEntityManagerFactoryBean definition is just a matter of configuration! 
+<p>Configuration settings are usually read from a <code>META-INF/persistence.xml</code> config file, residing in the class path, according to the JPA standalone bootstrap contract. Additionally, most JPA providers will require a special VM agent (specified on JVM startup) that allows them to instrument application classes. See the Java Persistence API specification and your provider documentation for setup details. </p>
+<p>This EntityManagerFactory bootstrap is appropriate for standalone applications which solely use JPA for data access. If you want to set up your persistence provider for an external DataSource and/or for global transactions which span multiple resources, you will need to either deploy it into a full Java EE application server and access the deployed EntityManagerFactory via JNDI, or use Spring's LocalContainerEntityManagerFactoryBean with appropriate configuration for local setup according to JPA's container contract. </p>
+<p><strong>Note:</strong> This FactoryBean has limited configuration power in terms of what configuration it is able to pass to the JPA provider. If you need more flexible configuration, for example passing a Spring-managed JDBC DataSource to the JPA provider, consider using Spring's more powerful LocalContainerEntityManagerFactoryBean instead. </p>
+<p><strong>NOTE: Spring's JPA support requires JPA 2.1 or higher, as of Spring 5.0.</strong> JPA 1.0/2.0 based applications are still supported; however, a JPA 2.1 compliant persistence provider is needed at runtime.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

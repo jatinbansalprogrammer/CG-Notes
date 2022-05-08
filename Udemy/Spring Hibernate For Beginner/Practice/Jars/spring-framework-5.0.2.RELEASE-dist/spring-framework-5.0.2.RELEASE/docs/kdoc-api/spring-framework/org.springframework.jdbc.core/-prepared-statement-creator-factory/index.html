@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PreparedStatementCreatorFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core</a>&nbsp;/&nbsp;<a href=".">PreparedStatementCreatorFactory</a><br/>
+<br/>
+<h1>PreparedStatementCreatorFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">PreparedStatementCreatorFactory</span></code>
+<p>Helper class that efficiently creates multiple PreparedStatementCreator objects with different parameters based on a SQL statement and a single set of parameter declarations.</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">PreparedStatementCreatorFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$<init>(kotlin.String)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new factory. Will need to add parameters via the <code><a href="add-parameter.html">#addParameter</a></code> method or have no parameters.</p>
+<code><span class="identifier">PreparedStatementCreatorFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$<init>(kotlin.String, kotlin.IntArray)/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$<init>(kotlin.String, kotlin.IntArray)/types">types</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span></code>
+<p>Create a new factory with the given SQL and JDBC types.</p>
+<code><span class="identifier">PreparedStatementCreatorFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$<init>(kotlin.String, kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/sql">sql</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$<init>(kotlin.String, kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/declaredParameters">declaredParameters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SqlParameter</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new factory with the given SQL and parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-parameter.html">addParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$addParameter(org.springframework.jdbc.core.SqlParameter)/param">param</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a new declared parameter. 
+<p>Order of parameter addition is significant.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-prepared-statement-creator.html">newPreparedStatementCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newPreparedStatementCreator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$newPreparedStatementCreator(kotlin.collections.MutableList((kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PreparedStatementCreator</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newPreparedStatementCreator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$newPreparedStatementCreator(kotlin.Array((kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PreparedStatementCreator</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newPreparedStatementCreator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$newPreparedStatementCreator(kotlin.String, kotlin.Array((kotlin.Any)))/sqlToUse">sqlToUse</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$newPreparedStatementCreator(kotlin.String, kotlin.Array((kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PreparedStatementCreator</span></code>
+<p>Return a new PreparedStatementCreator for the given parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-prepared-statement-setter.html">newPreparedStatementSetter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newPreparedStatementSetter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$newPreparedStatementSetter(kotlin.collections.MutableList((kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PreparedStatementSetter</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newPreparedStatementSetter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$newPreparedStatementSetter(kotlin.Array((kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">PreparedStatementSetter</span></code>
+<p>Return a new PreparedStatementSetter for the given parameters.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-generated-keys-column-names.html">setGeneratedKeysColumnNames</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setGeneratedKeysColumnNames</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$setGeneratedKeysColumnNames(kotlin.Array((kotlin.String)))/names">names</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the column names of the auto-generated keys.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-result-set-type.html">setResultSetType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResultSetType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$setResultSetType(kotlin.Int)/resultSetType">resultSetType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use prepared statements that return a specific type of ResultSet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-return-generated-keys.html">setReturnGeneratedKeys</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setReturnGeneratedKeys</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$setReturnGeneratedKeys(kotlin.Boolean)/returnGeneratedKeys">returnGeneratedKeys</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether prepared statements should be capable of returning auto-generated keys.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-updatable-results.html">setUpdatableResults</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUpdatableResults</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.PreparedStatementCreatorFactory$setUpdatableResults(kotlin.Boolean)/updatableResults">updatableResults</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use prepared statements capable of returning updatable ResultSets.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jmx.support - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jmx.support</a><br/>
+<br/>
+<h2>Package org.springframework.jmx.support</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-connector-server-factory-bean/index.html">ConnectorServerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConnectorServerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MBeanRegistrationSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">JMXConnectorServer</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that creates a JSR-160 JMXConnectorServer, optionally registers it with the MBeanServer and then starts it. 
+<p>The <code>JMXConnectorServer</code> can be started in a separate thread by setting the <code>threaded</code> property to <code>true</code>. You can configure this thread to be a daemon thread by setting the <code>daemon</code> property to <code>true</code>. </p>
+<p>The <code>JMXConnectorServer</code> is correctly shutdown when an instance of this class is destroyed on shutdown of the containing <code>ApplicationContext</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jmx-utils/index.html">JmxUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JmxUtils</span></code>
+<p>Collection of generic utility methods to support Spring JMX. Includes a convenient method to locate an MBeanServer.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-bean-server-connection-factory-bean/index.html">MBeanServerConnectionFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanServerConnectionFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">MBeanServerConnection</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that creates a JMX 1.2 <code>MBeanServerConnection</code> to a remote <code>MBeanServer</code> exposed via a <code>JMXServerConnector</code>. Exposes the <code>MBeanServer</code> for bean references.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-bean-server-factory-bean/index.html">MBeanServerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanServerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">MBeanServer</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that obtains an javax.management.MBeanServer reference through the standard JMX 1.2 javax.management.MBeanServerFactory API (which is available on JDK 1.5 or as part of a JMX 1.2 provider). Exposes the <code>MBeanServer</code> for bean references. 
+<p>By default, <code>MBeanServerFactoryBean</code> will always create a new <code>MBeanServer</code> even if one is already running. To have the <code>MBeanServerFactoryBean</code> attempt to locate a running <code>MBeanServer</code> first, set the value of the "locateExistingServerIfPossible" property to "true".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-metric-type/index.html">MetricType</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">MetricType</span></code>
+<p>Represents how the measurement values of a <code>ManagedMetric</code> will change over time.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-object-name-manager/index.html">ObjectNameManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ObjectNameManager</span></code>
+<p>Helper class for the creation of javax.management.ObjectName instances.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,212 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>FreeMarkerConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.freemarker</a>&nbsp;/&nbsp;<a href=".">FreeMarkerConfigurer</a><br/>
+<br/>
+<h1>FreeMarkerConfigurer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">FreeMarkerConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/index.html"><span class="identifier">FreeMarkerConfigurationFactory</span></a><span class="symbol">, </span><span class="identifier">FreeMarkerConfig</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">ResourceLoaderAware</span><span class="symbol">, </span><span class="identifier">ServletContextAware</span></code>
+<p>JavaBean to configure FreeMarker for web usage, via the "configLocation" and/or "freemarkerSettings" and/or "templateLoaderPath" properties. The simplest way to use this class is to specify just a "templateLoaderPath"; you do not need any further configuration then. <pre><code> &lt;bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"&gt; &lt;property name="templateLoaderPath"&gt;&lt;value&gt;/WEB-INF/freemarker/&lt;/value&gt;&lt;/property&gt; &lt;/bean&gt;</code></pre> This bean must be included in the application context of any application using Spring's FreeMarkerView for web MVC. It exists purely to configure FreeMarker. It is not meant to be referenced by application components but just internally by FreeMarkerView. Implements FreeMarkerConfig to be found by FreeMarkerView without depending on the bean name the configurer. Each DispatcherServlet can define its own FreeMarkerConfigurer if desired. 
+<p>Note that you can also refer to a preconfigured FreeMarker Configuration instance, for example one set up by FreeMarkerConfigurationFactoryBean, via the "configuration" property. This allows to share a FreeMarker Configuration for web and email usage, for example. </p>
+<p>This configurer registers a template loader for this package, allowing to reference the "spring.ftl" macro library (contained in this package and thus in spring.jar) like this: </p>
+<pre><code> &lt;#import "/spring.ftl" as spring/&gt; &lt;@spring.bind "person.age"/&gt; age is ${spring.status.value}</code></pre> Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+<p><strong>Author</strong><br/>
+Darren Davison</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Since</strong><br/>
+03.03.2004</p>
+<p><strong>See Also</strong><br/>
+<a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-config-location.html">#setConfigLocation</a><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-freemarker-settings.html">#setFreemarkerSettings</a><a href="#">#setTemplateLoaderPath</a><a href="set-configuration.html">#setConfiguration</a>org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBeanFreeMarkerView</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">FreeMarkerConfigurer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JavaBean to configure FreeMarker for web usage, via the "configLocation" and/or "freemarkerSettings" and/or "templateLoaderPath" properties. The simplest way to use this class is to specify just a "templateLoaderPath"; you do not need any further configuration then. <pre><code> &lt;bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer"&gt; &lt;property name="templateLoaderPath"&gt;&lt;value&gt;/WEB-INF/freemarker/&lt;/value&gt;&lt;/property&gt; &lt;/bean&gt;</code></pre> This bean must be included in the application context of any application using Spring's FreeMarkerView for web MVC. It exists purely to configure FreeMarker. It is not meant to be referenced by application components but just internally by FreeMarkerView. Implements FreeMarkerConfig to be found by FreeMarkerView without depending on the bean name the configurer. Each DispatcherServlet can define its own FreeMarkerConfigurer if desired. 
+<p>Note that you can also refer to a preconfigured FreeMarker Configuration instance, for example one set up by FreeMarkerConfigurationFactoryBean, via the "configuration" property. This allows to share a FreeMarker Configuration for web and email usage, for example. </p>
+<p>This configurer registers a template loader for this package, allowing to reference the "spring.ftl" macro library (contained in this package and thus in spring.jar) like this: </p>
+<pre><code> &lt;#import "/spring.ftl" as spring/&gt; &lt;@spring.bind "person.age"/&gt; age is ${spring.status.value}</code></pre> Note: Spring's FreeMarker support requires FreeMarker 2.3 or higher.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize FreeMarkerConfigurationFactory's Configuration if not overridden by a preconfigured FreeMarker Configuation. 
+<p>Sets up a ClassTemplateLoader to use for loading Spring macros.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-configuration.html">getConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConfiguration</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code>
+<p>Return the Configuration object wrapped by this bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-taglib-factory.html">getTaglibFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTaglibFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaglibFactory</span></code>
+<p>Return the TaglibFactory object wrapped by this bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-configuration.html">setConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConfiguration</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer$setConfiguration(freemarker.template.Configuration)/configuration">configuration</span><span class="symbol">:</span>&nbsp;<span class="identifier">Configuration</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a preconfigured Configuration to use for the FreeMarker web config, e.g. a shared one for web and email usage, set up via FreeMarkerConfigurationFactoryBean. If this is not set, FreeMarkerConfigurationFactory's properties (inherited by this class) have to be specified.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-servlet-context.html">setServletContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setServletContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer$setServletContext(javax.servlet.ServletContext)/servletContext">servletContext</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServletContext</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Initialize the TaglibFactory for the given ServletContext.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/create-configuration.html">createConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createConfiguration</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Configuration</span></code>
+<p>Prepare the FreeMarker Configuration and return it.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-config-location.html">setConfigLocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConfigLocation</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setConfigLocation(org.springframework.core.io.Resource)/resource">resource</span><span class="symbol">:</span>&nbsp;<span class="identifier">Resource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the location of the FreeMarker config file. Alternatively, you can specify all setting locally.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-default-encoding.html">setDefaultEncoding</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setDefaultEncoding</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setDefaultEncoding(kotlin.String)/defaultEncoding">defaultEncoding</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default encoding for the FreeMarker configuration. If not specified, FreeMarker will use the platform file encoding. 
+<p>Used for template rendering unless there is an explicit encoding specified for the rendering process (for example, on Spring's FreeMarkerView).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-freemarker-settings.html">setFreemarkerSettings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFreemarkerSettings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setFreemarkerSettings(java.util.Properties)/settings">settings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set properties that contain well-known FreeMarker keys which will be passed to FreeMarker's <code>Configuration.setSettings</code> method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-freemarker-variables.html">setFreemarkerVariables</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFreemarkerVariables</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setFreemarkerVariables(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/variables">variables</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a Map that contains well-known FreeMarker objects which will be passed to FreeMarker's <code>Configuration.setAllSharedVariables()</code> method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-post-template-loaders.html">setPostTemplateLoaders</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPostTemplateLoaders</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setPostTemplateLoaders(kotlin.Array((freemarker.cache.TemplateLoader)))/postTemplateLoaders">postTemplateLoaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">TemplateLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a List of <code>TemplateLoader</code>s that will be used to search for templates. For example, one or more custom loaders such as database loaders can be configured. 
+<p>The TemplateLoader specified here will be registered <em>after</em> the default template loaders that this factory registers (such as loaders for specified "templateLoaderPaths" or any loaders registered in <code><a href="#">#postProcessTemplateLoaders</a></code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-pre-template-loaders.html">setPreTemplateLoaders</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPreTemplateLoaders</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setPreTemplateLoaders(kotlin.Array((freemarker.cache.TemplateLoader)))/preTemplateLoaders">preTemplateLoaders</span><span class="symbol">:</span>&nbsp;<span class="identifier">TemplateLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a List of <code>TemplateLoader</code>s that will be used to search for templates. For example, one or more custom loaders such as database loaders could be configured and injected here. 
+<p>The TemplateLoader specified here will be registered <em>before</em> the default template loaders that this factory registers (such as loaders for specified "templateLoaderPaths" or any loaders registered in <code><a href="#">#postProcessTemplateLoaders</a></code>).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-prefer-file-system-access.html">setPreferFileSystemAccess</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPreferFileSystemAccess</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setPreferFileSystemAccess(kotlin.Boolean)/preferFileSystemAccess">preferFileSystemAccess</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to prefer file system access for template loading. File system access enables hot detection of template changes. 
+<p>If this is enabled, FreeMarkerConfigurationFactory will try to resolve the specified "templateLoaderPath" as file system resource (which will work for expanded class path resources and ServletContext resources too). </p>
+<p>Default is "true". Turn this off to always load via SpringTemplateLoader (i.e. as stream, without hot detection of template changes), which might be necessary if some of your templates reside in an expanded classes directory while others reside in jar files.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-resource-loader.html">setResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setResourceLoader(org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Spring ResourceLoader to use for loading FreeMarker template files. The default is DefaultResourceLoader. Will get overridden by the ApplicationContext if running in a context.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-template-loader-path.html">setTemplateLoaderPath</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTemplateLoaderPath</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setTemplateLoaderPath(kotlin.String)/templateLoaderPath">templateLoaderPath</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Freemarker template loader path via a Spring resource location. See the "templateLoaderPaths" property for details on path handling.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.ui.freemarker/-free-marker-configuration-factory/set-template-loader-paths.html">setTemplateLoaderPaths</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTemplateLoaderPaths</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.ui.freemarker.FreeMarkerConfigurationFactory$setTemplateLoaderPaths(kotlin.Array((kotlin.String)))/templateLoaderPaths">templateLoaderPaths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set multiple Freemarker template loader paths via Spring resource locations. 
+<p>When populated via a String, standard URLs like "file:" and "classpath:" pseudo URLs are supported, as understood by ResourceEditor. Allows for relative paths when running in an ApplicationContext. </p>
+<p>Will define a path for the default FreeMarker template loader. If a specified resource cannot be resolved to a <code>java.io.File</code>, a generic SpringTemplateLoader will be used, without modification detection. </p>
+<p>To enforce the use of SpringTemplateLoader, i.e. to not resolve a path as file system resource in any case, turn off the "preferFileSystemAccess" flag. See the latter's javadoc for details. </p>
+<p>If you wish to specify your own list of TemplateLoaders, do not set this property and instead use <code>setTemplateLoaders(List templateLoaders)</code></p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

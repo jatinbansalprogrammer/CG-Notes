@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.jms.listener.adapter - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.jms.listener.adapter</a><br/>
+<br/>
+<h2>Package org.springframework.jms.listener.adapter</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-adaptable-message-listener/index.html">AbstractAdaptableMessageListener</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractAdaptableMessageListener</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MessageListener</span><span class="symbol">, </span><span class="identifier">SessionAwareMessageListener</span><span class="symbol">&lt;</span><span class="identifier">Message</span><span class="symbol">&gt;</span></code>
+<p>An abstract JMS MessageListener adapter providing the necessary infrastructure to extract the payload of a JMS Message.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jms-response/index.html">JmsResponse</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JmsResponse</span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>Return type of any JMS listener method used to indicate the actual response destination alongside the response itself. Typically used when said destination needs to be computed at runtime. 
+<p>The example below sends a response with the content of the <code>result</code> argument to the <code>queueOut Queue</code>: </p>
+<pre><code> package com.acme.foo; public class MyService { @JmsListener public JmsResponse process(String msg) { // process incoming message return JmsResponse.forQueue(result, "queueOut"); } }</code></pre> If the destination does not need to be computed at runtime, org.springframework.messaging.handler.annotation.SendTo is the recommended declarative approach.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-message-listener-adapter/index.html">MessageListenerAdapter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MessageListenerAdapter</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-adaptable-message-listener/index.html"><span class="identifier">AbstractAdaptableMessageListener</span></a><span class="symbol">, </span><span class="identifier">SubscriptionNameProvider</span></code>
+<p>Message listener adapter that delegates the handling of messages to target listener methods via reflection, with flexible message type conversion. Allows listener methods to operate on message content types, completely independent from the JMS API. 
+<p>By default, the content of incoming JMS messages gets extracted before being passed into the target listener method, to let the target method operate on message content types such as String or byte array instead of the raw Message. Message type conversion is delegated to a Spring JMS MessageConverter. By default, a SimpleMessageConverter will be used. (If you do not want such automatic message conversion taking place, then be sure to set the <code><a href="-abstract-adaptable-message-listener/set-message-converter.html">MessageConverter</a></code> to <code>null</code>.) </p>
+<p>If a target listener method returns a non-null object (typically of a message content type such as <code>String</code> or byte array), it will get wrapped in a JMS <code>Message</code> and sent to the response destination (either the JMS "reply-to" destination or a <code><a href="-abstract-adaptable-message-listener/set-default-response-destination.html">specified default</a></code>). </p>
+<p><strong>Note:</strong> The sending of response messages is only available when using the SessionAwareMessageListener entry point (typically through a Spring message listener container). Usage as standard JMS MessageListener does <em>not</em> support the generation of response messages. </p>
+<p>Find below some examples of method signatures compliant with this adapter class. This first example handles all <code>Message</code> types and gets passed the contents of each <code>Message</code> type as an argument. No <code>Message</code> will be sent back as all of these methods return <code>void</code>. </p>
+<pre><code>public interface MessageContentsDelegate { void handleMessage(String text); void handleMessage(Map map); void handleMessage(byte[] bytes); void handleMessage(Serializable obj); }</code></pre> This next example handles all <code>Message</code> types and gets passed the actual (raw) <code>Message</code> as an argument. Again, no <code>Message</code> will be sent back as all of these methods return <code>void</code>. <pre><code>public interface RawMessageDelegate { void handleMessage(TextMessage message); void handleMessage(MapMessage message); void handleMessage(BytesMessage message); void handleMessage(ObjectMessage message); }</code></pre> This next example illustrates a <code>Message</code> delegate that just consumes the <code>String</code> contents of javax.jms.TextMessage. Notice also how the name of the <code>Message</code> handling method is different from the <code><a href="-message-listener-adapter/-o-r-i-g-i-n-a-l_-d-e-f-a-u-l-t_-l-i-s-t-e-n-e-r_-m-e-t-h-o-d.html">original</a></code> (this will have to be configured in the attandant bean definition). Again, no <code>Message</code> will be sent back as the method returns <code>void</code>. <pre><code>public interface TextMessageContentDelegate { void onMessage(String text); }</code></pre> This final example illustrates a <code>Message</code> delegate that just consumes the <code>String</code> contents of javax.jms.TextMessage. Notice how the return type of this method is <code>String</code>: This will result in the configured MessageListenerAdapter sending a javax.jms.TextMessage in response. <pre><code>public interface ResponsiveTextMessageContentDelegate { String handleMessage(String text); }</code></pre> For further examples and discussion please do refer to the Spring reference documentation which describes this class (and it's attendant XML configuration) in detail.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Exceptions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-listener-execution-failed-exception/index.html">ListenerExecutionFailedException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ListenerExecutionFailedException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmsException</span></code>
+<p>Exception to be thrown when the execution of a listener method failed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reply-failure-exception/index.html">ReplyFailureException</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReplyFailureException</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">JmsException</span></code>
+<p>Exception to be thrown when the reply of a message failed to be sent.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

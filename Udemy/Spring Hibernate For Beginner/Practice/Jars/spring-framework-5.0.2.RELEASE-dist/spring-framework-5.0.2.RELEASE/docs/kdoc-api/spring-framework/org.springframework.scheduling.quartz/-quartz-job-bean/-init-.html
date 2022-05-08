@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>QuartzJobBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href="index.html">QuartzJobBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.scheduling.quartz.QuartzJobBean$&lt;init&gt;()"></a>
+<code><span class="identifier">QuartzJobBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple implementation of the Quartz Job interface, applying the passed-in JobDataMap and also the SchedulerContext as bean property values. This is appropriate because a new Job instance will be created for each execution. JobDataMap entries will override SchedulerContext entries with the same keys. 
+<p>For example, let's assume that the JobDataMap contains a key "myParam" with value "5": The Job implementation can then expose a bean property "myParam" of type int to receive such a value, i.e. a method "setMyParam(int)". This will also work for complex types like business objects etc. </p>
+<p><strong>Note that the preferred way to apply dependency injection to Job instances is via a JobFactory:</strong> that is, to specify SpringBeanJobFactory as Quartz JobFactory (typically via <code><a href="#">SchedulerFactoryBean#setJobFactory</a></code> SchedulerFactoryBean's "jobFactory" property}). This allows to implement dependency-injected Quartz Jobs without a dependency on Spring base classes.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+18.02.2004</p>
+<p><strong>See Also</strong><br/>
+<a href="#">org.quartz.JobExecutionContext#getMergedJobDataMap()</a><a href="#">org.quartz.Scheduler#getContext()</a><a href="#">SchedulerFactoryBean#setSchedulerContextAsMap</a>SpringBeanJobFactory<a href="#">SchedulerFactoryBean#setJobFactory</a></p>
+</BODY>
+</HTML>

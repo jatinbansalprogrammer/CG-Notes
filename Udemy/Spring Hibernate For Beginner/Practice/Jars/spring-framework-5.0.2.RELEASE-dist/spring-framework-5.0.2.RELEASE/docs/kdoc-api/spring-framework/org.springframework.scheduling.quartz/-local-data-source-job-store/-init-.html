@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LocalDataSourceJobStore.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.scheduling.quartz</a>&nbsp;/&nbsp;<a href="index.html">LocalDataSourceJobStore</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.scheduling.quartz.LocalDataSourceJobStore$&lt;init&gt;()"></a>
+<code><span class="identifier">LocalDataSourceJobStore</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Subclass of Quartz's JobStoreCMT class that delegates to a Spring-managed DataSource instead of using a Quartz-managed connection pool. This JobStore will be used if SchedulerFactoryBean's "dataSource" property is set. 
+<p>Supports both transactional and non-transactional DataSource access. With a non-XA DataSource and local Spring transactions, a single DataSource argument is sufficient. In case of an XA DataSource and global JTA transactions, SchedulerFactoryBean's "nonTransactionalDataSource" property should be set, passing in a non-XA DataSource that will not participate in global transactions. </p>
+<p>Operations performed by this JobStore will properly participate in any kind of Spring-managed transaction, as it uses Spring's DataSourceUtils connection handling methods that are aware of a current transaction. </p>
+<p>Note that all Quartz Scheduler operations that affect the persistent job store should usually be performed within active transactions, as they assume to get proper locks etc.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1</p>
+<p><strong>See Also</strong><br/>
+<a href="#">SchedulerFactoryBean#setDataSource</a><a href="#">SchedulerFactoryBean#setNonTransactionalDataSource</a><a href="#">org.springframework.jdbc.datasource.DataSourceUtils#doGetConnection</a><a href="#">org.springframework.jdbc.datasource.DataSourceUtils#releaseConnection</a></p>
+</BODY>
+</HTML>

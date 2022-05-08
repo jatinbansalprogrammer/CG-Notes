@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SystemEnvironmentPropertySource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core.env</a>&nbsp;/&nbsp;<a href=".">SystemEnvironmentPropertySource</a><br/>
+<br/>
+<h1>SystemEnvironmentPropertySource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SystemEnvironmentPropertySource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MapPropertySource</span></code>
+<p>Specialization of MapPropertySource designed for use with <a href="#">system environment variables</a>. Compensates for constraints in Bash and other shells that do not allow for variables containing the period character and/or hyphen character; also allows for uppercase variations on property names for more idiomatic shell use. 
+<p>For example, a call to <code>getProperty("foo.bar")</code> will attempt to find a value for the original property or any 'equivalent' property, returning the first found: </p>
+<ul> <li><code>foo.bar</code> - the original name</li>
+ <li><code>foo_bar</code> - with underscores for periods (if any)</li>
+ <li><code>FOO.BAR</code> - original, with upper case</li>
+ <li><code>FOO_BAR</code> - with underscores and upper case</li>
+ </ul>
+ Any hyphen variant of the above would work as well, or even mix dot/hyphen variants. 
+<p>The same applies for calls to <code><a href="#">#containsProperty(String)</a></code>, which returns <code>true</code> if any of the above properties are present, otherwise <code>false</code>. </p>
+<p>This feature is particularly useful when specifying active or default profiles as environment variables. The following is not allowable under Bash: </p>
+<pre><code>spring.profiles.active=p1 java -classpath ... MyApp</code></pre> However, the following syntax is permitted and is also more conventional: <pre><code>SPRING_PROFILES_ACTIVE=p1 java -classpath ... MyApp</code></pre> 
+<p>Enable debug- or trace-level logging for this class (or package) for messages explaining when these 'property name resolutions' occur. </p>
+<p>This property source is included by default in StandardEnvironment and all its subclasses.</p>
+</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<p><strong>See Also</strong><br/>
+StandardEnvironment<a href="#">AbstractEnvironment#getSystemEnvironment()</a><a href="#">AbstractEnvironment#ACTIVE_PROFILES_PROPERTY_NAME</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SystemEnvironmentPropertySource</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env.SystemEnvironmentPropertySource$<init>(kotlin.String, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.core.env.SystemEnvironmentPropertySource$<init>(kotlin.String, kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/source">source</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new <code>SystemEnvironmentPropertySource</code> with the given name and delegating to the given <code>MapPropertySource</code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="contains-property.html">containsProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">containsProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env.SystemEnvironmentPropertySource$containsProperty(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return <code>true</code> if a property with the given name or any underscore/uppercase variant thereof exists in this property source.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property.html">getProperty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getProperty</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.env.SystemEnvironmentPropertySource$getProperty(kotlin.String)/name">name</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>This implementation returns <code>true</code> if a property with the given name or any underscore/uppercase variant thereof exists in this property source.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.instrument.classloading - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.instrument.classloading</a><br/>
+<br/>
+<h2>Package org.springframework.instrument.classloading</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-instrumentation-load-time-weaver/index.html">InstrumentationLoadTimeWeaver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">InstrumentationLoadTimeWeaver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LoadTimeWeaver</span></code>
+<p>LoadTimeWeaver relying on VM Instrumentation. 
+<p>Start the JVM specifying the Java agent to be used, like as follows: </p>
+<p><code>-javaagent:path/to/org.springframework.instrument.jar</code> </p>
+<p>where <code>org.springframework.instrument.jar</code> is a JAR file containing the InstrumentationSavingAgent class, as shipped with Spring. </p>
+<p>In Eclipse, for example, set the "Run configuration"'s JVM args to be of the form: </p>
+<p><code>-javaagent:${project_loc}/lib/org.springframework.instrument.jar</code></p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reflective-load-time-weaver/index.html">ReflectiveLoadTimeWeaver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectiveLoadTimeWeaver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LoadTimeWeaver</span></code>
+<p>LoadTimeWeaver which uses reflection to delegate to an underlying ClassLoader with well-known transformation hooks. The underlying ClassLoader is expected to support the following weaving methods (as defined in the LoadTimeWeaver interface): <ul> <li><code>public void addTransformer(java.lang.instrument.ClassFileTransformer)</code>: for registering the given ClassFileTransformer on this ClassLoader </li>
+<li><code>public ClassLoader getThrowawayClassLoader()</code>: for obtaining a throwaway class loader for this ClassLoader (optional; ReflectiveLoadTimeWeaver will fall back to a SimpleThrowawayClassLoader if that method isn't available) </li>
+</ul>
+ 
+<p>Please note that the above methods <em>must</em> reside in a class that is publicly accessible, although the class itself does not have to be visible to the application's class loader. </p>
+<p>The reflective nature of this LoadTimeWeaver is particularly useful when the underlying ClassLoader implementation is loaded in a different class loader itself (such as the application server's class loader which is not visible to the web application). There is no direct API dependency between this LoadTimeWeaver adapter and the underlying ClassLoader, just a 'loose' method contract. </p>
+<p>This is the LoadTimeWeaver to use e.g. with the Resin application server version 3.1+.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-resource-overriding-shadowing-class-loader/index.html">ResourceOverridingShadowingClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ResourceOverridingShadowingClassLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-shadowing-class-loader/index.html"><span class="identifier">ShadowingClassLoader</span></a></code>
+<p>Subclass of ShadowingClassLoader that overrides attempts to locate certain files.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-shadowing-class-loader/index.html">ShadowingClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ShadowingClassLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">DecoratingClassLoader</span></code>
+<p>ClassLoader decorator that shadows an enclosing ClassLoader, applying registered transformers to all affected classes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-simple-load-time-weaver/index.html">SimpleLoadTimeWeaver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleLoadTimeWeaver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">LoadTimeWeaver</span></code>
+<p><code>LoadTimeWeaver</code> that builds and exposes a SimpleInstrumentableClassLoader. 
+<p>Mainly intended for testing environments, where it is sufficient to perform all class transformation on a newly created <code>ClassLoader</code> instance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-weaving-transformer/index.html">WeavingTransformer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WeavingTransformer</span></code>
+<p>ClassFileTransformer-based weaver, allowing for a list of transformers to be applied on a class byte array. Normally used inside class loaders. 
+<p>Note: This class is deliberately implemented for minimal external dependencies, since it is included in weaver jars (to be deployed into application servers).</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

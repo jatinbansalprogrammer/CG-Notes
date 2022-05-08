@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>PropertyPathFactoryBean.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href="index.html">PropertyPathFactoryBean</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.beans.factory.config.PropertyPathFactoryBean$&lt;init&gt;()"></a>
+<code><span class="identifier">PropertyPathFactoryBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>FactoryBean that evaluates a property path on a given target object. 
+<p>The target object can be specified directly or via a bean name. </p>
+<p>Usage examples: </p>
+<pre><code>&lt;!-- target bean to be referenced by name --&gt; &lt;bean id="tb" class="org.springframework.beans.TestBean" singleton="false"&gt; &lt;property name="age" value="10"/&gt; &lt;property name="spouse"&gt; &lt;bean class="org.springframework.beans.TestBean"&gt; &lt;property name="age" value="11"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;/bean&gt; &lt;!-- will result in 12, which is the value of property 'age' of the inner bean --&gt; &lt;bean id="propertyPath1" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"&gt; &lt;property name="targetObject"&gt; &lt;bean class="org.springframework.beans.TestBean"&gt; &lt;property name="age" value="12"/&gt; &lt;/bean&gt; &lt;/property&gt; &lt;property name="propertyPath" value="age"/&gt; &lt;/bean&gt; &lt;!-- will result in 11, which is the value of property 'spouse.age' of bean 'tb' --&gt; &lt;bean id="propertyPath2" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"&gt; &lt;property name="targetBeanName" value="tb"/&gt; &lt;property name="propertyPath" value="spouse.age"/&gt; &lt;/bean&gt; &lt;!-- will result in 10, which is the value of property 'age' of bean 'tb' --&gt; &lt;bean id="tb.age" class="org.springframework.beans.factory.config.PropertyPathFactoryBean"/&gt;</code></pre> 
+<p>If you are using Spring 2.0 and XML Schema support in your configuration file(s), you can also use the following style of configuration for property path access. (See also the appendix entitled 'XML Schema-based configuration' in the Spring reference manual for more examples.) </p>
+<pre><code> &lt;!-- will result in 10, which is the value of property 'age' of bean 'tb' --&gt; &lt;util:property-path id="name" path="testBean.age"/&gt;</code></pre> Thanks to Matthias Ernst for the suggestion and initial prototype!</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setTargetObject</a><a href="#">#setTargetBeanName</a><a href="#">#setPropertyPath</a></p>
+</BODY>
+</HTML>

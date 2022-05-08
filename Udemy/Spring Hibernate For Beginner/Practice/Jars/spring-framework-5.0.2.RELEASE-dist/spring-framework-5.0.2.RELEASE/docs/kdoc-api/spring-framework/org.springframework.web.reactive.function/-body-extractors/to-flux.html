@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>BodyExtractors.toFlux - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.function</a>&nbsp;/&nbsp;<a href="index.html">BodyExtractors</a>&nbsp;/&nbsp;<a href=".">toFlux</a><br/>
+<br/>
+<h1>toFlux</h1>
+<a name="org.springframework.web.reactive.function.BodyExtractors$toFlux(java.lang.Class((org.springframework.web.reactive.function.BodyExtractors.toFlux.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFlux</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.BodyExtractors$toFlux(java.lang.Class((org.springframework.web.reactive.function.BodyExtractors.toFlux.T)))/elementClass">elementClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BodyExtractor</span><span class="symbol">&lt;</span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html"><span class="identifier">Flux</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">ReactiveHttpInputMessage</span><span class="symbol">&gt;</span></code>
+<p>Return a <code>BodyExtractor</code> that reads into a Reactor Flux.</p>
+<h3>Parameters</h3>
+<p><a name="elementClass"></a>
+<code>elementClass</code> - the class of element in the <code>Flux</code></p>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the element type</p>
+<p><strong>Return</strong><br/>
+a <code>BodyExtractor</code> that reads a flux</p>
+<a name="org.springframework.web.reactive.function.BodyExtractors$toFlux(org.springframework.core.ParameterizedTypeReference((org.springframework.web.reactive.function.BodyExtractors.toFlux.T)))"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">toFlux</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.BodyExtractors$toFlux(org.springframework.core.ParameterizedTypeReference((org.springframework.web.reactive.function.BodyExtractors.toFlux.T)))/typeReference">typeReference</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterizedTypeReference</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BodyExtractor</span><span class="symbol">&lt;</span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html"><span class="identifier">Flux</span></a><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">,</span>&nbsp;<span class="identifier">ReactiveHttpInputMessage</span><span class="symbol">&gt;</span></code>
+<p>Return a <code>BodyExtractor</code> that reads into a Reactor Flux. The given ParameterizedTypeReference is used to pass generic type information, for instance when using the org.springframework.web.reactive.function.client.WebClient <pre><code> Flux&lt;ServerSentEvent&lt;String&gt;&gt; body = this.webClient .get() .uri("http://example.com") .exchange() .flatMap(r -&gt; r.body(toFlux(new ParameterizedTypeReference&lt;ServerSentEvent&lt;String&gt;&gt;() {}))); </code></pre></p>
+<h3>Parameters</h3>
+<p><a name="typeReference"></a>
+<code>typeReference</code> - a reference to the type of element in the <code>Flux</code></p>
+<p><a name="&lt;T&gt;"></a>
+<code><T></code> - the element type</p>
+<p><strong>Return</strong><br/>
+a <code>BodyExtractor</code> that reads a flux</p>
+</BODY>
+</HTML>

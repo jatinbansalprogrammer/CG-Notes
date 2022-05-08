@@ -1,0 +1,413 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.context.annotation - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.context.annotation</a><br/>
+<br/>
+<h2>Package org.springframework.context.annotation</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-advice-mode-import-selector/index.html">AdviceModeImportSelector</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AdviceModeImportSelector</span><span class="symbol">&lt;</span><span class="identifier">A</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-annotation/index.html"><span class="identifier">Annotation</span></a><span class="symbol">&gt;</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ImportSelector</span></code>
+<p>Convenient base class for ImportSelector implementations that select imports based on an AdviceMode value from an annotation (such as the <code>@Enable*</code> annotations).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotated-bean-definition-reader/index.html">AnnotatedBeanDefinitionReader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotatedBeanDefinitionReader</span></code>
+<p>Convenient adapter for programmatic registration of annotated bean classes. This is an alternative to ClassPathBeanDefinitionScanner, applying the same resolution of annotations but for explicitly registered classes only.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-bean-name-generator/index.html">AnnotationBeanNameGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationBeanNameGenerator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanNameGenerator</span></code>
+<p>org.springframework.beans.factory.support.BeanNameGenerator implementation for bean classes annotated with the org.springframework.stereotype.Component annotation or with another annotation that is itself annotated with org.springframework.stereotype.Component as a meta-annotation. For example, Spring's stereotype annotations (such as org.springframework.stereotype.Repository) are themselves annotated with org.springframework.stereotype.Component. 
+<p>Also supports Java EE 6's javax.annotation.ManagedBean and JSR-330's javax.inject.Named annotations, if available. Note that Spring component annotations always override such standard annotations. </p>
+<p>If the annotation's value doesn't indicate a bean name, an appropriate name will be built based on the short name of the class (with the first letter lower-cased). For example: </p>
+<pre><code>com.xyz.FooServiceImpl -&gt; fooServiceImpl</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-config-bean-definition-parser/index.html">AnnotationConfigBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationConfigBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionParser</span></code>
+<p>Parser for the &lt;context:annotation-config/&gt; element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-annotation-scope-metadata-resolver/index.html">AnnotationScopeMetadataResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationScopeMetadataResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ScopeMetadataResolver</span></code>
+<p>A ScopeMetadataResolver implementation that by default checks for the presence of Spring's Scope annotation on the bean class. 
+<p>The exact type of annotation that is checked for is configurable via <code><a href="#">#setScopeAnnotationType(Class)</a></code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-auto-proxy-registrar/index.html">AutoProxyRegistrar</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AutoProxyRegistrar</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ImportBeanDefinitionRegistrar</span></code>
+<p>Registers an auto proxy creator against the current BeanDefinitionRegistry as appropriate based on an <code>@Enable*</code> annotation having <code>mode</code> and <code>proxyTargetClass</code> attributes set to the correct values.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-class-path-bean-definition-scanner/index.html">ClassPathBeanDefinitionScanner</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ClassPathBeanDefinitionScanner</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ClassPathScanningCandidateComponentProvider</span></code>
+<p>A bean definition scanner that detects bean candidates on the classpath, registering corresponding bean definitions with a given registry (<code>BeanFactory</code> or <code>ApplicationContext</code>). 
+<p>Candidate classes are detected through configurable type filters. The default filters include classes that are annotated with Spring's org.springframework.stereotype.Component, org.springframework.stereotype.Repository, org.springframework.stereotype.Service, or org.springframework.stereotype.Controller stereotype. </p>
+<p>Also supports Java EE 6's javax.annotation.ManagedBean and JSR-330's javax.inject.Named annotations, if available.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-common-annotation-bean-post-processor/index.html">CommonAnnotationBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CommonAnnotationBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.annotation/-init-destroy-annotation-bean-post-processor/index.html"><span class="identifier">InitDestroyAnnotationBeanPostProcessor</span></a><span class="symbol">, </span><span class="identifier">InstantiationAwareBeanPostProcessor</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>org.springframework.beans.factory.config.BeanPostProcessor implementation that supports common Java annotations out of the box, in particular the JSR-250 annotations in the <code>javax.annotation</code> package. These common Java annotations are supported in many Java EE 5 technologies (e.g. JSF 1.2), as well as in Java 6's JAX-WS. 
+<p>This post-processor includes support for the javax.annotation.PostConstruct and javax.annotation.PreDestroy annotations - as init annotation and destroy annotation, respectively - through inheriting from InitDestroyAnnotationBeanPostProcessor with pre-configured annotation types. </p>
+<p>The central element is the javax.annotation.Resource annotation for annotation-driven injection of named beans, by default from the containing Spring BeanFactory, with only <code>mappedName</code> references resolved in JNDI. The <code><a href="-common-annotation-bean-post-processor/set-always-use-jndi-lookup.html">"alwaysUseJndiLookup" flag</a></code> enforces JNDI lookups equivalent to standard Java EE 5 resource injection for <code>name</code> references and default names as well. The target beans can be simple POJOs, with no special requirements other than the type having to match. </p>
+<p>The JAX-WS javax.xml.ws.WebServiceRef annotation is supported too, analogous to javax.annotation.Resource but with the capability of creating specific JAX-WS service endpoints. This may either point to an explicitly defined resource by name or operate on a locally specified JAX-WS service class. Finally, this post-processor also supports the EJB 3 javax.ejb.EJB annotation, analogous to javax.annotation.Resource as well, with the capability to specify both a local bean name and a global JNDI name for fallback retrieval. The target beans can be plain POJOs as well as EJB 3 Session Beans in this case. </p>
+<p>The common annotations supported by this post-processor are available in Java 6 (JDK 1.6) as well as in Java EE 5/6 (which provides a standalone jar for its common annotations as well, allowing for use in any Java 5 based application). </p>
+<p>For default usage, resolving resource names as Spring bean names, simply define the following in your application context: </p>
+<pre><code> &lt;bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"/&gt;</code></pre> For direct JNDI access, resolving resource names as JNDI resource references within the Java EE application's "java:comp/env/" namespace, use the following: <pre><code> &lt;bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor"&gt; &lt;property name="alwaysUseJndiLookup" value="true"/&gt; &lt;/bean&gt;</code></pre> <code>mappedName</code> references will always be resolved in JNDI, allowing for global JNDI names (including "java:" prefix) as well. The "alwaysUseJndiLookup" flag just affects <code>name</code> references and default names (inferred from the field name / property name). 
+<p><strong>NOTE:</strong> A default CommonAnnotationBeanPostProcessor will be registered by the "context:annotation-config" and "context:component-scan" XML tags. Remove or turn off the default annotation configuration there if you intend to specify a custom CommonAnnotationBeanPostProcessor bean definition! </p>
+<p><strong>NOTE:</strong> Annotation injection will be performed <em>before</em> XML injection; thus the latter configuration will override the former for properties wired through both approaches.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-component-scan-bean-definition-parser/index.html">ComponentScanBeanDefinitionParser</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ComponentScanBeanDefinitionParser</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinitionParser</span></code>
+<p>Parser for the <code>&lt;context:component-scan/&gt;</code> element.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-configuration-class-post-processor/index.html">ConfigurationClassPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConfigurationClassPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.support/-bean-definition-registry-post-processor/index.html"><span class="identifier">BeanDefinitionRegistryPostProcessor</span></a><span class="symbol">, </span><span class="identifier">PriorityOrdered</span><span class="symbol">, </span><span class="identifier">ResourceLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">EnvironmentAware</span></code>
+<p>BeanFactoryPostProcessor used for bootstrapping processing of Configuration classes. 
+<p>Registered by default when using <code>&lt;context:annotation-config/&gt;</code> or <code>&lt;context:component-scan/&gt;</code>. Otherwise, may be declared manually as with any other BeanFactoryPostProcessor. </p>
+<p>This post processor is <code><a href="#">Ordered#HIGHEST_PRECEDENCE</a></code> as it is important that any Bean methods declared in Configuration classes have their respective bean definitions registered before any other BeanFactoryPostProcessor executes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-configuration-condition/index.html">ConfigurationCondition</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ConfigurationCondition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Condition</span></code>
+<p>A Condition that offers more fine-grained control when used with <code>@Configuration</code>. Allows certain Conditions to adapt when they match based on the configuration phase. For example, a condition that checks if a bean has already been registered might choose to only be evaluated during the <code><a href="#">REGISTER_BEAN</a></code> ConfigurationPhase.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-context-annotation-autowire-candidate-resolver/index.html">ContextAnnotationAutowireCandidateResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ContextAnnotationAutowireCandidateResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.annotation/-qualifier-annotation-autowire-candidate-resolver/index.html"><span class="identifier">QualifierAnnotationAutowireCandidateResolver</span></a></code>
+<p>Complete implementation of the org.springframework.beans.factory.support.AutowireCandidateResolver strategy interface, providing support for qualifier annotations as well as for lazy resolution driven by the Lazy annotation in the <code>context.annotation</code> package.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-deferred-import-selector.html">DeferredImportSelector</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">DeferredImportSelector</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ImportSelector</span></code>
+<p>A variation of ImportSelector that runs after all <code>@Configuration</code> beans have been processed. This type of selector can be particularly useful when the selected imports are <code>@Conditional</code>. 
+<p>Implementations can also extend the org.springframework.core.Ordered interface or use the org.springframework.core.annotation.Order annotation to indicate a precedence against other DeferredImportSelectors.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-filter-type/index.html">FilterType</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">FilterType</span></code>
+<p>Enumeration of the type filters that may be used in conjunction with ComponentScan.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-jsr330-scope-metadata-resolver/index.html">Jsr330ScopeMetadataResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">Jsr330ScopeMetadataResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ScopeMetadataResolver</span></code>
+<p>Simple ScopeMetadataResolver implementation that follows JSR-330 scoping rules: defaulting to prototype scope unless javax.inject.Singleton is present. 
+<p>This scope resolver can be used with ClassPathBeanDefinitionScanner and AnnotatedBeanDefinitionReader for standard JSR-330 compliance. However, in practice, you will typically use Spring's rich default scoping instead - or extend this resolver with custom scoping annotations that point to extended Spring scopes.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-load-time-weaving-configurer/index.html">LoadTimeWeavingConfigurer</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">LoadTimeWeavingConfigurer</span></code>
+<p>Interface to be implemented by org.springframework.context.annotation.Configuration classes annotated with EnableLoadTimeWeaving that wish to customize the LoadTimeWeaver instance to be used. 
+<p>See org.springframework.scheduling.annotation.EnableAsync for usage examples and information on how a default <code>LoadTimeWeaver</code> is selected when this interface is not used.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-m-bean-export-configuration/index.html">MBeanExportConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MBeanExportConfiguration</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ImportAware</span><span class="symbol">, </span><span class="identifier">EnvironmentAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p><code>@Configuration</code> class that registers a AnnotationMBeanExporter bean. 
+<p>This configuration class is automatically imported when using the EnableMBeanExport annotation. See its javadoc for complete usage details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scanned-generic-bean-definition/index.html">ScannedGenericBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScannedGenericBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.beans.factory.support/-generic-bean-definition/index.html"><span class="identifier">GenericBeanDefinition</span></a><span class="symbol">, </span><a href="../org.springframework.beans.factory.annotation/-annotated-bean-definition/index.html"><span class="identifier">AnnotatedBeanDefinition</span></a></code>
+<p>Extension of the org.springframework.beans.factory.support.GenericBeanDefinition class, based on an ASM ClassReader, with support for annotation metadata exposed through the AnnotatedBeanDefinition interface. 
+<p>This class does <em>not</em> load the bean <code>Class</code> early. It rather retrieves all relevant metadata from the ".class" file itself, parsed with the ASM ClassReader. It is functionally equivalent to <code><a href="#">AnnotatedGenericBeanDefinition#AnnotatedGenericBeanDefinition(AnnotationMetadata)</a></code> but distinguishes by type beans that have been <em>scanned</em> vs those that have been otherwise registered or detected by other means.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-component-scans/index.html">ComponentScans</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ComponentScans</span></code>
+<p>Container annotation that aggregates several ComponentScan annotations. 
+<p>Can be used natively, declaring several nested ComponentScan annotations. Can also be used in conjunction with Java 8's support for repeatable annotations, where ComponentScan can simply be declared several times on the same method, implicitly generating this container annotation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-conditional/index.html">Conditional</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Conditional</span></code>
+<p>Indicates that a component is only eligible for registration when all <a href="#">specified conditions</a> match. 
+<p>A <em>condition</em> is any state that can be determined programmatically before the bean definition is due to be registered (see Condition for details). </p>
+<p>The <code>@Conditional</code> annotation may be used in any of the following ways: </p>
+<ul> <li>as a type-level annotation on any class directly or indirectly annotated with <code>@Component</code>, including Configuration classes</li>
+ <li>as a meta-annotation, for the purpose of composing custom stereotype annotations</li>
+ <li>as a method-level annotation on any Bean method</li>
+ </ul>
+ 
+<p>If a <code>@Configuration</code> class is marked with <code>@Conditional</code>, all of the <code>@Bean</code> methods, Import annotations, and ComponentScan annotations associated with that class will be subject to the conditions. </p>
+<p><strong>NOTE</strong>: Inheritance of <code>@Conditional</code> annotations is not supported; any conditions from superclasses or from overridden methods will not be considered. In order to enforce these semantics, <code>@Conditional</code> itself is not declared as java.lang.annotation.Inherited; furthermore, any custom <em>composed annotation</em> that is meta-annotated with <code>@Conditional</code> must not be declared as <code>@Inherited</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-depends-on/index.html">DependsOn</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">DependsOn</span></code>
+<p>Beans on which the current bean depends. Any beans specified are guaranteed to be created by the container before this bean. Used infrequently in cases where a bean does not explicitly depend on another through properties or constructor arguments, but rather depends on the side effects of another bean's initialization. 
+<p>May be used on any class directly or indirectly annotated with org.springframework.stereotype.Component or on methods annotated with Bean. </p>
+<p>Using DependsOn at the class level has no effect unless component-scanning is being used. If a DependsOn-annotated class is declared via XML, DependsOn annotation metadata is ignored, and <code>&lt;bean depends-on="..."/&gt;</code> is respected instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-description/index.html">Description</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Description</span></code>
+<p>Adds a textual description to bean definitions derived from org.springframework.stereotype.Component or Bean.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-enable-aspect-j-auto-proxy/index.html">EnableAspectJAutoProxy</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableAspectJAutoProxy</span></code>
+<p>Enables support for handling components marked with AspectJ's <code>@Aspect</code> annotation, similar to functionality found in Spring's <code>&lt;aop:aspectj-autoproxy&gt;</code> XML element. To be used on @Configuration classes as follows: <pre><code> @Configuration @EnableAspectJAutoProxy public class AppConfig { @Bean public FooService fooService() { return new FooService(); } @Bean public MyAspect myAspect() { return new MyAspect(); } }</code></pre> Where <code>FooService</code> is a typical POJO component and <code>MyAspect</code> is an <code>@Aspect</code>-style aspect: <pre><code> public class FooService { // various methods }</code></pre> <pre><code> @Aspect public class MyAspect { @Before("execution(* FooService+.*(..))") public void advice() { // advise FooService methods as appropriate } }</code></pre> In the scenario above, <code>@EnableAspectJAutoProxy</code> ensures that <code>MyAspect</code> will be properly processed and that <code>FooService</code> will be proxied mixing in the advice that it contributes. 
+<p>Users can control the type of proxy that gets created for <code>FooService</code> using the <code><a href="#">#proxyTargetClass()</a></code> attribute. The following enables CGLIB-style 'subclass' proxies as opposed to the default interface-based JDK proxy approach. </p>
+<pre><code> @Configuration @EnableAspectJAutoProxy(proxyTargetClass=true) public class AppConfig { // ... }</code></pre> 
+<p>Note that <code>@Aspect</code> beans may be component-scanned like any other. Simply mark the aspect with both <code>@Aspect</code> and <code>@Component</code>: </p>
+<pre><code> package com.foo; @Component public class FooService { ... } @Aspect @Component public class MyAspect { ... }</code></pre> Then use the @ComponentScan annotation to pick both up: <pre><code> @Configuration @ComponentScan("com.foo") @EnableAspectJAutoProxy public class AppConfig { // no explicit @Bean definitions required }</code></pre></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-enable-load-time-weaving/index.html">EnableLoadTimeWeaving</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableLoadTimeWeaving</span></code>
+<p>Activates a Spring LoadTimeWeaver for this application context, available as a bean with the name "loadTimeWeaver", similar to the <code>&lt;context:load-time-weaver&gt;</code> element in Spring XML. 
+<p>To be used on @org.springframework.context.annotation.Configuration classes; the simplest possible example of which follows: </p>
+<pre><code> @Configuration @EnableLoadTimeWeaving public class AppConfig { // application-specific @Bean definitions ... }</code></pre> The example above is equivalent to the following Spring XML configuration: <pre><code><code>&lt;beans&gt; &lt;context:load-time-weaver/&gt; &lt;!-- application-specific &lt;bean&gt; definitions --&gt; &lt;/beans&gt; </code></code></pre> The <code>LoadTimeWeaverAware</code> interface Any bean that implements the interface will then receive the <code>LoadTimeWeaver</code> reference automatically; for example, Spring's JPA bootstrap support. Customizing the <code>LoadTimeWeaver</code> The default weaver is determined automatically: see DefaultContextLoadTimeWeaver. 
+<p>To customize the weaver used, the <code>@Configuration</code> class annotated with <code>@EnableLoadTimeWeaving</code> may also implement the LoadTimeWeavingConfigurer interface and return a custom <code>LoadTimeWeaver</code> instance through the <code>#getLoadTimeWeaver</code> method: </p>
+<pre><code> @Configuration @EnableLoadTimeWeaving public class AppConfig implements LoadTimeWeavingConfigurer { @Override public LoadTimeWeaver getLoadTimeWeaver() { MyLoadTimeWeaver ltw = new MyLoadTimeWeaver(); ltw.addClassTransformer(myClassFileTransformer); // ... return ltw; } }</code></pre> 
+<p>The example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;context:load-time-weaver weaverClass="com.acme.MyLoadTimeWeaver"/&gt; &lt;/beans&gt; </code></code></pre> 
+<p>The code example differs from the XML example in that it actually instantiates the <code>MyLoadTimeWeaver</code> type, meaning that it can also configure the instance, e.g. calling the <code>#addClassTransformer</code> method. This demonstrates how the code-based configuration approach is more flexible through direct programmatic access. </p>
+Enabling AspectJ-based weaving AspectJ load-time weaving may be enabled with the <code><a href="#">#aspectjWeaving()</a></code> attribute, which will cause the to be registered through <code><a href="#">LoadTimeWeaver#addTransformer</a></code>. AspectJ weaving will be activated by default if a "META-INF/aop.xml" resource is present on the classpath. Example: <pre><code> @Configuration @EnableLoadTimeWeaving(aspectjWeaving=ENABLED) public class AppConfig { }</code></pre> 
+<p>The example above can be compared to the following Spring XML configuration: </p>
+<pre><code><code>&lt;beans&gt; &lt;context:load-time-weaver aspectj-weaving="on"/&gt; &lt;/beans&gt; </code></code></pre> 
+<p>The two examples are equivalent with one significant exception: in the XML case, the functionality of <code>&lt;context:spring-configured&gt;</code> is implicitly enabled when <code>aspectj-weaving</code> is "on". This does not occur when using <code>@EnableLoadTimeWeaving(aspectjWeaving=ENABLED)</code>. Instead you must explicitly add <code>@EnableSpringConfigured</code> (included in the <code>spring-aspects</code> module)</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-enable-m-bean-export/index.html">EnableMBeanExport</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">EnableMBeanExport</span></code>
+<p>Enables default exporting of all standard <code>MBean</code>s from the Spring context, as well as well all <code>@ManagedResource</code> annotated beans. 
+<p>The resulting org.springframework.jmx.export.MBeanExporter bean is defined under the name "mbeanExporter". Alternatively, consider defining a custom AnnotationMBeanExporter bean explicitly. </p>
+<p>This annotation is modeled after and functionally equivalent to Spring XML's <code>&lt;context:mbean-export/&gt;</code> element.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-import-resource/index.html">ImportResource</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ImportResource</span></code>
+<p>Indicates one or more resources containing bean definitions to import. 
+<p>Like Import, this annotation provides functionality similar to the <code>&lt;import/&gt;</code> element in Spring XML. It is typically used when designing Configuration classes to be bootstrapped by an AnnotationConfigApplicationContext, but where some XML functionality such as namespaces is still necessary. </p>
+<p>By default, arguments to the <code><a href="#">#value</a></code> attribute will be processed using a org.springframework.beans.factory.groovy.GroovyBeanDefinitionReader if ending in <code>".groovy"</code>; otherwise, an org.springframework.beans.factory.xml.XmlBeanDefinitionReader will be used to parse Spring <code>&lt;beans/&gt;</code> XML files. Optionally, the <code><a href="#">#reader</a></code> attribute may be declared, allowing the user to choose a custom BeanDefinitionReader implementation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-lazy/index.html">Lazy</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Lazy</span></code>
+<p>Indicates whether a bean is to be lazily initialized. 
+<p>May be used on any class directly or indirectly annotated with or on methods annotated with Bean. </p>
+<p>If this annotation is not present on a <code>@Component</code> or <code>@Bean</code> definition, eager initialization will occur. If present and set to <code>true</code>, the <code>@Bean</code> or <code>@Component</code> will not be initialized until referenced by another bean or explicitly retrieved from the enclosing org.springframework.beans.factory.BeanFactory. If present and set to <code>false</code>, the bean will be instantiated on startup by bean factories that perform eager initialization of singletons. </p>
+<p>If Lazy is present on a Configuration class, this indicates that all <code>@Bean</code> methods within that <code>@Configuration</code> should be lazily initialized. If <code>@Lazy</code> is present and false on a <code>@Bean</code> method within a <code>@Lazy</code>-annotated <code>@Configuration</code> class, this indicates overriding the 'default lazy' behavior and that the bean should be eagerly initialized. </p>
+<p>In addition to its role for component initialization, this annotation may also be placed on injection points marked with org.springframework.beans.factory.annotation.Autowired or javax.inject.Inject: In that context, it leads to the creation of a lazy-resolution proxy for all affected dependencies, as an alternative to using org.springframework.beans.factory.ObjectFactory or javax.inject.Provider.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-primary/index.html">Primary</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Primary</span></code>
+<p>Indicates that a bean should be given preference when multiple candidates are qualified to autowire a single-valued dependency. If exactly one 'primary' bean exists among the candidates, it will be the autowired value. 
+<p>This annotation is semantically equivalent to the <code>&lt;bean&gt;</code> element's <code>primary</code> attribute in Spring XML. </p>
+<p>May be used on any class directly or indirectly annotated with <code>@Component</code> or on methods annotated with @Bean. </p>
+Example <pre><code> @Component public class FooService { private FooRepository fooRepository; @Autowired public FooService(FooRepository fooRepository) { this.fooRepository = fooRepository; } } @Component public class JdbcFooRepository extends FooRepository { public JdbcFooRepository(DataSource dataSource) { // ... } } @Primary @Component public class HibernateFooRepository extends FooRepository { public HibernateFooRepository(SessionFactory sessionFactory) { // ... } } </code></pre> 
+<p>Because <code>HibernateFooRepository</code> is marked with <code>@Primary</code>, it will be injected preferentially over the jdbc-based variant assuming both are present as beans within the same Spring application context, which is often the case when component-scanning is applied liberally. </p>
+<p>Note that using <code>@Primary</code> at the class level has no effect unless component-scanning is being used. If a <code>@Primary</code>-annotated class is declared via XML, <code>@Primary</code> annotation metadata is ignored, and <code>&lt;bean primary="true|false"/&gt;</code> is respected instead.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-profile/index.html">Profile</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Profile</span></code>
+<p>Indicates that a component is eligible for registration when one or more <a href="#">specified profiles</a> are active. 
+<p>A <em>profile</em> is a named logical grouping that may be activated programmatically via <code><a href="#">ConfigurableEnvironment#setActiveProfiles</a></code> or declaratively by setting the <code><a href="#"> spring.profiles.active</a></code> property as a JVM system property, as an environment variable, or as a Servlet context parameter in <code>web.xml</code> for web applications. Profiles may also be activated declaratively in integration tests via the <code>@ActiveProfiles</code> annotation. </p>
+<p>The <code>@Profile</code> annotation may be used in any of the following ways: </p>
+<ul> <li>as a type-level annotation on any class directly or indirectly annotated with <code>@Component</code>, including Configuration classes</li>
+ <li>as a meta-annotation, for the purpose of composing custom stereotype annotations</li>
+ <li>as a method-level annotation on any Bean method</li>
+ </ul>
+ 
+<p>If a <code>@Configuration</code> class is marked with <code>@Profile</code>, all of the <code>@Bean</code> methods and Import annotations associated with that class will be bypassed unless one or more of the specified profiles are active. This is analogous to the behavior in Spring XML: if the <code>profile</code> attribute of the <code>beans</code> element is supplied e.g., <code>&lt;beans profile="p1,p2"&gt;</code>, the <code>beans</code> element will not be parsed unless at least profile 'p1' or 'p2' has been activated. Likewise, if a <code>@Component</code> or <code>@Configuration</code> class is marked with <code>@Profile({"p1", "p2"})</code>, that class will not be registered or processed unless at least profile 'p1' or 'p2' has been activated. </p>
+<p>If a given profile is prefixed with the NOT operator (<code>!</code>), the annotated component will be registered if the profile is <em>not</em> active — for example, given <code>@Profile({"p1", "!p2"})</code>, registration will occur if profile 'p1' is active or if profile 'p2' is <em>not</em> active. </p>
+<p>If the <code>@Profile</code> annotation is omitted, registration will occur regardless of which (if any) profiles are active. </p>
+<p><strong>NOTE:</strong> With <code>@Profile</code> on <code>@Bean</code> methods, a special scenario may apply: In the case of overloaded <code>@Bean</code> methods of the same Java method name (analogous to constructor overloading), an <code>@Profile</code> condition needs to be consistently declared on all overloaded methods. If the conditions are inconsistent, only the condition on the first declaration among the overloaded methods will matter. <code>@Profile</code> can therefore not be used to select an overloaded method with a particular argument signature over another; resolution between all factory methods for the same bean follows Spring's constructor resolution algorithm at creation time. <strong>Use distinct Java method names pointing to the same <code><a href="#">bean name</a></code> if you'd like to define alternative beans with different profile conditions</strong>; see <code>ProfileDatabaseConfig</code> in Configuration's javadoc. </p>
+<p>When defining Spring beans via XML, the <code>"profile"</code> attribute of the <code>&lt;beans&gt;</code> element may be used. See the documentation in the <code>spring-beans</code> XSD (version 3.1 or greater) for details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-property-sources/index.html">PropertySources</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">PropertySources</span></code>
+<p>Container annotation that aggregates several PropertySource annotations. 
+<p>Can be used natively, declaring several nested PropertySource annotations. Can also be used in conjunction with Java 8's support for <em>repeatable annotations</em>, where PropertySource can simply be declared several times on the same <a href="#">type</a>, implicitly generating this container annotation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-scope/index.html">Scope</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">Scope</span></code>
+<p>When used as a type-level annotation in conjunction with org.springframework.stereotype.Component, <code>@Scope</code> indicates the name of a scope to use for instances of the annotated type. 
+<p>When used as a method-level annotation in conjunction with Bean, <code>@Scope</code> indicates the name of a scope to use for the instance returned from the method. </p>
+<p>In this context, <em>scope</em> means the lifecycle of an instance, such as <code>singleton</code>, <code>prototype</code>, and so forth. Scopes provided out of the box in Spring may be referred to using the <code>SCOPE_*</code> constants available in the ConfigurableBeanFactory and <code>WebApplicationContext</code> interfaces. </p>
+<p>To register additional custom scopes, see org.springframework.beans.factory.config.CustomScopeConfigurer.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-annotation-config-application-context.html">AnnotationConfigApplicationContext</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">AnnotationConfigApplicationContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.annotation$AnnotationConfigApplicationContext(kotlin.Function1((org.springframework.context.annotation.AnnotationConfigApplicationContext, kotlin.Unit)))/configure">configure</span><span class="symbol">:</span>&nbsp;<span class="identifier">AnnotationConfigApplicationContext</span><span class="symbol">.</span><span class="symbol">(</span><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AnnotationConfigApplicationContext</span></code>
+<p>Extension for <a href="-annotation-config-application-context.html">AnnotationConfigApplicationContext</a> allowing
+<code>AnnotationConfigApplicationContext { ... }</code> style initialization.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

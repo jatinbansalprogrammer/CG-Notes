@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DelegatingPhaseListenerMulticaster.<init> - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.jsf</a>&nbsp;/&nbsp;<a href="index.html">DelegatingPhaseListenerMulticaster</a>&nbsp;/&nbsp;<a href=".">&lt;init&gt;</a><br/>
+<br/>
+<h1>&lt;init&gt;</h1>
+<a name="org.springframework.web.jsf.DelegatingPhaseListenerMulticaster$&lt;init&gt;()"></a>
+<code><span class="identifier">DelegatingPhaseListenerMulticaster</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>JSF PhaseListener implementation that delegates to one or more Spring-managed PhaseListener beans coming from the Spring root WebApplicationContext. 
+<p>Configure this listener multicaster in your <code>faces-config.xml</code> file as follows: </p>
+<pre><code> &lt;application&gt; ... &lt;phase-listener&gt; org.springframework.web.jsf.DelegatingPhaseListenerMulticaster &lt;/phase-listener&gt; ... &lt;/application&gt;</code></pre> The multicaster will delegate all <code>beforePhase</code> and <code>afterPhase</code> events to all target PhaseListener beans. By default, those will simply be obtained by type: All beans in the Spring root WebApplicationContext that implement the PhaseListener interface will be fetched and invoked. 
+<p>Note: This multicaster's <code>getPhaseId()</code> method will always return <code>ANY_PHASE</code>. <strong>The phase id exposed by the target listener beans will be ignored; all events will be propagated to all listeners.</strong> </p>
+<p>This multicaster may be subclassed to change the strategy used to obtain the listener beans, or to change the strategy used to access the ApplicationContext (normally obtained via <code><a href="#">FacesContextUtils#getWebApplicationContext(FacesContext)</a></code>).</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Colin Sampaleanu</p>
+<p><strong>Since</strong><br/>
+1.2.7</p>
+</BODY>
+</HTML>

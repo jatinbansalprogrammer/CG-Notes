@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CollectionFactory.createCollection - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.core</a>&nbsp;/&nbsp;<a href="index.html">CollectionFactory</a>&nbsp;/&nbsp;<a href=".">createCollection</a><br/>
+<br/>
+<h1>createCollection</h1>
+<a name="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), kotlin.Int)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createCollection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), kotlin.Int)/collectionType">collectionType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Create the most appropriate collection for the given collection type. 
+<p>Delegates to <code><a href="#">#createCollection(Class, Class, int)</a></code> with a <code>null</code> element type.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="collectionType"></a>
+<code>collectionType</code> - the desired type of the target collection; never <code>null</code></p>
+<p><a name="capacity"></a>
+<code>capacity</code> - the initial capacity</p>
+<h3>Exceptions</h3>
+<p><a name="IllegalArgumentException"></a>
+<code>IllegalArgumentException</code> - if the supplied <code>collectionType</code> is <code>null</code> or of type EnumSet</p>
+<p><strong>Return</strong><br/>
+a new collection instance</p>
+<a name="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">E</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">createCollection</span><span class="symbol">(</span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/collectionType">collectionType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">@Nullable</span> <span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/elementType">elementType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.core.CollectionFactory$createCollection(java.lang.Class((kotlin.Any)), java.lang.Class((kotlin.Any)), kotlin.Int)/capacity">capacity</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-collection/index.html"><span class="identifier">MutableCollection</span></a><span class="symbol">&lt;</span><span class="identifier">E</span><span class="symbol">&gt;</span></code>
+<p>Create the most appropriate collection for the given collection type. 
+<p><strong>Warning</strong>: Since the parameterized type <code>E</code> is not bound to the supplied <code>elementType</code>, type safety cannot be guaranteed if the desired <code>collectionType</code> is EnumSet. In such scenarios, the caller is responsible for ensuring that the supplied <code>elementType</code> is an enum type matching type <code>E</code>. As an alternative, the caller may wish to treat the return value as a raw collection or collection of Object.</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="collectionType"></a>
+<code>collectionType</code> - the desired type of the target collection; never <code>null</code></p>
+<p><a name="elementType"></a>
+<code>elementType</code> - the collection's element type, or <code>null</code> if unknown (note: only relevant for EnumSet creation)</p>
+<p><a name="capacity"></a>
+<code>capacity</code> - the initial capacity</p>
+<h3>Exceptions</h3>
+<p><a name="IllegalArgumentException"></a>
+<code>IllegalArgumentException</code> - if the supplied <code>collectionType</code> is <code>null</code>; or if the desired <code>collectionType</code> is EnumSet and the supplied <code>elementType</code> is not a subtype of Enum</p>
+<p><strong>Return</strong><br/>
+a new collection instance</p>
+<p><strong>Since</strong><br/>
+4.1.3</p>
+<p><strong>See Also</strong><br/>
+java.util.LinkedHashSetjava.util.ArrayListjava.util.TreeSetjava.util.EnumSet</p>
+</BODY>
+</HTML>

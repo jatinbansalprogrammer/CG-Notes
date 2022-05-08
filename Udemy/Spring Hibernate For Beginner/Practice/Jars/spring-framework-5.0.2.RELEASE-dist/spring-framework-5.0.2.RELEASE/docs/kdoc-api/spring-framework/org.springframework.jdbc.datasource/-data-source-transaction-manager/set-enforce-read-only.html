@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>DataSourceTransactionManager.setEnforceReadOnly - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.datasource</a>&nbsp;/&nbsp;<a href="index.html">DataSourceTransactionManager</a>&nbsp;/&nbsp;<a href=".">setEnforceReadOnly</a><br/>
+<br/>
+<h1>setEnforceReadOnly</h1>
+<a name="org.springframework.jdbc.datasource.DataSourceTransactionManager$setEnforceReadOnly(kotlin.Boolean)"></a>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setEnforceReadOnly</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.datasource.DataSourceTransactionManager$setEnforceReadOnly(kotlin.Boolean)/enforceReadOnly">enforceReadOnly</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to enforce the read-only nature of a transaction (as indicated by <code><a href="#">TransactionDefinition#isReadOnly()</a></code> through an explicit statement on the transactional connection: "SET TRANSACTION READ ONLY" as understood by Oracle, MySQL and Postgres. 
+<p>The exact treatment, including any SQL statement executed on the connection, can be customized through through <code><a href="#">#prepareTransactionalConnection</a></code>. </p>
+<p>This mode of read-only handling goes beyond the <code><a href="#">Connection#setReadOnly</a></code> hint that Spring applies by default. In contrast to that standard JDBC hint, "SET TRANSACTION READ ONLY" enforces an isolation-level-like connection mode where data manipulation statements are strictly disallowed. Also, on Oracle, this read-only mode provides read consistency for the entire transaction. </p>
+<p>Note that older Oracle JDBC drivers (9i, 10g) used to enforce this read-only mode even for <code>Connection.setReadOnly(true</code>. However, with recent drivers, this strong enforcement needs to be applied explicitly, e.g. through this flag.</p>
+</p>
+<p><strong>Since</strong><br/>
+4.3.7</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#prepareTransactionalConnection</a></p>
+</BODY>
+</HTML>

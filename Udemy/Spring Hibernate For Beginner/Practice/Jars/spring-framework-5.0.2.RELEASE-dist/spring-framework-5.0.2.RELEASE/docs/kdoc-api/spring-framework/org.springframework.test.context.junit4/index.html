@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.context.junit4 - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.context.junit4</a><br/>
+<br/>
+<h2>Package org.springframework.test.context.junit4</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-j-unit4-spring-context-tests/index.html">AbstractJUnit4SpringContextTests</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractJUnit4SpringContextTests</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ApplicationContextAware</span></code>
+<p>Abstract base test class which integrates the <em>Spring TestContext Framework</em> with explicit ApplicationContext testing support in a <strong>JUnit</strong> environment. 
+<p>Concrete subclasses should typically declare a class-level ContextConfiguration annotation to configure the ApplicationContext <code><a href="#"> </a></code> or <code><a href="#"> </a></code>. <em>If your test does not need to load an application context, you may choose to omit the ContextConfiguration declaration and to configure the appropriate org.springframework.test.context.TestExecutionListener manually.</em> </p>
+<p>The following org.springframework.test.context.TestExecutionListener are configured by default: </p>
+<ul> <li>org.springframework.test.context.web.ServletTestExecutionListener </li>
+<li>org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener </li>
+<li>org.springframework.test.context.support.DependencyInjectionTestExecutionListener </li>
+<li>org.springframework.test.context.support.DirtiesContextTestExecutionListener </li>
+</ul>
+ 
+<p>This class serves only as a convenience for extension. </p>
+<ul> <li>If you do not wish for your test classes to be tied to a Spring-specific class hierarchy, you may configure your own custom test classes by using SpringRunner, ContextConfiguration, TestExecutionListeners, etc.</li>
+ <li>If you wish to extend this class and use a runner other than the SpringRunner, as of Spring Framework 4.2 you can use org.springframework.test.context.junit4.rules.SpringClassRule and org.springframework.test.context.junit4.rules.SpringMethodRule and specify your runner of choice via RunWith.</li>
+ </ul>
+ 
+<p><strong>NOTE:</strong> As of Spring Framework 4.3, this class requires JUnit 4.12 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-transactional-j-unit4-spring-context-tests/index.html">AbstractTransactionalJUnit4SpringContextTests</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractTransactionalJUnit4SpringContextTests</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="-abstract-j-unit4-spring-context-tests/index.html"><span class="identifier">AbstractJUnit4SpringContextTests</span></a></code>
+<p>Abstract Transactional extension of AbstractJUnit4SpringContextTests which adds convenience functionality for JDBC access. Expects a DataSource bean and a PlatformTransactionManager bean to be defined in the Spring ApplicationContext. 
+<p>This class exposes a JdbcTemplate and provides an easy way to <a href="#">count the number of rows in a table</a> (potentially <a href="#">with a WHERE clause</a>), <a href="#">delete from tables</a>, <a href="#">drop tables</a>, and <a href="#">execute SQL scripts</a> within a transaction. </p>
+<p>Concrete subclasses must fulfill the same requirements outlined in AbstractJUnit4SpringContextTests. </p>
+<p>The following org.springframework.test.context.TestExecutionListener are configured by default: </p>
+<ul> <li>org.springframework.test.context.web.ServletTestExecutionListener </li>
+<li>org.springframework.test.context.support.DependencyInjectionTestExecutionListener </li>
+<li>org.springframework.test.context.support.DirtiesContextTestExecutionListener </li>
+<li>org.springframework.test.context.transaction.TransactionalTestExecutionListener </li>
+<li>org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener </li>
+</ul>
+ 
+<p>This class serves only as a convenience for extension. </p>
+<ul> <li>If you do not wish for your test classes to be tied to a Spring-specific class hierarchy, you may configure your own custom test classes by using SpringRunner, ContextConfiguration, TestExecutionListeners, etc.</li>
+ <li>If you wish to extend this class and use a runner other than the SpringRunner, as of Spring Framework 4.2 you can use org.springframework.test.context.junit4.rules.SpringClassRule and org.springframework.test.context.junit4.rules.SpringMethodRule and specify your runner of choice via org.junit.runner.RunWith.</li>
+ </ul>
+ 
+<p><strong>NOTE:</strong> As of Spring Framework 4.3, this class requires JUnit 4.12 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-spring-runner/index.html">SpringRunner</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">SpringRunner</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SpringJUnit4ClassRunner</span></code>
+<p><code>SpringRunner</code> is an <em>alias</em> for the SpringJUnit4ClassRunner. 
+<p>To use this class, simply annotate a JUnit 4 based test class with <code>@RunWith(SpringRunner.class)</code>. </p>
+<p>If you would like to use the Spring TestContext Framework with a runner other than this one, use org.springframework.test.context.junit4.rules.SpringClassRule and org.springframework.test.context.junit4.rules.SpringMethodRule. </p>
+<p><strong>NOTE:</strong> This class requires JUnit 4.12 or higher.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

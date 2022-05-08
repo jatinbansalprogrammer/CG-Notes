@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MethodInvokingBean - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.config</a>&nbsp;/&nbsp;<a href=".">MethodInvokingBean</a><br/>
+<br/>
+<h1>MethodInvokingBean</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvokingBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.support/-argument-converting-method-invoker/index.html"><span class="identifier">ArgumentConvertingMethodInvoker</span></a><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Simple method invoker bean: just invoking a target method, not expecting a result to expose to the container (in contrast to MethodInvokingFactoryBean). 
+<p>This invoker supports any kind of target method. A static method may be specified by setting the <code><a href="#">targetMethod</a></code> property to a String representing the static method name, with <code><a href="#">targetClass</a></code> specifying the Class that the static method is defined on. Alternatively, a target instance method may be specified, by setting the <code><a href="#">targetObject</a></code> property as the target object, and the <code><a href="#">targetMethod</a></code> property as the name of the method to call on that target object. Arguments for the method invocation may be specified by setting the <code><a href="#">arguments</a></code> property. </p>
+<p>This class depends on <code><a href="after-properties-set.html">#afterPropertiesSet()</a></code> being called once all properties have been set, as per the InitializingBean contract. </p>
+<p>An example (in an XML based bean factory definition) of a bean definition which uses this class to call a static initialization method: </p>
+<pre><code> &lt;bean id="myObject" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="staticMethod" value="com.whatever.MyClass.init"/&gt; &lt;/bean&gt;</code></pre> 
+<p>An example of calling an instance method to start some server bean: </p>
+<pre><code> &lt;bean id="myStarter" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="targetObject" ref="myServer"/&gt; &lt;property name="targetMethod" value="start"/&gt; &lt;/bean&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.0.3</p>
+<p><strong>See Also</strong><br/>
+MethodInvokingFactoryBeanorg.springframework.util.MethodInvoker</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MethodInvokingBean</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Simple method invoker bean: just invoking a target method, not expecting a result to expose to the container (in contrast to MethodInvokingFactoryBean). 
+<p>This invoker supports any kind of target method. A static method may be specified by setting the <code><a href="#">targetMethod</a></code> property to a String representing the static method name, with <code><a href="#">targetClass</a></code> specifying the Class that the static method is defined on. Alternatively, a target instance method may be specified, by setting the <code><a href="#">targetObject</a></code> property as the target object, and the <code><a href="#">targetMethod</a></code> property as the name of the method to call on that target object. Arguments for the method invocation may be specified by setting the <code><a href="#">arguments</a></code> property. </p>
+<p>This class depends on <code><a href="after-properties-set.html">#afterPropertiesSet()</a></code> being called once all properties have been set, as per the InitializingBean contract. </p>
+<p>An example (in an XML based bean factory definition) of a bean definition which uses this class to call a static initialization method: </p>
+<pre><code> &lt;bean id="myObject" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="staticMethod" value="com.whatever.MyClass.init"/&gt; &lt;/bean&gt;</code></pre> 
+<p>An example of calling an instance method to start some server bean: </p>
+<pre><code> &lt;bean id="myStarter" class="org.springframework.beans.factory.config.MethodInvokingBean"&gt; &lt;property name="targetObject" ref="myServer"/&gt; &lt;property name="targetMethod" value="start"/&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-class-loader.html">setBeanClassLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanClassLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.MethodInvokingBean$setBeanClassLoader(java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.factory.config.MethodInvokingBean$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.support/-argument-converting-method-invoker/get-type-converter.html">getTypeConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTypeConverter</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TypeConverter</span></code>
+<p>Return the TypeConverter used for argument type conversion. 
+<p>Can be cast to org.springframework.beans.PropertyEditorRegistry if direct access to the underlying PropertyEditors is desired (provided that the present TypeConverter actually implements the PropertyEditorRegistry interface).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.support/-argument-converting-method-invoker/register-custom-editor.html">registerCustomEditor</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">registerCustomEditor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.ArgumentConvertingMethodInvoker$registerCustomEditor(java.lang.Class((kotlin.Any)), java.beans.PropertyEditor)/requiredType">requiredType</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.beans.support.ArgumentConvertingMethodInvoker$registerCustomEditor(java.lang.Class((kotlin.Any)), java.beans.PropertyEditor)/propertyEditor">propertyEditor</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register the given custom property editor for all properties of the given type. 
+<p>Typically used in conjunction with the default org.springframework.beans.SimpleTypeConverter; will work with any TypeConverter that implements the PropertyEditorRegistry interface as well.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.beans.support/-argument-converting-method-invoker/set-type-converter.html">setTypeConverter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setTypeConverter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.beans.support.ArgumentConvertingMethodInvoker$setTypeConverter(org.springframework.beans.TypeConverter)/typeConverter">typeConverter</span><span class="symbol">:</span>&nbsp;<span class="identifier">TypeConverter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set a TypeConverter to use for argument type conversion. 
+<p>Default is a org.springframework.beans.SimpleTypeConverter. Can be overridden with any TypeConverter implementation, typically a pre-configured SimpleTypeConverter or a BeanWrapperImpl instance.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-method-invoking-factory-bean/index.html">MethodInvokingFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MethodInvokingFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MethodInvokingBean</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>FactoryBean which returns a value which is the result of a static or instance method invocation. For most use cases it is better to just use the container's built-in factory method support for the same purpose, since that is smarter at converting arguments. This factory bean is still useful though when you need to call a method which doesn't return any value (for example, a static class method to force some sort of initialization to happen). This use case is not supported by factory methods, since a return value is needed to obtain the bean instance. 
+<p>Note that as it is expected to be used mostly for accessing factory methods, this factory by default operates in a <strong>singleton</strong> fashion. The first request to <code><a href="../-method-invoking-factory-bean/get-object.html">#getObject</a></code> by the owning bean factory will cause a method invocation, whose return value will be cached for subsequent requests. An internal <code><a href="../-method-invoking-factory-bean/set-singleton.html">singleton</a></code> property may be set to "false", to cause this factory to invoke the target method each time it is asked for an object. </p>
+<p><strong>NOTE: If your target method does not produce a result to expose, consider MethodInvokingBean instead, which avoids the type determination and lifecycle limitations that this MethodInvokingFactoryBean comes with.</strong> </p>
+<p>This invoker supports any kind of target method. A static method may be specified by setting the <code><a href="#">targetMethod</a></code> property to a String representing the static method name, with <code><a href="#">targetClass</a></code> specifying the Class that the static method is defined on. Alternatively, a target instance method may be specified, by setting the <code><a href="#">targetObject</a></code> property as the target object, and the <code><a href="#">targetMethod</a></code> property as the name of the method to call on that target object. Arguments for the method invocation may be specified by setting the <code><a href="#">arguments</a></code> property. </p>
+<p>This class depends on <code><a href="../-method-invoking-factory-bean/after-properties-set.html">#afterPropertiesSet()</a></code> being called once all properties have been set, as per the InitializingBean contract. </p>
+<p>An example (in an XML based bean factory definition) of a bean definition which uses this class to call a static factory method: </p>
+<pre><code> &lt;bean id="myObject" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"&gt; &lt;property name="staticMethod" value="com.whatever.MyClassFactory.getInstance"/&gt; &lt;/bean&gt;</code></pre> 
+<p>An example of calling a static method then an instance method to get at a Java system property. Somewhat verbose, but it works. </p>
+<pre><code> &lt;bean id="sysProps" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"&gt; &lt;property name="targetClass" value="java.lang.System"/&gt; &lt;property name="targetMethod" value="getProperties"/&gt; &lt;/bean&gt; &lt;bean id="javaVersion" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean"&gt; &lt;property name="targetObject" ref="sysProps"/&gt; &lt;property name="targetMethod" value="getProperty"/&gt; &lt;property name="arguments" value="java.version"/&gt; &lt;/bean&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AopNamespaceHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.config</a>&nbsp;/&nbsp;<a href=".">AopNamespaceHandler</a><br/>
+<br/>
+<h1>AopNamespaceHandler</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AopNamespaceHandler</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">NamespaceHandlerSupport</span></code>
+<p><code>NamespaceHandler</code> for the <code>aop</code> namespace. 
+<p>Provides a org.springframework.beans.factory.xml.BeanDefinitionParser for the <code>&lt;aop:config&gt;</code> tag. A <code>config</code> tag can include nested <code>pointcut</code>, <code>advisor</code> and <code>aspect</code> tags. </p>
+<p>The <code>pointcut</code> tag allows for creation of named AspectJExpressionPointcut beans using a simple syntax: </p>
+<pre><code> &lt;aop:pointcut id="getNameCalls" expression="execution(* *..ITestBean.getName(..))"/&gt; </code></pre> 
+<p>Using the <code>advisor</code> tag you can configure an org.springframework.aop.Advisor and have it applied to all relevant beans in you org.springframework.beans.factory.BeanFactory automatically. The <code>advisor</code> tag supports both in-line and referenced org.springframework.aop.Pointcut: </p>
+<pre><code> &lt;aop:advisor id="getAgeAdvisor" pointcut="execution(* *..ITestBean.getAge(..))" advice-ref="getAgeCounter"/&gt; &lt;aop:advisor id="getNameAdvisor" pointcut-ref="getNameCalls" advice-ref="getNameCounter"/&gt;</code></pre></p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Adrian Colyer</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">AopNamespaceHandler</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p><code>NamespaceHandler</code> for the <code>aop</code> namespace. 
+<p>Provides a org.springframework.beans.factory.xml.BeanDefinitionParser for the <code>&lt;aop:config&gt;</code> tag. A <code>config</code> tag can include nested <code>pointcut</code>, <code>advisor</code> and <code>aspect</code> tags. </p>
+<p>The <code>pointcut</code> tag allows for creation of named AspectJExpressionPointcut beans using a simple syntax: </p>
+<pre><code> &lt;aop:pointcut id="getNameCalls" expression="execution(* *..ITestBean.getName(..))"/&gt; </code></pre> 
+<p>Using the <code>advisor</code> tag you can configure an org.springframework.aop.Advisor and have it applied to all relevant beans in you org.springframework.beans.factory.BeanFactory automatically. The <code>advisor</code> tag supports both in-line and referenced org.springframework.aop.Pointcut: </p>
+<pre><code> &lt;aop:advisor id="getAgeAdvisor" pointcut="execution(* *..ITestBean.getAge(..))" advice-ref="getAgeCounter"/&gt; &lt;aop:advisor id="getNameAdvisor" pointcut-ref="getNameCalls" advice-ref="getNameCounter"/&gt;</code></pre></p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="init.html">init</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">init</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Register the BeanDefinitionParser for the '<code>config</code>', '<code>spring-configured</code>', '<code>aspectj-autoproxy</code>' and '<code>scoped-proxy</code>' tags.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

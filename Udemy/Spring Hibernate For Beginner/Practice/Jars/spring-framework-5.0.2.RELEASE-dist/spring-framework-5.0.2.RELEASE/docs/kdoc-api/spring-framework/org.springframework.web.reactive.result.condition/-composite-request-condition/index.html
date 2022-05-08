@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CompositeRequestCondition - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.result.condition</a>&nbsp;/&nbsp;<a href=".">CompositeRequestCondition</a><br/>
+<br/>
+<h1>CompositeRequestCondition</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CompositeRequestCondition</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-abstract-request-condition/index.html"><span class="identifier">AbstractRequestCondition</span></a><span class="symbol">&lt;</span><span class="identifier">CompositeRequestCondition</span><span class="symbol">&gt;</span></code>
+<p>Implements the RequestCondition contract by delegating to multiple <code>RequestCondition</code> types and using a logical conjunction (' &amp;&amp; ') to ensure all conditions match a given request. 
+<p>When <code>CompositeRequestCondition</code> instances are combined or compared they are expected to (a) contain the same number of conditions and (b) that conditions in the respective index are of the same type. It is acceptable to provide <code>null</code> conditions or no conditions at all to the constructor.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CompositeRequestCondition</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.web.reactive.result.condition.CompositeRequestCondition$<init>(kotlin.Array((org.springframework.web.reactive.result.condition.RequestCondition((kotlin.Any)))))/requestConditions">requestConditions</span><span class="symbol">:</span>&nbsp;<span class="identifier">RequestCondition</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create an instance with 0 or more <code>RequestCondition</code> types. It is important to create <code>CompositeRequestCondition</code> instances with the same number of conditions so they may be compared and combined. It is acceptable to provide <code>null</code> conditions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="combine.html">combine</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">combine</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.condition.CompositeRequestCondition$combine(org.springframework.web.reactive.result.condition.CompositeRequestCondition)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">CompositeRequestCondition</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CompositeRequestCondition</span></code>
+<p>If one instance is empty, return the other. If both instances have conditions, combine the individual conditions after ensuring they are of the same type and number.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="compare-to.html">compareTo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">compareTo</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.condition.CompositeRequestCondition$compareTo(org.springframework.web.reactive.result.condition.CompositeRequestCondition, org.springframework.web.server.ServerWebExchange)/other">other</span><span class="symbol">:</span>&nbsp;<span class="identifier">CompositeRequestCondition</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.result.condition.CompositeRequestCondition$compareTo(org.springframework.web.reactive.result.condition.CompositeRequestCondition, org.springframework.web.server.ServerWebExchange)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>If one instance is empty, the other "wins". If both instances have conditions, compare them in the order in which they were provided.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-conditions.html">getConditions</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConditions</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">RequestCondition</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Return the underlying conditions, possibly empty but never <code>null</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-matching-condition.html">getMatchingCondition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getMatchingCondition</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.condition.CompositeRequestCondition$getMatchingCondition(org.springframework.web.server.ServerWebExchange)/exchange">exchange</span><span class="symbol">:</span>&nbsp;<span class="identifier">ServerWebExchange</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CompositeRequestCondition</span></code>
+<p>Delegate to <em>all</em> contained conditions to match the request and return the resulting "matching" condition instances. 
+<p>An empty <code>CompositeRequestCondition</code> matches to all requests.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-empty.html">isEmpty</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isEmpty</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Whether this instance contains 0 conditions or not.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inherited Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-abstract-request-condition/equals.html">equals</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">equals</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.result.condition.AbstractRequestCondition$equals(kotlin.Any)/other">other</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">?</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-request-condition/hash-code.html">hashCode</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">hashCode</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="../-abstract-request-condition/to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

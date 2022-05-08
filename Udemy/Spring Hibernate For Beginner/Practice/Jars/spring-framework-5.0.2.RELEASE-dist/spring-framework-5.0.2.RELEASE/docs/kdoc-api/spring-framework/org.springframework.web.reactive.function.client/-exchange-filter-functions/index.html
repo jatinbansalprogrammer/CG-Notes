@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ExchangeFilterFunctions - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.function.client</a>&nbsp;/&nbsp;<a href=".">ExchangeFilterFunctions</a><br/>
+<br/>
+<h1>ExchangeFilterFunctions</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">ExchangeFilterFunctions</span></code>
+<p>Implementations of ExchangeFilterFunction that provide various useful request filter operations, such as basic authentication, error handling, etc.</p>
+<p><strong>Author</strong><br/>
+Rob Winch</p>
+<p><strong>Author</strong><br/>
+Arjen Poutsma</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ExchangeFilterFunctions</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Implementations of ExchangeFilterFunction that provide various useful request filter operations, such as basic authentication, error handling, etc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-b-a-s-i-c_-a-u-t-h-e-n-t-i-c-a-t-i-o-n_-c-r-e-d-e-n-t-i-a-l-s_-a-t-t-r-i-b-u-t-e.html">BASIC_AUTHENTICATION_CREDENTIALS_ATTRIBUTE</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">BASIC_AUTHENTICATION_CREDENTIALS_ATTRIBUTE</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Name of the ClientRequest attribute that contains the Credentials, as used by <code><a href="basic-authentication.html">#basicAuthentication()</a></code>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="basic-authentication.html">basicAuthentication</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">basicAuthentication</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.client.ExchangeFilterFunctions$basicAuthentication(kotlin.String, kotlin.String)/username">username</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.function.client.ExchangeFilterFunctions$basicAuthentication(kotlin.String, kotlin.String)/password">password</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ExchangeFilterFunction</span></code>
+<p>Return a filter that adds an Authorization header for HTTP Basic Authentication, based on the given username and password. 
+<p>Note that Basic Authentication only supports characters in the <code><a href="#">ISO-8859-1</a></code> character set.</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">basicAuthentication</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ExchangeFilterFunction</span></code>
+<p>Return a filter that adds an Authorization header for HTTP Basic Authentication, based on the Credentials provided in the <a href="../-client-request/attributes.html">request attributes</a>. If the attribute is not found, no authorization header is added. 
+<p>Note that Basic Authentication only supports characters in the <code><a href="#">ISO-8859-1</a></code> character set.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="status-error.html">statusError</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">statusError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.function.client.ExchangeFilterFunctions$statusError(java.util.function.Predicate((org.springframework.http.HttpStatus)), java.util.function.Function((org.springframework.web.reactive.function.client.ClientResponse, kotlin.Throwable)))/statusPredicate">statusPredicate</span><span class="symbol">:</span>&nbsp;<span class="identifier">Predicate</span><span class="symbol">&lt;</span><span class="identifier">HttpStatus</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.function.client.ExchangeFilterFunctions$statusError(java.util.function.Predicate((org.springframework.http.HttpStatus)), java.util.function.Function((org.springframework.web.reactive.function.client.ClientResponse, kotlin.Throwable)))/exceptionFunction">exceptionFunction</span><span class="symbol">:</span>&nbsp;<span class="identifier">Function</span><span class="symbol">&lt;</span><span class="identifier">ClientResponse</span><span class="symbol">,</span>&nbsp;<span class="keyword">out</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ExchangeFilterFunction</span></code>
+<p>Return a filter that returns a given Throwable as response if the given HttpStatus predicate matches.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

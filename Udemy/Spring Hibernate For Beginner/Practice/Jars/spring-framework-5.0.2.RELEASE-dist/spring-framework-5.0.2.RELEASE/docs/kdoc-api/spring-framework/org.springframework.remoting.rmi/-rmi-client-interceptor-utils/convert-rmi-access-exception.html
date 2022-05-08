@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RmiClientInterceptorUtils.convertRmiAccessException - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.remoting.rmi</a>&nbsp;/&nbsp;<a href="index.html">RmiClientInterceptorUtils</a>&nbsp;/&nbsp;<a href=".">convertRmiAccessException</a><br/>
+<br/>
+<h1>convertRmiAccessException</h1>
+<a name="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, kotlin.Throwable, kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertRmiAccessException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, kotlin.Throwable, kotlin.String)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, kotlin.Throwable, kotlin.String)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, kotlin.Throwable, kotlin.String)/message">message</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Exception</span></code>
+<p>Wrap the given arbitrary exception that happened during remote access in either a RemoteException or a Spring RemoteAccessException (if the method signature does not support RemoteException). 
+<p>Only call this for remote access exceptions, not for exceptions thrown by the target service itself!</p>
+</p>
+<h3>Parameters</h3>
+<p><a name="method"></a>
+<code>method</code> - the invoked method</p>
+<p><a name="ex"></a>
+<code>ex</code> - the exception that happened, to be used as cause for the RemoteAccessException or RemoteException</p>
+<p><a name="message"></a>
+<code>message</code> - the message for the RemoteAccessException respectively RemoteException</p>
+<p><strong>Return</strong><br/>
+the exception to be thrown to the caller</p>
+<a name="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertRmiAccessException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.String)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.String)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">RemoteException</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.String)/serviceName">serviceName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Exception</span></code>
+<p>Convert the given RemoteException that happened during remote access to Spring's RemoteAccessException if the method signature does not support RemoteException. Else, return the original RemoteException.</p>
+<h3>Parameters</h3>
+<p><a name="method"></a>
+<code>method</code> - the invoked method</p>
+<p><a name="ex"></a>
+<code>ex</code> - the RemoteException that happened</p>
+<p><a name="serviceName"></a>
+<code>serviceName</code> - the name of the service (for debugging purposes)</p>
+<p><strong>Return</strong><br/>
+the exception to be thrown to the caller</p>
+<a name="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.Boolean, kotlin.String)"></a>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">convertRmiAccessException</span><span class="symbol">(</span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.Boolean, kotlin.String)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.Boolean, kotlin.String)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">RemoteException</span><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.Boolean, kotlin.String)/isConnectFailure">isConnectFailure</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.remoting.rmi.RmiClientInterceptorUtils$convertRmiAccessException(java.lang.reflect.Method, java.rmi.RemoteException, kotlin.Boolean, kotlin.String)/serviceName">serviceName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Exception</span></code>
+<p>Convert the given RemoteException that happened during remote access to Spring's RemoteAccessException if the method signature does not support RemoteException. Else, return the original RemoteException.</p>
+<h3>Parameters</h3>
+<p><a name="method"></a>
+<code>method</code> - the invoked method</p>
+<p><a name="ex"></a>
+<code>ex</code> - the RemoteException that happened</p>
+<p><a name="isConnectFailure"></a>
+<code>isConnectFailure</code> - whether the given exception should be considered a connect failure</p>
+<p><a name="serviceName"></a>
+<code>serviceName</code> - the name of the service (for debugging purposes)</p>
+<p><strong>Return</strong><br/>
+the exception to be thrown to the caller</p>
+</BODY>
+</HTML>

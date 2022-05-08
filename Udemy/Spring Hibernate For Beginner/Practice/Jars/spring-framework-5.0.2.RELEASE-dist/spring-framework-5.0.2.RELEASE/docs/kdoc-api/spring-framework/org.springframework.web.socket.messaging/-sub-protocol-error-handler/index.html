@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SubProtocolErrorHandler - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.socket.messaging</a>&nbsp;/&nbsp;<a href=".">SubProtocolErrorHandler</a><br/>
+<br/>
+<h1>SubProtocolErrorHandler</h1>
+<code><span class="keyword">interface </span><span class="identifier">SubProtocolErrorHandler</span><span class="symbol">&lt;</span><span class="identifier">P</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span></code>
+<p>A contract for handling sub-protocol errors sent to clients.</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="handle-client-message-processing-error.html">handleClientMessageProcessingError</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handleClientMessageProcessingError</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolErrorHandler$handleClientMessageProcessingError(org.springframework.messaging.Message((org.springframework.web.socket.messaging.SubProtocolErrorHandler.P)), kotlin.Throwable)/clientMessage">clientMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">P</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolErrorHandler$handleClientMessageProcessingError(org.springframework.messaging.Message((org.springframework.web.socket.messaging.SubProtocolErrorHandler.P)), kotlin.Throwable)/ex">ex</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-throwable/index.html"><span class="identifier">Throwable</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">P</span><span class="symbol">&gt;</span></code>
+<p>Handle errors thrown while processing client messages providing an opportunity to prepare the error message or to prevent one from being sent. 
+<p>Note that the STOMP protocol requires a server to close the connection after sending an ERROR frame. To prevent an ERROR frame from being sent, a handler could return <code>null</code> and send a notification message through the broker instead, e.g. via a user destination.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="handle-error-message-to-client.html">handleErrorMessageToClient</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">handleErrorMessageToClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.socket.messaging.SubProtocolErrorHandler$handleErrorMessageToClient(org.springframework.messaging.Message((org.springframework.web.socket.messaging.SubProtocolErrorHandler.P)))/errorMessage">errorMessage</span><span class="symbol">:</span>&nbsp;<span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">P</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Message</span><span class="symbol">&lt;</span><span class="identifier">P</span><span class="symbol">&gt;</span></code>
+<p>Handle errors sent from the server side to clients, e.g. errors from the org.springframework.messaging.simp.stomp.StompBrokerRelayMessageHandler because connectivity failed or the external broker sent an error message, etc.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

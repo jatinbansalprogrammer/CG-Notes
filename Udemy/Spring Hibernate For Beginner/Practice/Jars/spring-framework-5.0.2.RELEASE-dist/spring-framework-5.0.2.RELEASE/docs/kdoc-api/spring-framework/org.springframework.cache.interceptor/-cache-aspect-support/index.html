@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CacheAspectSupport - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.cache.interceptor</a>&nbsp;/&nbsp;<a href=".">CacheAspectSupport</a><br/>
+<br/>
+<h1>CacheAspectSupport</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">CacheAspectSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractCacheInvoker</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><a href="../../org.springframework.beans.factory/-smart-initializing-singleton/index.html"><span class="identifier">SmartInitializingSingleton</span></a></code>
+<p>Base class for caching aspects, such as the CacheInterceptor or an AspectJ aspect. 
+<p>This enables the underlying Spring caching infrastructure to be used easily to implement an aspect for any aspect system. </p>
+<p>Subclasses are responsible for calling methods in this class in the correct order. </p>
+<p>Uses the <strong>Strategy</strong> design pattern. A CacheResolver implementation will resolve the actual cache(s) to use, and a CacheOperationSource is used for determining caching operations. </p>
+<p>A cache aspect is serializable if its <code>CacheResolver</code> and <code>CacheOperationSource</code> are serializable.</p>
+</p>
+<p><strong>Author</strong><br/>
+Costin Leau</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Chris Beams</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+3.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CacheAspectSupport</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Base class for caching aspects, such as the CacheInterceptor or an AspectJ aspect. 
+<p>This enables the underlying Spring caching infrastructure to be used easily to implement an aspect for any aspect system. </p>
+<p>Subclasses are responsible for calling methods in this class in the correct order. </p>
+<p>Uses the <strong>Strategy</strong> design pattern. A CacheResolver implementation will resolve the actual cache(s) to use, and a CacheOperationSource is used for determining caching operations. </p>
+<p>A cache aspect is serializable if its <code>CacheResolver</code> and <code>CacheOperationSource</code> are serializable.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-properties-set.html">afterPropertiesSet</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterPropertiesSet</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="after-singletons-instantiated.html">afterSingletonsInstantiated</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterSingletonsInstantiated</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cache-operation-source.html">getCacheOperationSource</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCacheOperationSource</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CacheOperationSource</span></code>
+<p>Return the CacheOperationSource for this cache aspect.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-cache-resolver.html">getCacheResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getCacheResolver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CacheResolver</span></code>
+<p>Return the default CacheResolver that this cache aspect delegates to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-key-generator.html">getKeyGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getKeyGenerator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">KeyGenerator</span></code>
+<p>Return the default KeyGenerator that this cache aspect delegates to.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-bean-factory.html">setBeanFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setBeanFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.interceptor.CacheAspectSupport$setBeanFactory(org.springframework.beans.factory.BeanFactory)/beanFactory">beanFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">BeanFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the containing BeanFactory for CacheManager and other service lookups.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-manager.html">setCacheManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheManager</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.interceptor.CacheAspectSupport$setCacheManager(org.springframework.cache.CacheManager)/cacheManager">cacheManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">CacheManager</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the CacheManager to use to create a default CacheResolver. Replace the current CacheResolver, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-operation-sources.html">setCacheOperationSources</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheOperationSources</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.cache.interceptor.CacheAspectSupport$setCacheOperationSources(kotlin.Array((org.springframework.cache.interceptor.CacheOperationSource)))/cacheOperationSources">cacheOperationSources</span><span class="symbol">:</span>&nbsp;<span class="identifier">CacheOperationSource</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set one or more cache operation sources which are used to find the cache attributes. If more than one source is provided, they will be aggregated using a CompositeCacheOperationSource.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-resolver.html">setCacheResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.interceptor.CacheAspectSupport$setCacheResolver(org.springframework.cache.interceptor.CacheResolver)/cacheResolver">cacheResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">CacheResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default CacheResolver that this cache aspect should delegate to if no specific cache resolver has been set for the operation. 
+<p>The default resolver resolves the caches against their names and the default cache manager.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-key-generator.html">setKeyGenerator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setKeyGenerator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.cache.interceptor.CacheAspectSupport$setKeyGenerator(org.springframework.cache.interceptor.KeyGenerator)/keyGenerator">keyGenerator</span><span class="symbol">:</span>&nbsp;<span class="identifier">KeyGenerator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the default KeyGenerator that this cache aspect should delegate to if no specific key generator has been set for the operation. 
+<p>The default is a SimpleKeyGenerator</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>CallableStatementCreatorFactory - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jdbc.core</a>&nbsp;/&nbsp;<a href=".">CallableStatementCreatorFactory</a><br/>
+<br/>
+<h1>CallableStatementCreatorFactory</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">CallableStatementCreatorFactory</span></code>
+<p>Helper class that efficiently creates multiple CallableStatementCreator objects with different parameters based on a SQL statement and a single set of parameter declarations.</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Thomas Risberg</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">CallableStatementCreatorFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$<init>(kotlin.String)/callString">callString</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Create a new factory. Will need to add parameters via the <code><a href="add-parameter.html">#addParameter</a></code> method or have no parameters.</p>
+<code><span class="identifier">CallableStatementCreatorFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$<init>(kotlin.String, kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/callString">callString</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$<init>(kotlin.String, kotlin.collections.MutableList((org.springframework.jdbc.core.SqlParameter)))/declaredParameters">declaredParameters</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-list/index.html"><span class="identifier">MutableList</span></a><span class="symbol">&lt;</span><span class="identifier">SqlParameter</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Create a new factory with the given SQL and the given parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="add-parameter.html">addParameter</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">addParameter</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$addParameter(org.springframework.jdbc.core.SqlParameter)/param">param</span><span class="symbol">:</span>&nbsp;<span class="identifier">SqlParameter</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Add a new declared parameter. 
+<p>Order of parameter addition is significant.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="new-callable-statement-creator.html">newCallableStatementCreator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newCallableStatementCreator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$newCallableStatementCreator(kotlin.collections.MutableMap((kotlin.String, kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html"><span class="identifier">MutableMap</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">,</span>&nbsp;<span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CallableStatementCreator</span></code>
+<p>Return a new CallableStatementCreator instance given this parameters.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">newCallableStatementCreator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$newCallableStatementCreator(org.springframework.jdbc.core.ParameterMapper)/inParamMapper">inParamMapper</span><span class="symbol">:</span>&nbsp;<span class="identifier">ParameterMapper</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CallableStatementCreator</span></code>
+<p>Return a new CallableStatementCreator instance given this parameter mapper.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-result-set-type.html">setResultSetType</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResultSetType</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$setResultSetType(kotlin.Int)/resultSetType">resultSetType</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use prepared statements that return a specific type of ResultSet. specific type of ResultSet.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-updatable-results.html">setUpdatableResults</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUpdatableResults</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jdbc.core.CallableStatementCreatorFactory$setUpdatableResults(kotlin.Boolean)/updatableResults">updatableResults</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use prepared statements capable of returning updatable ResultSets.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

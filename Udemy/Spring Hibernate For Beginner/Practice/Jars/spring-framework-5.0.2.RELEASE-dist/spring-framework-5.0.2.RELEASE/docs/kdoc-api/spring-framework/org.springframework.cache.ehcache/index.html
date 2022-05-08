@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.cache.ehcache - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.cache.ehcache</a><br/>
+<br/>
+<h2>Package org.springframework.cache.ehcache</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-eh-cache-cache/index.html">EhCacheCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EhCacheCache</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Cache</span></code>
+<p>Cache implementation on top of an Ehcache instance.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-eh-cache-cache-manager/index.html">EhCacheCacheManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EhCacheCacheManager</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractTransactionSupportingCacheManager</span></code>
+<p>CacheManager backed by an EhCache net.sf.ehcache.CacheManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-eh-cache-factory-bean/index.html">EhCacheFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EhCacheFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CacheConfiguration</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">Ehcache</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanNameAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>FactoryBean that creates a named EhCache net.sf.ehcache.Cache instance (or a decorator that implements the net.sf.ehcache.Ehcache interface), representing a cache region within an EhCache net.sf.ehcache.CacheManager. 
+<p>If the specified named cache is not configured in the cache configuration descriptor, this FactoryBean will construct an instance of a Cache with the provided name and the specified cache properties and add it to the CacheManager for later retrieval. If some or all properties are not set at configuration time, this FactoryBean will use defaults. </p>
+<p>Note: If the named Cache instance is found, the properties will be ignored and the Cache instance will be retrieved from the CacheManager. </p>
+<p>Note: As of Spring 5.0, Spring's EhCache support requires EhCache 2.10 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-eh-cache-manager-factory-bean/index.html">EhCacheManagerFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">EhCacheManagerFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><span class="identifier">CacheManager</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">InitializingBean</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>FactoryBean that exposes an EhCache net.sf.ehcache.CacheManager instance (independent or shared), configured from a specified config location. 
+<p>If no config location is specified, a CacheManager will be configured from "ehcache.xml" in the root of the class path (that is, default EhCache initialization - as defined in the EhCache docs - will apply). </p>
+<p>Setting up a separate EhCacheManagerFactoryBean is also advisable when using EhCacheFactoryBean, as it provides a (by default) independent CacheManager instance and cares for proper shutdown of the CacheManager. EhCacheManagerFactoryBean is also necessary for loading EhCache configuration from a non-default config location. </p>
+<p>Note: As of Spring 5.0, Spring's EhCache support requires EhCache 2.10 or higher.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-eh-cache-manager-utils/index.html">EhCacheManagerUtils</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">EhCacheManagerUtils</span></code>
+<p>Convenient builder methods for EhCache 2.5+ CacheManager setup, providing easy programmatic bootstrapping from a Spring-provided resource. This is primarily intended for use within <code>@Bean</code> methods in a Spring configuration class. 
+<p>These methods are a simple alternative to custom CacheManager setup code. For any advanced purposes, consider using <code><a href="-eh-cache-manager-utils/parse-configuration.html">#parseConfiguration</a></code>, customizing the configuration object, and then calling the <code><a href="#">CacheManager#CacheManager(Configuration)</a></code> constructor.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

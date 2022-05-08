@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.test.context.web - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.test.context.web</a><br/>
+<br/>
+<h2>Package org.springframework.test.context.web</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-annotation-config-web-context-loader/index.html">AnnotationConfigWebContextLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotationConfigWebContextLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericWebContextLoader</span></code>
+<p>Concrete implementation of AbstractGenericWebContextLoader that loads bean definitions from annotated classes. 
+<p>See the Javadoc for org.springframework.test.context.ContextConfiguration for a definition of <em>annotated class</em>. </p>
+<p>Note: <code>AnnotationConfigWebContextLoader</code> supports <em>annotated classes</em> rather than the String-based resource locations defined by the legacy org.springframework.test.context.ContextLoader API. Thus, although <code>AnnotationConfigWebContextLoader</code> extends <code>AbstractGenericWebContextLoader</code>, <code>AnnotationConfigWebContextLoader</code> does <em>not</em> support any String-based methods defined by org.springframework.test.context.support.AbstractContextLoader or <code>AbstractGenericWebContextLoader</code>. Consequently, <code>AnnotationConfigWebContextLoader</code> should chiefly be considered a org.springframework.test.context.SmartContextLoader rather than a org.springframework.test.context.ContextLoader.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-generic-groovy-xml-web-context-loader/index.html">GenericGroovyXmlWebContextLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">GenericGroovyXmlWebContextLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">GenericXmlWebContextLoader</span></code>
+<p>Concrete implementation of AbstractGenericWebContextLoader that loads bean definitions from Groovy scripts <em>and</em> XML configuration files. 
+<p>Default resource locations are detected using the suffixes <code>"-context.xml"</code> and <code>"Context.groovy"</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-delegating-smart-context-loader/index.html">WebDelegatingSmartContextLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebDelegatingSmartContextLoader</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractDelegatingSmartContextLoader</span></code>
+<p><code>WebDelegatingSmartContextLoader</code> is a concrete implementation of AbstractDelegatingSmartContextLoader that delegates to a GenericXmlWebContextLoader (or a GenericGroovyXmlWebContextLoader if Groovy is present on the classpath) and an AnnotationConfigWebContextLoader.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-merged-context-configuration/index.html">WebMergedContextConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebMergedContextConfiguration</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">MergedContextConfiguration</span></code>
+<p><code>WebMergedContextConfiguration</code> encapsulates the <em>merged</em> context configuration declared on a test class and all of its superclasses via org.springframework.test.context.ContextConfiguration, WebAppConfiguration, and org.springframework.test.context.ActiveProfiles. 
+<p><code>WebMergedContextConfiguration</code> extends the contract of MergedContextConfiguration by adding support for the <code><a href="-web-merged-context-configuration/get-resource-base-path.html"> </a></code> configured via <code>@WebAppConfiguration</code>. This allows the org.springframework.test.context.TestContext to properly cache the corresponding that was loaded using properties of this <code>WebMergedContextConfiguration</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-web-test-context-bootstrapper/index.html">WebTestContextBootstrapper</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">WebTestContextBootstrapper</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.test.context.support/-default-test-context-bootstrapper/index.html"><span class="identifier">DefaultTestContextBootstrapper</span></a></code>
+<p>Web-specific implementation of the TestContextBootstrapper SPI. <ul> <li>Uses WebDelegatingSmartContextLoader as the default ContextLoader if the test class is annotated with WebAppConfiguration and otherwise delegates to the superclass. </li>
+<li>Builds a WebMergedContextConfiguration if the test class is annotated with WebAppConfiguration. </li>
+</ul>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Annotations</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-web-app-configuration/index.html">WebAppConfiguration</a></p>
+</td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">WebAppConfiguration</span></code>
+<p><code>@WebAppConfiguration</code> is a class-level annotation that is used to declare that the <code>ApplicationContext</code> loaded for an integration test should be a org.springframework.web.context.WebApplicationContext. 
+<p>The presence of <code>@WebAppConfiguration</code> on a test class indicates that a <code>WebApplicationContext</code> should be loaded for the test using a default for the path to the root of the web application. To override the default, specify an explicit resource path via the <code><a href="#">#value</a></code> attribute. </p>
+<p>Note that <code>@WebAppConfiguration</code> must be used in conjunction with org.springframework.test.context.ContextConfiguration, either within a single test class or within a test class hierarchy. </p>
+<p>As of Spring Framework 4.0, this annotation may be used as a <em>meta-annotation</em> to create custom <em>composed annotations</em>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

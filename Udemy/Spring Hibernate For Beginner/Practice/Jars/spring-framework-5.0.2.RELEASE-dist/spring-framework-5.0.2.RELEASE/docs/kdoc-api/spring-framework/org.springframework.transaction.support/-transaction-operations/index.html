@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>TransactionOperations - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.transaction.support</a>&nbsp;/&nbsp;<a href=".">TransactionOperations</a><br/>
+<br/>
+<h1>TransactionOperations</h1>
+<code><span class="keyword">interface </span><span class="identifier">TransactionOperations</span></code>
+<p>Interface specifying basic transaction execution operations. Implemented by TransactionTemplate. Not often used directly, but a useful option to enhance testability, as it can easily be mocked or stubbed.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.4</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="symbol">&lt;</span><span class="identifier">T</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span> <span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.transaction.support.TransactionOperations$execute(org.springframework.transaction.support.TransactionCallback((org.springframework.transaction.support.TransactionOperations.execute.T)))/action">action</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionCallback</span><span class="symbol">&lt;</span><span class="identifier">T</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">T</span></code>
+<p>Execute the action specified by the given callback object within a transaction. 
+<p>Allows for returning a result object created within the transaction, that is, a domain object or a collection of domain objects. A RuntimeException thrown by the callback is treated as a fatal exception that enforces a rollback. Such an exception gets propagated to the caller of the template.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-transaction-template/index.html">TransactionTemplate</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">TransactionTemplate</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../-default-transaction-definition/index.html"><span class="identifier">DefaultTransactionDefinition</span></a><span class="symbol">, </span><span class="identifier">TransactionOperations</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Template class that simplifies programmatic transaction demarcation and transaction exception handling. 
+<p>The central method is <code><a href="#">#execute</a></code>, supporting transactional code that implements the TransactionCallback interface. This template handles the transaction lifecycle and possible exceptions such that neither the TransactionCallback implementation nor the calling code needs to explicitly handle transactions. </p>
+<p>Typical usage: Allows for writing low-level data access objects that use resources such as JDBC DataSources but are not transaction-aware themselves. Instead, they can implicitly participate in transactions handled by higher-level application services utilizing this class, making calls to the low-level services via an inner-class callback object. </p>
+<p>Can be used within a service implementation via direct instantiation with a transaction manager reference, or get prepared in an application context and passed to services as bean reference. Note: The transaction manager should always be configured as bean in the application context: in the first case given to the service directly, in the second case given to the prepared template. </p>
+<p>Supports setting the propagation behavior and the isolation level by name, for convenient configuration in context definitions.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

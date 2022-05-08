@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.aop.framework - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.aop.framework</a><br/>
+<br/>
+<h2>Package org.springframework.aop.framework</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-abstract-advising-bean-post-processor/index.html">AbstractAdvisingBeanPostProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractAdvisingBeanPostProcessor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyProcessorSupport</span><span class="symbol">, </span><span class="identifier">BeanPostProcessor</span></code>
+<p>Base class for BeanPostProcessor implementations that apply a Spring AOP Advisor to specific beans.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-abstract-singleton-proxy-factory-bean/index.html">AbstractSingletonProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AbstractSingletonProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyConfig</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">InitializingBean</span></code>
+<p>Convenient superclass for FactoryBean types that produce singleton-scoped proxy objects. 
+<p>Manages pre- and post-interceptors (references, rather than interceptor names, as in ProxyFactoryBean) and provides consistent interface management.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-aop-context/index.html">AopContext</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">AopContext</span></code>
+<p>Class containing static methods used to obtain information about the current AOP invocation. 
+<p>The <code>currentProxy()</code> method is usable if the AOP framework is configured to expose the current proxy (not the default). It returns the AOP proxy in use. Target objects or advice can use this to make advised calls, in the same way as <code>getEJBObject()</code> can be used in EJBs. They can also use it to find advice configuration. </p>
+<p>Spring's AOP framework does not expose proxies by default, as there is a performance cost in doing so. </p>
+<p>The functionality in this class might be used by a target object that needed access to resources on the invocation. However, this approach should not be used when there is a reasonable alternative, as it makes application code dependent on usage under AOP and the Spring AOP framework in particular.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-advisor-chain-factory/index.html">DefaultAdvisorChainFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultAdvisorChainFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AdvisorChainFactory</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>A simple but definitive way of working out an advice chain for a Method, given an Advised object. Always rebuilds each advice chain; caching can be provided by subclasses.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-default-aop-proxy-factory/index.html">DefaultAopProxyFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">DefaultAopProxyFactory</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AopProxyFactory</span><span class="symbol">, </span><span class="identifier">Serializable</span></code>
+<p>Default AopProxyFactory implementation, creating either a CGLIB proxy or a JDK dynamic proxy. 
+<p>Creates a CGLIB proxy if one the following is true for a given AdvisedSupport instance: </p>
+<ul> <li>the <code>optimize</code> flag is set </li>
+<li>the <code>proxyTargetClass</code> flag is set </li>
+<li>no proxy interfaces have been specified </li>
+</ul>
+ 
+<p>In general, specify <code>proxyTargetClass</code> to enforce a CGLIB proxy, or specify one or more interfaces to use a JDK dynamic proxy.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-proxy-factory-bean/index.html">ProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyCreatorSupport</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span><span class="symbol">, </span><span class="identifier">BeanFactoryAware</span></code>
+<p>org.springframework.beans.factory.FactoryBean implementation that builds an AOP proxy based on beans in Spring org.springframework.beans.factory.BeanFactory. 
+<p>org.aopalliance.intercept.MethodInterceptor and org.springframework.aop.Advisor are identified by a list of bean names in the current bean factory, specified through the "interceptorNames" property. The last entry in the list can be the name of a target bean or a org.springframework.aop.TargetSource; however, it is normally preferable to use the "targetName"/"target"/"targetSource" properties instead. </p>
+<p>Global interceptors and advisors can be added at the factory level. The specified ones are expanded in an interceptor list where an "xxx*" entry is included in the list, matching the given prefix with the bean names (e.g. "global*" would match both "globalBean1" and "globalBean2", "*" all defined interceptors). The matching interceptors get applied according to their returned order value, if they implement the org.springframework.core.Ordered interface. </p>
+<p>Creates a JDK proxy when proxy interfaces are given, and a CGLIB proxy for the actual target class if not. Note that the latter will only work if the target class does not have final methods, as a dynamic subclass will be created at runtime. </p>
+<p>It's possible to cast a proxy obtained from this factory to Advised, or to obtain the ProxyFactoryBean reference and programmatically manipulate it. This won't work for existing prototype references, which are independent. However, it will work for prototypes subsequently obtained from the factory. Changes to interception will work immediately on singletons (including existing references). However, to change interfaces or target it's necessary to obtain a new instance from the factory. This means that singleton instances obtained from the factory do not have the same object identity. However, they do have the same interceptors and target, and changing any reference will change all objects.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-reflective-method-invocation/index.html">ReflectiveMethodInvocation</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReflectiveMethodInvocation</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">ProxyMethodInvocation</span><span class="symbol">, </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-cloneable/index.html"><span class="identifier">Cloneable</span></a></code>
+<p>Spring's implementation of the AOP Alliance org.aopalliance.intercept.MethodInvocation interface, implementing the extended org.springframework.aop.ProxyMethodInvocation interface. 
+<p>Invokes the target object using reflection. Subclasses can override the <code><a href="#">#invokeJoinpoint()</a></code> method to change this behavior, so this is also a useful base class for more specialized MethodInvocation implementations. </p>
+<p>It is possible to clone an invocation, to invoke <code><a href="-reflective-method-invocation/proceed.html">#proceed()</a></code> repeatedly (once per clone), using the <code><a href="-reflective-method-invocation/invocable-clone.html">#invocableClone()</a></code> method. It is also possible to attach custom attributes to the invocation, using the <code><a href="#">#setUserAttribute</a></code> / <code><a href="#">#getUserAttribute</a></code> methods. </p>
+<p><strong>NOTE:</strong> This class is considered internal and should not be directly accessed. The sole reason for it being public is compatibility with existing framework integrations (e.g. Pitchfork). For any other purposes, use the ProxyMethodInvocation interface instead.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

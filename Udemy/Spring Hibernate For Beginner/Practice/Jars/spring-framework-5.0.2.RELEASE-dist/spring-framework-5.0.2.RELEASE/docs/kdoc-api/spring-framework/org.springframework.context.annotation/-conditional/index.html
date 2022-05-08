@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Conditional - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.annotation</a>&nbsp;/&nbsp;<a href=".">Conditional</a><br/>
+<br/>
+<h1>Conditional</h1>
+<code><span class="identifier">@Target</span><span class="symbol">(</span>[AnnotationTarget.CLASS, AnnotationTarget.FILE, AnnotationTarget.FUNCTION, AnnotationTarget.PROPERTY_GETTER, AnnotationTarget.PROPERTY_SETTER]<span class="symbol">)</span> <span class="keyword">class </span><span class="identifier">Conditional</span></code>
+<p>Indicates that a component is only eligible for registration when all <a href="#">specified conditions</a> match. 
+<p>A <em>condition</em> is any state that can be determined programmatically before the bean definition is due to be registered (see Condition for details). </p>
+<p>The <code>@Conditional</code> annotation may be used in any of the following ways: </p>
+<ul> <li>as a type-level annotation on any class directly or indirectly annotated with <code>@Component</code>, including Configuration classes</li>
+ <li>as a meta-annotation, for the purpose of composing custom stereotype annotations</li>
+ <li>as a method-level annotation on any Bean method</li>
+ </ul>
+ 
+<p>If a <code>@Configuration</code> class is marked with <code>@Conditional</code>, all of the <code>@Bean</code> methods, Import annotations, and ComponentScan annotations associated with that class will be subject to the conditions. </p>
+<p><strong>NOTE</strong>: Inheritance of <code>@Conditional</code> annotations is not supported; any conditions from superclasses or from overridden methods will not be considered. In order to enforce these semantics, <code>@Conditional</code> itself is not declared as java.lang.annotation.Inherited; furthermore, any custom <em>composed annotation</em> that is meta-annotated with <code>@Conditional</code> must not be declared as <code>@Inherited</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Phillip Webb</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+4.0</p>
+<p><strong>See Also</strong><br/>
+Condition</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">Conditional</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.context.annotation.Conditional$<init>(kotlin.Array((kotlin.reflect.KClass((org.springframework.context.annotation.Condition)))))/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Condition</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Indicates that a component is only eligible for registration when all <a href="#">specified conditions</a> match. 
+<p>A <em>condition</em> is any state that can be determined programmatically before the bean definition is due to be registered (see Condition for details). </p>
+<p>The <code>@Conditional</code> annotation may be used in any of the following ways: </p>
+<ul> <li>as a type-level annotation on any class directly or indirectly annotated with <code>@Component</code>, including Configuration classes</li>
+ <li>as a meta-annotation, for the purpose of composing custom stereotype annotations</li>
+ <li>as a method-level annotation on any Bean method</li>
+ </ul>
+ 
+<p>If a <code>@Configuration</code> class is marked with <code>@Conditional</code>, all of the <code>@Bean</code> methods, Import annotations, and ComponentScan annotations associated with that class will be subject to the conditions. </p>
+<p><strong>NOTE</strong>: Inheritance of <code>@Conditional</code> annotations is not supported; any conditions from superclasses or from overridden methods will not be considered. In order to enforce these semantics, <code>@Conditional</code> itself is not declared as java.lang.annotation.Inherited; furthermore, any custom <em>composed annotation</em> that is meta-annotated with <code>@Conditional</code> must not be declared as <code>@Inherited</code>.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="value.html">value</a></p>
+</td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">value</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-class/index.html"><span class="identifier">KClass</span></a><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">Condition</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>All Conditions that must <a href="#">match</a> in order for the component to be registered.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

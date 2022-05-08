@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JmxUtils - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jmx.support</a>&nbsp;/&nbsp;<a href=".">JmxUtils</a><br/>
+<br/>
+<h1>JmxUtils</h1>
+<code><span class="keyword">abstract</span> <span class="keyword">class </span><span class="identifier">JmxUtils</span></code>
+<p>Collection of generic utility methods to support Spring JMX. Includes a convenient method to locate an MBeanServer.</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+1.2</p>
+<p><strong>See Also</strong><br/>
+<a href="locate-m-bean-server.html">#locateMBeanServer</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">JmxUtils</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Collection of generic utility methods to support Spring JMX. Includes a convenient method to locate an MBeanServer.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-i-d-e-n-t-i-t-y_-o-b-j-e-c-t_-n-a-m-e_-k-e-y.html">IDENTITY_OBJECT_NAME_KEY</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">IDENTITY_OBJECT_NAME_KEY</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>The key used when extending an existing ObjectName with the identity hash code of its corresponding managed resource.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="append-identity-to-object-name.html">appendIdentityToObjectName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">appendIdentityToObjectName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$appendIdentityToObjectName(javax.management.ObjectName, kotlin.Any)/objectName">objectName</span><span class="symbol">:</span>&nbsp;<span class="identifier">ObjectName</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$appendIdentityToObjectName(javax.management.ObjectName, kotlin.Any)/managedResource">managedResource</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ObjectName</span></code>
+<p>Append an additional key/value pair to an existing ObjectName with the key being the static value <code>identity</code> and the value being the identity hash code of the managed resource being exposed on the supplied ObjectName. This can be used to provide a unique ObjectName for each distinct instance of a particular bean or class. Useful when generating ObjectName at runtime for a set of managed resources based on the template value supplied by a org.springframework.jmx.export.naming.ObjectNamingStrategy.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-attribute-name.html">getAttributeName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getAttributeName</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$getAttributeName(java.beans.PropertyDescriptor, kotlin.Boolean)/property">property</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyDescriptor</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$getAttributeName(java.beans.PropertyDescriptor, kotlin.Boolean)/useStrictCasing">useStrictCasing</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the JMX attribute name to use for the given JavaBeans property. 
+<p>When using strict casing, a JavaBean property with a getter method such as <code>getFoo()</code> translates to an attribute called <code>Foo</code>. With strict casing disabled, <code>getFoo()</code> would translate to just <code>foo</code>.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-class-to-expose.html">getClassToExpose</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getClassToExpose</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$getClassToExpose(kotlin.Any)/managedBean">managedBean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the class or interface to expose for the given bean. This is the class that will be searched for attributes and operations (for example, checked for annotations). 
+<p>This implementation returns the superclass for a CGLIB proxy and the class of the given bean else (for a JDK proxy or a plain bean class).</p>
+</p>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getClassToExpose</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$getClassToExpose(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the class or interface to expose for the given bean class. This is the class that will be searched for attributes and operations (for example, checked for annotations). 
+<p>This implementation returns the superclass for a CGLIB proxy and the class of the given bean else (for a JDK proxy or a plain bean class).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-m-bean-interface.html">getMBeanInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getMBeanInterface</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$getMBeanInterface(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the Standard MBean interface for the given class, if any (that is, an interface whose name matches the class name of the given class but with suffix "MBean").</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-m-x-bean-interface.html">getMXBeanInterface</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getMXBeanInterface</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$getMXBeanInterface(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the Java 6 MXBean interface exists for the given class, if any (that is, an interface whose name ends with "MXBean" and/or carries an appropriate MXBean annotation).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-method-signature.html">getMethodSignature</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">getMethodSignature</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$getMethodSignature(java.lang.reflect.Method)/method">method</span><span class="symbol">:</span>&nbsp;<span class="identifier">Method</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span></code>
+<p>Create a <code>String[]</code> representing the argument signature of a method. Each element in the array is the fully qualified class name of the corresponding argument in the methods signature.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-m-bean.html">isMBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">isMBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$isMBean(java.lang.Class((kotlin.Any)))/clazz">clazz</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Determine whether the given bean class qualifies as an MBean as-is. 
+<p>This implementation checks for javax.management.DynamicMBean classes as well as classes with corresponding "*MBean" interface (Standard MBeans) or corresponding "*MXBean" interface (Java 6 MXBeans).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="locate-m-bean-server.html">locateMBeanServer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">locateMBeanServer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MBeanServer</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">locateMBeanServer</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$locateMBeanServer(kotlin.String)/agentId">agentId</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MBeanServer</span></code>
+<p>Attempt to find a locally running <code>MBeanServer</code>. Fails if no <code>MBeanServer</code> can be found. Logs a warning if more than one <code>MBeanServer</code> found, returning the first one from the list.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="parameter-info-to-types.html">parameterInfoToTypes</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">parameterInfoToTypes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$parameterInfoToTypes(kotlin.Array((javax.management.MBeanParameterInfo)))/paramInfo">paramInfo</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">MBeanParameterInfo</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">static</span> <span class="keyword">fun </span><span class="identifier">parameterInfoToTypes</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$parameterInfoToTypes(kotlin.Array((javax.management.MBeanParameterInfo)), java.lang.ClassLoader)/paramInfo">paramInfo</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">MBeanParameterInfo</span><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jmx.support.JmxUtils$parameterInfoToTypes(kotlin.Array((javax.management.MBeanParameterInfo)), java.lang.ClassLoader)/classLoader">classLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ClassLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">&gt;</span></code>
+<p>Convert an array of <code>MBeanParameterInfo</code> into an array of <code>Class</code> instances corresponding to the parameters.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

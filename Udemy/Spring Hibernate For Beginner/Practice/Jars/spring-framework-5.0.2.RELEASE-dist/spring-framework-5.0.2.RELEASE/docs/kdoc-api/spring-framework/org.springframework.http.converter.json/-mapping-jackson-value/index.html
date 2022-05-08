@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>MappingJacksonValue - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.http.converter.json</a>&nbsp;/&nbsp;<a href=".">MappingJacksonValue</a><br/>
+<br/>
+<h1>MappingJacksonValue</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">MappingJacksonValue</span></code>
+<p>A simple holder for the POJO to serialize via MappingJackson2HttpMessageConverter along with further serialization instructions to be passed in to the converter. 
+<p>On the server side this wrapper is added with a <code>ResponseBodyInterceptor</code> after content negotiation selects the converter to use but before the write. </p>
+<p>On the client side, simply wrap the POJO and pass it in to the <code>RestTemplate</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">MappingJacksonValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.MappingJacksonValue$<init>(kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span></code>
+<p>Create a new instance wrapping the given POJO to be serialized.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-filters.html">getFilters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getFilters</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">FilterProvider</span></code>
+<p>Return the Jackson filter provider to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-jsonp-function.html">getJsonpFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getJsonpFunction</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the configured JSONP function name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-serialization-view.html">getSerializationView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSerializationView</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span></code>
+<p>Return the serialization view to use.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-value.html">getValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getValue</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a></code>
+<p>Return the POJO that needs to be serialized.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-filters.html">setFilters</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFilters</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.MappingJacksonValue$setFilters(com.fasterxml.jackson.databind.ser.FilterProvider)/filters">filters</span><span class="symbol">:</span>&nbsp;<span class="identifier">FilterProvider</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Jackson filter provider to serialize the POJO with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-jsonp-function.html">setJsonpFunction</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setJsonpFunction</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.MappingJacksonValue$setJsonpFunction(kotlin.String)/functionName">functionName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the JSONP function name.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-serialization-view.html">setSerializationView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSerializationView</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.MappingJacksonValue$setSerializationView(java.lang.Class((kotlin.Any)))/serializationView">serializationView</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="identifier">*</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the serialization view to serialize the POJO with.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-value.html">setValue</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setValue</span><span class="symbol">(</span><span class="identifier" id="org.springframework.http.converter.json.MappingJacksonValue$setValue(kotlin.Any)/value">value</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Modify the POJO to serialize.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>RegexpMethodPointcutAdvisor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.aop.support</a>&nbsp;/&nbsp;<a href=".">RegexpMethodPointcutAdvisor</a><br/>
+<br/>
+<h1>RegexpMethodPointcutAdvisor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RegexpMethodPointcutAdvisor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractGenericPointcutAdvisor</span></code>
+<p>Convenient class for regexp method pointcuts that hold an Advice, making them an org.springframework.aop.Advisor. 
+<p>Configure this class using the "pattern" and "patterns" pass-through properties. These are analogous to the pattern and patterns properties of AbstractRegexpMethodPointcut. </p>
+<p>Can delegate to any AbstractRegexpMethodPointcut subclass. By default, JdkRegexpMethodPointcut will be used. To choose a specific one, override the <code><a href="#">#createPointcut</a></code> method.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setPattern</a><a href="#">#setPatterns</a>JdkRegexpMethodPointcut</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">RegexpMethodPointcutAdvisor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Create an empty RegexpMethodPointcutAdvisor.</p>
+<code><span class="identifier">RegexpMethodPointcutAdvisor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.RegexpMethodPointcutAdvisor$<init>(org.aopalliance.aop.Advice)/advice">advice</span><span class="symbol">:</span>&nbsp;<span class="identifier">Advice</span><span class="symbol">)</span></code>
+<p>Create a RegexpMethodPointcutAdvisor for the given advice. The pattern still needs to be specified afterwards.</p>
+<code><span class="identifier">RegexpMethodPointcutAdvisor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.RegexpMethodPointcutAdvisor$<init>(kotlin.String, org.aopalliance.aop.Advice)/pattern">pattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.support.RegexpMethodPointcutAdvisor$<init>(kotlin.String, org.aopalliance.aop.Advice)/advice">advice</span><span class="symbol">:</span>&nbsp;<span class="identifier">Advice</span><span class="symbol">)</span></code><br/>
+<code><span class="identifier">RegexpMethodPointcutAdvisor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.RegexpMethodPointcutAdvisor$<init>(kotlin.Array((kotlin.String)), org.aopalliance.aop.Advice)/patterns">patterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier" id="org.springframework.aop.support.RegexpMethodPointcutAdvisor$<init>(kotlin.Array((kotlin.String)), org.aopalliance.aop.Advice)/advice">advice</span><span class="symbol">:</span>&nbsp;<span class="identifier">Advice</span><span class="symbol">)</span></code>
+<p>Create a RegexpMethodPointcutAdvisor for the given advice.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-pointcut.html">getPointcut</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPointcut</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Pointcut</span></code>
+<p>Initialize the singleton Pointcut held within this Advisor.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-pattern.html">setPattern</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPattern</span><span class="symbol">(</span><span class="identifier" id="org.springframework.aop.support.RegexpMethodPointcutAdvisor$setPattern(kotlin.String)/pattern">pattern</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the regular expression defining methods to match. 
+<p>Use either this method or <code><a href="#">#setPatterns</a></code>, not both.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-patterns.html">setPatterns</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPatterns</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.springframework.aop.support.RegexpMethodPointcutAdvisor$setPatterns(kotlin.Array((kotlin.String)))/patterns">patterns</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the regular expressions defining methods to match. To be passed through to the pointcut implementation. 
+<p>Matching will be the union of all these; if any of the patterns matches, the pointcut matches.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

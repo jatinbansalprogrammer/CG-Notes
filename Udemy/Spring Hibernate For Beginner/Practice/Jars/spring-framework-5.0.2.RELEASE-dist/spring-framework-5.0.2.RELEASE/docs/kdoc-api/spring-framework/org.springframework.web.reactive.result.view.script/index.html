@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>org.springframework.web.reactive.result.view.script - spring-framework</title>
+<link rel="stylesheet" href="../../style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">spring-framework</a>&nbsp;/&nbsp;<a href=".">org.springframework.web.reactive.result.view.script</a><br/>
+<br/>
+<h2>Package org.springframework.web.reactive.result.view.script</h2>
+<h3>Types</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-rendering-context/index.html">RenderingContext</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">RenderingContext</span></code>
+<p>Context passed to ScriptTemplateView render function.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-script-template-config/index.html">ScriptTemplateConfig</a></p>
+</td>
+<td>
+<code><span class="keyword">interface </span><span class="identifier">ScriptTemplateConfig</span></code>
+<p>Interface to be implemented by objects that configure and manage a JSR-223 ScriptEngine for automatic lookup in a web environment. Detected and used by ScriptTemplateView.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-script-template-view/index.html">ScriptTemplateView</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScriptTemplateView</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../org.springframework.web.reactive.result.view/-abstract-url-based-view/index.html"><span class="identifier">AbstractUrlBasedView</span></a></code>
+<p>An AbstractUrlBasedView subclass designed to run any template library based on a JSR-223 script engine. 
+<p>If not set, each property is auto-detected by looking up a single ScriptTemplateConfig bean in the web application context and using it to obtain the configured properties. </p>
+<p>The Nashorn JavaScript engine requires Java 8+ and may require setting the <code>sharedEngine</code> property to <code>false</code> in order to run properly. See <code><a href="#">ScriptTemplateConfigurer#setSharedEngine(Boolean)</a></code> for more details.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="-script-template-view-resolver/index.html">ScriptTemplateViewResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScriptTemplateViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlBasedViewResolver</span></code>
+<p>Convenience subclass of UrlBasedViewResolver that supports ScriptTemplateView and custom subclasses of it. 
+<p>The view class for all views created by this resolver can be specified via the <code><a href="#">#setViewClass(Class)</a></code> property. </p>
+<p><strong>Note:</strong> When chaining ViewResolvers this resolver will check for the existence of the specified template resources and only return a non-null View object if a template is actually found.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

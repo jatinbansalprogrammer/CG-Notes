@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>StopWatch - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.util</a>&nbsp;/&nbsp;<a href=".">StopWatch</a><br/>
+<br/>
+<h1>StopWatch</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">StopWatch</span></code>
+<p>Simple stop watch, allowing for timing of a number of tasks, exposing total running time and running time for each named task. 
+<p>Conceals use of <code>System.currentTimeMillis()</code>, improving the readability of application code and reducing the likelihood of calculation errors. </p>
+<p>Note that this object is not designed to be thread-safe and does not use synchronization. </p>
+<p>This class is normally used to verify performance during proof-of-concepts and in development, rather than as part of production applications.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Author</strong><br/>
+Sam Brannen</p>
+<p><strong>Since</strong><br/>
+May 2, 2001</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">StopWatch</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Construct a new stop watch. Does not start any task.</p>
+<code><span class="identifier">StopWatch</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.StopWatch$<init>(kotlin.String)/id">id</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span></code>
+<p>Construct a new stop watch with the given id. Does not start any task.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="current-task-name.html">currentTaskName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">currentTaskName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the name of the currently running task, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-id.html">getId</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getId</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the id of this stop watch, as specified on construction.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-last-task-info.html">getLastTaskInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLastTaskInfo</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TaskInfo</span></code>
+<p>Return the last task as a TaskInfo object.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-last-task-name.html">getLastTaskName</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLastTaskName</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return the name of the last task.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-last-task-time-millis.html">getLastTaskTimeMillis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getLastTaskTimeMillis</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the time taken by the last task.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-task-count.html">getTaskCount</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTaskCount</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the number of tasks timed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-task-info.html">getTaskInfo</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTaskInfo</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">TaskInfo</span><span class="symbol">&gt;</span></code>
+<p>Return an array of the data for tasks performed.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-total-time-millis.html">getTotalTimeMillis</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTotalTimeMillis</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html"><span class="identifier">Long</span></a></code>
+<p>Return the total time in milliseconds for all tasks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-total-time-seconds.html">getTotalTimeSeconds</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTotalTimeSeconds</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html"><span class="identifier">Double</span></a></code>
+<p>Return the total time in seconds for all tasks.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-running.html">isRunning</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isRunning</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether the stop watch is currently running.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="pretty-print.html">prettyPrint</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">prettyPrint</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return a string with a table describing all tasks performed. For custom reporting, call getTaskInfo() and use the task info directly.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-keep-task-list.html">setKeepTaskList</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setKeepTaskList</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.StopWatch$setKeepTaskList(kotlin.Boolean)/keepTaskList">keepTaskList</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Determine whether the TaskInfo array is built over time. Set this to "false" when using a StopWatch for millions of intervals, or the task info structure will consume excessive memory. Default is "true".</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="short-summary.html">shortSummary</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">shortSummary</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return a short description of the total running time.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="start.html">start</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Start an unnamed task. The results are undefined if <code><a href="stop.html">#stop()</a></code> or timing methods are called without invoking this method.</p>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">start</span><span class="symbol">(</span><span class="identifier" id="org.springframework.util.StopWatch$start(kotlin.String)/taskName">taskName</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Start a named task. The results are undefined if <code><a href="stop.html">#stop()</a></code> or timing methods are called without invoking this method.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="stop.html">stop</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">stop</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Stop the current task. The results are undefined if timing methods are called without invoking at least one pair <code>start()</code> / <code>stop()</code> methods.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Return an informative string describing all tasks performed For custom reporting, call <code>getTaskInfo()</code> and use the task info directly.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

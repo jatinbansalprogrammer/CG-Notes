@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ReloadableResourceBundleMessageSource - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.context.support</a>&nbsp;/&nbsp;<a href=".">ReloadableResourceBundleMessageSource</a><br/>
+<br/>
+<h1>ReloadableResourceBundleMessageSource</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ReloadableResourceBundleMessageSource</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractResourceBasedMessageSource</span><span class="symbol">, </span><span class="identifier">ResourceLoaderAware</span></code>
+<p>Spring-specific org.springframework.context.MessageSource implementation that accesses resource bundles using specified basenames, participating in the Spring org.springframework.context.ApplicationContext's resource loading. 
+<p>In contrast to the JDK-based ResourceBundleMessageSource, this class uses java.util.Properties instances as its custom data structure for messages, loading them via a org.springframework.util.PropertiesPersister strategy from Spring Resource handles. This strategy is not only capable of reloading files based on timestamp changes, but also of loading properties files with a specific character encoding. It will detect XML property files as well. </p>
+<p>Note that the basenames set as <code><a href="#">"basenames"</a></code> property are treated in a slightly different fashion than the "basenames" property of ResourceBundleMessageSource. It follows the basic ResourceBundle rule of not specifying file extension or language codes, but can refer to any Spring resource location (instead of being restricted to classpath resources). With a "classpath:" prefix, resources can still be loaded from the classpath, but "cacheSeconds" values other than "-1" (caching forever) might not work reliably in this case. </p>
+<p>For a typical web application, message files could be placed in <code>WEB-INF</code>: e.g. a "WEB-INF/messages" basename would find a "WEB-INF/messages.properties", "WEB-INF/messages_en.properties" etc arrangement as well as "WEB-INF/messages.xml", "WEB-INF/messages_en.xml" etc. Note that message definitions in a <em>previous</em> resource bundle will override ones in a later bundle, due to sequential lookup. </p>
+<p>This MessageSource can easily be used outside of an org.springframework.context.ApplicationContext: it will use a org.springframework.core.io.DefaultResourceLoader as default, simply getting overridden with the ApplicationContext's resource loader if running in a context. It does not have any other specific dependencies. </p>
+<p>Thanks to Thomas Achleitner for providing the initial implementation of this message source!</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>See Also</strong><br/>
+<a href="#">#setCacheSeconds</a><a href="#">#setBasenames</a><a href="#">#setDefaultEncoding</a><a href="set-file-encodings.html">#setFileEncodings</a><a href="set-properties-persister.html">#setPropertiesPersister</a><a href="set-resource-loader.html">#setResourceLoader</a>org.springframework.util.DefaultPropertiesPersisterorg.springframework.core.io.DefaultResourceLoaderResourceBundleMessageSourcejava.util.ResourceBundle</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ReloadableResourceBundleMessageSource</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Spring-specific org.springframework.context.MessageSource implementation that accesses resource bundles using specified basenames, participating in the Spring org.springframework.context.ApplicationContext's resource loading. 
+<p>In contrast to the JDK-based ResourceBundleMessageSource, this class uses java.util.Properties instances as its custom data structure for messages, loading them via a org.springframework.util.PropertiesPersister strategy from Spring Resource handles. This strategy is not only capable of reloading files based on timestamp changes, but also of loading properties files with a specific character encoding. It will detect XML property files as well. </p>
+<p>Note that the basenames set as <code><a href="#">"basenames"</a></code> property are treated in a slightly different fashion than the "basenames" property of ResourceBundleMessageSource. It follows the basic ResourceBundle rule of not specifying file extension or language codes, but can refer to any Spring resource location (instead of being restricted to classpath resources). With a "classpath:" prefix, resources can still be loaded from the classpath, but "cacheSeconds" values other than "-1" (caching forever) might not work reliably in this case. </p>
+<p>For a typical web application, message files could be placed in <code>WEB-INF</code>: e.g. a "WEB-INF/messages" basename would find a "WEB-INF/messages.properties", "WEB-INF/messages_en.properties" etc arrangement as well as "WEB-INF/messages.xml", "WEB-INF/messages_en.xml" etc. Note that message definitions in a <em>previous</em> resource bundle will override ones in a later bundle, due to sequential lookup. </p>
+<p>This MessageSource can easily be used outside of an org.springframework.context.ApplicationContext: it will use a org.springframework.core.io.DefaultResourceLoader as default, simply getting overridden with the ApplicationContext's resource loader if running in a context. It does not have any other specific dependencies. </p>
+<p>Thanks to Thomas Achleitner for providing the initial implementation of this message source!</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="clear-cache.html">clearCache</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clearCache</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Clear the resource bundle cache. Subsequent resolve calls will lead to reloading of the properties files.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="clear-cache-including-ancestors.html">clearCacheIncludingAncestors</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">clearCacheIncludingAncestors</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Clear the resource bundle caches of this MessageSource and all its ancestors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-concurrent-refresh.html">setConcurrentRefresh</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setConcurrentRefresh</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ReloadableResourceBundleMessageSource$setConcurrentRefresh(kotlin.Boolean)/concurrentRefresh">concurrentRefresh</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify whether to allow for concurrent refresh behavior, i.e. one thread locked in a refresh attempt for a specific cached properties file whereas other threads keep returning the old properties for the time being, until the refresh attempt has completed. 
+<p>Default is "true": this behavior is new as of Spring Framework 4.1, minimizing contention between threads. If you prefer the old behavior, i.e. to fully block on refresh, switch this flag to "false".</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-file-encodings.html">setFileEncodings</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setFileEncodings</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ReloadableResourceBundleMessageSource$setFileEncodings(java.util.Properties)/fileEncodings">fileEncodings</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set per-file charsets to use for parsing properties files. 
+<p>Only applies to classic properties files, not to XML files.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-properties-persister.html">setPropertiesPersister</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPropertiesPersister</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ReloadableResourceBundleMessageSource$setPropertiesPersister(org.springframework.util.PropertiesPersister)/propertiesPersister">propertiesPersister</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertiesPersister</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the PropertiesPersister to use for parsing properties files. 
+<p>The default is a DefaultPropertiesPersister.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-resource-loader.html">setResourceLoader</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setResourceLoader</span><span class="symbol">(</span><span class="identifier" id="org.springframework.context.support.ReloadableResourceBundleMessageSource$setResourceLoader(org.springframework.core.io.ResourceLoader)/resourceLoader">resourceLoader</span><span class="symbol">:</span>&nbsp;<span class="identifier">ResourceLoader</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the ResourceLoader to use for loading bundle properties files. 
+<p>The default is a DefaultResourceLoader. Will get overridden by the ApplicationContext if running in a context, as it implements the ResourceLoaderAware interface. Can be manually overridden when running outside of an ApplicationContext.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="to-string.html">toString</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">toString</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

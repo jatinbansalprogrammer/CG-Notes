@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>JCacheConfigurer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.cache.jcache.config</a>&nbsp;/&nbsp;<a href=".">JCacheConfigurer</a><br/>
+<br/>
+<h1>JCacheConfigurer</h1>
+<code><span class="keyword">interface </span><span class="identifier">JCacheConfigurer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">CachingConfigurer</span></code>
+<p>Extension of CachingConfigurer for the JSR-107 implementation. 
+<p>To be implemented by classes annotated with org.springframework.cache.annotation.EnableCaching that wish or need to specify explicitly how exception caches are resolved for annotation-driven cache management. Consider extending JCacheConfigurerSupport, which provides a stub implementation of all interface methods. </p>
+<p>See org.springframework.cache.annotation.EnableCaching for general examples and context; see <code><a href="exception-cache-resolver.html">#exceptionCacheResolver()</a></code> for detailed instructions.</p>
+</p>
+<p><strong>Author</strong><br/>
+Stephane Nicoll</p>
+<p><strong>Since</strong><br/>
+4.1</p>
+<p><strong>See Also</strong><br/>
+CachingConfigurerJCacheConfigurerSupportorg.springframework.cache.annotation.EnableCaching</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="exception-cache-resolver.html">exceptionCacheResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">exceptionCacheResolver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">CacheResolver</span></code>
+<p>Return the CacheResolver bean to use to resolve exception caches for annotation-driven cache management. Implementations must explicitly declare org.springframework.context.annotation.Bean, e.g. <pre><code> @Configuration @EnableCaching public class AppConfig extends JCacheConfigurerSupport { @Bean // important! @Override public CacheResolver exceptionCacheResolver() { // configure and return CacheResolver instance } // ... } </code></pre> See org.springframework.cache.annotation.EnableCaching for more complete examples.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-j-cache-configurer-support/index.html">JCacheConfigurerSupport</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">JCacheConfigurerSupport</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.cache.annotation/-caching-configurer-support/index.html"><span class="identifier">CachingConfigurerSupport</span></a><span class="symbol">, </span><span class="identifier">JCacheConfigurer</span></code>
+<p>An extension of CachingConfigurerSupport that also implements JCacheConfigurer. 
+<p>Users of JSR-107 annotations may extend from this class rather than implementing from JCacheConfigurer directly.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>ConfigurableWebBindingInitializer - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.bind.support</a>&nbsp;/&nbsp;<a href=".">ConfigurableWebBindingInitializer</a><br/>
+<br/>
+<h1>ConfigurableWebBindingInitializer</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ConfigurableWebBindingInitializer</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebBindingInitializer</span></code>
+<p>Convenient WebBindingInitializer for declarative configuration in a Spring application context. Allows for reusing pre-configured initializers with multiple controller/handlers.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+<a href="set-direct-field-access.html">#setDirectFieldAccess</a><a href="set-message-codes-resolver.html">#setMessageCodesResolver</a><a href="set-binding-error-processor.html">#setBindingErrorProcessor</a><a href="set-validator.html">#setValidator(Validator)</a><a href="set-conversion-service.html">#setConversionService(ConversionService)</a><a href="set-property-editor-registrar.html">#setPropertyEditorRegistrar</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">ConfigurableWebBindingInitializer</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Convenient WebBindingInitializer for declarative configuration in a Spring application context. Allows for reusing pre-configured initializers with multiple controller/handlers.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-binding-error-processor.html">getBindingErrorProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getBindingErrorProcessor</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">BindingErrorProcessor</span></code>
+<p>Return the strategy to use for processing binding errors.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-conversion-service.html">getConversionService</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getConversionService</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">ConversionService</span></code>
+<p>Return the ConversionService which will apply to every DataBinder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-message-codes-resolver.html">getMessageCodesResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getMessageCodesResolver</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MessageCodesResolver</span></code>
+<p>Return the strategy to use for resolving errors into message codes.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-property-editor-registrars.html">getPropertyEditorRegistrars</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getPropertyEditorRegistrars</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">PropertyEditorRegistrar</span><span class="symbol">&gt;</span></code>
+<p>Return the PropertyEditorRegistrars to be applied to every DataBinder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-validator.html">getValidator</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">getValidator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Validator</span></code>
+<p>Return the Validator to apply after each binding step, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="init-binder.html">initBinder</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">initBinder</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$initBinder(org.springframework.web.bind.WebDataBinder)/binder">binder</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebDataBinder</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-auto-grow-nested-paths.html">isAutoGrowNestedPaths</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isAutoGrowNestedPaths</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether a binder should attempt to "auto-grow" a nested path that contains a null value.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="is-direct-field-access.html">isDirectFieldAccess</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isDirectFieldAccess</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code>
+<p>Return whether to use direct field access instead of bean property access.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-auto-grow-nested-paths.html">setAutoGrowNestedPaths</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setAutoGrowNestedPaths</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setAutoGrowNestedPaths(kotlin.Boolean)/autoGrowNestedPaths">autoGrowNestedPaths</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether a binder should attempt to "auto-grow" a nested path that contains a null value. 
+<p>If "true", a null path location will be populated with a default object value and traversed instead of resulting in an exception. This flag also enables auto-growth of collection elements when accessing an out-of-bounds index. </p>
+<p>Default is "true" on a standard DataBinder. Note that this feature is only supported for bean property access (DataBinder's default mode), not for field access.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-binding-error-processor.html">setBindingErrorProcessor</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setBindingErrorProcessor</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setBindingErrorProcessor(org.springframework.validation.BindingErrorProcessor)/bindingErrorProcessor">bindingErrorProcessor</span><span class="symbol">:</span>&nbsp;<span class="identifier">BindingErrorProcessor</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the strategy to use for processing binding errors, that is, required field errors and <code>PropertyAccessException</code>s. 
+<p>Default is <code>null</code>, that is, using the default strategy of the data binder.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-conversion-service.html">setConversionService</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setConversionService</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setConversionService(org.springframework.core.convert.ConversionService)/conversionService">conversionService</span><span class="symbol">:</span>&nbsp;<span class="identifier">ConversionService</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a ConversionService which will apply to every DataBinder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-direct-field-access.html">setDirectFieldAccess</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setDirectFieldAccess</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setDirectFieldAccess(kotlin.Boolean)/directFieldAccess">directFieldAccess</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to use direct field access instead of bean property access. 
+<p>Default is <code>false</code>, using bean property access. Switch this to <code>true</code> in order to enforce direct field access.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-message-codes-resolver.html">setMessageCodesResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setMessageCodesResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setMessageCodesResolver(org.springframework.validation.MessageCodesResolver)/messageCodesResolver">messageCodesResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">MessageCodesResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the strategy to use for resolving errors into message codes. Applies the given strategy to all data binders used by this controller. 
+<p>Default is <code>null</code>, i.e. using the default strategy of the data binder.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property-editor-registrar.html">setPropertyEditorRegistrar</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setPropertyEditorRegistrar</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setPropertyEditorRegistrar(org.springframework.beans.PropertyEditorRegistrar)/propertyEditorRegistrar">propertyEditorRegistrar</span><span class="symbol">:</span>&nbsp;<span class="identifier">PropertyEditorRegistrar</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify a single PropertyEditorRegistrar to be applied to every DataBinder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-property-editor-registrars.html">setPropertyEditorRegistrars</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setPropertyEditorRegistrars</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setPropertyEditorRegistrars(kotlin.Array((org.springframework.beans.PropertyEditorRegistrar)))/propertyEditorRegistrars">propertyEditorRegistrars</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html"><span class="identifier">Array</span></a><span class="symbol">&lt;</span><span class="identifier">PropertyEditorRegistrar</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Specify multiple PropertyEditorRegistrars to be applied to every DataBinder.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-validator.html">setValidator</a></p>
+</td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">setValidator</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.bind.support.ConfigurableWebBindingInitializer$setValidator(org.springframework.validation.Validator)/validator">validator</span><span class="symbol">:</span>&nbsp;<span class="identifier">Validator</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Validator to apply after each binding step.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

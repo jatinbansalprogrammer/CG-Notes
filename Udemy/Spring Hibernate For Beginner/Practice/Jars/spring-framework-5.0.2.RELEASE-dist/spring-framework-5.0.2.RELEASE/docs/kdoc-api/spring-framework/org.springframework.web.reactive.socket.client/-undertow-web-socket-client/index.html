@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>UndertowWebSocketClient - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.reactive.socket.client</a>&nbsp;/&nbsp;<a href=".">UndertowWebSocketClient</a><br/>
+<br/>
+<h1>UndertowWebSocketClient</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">UndertowWebSocketClient</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketClientSupport</span><span class="symbol">, </span><span class="identifier">WebSocketClient</span></code>
+<p>Undertow based implementation of WebSocketClient.</p>
+<p><strong>Author</strong><br/>
+Violeta Georgieva</p>
+<p><strong>Author</strong><br/>
+Rossen Stoyanchev</p>
+<p><strong>Since</strong><br/>
+5.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">UndertowWebSocketClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$<init>(org.xnio.XnioWorker)/worker">worker</span><span class="symbol">:</span>&nbsp;<span class="identifier">XnioWorker</span><span class="symbol">)</span></code>
+<p>Constructor with the XnioWorker to pass to <code><a href="#">io.undertow.websockets.client.WebSocketClient#connectionBuilder</a></code></p>
+<code><span class="identifier">UndertowWebSocketClient</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$<init>(org.xnio.XnioWorker, java.util.function.Consumer((io.undertow.websockets.client.WebSocketClient.ConnectionBuilder)))/worker">worker</span><span class="symbol">:</span>&nbsp;<span class="identifier">XnioWorker</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$<init>(org.xnio.XnioWorker, java.util.function.Consumer((io.undertow.websockets.client.WebSocketClient.ConnectionBuilder)))/builderConsumer">builderConsumer</span><span class="symbol">:</span>&nbsp;<span class="identifier">Consumer</span><span class="symbol">&lt;</span><span class="identifier">ConnectionBuilder</span><span class="symbol">&gt;</span><span class="symbol">)</span></code>
+<p>Alternate constructor providing additional control over the ConnectionBuilder for each WebSocket connection.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="execute.html">execute</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$execute(java.net.URI, org.springframework.web.reactive.socket.WebSocketHandler)/url">url</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$execute(java.net.URI, org.springframework.web.reactive.socket.WebSocketHandler)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code><br/>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">execute</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$execute(java.net.URI, org.springframework.http.HttpHeaders, org.springframework.web.reactive.socket.WebSocketHandler)/url">url</span><span class="symbol">:</span>&nbsp;<span class="identifier">URI</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$execute(java.net.URI, org.springframework.http.HttpHeaders, org.springframework.web.reactive.socket.WebSocketHandler)/headers">headers</span><span class="symbol">:</span>&nbsp;<span class="identifier">HttpHeaders</span><span class="symbol">, </span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$execute(java.net.URI, org.springframework.http.HttpHeaders, org.springframework.web.reactive.socket.WebSocketHandler)/handler">handler</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebSocketHandler</span><span class="symbol">)</span><span class="symbol">: </span><a href="http://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html"><span class="identifier">Mono</span></a><span class="symbol">&lt;</span><span class="identifier">Void</span><span class="symbol">&gt;</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-connection-builder-consumer.html">getConnectionBuilderConsumer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getConnectionBuilderConsumer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Consumer</span><span class="symbol">&lt;</span><span class="identifier">ConnectionBuilder</span><span class="symbol">&gt;</span></code>
+<p>Return the configured <code>Consumer&lt;ConnectionBuilder</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-pool-buffer-size.html">getPoolBufferSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getPoolBufferSize</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a></code>
+<p>Return the size for Undertow's WebSocketClient <code>ByteBufferPool</code>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-xnio-worker.html">getXnioWorker</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getXnioWorker</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XnioWorker</span></code>
+<p>Return the configured XnioWorker.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-pool-buffer-size.html">setPoolBufferSize</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setPoolBufferSize</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.reactive.socket.client.UndertowWebSocketClient$setPoolBufferSize(kotlin.Int)/poolBufferSize">poolBufferSize</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html"><span class="identifier">Int</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Configure the size of the io.undertow.connector.ByteBufferPool to pass to <code><a href="#">io.undertow.websockets.client.WebSocketClient#connectionBuilder</a></code>. 
+<p>By default the buffer size is set to 8192.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

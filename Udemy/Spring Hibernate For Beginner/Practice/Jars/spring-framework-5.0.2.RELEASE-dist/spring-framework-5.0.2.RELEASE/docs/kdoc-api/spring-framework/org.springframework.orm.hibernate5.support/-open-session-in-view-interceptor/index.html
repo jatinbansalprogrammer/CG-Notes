@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>OpenSessionInViewInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.orm.hibernate5.support</a>&nbsp;/&nbsp;<a href=".">OpenSessionInViewInterceptor</a><br/>
+<br/>
+<h1>OpenSessionInViewInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">OpenSessionInViewInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AsyncWebRequestInterceptor</span></code>
+<p>Spring web request interceptor that binds a Hibernate <code>Session</code> to the thread for the entire processing of the request. 
+<p>This class is a concrete expression of the "Open Session in View" pattern, which is a pattern that allows for the lazy loading of associations in web views despite the original transactions already being completed. </p>
+<p>This interceptor makes Hibernate Sessions available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.hibernate5.HibernateTransactionManager as well as for non-transactional execution (if configured appropriately). </p>
+<p>In contrast to OpenSessionInViewFilter, this interceptor is configured in a Spring application context and can thus take advantage of bean wiring. </p>
+<p><strong>WARNING:</strong> Applying this interceptor to existing logic can cause issues that have not appeared before, through the use of a single Hibernate <code>Session</code> for the processing of an entire request. In particular, the reassociation of persistent objects with a Hibernate <code>Session</code> has to occur at the very beginning of request processing, to avoid clashes with already loaded instances of the same objects.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+4.2</p>
+<p><strong>See Also</strong><br/>
+OpenSessionInViewFilterOpenSessionInterceptororg.springframework.orm.hibernate5.HibernateTransactionManagerTransactionSynchronizationManager<a href="#">SessionFactory#getCurrentSession()</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">OpenSessionInViewInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Spring web request interceptor that binds a Hibernate <code>Session</code> to the thread for the entire processing of the request. 
+<p>This class is a concrete expression of the "Open Session in View" pattern, which is a pattern that allows for the lazy loading of associations in web views despite the original transactions already being completed. </p>
+<p>This interceptor makes Hibernate Sessions available via the current thread, which will be autodetected by transaction managers. It is suitable for service layer transactions via org.springframework.orm.hibernate5.HibernateTransactionManager as well as for non-transactional execution (if configured appropriately). </p>
+<p>In contrast to OpenSessionInViewFilter, this interceptor is configured in a Spring application context and can thus take advantage of bean wiring. </p>
+<p><strong>WARNING:</strong> Applying this interceptor to existing logic can cause issues that have not appeared before, through the use of a single Hibernate <code>Session</code> for the processing of an entire request. In particular, the reassociation of persistent objects with a Hibernate <code>Session</code> has to occur at the very beginning of request processing, to avoid clashes with already loaded instances of the same objects.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-p-a-r-t-i-c-i-p-a-t-e_-s-u-f-f-i-x.html">PARTICIPATE_SUFFIX</a></p>
+</td>
+<td>
+<code><span class="keyword">static</span> <span class="keyword">val </span><span class="identifier">PARTICIPATE_SUFFIX</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a></code>
+<p>Suffix that gets appended to the <code>SessionFactory</code> <code>toString()</code> representation for the "participate in existing session handling" request attribute.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="after-completion.html">afterCompletion</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterCompletion</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$afterCompletion(org.springframework.web.context.request.WebRequest, java.lang.Exception)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$afterCompletion(org.springframework.web.context.request.WebRequest, java.lang.Exception)/ex">ex</span><span class="symbol">:</span>&nbsp;<span class="identifier">Exception</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Unbind the Hibernate <code>Session</code> from the thread and close it).</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="after-concurrent-handling-started.html">afterConcurrentHandlingStarted</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">afterConcurrentHandlingStarted</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$afterConcurrentHandlingStarted(org.springframework.web.context.request.WebRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-session-factory.html">getSessionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getSessionFactory</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">SessionFactory</span></code>
+<p>Return the Hibernate SessionFactory that should be used to create Hibernate Sessions.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="post-handle.html">postHandle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">postHandle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$postHandle(org.springframework.web.context.request.WebRequest, org.springframework.ui.ModelMap)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">, </span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$postHandle(org.springframework.web.context.request.WebRequest, org.springframework.ui.ModelMap)/model">model</span><span class="symbol">:</span>&nbsp;<span class="identifier">ModelMap</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="pre-handle.html">preHandle</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">preHandle</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$preHandle(org.springframework.web.context.request.WebRequest)/request">request</span><span class="symbol">:</span>&nbsp;<span class="identifier">WebRequest</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Open a new Hibernate <code>Session</code> according and bind it to the thread via the TransactionSynchronizationManager.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-session-factory.html">setSessionFactory</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSessionFactory</span><span class="symbol">(</span><span class="identifier" id="org.springframework.orm.hibernate5.support.OpenSessionInViewInterceptor$setSessionFactory(org.hibernate.SessionFactory)/sessionFactory">sessionFactory</span><span class="symbol">:</span>&nbsp;<span class="identifier">SessionFactory</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the Hibernate SessionFactory that should be used to create Hibernate Sessions.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

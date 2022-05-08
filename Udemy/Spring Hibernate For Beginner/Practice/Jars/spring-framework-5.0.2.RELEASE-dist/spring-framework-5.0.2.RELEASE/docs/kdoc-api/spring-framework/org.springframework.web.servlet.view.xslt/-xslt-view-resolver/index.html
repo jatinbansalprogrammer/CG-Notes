@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>XsltViewResolver - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.web.servlet.view.xslt</a>&nbsp;/&nbsp;<a href=".">XsltViewResolver</a><br/>
+<br/>
+<h1>XsltViewResolver</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">XsltViewResolver</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">UrlBasedViewResolver</span></code>
+<p>org.springframework.web.servlet.ViewResolver implementation that resolves instances of XsltView by translating the supplied view name into the URL of the XSLT stylesheet.</p>
+<p><strong>Author</strong><br/>
+Rob Harrop</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">XsltViewResolver</span><span class="symbol">(</span><span class="symbol">)</span></code></td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="set-cache-templates.html">setCacheTemplates</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheTemplates</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltViewResolver$setCacheTemplates(kotlin.Boolean)/cacheTemplates">cacheTemplates</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Turn on/off the caching of the XSLT templates. 
+<p>The default value is "true". Only set this to "false" in development, where caching does not seriously impact performance.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-error-listener.html">setErrorListener</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setErrorListener</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltViewResolver$setErrorListener(javax.xml.transform.ErrorListener)/errorListener">errorListener</span><span class="symbol">:</span>&nbsp;<span class="identifier">ErrorListener</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set an implementation of the javax.xml.transform.ErrorListener interface for custom handling of transformation errors and warnings. 
+<p>If not set, a default org.springframework.util.xml.SimpleTransformErrorListener is used that simply logs warnings using the logger instance of the view class, and rethrows errors to discontinue the XML transformation.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-indent.html">setIndent</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setIndent</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltViewResolver$setIndent(kotlin.Boolean)/indent">indent</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether the XSLT transformer may add additional whitespace when outputting the result tree. 
+<p>Default is <code>true</code> (on); set this to <code>false</code> (off) to not specify an "indent" key, leaving the choice up to the stylesheet.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-output-properties.html">setOutputProperties</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setOutputProperties</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltViewResolver$setOutputProperties(java.util.Properties)/outputProperties">outputProperties</span><span class="symbol">:</span>&nbsp;<span class="identifier">Properties</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set arbitrary transformer output properties to be applied to the stylesheet. 
+<p>Any values specified here will override defaults that this view sets programmatically.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-source-key.html">setSourceKey</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setSourceKey</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltViewResolver$setSourceKey(kotlin.String)/sourceKey">sourceKey</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html"><span class="identifier">String</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the name of the model attribute that represents the XSLT Source. If not specified, the model map will be searched for a matching value type. 
+<p>The following source types are supported out of the box: javax.xml.transform.Source, org.w3c.dom.Document, org.w3c.dom.Node, java.io.Reader, java.io.InputStream and org.springframework.core.io.Resource.</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-uri-resolver.html">setUriResolver</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setUriResolver</span><span class="symbol">(</span><span class="identifier" id="org.springframework.web.servlet.view.xslt.XsltViewResolver$setUriResolver(javax.xml.transform.URIResolver)/uriResolver">uriResolver</span><span class="symbol">:</span>&nbsp;<span class="identifier">URIResolver</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set the URIResolver used in the transform. 
+<p>The URIResolver handles calls to the XSLT <code>document()</code> function.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

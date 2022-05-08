@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleRemoteSlsbInvokerInterceptor - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.ejb.access</a>&nbsp;/&nbsp;<a href=".">SimpleRemoteSlsbInvokerInterceptor</a><br/>
+<br/>
+<h1>SimpleRemoteSlsbInvokerInterceptor</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleRemoteSlsbInvokerInterceptor</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">AbstractRemoteSlsbInvokerInterceptor</span><span class="symbol">, </span><span class="identifier">DisposableBean</span></code>
+<p>Basic invoker for a remote Stateless Session Bean. Designed for EJB 2.x, but works for EJB 3 Session Beans as well. 
+<p>"Creates" a new EJB instance for each invocation, or caches the session bean instance for all invocations (see <code><a href="set-cache-session-bean.html">#setCacheSessionBean</a></code>). See org.springframework.jndi.JndiObjectLocator for info on how to specify the JNDI location of the target EJB. </p>
+<p>In a bean container, this class is normally best used as a singleton. However, if that bean container pre-instantiates singletons (as do the XML ApplicationContext variants) you may have a problem if the bean container is loaded before the EJB container loads the target EJB. That is because by default the JNDI lookup will be performed in the init method of this class and cached, but the EJB will not have been bound at the target location yet. The best solution is to set the "lookupHomeOnStartup" property to "false", in which case the home will be fetched on first access to the EJB. (This flag is only true by default for backwards compatibility reasons). </p>
+<p>This invoker is typically used with an RMI business interface, which serves as super-interface of the EJB component interface. Alternatively, this invoker can also proxy a remote SLSB with a matching non-RMI business interface, i.e. an interface that mirrors the EJB business methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the EJB stub will automatically get converted to Spring's unchecked RemoteAccessException.</p>
+</p>
+<p><strong>Author</strong><br/>
+Rod Johnson</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+09.05.2003</p>
+<p><strong>See Also</strong><br/>
+org.springframework.remoting.RemoteAccessException<a href="#">AbstractSlsbInvokerInterceptor#setLookupHomeOnStartup</a><a href="#">AbstractSlsbInvokerInterceptor#setCacheHome</a><a href="#">AbstractRemoteSlsbInvokerInterceptor#setRefreshHomeOnConnectFailure</a></p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleRemoteSlsbInvokerInterceptor</span><span class="symbol">(</span><span class="symbol">)</span></code>
+<p>Basic invoker for a remote Stateless Session Bean. Designed for EJB 2.x, but works for EJB 3 Session Beans as well. 
+<p>"Creates" a new EJB instance for each invocation, or caches the session bean instance for all invocations (see <code><a href="set-cache-session-bean.html">#setCacheSessionBean</a></code>). See org.springframework.jndi.JndiObjectLocator for info on how to specify the JNDI location of the target EJB. </p>
+<p>In a bean container, this class is normally best used as a singleton. However, if that bean container pre-instantiates singletons (as do the XML ApplicationContext variants) you may have a problem if the bean container is loaded before the EJB container loads the target EJB. That is because by default the JNDI lookup will be performed in the init method of this class and cached, but the EJB will not have been bound at the target location yet. The best solution is to set the "lookupHomeOnStartup" property to "false", in which case the home will be fetched on first access to the EJB. (This flag is only true by default for backwards compatibility reasons). </p>
+<p>This invoker is typically used with an RMI business interface, which serves as super-interface of the EJB component interface. Alternatively, this invoker can also proxy a remote SLSB with a matching non-RMI business interface, i.e. an interface that mirrors the EJB business methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the EJB stub will automatically get converted to Spring's unchecked RemoteAccessException.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="destroy.html">destroy</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">destroy</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Remove the cached session bean instance, if necessary.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="set-cache-session-bean.html">setCacheSessionBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">setCacheSessionBean</span><span class="symbol">(</span><span class="identifier" id="org.springframework.ejb.access.SimpleRemoteSlsbInvokerInterceptor$setCacheSessionBean(kotlin.Boolean)/cacheSessionBean">cacheSessionBean</span><span class="symbol">:</span>&nbsp;<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html"><span class="identifier">Unit</span></a></code>
+<p>Set whether to cache the actual session bean object. 
+<p>Off by default for standard EJB compliance. Turn this flag on to optimize session bean access for servers that are known to allow for caching the actual session bean object.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-simple-remote-stateless-session-proxy-factory-bean/index.html">SimpleRemoteStatelessSessionProxyFactoryBean</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleRemoteStatelessSessionProxyFactoryBean</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">SimpleRemoteSlsbInvokerInterceptor</span><span class="symbol">, </span><span class="identifier">FactoryBean</span><span class="symbol">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-any/index.html"><span class="identifier">Any</span></a><span class="symbol">&gt;</span><span class="symbol">, </span><span class="identifier">BeanClassLoaderAware</span></code>
+<p>Convenient FactoryBean for remote SLSB proxies. Designed for EJB 2.x, but works for EJB 3 Session Beans as well. 
+<p>See org.springframework.jndi.JndiObjectLocator for info on how to specify the JNDI location of the target EJB. </p>
+<p>If you want control over interceptor chaining, use an AOP ProxyFactoryBean with SimpleRemoteSlsbInvokerInterceptor rather than rely on this class. </p>
+<p>In a bean container, this class is normally best used as a singleton. However, if that bean container pre-instantiates singletons (as do the XML ApplicationContext variants) you may have a problem if the bean container is loaded before the EJB container loads the target EJB. That is because by default the JNDI lookup will be performed in the init method of this class and cached, but the EJB will not have been bound at the target location yet. The best solution is to set the lookupHomeOnStartup property to false, in which case the home will be fetched on first access to the EJB. (This flag is only true by default for backwards compatibility reasons). </p>
+<p>This proxy factory is typically used with an RMI business interface, which serves as super-interface of the EJB component interface. Alternatively, this factory can also proxy a remote SLSB with a matching non-RMI business interface, i.e. an interface that mirrors the EJB business methods but does not declare RemoteExceptions. In the latter case, RemoteExceptions thrown by the EJB stub will automatically get converted to Spring's unchecked RemoteAccessException.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

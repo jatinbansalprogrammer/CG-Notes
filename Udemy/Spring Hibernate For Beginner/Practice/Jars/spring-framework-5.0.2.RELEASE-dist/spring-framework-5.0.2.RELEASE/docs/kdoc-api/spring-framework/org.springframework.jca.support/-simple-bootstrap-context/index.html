@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>SimpleBootstrapContext - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.jca.support</a>&nbsp;/&nbsp;<a href=".">SimpleBootstrapContext</a><br/>
+<br/>
+<h1>SimpleBootstrapContext</h1>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">SimpleBootstrapContext</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BootstrapContext</span></code>
+<p>Simple implementation of the JCA 1.7 javax.resource.spi.BootstrapContext interface, used for bootstrapping a JCA ResourceAdapter in a local environment. 
+<p>Delegates to the given WorkManager and XATerminator, if any. Creates simple local instances of <code>java.util.Timer</code>.</p>
+</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.0.3</p>
+<p><strong>See Also</strong><br/>
+<a href="#">javax.resource.spi.ResourceAdapter#start(javax.resource.spi.BootstrapContext)</a>ResourceAdapterFactoryBean</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="-init-.html">&lt;init&gt;</a></p>
+</td>
+<td>
+<code><span class="identifier">SimpleBootstrapContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.support.SimpleBootstrapContext$<init>(javax.resource.spi.work.WorkManager)/workManager">workManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkManager</span><span class="symbol">)</span></code>
+<p>Create a new SimpleBootstrapContext for the given WorkManager, with no XATerminator available.</p>
+<code><span class="identifier">SimpleBootstrapContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.support.SimpleBootstrapContext$<init>(javax.resource.spi.work.WorkManager, javax.resource.spi.XATerminator)/workManager">workManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.support.SimpleBootstrapContext$<init>(javax.resource.spi.work.WorkManager, javax.resource.spi.XATerminator)/xaTerminator">xaTerminator</span><span class="symbol">:</span>&nbsp;<span class="identifier">XATerminator</span><span class="symbol">)</span></code>
+<p>Create a new SimpleBootstrapContext for the given WorkManager and XATerminator.</p>
+<code><span class="identifier">SimpleBootstrapContext</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.support.SimpleBootstrapContext$<init>(javax.resource.spi.work.WorkManager, javax.resource.spi.XATerminator, javax.transaction.TransactionSynchronizationRegistry)/workManager">workManager</span><span class="symbol">:</span>&nbsp;<span class="identifier">WorkManager</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.support.SimpleBootstrapContext$<init>(javax.resource.spi.work.WorkManager, javax.resource.spi.XATerminator, javax.transaction.TransactionSynchronizationRegistry)/xaTerminator">xaTerminator</span><span class="symbol">:</span>&nbsp;<span class="identifier">XATerminator</span><span class="symbol">, </span><span class="identifier" id="org.springframework.jca.support.SimpleBootstrapContext$<init>(javax.resource.spi.work.WorkManager, javax.resource.spi.XATerminator, javax.transaction.TransactionSynchronizationRegistry)/transactionSynchronizationRegistry">transactionSynchronizationRegistry</span><span class="symbol">:</span>&nbsp;<span class="identifier">TransactionSynchronizationRegistry</span><span class="symbol">)</span></code>
+<p>Create a new SimpleBootstrapContext for the given WorkManager, XATerminator and TransactionSynchronizationRegistry.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="create-timer.html">createTimer</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">createTimer</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Timer</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-transaction-synchronization-registry.html">getTransactionSynchronizationRegistry</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getTransactionSynchronizationRegistry</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">TransactionSynchronizationRegistry</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-work-manager.html">getWorkManager</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getWorkManager</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">WorkManager</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="get-x-a-terminator.html">getXATerminator</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">getXATerminator</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">XATerminator</span></code></td>
+</tr>
+<tr>
+<td>
+<p><a href="is-context-supported.html">isContextSupported</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">fun </span><span class="identifier">isContextSupported</span><span class="symbol">(</span><span class="identifier" id="org.springframework.jca.support.SimpleBootstrapContext$isContextSupported(java.lang.Class((javax.resource.spi.work.WorkContext)))/workContextClass">workContextClass</span><span class="symbol">:</span>&nbsp;<span class="identifier">Class</span><span class="symbol">&lt;</span><span class="keyword">out</span>&nbsp;<span class="identifier">WorkContext</span><span class="symbol">&gt;</span><span class="symbol">)</span><span class="symbol">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html"><span class="identifier">Boolean</span></a></code></td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

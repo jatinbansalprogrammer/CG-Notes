@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>AnnotatedBeanDefinition - spring-framework</title>
+<link rel="stylesheet" href="../../../style.css">
+</HEAD>
+<BODY>
+<a href="../../index.html">spring-framework</a>&nbsp;/&nbsp;<a href="../index.html">org.springframework.beans.factory.annotation</a>&nbsp;/&nbsp;<a href=".">AnnotatedBeanDefinition</a><br/>
+<br/>
+<h1>AnnotatedBeanDefinition</h1>
+<code><span class="keyword">interface </span><span class="identifier">AnnotatedBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">BeanDefinition</span></code>
+<p>Extended org.springframework.beans.factory.config.BeanDefinition interface that exposes org.springframework.core.type.AnnotationMetadata about its bean class - without requiring the class to be loaded yet.</p>
+<p><strong>Author</strong><br/>
+Juergen Hoeller</p>
+<p><strong>Since</strong><br/>
+2.5</p>
+<p><strong>See Also</strong><br/>
+AnnotatedGenericBeanDefinitionorg.springframework.core.type.AnnotationMetadata</p>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="get-factory-method-metadata.html">getFactoryMethodMetadata</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getFactoryMethodMetadata</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">MethodMetadata</span></code>
+<p>Obtain metadata for this bean definition's factory method, if any.</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="get-metadata.html">getMetadata</a></p>
+</td>
+<td>
+<code><span class="keyword">abstract</span> <span class="keyword">fun </span><span class="identifier">getMetadata</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">AnnotationMetadata</span></code>
+<p>Obtain the annotation metadata (as well as basic class metadata) for this bean definition's bean class.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<p><a href="../-annotated-generic-bean-definition/index.html">AnnotatedGenericBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">AnnotatedGenericBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.support/-generic-bean-definition/index.html"><span class="identifier">GenericBeanDefinition</span></a><span class="symbol">, </span><span class="identifier">AnnotatedBeanDefinition</span></code>
+<p>Extension of the org.springframework.beans.factory.support.GenericBeanDefinition class, adding support for annotation metadata exposed through the AnnotatedBeanDefinition interface. 
+<p>This GenericBeanDefinition variant is mainly useful for testing code that expects to operate on an AnnotatedBeanDefinition, for example strategy implementations in Spring's component scanning support (where the default definition class is org.springframework.context.annotation.ScannedGenericBeanDefinition, which also implements the AnnotatedBeanDefinition interface).</p>
+</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><a href="../../org.springframework.context.annotation/-scanned-generic-bean-definition/index.html">ScannedGenericBeanDefinition</a></p>
+</td>
+<td>
+<code><span class="keyword">open</span> <span class="keyword">class </span><span class="identifier">ScannedGenericBeanDefinition</span>&nbsp;<span class="symbol">:</span>&nbsp;<a href="../../org.springframework.beans.factory.support/-generic-bean-definition/index.html"><span class="identifier">GenericBeanDefinition</span></a><span class="symbol">, </span><span class="identifier">AnnotatedBeanDefinition</span></code>
+<p>Extension of the org.springframework.beans.factory.support.GenericBeanDefinition class, based on an ASM ClassReader, with support for annotation metadata exposed through the AnnotatedBeanDefinition interface. 
+<p>This class does <em>not</em> load the bean <code>Class</code> early. It rather retrieves all relevant metadata from the ".class" file itself, parsed with the ASM ClassReader. It is functionally equivalent to <code><a href="#">AnnotatedGenericBeanDefinition#AnnotatedGenericBeanDefinition(AnnotationMetadata)</a></code> but distinguishes by type beans that have been <em>scanned</em> vs those that have been otherwise registered or detected by other means.</p>
+</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>
