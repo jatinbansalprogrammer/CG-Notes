@@ -1,0 +1,41 @@
+<p>In the next lecture, you will see the following query:</p><pre class="prettyprint linenums">PUT /product
+{
+  "mappings": {
+    "_doc": {
+      "dynamic": false,
+      "properties": {
+        "in_stock": {
+          "type": "integer"
+        },
+        "is_active": {
+          "type": "boolean"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "sold": {
+          "type": "long"
+        }
+      }
+    }
+  }
+}</pre><p>From Elasticsearch 7.0.0, we are no longer allowed to specify the <code>_doc</code> key, so we need to nest the <code>dynamic</code> and <code>properties</code> keys directly under the <code>mappings</code> key.&nbsp;The rest of the query remains the same. The query should therefore be the following for Elasticsearch 7.x and onwards.</p><pre class="prettyprint linenums">PUT /product
+{
+  "mappings": {
+    "dynamic": false,
+    "properties": {
+      "in_stock": {
+        "type": "integer"
+      },
+      "is_active": {
+        "type": "boolean"
+      },
+      "price": {
+        "type": "integer"
+      },
+      "sold": {
+        "type": "long"
+      }
+    }
+  }
+}</pre><p>If you are migrating data from version 6.x indices to 7.x, you may specify a <code>include_type_name</code> query parameter and set it to true. This allows you to keep using the query containing the <code>_doc</code> key until version 8.0.0, at which point the parameter will be removed. I recommend that you do not use this parameter unless you have a reason for doing so.</p><p>If you want to save a bit of typing, you can copy the above query to have it ready for the next lecture if you are following along. You can also <a href="https://github.com/codingexplained/complete-guide-to-elasticsearch/blob/master/Mapping/changing-existing-mappings.md" rel="noopener noreferrer" target="_blank">find it within the GitHub repository</a>.</p><p>I am working on a course update to bring all of the queries 100% up to date with the latest version of Elasticsearch. I apologize for the inconvenience until the update is ready, and thank you for your patience!</p>
