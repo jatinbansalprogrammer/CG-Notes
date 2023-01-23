@@ -1,0 +1,1 @@
+Mentor is using Confluent Community Edition 5.4.0 for Demo Purpose.
