@@ -1,0 +1,1 @@
+Skipped lectures are useless.
