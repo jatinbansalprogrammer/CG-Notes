@@ -7,6 +7,63 @@ using the **default form-login page**.
 
 ---
 
+## 0. Simplified view — major objects only
+
+If you just need the "8 things that matter" mental model, skip straight to this section.
+Everything else in the doc is the zoomed-in version of these same steps.
+
+**The 7 major players:**
+
+1. `UsernamePasswordAuthenticationFilter` — intercepts `POST /login`
+2. `AuthenticationManager` (`ProviderManager`) — orchestrates authentication
+3. `DaoAuthenticationProvider` — does the actual username/password check
+4. `UserDetailsService` — loads the user record
+5. `PasswordEncoder` — verifies the password hash
+6. `SecurityContextHolder` / `SecurityContext` — holds "who is logged in" for this request
+7. `HttpSession` — persists that identity across future requests
+
+### Simplified flow diagram
+
+```mermaid
+flowchart TD
+    A["Browser submits\nPOST /login"] --> B["UsernamePasswordAuthenticationFilter\nbuilds Authentication token"]
+    B --> C["AuthenticationManager.authenticate()"]
+    C --> D["DaoAuthenticationProvider"]
+    D --> E["UserDetailsService loads user"]
+    D --> F["PasswordEncoder checks password"]
+    E --> G{"Credentials valid?"}
+    F --> G
+    G -->|No| H["AuthenticationException\nredirect to /login?error"]
+    G -->|Yes| I["SecurityContextHolder stores\nauthenticated Authentication"]
+    I --> J["HttpSession persists\nSecurityContext"]
+    J --> K["Redirect to protected page"]
+```
+
+### Simplified sequence diagram
+
+```mermaid
+sequenceDiagram
+    participant Browser
+    participant Filter as UsernamePasswordAuthenticationFilter
+    participant Manager as AuthenticationManager
+    participant Provider as DaoAuthenticationProvider
+    participant UDS as UserDetailsService
+    participant Context as SecurityContextHolder
+
+    Browser->>Filter: POST /login (username, password)
+    Filter->>Manager: authenticate(token)
+    Manager->>Provider: authenticate(token)
+    Provider->>UDS: loadUserByUsername(username)
+    UDS-->>Provider: UserDetails
+    Provider->>Provider: PasswordEncoder.matches()
+    Provider-->>Manager: authenticated Authentication
+    Manager-->>Filter: authenticated Authentication
+    Filter->>Context: setAuthentication(result)
+    Context-->>Browser: 302 redirect (session established)
+```
+
+---
+
 ## 1. What auto-configuration wires up for you
 
 | Auto-config class | What it registers |
